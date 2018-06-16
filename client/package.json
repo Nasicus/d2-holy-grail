@@ -1,0 +1,29 @@
+{
+  "name": "d2-holy-grail-client",
+  "version": "1.0.0",
+  "dependencies": {
+    "@material-ui/core": "^1.2.1",
+    "classnames": "^2.2.6",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts-ts": "2.16.0",
+    "rxjs": "^6.2.1"
+  },
+  "scripts": {
+    "dev": "react-scripts-ts start",
+    "test": "react-scripts-ts test --env=jsdom",
+    "build": "react-scripts-ts build",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.4",
+    "@types/jest": "^23.0.0",
+    "@types/node": "^10.3.2",
+    "@types/react": "^16.3.17",
+    "@types/react-dom": "^16.0.6",
+    "@types/react-router-dom": "^4.2.7",
+    "typescript": "^2.9.1"
+  },
+  "proxy": "http://localhost:5000/"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "d2-holy-grail-server",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "ts-node ./src/Server.ts",
+    "build": "tsc",
+    "prod": "node ./dist/Server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.5"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.4",
+    "@types/express": "^4.16.0",
+    "cors": "^2.8.4",
+    "nodemon": "^1.17.5",
+    "ts-node": "^6.1.1",
+    "typescript": "^2.9.2"
+  }
+}

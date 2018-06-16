@@ -1,0 +1,30 @@
+.level-renderer {
+  text-transform: capitalize;
+  text-align: left;
+}
+
+.level-0 {
+  max-width: 1000px !important;
+  margin: auto !important;
+}
+
+.level-1 {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+.level-1 > * {
+  flex: 0 0 33.3333%;
+}
+
+.level-2 {
+  padding: 20px;
+}
+
+.level-3 {
+  padding-left: 15px;
+}
+
+.item {
+  padding-left: 15px;
+}

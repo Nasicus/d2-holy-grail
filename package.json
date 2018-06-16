@@ -1,0 +1,27 @@
+{
+  "name": "d2-holy-grail",
+  "version": "1.0.0",
+  "dependencies": {},
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "start": "npm run server:prod",
+    "dev": "concurrently --kill-others-on-fail \"npm run server:dev\" \"npm run client:dev\"",
+    "server:dev": "cd server && npm run dev",
+    "client:dev": "cd client && npm run dev",
+    "server:prod": "cd server && npm run prod",
+    "server:build:prod": "cd server && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
+    "client:build:prod": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build && cp -r build ../server/dist/client",
+    "heroku-postbuild": "npm run server:build:prod && npm run client:build:prod",
+    "precommit": "pretty-quick --staged"
+  },
+  "devDependencies": {
+    "concurrently": "^3.6.0",
+    "husky": "^0.14.3",
+    "prettier": "^1.13.5",
+    "pretty-quick": "^1.6.0"
+  },
+  "prettier": {
+    "printWidth": 120
+  }
+}
