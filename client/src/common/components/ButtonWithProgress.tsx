@@ -70,15 +70,17 @@ const ButtonWithProgress: React.SFC<Props> = props => {
       {!!props.firstIcon && (
         <div className={classes.wrapper}>
           <Tooltip title={props.text}>
-            <Button
-              variant="fab"
-              color="primary"
-              className={buttonClassName}
-              onClick={onClick}
-              disabled={isLoading || props.isDisabled}
-            >
-              {!showSecondIcon ? <Icon>{props.firstIcon}</Icon> : <Icon>{props.secondIcon}</Icon>}
-            </Button>
+            <div>
+              <Button
+                variant="fab"
+                color="primary"
+                className={buttonClassName}
+                onClick={onClick}
+                disabled={isLoading || props.isDisabled}
+              >
+                {!showSecondIcon ? <Icon>{props.firstIcon}</Icon> : <Icon>{props.secondIcon}</Icon>}
+              </Button>
+            </div>
           </Tooltip>
           {isLoading && <CircularProgress size={68} className={classes.fabProgress} />}
         </div>

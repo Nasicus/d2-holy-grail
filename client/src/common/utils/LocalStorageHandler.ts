@@ -1,15 +1,15 @@
-export class LocalStorageHandler {
+export class LocalStorageHandler<T> {
   public constructor(private key: string) {}
 
-  public getValue = (): any => {
-    return LocalStorageHandler.getValue(this.key);
+  public getValue = (): T => {
+    return LocalStorageHandler.getValue(this.key) as T;
   };
 
-  public setValue = (value: any): void => {
+  public setValue = (value: T): void => {
     LocalStorageHandler.setValue(this.key, value);
   };
 
-  public static getValue(key: string): any {
+  public static getValue<T>(key: string): T {
     const storageData = localStorage.getItem(key);
     if (!storageData) {
       return null;

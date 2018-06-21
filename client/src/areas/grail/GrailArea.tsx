@@ -50,7 +50,9 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
           error:
             err.status === 404
               ? `No Holy Grail for the address '${address}' exists!`
-              : "There was an error getting the Holy Grail data from the server!"
+              : err.type === "conflict"
+                ? "There was a conflict! The server data changed, but you also have local changes"
+                : "There was an error getting the Holy Grail Data from the server: "
         })
     );
   }

@@ -8,11 +8,13 @@ const HolyGrail = mongoose.model("HolyGrail", HolyGrailDbSchema);
 export class HolyGrailController {
   public add = (req: Request, res: Response) => {
     let newGrail = new HolyGrail(req.body);
+    newGrail.token = HolyGrailController.getToken();
     newGrail.save((err, grail) => {
       if (err) {
-        res.status(500).send(err);
+        HolyGrailController.sendUnknownError(res, err);
         return;
       }
+
       HolyGrailController.mapAndReturnGrailData(res, grail);
     });
   };
@@ -23,32 +25,38 @@ export class HolyGrailController {
 
   public update = (req: Request, res: Response) => {
     const address = req.params.address;
+    const password = req.body.password;
     const grailData = req.body.data;
+    const token = req.body.token;
 
     if (!grailData) {
-      res.status(500).send("You have to specify Holy Grail data!");
+      res.status(500).send({ type: "argument", argumentName: "grailData" });
       return;
     }
 
     HolyGrail.findOneAndUpdate(
-      { address: address, privateKey: req.body.privateKey },
-      { $set: { data: grailData } },
+      { address: address, password: password, token: token },
+      { $set: { data: grailData, token: HolyGrailController.getToken() } },
+      { new: true },
       (err, grail) => {
         if (err) {
-          res.status(500).send(err);
+          HolyGrailController.sendUnknownError(res, err);
           return;
         }
 
-        if (!grail) {
-          this.getByAddress(address, res, () =>
-            res
-              .status(401)
-              .send(`The specified private key does not belong to the address '${address}' - will not update data!`)
-          );
+        if (grail) {
+          HolyGrailController.mapAndReturnGrailData(res, grail);
           return;
         }
 
-        HolyGrailController.mapAndReturnGrailData(res, grail);
+        // we didn't receive a grail, so either the address, password or token is wrong
+        this.getByAddress(address, res, existingGrail => {
+          if (existingGrail.password !== password) {
+            res.status(401).send({ type: "password", address });
+          } else {
+            res.status(403).send({ type: "token", correctToken: existingGrail.token, specifiedToken: token, address });
+          }
+        });
       }
     );
   };
@@ -56,12 +64,12 @@ export class HolyGrailController {
   private getByAddress(address: string, res: Response, onSuccess: (grail) => any) {
     HolyGrail.findOne({ address: address }, (err, grail) => {
       if (err) {
-        res.status(500).send(err);
+        HolyGrailController.sendUnknownError(res, err);
         return;
       }
 
       if (!grail) {
-        res.status(404).send(`There is no Holy Grail with the address "${address}"!`);
+        res.status(404).send({ type: "notFound", address });
         return;
       }
 
@@ -70,11 +78,15 @@ export class HolyGrailController {
   }
 
   private static mapAndReturnGrailData(res: Response, grail: any) {
-    if (!grail) {
-      res.status(500).send("No Holy Grail Data received!");
-    }
+    // important: never send the grail grailData back directly, because the password is saved in there!
+    res.json({ address: grail.address, data: grail.data, token: grail.token } as IHolyGrailApiModel);
+  }
 
-    // important: never send the grail data back directly, because the private key is saved in there!
-    res.json({ address: grail.address, data: grail.data } as IHolyGrailApiModel);
+  private static sendUnknownError(res: Response, error?: any) {
+    res.status(500).send({ type: "unknown", error });
+  }
+
+  private static getToken(): string {
+    return new Date().toISOString();
   }
 }

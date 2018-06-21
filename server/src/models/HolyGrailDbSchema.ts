@@ -2,6 +2,13 @@ import * as mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
+export interface IHolyGrailDbModel {
+  address: string;
+  password: string;
+  token: string;
+  data?: any;
+}
+
 export const HolyGrailDbSchema = new Schema(
   {
     address: {
@@ -9,12 +16,13 @@ export const HolyGrailDbSchema = new Schema(
       required: "Public address",
       index: { unique: true }
     },
-    privateKey: {
+    password: {
       type: String,
-      required: "Private key"
+      required: "Password"
     },
-    modified: {
-      type: Date
+    token: {
+      type: String,
+      required: "Token"
     },
     data: {
       type: {}
