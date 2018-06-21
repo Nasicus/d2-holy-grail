@@ -1,12 +1,13 @@
 import * as React from "react";
 import { HolyGrailDataManager } from "../HolyGrailDataManager";
-import { dataManagerContext } from "../GrailArea";
 import { StyleRulesCallback } from "@material-ui/core";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
 import ButtonWithProgress from "../../../common/components/ButtonWithProgress";
+import { Subscription } from "rxjs";
 
 export interface IServerSaverState {
   isSaving?: boolean;
+  isEnabled?: boolean;
   showSecondIcon?: boolean;
 }
 
@@ -22,45 +23,51 @@ const styles: StyleRulesCallback<ClassesType> = theme => ({
 
 type Props = WithStyles<ClassesType>;
 
-// todo: disable button when there are no locale changes
-// we could already do this, however we are not notified if the "hasLocalChanges" flag changes...
 class SaveToServerButton extends React.Component<Props, IServerSaverState> {
   private secondIconTimeoutHandler: any;
+  private localChangesSubscription: Subscription;
 
   public constructor(props: Props) {
     super(props);
     this.state = {};
   }
 
-  public render() {
-    return (
-      <dataManagerContext.Consumer>
-        {dataManager => {
-          if (dataManager.isReadOnly) {
-            return null;
-          }
-
-          return (
-            <div className={this.props.classes.button}>
-              <ButtonWithProgress
-                onButtonClick={() => this.onSaveButtonClick(dataManager)}
-                isLoading={this.state.isSaving}
-                showSecondIcon={this.state.showSecondIcon}
-                text="Save to server"
-                firstIcon="save"
-                secondIcon="check"
-              />
-            </div>
-          );
-        }}
-      </dataManagerContext.Consumer>
+  public componentWillMount() {
+    this.localChangesSubscription = HolyGrailDataManager.current.hasLocalChanges$.subscribe(hasChanges =>
+      this.setState({ isEnabled: hasChanges })
     );
   }
 
-  private onSaveButtonClick = (dataManager: HolyGrailDataManager) => {
+  public componentWillUnmount() {
+    if (this.localChangesSubscription) {
+      this.localChangesSubscription.unsubscribe();
+    }
+  }
+
+  public render() {
+    if (HolyGrailDataManager.current.isReadOnly) {
+      return null;
+    }
+
+    return (
+      <div className={this.props.classes.button}>
+        <ButtonWithProgress
+          onButtonClick={() => this.onSaveButtonClick()}
+          isLoading={this.state.isSaving}
+          showSecondIcon={this.state.showSecondIcon}
+          isDisabled={!this.state.isEnabled}
+          text="Save to server"
+          firstIcon="save"
+          secondIcon="check"
+        />
+      </div>
+    );
+  }
+
+  private onSaveButtonClick = () => {
     clearTimeout(this.secondIconTimeoutHandler);
     this.setState({ showSecondIcon: false, isSaving: true });
-    dataManager
+    HolyGrailDataManager.current
       .updateServer()
       .subscribe(this.onSaveSuccessful, () => this.setState({ showSecondIcon: false, isSaving: false }));
   };

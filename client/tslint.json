@@ -10,6 +10,7 @@
     "member-ordering": false,
     "no-debugger": false,
     "jsx-no-lambda": false,
-    "max-classes-per-file": false
+    "max-classes-per-file": false,
+    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"]
   }
 }

@@ -6,18 +6,25 @@ import { holyGrailSeedData } from "./HolyGrailSeedData";
 import { ReplaySubject, Observable, Subscriber } from "rxjs";
 
 export class HolyGrailDataManager {
+  public static get current(): HolyGrailDataManager {
+    return this._current;
+  }
+  private static _current: HolyGrailDataManager;
+
   private grailLocalStorage: LocalStorageHandler;
 
   private data = new ReplaySubject<IHolyGrailApiModel>(1);
   public data$ = this.data.asObservable();
 
-  public hasLocalChanges: boolean;
+  private hasLocalChanges = new ReplaySubject<boolean>(1);
+  public hasLocalChanges$ = this.hasLocalChanges.asObservable();
+
   public get isReadOnly(): boolean {
     return !this.password;
   }
 
   public static createInstance(address: string, password?: string, savePassword?: boolean): HolyGrailDataManager {
-    return new HolyGrailDataManager(address, password, savePassword);
+    return (this._current = new HolyGrailDataManager(address, password, savePassword));
   }
 
   private constructor(private address: string, private password?: string, savePassword?: boolean) {
@@ -35,7 +42,7 @@ export class HolyGrailDataManager {
       this.grailLocalStorage.setValue(d);
     };
 
-    this.hasLocalChanges = true;
+    this.hasLocalChanges.next(true);
 
     if (data) {
       update(data);
@@ -52,7 +59,7 @@ export class HolyGrailDataManager {
         this.grailLocalStorage.setValue(updateData);
         Api.updateGrail(this.address, this.password, updateData).subscribe(
           d => {
-            this.hasLocalChanges = false;
+            this.hasLocalChanges.next(false);
             observer.next(d);
             observer.complete();
           },

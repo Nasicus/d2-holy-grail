@@ -1,7 +1,6 @@
 import * as React from "react";
 import Checkbox from "@material-ui/core/Checkbox/Checkbox";
 import { HolyGrailDataManager } from "../../HolyGrailDataManager";
-import { dataManagerContext } from "../../GrailArea";
 
 export interface IItemProps {
   item: any;
@@ -22,27 +21,21 @@ export class Item extends React.Component<IItemProps, IItemState> {
 
   public render() {
     return (
-      <dataManagerContext.Consumer>
-        {dataManager => {
-          return (
-            <div className="item">
-              <Checkbox
-                disabled={dataManager.isReadOnly}
-                checked={this.state.item.wasFound}
-                onChange={event => this.onItemCheckBoxChanged(this.state.item, event, dataManager)}
-                value={this.props.itemName}
-              />
-              {this.props.itemName}
-            </div>
-          );
-        }}
-      </dataManagerContext.Consumer>
+      <div className="item">
+        <Checkbox
+          disabled={HolyGrailDataManager.current.isReadOnly}
+          checked={this.state.item.wasFound}
+          onChange={event => this.onItemCheckBoxChanged(this.state.item, event)}
+          value={this.props.itemName}
+        />
+        {this.props.itemName}
+      </div>
     );
   }
 
-  private onItemCheckBoxChanged = (item: any, event: any, dataManager: HolyGrailDataManager) => {
+  private onItemCheckBoxChanged = (item: any, event: any) => {
     item.wasFound = event.target.checked;
     this.setState({ item: this.state.item });
-    dataManager.updateCache();
+    HolyGrailDataManager.current.updateCache();
   };
 }

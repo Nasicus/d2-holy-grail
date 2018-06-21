@@ -30,8 +30,6 @@ export interface IGrailAreaRouterParams {
 
 type Props = WithStyles<ClassTypes> & RouteComponentProps<IGrailAreaRouterParams>;
 
-export const dataManagerContext = React.createContext<HolyGrailDataManager>(null as any);
-
 class GrailArea extends React.Component<Props, IGrailAreaState> {
   public constructor(props: Props) {
     super(props);
@@ -66,15 +64,13 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
       return null;
     }
     return (
-      <dataManagerContext.Provider value={this.state.dataManager as HolyGrailDataManager}>
-        <div>
-          <SearchBox data={this.state.data} onSearchResult={this.onSearchResult} />
-          <ServerSaver />
-          <div className={this.props.classes.tabs}>
-            <TabRenderer allData={this.state.data} searchData={this.state.searchResult} />
-          </div>
+      <div>
+        <SearchBox data={this.state.data} onSearchResult={this.onSearchResult} />
+        <ServerSaver />
+        <div className={this.props.classes.tabs}>
+          <TabRenderer allData={this.state.data} searchData={this.state.searchResult} />
         </div>
-      </dataManagerContext.Provider>
+      </div>
     );
   }
 
