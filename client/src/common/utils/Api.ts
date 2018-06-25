@@ -55,27 +55,24 @@ export class Api {
   private static fetchToObservable = (
     fetchPromise: Promise<Response>
   ): Observable<IApiResponse<IHolyGrailApiModel>> => {
-    return Observable.create((observer: Subscriber<IApiResponse<IHolyGrailApiModel>>) => {
-      fetchPromise
-        .then(response => {
-          if (!response) {
-            observer.error({ status: 500, data: null });
-            return;
-          }
+    return Observable.create(async (observer: Subscriber<IApiResponse<IHolyGrailApiModel>>) => {
+      try {
+        const response = await fetchPromise;
+        if (!response) {
+          observer.error({ status: 500, data: null });
+          return;
+        }
 
-          response.json().then(
-            json => {
-              if (response.status < 400) {
-                observer.next({ status: response.status, data: json });
-                observer.complete();
-              } else {
-                observer.error({ status: response.status, data: json });
-              }
-            },
-            () => observer.error({ status: 500, data: null })
-          );
-        })
-        .catch(err => observer.error({ status: 500, message: err }));
+        const json = await response.json();
+        if (response.status < 400) {
+          observer.next({ status: response.status, data: json });
+          observer.complete();
+        } else {
+          observer.error({ status: response.status, data: json });
+        }
+      } catch (err) {
+        observer.error({ status: 500, data: err });
+      }
     });
   };
 }
