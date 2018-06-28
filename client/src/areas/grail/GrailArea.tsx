@@ -16,11 +16,16 @@ export interface IGrailAreaState {
   error?: string;
 }
 
-type ClassTypes = "tabs";
+type ClassTypes = "tabs" | "searchContainer";
 
 const styles: StyleRulesCallback<ClassTypes> = theme => ({
   tabs: {
     marginTop: theme.spacing.unit * 4
+  },
+  searchContainer: {
+    maxWidth: 700,
+    margin: "auto",
+    textAlign: "center"
   }
 });
 
@@ -59,7 +64,11 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
 
   public render() {
     if (this.state.error) {
-      return <Typography variant={"caption"}>{this.state.error}</Typography>;
+      return (
+        <Typography variant={"caption"} align={"center"}>
+          {this.state.error}
+        </Typography>
+      );
     }
 
     if (!this.state.data) {
@@ -67,11 +76,13 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
     }
     return (
       <div>
-        <SearchBox data={this.state.data} onSearchResult={this.onSearchResult} />
-        <ServerSaver />
+        <div className={this.props.classes.searchContainer}>
+          <SearchBox data={this.state.data} onSearchResult={this.onSearchResult} />
+        </div>
         <div className={this.props.classes.tabs}>
           <TabRenderer allData={this.state.data} searchData={this.state.searchResult} />
         </div>
+        <ServerSaver />
       </div>
     );
   }

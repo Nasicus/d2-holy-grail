@@ -22,7 +22,7 @@ interface ILoginFormState extends ILoginInfo {
   renderRegisterDialog?: boolean;
 }
 
-type ClassesType = "textField" | "button" | "createInfo" | "createInfoLink" | "root" | "formValues";
+type ClassesType = "textField" | "loginButton" | "createInfo" | "createInfoLink" | "root" | "formValues";
 type Props = WithStyles<ClassesType>;
 
 const styles: StyleRulesCallback<ClassesType> = theme => ({
@@ -34,14 +34,16 @@ const styles: StyleRulesCallback<ClassesType> = theme => ({
     width: 300,
     marginTop: theme.spacing.unit * 2
   },
-  button: {
-    margin: theme.spacing.unit * 2
+  loginButton: {
+    margin: theme.spacing.unit * 2,
+    marginLeft: 0
   },
   createInfo: {
     width: 300,
     margin: "auto",
     marginTop: theme.spacing.unit * 4,
-    padding: theme.spacing.unit
+    padding: theme.spacing.unit,
+    textAlign: "center"
   },
   createInfoLink: {
     marginTop: theme.spacing.unit
@@ -129,7 +131,7 @@ class LoginForm extends React.Component<Props, ILoginFormState> {
             )}
           </div>
         </div>
-        <Button className={this.props.classes.button} disabled={!this.state.address} onClick={this.login}>
+        <Button className={this.props.classes.loginButton} disabled={!this.state.address} onClick={this.login}>
           {this.state.password ? "Login" : "View"}
         </Button>
         <Paper className={this.props.classes.createInfo}>

@@ -11,10 +11,12 @@ type ClassTypes = "root" | "content" | "header";
 
 const styles: StyleRulesCallback<ClassTypes> = theme => ({
   root: {
-    textAlign: "center",
     fontFamily: theme.typography.fontFamily
   },
   header: {
+    maxWidth: 700,
+    margin: "auto",
+    textAlign: "center",
     paddingTop: theme.spacing.unit * 4
   },
   content: {
