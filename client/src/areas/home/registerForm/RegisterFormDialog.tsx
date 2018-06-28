@@ -52,8 +52,6 @@ const styles: StyleRulesCallback<ClassesType> = theme => ({
 });
 
 class RegisterFormDialog extends React.Component<Props, IRegisterFormDialogState> {
-  private static readonly duplicateAddressCode = 11000;
-
   public constructor(props: Props) {
     super(props);
     this.state = {};
@@ -74,7 +72,7 @@ class RegisterFormDialog extends React.Component<Props, IRegisterFormDialogState
         this.setState({
           isLoading: false,
           error:
-            err && err.data && err.data.code === RegisterFormDialog.duplicateAddressCode
+            err.data && err.data.type === "duplicateKey"
               ? "There is already a Holy Grail for this address! Please choose another one!"
               : "There was an unknown error when trying to create your Holy Grail!"
         })

@@ -1,43 +1,61 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
-import { RoutesManager } from "./routes/RoutesManager";
-import * as mongoose from "mongoose";
 import { ConfigManager } from "./ConfigManager";
 import * as cors from "cors";
 import * as path from "path";
+import { MongoClient, Db } from "mongodb";
+import { HolyGrailController } from "./controllers/HolyGrailController";
 
 class App {
-  public app: express.Application;
-  public routesManager: RoutesManager = new RoutesManager();
+  private readonly express: express.Application;
 
-  constructor() {
-    this.app = express();
-    this.config();
-    this.routesManager.registerRoutes(this.app);
-    App.mongoSetup();
+  private constructor(mongoClient: MongoClient) {
+    this.express = express();
+    this.configureApp();
+
+    this.configureRoutes(mongoClient.db());
 
     if (process.env.NODE_ENV === "production") {
       this.configureClient();
     }
   }
 
-  private config(): void {
-    this.app.use(bodyParser.urlencoded({ extended: true }));
-    this.app.use(bodyParser.json());
-    this.app.use(cors());
+  public static create(mongoClient: MongoClient): App {
+    return new App(mongoClient);
+  }
+
+  public start() {
+    this.express.listen(ConfigManager.port, () => {
+      console.log("Express server listening on port " + ConfigManager.port);
+    });
+  }
+
+  private configureApp(): void {
+    this.express.use(bodyParser.urlencoded({ extended: true }));
+    this.express.use(bodyParser.json());
+    this.express.use(cors());
+  }
+
+  private configureRoutes(db: Db): void {
+    const grailController: HolyGrailController = new HolyGrailController(db);
+
+    this.express.route("/api/grail").post(grailController.add);
+
+    this.express
+      .route("/api/grail/:address")
+      .get(grailController.get)
+      .put(grailController.update);
   }
 
   private configureClient() {
     // Serve any static files
-    this.app.use(express.static(path.join(__dirname, "client")));
+    this.express.use(express.static(path.join(__dirname, "client")));
     // Handle React routing, return all requests to React app
-    this.app.get("*", (req, res) => res.sendFile(path.join(__dirname, "client", "index.html")));
-  }
-
-  private static mongoSetup(): void {
-    mongoose.Promise = global.Promise;
-    mongoose.connect(ConfigManager.mongoUrl);
+    this.express.get("*", (req, res) => res.sendFile(path.join(__dirname, "client", "index.html")));
   }
 }
 
-export default new App().app;
+MongoClient.connect(ConfigManager.db.mongoUrl).then(mongoClient => {
+  const app = App.create(mongoClient);
+  app.start();
+});
