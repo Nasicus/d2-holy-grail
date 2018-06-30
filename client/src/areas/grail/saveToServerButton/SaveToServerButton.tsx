@@ -1,7 +1,5 @@
 import * as React from "react";
 import { HolyGrailDataManager } from "../HolyGrailDataManager";
-import { StyleRulesCallback } from "@material-ui/core";
-import { withStyles, WithStyles } from "@material-ui/core/styles";
 import ButtonWithProgress from "../../../common/components/ButtonWithProgress";
 import { Subscription } from "rxjs";
 
@@ -11,23 +9,11 @@ export interface IServerSaverState {
   showSecondIcon?: boolean;
 }
 
-type ClassesType = "button";
-
-const styles: StyleRulesCallback<ClassesType> = theme => ({
-  button: {
-    position: "fixed",
-    right: theme.spacing.unit,
-    bottom: theme.spacing.unit
-  }
-});
-
-type Props = WithStyles<ClassesType>;
-
-class SaveToServerButton extends React.Component<Props, IServerSaverState> {
+class SaveToServerButton extends React.Component<{}, IServerSaverState> {
   private secondIconTimeoutHandler: any;
   private localChangesSubscription: Subscription;
 
-  public constructor(props: Props) {
+  public constructor(props: {}) {
     super(props);
     this.state = {};
   }
@@ -45,12 +31,8 @@ class SaveToServerButton extends React.Component<Props, IServerSaverState> {
   }
 
   public render() {
-    if (HolyGrailDataManager.current.isReadOnly) {
-      return null;
-    }
-
     return (
-      <div className={this.props.classes.button}>
+      <div>
         <ButtonWithProgress
           onButtonClick={() => this.onSaveButtonClick()}
           isLoading={this.state.isSaving}
@@ -81,4 +63,4 @@ class SaveToServerButton extends React.Component<Props, IServerSaverState> {
   };
 }
 
-export default withStyles(styles)<{}>(SaveToServerButton);
+export default SaveToServerButton;

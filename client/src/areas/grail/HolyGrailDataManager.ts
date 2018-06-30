@@ -51,6 +51,10 @@ export class HolyGrailDataManager {
     });
   };
 
+  public discardCache = () => {
+    this.updateLocaleStorage(null, false);
+  };
+
   public updateServer = (): Observable<IHolyGrailApiModel> => {
     return Observable.create((observer: Subscriber<IHolyGrailApiModel>) => {
       this.data$.pipe(first()).subscribe(localData => {

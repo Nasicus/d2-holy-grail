@@ -88,9 +88,9 @@ class RegisterFormDialog extends React.Component<Props, IRegisterFormDialogState
             <Icon className={this.props.classes.closeIcon} onClick={() => this.props.onDialogClosed()}>
               close
             </Icon>
-            <DialogContentText className={this.props.classes.errorMessage}>
-              {this.state.error && this.state.error}
-            </DialogContentText>
+            {this.state.error && (
+              <DialogContentText className={this.props.classes.errorMessage}>{this.state.error}</DialogContentText>
+            )}
             <div>
               <TextField
                 className={this.props.classes.textField}

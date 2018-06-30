@@ -7,7 +7,9 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import Typography from "@material-ui/core/Typography/Typography";
 import { ILoginInfo } from "../home/loginForm/LoginForm";
-import ServerSaver from "./saveToServerButton/SaveToServerButton";
+import SaveToServerButton from "./saveToServerButton/SaveToServerButton";
+import ImporterButton from "./importerButton/ImporterButton";
+import DiscardLocalChangesButton from "./discardLocalChangesButton/DiscardLocalChangesButton";
 
 export interface IGrailAreaState {
   searchResult?: any;
@@ -16,7 +18,7 @@ export interface IGrailAreaState {
   error?: string;
 }
 
-type ClassTypes = "tabs" | "searchContainer";
+type ClassTypes = "tabs" | "searchContainer" | "actionButtonsContainer";
 
 const styles: StyleRulesCallback<ClassTypes> = theme => ({
   tabs: {
@@ -26,6 +28,11 @@ const styles: StyleRulesCallback<ClassTypes> = theme => ({
     maxWidth: 700,
     margin: "auto",
     textAlign: "center"
+  },
+  actionButtonsContainer: {
+    position: "fixed",
+    right: theme.spacing.unit,
+    bottom: theme.spacing.unit
   }
 });
 
@@ -82,7 +89,13 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
         <div className={this.props.classes.tabs}>
           <TabRenderer allData={this.state.data} searchData={this.state.searchResult} />
         </div>
-        <ServerSaver />
+        {!HolyGrailDataManager.current.isReadOnly && (
+          <div className={this.props.classes.actionButtonsContainer}>
+            <ImporterButton />
+            <DiscardLocalChangesButton />
+            <SaveToServerButton />
+          </div>
+        )}
       </div>
     );
   }
