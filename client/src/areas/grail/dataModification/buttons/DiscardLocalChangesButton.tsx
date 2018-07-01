@@ -1,8 +1,8 @@
 import * as React from "react";
-import { HolyGrailDataManager } from "../HolyGrailDataManager";
-import ButtonWithProgress from "../../../common/components/ButtonWithProgress";
+import { HolyGrailDataManager } from "../../HolyGrailDataManager";
+import ButtonWithProgress from "../../../../common/components/ButtonWithProgress";
 import { Subscription } from "rxjs";
-import ConfirmDialog from "../../../common/components/ConfirmDialog";
+import ConfirmDialog from "../../../../common/components/ConfirmDialog";
 
 export interface IDiscardChangesButtonState {
   isEnabled?: boolean;

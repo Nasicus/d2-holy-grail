@@ -1,7 +1,7 @@
 import * as React from "react";
-import { HolyGrailDataManager } from "../HolyGrailDataManager";
-import ButtonWithProgress from "../../../common/components/ButtonWithProgress";
-import ImportDialog from "../importDialog/ImportDialog";
+import { HolyGrailDataManager } from "../../HolyGrailDataManager";
+import ButtonWithProgress from "../../../../common/components/ButtonWithProgress";
+import ImportDialog from "../ImportDialog";
 import { Subscription } from "rxjs";
 
 export interface IImporterState {

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { HolyGrailDataManager } from "../HolyGrailDataManager";
-import ButtonWithProgress from "../../../common/components/ButtonWithProgress";
+import { HolyGrailDataManager } from "../../HolyGrailDataManager";
+import ButtonWithProgress from "../../../../common/components/ButtonWithProgress";
 import { Subscription } from "rxjs";
 
 export interface IServerSaverState {

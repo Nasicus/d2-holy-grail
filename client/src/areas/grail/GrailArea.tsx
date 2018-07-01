@@ -7,9 +7,9 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import Typography from "@material-ui/core/Typography/Typography";
 import { ILoginInfo } from "../home/loginForm/LoginForm";
-import SaveToServerButton from "./saveToServerButton/SaveToServerButton";
-import ImporterButton from "./importerButton/ImporterButton";
-import DiscardLocalChangesButton from "./discardLocalChangesButton/DiscardLocalChangesButton";
+import SaveToServerButton from "./dataModification/buttons/SaveToServerButton";
+import ImporterButton from "./dataModification/buttons/ImporterButton";
+import DiscardLocalChangesButton from "./dataModification/buttons/DiscardLocalChangesButton";
 import { IHolyGrailData } from "../../common/IHolyGrailData";
 import HomeButton from "./homeButton/HomeButton";
 
