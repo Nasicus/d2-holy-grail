@@ -1,10 +1,10 @@
 import * as React from "react";
-import "./DataRenderer.css";
 import Typography from "@material-ui/core/Typography/Typography";
 import { Style } from "@material-ui/core/styles/createTypography";
-import { ItemRenderer } from "./item/ItemRenderer";
-import { Util } from "../../../common/utils/Util";
 import * as classNames from "classnames";
+import LevelRenderer from "./LevelRenderer";
+import { StyleRulesCallback, WithStyles } from "@material-ui/core";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 export interface ILevels {
   level?: number;
@@ -18,21 +18,35 @@ export interface IDataRendererProps {
   modifyLevels?: (level: ILevels, key: string) => ILevels;
 }
 
-const getNextLevels = (
-  levels: ILevels,
-  key: string,
-  modifyLevels?: (levels: ILevels, key: string) => ILevels
-): ILevels => {
-  const nextLevels: ILevels = { level: levels.level + 1, variantLevel: levels.variantLevel + 1 };
+type ClassTypes = "dataRenderer" | "rootLevel" | "level1" | "level2" | "level3";
 
-  if (!modifyLevels) {
-    return nextLevels;
+const styles: StyleRulesCallback<ClassTypes> = theme => ({
+  dataRenderer: {
+    textTransform: "capitalize",
+    textAlign: "left"
+  },
+  rootLevel: {
+    maxWidth: 1000,
+    margin: "auto"
+  },
+  level1: {
+    display: "flex",
+    flexWrap: "wrap",
+    "& > *": {
+      flex: "0 0 33.3333%"
+    }
+  },
+  level2: {
+    padding: theme.spacing.unit
+  },
+  level3: {
+    paddingLeft: theme.spacing.unit * 0.75
   }
+});
 
-  return modifyLevels(nextLevels, key);
-};
+type Props = WithStyles<ClassTypes> & IDataRendererProps;
 
-export const DataRenderer: React.SFC<IDataRendererProps> = props => {
+const DataRendererComponent: React.SFC<Props> = props => {
   if (!props.data) {
     return null;
   }
@@ -45,7 +59,11 @@ export const DataRenderer: React.SFC<IDataRendererProps> = props => {
     levels.variantLevel = 0;
   }
 
-  const classes = classNames(["level-renderer", `level-${levels.level}`, !props.isRecursive ? "root-level" : null]);
+  const classes = classNames([
+    props.classes.dataRenderer,
+    props.classes[`level${levels.level}`],
+    !props.isRecursive ? props.classes.rootLevel : null
+  ]);
 
   return (
     <Typography component="div" variant={mapLevelToTypographyVariant(levels.variantLevel)} className={classes}>
@@ -66,23 +84,18 @@ export const DataRenderer: React.SFC<IDataRendererProps> = props => {
   );
 };
 
-interface ILevelRendererProps {
-  levelKey: string;
-  nextData: any;
-  levels: ILevels;
-}
+const getNextLevels = (
+  levels: ILevels,
+  key: string,
+  modifyLevels?: (levels: ILevels, key: string) => ILevels
+): ILevels => {
+  const nextLevels: ILevels = { level: levels.level + 1, variantLevel: levels.variantLevel + 1 };
 
-const LevelRenderer: React.SFC<ILevelRendererProps> = props => {
-  if (Util.isItem(props.nextData)) {
-    return <ItemRenderer itemName={props.levelKey} item={props.nextData} />;
+  if (!modifyLevels) {
+    return nextLevels;
   }
 
-  return (
-    <div>
-      <span>{props.levelKey}</span>
-      <DataRenderer data={props.nextData} levels={props.levels} isRecursive={true} />
-    </div>
-  );
+  return modifyLevels(nextLevels, key);
 };
 
 const mapLevelToTypographyVariant = (level: number): Style => {
@@ -99,3 +112,5 @@ const mapLevelToTypographyVariant = (level: number): Style => {
       return "body1";
   }
 };
+
+export const DataRenderer = withStyles(styles)<IDataRendererProps>(DataRendererComponent);

@@ -1,7 +1,7 @@
 import * as React from "react";
 import Checkbox from "@material-ui/core/Checkbox/Checkbox";
-import { HolyGrailDataManager } from "../../HolyGrailDataManager";
-import { Item } from "../../../../common/IHolyGrailData";
+import { HolyGrailDataManager } from "../HolyGrailDataManager";
+import { Item } from "../../../common/IHolyGrailData";
 
 export interface IItemProps {
   item: Item;
@@ -22,7 +22,7 @@ export class ItemRenderer extends React.Component<IItemProps, IItemState> {
 
   public render() {
     return (
-      <div className="item">
+      <div>
         <Checkbox
           disabled={HolyGrailDataManager.current.isReadOnly}
           checked={this.state.item.wasFound}
