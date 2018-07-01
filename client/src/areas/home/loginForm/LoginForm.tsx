@@ -8,7 +8,6 @@ import Typography from "@material-ui/core/Typography/Typography";
 import RegisterFormDialog from "../registerForm/RegisterFormDialog";
 import { withStyles } from "@material-ui/core/styles";
 import Icon from "@material-ui/core/Icon/Icon";
-import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import Paper from "@material-ui/core/Paper/Paper";
 
 export interface ILoginInfo {
@@ -116,12 +115,9 @@ class LoginForm extends React.Component<Props, ILoginFormState> {
               onChange={e => this.setState({ password: e.target.value })}
               onKeyPress={e => this.onKeyPress(e)}
             />
-            <Tooltip
-              title="You only have to enter a password if you want to edit the Holy Grail.
-            You can also leave this blank and view the Holy Grail in a read-only mode!"
-            >
-              <Icon>info</Icon>
-            </Tooltip>
+            <Icon title="You only have to enter a password if you want to edit the Holy Grail. You can also leave this blank and view the Holy Grail in a read-only mode!">
+              info
+            </Icon>
           </div>
           <div>
             {this.state.password && (

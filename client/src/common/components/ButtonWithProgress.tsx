@@ -6,7 +6,6 @@ import { StyleRulesCallback } from "@material-ui/core";
 import * as React from "react";
 import * as classNames from "classnames";
 import Icon from "@material-ui/core/Icon/Icon";
-import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 
 type ClassesType = "root" | "wrapper" | "buttonSuccess" | "fabProgress" | "buttonProgress";
 
@@ -69,19 +68,18 @@ const ButtonWithProgress: React.SFC<Props> = props => {
     <div className={classes.root}>
       {!!props.firstIcon && (
         <div className={classes.wrapper}>
-          <Tooltip title={props.text}>
-            <div>
-              <Button
-                variant="fab"
-                color="primary"
-                className={buttonClassName}
-                onClick={onClick}
-                disabled={isLoading || props.isDisabled}
-              >
-                {!showSecondIcon ? <Icon>{props.firstIcon}</Icon> : <Icon>{props.secondIcon}</Icon>}
-              </Button>
-            </div>
-          </Tooltip>
+          <div>
+            <Button
+              variant="fab"
+              color="primary"
+              className={buttonClassName}
+              onClick={onClick}
+              disabled={isLoading || props.isDisabled}
+              title={props.text}
+            >
+              {!showSecondIcon ? <Icon>{props.firstIcon}</Icon> : <Icon>{props.secondIcon}</Icon>}
+            </Button>
+          </div>
           {isLoading && <CircularProgress size={68} className={classes.fabProgress} />}
         </div>
       )}
