@@ -11,6 +11,7 @@ import SaveToServerButton from "./saveToServerButton/SaveToServerButton";
 import ImporterButton from "./importerButton/ImporterButton";
 import DiscardLocalChangesButton from "./discardLocalChangesButton/DiscardLocalChangesButton";
 import { IHolyGrailData } from "../../common/IHolyGrailData";
+import HomeButton from "./homeButton/HomeButton";
 
 export interface IGrailAreaState {
   searchResult?: Partial<IHolyGrailData>;
@@ -19,7 +20,7 @@ export interface IGrailAreaState {
   error?: string;
 }
 
-type ClassTypes = "tabs" | "searchContainer" | "actionButtonsContainer";
+type ClassTypes = "tabs" | "searchContainer" | "rightButtonsContainer" | "leftButtonsContainer";
 
 const styles: StyleRulesCallback<ClassTypes> = theme => ({
   tabs: {
@@ -30,9 +31,14 @@ const styles: StyleRulesCallback<ClassTypes> = theme => ({
     margin: "auto",
     textAlign: "center"
   },
-  actionButtonsContainer: {
+  rightButtonsContainer: {
     position: "fixed",
     right: theme.spacing.unit,
+    bottom: theme.spacing.unit
+  },
+  leftButtonsContainer: {
+    position: "fixed",
+    left: theme.spacing.unit,
     bottom: theme.spacing.unit
   }
 });
@@ -90,8 +96,11 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
         <div className={this.props.classes.tabs}>
           <TabRenderer allData={this.state.data} searchData={this.state.searchResult} />
         </div>
+        <div className={this.props.classes.leftButtonsContainer}>
+          <HomeButton />
+        </div>
         {!HolyGrailDataManager.current.isReadOnly && (
-          <div className={this.props.classes.actionButtonsContainer}>
+          <div className={this.props.classes.rightButtonsContainer}>
             <ImporterButton />
             <DiscardLocalChangesButton />
             <SaveToServerButton />
