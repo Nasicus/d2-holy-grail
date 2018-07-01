@@ -11,7 +11,7 @@ export interface IImporterState {
   hasChanges?: boolean;
 }
 
-class ImporterButton extends React.Component<{}, IImporterState> {
+class ImportButton extends React.Component<{}, IImporterState> {
   private localChangesSubscription: Subscription;
 
   public constructor(props: {}) {
@@ -32,7 +32,7 @@ class ImporterButton extends React.Component<{}, IImporterState> {
   }
 
   public render() {
-    if (this.state.hasChanges && !this.state.showDialog) {
+    if (HolyGrailDataManager.current.isReadOnly || (this.state.hasChanges && !this.state.showDialog)) {
       return null;
     }
 
@@ -56,4 +56,4 @@ class ImporterButton extends React.Component<{}, IImporterState> {
   };
 }
 
-export default ImporterButton;
+export default ImportButton;

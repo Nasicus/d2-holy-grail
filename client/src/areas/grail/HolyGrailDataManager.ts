@@ -27,7 +27,7 @@ export class HolyGrailDataManager {
     return (this._current = new HolyGrailDataManager(address, password, savePassword));
   }
 
-  private constructor(private address: string, private password?: string, savePassword?: boolean) {
+  private constructor(public readonly address: string, private password?: string, savePassword?: boolean) {
     if (!address) {
       throw new Error("Address must be specified");
     }

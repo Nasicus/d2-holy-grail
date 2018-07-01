@@ -7,11 +7,12 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import Typography from "@material-ui/core/Typography/Typography";
 import { ILoginInfo } from "../home/loginForm/LoginForm";
-import SaveToServerButton from "./dataModification/buttons/SaveToServerButton";
-import ImporterButton from "./dataModification/buttons/ImporterButton";
-import DiscardLocalChangesButton from "./dataModification/buttons/DiscardLocalChangesButton";
+import SaveToServerButton from "./dataManipulation/buttons/SaveToServerButton";
+import ImportButton from "./dataManipulation/buttons/ImportButton";
+import DiscardLocalChangesButton from "./dataManipulation/buttons/DiscardLocalChangesButton";
 import { IHolyGrailData } from "../../common/IHolyGrailData";
 import HomeButton from "./homeButton/HomeButton";
+import ExportButton from "./dataManipulation/buttons/ExportButton";
 
 export interface IGrailAreaState {
   searchResult?: Partial<IHolyGrailData>;
@@ -20,7 +21,7 @@ export interface IGrailAreaState {
   error?: string;
 }
 
-type ClassTypes = "tabs" | "searchContainer" | "rightButtonsContainer" | "leftButtonsContainer";
+type ClassTypes = "tabs" | "searchContainer" | "rightButtonsContainer" | "leftButtonsContainer" | "buttonRow";
 
 const styles: StyleRulesCallback<ClassTypes> = theme => ({
   tabs: {
@@ -40,6 +41,10 @@ const styles: StyleRulesCallback<ClassTypes> = theme => ({
     position: "fixed",
     left: theme.spacing.unit,
     bottom: theme.spacing.unit
+  },
+  buttonRow: {
+    display: "flex",
+    justifyContent: "flex-end"
   }
 });
 
@@ -99,13 +104,17 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
         <div className={this.props.classes.leftButtonsContainer}>
           <HomeButton />
         </div>
-        {!HolyGrailDataManager.current.isReadOnly && (
-          <div className={this.props.classes.rightButtonsContainer}>
-            <ImporterButton />
-            <DiscardLocalChangesButton />
+
+        <div className={this.props.classes.rightButtonsContainer}>
+          <div className={this.props.classes.buttonRow}>
             <SaveToServerButton />
+            <DiscardLocalChangesButton />
           </div>
-        )}
+          <div className={this.props.classes.buttonRow}>
+            <ImportButton />
+            <ExportButton />
+          </div>
+        </div>
       </div>
     );
   }

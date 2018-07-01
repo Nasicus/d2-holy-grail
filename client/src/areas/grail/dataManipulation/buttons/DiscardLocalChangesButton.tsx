@@ -30,6 +30,10 @@ class DiscardChangesButton extends React.Component<{}, IDiscardChangesButtonStat
   }
 
   public render() {
+    if (HolyGrailDataManager.current.isReadOnly) {
+      return null;
+    }
+
     return (
       <div>
         {this.state.showConfirm && (

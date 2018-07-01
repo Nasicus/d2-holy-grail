@@ -31,6 +31,10 @@ class SaveToServerButton extends React.Component<{}, IServerSaverState> {
   }
 
   public render() {
+    if (HolyGrailDataManager.current.isReadOnly) {
+      return null;
+    }
+
     return (
       <div>
         <ButtonWithProgress
