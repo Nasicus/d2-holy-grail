@@ -10,10 +10,11 @@ import { ILoginInfo } from "../home/loginForm/LoginForm";
 import SaveToServerButton from "./saveToServerButton/SaveToServerButton";
 import ImporterButton from "./importerButton/ImporterButton";
 import DiscardLocalChangesButton from "./discardLocalChangesButton/DiscardLocalChangesButton";
+import { IHolyGrailData } from "../../common/IHolyGrailData";
 
 export interface IGrailAreaState {
-  searchResult?: any;
-  data?: any;
+  searchResult?: Partial<IHolyGrailData>;
+  data?: IHolyGrailData;
   dataManager?: HolyGrailDataManager;
   error?: string;
 }
@@ -100,7 +101,7 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
     );
   }
 
-  private onSearchResult = (result: any) => {
+  private onSearchResult = (result: Partial<IHolyGrailData>) => {
     this.setState({ searchResult: result });
   };
 }

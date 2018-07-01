@@ -6,7 +6,7 @@ import StatisticsTable from "../statisticsTable/StatisticsTable";
 import Typography from "@material-ui/core/Typography/Typography";
 import { StyleRulesCallback, WithStyles } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-import { DataRenderer } from "../dataRenderer/DataRenderer";
+import { DataRenderer, ILevels } from "../dataRenderer/DataRenderer";
 
 export interface ITabRendererProps {
   allData: any;
@@ -100,19 +100,29 @@ class TabRenderer extends React.Component<Props, ITabRendererState> {
 
     switch (this.state.activeTab) {
       case TabType.SearchResults:
-        return <DataRenderer data={searchData} />;
+        return <DataRenderer data={searchData} modifyLevels={this.modifyLevelsForSearch} />;
       case TabType.UniqueArmor:
-        return <DataRenderer data={allData.uniques.armor} variantLevel={2} />;
+        return <DataRenderer data={allData.uniques.armor} levels={{ variantLevel: 2 }} />;
       case TabType.UniqueWeapons:
-        return <DataRenderer data={allData.uniques.weapons} variantLevel={2} />;
+        return <DataRenderer data={allData.uniques.weapons} levels={{ variantLevel: 2 }} />;
       case TabType.UniqueOther:
-        return <DataRenderer data={allData.uniques.other} variantLevel={2} />;
+        return <DataRenderer data={allData.uniques.other} levels={{ variantLevel: 2 }} />;
       case TabType.Sets:
-        return <DataRenderer data={allData.sets} variantLevel={2} />;
+        return <DataRenderer data={allData.sets} levels={{ variantLevel: 3, level: 1 }} />;
       default:
         return <StatisticsTable data={searchData || allData} />;
     }
   }
+
+  private modifyLevelsForSearch = (nextLevels: ILevels, key: string) => {
+    if (key === "uniques") {
+      nextLevels.level += 1;
+    } else if (key === "sets") {
+      nextLevels.level += 1;
+      nextLevels.variantLevel += 2;
+    }
+    return nextLevels;
+  };
 }
 
 export default withStyles(styles)<ITabRendererProps>(TabRenderer);

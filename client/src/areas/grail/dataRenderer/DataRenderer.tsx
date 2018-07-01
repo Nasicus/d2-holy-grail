@@ -2,38 +2,61 @@ import * as React from "react";
 import "./DataRenderer.css";
 import Typography from "@material-ui/core/Typography/Typography";
 import { Style } from "@material-ui/core/styles/createTypography";
-import { Item } from "./item/Item";
+import { ItemRenderer } from "./item/ItemRenderer";
 import { Util } from "../../../common/utils/Util";
+import * as classNames from "classnames";
 
-export interface IDataRendererProps {
-  data: any;
+export interface ILevels {
   level?: number;
   variantLevel?: number;
 }
+
+export interface IDataRendererProps {
+  data: any;
+  levels?: ILevels;
+  isRecursive?: boolean;
+  modifyLevels?: (level: ILevels, key: string) => ILevels;
+}
+
+const getNextLevels = (
+  levels: ILevels,
+  key: string,
+  modifyLevels?: (levels: ILevels, key: string) => ILevels
+): ILevels => {
+  const nextLevels: ILevels = { level: levels.level + 1, variantLevel: levels.variantLevel + 1 };
+
+  if (!modifyLevels) {
+    return nextLevels;
+  }
+
+  return modifyLevels(nextLevels, key);
+};
 
 export const DataRenderer: React.SFC<IDataRendererProps> = props => {
   if (!props.data) {
     return null;
   }
 
-  const level = props.level || 0;
-  const variantLevel = props.variantLevel !== undefined ? props.variantLevel : level;
+  const levels = props.levels || { level: 0, variantLevel: 0 };
+  if (!levels.level) {
+    levels.level = 0;
+  }
+  if (!levels.variantLevel) {
+    levels.variantLevel = 0;
+  }
+
+  const classes = classNames(["level-renderer", `level-${levels.level}`, !props.isRecursive ? "root-level" : null]);
 
   return (
-    <Typography
-      component="div"
-      variant={mapLevelToTypographyVariant(variantLevel)}
-      className={`level-renderer level-${level}`}
-    >
+    <Typography component="div" variant={mapLevelToTypographyVariant(levels.variantLevel)} className={classes}>
       {Object.keys(props.data).map(key => {
         return (
-          <div key={`${key}-${level}`}>
+          <div key={`${key}-${levels.level}`}>
             {
               <LevelRenderer
                 levelKey={key}
                 nextData={props.data[key]}
-                newLevel={level + 1}
-                variantLevel={variantLevel + 1}
+                levels={getNextLevels(levels, key, props.modifyLevels)}
               />
             }
           </div>
@@ -46,19 +69,18 @@ export const DataRenderer: React.SFC<IDataRendererProps> = props => {
 interface ILevelRendererProps {
   levelKey: string;
   nextData: any;
-  newLevel: number;
-  variantLevel: number;
+  levels: ILevels;
 }
 
 const LevelRenderer: React.SFC<ILevelRendererProps> = props => {
   if (Util.isItem(props.nextData)) {
-    return <Item itemName={props.levelKey} item={props.nextData} />;
+    return <ItemRenderer itemName={props.levelKey} item={props.nextData} />;
   }
 
   return (
     <div>
       <span>{props.levelKey}</span>
-      <DataRenderer data={props.nextData} level={props.newLevel} variantLevel={props.variantLevel} />
+      <DataRenderer data={props.nextData} levels={props.levels} isRecursive={true} />
     </div>
   );
 };

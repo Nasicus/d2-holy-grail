@@ -5,10 +5,11 @@ import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 import { ChangeEvent } from "react";
 import { withStyles } from "@material-ui/core/styles";
+import { IHolyGrailData } from "../../../common/IHolyGrailData";
 
 export interface ISearchBoxProps {
-  data: any;
-  onSearchResult: (result: any) => any;
+  data: IHolyGrailData;
+  onSearchResult: (result: Partial<IHolyGrailData>) => any;
 }
 
 export interface ISearchBoxState {

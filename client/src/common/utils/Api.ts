@@ -1,9 +1,10 @@
 import { Observable, Subscriber } from "rxjs";
+import { IHolyGrailData } from "../IHolyGrailData";
 
 export interface IHolyGrailApiModel {
   address: string;
   password?: string;
-  data: any;
+  data: IHolyGrailData;
   token: string;
 }
 

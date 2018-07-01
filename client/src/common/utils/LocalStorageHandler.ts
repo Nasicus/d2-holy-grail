@@ -18,7 +18,7 @@ export class LocalStorageHandler<T> {
     return JSON.parse(storageData);
   }
 
-  public static setValue(key: string, value: any): void {
+  public static setValue<T>(key: string, value: T): void {
     localStorage.setItem(key, JSON.stringify(value));
   }
 }

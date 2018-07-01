@@ -1,17 +1,18 @@
 import * as React from "react";
 import Checkbox from "@material-ui/core/Checkbox/Checkbox";
 import { HolyGrailDataManager } from "../../HolyGrailDataManager";
+import { Item } from "../../../../common/IHolyGrailData";
 
 export interface IItemProps {
-  item: any;
+  item: Item;
   itemName: string;
 }
 
 interface IItemState {
-  item: any;
+  item: Item;
 }
 
-export class Item extends React.Component<IItemProps, IItemState> {
+export class ItemRenderer extends React.Component<IItemProps, IItemState> {
   public constructor(props: IItemProps) {
     super(props);
     this.state = {
@@ -33,7 +34,7 @@ export class Item extends React.Component<IItemProps, IItemState> {
     );
   }
 
-  private onItemCheckBoxChanged = (item: any, event: any) => {
+  private onItemCheckBoxChanged = (item: Item, event: any) => {
     item.wasFound = event.target.checked;
     this.setState({ item: this.state.item });
     HolyGrailDataManager.current.updateCache();
