@@ -1,19 +1,20 @@
 import TabRenderer from "./tabRenderer/TabRenderer";
 import SearchBox from "./searchBox/SearchBox";
 import { HolyGrailDataManager } from "./HolyGrailDataManager";
-import { StyleRulesCallback, WithStyles } from "@material-ui/core";
+import { StyleRulesCallback, WithStyles, Divider } from "@material-ui/core";
 import * as React from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import Typography from "@material-ui/core/Typography/Typography";
 import { ILoginInfo } from "../home/loginForm/LoginForm";
-import SaveToServerButton from "./dataManipulation/buttons/SaveToServerButton";
-import ImportButton from "./dataManipulation/buttons/ImportButton";
-import DiscardLocalChangesButton from "./dataManipulation/buttons/DiscardLocalChangesButton";
+import SaveToServerComponent from "./dataManipulation/clickable-components/SaveToServerComponent";
 import { IHolyGrailData } from "../../common/IHolyGrailData";
 import HomeButton from "./homeButton/HomeButton";
-import ExportButton from "./dataManipulation/buttons/ExportButton";
-import ToggleAllButton from "./dataManipulation/buttons/ToggleAllButton";
+import MenuButton from "./menu/MenuButton";
+import ExportListItem from "./dataManipulation/clickable-components/ExportListItem";
+import ImportListItem from "./dataManipulation/clickable-components/ImportListItem";
+import ToggleAllListItem from "./dataManipulation/clickable-components/ToggleAllListItem";
+import DiscardChangesComponent from "./dataManipulation/clickable-components/DiscardChangesComponent";
 
 export interface IGrailAreaState {
   searchResult?: Partial<IHolyGrailData>;
@@ -109,15 +110,21 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
 
         <div className={this.props.classes.rightButtonsContainer}>
           <div className={this.props.classes.buttonRow}>
-            <ToggleAllButton onToggle={d => this.setState({ data: d })} />
+            <SaveToServerComponent />
           </div>
           <div className={this.props.classes.buttonRow}>
-            <SaveToServerButton />
-            <DiscardLocalChangesButton />
+            <DiscardChangesComponent />
           </div>
           <div className={this.props.classes.buttonRow}>
-            <ImportButton />
-            <ExportButton />
+            <MenuButton>
+              <SaveToServerComponent renderAsListItem={true} />
+              <DiscardChangesComponent renderAsListItem={true} />
+              <Divider />
+              <ToggleAllListItem onToggle={d => this.setState({ data: d })} />
+              <Divider />
+              <ImportListItem />
+              <ExportListItem />
+            </MenuButton>
           </div>
         </div>
       </div>

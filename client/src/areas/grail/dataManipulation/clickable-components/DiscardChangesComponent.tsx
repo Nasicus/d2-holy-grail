@@ -3,13 +3,18 @@ import { HolyGrailDataManager } from "../../HolyGrailDataManager";
 import ButtonWithProgress from "../../../../common/components/ButtonWithProgress";
 import { Subscription } from "rxjs";
 import ChoiceDialog, { createDefaultConfirmButtons } from "../../../../common/components/ChoiceDialog";
+import MenuListItem from "../../../../common/components/ListItemWithProgress";
 
 export interface IDiscardChangesButtonState {
   isEnabled?: boolean;
   showConfirm?: boolean;
 }
 
-class DiscardChangesButton extends React.Component<{}, IDiscardChangesButtonState> {
+export interface IDiscardChangesButtonProps {
+  renderAsListItem?: boolean;
+}
+
+class DiscardChangesComponent extends React.Component<IDiscardChangesButtonProps, IDiscardChangesButtonState> {
   private localChangesSubscription: Subscription;
 
   public constructor(props: {}) {
@@ -43,12 +48,22 @@ class DiscardChangesButton extends React.Component<{}, IDiscardChangesButtonStat
             onClose={this.onConfirmDialogClose}
           />
         )}
-        <ButtonWithProgress
-          onButtonClick={() => this.setState({ showConfirm: true })}
-          isDisabled={!this.state.isEnabled}
-          text="Discard local changes"
-          firstIcon="cancel"
-        />
+        {this.props.renderAsListItem && (
+          <MenuListItem
+            onClick={() => this.setState({ showConfirm: true })}
+            isDisabled={!this.state.isEnabled}
+            text="Discard local changes"
+            firstIcon="cancel"
+          />
+        )}
+        {!this.props.renderAsListItem && (
+          <ButtonWithProgress
+            onClick={() => this.setState({ showConfirm: true })}
+            isDisabled={!this.state.isEnabled}
+            text="Discard local changes"
+            firstIcon="cancel"
+          />
+        )}
       </div>
     );
   }
@@ -62,4 +77,4 @@ class DiscardChangesButton extends React.Component<{}, IDiscardChangesButtonStat
   };
 }
 
-export default DiscardChangesButton;
+export default DiscardChangesComponent;

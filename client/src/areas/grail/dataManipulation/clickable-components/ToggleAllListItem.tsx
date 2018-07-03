@@ -1,21 +1,21 @@
 import * as React from "react";
 import { HolyGrailDataManager } from "../../HolyGrailDataManager";
-import ButtonWithProgress from "../../../../common/components/ButtonWithProgress";
 import ChoiceDialog, { IChoiceDialogButton } from "../../../../common/components/ChoiceDialog";
 import { first } from "rxjs/operators";
 import { Util } from "../../../../common/utils/Util";
 import { IHolyGrailData, Item } from "../../../../common/IHolyGrailData";
+import MenuListItem from "../../../../common/components/ListItemWithProgress";
 
-export interface IToggleAllButtonProps {
+export interface IToggleAllListItemProps {
   onToggle(data: IHolyGrailData): any;
 }
 
-export interface IToggleAllButtonState {
+export interface IToggleAllListItemState {
   showConfirm?: boolean;
 }
 
-class ToggleAllButton extends React.Component<IToggleAllButtonProps, IToggleAllButtonState> {
-  public constructor(props: IToggleAllButtonProps) {
+class ToggleAllListItem extends React.Component<IToggleAllListItemProps, IToggleAllListItemState> {
+  public constructor(props: IToggleAllListItemProps) {
     super(props);
     this.state = {};
   }
@@ -30,13 +30,13 @@ class ToggleAllButton extends React.Component<IToggleAllButtonProps, IToggleAllB
         {this.state.showConfirm && (
           <ChoiceDialog
             content={`What do you want to do?`}
-            buttons={ToggleAllButton.createButtons()}
+            buttons={ToggleAllListItem.createButtons()}
             onClose={this.onConfirmDialogClose}
           />
         )}
-        <ButtonWithProgress
-          onButtonClick={() => this.setState({ showConfirm: true })}
-          text="Mark / unmark all items as found"
+        <MenuListItem
+          onClick={() => this.setState({ showConfirm: true })}
+          text="Toggle all items as found"
           firstIcon="check_box"
         />
       </div>
@@ -92,4 +92,4 @@ class ToggleAllButton extends React.Component<IToggleAllButtonProps, IToggleAllB
   }
 }
 
-export default ToggleAllButton;
+export default ToggleAllListItem;

@@ -1,17 +1,17 @@
 import * as React from "react";
 import { HolyGrailDataManager } from "../../HolyGrailDataManager";
-import ButtonWithProgress from "../../../../common/components/ButtonWithProgress";
 import ImportDialog from "../ImportDialog";
 import { Subscription } from "rxjs";
+import MenuListItem from "../../../../common/components/ListItemWithProgress";
 
-export interface IImporterState {
+export interface IImportListItemState {
   isSaving?: boolean;
   isEnabled?: boolean;
   showDialog?: boolean;
   hasChanges?: boolean;
 }
 
-class ImportButton extends React.Component<{}, IImporterState> {
+class ImportListItem extends React.Component<{}, IImportListItemState> {
   private localChangesSubscription: Subscription;
 
   public constructor(props: {}) {
@@ -32,17 +32,15 @@ class ImportButton extends React.Component<{}, IImporterState> {
   }
 
   public render() {
-    if (HolyGrailDataManager.current.isReadOnly || (this.state.hasChanges && !this.state.showDialog)) {
+    if (HolyGrailDataManager.current.isReadOnly) {
       return null;
     }
 
     return (
       <div>
-        <ButtonWithProgress
-          onButtonClick={() => this.onImportButtonClick()}
-          isLoading={false}
-          showSecondIcon={false}
-          isDisabled={!this.state.isEnabled}
+        <MenuListItem
+          onClick={() => this.onImportButtonClick()}
+          isDisabled={!this.state.isEnabled || this.state.hasChanges}
           text="Import from CSV"
           firstIcon="backup"
         />
@@ -56,4 +54,4 @@ class ImportButton extends React.Component<{}, IImporterState> {
   };
 }
 
-export default ImportButton;
+export default ImportListItem;

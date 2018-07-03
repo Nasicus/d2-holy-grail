@@ -1,14 +1,14 @@
 import * as React from "react";
 import { HolyGrailDataManager } from "../../HolyGrailDataManager";
-import ButtonWithProgress from "../../../../common/components/ButtonWithProgress";
 import { first } from "rxjs/operators";
+import MenuListItem from "../../../../common/components/ListItemWithProgress";
 
-export interface IExportButtonState {
+export interface IExportListItemState {
   isExporting?: boolean;
   showSecondIcon?: boolean;
 }
 
-class ExportButton extends React.Component<{}, IExportButtonState> {
+class ExportListItem extends React.Component<{}, IExportListItemState> {
   private secondIconTimeoutHandler: any;
 
   public constructor(props: {}) {
@@ -19,11 +19,11 @@ class ExportButton extends React.Component<{}, IExportButtonState> {
   public render() {
     return (
       <div>
-        <ButtonWithProgress
-          onButtonClick={() => this.onExportButtonClick()}
+        <MenuListItem
+          onClick={() => this.onExportButtonClick()}
           isLoading={this.state.isExporting}
           showSecondIcon={this.state.showSecondIcon}
-          text="Export grail data as json"
+          text="Export grail data"
           firstIcon="get_app"
           secondIcon="check"
         />
@@ -60,4 +60,4 @@ class ExportButton extends React.Component<{}, IExportButtonState> {
   }
 }
 
-export default ExportButton;
+export default ExportListItem;

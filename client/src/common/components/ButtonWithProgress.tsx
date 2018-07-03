@@ -41,7 +41,7 @@ const styles: StyleRulesCallback<ClassesType> = theme => ({
 export interface IButtonWithProgressProps {
   isLoading?: boolean;
   showSecondIcon?: boolean;
-  onButtonClick: () => any;
+  onClick: () => any;
   firstIcon?: string;
   secondIcon?: string;
   text?: string;
@@ -55,7 +55,7 @@ const ButtonWithProgress: React.SFC<Props> = props => {
     if (props.isLoading) {
       return;
     }
-    props.onButtonClick();
+    props.onClick();
   };
 
   const { isLoading, showSecondIcon } = props;
@@ -77,7 +77,7 @@ const ButtonWithProgress: React.SFC<Props> = props => {
               disabled={isLoading || props.isDisabled}
               title={props.text}
             >
-              {!showSecondIcon ? <Icon>{props.firstIcon}</Icon> : <Icon>{props.secondIcon}</Icon>}
+              <Icon>{!showSecondIcon ? props.firstIcon : props.secondIcon}</Icon>
             </Button>
           </div>
           {isLoading && <CircularProgress size={68} className={classes.fabProgress} />}

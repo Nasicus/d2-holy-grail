@@ -2,14 +2,19 @@ import * as React from "react";
 import { HolyGrailDataManager } from "../../HolyGrailDataManager";
 import ButtonWithProgress from "../../../../common/components/ButtonWithProgress";
 import { Subscription } from "rxjs";
+import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
 
-export interface IServerSaverState {
+export interface IServerSaveButtonState {
   isSaving?: boolean;
   isEnabled?: boolean;
   showSecondIcon?: boolean;
 }
 
-class SaveToServerButton extends React.Component<{}, IServerSaverState> {
+export interface IServerSaveButtonProps {
+  renderAsListItem?: boolean;
+}
+
+class SaveToServerComponent extends React.Component<IServerSaveButtonProps, IServerSaveButtonState> {
   private secondIconTimeoutHandler: any;
   private localChangesSubscription: Subscription;
 
@@ -35,10 +40,24 @@ class SaveToServerButton extends React.Component<{}, IServerSaverState> {
       return null;
     }
 
+    if (this.props.renderAsListItem) {
+      return (
+        <ListItemWithProgress
+          onClick={() => this.onSaveButtonClick()}
+          firstIcon="save"
+          secondIcon="check"
+          showSecondIcon={this.state.showSecondIcon}
+          text={"Save to server"}
+          isDisabled={!this.state.isEnabled}
+          isLoading={this.state.isSaving}
+        />
+      );
+    }
+
     return (
       <div>
         <ButtonWithProgress
-          onButtonClick={() => this.onSaveButtonClick()}
+          onClick={() => this.onSaveButtonClick()}
           isLoading={this.state.isSaving}
           showSecondIcon={this.state.showSecondIcon}
           isDisabled={!this.state.isEnabled}
@@ -67,4 +86,4 @@ class SaveToServerButton extends React.Component<{}, IServerSaverState> {
   };
 }
 
-export default SaveToServerButton;
+export default SaveToServerComponent;

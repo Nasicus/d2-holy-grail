@@ -123,7 +123,7 @@ class RegisterFormDialog extends React.Component<Props, IRegisterFormDialogState
         <DialogActions>
           <ButtonWithProgress
             isLoading={this.state.isLoading}
-            onButtonClick={() => this.register()}
+            onClick={() => this.register()}
             text="Register"
             isDisabled={!this.state.address || !this.state.password}
           />

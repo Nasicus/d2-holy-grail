@@ -150,7 +150,7 @@ class ImportDialog extends React.Component<Props, IImportDialogState> {
         <DialogActions>
           <ButtonWithProgress
             isLoading={this.state.isImporting}
-            onButtonClick={() => this.import()}
+            onClick={() => this.import()}
             text="Import"
             isDisabled={
               this.state.numberOfImportedItems != null ||

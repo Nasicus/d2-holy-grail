@@ -5,7 +5,7 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 const ImporterButton: React.SFC<RouteComponentProps<{}>> = props => {
   return (
     <div>
-      <ButtonWithProgress onButtonClick={() => props.history.push("/")} text="Go to login page" firstIcon="home" />
+      <ButtonWithProgress onClick={() => props.history.push("/")} text="Go to login page" firstIcon="home" />
     </div>
   );
 };
