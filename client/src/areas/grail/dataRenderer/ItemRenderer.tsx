@@ -25,7 +25,7 @@ export class ItemRenderer extends React.Component<IItemProps, IItemState> {
       <div>
         <Checkbox
           disabled={HolyGrailDataManager.current.isReadOnly}
-          checked={this.state.item.wasFound}
+          checked={!!this.state.item.wasFound}
           onChange={event => this.onItemCheckBoxChanged(this.state.item, event)}
           value={this.props.itemName}
         />

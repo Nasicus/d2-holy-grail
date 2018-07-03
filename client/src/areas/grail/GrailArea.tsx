@@ -13,6 +13,7 @@ import DiscardLocalChangesButton from "./dataManipulation/buttons/DiscardLocalCh
 import { IHolyGrailData } from "../../common/IHolyGrailData";
 import HomeButton from "./homeButton/HomeButton";
 import ExportButton from "./dataManipulation/buttons/ExportButton";
+import ToggleAllButton from "./dataManipulation/buttons/ToggleAllButton";
 
 export interface IGrailAreaState {
   searchResult?: Partial<IHolyGrailData>;
@@ -101,11 +102,15 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
         <div className={this.props.classes.tabs}>
           <TabRenderer allData={this.state.data} searchData={this.state.searchResult} />
         </div>
+
         <div className={this.props.classes.leftButtonsContainer}>
           <HomeButton />
         </div>
 
         <div className={this.props.classes.rightButtonsContainer}>
+          <div className={this.props.classes.buttonRow}>
+            <ToggleAllButton onToggle={d => this.setState({ data: d })} />
+          </div>
           <div className={this.props.classes.buttonRow}>
             <SaveToServerButton />
             <DiscardLocalChangesButton />

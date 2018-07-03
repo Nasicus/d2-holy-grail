@@ -6,15 +6,24 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Button from "@material-ui/core/Button";
 import * as React from "react";
 
-export interface IButtonWithProgressProps {
-  title?: string;
-  content?: string;
-  buttonOk?: string;
-  buttonCancel?: string;
-  onClose: (isOk?: boolean) => any;
+export interface IChoiceDialogButton {
+  text: string;
+  value: any;
 }
 
-const ConfirmDialog: React.SFC<IButtonWithProgressProps> = props => {
+export interface IChoiceDialogProps {
+  title?: string;
+  content?: string;
+  buttons?: IChoiceDialogButton[];
+  onClose: (value?: any) => any;
+}
+
+export const createDefaultConfirmButtons = (okText?: string, cancelText?: string): IChoiceDialogButton[] => [
+  { text: okText || "Ok", value: true },
+  { text: cancelText || "Cancel", value: false }
+];
+
+const ChoiceDialog: React.SFC<IChoiceDialogProps> = props => {
   return (
     <Dialog
       open={true}
@@ -29,15 +38,14 @@ const ConfirmDialog: React.SFC<IButtonWithProgressProps> = props => {
         </DialogContent>
       )}
       <DialogActions>
-        <Button onClick={() => props.onClose(false)} color="primary">
-          {props.buttonCancel || "Cancel"}
-        </Button>
-        <Button onClick={() => props.onClose(true)} color="primary" autoFocus={true}>
-          {props.buttonOk || "Ok"}
-        </Button>
+        {(props.buttons || createDefaultConfirmButtons()).reverse().map((button, index) => (
+          <Button key={index} onClick={() => props.onClose(button.value)} color="primary" autoFocus={index === 0}>
+            {button.text}
+          </Button>
+        ))}
       </DialogActions>
     </Dialog>
   );
 };
 
-export default ConfirmDialog;
+export default ChoiceDialog;

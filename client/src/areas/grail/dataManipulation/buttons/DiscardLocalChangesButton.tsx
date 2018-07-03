@@ -2,7 +2,7 @@ import * as React from "react";
 import { HolyGrailDataManager } from "../../HolyGrailDataManager";
 import ButtonWithProgress from "../../../../common/components/ButtonWithProgress";
 import { Subscription } from "rxjs";
-import ConfirmDialog from "../../../../common/components/ConfirmDialog";
+import ChoiceDialog, { createDefaultConfirmButtons } from "../../../../common/components/ChoiceDialog";
 
 export interface IDiscardChangesButtonState {
   isEnabled?: boolean;
@@ -37,10 +37,9 @@ class DiscardChangesButton extends React.Component<{}, IDiscardChangesButtonStat
     return (
       <div>
         {this.state.showConfirm && (
-          <ConfirmDialog
+          <ChoiceDialog
             content="Are you sure you want to discard all your local changes?"
-            buttonOk="Yes"
-            buttonCancel="No"
+            buttons={createDefaultConfirmButtons("Yes", "No")}
             onClose={this.onConfirmDialogClose}
           />
         )}
