@@ -27,13 +27,12 @@ class ToggleAllListItem extends React.Component<IToggleAllListItemProps, IToggle
 
     return (
       <div>
-        {this.state.showConfirm && (
-          <ChoiceDialog
-            content={`What do you want to do?`}
-            buttons={ToggleAllListItem.createButtons()}
-            onClose={this.onConfirmDialogClose}
-          />
-        )}
+        <ChoiceDialog
+          isOpen={this.state.showConfirm}
+          content={`What do you want to do?`}
+          buttons={ToggleAllListItem.createButtons()}
+          onClose={this.onConfirmDialogClose}
+        />
         <MenuListItem
           onClick={() => this.setState({ showConfirm: true })}
           text="Toggle all items as found"
