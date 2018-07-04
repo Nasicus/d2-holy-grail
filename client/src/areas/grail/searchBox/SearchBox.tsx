@@ -16,15 +16,16 @@ export interface ISearchBoxState {
   searchValue: string;
 }
 
-type ClassesType = "icon";
+type ClassesType = "searchBox" | "icon";
 type Props = ISearchBoxProps & WithStyles<ClassesType>;
 
-const styles: StyleRulesCallback<ClassesType> = theme => ({
+const styles: StyleRulesCallback<ClassesType> = () => ({
+  searchBox: {
+    width: 300
+  },
   icon: {
-    maxWidth: 700,
-    margin: "auto",
-    marginTop: theme.spacing.unit * 3,
-    overflowX: "auto"
+    cursor: "pointer",
+    verticalAlign: "middle"
   }
 });
 
@@ -45,7 +46,7 @@ class SearchBox extends React.Component<Props, ISearchBoxState> {
   public render() {
     return (
       <div>
-        <Input onChange={this.onInputChange} value={this.state.searchValue} />
+        <Input className={this.props.classes.searchBox} onChange={this.onInputChange} value={this.state.searchValue} />
         <Icon className={this.props.classes.icon}>search</Icon>
       </div>
     );

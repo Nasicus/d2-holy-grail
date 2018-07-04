@@ -91,12 +91,11 @@ class LoginForm extends React.Component<Props, ILoginFormState> {
       return <Redirect to={to} push={true} />;
     }
 
-    if (this.state.renderRegisterDialog) {
-      return <RegisterFormDialog onDialogClosed={loginInfo => this.onRegisterDialogClosed(loginInfo)} />;
-    }
-
     return (
       <div className={this.props.classes.root}>
+        {this.state.renderRegisterDialog && (
+          <RegisterFormDialog onDialogClosed={loginInfo => this.onRegisterDialogClosed(loginInfo)} />
+        )}
         <Typography variant={"title"}>Login</Typography>
         <div className={this.props.classes.formValues}>
           <div>
