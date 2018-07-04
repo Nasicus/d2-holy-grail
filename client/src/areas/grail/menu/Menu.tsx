@@ -18,7 +18,7 @@ type Props = WithStyles<ClassTypes> & IMenuProps;
 
 const Menu: React.SFC<Props> = props => {
   return (
-    <Drawer anchor="right" open={props.isOpen} onClose={() => props.onClose()}>
+    <Drawer anchor="right" open={!!props.isOpen} onClose={() => props.onClose()}>
       <div tabIndex={0} role="button">
         <div className={props.classes.list}>
           <List>{props.children}</List>

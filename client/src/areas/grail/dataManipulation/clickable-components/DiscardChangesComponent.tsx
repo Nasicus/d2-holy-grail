@@ -42,7 +42,7 @@ class DiscardChangesComponent extends React.Component<IDiscardChangesButtonProps
     return (
       <div>
         <ChoiceDialog
-          isOpen={this.state.showConfirm}
+          isOpen={!!this.state.showConfirm}
           content="Are you sure you want to discard all your local changes?"
           buttons={createDefaultConfirmButtons("Yes", "No")}
           onClose={this.onConfirmDialogClose}

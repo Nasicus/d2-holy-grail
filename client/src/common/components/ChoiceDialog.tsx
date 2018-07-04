@@ -27,7 +27,7 @@ export const createDefaultConfirmButtons = (okText?: string, cancelText?: string
 const ChoiceDialog: React.SFC<IChoiceDialogProps> = props => {
   return (
     <Dialog
-      open={props.isOpen}
+      open={!!props.isOpen}
       onClose={() => props.onClose()}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
