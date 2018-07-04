@@ -15,6 +15,7 @@ import ExportListItem from "./dataManipulation/clickable-components/ExportListIt
 import ImportListItem from "./dataManipulation/clickable-components/ImportListItem";
 import ToggleAllListItem from "./dataManipulation/clickable-components/ToggleAllListItem";
 import DiscardChangesComponent from "./dataManipulation/clickable-components/DiscardChangesComponent";
+import ListItemWithProgress from "../../common/components/ListItemWithProgress";
 
 export interface IGrailAreaState {
   searchResult?: Partial<IHolyGrailData>;
@@ -117,11 +118,15 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
           </div>
           <div className={this.props.classes.buttonRow}>
             <MenuButton>
+              <ListItemWithProgress
+                primaryText={HolyGrailDataManager.current.address}
+                secondaryText={HolyGrailDataManager.current.isReadOnly ? "Read-only" : null}
+                firstIcon="person"
+              />
+              <Divider />
               <SaveToServerComponent renderAsListItem={true} />
               <DiscardChangesComponent renderAsListItem={true} />
-              <Divider />
               <ToggleAllListItem onToggle={d => this.setState({ data: d })} />
-              <Divider />
               <ImportListItem />
               <ExportListItem />
             </MenuButton>

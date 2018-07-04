@@ -26,11 +26,12 @@ const styles: StyleRulesCallback<ClassesType> = () => ({
 
 export interface IListItemWithProgressProps {
   isLoading?: boolean;
-  onClick: () => any;
+  onClick?: () => any;
   showSecondIcon?: boolean;
   firstIcon?: string;
   secondIcon?: string;
-  text: string;
+  primaryText: string;
+  secondaryText?: string;
   isDisabled?: boolean;
 }
 
@@ -47,11 +48,11 @@ const ListItemWithProgress: React.SFC<Props> = props => {
   return (
     <div className={classes.root}>
       {
-        <ListItem button={true} onClick={props.onClick} disabled={props.isDisabled}>
+        <ListItem button={!!props.onClick} onClick={props.onClick} disabled={props.isDisabled}>
           <ListItemIcon>
             <Icon className={buttonClassName}>{props.showSecondIcon ? props.secondIcon : props.firstIcon}</Icon>
           </ListItemIcon>
-          <ListItemText primary={props.text} />
+          <ListItemText primary={props.primaryText} secondary={props.secondaryText} />
           {isLoading && <CircularProgress size={24} className={classes.buttonProgress} />}
         </ListItem>
       }

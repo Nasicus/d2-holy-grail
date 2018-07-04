@@ -2,7 +2,7 @@ import * as React from "react";
 import { HolyGrailDataManager } from "../../HolyGrailDataManager";
 import ImportDialog from "../ImportDialog";
 import { Subscription } from "rxjs";
-import MenuListItem from "../../../../common/components/ListItemWithProgress";
+import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
 
 export interface IImportListItemState {
   isSaving?: boolean;
@@ -38,10 +38,10 @@ class ImportListItem extends React.Component<{}, IImportListItemState> {
 
     return (
       <div>
-        <MenuListItem
+        <ListItemWithProgress
           onClick={() => this.onImportButtonClick()}
           isDisabled={!this.state.isEnabled || this.state.hasChanges}
-          text="Import from CSV"
+          primaryText="Import from CSV"
           firstIcon="backup"
         />
         {this.state.showDialog && <ImportDialog onDialogClosed={() => this.setState({ showDialog: false })} />}

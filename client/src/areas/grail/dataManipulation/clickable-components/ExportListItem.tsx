@@ -1,7 +1,7 @@
 import * as React from "react";
 import { HolyGrailDataManager } from "../../HolyGrailDataManager";
 import { first } from "rxjs/operators";
-import MenuListItem from "../../../../common/components/ListItemWithProgress";
+import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
 
 export interface IExportListItemState {
   isExporting?: boolean;
@@ -19,11 +19,11 @@ class ExportListItem extends React.Component<{}, IExportListItemState> {
   public render() {
     return (
       <div>
-        <MenuListItem
+        <ListItemWithProgress
           onClick={() => this.onExportButtonClick()}
           isLoading={this.state.isExporting}
           showSecondIcon={this.state.showSecondIcon}
-          text="Export grail data"
+          primaryText="Export grail data"
           firstIcon="get_app"
           secondIcon="check"
         />

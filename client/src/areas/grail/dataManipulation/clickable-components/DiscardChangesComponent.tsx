@@ -3,7 +3,7 @@ import { HolyGrailDataManager } from "../../HolyGrailDataManager";
 import ButtonWithProgress from "../../../../common/components/ButtonWithProgress";
 import { Subscription } from "rxjs";
 import ChoiceDialog, { createDefaultConfirmButtons } from "../../../../common/components/ChoiceDialog";
-import MenuListItem from "../../../../common/components/ListItemWithProgress";
+import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
 
 export interface IDiscardChangesButtonState {
   isEnabled?: boolean;
@@ -48,10 +48,10 @@ class DiscardChangesComponent extends React.Component<IDiscardChangesButtonProps
           onClose={this.onConfirmDialogClose}
         />
         {this.props.renderAsListItem && (
-          <MenuListItem
+          <ListItemWithProgress
             onClick={() => this.setState({ showConfirm: true })}
             isDisabled={!this.state.isEnabled}
-            text="Discard local changes"
+            primaryText="Discard local changes"
             firstIcon="cancel"
           />
         )}

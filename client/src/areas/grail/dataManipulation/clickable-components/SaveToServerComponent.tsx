@@ -47,7 +47,7 @@ class SaveToServerComponent extends React.Component<IServerSaveButtonProps, ISer
           firstIcon="save"
           secondIcon="check"
           showSecondIcon={this.state.showSecondIcon}
-          text={"Save to server"}
+          primaryText={"Save to server"}
           isDisabled={!this.state.isEnabled}
           isLoading={this.state.isSaving}
         />

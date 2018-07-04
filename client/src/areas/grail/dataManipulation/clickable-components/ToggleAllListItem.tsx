@@ -4,7 +4,7 @@ import ChoiceDialog, { IChoiceDialogButton } from "../../../../common/components
 import { first } from "rxjs/operators";
 import { Util } from "../../../../common/utils/Util";
 import { IHolyGrailData, Item } from "../../../../common/IHolyGrailData";
-import MenuListItem from "../../../../common/components/ListItemWithProgress";
+import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
 
 export interface IToggleAllListItemProps {
   onToggle(data: IHolyGrailData): any;
@@ -33,9 +33,9 @@ class ToggleAllListItem extends React.Component<IToggleAllListItemProps, IToggle
           buttons={ToggleAllListItem.createButtons()}
           onClose={this.onConfirmDialogClose}
         />
-        <MenuListItem
+        <ListItemWithProgress
           onClick={() => this.setState({ showConfirm: true })}
-          text="Toggle all items as found"
+          primaryText="Toggle all items as found"
           firstIcon="check_box"
         />
       </div>
