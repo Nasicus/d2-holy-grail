@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography/Typography";
 import { StyleRulesCallback, WithStyles } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import { DataRenderer, ILevels } from "../dataRenderer/DataRenderer";
+import { Util } from "../../../common/utils/Util";
 
 export interface ITabRendererProps {
   allData: any;
@@ -24,7 +25,8 @@ enum TabType {
   UniqueWeapons,
   UniqueOther,
   Sets,
-  SearchResults
+  SearchResults,
+  MissingItems
 }
 
 type ClassesType = "root";
@@ -91,7 +93,8 @@ class TabRenderer extends React.Component<Props, ITabRendererState> {
       <Tab label="Unique Armor" key="tabUniqueArmor" value={TabType.UniqueArmor} />,
       <Tab label="Unique Weapons" key="tabUniqueWeapons" value={TabType.UniqueWeapons} />,
       <Tab label="Unique Other" key="tabUniqueOther" value={TabType.UniqueOther} />,
-      <Tab label="Sets" key="tabSets" value={TabType.Sets} />
+      <Tab label="Sets" key="tabSets" value={TabType.Sets} />,
+      <Tab label="Missing Items" key="tabMissingItems" value={TabType.MissingItems} />
     ];
   }
 
@@ -109,6 +112,8 @@ class TabRenderer extends React.Component<Props, ITabRendererState> {
         return <DataRenderer data={allData.uniques.other} levels={{ variantLevel: 2 }} />;
       case TabType.Sets:
         return <DataRenderer data={allData.sets} levels={{ variantLevel: 3, level: 1 }} />;
+      case TabType.MissingItems:
+        return <DataRenderer data={Util.getMissingItems(allData)} modifyLevels={this.modifyLevelsForSearch} />;
       default:
         return <StatisticsTable data={searchData || allData} />;
     }

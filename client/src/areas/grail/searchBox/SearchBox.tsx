@@ -6,6 +6,7 @@ import { debounceTime } from "rxjs/operators";
 import { ChangeEvent } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { IHolyGrailData } from "../../../common/IHolyGrailData";
+import { Util } from "../../../common/utils/Util";
 
 export interface ISearchBoxProps {
   data: IHolyGrailData;
@@ -65,28 +66,9 @@ class SearchBox extends React.Component<Props, ISearchBoxState> {
       return;
     }
 
-    const dataResult = {};
-    this.findData(value.toLowerCase(), data, () => dataResult);
-
-    this.props.onSearchResult(dataResult);
+    const result = Util.findData(k => k.toLowerCase().indexOf(value.toLowerCase()) > -1, data);
+    this.props.onSearchResult(result);
   };
-
-  private findData(searchValue: string, dataToSearch: any, dataResult: () => any) {
-    if (!dataToSearch) {
-      return;
-    }
-
-    Object.keys(dataToSearch).forEach(key => {
-      if (key.toLowerCase().indexOf(searchValue) > -1) {
-        dataResult()[key] = dataToSearch[key];
-      } else {
-        this.findData(searchValue, dataToSearch[key], () => {
-          const parentObj = dataResult();
-          return parentObj[key] || (parentObj[key] = {});
-        });
-      }
-    });
-  }
 }
 
 export default withStyles(styles)<ISearchBoxProps>(SearchBox);
