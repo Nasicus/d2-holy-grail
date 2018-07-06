@@ -132,9 +132,14 @@ class ImportDialog extends React.Component<Props, IImportDialogState> {
             )}
             {this.state.numberOfImportedItems == null && (
               <DialogContentText>
-                You can import the data from the Google Holy Grail Sheet here. You have to download each tab as CSV (<span
-                  style={{ fontStyle: "italic", fontSize: "0.8em" }}
+                You can import the data from the{" "}
+                <a
+                  href="https://docs.google.com/spreadsheets/d/1Sr7liMtMigd95IwWD6oa3Tky5oEjKzOKAk7pOmdmdCA"
+                  target="_blank"
                 >
+                  Google Holy Grail Sheet
+                </a>{" "}
+                here. You have to download each tab as CSV (<span style={{ fontStyle: "italic", fontSize: "0.8em" }}>
                   File => Download as => Comma-separated values (.csv current sheet)
                 </span>) and then upload the file here. You can also only import the tabs you want.
               </DialogContentText>
