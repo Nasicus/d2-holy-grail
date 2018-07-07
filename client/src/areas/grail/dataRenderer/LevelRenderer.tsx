@@ -69,7 +69,11 @@ class LevelRenderer extends React.Component<ILevelRendererProps, ILevelRendererS
     return (
       <div>
         {this.state.showDialog && this.getChoiceDialog(ancestorKeys, nextData)}
-        <span onClick={() => this.setState({ showDialog: true })} style={{ cursor: "pointer" }}>
+        <span
+          onClick={() => this.setState({ showDialog: true })}
+          title="Toggle items in this category as found"
+          style={{ cursor: "pointer" }}
+        >
           {levelKey}
         </span>
         <DataRenderer data={nextData} levels={this.props.levels} isRecursive={true} ancestorKeys={ancestorKeys} />
