@@ -60,6 +60,21 @@ class LevelRenderer extends React.Component<ILevelRendererProps, ILevelRendererS
     }
   };
 
+  private renderLevelHeader() {
+    if (HolyGrailDataManager.current.isReadOnly) {
+      return <span>{this.props.levelKey}</span>;
+    }
+
+    return (
+      <span
+        onClick={() => this.setState({ showDialog: true })}
+        title="Toggle items in this category as found"
+        style={{ cursor: "pointer" }}
+      >
+        {this.props.levelKey}
+      </span>
+    );
+  }
   public render() {
     const { nextData, levelKey } = this.props;
 
@@ -69,13 +84,7 @@ class LevelRenderer extends React.Component<ILevelRendererProps, ILevelRendererS
     return (
       <div>
         {this.state.showDialog && this.getChoiceDialog(ancestorKeys, nextData)}
-        <span
-          onClick={() => this.setState({ showDialog: true })}
-          title="Toggle items in this category as found"
-          style={{ cursor: "pointer" }}
-        >
-          {levelKey}
-        </span>
+        {this.renderLevelHeader()}
         <DataRenderer data={nextData} levels={this.props.levels} isRecursive={true} ancestorKeys={ancestorKeys} />
       </div>
     );
