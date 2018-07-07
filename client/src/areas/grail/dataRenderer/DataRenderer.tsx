@@ -5,6 +5,8 @@ import * as classNames from "classnames";
 import LevelRenderer from "./LevelRenderer";
 import { StyleRulesCallback, WithStyles } from "@material-ui/core";
 import withStyles from "@material-ui/core/styles/withStyles";
+import { Util } from "../../../common/utils/Util";
+import { ItemRenderer } from "./ItemRenderer";
 
 export interface ILevels {
   level?: number;
@@ -13,6 +15,7 @@ export interface ILevels {
 
 export interface IDataRendererProps {
   data: any;
+  ancestorKeys?: string[];
   levels?: ILevels;
   isRecursive?: boolean;
   modifyLevels?: (level: ILevels, key: string) => ILevels;
@@ -71,16 +74,39 @@ const DataRendererComponent: React.SFC<Props> = props => {
         return (
           <div key={`${key}-${levels.level}`}>
             {
-              <LevelRenderer
+              <NextData
                 levelKey={key}
                 nextData={props.data[key]}
-                levels={getNextLevels(levels, key, props.modifyLevels)}
+                ancestorKeys={props.ancestorKeys}
+                levels={levels}
+                modifyLevels={props.modifyLevels}
               />
             }
           </div>
         );
       })}
     </Typography>
+  );
+};
+
+const NextData: React.SFC<{
+  levelKey: string;
+  nextData: any;
+  ancestorKeys: string[];
+  levels: ILevels;
+  modifyLevels: (level: ILevels, key: string) => ILevels;
+}> = props => {
+  if (Util.isItem(props.nextData)) {
+    return <ItemRenderer itemName={props.levelKey} item={props.nextData} />;
+  }
+
+  return (
+    <LevelRenderer
+      levelKey={props.levelKey}
+      ancestorKeys={props.ancestorKeys}
+      nextData={props.nextData}
+      levels={getNextLevels(props.levels, props.levelKey, props.modifyLevels)}
+    />
   );
 };
 

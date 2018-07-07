@@ -3,7 +3,7 @@ import { HolyGrailDataManager } from "../../HolyGrailDataManager";
 import ChoiceDialog, { IChoiceDialogButton } from "../../../../common/components/ChoiceDialog";
 import { first } from "rxjs/operators";
 import { Util } from "../../../../common/utils/Util";
-import { IHolyGrailData, Item } from "../../../../common/IHolyGrailData";
+import { IHolyGrailData } from "../../../../common/IHolyGrailData";
 import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
 
 export interface IToggleAllListItemProps {
@@ -62,7 +62,7 @@ class ToggleAllListItem extends React.Component<IToggleAllListItemProps, IToggle
   private onConfirmDialogClose = (markAsFound?: boolean) => {
     if (markAsFound != null) {
       HolyGrailDataManager.current.data$.pipe(first()).subscribe(d => {
-        this.toggleData(markAsFound, d.data);
+        Util.toggleData(markAsFound, d.data);
         this.setState({ showConfirm: false });
         HolyGrailDataManager.current.updateCache();
         this.props.onToggle(d.data);
@@ -71,24 +71,6 @@ class ToggleAllListItem extends React.Component<IToggleAllListItemProps, IToggle
       this.setState({ showConfirm: false });
     }
   };
-
-  private toggleData(markAsFound: boolean, data: any) {
-    if (!data) {
-      return;
-    }
-
-    if (!Util.isItem(data)) {
-      Object.keys(data).forEach(k => this.toggleData(markAsFound, data[k]));
-      return;
-    }
-
-    const item = data as Item;
-    if (!markAsFound && item.wasFound) {
-      item.wasFound = false;
-    } else if (markAsFound && !item.wasFound) {
-      item.wasFound = true;
-    }
-  }
 }
 
 export default ToggleAllListItem;

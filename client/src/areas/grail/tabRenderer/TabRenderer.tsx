@@ -105,13 +105,23 @@ class TabRenderer extends React.Component<Props, ITabRendererState> {
       case TabType.SearchResults:
         return <DataRenderer data={searchData} modifyLevels={this.modifyLevelsForSearch} />;
       case TabType.UniqueArmor:
-        return <DataRenderer data={allData.uniques.armor} levels={{ variantLevel: 2 }} />;
+        return (
+          <DataRenderer data={allData.uniques.armor} levels={{ variantLevel: 2 }} ancestorKeys={["Uniques", "Armor"]} />
+        );
       case TabType.UniqueWeapons:
-        return <DataRenderer data={allData.uniques.weapons} levels={{ variantLevel: 2 }} />;
+        return (
+          <DataRenderer
+            data={allData.uniques.weapons}
+            levels={{ variantLevel: 2 }}
+            ancestorKeys={["Uniques", "Weapons"]}
+          />
+        );
       case TabType.UniqueOther:
-        return <DataRenderer data={allData.uniques.other} levels={{ variantLevel: 2 }} />;
+        return (
+          <DataRenderer data={allData.uniques.other} levels={{ variantLevel: 2 }} ancestorKeys={["Uniques", "Other"]} />
+        );
       case TabType.Sets:
-        return <DataRenderer data={allData.sets} levels={{ variantLevel: 3, level: 1 }} />;
+        return <DataRenderer data={allData.sets} levels={{ variantLevel: 3, level: 1 }} ancestorKeys={["Sets"]} />;
       case TabType.MissingItems:
         return <DataRenderer data={Util.getMissingItems(allData)} modifyLevels={this.modifyLevelsForSearch} />;
       default:

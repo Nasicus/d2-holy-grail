@@ -43,4 +43,22 @@ export class Util {
 
     return resultObj;
   }
+
+  public static toggleData(markAsFound: boolean, data: any) {
+    if (!data) {
+      return;
+    }
+
+    if (!Util.isItem(data)) {
+      Object.keys(data).forEach(k => this.toggleData(markAsFound, data[k]));
+      return;
+    }
+
+    const item = data as Item;
+    if (!markAsFound && item.wasFound) {
+      item.wasFound = false;
+    } else if (markAsFound && !item.wasFound) {
+      item.wasFound = true;
+    }
+  }
 }
