@@ -27,7 +27,7 @@ class App extends React.Component<WithStyles<typeof styles>> {
     return (
       <div className={this.props.classes.root}>
         <div className={this.props.classes.header}>
-          <Typography variant="headline">Diablo II - Holy Grail</Typography>
+          <Typography variant="h5">Diablo II - Holy Grail</Typography>
         </div>
         <div className={this.props.classes.content}>
           <Switch>

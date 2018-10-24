@@ -125,15 +125,15 @@ const getNextLevels = (
 const mapLevelToTypographyVariant = (level: number): ThemeStyle => {
   switch (level) {
     case 0:
-      return "headline";
+      return "h5";
     case 1:
-      return "title";
+      return "h6";
     case 2:
-      return "subheading";
+      return "subtitle1";
     case 3:
-      return "body2";
-    default:
       return "body1";
+    default:
+      return "body2";
   }
 };
 

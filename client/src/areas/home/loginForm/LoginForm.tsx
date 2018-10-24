@@ -95,7 +95,7 @@ class LoginForm extends React.Component<Props, ILoginFormState> {
         {this.state.renderRegisterDialog && (
           <RegisterFormDialog onDialogClosed={(loginInfo: ILoginInfo) => this.onRegisterDialogClosed(loginInfo)} />
         )}
-        <Typography variant={"title"}>Login</Typography>
+        <Typography variant="h6">Login</Typography>
         <div className={this.props.classes.formValues}>
           <div>
             <TextField

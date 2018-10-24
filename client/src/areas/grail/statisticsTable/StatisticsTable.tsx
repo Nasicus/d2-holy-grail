@@ -75,7 +75,7 @@ class StatisticsTable extends React.Component<Props, IStatisticsTableSTate> {
 
     return (
       <div>
-        <Typography variant="title" align={"center"}>
+        <Typography variant="h6" align={"center"}>
           Statistics
         </Typography>
         <Paper className={classes.root}>

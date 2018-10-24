@@ -85,7 +85,7 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
   public render() {
     if (this.state.error) {
       return (
-        <Typography variant={"caption"} align={"center"}>
+        <Typography variant="body1" align="center">
           {this.state.error}
         </Typography>
       );

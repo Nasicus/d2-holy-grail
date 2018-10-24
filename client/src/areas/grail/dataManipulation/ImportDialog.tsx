@@ -108,7 +108,7 @@ class ImportDialog extends React.Component<Props, IImportDialogState> {
   private getFileUploader(title: string, stateKey: string) {
     return (
       <div className={this.props.classes.uploadContainer}>
-        <Typography variant="subheading">{title}</Typography>
+        <Typography variant="subtitle1">{title}</Typography>
         <FileUploader onFilesDropped={(files: FileWithPreview[]) => this.getContent(stateKey, files)} />
       </div>
     );

@@ -9,6 +9,9 @@ import { BrowserRouter } from "react-router-dom";
 // A theme with custom primary and secondary color.
 // It's optional.
 const theme: Theme = createMuiTheme({
+  typography: {
+    useNextVariants: true
+  },
   palette: {
     primary: purple,
     secondary: green
