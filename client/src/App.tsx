@@ -5,6 +5,7 @@ import withRoot from "./withRoot";
 import { Route, Switch } from "react-router-dom";
 import GrailArea from "./areas/grail/GrailArea";
 import { Home } from "./areas/home/Home";
+import { GithubRibbon } from "./common/components/GithubRibbon";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -29,6 +30,7 @@ class App extends React.Component<WithStyles<typeof styles>> {
         <div className={this.props.classes.header}>
           <Typography variant="h5">Diablo II - Holy Grail</Typography>
         </div>
+        <GithubRibbon url="https://github.com/Nasicus/d2-holy-grail" />
         <div className={this.props.classes.content}>
           <Switch>
             <Route exact={true} path="/" component={Home} />
