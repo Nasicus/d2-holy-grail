@@ -46,6 +46,12 @@ const styles = (theme: Theme) =>
     },
     formValues: {
       textAlign: "left"
+    },
+    passwordRow: {
+      display: "flex"
+    },
+    infoIcon: {
+      alignSelf: "center"
     }
   });
 
@@ -105,7 +111,7 @@ class LoginForm extends React.Component<Props, ILoginFormState> {
               onKeyPress={e => this.onKeyPress(e)}
             />
           </div>
-          <div>
+          <div className={this.props.classes.passwordRow}>
             <TextField
               className={this.props.classes.textField}
               type="password"
@@ -113,7 +119,10 @@ class LoginForm extends React.Component<Props, ILoginFormState> {
               onChange={e => this.setState({ password: e.target.value })}
               onKeyPress={e => this.onKeyPress(e)}
             />
-            <Icon title="You only have to enter a password if you want to edit the Holy Grail. You can also leave this blank and view the Holy Grail in a read-only mode!">
+            <Icon
+              className={this.props.classes.infoIcon}
+              title="You only have to enter a password if you want to edit the Holy Grail. You can also leave this blank and view the Holy Grail in a read-only mode!"
+            >
               info
             </Icon>
           </div>
