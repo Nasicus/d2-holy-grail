@@ -15,6 +15,7 @@ export class HolyGrailController {
   public add = async (req: Request, res: Response) => {
     let newGrail: IHolyGrailDb = req.body;
     newGrail.token = HolyGrailController.getToken();
+    newGrail.created = newGrail.modified = new Date();
 
     try {
       const result = await this.grailCollection.insertOne(newGrail);
@@ -48,7 +49,10 @@ export class HolyGrailController {
     try {
       const result = await this.grailCollection.findOneAndUpdate(
         { address: address, password: password, token: token },
-        { $set: { data: grailData, token: HolyGrailController.getToken() } },
+        {
+          $set: { data: grailData, token: HolyGrailController.getToken(), modified: new Date() },
+          $inc: { updateCount: 1 }
+        },
         { returnOriginal: false }
       );
 
