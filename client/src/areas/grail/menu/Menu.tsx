@@ -1,4 +1,4 @@
-import { Drawer, StyleRulesCallback, withStyles, WithStyles, List } from "@material-ui/core";
+import { Drawer, withStyles, WithStyles, List, createStyles } from "@material-ui/core";
 import * as React from "react";
 
 export interface IMenuProps {
@@ -6,15 +6,14 @@ export interface IMenuProps {
   isOpen?: boolean;
 }
 
-type ClassTypes = "list";
+const styles = () =>
+  createStyles({
+    list: {
+      width: 300
+    }
+  });
 
-const styles: StyleRulesCallback<ClassTypes> = () => ({
-  list: {
-    width: 300
-  }
-});
-
-type Props = WithStyles<ClassTypes> & IMenuProps;
+type Props = IMenuProps & WithStyles<typeof styles>;
 
 const Menu: React.SFC<Props> = props => {
   return (
@@ -28,4 +27,4 @@ const Menu: React.SFC<Props> = props => {
   );
 };
 
-export default withStyles(styles)<IMenuProps>(Menu);
+export default withStyles(styles)(Menu);

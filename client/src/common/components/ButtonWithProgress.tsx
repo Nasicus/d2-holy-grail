@@ -1,42 +1,40 @@
-import { WithStyles, withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import green from "@material-ui/core/colors/green";
 import Button from "@material-ui/core/Button";
-import { StyleRulesCallback } from "@material-ui/core";
+import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
 import * as React from "react";
 import * as classNames from "classnames";
 import Icon from "@material-ui/core/Icon/Icon";
 
-type ClassesType = "root" | "wrapper" | "buttonSuccess" | "fabProgress" | "buttonProgress";
-
-const styles: StyleRulesCallback<ClassesType> = theme => ({
-  root: {
-    display: "flex",
-    alignItems: "center"
-  },
-  wrapper: {
-    margin: theme.spacing.unit,
-    position: "relative"
-  },
-  buttonSuccess: {
-    backgroundColor: green[500],
-    "&:hover": {
-      backgroundColor: green[700]
+const styles = (theme: Theme) =>
+  createStyles({
+    root: {
+      display: "flex",
+      alignItems: "center"
+    },
+    wrapper: {
+      margin: theme.spacing.unit,
+      position: "relative"
+    },
+    buttonSuccess: {
+      backgroundColor: green[500],
+      "&:hover": {
+        backgroundColor: green[700]
+      }
+    },
+    fabProgress: {
+      color: green[500],
+      position: "absolute",
+      top: -6,
+      left: -6,
+      zIndex: 1
+    },
+    buttonProgress: {
+      color: green[500],
+      verticalAlign: "middle",
+      marginRight: theme.spacing.unit
     }
-  },
-  fabProgress: {
-    color: green[500],
-    position: "absolute",
-    top: -6,
-    left: -6,
-    zIndex: 1
-  },
-  buttonProgress: {
-    color: green[500],
-    verticalAlign: "middle",
-    marginRight: theme.spacing.unit
-  }
-});
+  });
 
 export interface IButtonWithProgressProps {
   isLoading?: boolean;
@@ -48,7 +46,7 @@ export interface IButtonWithProgressProps {
   isDisabled?: boolean;
 }
 
-type Props = IButtonWithProgressProps & WithStyles<ClassesType>;
+type Props = IButtonWithProgressProps & WithStyles<typeof styles>;
 
 const ButtonWithProgress: React.SFC<Props> = props => {
   const onClick = () => {
@@ -101,4 +99,4 @@ const ButtonWithProgress: React.SFC<Props> = props => {
   );
 };
 
-export default withStyles(styles)<IButtonWithProgressProps>(ButtonWithProgress);
+export default withStyles(styles)(ButtonWithProgress);

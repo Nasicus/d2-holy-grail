@@ -1,12 +1,11 @@
 import * as React from "react";
 import Typography from "@material-ui/core/Typography/Typography";
-import { Style } from "@material-ui/core/styles/createTypography";
 import * as classNames from "classnames";
 import LevelRenderer from "./LevelRenderer";
-import { StyleRulesCallback, WithStyles } from "@material-ui/core";
-import withStyles from "@material-ui/core/styles/withStyles";
+import { WithStyles, createStyles, Theme, withStyles } from "@material-ui/core";
 import { Util } from "../../../common/utils/Util";
 import { ItemRenderer } from "./ItemRenderer";
+import { ThemeStyle } from "@material-ui/core/styles/createTypography";
 
 export interface ILevels {
   level?: number;
@@ -21,33 +20,32 @@ export interface IDataRendererProps {
   modifyLevels?: (level: ILevels, key: string) => ILevels;
 }
 
-type ClassTypes = "dataRenderer" | "rootLevel" | "level1" | "level2" | "level3";
-
-const styles: StyleRulesCallback<ClassTypes> = theme => ({
-  dataRenderer: {
-    textTransform: "capitalize",
-    textAlign: "left"
-  },
-  rootLevel: {
-    maxWidth: 1000,
-    margin: "auto"
-  },
-  level1: {
-    display: "flex",
-    flexWrap: "wrap",
-    "& > *": {
-      flex: "0 0 33.3333%"
+const styles = (theme: Theme) =>
+  createStyles({
+    dataRenderer: {
+      textTransform: "capitalize",
+      textAlign: "left"
+    },
+    rootLevel: {
+      maxWidth: 1000,
+      margin: "auto"
+    },
+    level1: {
+      display: "flex",
+      flexWrap: "wrap",
+      "& > *": {
+        flex: "0 0 33.3333%"
+      }
+    },
+    level2: {
+      padding: theme.spacing.unit
+    },
+    level3: {
+      paddingLeft: theme.spacing.unit * 0.75
     }
-  },
-  level2: {
-    padding: theme.spacing.unit
-  },
-  level3: {
-    paddingLeft: theme.spacing.unit * 0.75
-  }
-});
+  });
 
-type Props = WithStyles<ClassTypes> & IDataRendererProps;
+type Props = IDataRendererProps & WithStyles<typeof styles>;
 
 const DataRendererComponent: React.SFC<Props> = props => {
   if (!props.data) {
@@ -124,7 +122,7 @@ const getNextLevels = (
   return modifyLevels(nextLevels, key);
 };
 
-const mapLevelToTypographyVariant = (level: number): Style => {
+const mapLevelToTypographyVariant = (level: number): ThemeStyle => {
   switch (level) {
     case 0:
       return "headline";
@@ -139,4 +137,4 @@ const mapLevelToTypographyVariant = (level: number): Style => {
   }
 };
 
-export const DataRenderer = withStyles(styles)<IDataRendererProps>(DataRendererComponent);
+export const DataRenderer = withStyles(styles)(DataRendererComponent);

@@ -1,10 +1,9 @@
 import * as React from "react";
-import { Input, StyleRulesCallback, WithStyles } from "@material-ui/core";
+import { Input, createStyles, WithStyles, withStyles } from "@material-ui/core";
 import Icon from "@material-ui/core/Icon/Icon";
 import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 import { ChangeEvent } from "react";
-import { withStyles } from "@material-ui/core/styles";
 import { IHolyGrailData } from "../../../common/IHolyGrailData";
 import { Util } from "../../../common/utils/Util";
 
@@ -17,18 +16,18 @@ export interface ISearchBoxState {
   searchValue: string;
 }
 
-type ClassesType = "searchBox" | "icon";
-type Props = ISearchBoxProps & WithStyles<ClassesType>;
+const styles = () =>
+  createStyles({
+    searchBox: {
+      width: 300
+    },
+    icon: {
+      cursor: "pointer",
+      verticalAlign: "middle"
+    }
+  });
 
-const styles: StyleRulesCallback<ClassesType> = () => ({
-  searchBox: {
-    width: 300
-  },
-  icon: {
-    cursor: "pointer",
-    verticalAlign: "middle"
-  }
-});
+type Props = ISearchBoxProps & WithStyles<typeof styles>;
 
 class SearchBox extends React.Component<Props, ISearchBoxState> {
   private onSearch$ = new Subject<string>();
@@ -71,4 +70,4 @@ class SearchBox extends React.Component<Props, ISearchBoxState> {
   };
 }
 
-export default withStyles(styles)<ISearchBoxProps>(SearchBox);
+export default withStyles(styles)(SearchBox);

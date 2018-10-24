@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleRulesCallback, WithStyles } from "@material-ui/core";
+import { createStyles, WithStyles, Theme, withStyles } from "@material-ui/core";
 import { ILoginInfo } from "../loginForm/LoginForm";
 import { Api } from "../../../common/utils/Api";
 import Dialog from "@material-ui/core/Dialog/Dialog";
@@ -8,7 +8,6 @@ import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import Icon from "@material-ui/core/Icon/Icon";
-import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField/TextField";
 import ButtonWithProgress from "../../../common/components/ButtonWithProgress";
 
@@ -23,33 +22,33 @@ interface IRegisterFormDialogState {
   isLoading?: boolean;
 }
 
-type ClassesType = "closeIcon" | "textField" | "securityInfo" | "infoIconContainer" | "errorMessage";
-type Props = IRegisterFormDialogProps & WithStyles<ClassesType>;
+const styles = (theme: Theme) =>
+  createStyles({
+    closeIcon: {
+      position: "absolute",
+      top: theme.spacing.unit,
+      right: theme.spacing.unit,
+      cursor: "pointer"
+    },
+    textField: {
+      width: 300,
+      marginTop: theme.spacing.unit * 2
+    },
+    securityInfo: {
+      fontStyle: "italic",
+      paddingTop: theme.spacing.unit * 4,
+      display: "flex"
+    },
+    infoIconContainer: {
+      alignSelf: "center",
+      paddingRight: theme.spacing.unit
+    },
+    errorMessage: {
+      color: theme.palette.error.main
+    }
+  });
 
-const styles: StyleRulesCallback<ClassesType> = theme => ({
-  closeIcon: {
-    position: "absolute",
-    top: theme.spacing.unit,
-    right: theme.spacing.unit,
-    cursor: "pointer"
-  },
-  textField: {
-    width: 300,
-    marginTop: theme.spacing.unit * 2
-  },
-  securityInfo: {
-    fontStyle: "italic",
-    paddingTop: theme.spacing.unit * 4,
-    display: "flex"
-  },
-  infoIconContainer: {
-    alignSelf: "center",
-    paddingRight: theme.spacing.unit
-  },
-  errorMessage: {
-    color: theme.palette.error.main
-  }
-});
+type Props = IRegisterFormDialogProps & WithStyles<typeof styles>;
 
 class RegisterFormDialog extends React.Component<Props, IRegisterFormDialogState> {
   public constructor(props: Props) {
@@ -133,4 +132,4 @@ class RegisterFormDialog extends React.Component<Props, IRegisterFormDialogState
   }
 }
 
-export default withStyles(styles)<IRegisterFormDialogProps>(RegisterFormDialog);
+export default withStyles(styles)(RegisterFormDialog);

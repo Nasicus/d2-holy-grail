@@ -55,7 +55,10 @@ class App {
   }
 }
 
-MongoClient.connect(ConfigManager.db.mongoUrl).then(mongoClient => {
+MongoClient.connect(
+  ConfigManager.db.mongoUrl,
+  { useNewUrlParser: true }
+).then(mongoClient => {
   const app = App.create(mongoClient);
   app.start();
 });

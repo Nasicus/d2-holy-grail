@@ -1,11 +1,10 @@
 import * as React from "react";
-import Dropzone, { ImageFile } from "react-dropzone";
-import { WithStyles, withStyles } from "@material-ui/core/styles";
-import { StyleRulesCallback } from "@material-ui/core";
+import Dropzone, { FileWithPreview } from "react-dropzone";
+import { Theme, createStyles, WithStyles, withStyles } from "@material-ui/core";
 
 export interface IFileUploaderProps {
   allowMultiple?: boolean;
-  onFilesDropped: (files: ImageFile[]) => any;
+  onFilesDropped: (files: FileWithPreview[]) => any;
   mimeTypes?: string[];
 }
 
@@ -13,29 +12,28 @@ interface IFileUploaderState {
   activeFileNames?: string[];
 }
 
-type ClassesType = "dropZone" | "dropZoneText";
+const styles = (theme: Theme) =>
+  createStyles({
+    dropZone: {
+      height: 50,
+      borderWidth: 2,
+      borderStyle: "dashed",
+      borderRadius: theme.spacing.unit,
+      borderColor: theme.palette.primary.main,
+      fontFamily: theme.typography.fontFamily,
+      color: theme.palette.text.primary,
+      cursor: "pointer",
+      marginTop: theme.spacing.unit,
+      marginBottom: theme.spacing.unit
+    },
+    dropZoneText: {
+      verticalAlign: "middle",
+      lineHeight: "50px",
+      padding: theme.spacing.unit
+    }
+  });
 
-const styles: StyleRulesCallback<ClassesType> = theme => ({
-  dropZone: {
-    height: 50,
-    borderWidth: 2,
-    borderStyle: "dashed",
-    borderRadius: theme.spacing.unit,
-    borderColor: theme.palette.primary.main,
-    fontFamily: theme.typography.fontFamily,
-    color: theme.palette.text.primary,
-    cursor: "pointer",
-    marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit
-  },
-  dropZoneText: {
-    verticalAlign: "middle",
-    lineHeight: "50px",
-    padding: theme.spacing.unit
-  }
-});
-
-type Props = IFileUploaderProps & WithStyles<ClassesType>;
+type Props = IFileUploaderProps & WithStyles<typeof styles>;
 
 class FileUploader extends React.Component<Props, IFileUploaderState> {
   public constructor(props: Props) {
@@ -50,7 +48,7 @@ class FileUploader extends React.Component<Props, IFileUploaderState> {
           accept={this.props.mimeTypes ? this.props.mimeTypes.join(", ") : null}
           className={this.props.classes.dropZone}
           multiple={this.props.allowMultiple}
-          onDropAccepted={(files: ImageFile[]) => {
+          onDropAccepted={(files: FileWithPreview[]) => {
             this.setState({ activeFileNames: files.map(f => f.name) });
             this.props.onFilesDropped(files);
           }}
@@ -66,4 +64,4 @@ class FileUploader extends React.Component<Props, IFileUploaderState> {
   }
 }
 
-export default withStyles(styles)<IFileUploaderProps>(FileUploader);
+export default withStyles(styles)(FileUploader);

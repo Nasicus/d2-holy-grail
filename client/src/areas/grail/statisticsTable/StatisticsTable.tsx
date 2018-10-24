@@ -1,13 +1,12 @@
 import * as React from "react";
 import { Util } from "../../../common/utils/Util";
-import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import { StyleRulesCallback, WithStyles } from "@material-ui/core";
+import { createStyles, WithStyles, Theme, withStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography/Typography";
 
 export interface IStatisticsTableProps {
@@ -18,24 +17,24 @@ export interface IStatisticsTableSTate {
   data: any;
 }
 
-type ClassesType = "root" | "table" | "total";
-type Props = IStatisticsTableProps & WithStyles<ClassesType>;
+const styles = (theme: Theme) =>
+  createStyles({
+    root: {
+      maxWidth: 700,
+      margin: "auto",
+      marginTop: theme.spacing.unit * 3,
+      overflowX: "auto"
+    },
+    table: {
+      maxWidth: 700
+    },
+    total: {
+      // todo: doesn't work somehow
+      ...theme.typography.subheading
+    }
+  });
 
-const styles: StyleRulesCallback<ClassesType> = theme => ({
-  root: {
-    maxWidth: 700,
-    margin: "auto",
-    marginTop: theme.spacing.unit * 3,
-    overflowX: "auto"
-  },
-  table: {
-    maxWidth: 700
-  },
-  total: {
-    // todo: doesn't work somehow
-    ...theme.typography.subheading
-  }
-});
+type Props = IStatisticsTableProps & WithStyles<typeof styles>;
 
 class Stats {
   public total: number = 0;
@@ -141,4 +140,4 @@ class StatisticsTable extends React.Component<Props, IStatisticsTableSTate> {
   }
 }
 
-export default withStyles(styles)<IStatisticsTableProps>(StatisticsTable);
+export default withStyles(styles)(StatisticsTable);

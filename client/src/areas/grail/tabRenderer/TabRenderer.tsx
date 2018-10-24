@@ -4,8 +4,7 @@ import AppBar from "@material-ui/core/AppBar/AppBar";
 import Tab from "@material-ui/core/Tab/Tab";
 import StatisticsTable from "../statisticsTable/StatisticsTable";
 import Typography from "@material-ui/core/Typography/Typography";
-import { StyleRulesCallback, WithStyles } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+import { Theme, WithStyles, createStyles, withStyles } from "@material-ui/core";
 import { DataRenderer, ILevels } from "../dataRenderer/DataRenderer";
 import { Util } from "../../../common/utils/Util";
 
@@ -29,14 +28,14 @@ enum TabType {
   MissingItems
 }
 
-type ClassesType = "root";
-type Props = ITabRendererProps & WithStyles<ClassesType>;
+const styles = (theme: Theme) =>
+  createStyles({
+    root: {
+      backgroundColor: theme.palette.background.paper
+    }
+  });
 
-const styles: StyleRulesCallback<ClassesType> = theme => ({
-  root: {
-    backgroundColor: theme.palette.background.paper
-  }
-});
+type Props = ITabRendererProps & WithStyles<typeof styles>;
 
 const TabContainer: React.SFC<{}> = props => {
   return (
@@ -140,4 +139,4 @@ class TabRenderer extends React.Component<Props, ITabRendererState> {
   };
 }
 
-export default withStyles(styles)<ITabRendererProps>(TabRenderer);
+export default withStyles(styles)(TabRenderer);

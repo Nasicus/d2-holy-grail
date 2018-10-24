@@ -16,10 +16,10 @@
     "precommit": "pretty-quick --staged"
   },
   "devDependencies": {
-    "concurrently": "^3.6.0",
-    "husky": "^0.14.3",
-    "prettier": "^1.13.5",
-    "pretty-quick": "^1.6.0"
+    "concurrently": "^4.0.1",
+    "husky": "^1.1.2",
+    "prettier": "^1.14.3",
+    "pretty-quick": "^1.8.0"
   },
   "prettier": {
     "printWidth": 120

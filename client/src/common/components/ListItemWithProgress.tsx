@@ -1,28 +1,26 @@
-import { WithStyles, withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import green from "@material-ui/core/colors/green";
-import { StyleRulesCallback, ListItem, ListItemIcon, ListItemText, Icon } from "@material-ui/core";
+import { ListItem, ListItemIcon, ListItemText, Icon, createStyles, WithStyles, withStyles } from "@material-ui/core";
 import * as React from "react";
 import * as classNames from "classnames";
 
-type ClassesType = "root" | "secondIcon" | "buttonProgress";
-
-const styles: StyleRulesCallback<ClassesType> = () => ({
-  root: {
-    display: "flex",
-    alignItems: "center"
-  },
-  secondIcon: {
-    color: green[500],
-    "&:hover": {
-      color: green[700]
+const styles = () =>
+  createStyles({
+    root: {
+      display: "flex",
+      alignItems: "center"
+    },
+    secondIcon: {
+      color: green[500],
+      "&:hover": {
+        color: green[700]
+      }
+    },
+    buttonProgress: {
+      color: green[500],
+      verticalAlign: "middle"
     }
-  },
-  buttonProgress: {
-    color: green[500],
-    verticalAlign: "middle"
-  }
-});
+  });
 
 export interface IListItemWithProgressProps {
   isLoading?: boolean;
@@ -35,7 +33,7 @@ export interface IListItemWithProgressProps {
   isDisabled?: boolean;
 }
 
-type Props = IListItemWithProgressProps & WithStyles<ClassesType>;
+type Props = IListItemWithProgressProps & WithStyles<typeof styles>;
 
 const ListItemWithProgress: React.SFC<Props> = props => {
   const { isLoading } = props;
@@ -60,4 +58,4 @@ const ListItemWithProgress: React.SFC<Props> = props => {
   );
 };
 
-export default withStyles(styles)<IListItemWithProgressProps>(ListItemWithProgress);
+export default withStyles(styles)(ListItemWithProgress);

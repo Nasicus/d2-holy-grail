@@ -1,9 +1,8 @@
 import TabRenderer from "./tabRenderer/TabRenderer";
 import SearchBox from "./searchBox/SearchBox";
 import { HolyGrailDataManager } from "./HolyGrailDataManager";
-import { StyleRulesCallback, WithStyles, Divider } from "@material-ui/core";
+import { createStyles, WithStyles, Divider, Theme, withStyles } from "@material-ui/core";
 import * as React from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import Typography from "@material-ui/core/Typography/Typography";
 import { ILoginInfo } from "../home/loginForm/LoginForm";
@@ -24,38 +23,37 @@ export interface IGrailAreaState {
   error?: string;
 }
 
-type ClassTypes = "tabs" | "searchContainer" | "rightButtonsContainer" | "leftButtonsContainer" | "buttonRow";
-
-const styles: StyleRulesCallback<ClassTypes> = theme => ({
-  tabs: {
-    marginTop: theme.spacing.unit * 4
-  },
-  searchContainer: {
-    maxWidth: 700,
-    margin: "auto",
-    textAlign: "center"
-  },
-  rightButtonsContainer: {
-    position: "fixed",
-    right: theme.spacing.unit,
-    bottom: theme.spacing.unit
-  },
-  leftButtonsContainer: {
-    position: "fixed",
-    left: theme.spacing.unit,
-    bottom: theme.spacing.unit
-  },
-  buttonRow: {
-    display: "flex",
-    justifyContent: "flex-end"
-  }
-});
+const styles = (theme: Theme) =>
+  createStyles({
+    tabs: {
+      marginTop: theme.spacing.unit * 4
+    },
+    searchContainer: {
+      maxWidth: 700,
+      margin: "auto",
+      textAlign: "center"
+    },
+    rightButtonsContainer: {
+      position: "fixed",
+      right: theme.spacing.unit,
+      bottom: theme.spacing.unit
+    },
+    leftButtonsContainer: {
+      position: "fixed",
+      left: theme.spacing.unit,
+      bottom: theme.spacing.unit
+    },
+    buttonRow: {
+      display: "flex",
+      justifyContent: "flex-end"
+    }
+  });
 
 export interface IGrailAreaRouterParams {
   address: string;
 }
 
-type Props = WithStyles<ClassTypes> & RouteComponentProps<IGrailAreaRouterParams>;
+type Props = WithStyles<typeof styles> & RouteComponentProps<IGrailAreaRouterParams>;
 
 class GrailArea extends React.Component<Props, IGrailAreaState> {
   public constructor(props: Props) {
@@ -141,4 +139,4 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
   };
 }
 
-export default withRouter(withStyles(styles)<RouteComponentProps<IGrailAreaRouterParams>>(GrailArea));
+export default withRouter(withStyles(styles)(GrailArea));
