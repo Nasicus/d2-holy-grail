@@ -1,7 +1,7 @@
 import TabRenderer from "./tabRenderer/TabRenderer";
 import SearchBox from "./searchBox/SearchBox";
 import { HolyGrailDataManager } from "./HolyGrailDataManager";
-import { createStyles, WithStyles, Divider, Theme, withStyles } from "@material-ui/core";
+import { createStyles, WithStyles, Divider, Theme, withStyles, CircularProgress } from "@material-ui/core";
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import Typography from "@material-ui/core/Typography/Typography";
@@ -19,8 +19,8 @@ import ListItemWithProgress from "../../common/components/ListItemWithProgress";
 export interface IGrailAreaState {
   searchResult?: Partial<IHolyGrailData>;
   data?: IHolyGrailData;
-  dataManager?: HolyGrailDataManager;
   error?: string;
+  loading?: boolean;
 }
 
 const styles = (theme: Theme) =>
@@ -46,6 +46,12 @@ const styles = (theme: Theme) =>
     buttonRow: {
       display: "flex",
       justifyContent: "flex-end"
+    },
+    loader: {
+      position: "fixed",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)"
     }
   });
 
@@ -58,16 +64,15 @@ type Props = WithStyles<typeof styles> & RouteComponentProps<IGrailAreaRouterPar
 class GrailArea extends React.Component<Props, IGrailAreaState> {
   public constructor(props: Props) {
     super(props);
-    this.state = {};
+    this.state = { loading: true };
   }
 
   public componentDidMount() {
     const loginInfo = (this.props.location.state || {}) as ILoginInfo;
     const address = loginInfo.address || this.props.match.params.address;
     const dataManager = HolyGrailDataManager.createInstance(address, loginInfo.password, loginInfo.keepLoggedIn);
-    this.setState({ dataManager });
     dataManager.data$.subscribe(
-      d => this.setState({ data: d.data }),
+      d => this.setState({ data: d.data, loading: false }),
       // todo: if we have local storage data, and an error occurs, only show a warning instead of an error
       // so you can also use the app offline
       err =>
@@ -88,6 +93,14 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
         <Typography variant="body1" align="center">
           {this.state.error}
         </Typography>
+      );
+    }
+
+    if (this.state.loading) {
+      return (
+        <div className={this.props.classes.loader}>
+          <CircularProgress size={100} />
+        </div>
       );
     }
 
