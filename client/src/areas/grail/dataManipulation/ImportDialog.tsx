@@ -5,7 +5,6 @@ import ButtonWithProgress from "../../../common/components/ButtonWithProgress";
 import { HolyGrailDataManager } from "../HolyGrailDataManager";
 import { Util } from "../../../common/utils/Util";
 import FileUploader from "../../../common/components/FIleUploader";
-import { FileWithPreview } from "react-dropzone";
 import CloseableDialog from "src/common/components/CloseableDialog";
 
 interface IImportDialogProps {
@@ -84,7 +83,7 @@ class ImportDialog extends React.Component<Props, IImportDialogState> {
     }
   }
 
-  private getContent(type: string, files: FileWithPreview[]) {
+  private getContent(type: string, files: File[]) {
     if (!files || !files.length) {
       return;
     }
@@ -102,7 +101,7 @@ class ImportDialog extends React.Component<Props, IImportDialogState> {
     return (
       <div className={this.props.classes.uploadContainer}>
         <Typography variant="subtitle1">{title}</Typography>
-        <FileUploader onFilesDropped={(files: FileWithPreview[]) => this.getContent(stateKey, files)} />
+        <FileUploader onFilesDropped={(files: File[]) => this.getContent(stateKey, files)} />
       </div>
     );
   }

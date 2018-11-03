@@ -1,10 +1,10 @@
 import * as React from "react";
-import Dropzone, { FileWithPreview } from "react-dropzone";
 import { Theme, createStyles, WithStyles, withStyles } from "@material-ui/core";
+import Dropzone from "react-dropzone";
 
 export interface IFileUploaderProps {
   allowMultiple?: boolean;
-  onFilesDropped: (files: FileWithPreview[]) => any;
+  onFilesDropped: (files: File[]) => any;
   mimeTypes?: string[];
 }
 
@@ -48,7 +48,7 @@ class FileUploader extends React.Component<Props, IFileUploaderState> {
           accept={this.props.mimeTypes ? this.props.mimeTypes.join(", ") : null}
           className={this.props.classes.dropZone}
           multiple={this.props.allowMultiple}
-          onDropAccepted={(files: FileWithPreview[]) => {
+          onDropAccepted={(files: File[]) => {
             this.setState({ activeFileNames: files.map(f => f.name) });
             this.props.onFilesDropped(files);
           }}
