@@ -12,7 +12,7 @@ interface IItemState {
   item: Item;
 }
 
-export class ItemRenderer extends React.Component<IItemProps, IItemState> {
+export class CheckboxItemRenderer extends React.Component<IItemProps, IItemState> {
   public constructor(props: IItemProps) {
     super(props);
     this.state = {
@@ -37,6 +37,6 @@ export class ItemRenderer extends React.Component<IItemProps, IItemState> {
   private onItemCheckBoxChanged = (item: Item, event: any) => {
     item.wasFound = event.target.checked;
     this.setState({ item: this.state.item });
-    HolyGrailDataManager.current.updateCache();
+    HolyGrailDataManager.current.updateGrailCache();
   };
 }

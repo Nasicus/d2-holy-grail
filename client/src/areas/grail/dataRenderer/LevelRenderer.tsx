@@ -54,7 +54,7 @@ class LevelRenderer extends React.Component<ILevelRendererProps, ILevelRendererS
     if (markAsFound != null) {
       Util.toggleData(markAsFound, data);
       this.setState({ showDialog: false });
-      HolyGrailDataManager.current.updateCache();
+      HolyGrailDataManager.current.updateGrailCache();
     } else {
       this.setState({ showDialog: false });
     }

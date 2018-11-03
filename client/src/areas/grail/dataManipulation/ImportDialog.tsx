@@ -1,17 +1,12 @@
 import * as React from "react";
 import { createStyles, WithStyles, Typography, Theme, withStyles } from "@material-ui/core";
-import Dialog from "@material-ui/core/Dialog/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText/DialogContentText";
-import DialogActions from "@material-ui/core/DialogActions/DialogActions";
-import Icon from "@material-ui/core/Icon/Icon";
 import ButtonWithProgress from "../../../common/components/ButtonWithProgress";
 import { HolyGrailDataManager } from "../HolyGrailDataManager";
-import { first } from "rxjs/operators";
 import { Util } from "../../../common/utils/Util";
 import FileUploader from "../../../common/components/FIleUploader";
 import { FileWithPreview } from "react-dropzone";
+import CloseableDialog from "src/common/components/CloseableDialog";
 
 interface IImportDialogProps {
   onDialogClosed: () => any;
@@ -52,18 +47,16 @@ class ImportDialog extends React.Component<Props, IImportDialogState> {
 
   private import = () => {
     this.setState({ isImporting: true });
-    HolyGrailDataManager.current.data$.pipe(first()).subscribe(r => {
-      const data = r.data;
-      const importedFoundItems: string[] = [];
-      this.importSection(data.uniques.armor, this.state.armor, importedFoundItems);
-      this.importSection(data.uniques.weapons, this.state.weapons, importedFoundItems);
-      this.importSection(data.uniques.other, this.state.other, importedFoundItems);
-      this.importSection(data.sets, this.state.sets, importedFoundItems);
-      if (importedFoundItems.length) {
-        HolyGrailDataManager.current.updateCache();
-      }
-      this.setState({ isImporting: false, numberOfImportedItems: importedFoundItems.length });
-    });
+    const data = HolyGrailDataManager.current.grail;
+    const importedFoundItems: string[] = [];
+    this.importSection(data.uniques.armor, this.state.armor, importedFoundItems);
+    this.importSection(data.uniques.weapons, this.state.weapons, importedFoundItems);
+    this.importSection(data.uniques.other, this.state.other, importedFoundItems);
+    this.importSection(data.sets, this.state.sets, importedFoundItems);
+    if (importedFoundItems.length) {
+      HolyGrailDataManager.current.updateGrailCache();
+    }
+    this.setState({ isImporting: false, numberOfImportedItems: importedFoundItems.length });
   };
 
   private importSection(possibleItem: any, importData: string, importedFoundItems: string[], itemName?: string) {
@@ -116,44 +109,10 @@ class ImportDialog extends React.Component<Props, IImportDialogState> {
 
   public render() {
     return (
-      <Dialog open={true} onClose={() => this.props.onDialogClosed()}>
-        <DialogTitle id="form-dialog-title">Import from CSV</DialogTitle>
-        <DialogContent>
-          <div>
-            <Icon className={this.props.classes.closeIcon} onClick={() => this.props.onDialogClosed()}>
-              close
-            </Icon>
-            {this.state.numberOfImportedItems != null && (
-              <DialogContentText className={this.props.classes.successMessage}>
-                The import was done! We imported {this.state.numberOfImportedItems} items! Close this dialog and check
-                if the data is correct. If it is, simply save the data to the server, if not just discard it!
-              </DialogContentText>
-            )}
-            {this.state.numberOfImportedItems == null && (
-              <DialogContentText>
-                You can import the data from the{" "}
-                <a
-                  href="https://docs.google.com/spreadsheets/d/1Sr7liMtMigd95IwWD6oa3Tky5oEjKzOKAk7pOmdmdCA"
-                  target="_blank"
-                >
-                  Google Holy Grail Sheet
-                </a>{" "}
-                here. You have to download each tab as CSV (
-                <span style={{ fontStyle: "italic", fontSize: "0.8em" }}>
-                  File => Download as => Comma-separated values (.csv current sheet)
-                </span>
-                ) and then upload the file here. You can also only import the tabs you want.
-              </DialogContentText>
-            )}
-            <div>
-              {this.getFileUploader("Unique Armor", "armor")}
-              {this.getFileUploader("Unique Weapons", "weapons")}
-              {this.getFileUploader("Unique Other", "other")}
-              {this.getFileUploader("Sets", "sets")}
-            </div>
-          </div>
-        </DialogContent>
-        <DialogActions>
+      <CloseableDialog
+        title="Import from CSV"
+        onDialogClosed={() => this.props.onDialogClosed()}
+        actions={() => (
           <ButtonWithProgress
             isLoading={this.state.isImporting}
             onClick={() => this.import()}
@@ -163,8 +122,37 @@ class ImportDialog extends React.Component<Props, IImportDialogState> {
               (!this.state.armor && !this.state.weapons && !this.state.other && !this.state.sets)
             }
           />
-        </DialogActions>
-      </Dialog>
+        )}
+      >
+        {this.state.numberOfImportedItems != null && (
+          <DialogContentText className={this.props.classes.successMessage}>
+            The import was done! We imported {this.state.numberOfImportedItems} items! Close this dialog and check if
+            the data is correct. If it is, simply save the data to the server, if not just discard it!
+          </DialogContentText>
+        )}
+        {this.state.numberOfImportedItems == null && (
+          <DialogContentText>
+            You can import the data from the{" "}
+            <a
+              href="https://docs.google.com/spreadsheets/d/1Sr7liMtMigd95IwWD6oa3Tky5oEjKzOKAk7pOmdmdCA"
+              target="_blank"
+            >
+              Google Holy Grail Sheet
+            </a>{" "}
+            here. You have to download each tab as CSV (
+            <span style={{ fontStyle: "italic", fontSize: "0.8em" }}>
+              File => Download as => Comma-separated values (.csv current sheet)
+            </span>
+            ) and then upload the file here. You can also only import the tabs you want.
+          </DialogContentText>
+        )}
+        <div>
+          {this.getFileUploader("Unique Armor", "armor")}
+          {this.getFileUploader("Unique Weapons", "weapons")}
+          {this.getFileUploader("Unique Other", "other")}
+          {this.getFileUploader("Sets", "sets")}
+        </div>
+      </CloseableDialog>
     );
   }
 }

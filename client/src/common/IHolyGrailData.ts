@@ -114,5 +114,5 @@ export interface IItems {
 }
 
 export class Item {
-  public constructor(public wasFound?: boolean) {}
+  public constructor(public wasFound?: number) {}
 }

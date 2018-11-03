@@ -56,9 +56,9 @@ export class Util {
 
     const item = data as Item;
     if (!markAsFound && item.wasFound) {
-      item.wasFound = false;
+      item.wasFound = 0;
     } else if (markAsFound && !item.wasFound) {
-      item.wasFound = true;
+      item.wasFound = 1;
     }
   }
 }

@@ -4,8 +4,10 @@ import * as classNames from "classnames";
 import LevelRenderer from "./LevelRenderer";
 import { WithStyles, createStyles, Theme, withStyles } from "@material-ui/core";
 import { Util } from "../../../common/utils/Util";
-import { ItemRenderer } from "./ItemRenderer";
+import { CheckboxItemRenderer } from "./CheckboxItemRenderer";
 import { ThemeStyle } from "@material-ui/core/styles/createTypography";
+import { HolyGrailDataManager } from "../HolyGrailDataManager";
+import CountItemRenderer from "./CountItemRenderer";
 
 export interface ILevels {
   level?: number;
@@ -95,7 +97,11 @@ const NextData: React.SFC<{
   modifyLevels: (level: ILevels, key: string) => ILevels;
 }> = props => {
   if (Util.isItem(props.nextData)) {
-    return <ItemRenderer itemName={props.levelKey} item={props.nextData} />;
+    return HolyGrailDataManager.current.settings.useItemCountMode ? (
+      <CountItemRenderer itemName={props.levelKey} item={props.nextData} />
+    ) : (
+      <CheckboxItemRenderer itemName={props.levelKey} item={props.nextData} />
+    );
   }
 
   return (

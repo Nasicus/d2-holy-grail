@@ -35,22 +35,53 @@ export class HolyGrailController {
     await this.getByAddress(req.params.address, res, grail => HolyGrailController.mapAndReturnGrailData(res, grail));
   };
 
-  public update = async (req: Request, res: Response) => {
+  public updateSettings = async (req: Request, res: Response) => {
     const address = req.params.address;
     const password = req.body.password;
-    const grailData = req.body.data;
+    const settings = req.body.settings;
     const token = req.body.token;
 
-    if (!grailData) {
-      res.status(500).send({ type: "argument", argumentName: "grailData" });
+    if (!settings) {
+      res.status(500).send({ type: "argument", argumentName: "settings" });
       return;
     }
 
+    await this.update(req, res, address, password, token, dataToSet => {
+      dataToSet.settings = settings;
+      return dataToSet;
+    });
+  };
+
+  public updateGrail = async (req: Request, res: Response) => {
+    const address = req.params.address;
+    const password = req.body.password;
+    const grailData = req.body.grail;
+    const token = req.body.token;
+
+    if (!grailData) {
+      res.status(500).send({ type: "argument", argumentName: "grail" });
+      return;
+    }
+
+    await this.update(req, res, address, password, token, dataToSet => {
+      dataToSet.data = grailData;
+      return dataToSet;
+    });
+  };
+
+  private update = async (
+    req: Request,
+    res: Response,
+    address: string,
+    password: string,
+    token: string,
+    modifyDataToSaveFunc: (data: Partial<IHolyGrailDb>) => Partial<IHolyGrailDb>
+  ) => {
     try {
       const result = await this.grailCollection.findOneAndUpdate(
         { address: address, password: password, token: token },
         {
-          $set: { data: grailData, token: HolyGrailController.getToken(), modified: new Date() },
+          $set: modifyDataToSaveFunc({ token: HolyGrailController.getToken(), modified: new Date() }),
           $inc: { updateCount: 1 }
         },
         { returnOriginal: false }
@@ -90,7 +121,7 @@ export class HolyGrailController {
 
   private static mapAndReturnGrailData(res: Response, grail: IHolyGrailDb) {
     // important: never send the grail grailData back directly, because the password is saved in there!
-    res.json({ address: grail.address, data: grail.data, token: grail.token } as IHolyGrail);
+    res.json({ address: grail.address, data: grail.data, settings: grail.settings, token: grail.token } as IHolyGrail);
   }
 
   private static sendUnknownError(res: Response, error?: any) {

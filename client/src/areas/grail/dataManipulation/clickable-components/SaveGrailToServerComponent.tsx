@@ -14,11 +14,11 @@ export interface IServerSaveButtonProps {
   renderAsListItem?: boolean;
 }
 
-class SaveToServerComponent extends React.Component<IServerSaveButtonProps, IServerSaveButtonState> {
+class SaveGrailToServerComponent extends React.Component<IServerSaveButtonProps, IServerSaveButtonState> {
   private secondIconTimeoutHandler: any;
   private localChangesSubscription: Subscription;
 
-  public constructor(props: {}) {
+  public constructor(props: IServerSaveButtonProps) {
     super(props);
     this.state = {};
   }
@@ -73,7 +73,7 @@ class SaveToServerComponent extends React.Component<IServerSaveButtonProps, ISer
     clearTimeout(this.secondIconTimeoutHandler);
     this.setState({ showSecondIcon: false, isSaving: true });
     HolyGrailDataManager.current
-      .updateServer()
+      .saveGrailToServer()
       .subscribe(this.onSaveSuccessful, () => this.setState({ showSecondIcon: false, isSaving: false }));
   };
 
@@ -86,4 +86,4 @@ class SaveToServerComponent extends React.Component<IServerSaveButtonProps, ISer
   };
 }
 
-export default SaveToServerComponent;
+export default SaveGrailToServerComponent;

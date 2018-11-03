@@ -33,6 +33,10 @@ const styles = (theme: Theme) =>
       color: green[500],
       verticalAlign: "middle",
       marginRight: theme.spacing.unit
+    },
+    secondIconNormalButton: {
+      verticalAlign: "middle",
+      marginRight: theme.spacing.unit
     }
   });
 
@@ -84,6 +88,7 @@ const ButtonWithProgress: React.SFC<Props> = props => {
       {!props.firstIcon && (
         <div className={classes.wrapper}>
           {isLoading && <CircularProgress size={24} className={classes.buttonProgress} />}
+          {showSecondIcon && <Icon className={classes.secondIconNormalButton}>{props.secondIcon}</Icon>}
           <Button
             variant="contained"
             color="primary"

@@ -1,7 +1,6 @@
 import * as React from "react";
 import { HolyGrailDataManager } from "../../HolyGrailDataManager";
 import ChoiceDialog, { IChoiceDialogButton } from "../../../../common/components/ChoiceDialog";
-import { first } from "rxjs/operators";
 import { Util } from "../../../../common/utils/Util";
 import { IHolyGrailData } from "../../../../common/IHolyGrailData";
 import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
@@ -61,12 +60,10 @@ class ToggleAllListItem extends React.Component<IToggleAllListItemProps, IToggle
 
   private onConfirmDialogClose = (markAsFound?: boolean) => {
     if (markAsFound != null) {
-      HolyGrailDataManager.current.data$.pipe(first()).subscribe(d => {
-        Util.toggleData(markAsFound, d.data);
-        this.setState({ showConfirm: false });
-        HolyGrailDataManager.current.updateCache();
-        this.props.onToggle(d.data);
-      });
+      Util.toggleData(markAsFound, HolyGrailDataManager.current.grail);
+      this.setState({ showConfirm: false });
+      HolyGrailDataManager.current.updateGrailCache();
+      this.props.onToggle(HolyGrailDataManager.current.grail);
     } else {
       this.setState({ showConfirm: false });
     }

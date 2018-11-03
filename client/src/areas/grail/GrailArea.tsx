@@ -6,7 +6,7 @@ import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import Typography from "@material-ui/core/Typography/Typography";
 import { ILoginInfo } from "../home/loginForm/LoginForm";
-import SaveToServerComponent from "./dataManipulation/clickable-components/SaveToServerComponent";
+import SaveGrailToServerComponent from "./dataManipulation/clickable-components/SaveGrailToServerComponent";
 import { IHolyGrailData } from "../../common/IHolyGrailData";
 import HomeButton from "./homeButton/HomeButton";
 import MenuButton from "./menu/MenuButton";
@@ -15,6 +15,7 @@ import ImportListItem from "./dataManipulation/clickable-components/ImportListIt
 import ToggleAllListItem from "./dataManipulation/clickable-components/ToggleAllListItem";
 import DiscardChangesComponent from "./dataManipulation/clickable-components/DiscardChangesComponent";
 import ListItemWithProgress from "../../common/components/ListItemWithProgress";
+import { SettingsListItem } from "./dataManipulation/clickable-components/SettingsListItem";
 
 export interface IGrailAreaState {
   searchResult?: Partial<IHolyGrailData>;
@@ -71,8 +72,8 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
     const loginInfo = (this.props.location.state || {}) as ILoginInfo;
     const address = loginInfo.address || this.props.match.params.address;
     const dataManager = HolyGrailDataManager.createInstance(address, loginInfo.password, loginInfo.keepLoggedIn);
-    dataManager.data$.subscribe(
-      d => this.setState({ data: d.data, loading: false }),
+    dataManager.initialize().subscribe(
+      () => this.setState({ data: dataManager.grail, loading: false }),
       // todo: if we have local storage data, and an error occurs, only show a warning instead of an error
       // so you can also use the app offline
       err =>
@@ -122,7 +123,7 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
 
         <div className={this.props.classes.rightButtonsContainer}>
           <div className={this.props.classes.buttonRow}>
-            <SaveToServerComponent />
+            <SaveGrailToServerComponent />
           </div>
           <div className={this.props.classes.buttonRow}>
             <DiscardChangesComponent />
@@ -135,11 +136,12 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
                 firstIcon="person"
               />
               <Divider />
-              <SaveToServerComponent renderAsListItem={true} />
+              <SaveGrailToServerComponent renderAsListItem={true} />
               <DiscardChangesComponent renderAsListItem={true} />
               <ToggleAllListItem onToggle={d => this.setState({ data: d })} />
               <ImportListItem />
               <ExportListItem />
+              <SettingsListItem onSettingsChanged={() => this.setState({ data: HolyGrailDataManager.current.grail })} />
             </MenuButton>
           </div>
         </div>

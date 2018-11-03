@@ -1,8 +1,8 @@
 import { LocalStorageHandler } from "../../common/utils/LocalStorageHandler";
-import { Api, IHolyGrailApiModel } from "../../common/utils/Api";
-import { first } from "rxjs/operators";
+import { Api, IHolyGrailApiModel, IHolyGrailSettings } from "../../common/utils/Api";
 import { holyGrailSeedData } from "./HolyGrailSeedData";
 import { ReplaySubject, Observable, Subscriber } from "rxjs";
+import { IHolyGrailData } from "../../common/IHolyGrailData";
 
 export class HolyGrailDataManager {
   public static get current(): HolyGrailDataManager {
@@ -10,17 +10,25 @@ export class HolyGrailDataManager {
   }
   private static _current: HolyGrailDataManager;
 
+  private data: IHolyGrailApiModel;
   private grailLocalStorage: LocalStorageHandler<IHolyGrailApiModel>;
   private hasLocalChangesStorage: LocalStorageHandler<boolean>;
 
-  private data = new ReplaySubject<IHolyGrailApiModel>(1);
-  public data$ = this.data.asObservable();
+  private dataInitializer = new ReplaySubject<void>(1);
 
   private hasLocalChanges = new ReplaySubject<boolean>(1);
   public hasLocalChanges$ = this.hasLocalChanges.asObservable();
 
   public get isReadOnly(): boolean {
     return !this.password;
+  }
+
+  public get settings(): IHolyGrailSettings {
+    return this.data.settings;
+  }
+
+  public get grail(): IHolyGrailData {
+    return this.data.data;
   }
 
   public static createInstance(address: string, password?: string, savePassword?: boolean): HolyGrailDataManager {
@@ -40,36 +48,49 @@ export class HolyGrailDataManager {
     this.initializeGrailData();
   }
 
-  public updateCache = () => {
-    // a little hacky: we get the current reference object of data from our subscriber object, since we update the item values
-    // via reference, however we don't want to simply write the whole object into the cache, instead we only want to update
-    // the data, and leave the token etc.alone
-    this.data$.pipe(first()).subscribe(newData => {
-      const cachedData = this.grailLocalStorage.getValue();
-      cachedData.data = newData.data;
-      this.updateLocaleStorage(cachedData, true);
-    });
+  public updateGrailCache = () => {
+    const cachedData = this.grailLocalStorage.getValue();
+    cachedData.data = this.grail;
+    this.updateLocaleStorage(cachedData, true);
   };
 
-  public discardCache = () => {
+  public discardGrailCache = () => {
     this.updateLocaleStorage(null, false);
   };
 
-  public updateServer = (): Observable<IHolyGrailApiModel> => {
-    return Observable.create((observer: Subscriber<IHolyGrailApiModel>) => {
-      this.data$.pipe(first()).subscribe(localData => {
-        Api.updateGrail(this.address, this.password, localData).subscribe(
-          response => {
-            this.updateLocaleStorage(response.data, false);
-            // update the token for the current object which we keep by reference everywhere
-            // we could also do this.with data$ next, however this would trigger state chances, even though the ui doesn't care
-            localData.token = response.data.token;
-            observer.next(response.data);
-            observer.complete();
-          },
-          err => observer.error(err)
-        );
-      });
+  public initialize(): Observable<void> {
+    return this.dataInitializer.asObservable();
+  }
+
+  public saveGrailToServer = (): Observable<void> => {
+    return Observable.create((observer: Subscriber<void>) => {
+      Api.updateGrail(this.address, this.password, this.data.token, this.grail).subscribe(
+        response => {
+          this.updateLocaleStorage(response.data, false);
+          // update the token for the current object which we keep by reference everywhere
+          // we could also do this.with ready$ next, however this would trigger state chances, even though the ui doesn't care
+          this.data.token = response.data.token;
+          observer.next();
+          observer.complete();
+        },
+        err => observer.error(err)
+      );
+    });
+  };
+
+  public saveSettingsToServer = (): Observable<void> => {
+    return Observable.create((observer: Subscriber<void>) => {
+      Api.updateSettings(this.address, this.password, this.data.token, this.settings).subscribe(
+        response => {
+          // we have to set back the data to the current grail data, or else we update the local storage with wrong data
+          response.data.data = this.grail;
+          this.data.token = response.data.token;
+          this.grailLocalStorage.setValue(response.data);
+          observer.next();
+          observer.complete();
+        },
+        err => observer.error(err)
+      );
     });
   };
 
@@ -92,7 +113,7 @@ export class HolyGrailDataManager {
     const cachedData = this.grailLocalStorage.getValue();
 
     if (cachedData) {
-      this.data.next(cachedData);
+      this.emitData(cachedData);
     }
 
     Api.getGrail(this.address).subscribe(
@@ -104,7 +125,7 @@ export class HolyGrailDataManager {
 
         if (!cachedData || (cachedData.token !== apiData.token && !this.hasLocalChangesStorage.getValue())) {
           this.grailLocalStorage.setValue(apiData);
-          this.data.next(apiData);
+          this.emitData(apiData);
           return;
         }
 
@@ -113,9 +134,17 @@ export class HolyGrailDataManager {
           return;
         }
 
-        this.data.error({ type: "conflict", serverToken: apiData.token, localToken: cachedData.token });
+        this.dataInitializer.error({ type: "conflict", serverToken: apiData.token, localToken: cachedData.token });
       },
-      err => this.data.error(err)
+      err => this.dataInitializer.error(err)
     );
+  }
+
+  private emitData(data: IHolyGrailApiModel) {
+    if (!data.settings) {
+      data.settings = {} as any;
+    }
+    this.data = data;
+    this.dataInitializer.next();
   }
 }

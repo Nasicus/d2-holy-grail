@@ -6,7 +6,6 @@ import ListItemWithProgress from "../../../../common/components/ListItemWithProg
 
 export interface IImportListItemState {
   isSaving?: boolean;
-  isEnabled?: boolean;
   showDialog?: boolean;
   hasChanges?: boolean;
 }
@@ -16,7 +15,7 @@ class ImportListItem extends React.Component<{}, IImportListItemState> {
 
   public constructor(props: {}) {
     super(props);
-    this.state = { isEnabled: true };
+    this.state = {};
   }
 
   public componentWillMount() {
@@ -40,7 +39,7 @@ class ImportListItem extends React.Component<{}, IImportListItemState> {
       <div>
         <ListItemWithProgress
           onClick={() => this.onImportButtonClick()}
-          isDisabled={!this.state.isEnabled || this.state.hasChanges}
+          isDisabled={this.state.hasChanges}
           primaryText="Import from CSV"
           firstIcon="backup"
         />

@@ -44,7 +44,9 @@ class App {
     this.express
       .route("/api/grail/:address")
       .get(grailController.get)
-      .put(grailController.update);
+      .put(grailController.updateGrail);
+
+    this.express.route("/api/grail/:address/settings").put(grailController.updateSettings);
   }
 
   private configureClient() {

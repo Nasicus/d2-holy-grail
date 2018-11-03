@@ -6,6 +6,11 @@ export interface IHolyGrailApiModel {
   password?: string;
   data: IHolyGrailData;
   token: string;
+  settings: IHolyGrailSettings;
+}
+
+export interface IHolyGrailSettings {
+  useItemCountMode: boolean;
 }
 
 export interface IApiResponse<T> {
@@ -28,14 +33,28 @@ export class Api {
   public static updateGrail(
     address: string,
     password: string,
-    data: IHolyGrailApiModel
+    token: string,
+    grail: IHolyGrailData
   ): Observable<IApiResponse<IHolyGrailApiModel>> {
-    // set the password to the body
-    data.password = password;
     return this.fetchToObservable(
       fetch(Api.apiUrl + address, {
         method: "put",
-        body: JSON.stringify(data),
+        body: JSON.stringify({ grail, password, token }),
+        headers: { "Content-Type": "application/json" }
+      })
+    );
+  }
+
+  public static updateSettings(
+    address: string,
+    password: string,
+    token: string,
+    settings: IHolyGrailSettings
+  ): Observable<IApiResponse<IHolyGrailApiModel>> {
+    return this.fetchToObservable(
+      fetch(`${Api.apiUrl}${address}/settings`, {
+        method: "put",
+        body: JSON.stringify({ settings, password, token }),
         headers: { "Content-Type": "application/json" }
       })
     );

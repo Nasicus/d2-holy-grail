@@ -69,7 +69,7 @@ class DiscardChangesComponent extends React.Component<IDiscardChangesButtonProps
 
   private onConfirmDialogClose = (ok?: boolean) => {
     if (ok) {
-      HolyGrailDataManager.current.discardCache();
+      HolyGrailDataManager.current.discardGrailCache();
       location.reload();
     }
     this.setState({ showConfirm: false });
