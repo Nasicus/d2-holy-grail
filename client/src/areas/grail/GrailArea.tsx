@@ -1,8 +1,8 @@
+import * as React from "react";
 import TabRenderer from "./tabRenderer/TabRenderer";
 import SearchBox from "./searchBox/SearchBox";
 import { HolyGrailDataManager } from "./HolyGrailDataManager";
-import { createStyles, WithStyles, Divider, Theme, withStyles, CircularProgress } from "@material-ui/core";
-import * as React from "react";
+import { CircularProgress, createStyles, Divider, Theme, withStyles, WithStyles } from "@material-ui/core";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import Typography from "@material-ui/core/Typography/Typography";
 import { ILoginInfo } from "../home/loginForm/LoginForm";
@@ -16,6 +16,7 @@ import ToggleAllListItem from "./dataManipulation/clickable-components/ToggleAll
 import DiscardChangesComponent from "./dataManipulation/clickable-components/DiscardChangesComponent";
 import ListItemWithProgress from "../../common/components/ListItemWithProgress";
 import { SettingsListItem } from "./dataManipulation/clickable-components/SettingsListItem";
+import VersionNotifier from "./VersionNotifier";
 
 export interface IGrailAreaState {
   searchResult?: Partial<IHolyGrailData>;
@@ -110,6 +111,7 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
     }
     return (
       <div>
+        <VersionNotifier />
         <div className={this.props.classes.searchContainer}>
           <SearchBox data={this.state.data} onSearchResult={this.onSearchResult} />
         </div>

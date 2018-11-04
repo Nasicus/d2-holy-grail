@@ -25,6 +25,10 @@ const styles = (theme: Theme) =>
     },
     dialogContent: {
       fontFamily: theme.typography.fontFamily
+    },
+    settingsEntry: {
+      display: "flex",
+      alignItems: "center"
     }
   });
 
@@ -51,12 +55,16 @@ class SettingsDialog extends React.Component<Props, ISettingsDialogState> {
       >
         <DialogContentText>You can change your settings here.</DialogContentText>
         <div className={this.props.classes.dialogContent}>
-          <Checkbox
-            checked={HolyGrailDataManager.current.settings.useItemCountMode}
-            onChange={event => this.onItemCountModeChange(event)}
-            value="Use counter instead of checkbox for items"
-          />
-          Use counters instead of checkboxes for items
+          <div className={this.props.classes.settingsEntry}>
+            <div>
+              <Checkbox
+                checked={HolyGrailDataManager.current.settings.useItemCountMode}
+                onChange={event => this.onItemCountModeChange(event)}
+                value="Use counter instead of checkbox for items"
+              />
+            </div>
+            <div>Use counters instead of checkboxes for items (you can switch between the modes without data loss)</div>
+          </div>
         </div>
       </CloseableDialog>
     );

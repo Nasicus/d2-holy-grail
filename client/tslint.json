@@ -11,6 +11,8 @@
     "no-debugger": false,
     "jsx-no-lambda": false,
     "max-classes-per-file": false,
-    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"]
+    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"],
+    "interface-over-type-literal": false,
+    "no-var-requires": false
   }
 }
