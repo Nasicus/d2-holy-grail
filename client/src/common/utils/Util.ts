@@ -1,4 +1,5 @@
-import { IHolyGrailData, Item } from "../IHolyGrailData";
+import { IHolyGrailData } from "../definitions/IHolyGrailData";
+import { Item } from "../definitions/IItems";
 
 export class Util {
   public static isItem(data: any): boolean {

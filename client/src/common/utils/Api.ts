@@ -1,10 +1,12 @@
 import { Observable, Subscriber } from "rxjs";
-import { IHolyGrailData } from "../IHolyGrailData";
+import { IHolyGrailData } from "../definitions/IHolyGrailData";
+import { IEthGrailData } from "../definitions/IEthGrailData";
 
 export interface IHolyGrailApiModel {
   address: string;
   password?: string;
   data: IHolyGrailData;
+  ethData: IEthGrailData;
   token: string;
   settings: IHolyGrailSettings;
 }
@@ -34,17 +36,17 @@ export class Api {
     address: string,
     password: string,
     token: string,
-    grail: IHolyGrailData
+    grail: IHolyGrailData,
+    ethGrail: IEthGrailData
   ): Observable<IApiResponse<IHolyGrailApiModel>> {
     return this.fetchToObservable(
       fetch(Api.apiUrl + address, {
         method: "put",
-        body: JSON.stringify({ grail, password, token }),
+        body: JSON.stringify({ grail, ethGrail, password, token }),
         headers: { "Content-Type": "application/json" }
       })
     );
   }
-
   public static updateSettings(
     address: string,
     password: string,

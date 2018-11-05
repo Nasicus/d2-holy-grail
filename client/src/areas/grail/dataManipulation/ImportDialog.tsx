@@ -46,7 +46,7 @@ class ImportDialog extends React.Component<Props, IImportDialogState> {
 
   private import = () => {
     this.setState({ isImporting: true });
-    const data = HolyGrailDataManager.current.grail;
+    const data = HolyGrailDataManager.current.normalGrail;
     const importedFoundItems: string[] = [];
     this.importSection(data.uniques.armor, this.state.armor, importedFoundItems);
     this.importSection(data.uniques.weapons, this.state.weapons, importedFoundItems);

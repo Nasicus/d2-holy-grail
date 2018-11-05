@@ -56,6 +56,7 @@ export class HolyGrailController {
     const address = req.params.address;
     const password = req.body.password;
     const grailData = req.body.grail;
+    const ethGrailData = req.body.ethGrail;
     const token = req.body.token;
 
     if (!grailData) {
@@ -65,6 +66,7 @@ export class HolyGrailController {
 
     await this.update(req, res, address, password, token, dataToSet => {
       dataToSet.data = grailData;
+      dataToSet.ethData = ethGrailData;
       return dataToSet;
     });
   };
@@ -121,7 +123,13 @@ export class HolyGrailController {
 
   private static mapAndReturnGrailData(res: Response, grail: IHolyGrailDb) {
     // important: never send the grail grailData back directly, because the password is saved in there!
-    res.json({ address: grail.address, data: grail.data, settings: grail.settings, token: grail.token } as IHolyGrail);
+    res.json({
+      address: grail.address,
+      data: grail.data,
+      ethData: grail.ethData,
+      settings: grail.settings,
+      token: grail.token
+    } as IHolyGrail);
   }
 
   private static sendUnknownError(res: Response, error?: any) {

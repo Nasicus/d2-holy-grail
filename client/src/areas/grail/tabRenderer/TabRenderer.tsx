@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography/Typography";
 import { Theme, WithStyles, createStyles, withStyles } from "@material-ui/core";
 import { DataRenderer, ILevels } from "../dataRenderer/DataRenderer";
 import { Util } from "../../../common/utils/Util";
+import { HolyGrailDataManager } from "../HolyGrailDataManager";
 
 export interface ITabRendererProps {
   allData: any;
@@ -88,13 +89,14 @@ class TabRenderer extends React.Component<Props, ITabRendererState> {
     if (this.props.searchData) {
       return null;
     }
+
     return [
       <Tab label="Unique Armor" key="tabUniqueArmor" value={TabType.UniqueArmor} />,
       <Tab label="Unique Weapons" key="tabUniqueWeapons" value={TabType.UniqueWeapons} />,
       <Tab label="Unique Other" key="tabUniqueOther" value={TabType.UniqueOther} />,
-      <Tab label="Sets" key="tabSets" value={TabType.Sets} />,
+      HolyGrailDataManager.current.isEthMode ? null : <Tab label="Sets" key="tabSets" value={TabType.Sets} />,
       <Tab label="Missing Items" key="tabMissingItems" value={TabType.MissingItems} />
-    ];
+    ].filter(t => !!t);
   }
 
   private getData() {

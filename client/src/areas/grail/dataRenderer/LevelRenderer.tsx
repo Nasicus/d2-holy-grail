@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Util } from "../../../common/utils/Util";
 import { DataRenderer, ILevels } from "./DataRenderer";
-import { IHolyGrailData } from "../../../common/IHolyGrailData";
+import { IHolyGrailData } from "../../../common/definitions/IHolyGrailData";
 import ChoiceDialog from "../../../common/components/ChoiceDialog";
 import { HolyGrailDataManager } from "../HolyGrailDataManager";
 

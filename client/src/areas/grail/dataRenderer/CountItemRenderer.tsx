@@ -1,8 +1,8 @@
 import * as React from "react";
 import * as classNames from "classnames";
 import { HolyGrailDataManager } from "../HolyGrailDataManager";
-import { Item } from "../../../common/IHolyGrailData";
 import { Icon, createStyles, WithStyles, withStyles } from "@material-ui/core";
+import { Item } from "../../../common/definitions/IItems";
 
 export interface IItemProps {
   item: Item;

@@ -2,11 +2,12 @@ import * as React from "react";
 import { HolyGrailDataManager } from "../../HolyGrailDataManager";
 import ChoiceDialog, { IChoiceDialogButton } from "../../../../common/components/ChoiceDialog";
 import { Util } from "../../../../common/utils/Util";
-import { IHolyGrailData } from "../../../../common/IHolyGrailData";
+import { IHolyGrailData } from "../../../../common/definitions/IHolyGrailData";
 import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
+import { IEthGrailData } from "../../../../common/definitions/IEthGrailData";
 
 export interface IToggleAllListItemProps {
-  onToggle(data: IHolyGrailData): any;
+  onToggle(data: IHolyGrailData | IEthGrailData): any;
 }
 
 export interface IToggleAllListItemState {

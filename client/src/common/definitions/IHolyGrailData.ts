@@ -1,3 +1,6 @@
+import { IItems } from "./IItems";
+import { IUniqueTypes } from "./IUniqueTypes";
+
 export interface IHolyGrailData {
   uniques: IUniqueItems;
   sets: ISetItems;
@@ -67,13 +70,6 @@ export interface IUniqueJewels {
   all: IItems;
 }
 
-export interface IUniqueTypes {
-  normal?: IItems;
-  exceptional?: IItems;
-  elite?: IItems;
-  all?: IItems;
-}
-
 export interface ISetItems {
   "Angelic Raiment": IItems;
   "Arcanna's Tricks": IItems;
@@ -107,12 +103,4 @@ export interface ISetItems {
   "Tal Rasha's Wrappings": IItems;
   "The Disciple": IItems;
   "Trang-Oul's Avatar": IItems;
-}
-
-export interface IItems {
-  [itemName: string]: Item;
-}
-
-export class Item {
-  public constructor(public wasFound?: number) {}
 }

@@ -2,7 +2,9 @@ import { LocalStorageHandler } from "../../common/utils/LocalStorageHandler";
 import { Api, IHolyGrailApiModel, IHolyGrailSettings } from "../../common/utils/Api";
 import { holyGrailSeedData } from "./HolyGrailSeedData";
 import { ReplaySubject, Observable, Subscriber } from "rxjs";
-import { IHolyGrailData } from "../../common/IHolyGrailData";
+import { IHolyGrailData } from "../../common/definitions/IHolyGrailData";
+import { IEthGrailData } from "../../common/definitions/IEthGrailData";
+import { ethGrailSeedData } from "./EthGrailSeedData";
 
 export class HolyGrailDataManager {
   public static get current(): HolyGrailDataManager {
@@ -27,15 +29,33 @@ export class HolyGrailDataManager {
     return this.data.settings;
   }
 
-  public get grail(): IHolyGrailData {
+  public get grail(): IHolyGrailData | IEthGrailData {
+    return this.isEthMode ? this.data.ethData : this.data.data;
+  }
+
+  public get normalGrail(): IHolyGrailData {
     return this.data.data;
   }
 
-  public static createInstance(address: string, password?: string, savePassword?: boolean): HolyGrailDataManager {
-    return (this._current = new HolyGrailDataManager(address, password, savePassword));
+  public get isEthMode(): boolean {
+    return this._isEthMode;
   }
 
-  private constructor(public readonly address: string, private password?: string, savePassword?: boolean) {
+  public static createInstance(
+    isEthMode: boolean,
+    address: string,
+    password?: string,
+    savePassword?: boolean
+  ): HolyGrailDataManager {
+    return (this._current = new HolyGrailDataManager(isEthMode, address, password, savePassword));
+  }
+
+  private constructor(
+    private _isEthMode: boolean,
+    public readonly address: string,
+    private password?: string,
+    savePassword?: boolean
+  ) {
     if (!address) {
       throw new Error("Address must be specified");
     }
@@ -48,9 +68,15 @@ export class HolyGrailDataManager {
     this.initializeGrailData();
   }
 
+  public setGrailMode(isEthMode: boolean) {
+    this._isEthMode = isEthMode;
+    this.dataInitializer.next();
+  }
+
   public updateGrailCache = () => {
     const cachedData = this.grailLocalStorage.getValue();
-    cachedData.data = this.grail;
+    cachedData.data = this.data.data;
+    cachedData.ethData = this.data.ethData;
     this.updateLocaleStorage(cachedData, true);
   };
 
@@ -64,7 +90,7 @@ export class HolyGrailDataManager {
 
   public saveGrailToServer = (): Observable<void> => {
     return Observable.create((observer: Subscriber<void>) => {
-      Api.updateGrail(this.address, this.password, this.data.token, this.grail).subscribe(
+      Api.updateGrail(this.address, this.password, this.data.token, this.data.data, this.data.ethData).subscribe(
         response => {
           this.updateLocaleStorage(response.data, false);
           // update the token for the current object which we keep by reference everywhere
@@ -83,7 +109,8 @@ export class HolyGrailDataManager {
       Api.updateSettings(this.address, this.password, this.data.token, this.settings).subscribe(
         response => {
           // we have to set back the data to the current grail data, or else we update the local storage with wrong data
-          response.data.data = this.grail;
+          response.data.data = this.data.data;
+          response.data.ethData = this.data.ethData;
           this.data.token = response.data.token;
           this.grailLocalStorage.setValue(response.data);
           observer.next();
@@ -119,10 +146,6 @@ export class HolyGrailDataManager {
     Api.getGrail(this.address).subscribe(
       response => {
         const apiData = response.data;
-        if (!apiData.data) {
-          apiData.data = holyGrailSeedData;
-        }
-
         if (!cachedData || (cachedData.token !== apiData.token && !this.hasLocalChangesStorage.getValue())) {
           this.grailLocalStorage.setValue(apiData);
           this.emitData(apiData);
@@ -141,9 +164,18 @@ export class HolyGrailDataManager {
   }
 
   private emitData(data: IHolyGrailApiModel) {
+    if (!data.data) {
+      data.data = holyGrailSeedData;
+    }
+
+    if (!data.ethData) {
+      data.ethData = ethGrailSeedData;
+    }
+
     if (!data.settings) {
       data.settings = {} as any;
     }
+
     this.data = data;
     this.dataInitializer.next();
   }

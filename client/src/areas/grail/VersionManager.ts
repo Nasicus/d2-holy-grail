@@ -18,27 +18,11 @@ export class VersionManager {
     return changeLogs;
   }
 
-  public get hasStoredVersion(): boolean {
-    return this._hasStoredVersion;
-  }
-
-  public get hasNewVersion(): boolean {
-    return this._hasNewVersion;
-  }
-
-  public get hasNewChangeLog(): boolean {
-    return this._hasNewChangeLog;
-  }
-
-  public get storedVersion(): string {
-    return this._storedVersion;
-  }
-
   private constructor(
-    private _storedVersion: string,
-    private _hasStoredVersion: boolean,
-    private _hasNewVersion: boolean,
-    private _hasNewChangeLog: boolean
+    public readonly storedVersion: string,
+    public readonly hasStoredVersion: boolean,
+    public readonly hasNewVersion: boolean,
+    public readonly hasNewChangeLog: boolean
   ) {}
 
   public static initialize(): VersionManager {

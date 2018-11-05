@@ -8,6 +8,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { createStyles, WithStyles, Theme, withStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography/Typography";
+import { HolyGrailDataManager } from "../HolyGrailDataManager";
 
 export interface IStatisticsTableProps {
   data: any;
@@ -29,7 +30,6 @@ const styles = (theme: Theme) =>
       maxWidth: 700
     },
     total: {
-      // todo: doesn't work somehow
       ...theme.typography.subheading
     }
   });
@@ -61,8 +61,8 @@ class StatisticsTable extends React.Component<Props, IStatisticsTableSTate> {
       this.calculateStats(() => this.state.data.uniques.armor, new Stats("Unique Armors")),
       this.calculateStats(() => this.state.data.uniques.weapons, new Stats("Unique Weapons")),
       this.calculateStats(() => this.state.data.uniques.other, new Stats("Unique Other")),
-      this.calculateStats(() => this.state.data.sets, new Stats("Sets"))
-    ];
+      HolyGrailDataManager.current.isEthMode ? null : this.calculateStats(() => this.state.data.sets, new Stats("Sets"))
+    ].filter(s => !!s);
 
     const totalStats = new Stats("Total");
     stats.reduce((accumulator, currentValue) => {

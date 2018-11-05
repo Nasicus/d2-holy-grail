@@ -1,7 +1,7 @@
 import * as React from "react";
 import Checkbox from "@material-ui/core/Checkbox/Checkbox";
 import { HolyGrailDataManager } from "../HolyGrailDataManager";
-import { Item } from "../../../common/IHolyGrailData";
+import { Item } from "../../../common/definitions/IItems";
 
 export interface IItemProps {
   item: Item;

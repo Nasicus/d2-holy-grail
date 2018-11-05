@@ -3,5 +3,6 @@ export interface IHolyGrail {
   password: string;
   token: string;
   data?: any;
+  ethData?: any;
   settings?: any;
 }

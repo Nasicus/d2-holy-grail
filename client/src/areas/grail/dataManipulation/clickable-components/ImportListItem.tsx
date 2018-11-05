@@ -31,7 +31,7 @@ class ImportListItem extends React.Component<{}, IImportListItemState> {
   }
 
   public render() {
-    if (HolyGrailDataManager.current.isReadOnly) {
+    if (HolyGrailDataManager.current.isReadOnly || HolyGrailDataManager.current.isEthMode) {
       return null;
     }
 

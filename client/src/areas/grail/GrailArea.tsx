@@ -7,7 +7,7 @@ import { RouteComponentProps, withRouter } from "react-router-dom";
 import Typography from "@material-ui/core/Typography/Typography";
 import { ILoginInfo } from "../home/loginForm/LoginForm";
 import SaveGrailToServerComponent from "./dataManipulation/clickable-components/SaveGrailToServerComponent";
-import { IHolyGrailData } from "../../common/IHolyGrailData";
+import { IHolyGrailData } from "../../common/definitions/IHolyGrailData";
 import HomeButton from "./homeButton/HomeButton";
 import MenuButton from "./menu/MenuButton";
 import ExportListItem from "./dataManipulation/clickable-components/ExportListItem";
@@ -17,10 +17,13 @@ import DiscardChangesComponent from "./dataManipulation/clickable-components/Dis
 import ListItemWithProgress from "../../common/components/ListItemWithProgress";
 import { SettingsListItem } from "./dataManipulation/clickable-components/SettingsListItem";
 import VersionNotifier from "./VersionNotifier";
+import { IEthGrailData } from "../../common/definitions/IEthGrailData";
+import { GrailTypeToggler } from "./dataManipulation/clickable-components/GrailTypeToggler";
+import { IPassDownAppProps } from "../../App";
 
 export interface IGrailAreaState {
   searchResult?: Partial<IHolyGrailData>;
-  data?: IHolyGrailData;
+  data?: IHolyGrailData | IEthGrailData;
   error?: string;
   loading?: boolean;
 }
@@ -59,9 +62,10 @@ const styles = (theme: Theme) =>
 
 export interface IGrailAreaRouterParams {
   address: string;
+  grailMode: string;
 }
 
-type Props = WithStyles<typeof styles> & RouteComponentProps<IGrailAreaRouterParams>;
+type Props = IPassDownAppProps & WithStyles<typeof styles> & RouteComponentProps<IGrailAreaRouterParams>;
 
 class GrailArea extends React.Component<Props, IGrailAreaState> {
   public constructor(props: Props) {
@@ -69,10 +73,30 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
     this.state = { loading: true };
   }
 
+  public static getDerivedStateFromProps(props: Props, state: IGrailAreaState) {
+    const isNowEthMode = props.match.params.grailMode === "eth";
+    if (HolyGrailDataManager.current && HolyGrailDataManager.current.isEthMode !== isNowEthMode) {
+      state.loading = true;
+      state.data = null;
+      state.searchResult = null;
+      HolyGrailDataManager.current.setGrailMode(isNowEthMode);
+      props.onGrailModeChange(isNowEthMode);
+    }
+
+    return state;
+  }
+
   public componentDidMount() {
     const loginInfo = (this.props.location.state || {}) as ILoginInfo;
     const address = loginInfo.address || this.props.match.params.address;
-    const dataManager = HolyGrailDataManager.createInstance(address, loginInfo.password, loginInfo.keepLoggedIn);
+    const isEthMode = this.props.match.params.grailMode === "eth";
+    this.props.onGrailModeChange(isEthMode);
+    const dataManager = HolyGrailDataManager.createInstance(
+      isEthMode,
+      address,
+      loginInfo.password,
+      loginInfo.keepLoggedIn
+    );
     dataManager.initialize().subscribe(
       () => this.setState({ data: dataManager.grail, loading: false }),
       // todo: if we have local storage data, and an error occurs, only show a warning instead of an error
@@ -131,6 +155,9 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
             <DiscardChangesComponent />
           </div>
           <div className={this.props.classes.buttonRow}>
+            <GrailTypeToggler isEthMode={HolyGrailDataManager.current.isEthMode} />
+          </div>
+          <div className={this.props.classes.buttonRow}>
             <MenuButton>
               <ListItemWithProgress
                 primaryText={HolyGrailDataManager.current.address}
@@ -143,6 +170,7 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
               <ToggleAllListItem onToggle={d => this.setState({ data: d })} />
               <ImportListItem />
               <ExportListItem />
+              <GrailTypeToggler renderAsListItem={true} isEthMode={HolyGrailDataManager.current.isEthMode} />
               <SettingsListItem onSettingsChanged={() => this.setState({ data: HolyGrailDataManager.current.grail })} />
             </MenuButton>
           </div>

@@ -4,11 +4,12 @@ import Icon from "@material-ui/core/Icon/Icon";
 import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 import { ChangeEvent } from "react";
-import { IHolyGrailData } from "../../../common/IHolyGrailData";
+import { IHolyGrailData } from "../../../common/definitions/IHolyGrailData";
 import { Util } from "../../../common/utils/Util";
+import { IEthGrailData } from "../../../common/definitions/IEthGrailData";
 
 export interface ISearchBoxProps {
-  data: IHolyGrailData;
+  data: IHolyGrailData | IEthGrailData;
   onSearchResult: (result: Partial<IHolyGrailData>) => any;
 }
 

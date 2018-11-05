@@ -6,5 +6,6 @@ export interface IHolyGrailDb {
   modified: Date;
   updateCount: number;
   data?: any;
+  ethData?: any;
   settings?: any;
 }
