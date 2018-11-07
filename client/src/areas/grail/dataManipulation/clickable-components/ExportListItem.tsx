@@ -22,7 +22,7 @@ class ExportListItem extends React.Component<{}, IExportListItemState> {
           onClick={() => this.onExportButtonClick()}
           isLoading={this.state.isExporting}
           showSecondIcon={this.state.showSecondIcon}
-          primaryText="Export grail data"
+          primaryText={`Export ${HolyGrailDataManager.current.isEthMode ? "Eth" : "Holy"} Grail data`}
           firstIcon="get_app"
           secondIcon="check"
         />
@@ -37,7 +37,9 @@ class ExportListItem extends React.Component<{}, IExportListItemState> {
   };
 
   private download() {
-    const fileName = `HolyGrail_${HolyGrailDataManager.current.address}.json`;
+    const fileName = `${HolyGrailDataManager.current.isEthMode ? "Eth" : "Holy"}Grail_${
+      HolyGrailDataManager.current.address
+    }.json`;
     const file = new Blob([JSON.stringify(HolyGrailDataManager.current.grail, null, 2)], { type: "text/json" });
     const isIE = !!(document as any).documentMode;
     if (isIE) {
