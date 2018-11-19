@@ -2,9 +2,9 @@
   "name": "d2-holy-grail-server",
   "version": "1.0.0",
   "scripts": {
-    "dev": "ts-node ./src/App.ts",
+    "dev": "ts-node ./src/Init.ts",
     "build": "tsc",
-    "prod": "node ./dist/App.js"
+    "prod": "node ./dist/Init.js"
   },
   "author": "",
   "license": "ISC",
