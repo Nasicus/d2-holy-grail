@@ -12,11 +12,11 @@ function initializeExpressServer(express: expressServer.Express): void {
   express.use(cors());
 }
 
-function initializeExpressServerForClient(express: expressServer.Express) {
+function initializeExpressServerForClient(express: expressServer.Express, rootDirectoryPath: string) {
   // Serve any static files
-  express.use(expressServer.static(path.join(__dirname, "client")));
+  express.use(expressServer.static(path.join(rootDirectoryPath, "client")));
   // Handle React routing, return all requests to React app
-  express.get("*", (req, res) => res.sendFile(path.join(__dirname, "client", "index.html")));
+  express.get("*", (req, res) => res.sendFile(path.join(rootDirectoryPath, "client", "index.html")));
 }
 
 function configureRoutes(db: Db, express: expressServer.Express): void {
@@ -32,15 +32,15 @@ function configureRoutes(db: Db, express: expressServer.Express): void {
   express.route("/api/grail/:address/settings").put(grailController.updateSettings);
 }
 
-export function initializeApp(db: Db) {
+export function initializeApp(db: Db, rootDirectoryPath: string) {
   const express = expressServer();
   initializeExpressServer(express);
 
-  if (process.env.NODE_ENV === "production") {
-    initializeExpressServerForClient(express);
-  }
-
   configureRoutes(db, express);
+
+  if (process.env.NODE_ENV === "production") {
+    initializeExpressServerForClient(express, rootDirectoryPath);
+  }
 
   express.listen(ConfigManager.port, () => {
     console.log("Express server listening on port " + ConfigManager.port);
