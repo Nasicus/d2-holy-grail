@@ -48,6 +48,7 @@ export interface IButtonWithProgressProps {
   secondIcon?: string;
   text?: string;
   isDisabled?: boolean;
+  className?: string;
 }
 
 type Props = IButtonWithProgressProps & WithStyles<typeof styles>;
@@ -60,14 +61,14 @@ const ButtonWithProgress: React.SFC<Props> = props => {
     props.onClick();
   };
 
-  const { isLoading, showSecondIcon } = props;
+  const { isLoading, showSecondIcon, className } = props;
   const { classes } = props;
   const buttonClassName = classNames({
     [classes.buttonSuccess]: showSecondIcon
   });
 
   return (
-    <div className={classes.root}>
+    <div className={classNames(classes.root, className)}>
       {!!props.firstIcon && (
         <div className={classes.wrapper}>
           <div>

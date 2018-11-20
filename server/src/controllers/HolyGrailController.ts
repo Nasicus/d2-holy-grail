@@ -78,6 +78,23 @@ export class HolyGrailController {
     });
   };
 
+  public validatePassword = async (req: Request, res: Response) => {
+    const address = req.params.address;
+    const password = req.body.password;
+
+    if (!password && address) {
+      res.json(false);
+      return;
+    }
+
+    const grail = await this.grailCollection.findOne({ address: this.trimAndToLower(address) });
+    if (!grail) {
+      res.status(404).send({ type: "notFound", address });
+    } else {
+      res.json(grail.password === password);
+    }
+  };
+
   private update = async (
     req: Request,
     res: Response,

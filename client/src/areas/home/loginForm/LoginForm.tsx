@@ -8,6 +8,8 @@ import Typography from "@material-ui/core/Typography/Typography";
 import RegisterFormDialog from "../registerForm/RegisterFormDialog";
 import Icon from "@material-ui/core/Icon/Icon";
 import Paper from "@material-ui/core/Paper/Paper";
+import { Api } from "../../../common/utils/Api";
+import ButtonWithProgress from "../../../common/components/ButtonWithProgress";
 
 export interface ILoginInfo {
   address?: string;
@@ -18,6 +20,8 @@ export interface ILoginInfo {
 interface ILoginFormState extends ILoginInfo {
   doLogin?: boolean;
   renderRegisterDialog?: boolean;
+  isLoading?: boolean;
+  error?: string;
 }
 
 const styles = (theme: Theme) =>
@@ -30,9 +34,13 @@ const styles = (theme: Theme) =>
       width: 300,
       marginTop: theme.spacing.unit * 2
     },
-    loginButton: {
-      margin: theme.spacing.unit * 2,
+    loginButtonContainer: {
       marginLeft: 0
+    },
+    loginButtonWithProgressWrapper: {
+      "& > div": {
+        marginLeft: 0
+      }
     },
     createInfo: {
       width: 300,
@@ -52,6 +60,12 @@ const styles = (theme: Theme) =>
     },
     infoIcon: {
       alignSelf: "center"
+    },
+    error: {
+      color: theme.palette.error.main
+    },
+    keepMeLoggedInBox: {
+      paddingLeft: 0
     }
   });
 
@@ -68,7 +82,29 @@ class LoginForm extends React.Component<Props, ILoginFormState> {
       return;
     }
 
-    this.setState({ doLogin: true });
+    if (!this.state.password) {
+      this.setState({ doLogin: true });
+      return;
+    }
+
+    this.setState({ isLoading: true });
+    Api.validatePassword(this.state.address, this.state.password).subscribe(
+      r => {
+        if (r.data) {
+          this.setState({ doLogin: true });
+        } else {
+          this.setState({ isLoading: false, error: "The entered password is not correct." });
+        }
+      },
+      res => {
+        if (res.status === 404) {
+          // if we have a 404 just do a login, because it will be handled there
+          this.setState({ doLogin: true });
+        } else {
+          this.setState({ isLoading: false, error: "An error occurred when trying to validate your password." });
+        }
+      }
+    );
   };
 
   private onKeyPress = (e: any) => {
@@ -129,14 +165,26 @@ class LoginForm extends React.Component<Props, ILoginFormState> {
           <div>
             {this.state.password && (
               <div>
-                <Checkbox onChange={e => this.setState({ keepLoggedIn: e.target.checked })} /> Keep me logged in
+                <Checkbox
+                  onChange={e => this.setState({ keepLoggedIn: e.target.checked })}
+                  className={this.props.classes.keepMeLoggedInBox}
+                />{" "}
+                Keep me logged in
               </div>
             )}
           </div>
         </div>
-        <Button className={this.props.classes.loginButton} disabled={!this.state.address} onClick={this.login}>
-          {this.state.password ? "Login" : "View"}
-        </Button>
+
+        <div className={this.props.classes.loginButtonContainer}>
+          {this.state.error && <div className={this.props.classes.error}>{this.state.error}</div>}
+          <ButtonWithProgress
+            className={this.props.classes.loginButtonWithProgressWrapper}
+            isLoading={this.state.isLoading}
+            isDisabled={!this.state.address}
+            onClick={this.login}
+            text={this.state.password ? "Login" : "View"}
+          />
+        </div>
         <Paper className={this.props.classes.createInfo}>
           Don't have an own Holy Grail yet?
           <Button

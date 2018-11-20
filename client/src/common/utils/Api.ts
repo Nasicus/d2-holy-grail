@@ -74,14 +74,22 @@ export class Api {
     );
   }
 
-  private static fetchToObservable = (
-    fetchPromise: Promise<Response>
-  ): Observable<IApiResponse<IHolyGrailApiModel>> => {
-    return Observable.create(async (observer: Subscriber<IApiResponse<IHolyGrailApiModel>>) => {
+  public static validatePassword(address: string, password: string): Observable<IApiResponse<boolean>> {
+    return this.fetchToObservable(
+      fetch(`${Api.apiUrl}${address}/password/validate`, {
+        method: "put",
+        body: JSON.stringify({ password }),
+        headers: { "Content-Type": "application/json" }
+      })
+    );
+  }
+
+  private static fetchToObservable = <T>(fetchPromise: Promise<Response>): Observable<IApiResponse<T>> => {
+    return Observable.create(async (observer: Subscriber<IApiResponse<T>>) => {
       try {
         const response = await fetchPromise;
         if (!response) {
-          observer.error({ status: 500, data: null });
+          observer.error({ status: 500, data: undefined });
           return;
         }
 

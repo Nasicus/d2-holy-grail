@@ -30,6 +30,7 @@ function configureRoutes(db: Db, express: expressServer.Express): void {
     .put(grailController.updateGrail);
 
   express.route("/api/grail/:address/settings").put(grailController.updateSettings);
+  express.route("/api/grail/:address/password/validate").put(grailController.validatePassword);
 }
 
 export function initializeApp(db: Db, rootDirectoryPath: string) {
