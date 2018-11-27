@@ -7,6 +7,7 @@ import { ChangeEvent } from "react";
 import { IHolyGrailData } from "../../../common/definitions/IHolyGrailData";
 import { Util } from "../../../common/utils/Util";
 import { IEthGrailData } from "../../../common/definitions/IEthGrailData";
+import { Item } from "../../../common/definitions/IItems";
 
 export interface ISearchBoxProps {
   data: IHolyGrailData | IEthGrailData;
@@ -66,7 +67,12 @@ class SearchBox extends React.Component<Props, ISearchBoxState> {
       return;
     }
 
-    const result = Util.findData(k => k.toLowerCase().indexOf(value.toLowerCase()) > -1, data);
+    const result = Util.findData(
+      (k: string, i: Item) =>
+        k.toLowerCase().indexOf(value.toLowerCase()) > -1 ||
+        (i.note && i.note.toLowerCase().indexOf(value.toLowerCase()) > -1),
+      data
+    );
     this.props.onSearchResult(result);
   };
 }

@@ -10,6 +10,7 @@ interface ISettingsDialogProps {
   onDialogClosed: () => any;
   title: string;
   actions?: () => JSX.Element;
+  className?: string;
 }
 
 const styles = (theme: Theme) =>
@@ -29,7 +30,7 @@ const CloseableDialog: React.SFC<Props> = props => {
     <Dialog open={true} onClose={() => props.onDialogClosed()}>
       <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
       <DialogContent>
-        <div>
+        <div className={props.className}>
           <Icon className={props.classes.closeIcon} onClick={() => props.onDialogClosed()}>
             close
           </Icon>

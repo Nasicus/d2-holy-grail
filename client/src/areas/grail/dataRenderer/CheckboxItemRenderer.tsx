@@ -2,6 +2,8 @@ import * as React from "react";
 import Checkbox from "@material-ui/core/Checkbox/Checkbox";
 import { HolyGrailDataManager } from "../HolyGrailDataManager";
 import { Item } from "../../../common/definitions/IItems";
+import { ItemName } from "./ItemName";
+import { withStyles, createStyles, WithStyles } from "@material-ui/core";
 
 export interface IItemProps {
   item: Item;
@@ -11,9 +13,18 @@ export interface IItemProps {
 interface IItemState {
   item: Item;
 }
+const styles = () =>
+  createStyles({
+    container: {
+      display: "flex",
+      alignItems: "center"
+    }
+  });
 
-export class CheckboxItemRenderer extends React.Component<IItemProps, IItemState> {
-  public constructor(props: IItemProps) {
+type Props = IItemProps & WithStyles<typeof styles>;
+
+class CheckboxItemRendererComponent extends React.Component<Props, IItemState> {
+  public constructor(props: Props) {
     super(props);
     this.state = {
       item: this.props.item
@@ -22,14 +33,14 @@ export class CheckboxItemRenderer extends React.Component<IItemProps, IItemState
 
   public render() {
     return (
-      <div>
+      <div className={this.props.classes.container}>
         <Checkbox
           disabled={HolyGrailDataManager.current.isReadOnly}
           checked={!!this.state.item.wasFound}
           onChange={event => this.onItemCheckBoxChanged(this.state.item, event)}
           value={this.props.itemName}
         />
-        {this.props.itemName}
+        <ItemName itemName={this.props.itemName} item={this.props.item} />
       </div>
     );
   }
@@ -40,3 +51,5 @@ export class CheckboxItemRenderer extends React.Component<IItemProps, IItemState
     HolyGrailDataManager.current.updateGrailCache();
   };
 }
+
+export const CheckboxItemRenderer = withStyles(styles)(CheckboxItemRendererComponent);

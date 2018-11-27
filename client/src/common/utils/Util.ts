@@ -30,17 +30,19 @@ export class Util {
       dataResultFunc = () => resultObj;
     }
 
-    Object.keys(dataToSearch).forEach(key => {
-      const subData = dataToSearch[key];
-      if (condition(key, subData)) {
-        dataResultFunc()[key] = subData;
-      } else {
-        this.findData(condition, subData, () => {
-          const parentObj = dataResultFunc();
-          return parentObj[key] || (parentObj[key] = {});
-        });
-      }
-    });
+    if (typeof dataToSearch === "object") {
+      Object.keys(dataToSearch).forEach(key => {
+        const subData = dataToSearch[key];
+        if (condition(key, subData)) {
+          dataResultFunc()[key] = subData;
+        } else {
+          this.findData(condition, subData, () => {
+            const parentObj = dataResultFunc();
+            return parentObj[key] || (parentObj[key] = {});
+          });
+        }
+      });
+    }
 
     return resultObj;
   }

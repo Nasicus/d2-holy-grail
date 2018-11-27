@@ -3,6 +3,7 @@ import * as classNames from "classnames";
 import { HolyGrailDataManager } from "../HolyGrailDataManager";
 import { Icon, createStyles, WithStyles, withStyles } from "@material-ui/core";
 import { Item } from "../../../common/definitions/IItems";
+import { ItemName } from "./ItemName";
 
 export interface IItemProps {
   item: Item;
@@ -17,7 +18,8 @@ interface IItemState {
 const styles = () =>
   createStyles({
     container: {
-      padding: "3px 0 3px 0"
+      padding: "3px 0 3px 0",
+      display: "flex"
     },
     arrow: {
       verticalAlign: "middle",
@@ -73,7 +75,7 @@ class CountItemRenderer extends React.Component<Props, IItemState> {
             keyboard_arrow_up
           </Icon>
         </span>
-        {this.props.itemName}
+        <ItemName itemName={this.props.itemName} item={this.props.item} />
       </div>
     );
   }

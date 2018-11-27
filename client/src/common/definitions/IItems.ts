@@ -3,5 +3,6 @@ export interface IItems {
 }
 
 export class Item {
+  public note?: string;
   public constructor(public wasFound?: number) {}
 }
