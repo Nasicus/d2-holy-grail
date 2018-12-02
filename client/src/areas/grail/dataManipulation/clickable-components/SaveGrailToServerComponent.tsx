@@ -4,6 +4,8 @@ import ButtonWithProgress from "../../../../common/components/ButtonWithProgress
 import { Subscription } from "rxjs";
 import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
 import { ErrorNotification } from "../../../../common/components/ErrorNotification";
+import * as Mousetrap from "mousetrap";
+require("mousetrap-global-bind");
 
 export interface IServerSaveButtonState {
   isSaving?: boolean;
@@ -17,6 +19,7 @@ export interface IServerSaveButtonProps {
   text?: string;
   token?: string;
   reload?: boolean;
+  registerShortCut?: boolean;
 }
 
 class SaveGrailToServerComponent extends React.Component<IServerSaveButtonProps, IServerSaveButtonState> {
@@ -34,9 +37,22 @@ class SaveGrailToServerComponent extends React.Component<IServerSaveButtonProps,
     );
   }
 
+  public componentDidMount(): void {
+    if (this.props.registerShortCut) {
+      Mousetrap.bindGlobal(["command+s", "ctrl+s"], () => {
+        this.onSaveButtonClick();
+        return false;
+      });
+    }
+  }
+
   public componentWillUnmount() {
     if (this.localChangesSubscription) {
       this.localChangesSubscription.unsubscribe();
+    }
+
+    if (this.props.registerShortCut) {
+      Mousetrap.unbind(["command+s", "ctrl+s"]);
     }
   }
 

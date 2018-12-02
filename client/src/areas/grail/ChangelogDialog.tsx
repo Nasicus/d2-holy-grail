@@ -7,6 +7,22 @@ export interface IChangelogDialogProps {
   onClose: () => any;
 }
 
+function renderEntry(entry: string | { change: string; children: string[] }) {
+  const withChildren = entry as { change: string; children: string[] };
+  let change = entry as string;
+  let children: string[] = [];
+  if (typeof entry !== "string") {
+    change = withChildren.change;
+    children = withChildren.children;
+  }
+
+  return (
+    <li key={change}>
+      {change}
+      {children.length > 0 && <ul>{children.map(childEntry => renderEntry(childEntry))}</ul>}
+    </li>
+  );
+}
 export const ChangelogDialog: React.SFC<IChangelogDialogProps> = props => {
   const changeLog = VersionManager.current.fullChangeLog;
 
@@ -19,7 +35,7 @@ export const ChangelogDialog: React.SFC<IChangelogDialogProps> = props => {
               <h3>{version}</h3>
               <ul>
                 {changeLog[version].map(versionEntry => {
-                  return <li key={versionEntry}>{versionEntry}</li>;
+                  return renderEntry(versionEntry);
                 })}
               </ul>
             </div>

@@ -137,7 +137,7 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
 
         <div className={this.props.classes.rightButtonsContainer}>
           <div className={this.props.classes.buttonRow}>
-            <SaveGrailToServerComponent />
+            <SaveGrailToServerComponent registerShortCut={true} />
           </div>
           <div className={this.props.classes.buttonRow}>
             <DiscardChangesComponent />
