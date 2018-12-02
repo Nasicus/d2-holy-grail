@@ -1,10 +1,9 @@
 import * as React from "react";
 import TabRenderer from "./tabRenderer/TabRenderer";
 import SearchBox from "./searchBox/SearchBox";
-import { HolyGrailDataManager } from "./HolyGrailDataManager";
+import { HolyGrailDataManager, IGrailError } from "./HolyGrailDataManager";
 import { CircularProgress, createStyles, Divider, Theme, withStyles, WithStyles } from "@material-ui/core";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import Typography from "@material-ui/core/Typography/Typography";
 import { ILoginInfo } from "../home/loginForm/LoginForm";
 import SaveGrailToServerComponent from "./dataManipulation/clickable-components/SaveGrailToServerComponent";
 import { IHolyGrailData } from "../../common/definitions/IHolyGrailData";
@@ -20,11 +19,12 @@ import VersionNotifier from "./VersionNotifier";
 import { IEthGrailData } from "../../common/definitions/IEthGrailData";
 import { GrailTypeToggler } from "./dataManipulation/clickable-components/GrailTypeToggler";
 import { IPassDownAppProps } from "../../App";
+import { GrailErrorHandler } from "./GrailErrorHandler";
 
 export interface IGrailAreaState {
   searchResult?: Partial<IHolyGrailData>;
   data?: IHolyGrailData | IEthGrailData;
-  error?: string;
+  error?: IGrailError;
   loading?: boolean;
 }
 
@@ -101,25 +101,13 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
       () => this.setState({ data: dataManager.grail, loading: false }),
       // todo: if we have local storage data, and an error occurs, only show a warning instead of an error
       // so you can also use the app offline
-      err =>
-        this.setState({
-          error:
-            err.status === 404
-              ? `No Holy Grail for the address '${address}' exists!`
-              : err.type === "conflict"
-                ? "There was a conflict! The server data changed, but you also have local changes"
-                : "There was an error getting the Holy Grail Data from the server: "
-        })
+      (err: IGrailError) => this.setState({ error: err })
     );
   }
 
   public render() {
     if (this.state.error) {
-      return (
-        <Typography variant="body1" align="center">
-          {this.state.error}
-        </Typography>
-      );
+      return <GrailErrorHandler error={this.state.error} />;
     }
 
     if (this.state.loading) {

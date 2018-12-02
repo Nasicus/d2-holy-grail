@@ -5,6 +5,15 @@ import { ReplaySubject, Observable, Subscriber } from "rxjs";
 import { IHolyGrailData } from "../../common/definitions/IHolyGrailData";
 import { IEthGrailData } from "../../common/definitions/IEthGrailData";
 import { ethGrailSeedData } from "./EthGrailSeedData";
+import { IGrailData } from "../../common/definitions/IGrailData";
+
+export interface IGrailError {
+  status: number;
+  type: string;
+  serverToken?: string;
+  localToken?: string;
+  serverData?: IGrailData;
+}
 
 export class HolyGrailDataManager {
   public static get current(): HolyGrailDataManager {
@@ -35,6 +44,10 @@ export class HolyGrailDataManager {
 
   public get normalGrail(): IHolyGrailData {
     return this.data.data;
+  }
+
+  public get ethGrail(): IEthGrailData {
+    return this.data.ethData;
   }
 
   public get isEthMode(): boolean {
@@ -88,9 +101,15 @@ export class HolyGrailDataManager {
     return this.dataInitializer.asObservable();
   }
 
-  public saveGrailToServer = (): Observable<void> => {
+  public saveGrailToServer = (tokenOverride?: string): Observable<void> => {
     return Observable.create((observer: Subscriber<void>) => {
-      Api.updateGrail(this.address, this.password, this.data.token, this.data.data, this.data.ethData).subscribe(
+      Api.updateGrail(
+        this.address,
+        this.password,
+        tokenOverride || this.data.token,
+        this.data.data,
+        this.data.ethData
+      ).subscribe(
         response => {
           this.updateLocaleStorage(response.data, false);
           // update the token for the current object which we keep by reference everywhere
@@ -157,9 +176,14 @@ export class HolyGrailDataManager {
           return;
         }
 
-        this.dataInitializer.error({ type: "conflict", serverToken: apiData.token, localToken: cachedData.token });
+        this.dataInitializer.error({
+          type: "conflict",
+          serverToken: apiData.token,
+          localToken: cachedData.token,
+          serverData: { grailData: apiData.data, ethData: apiData.ethData }
+        } as IGrailError);
       },
-      err => this.dataInitializer.error(err)
+      err => this.dataInitializer.error(err as IGrailError)
     );
   }
 

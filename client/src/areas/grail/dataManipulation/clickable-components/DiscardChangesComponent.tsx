@@ -12,6 +12,7 @@ export interface IDiscardChangesButtonState {
 
 export interface IDiscardChangesButtonProps {
   renderAsListItem?: boolean;
+  text?: string;
 }
 
 class DiscardChangesComponent extends React.Component<IDiscardChangesButtonProps, IDiscardChangesButtonState> {
@@ -51,7 +52,7 @@ class DiscardChangesComponent extends React.Component<IDiscardChangesButtonProps
           <ListItemWithProgress
             onClick={() => this.setState({ showConfirm: true })}
             isDisabled={!this.state.isEnabled}
-            primaryText="Discard local changes"
+            primaryText={this.props.text || "Discard local changes"}
             firstIcon="cancel"
           />
         )}
@@ -59,7 +60,7 @@ class DiscardChangesComponent extends React.Component<IDiscardChangesButtonProps
           <ButtonWithProgress
             onClick={() => this.setState({ showConfirm: true })}
             isDisabled={!this.state.isEnabled}
-            text="Discard local changes"
+            text={this.props.text || "Discard local changes"}
             firstIcon="cancel"
           />
         )}

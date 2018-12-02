@@ -7,10 +7,16 @@ export interface IExportListItemState {
   showSecondIcon?: boolean;
 }
 
-class ExportListItem extends React.Component<{}, IExportListItemState> {
+export interface IExportListItemProps {
+  data?: any;
+  text?: string;
+  fileName?: string;
+}
+
+class ExportListItem extends React.Component<IExportListItemProps, IExportListItemState> {
   private secondIconTimeoutHandler: any;
 
-  public constructor(props: {}) {
+  public constructor(props: IExportListItemProps) {
     super(props);
     this.state = {};
   }
@@ -22,7 +28,9 @@ class ExportListItem extends React.Component<{}, IExportListItemState> {
           onClick={() => this.onExportButtonClick()}
           isLoading={this.state.isExporting}
           showSecondIcon={this.state.showSecondIcon}
-          primaryText={`Export ${HolyGrailDataManager.current.isEthMode ? "Eth" : "Holy"} Grail data`}
+          primaryText={
+            this.props.text || `Export ${HolyGrailDataManager.current.isEthMode ? "Eth" : "Holy"} Grail data`
+          }
           firstIcon="get_app"
           secondIcon="check"
         />
@@ -37,10 +45,13 @@ class ExportListItem extends React.Component<{}, IExportListItemState> {
   };
 
   private download() {
-    const fileName = `${HolyGrailDataManager.current.isEthMode ? "Eth" : "Holy"}Grail_${
-      HolyGrailDataManager.current.address
-    }.json`;
-    const file = new Blob([JSON.stringify(HolyGrailDataManager.current.grail, null, 2)], { type: "text/json" });
+    const fileName =
+      (this.props.fileName ||
+        `${HolyGrailDataManager.current.isEthMode ? "Eth" : "Holy"}Grail_${HolyGrailDataManager.current.address}`) +
+      ".json";
+    const file = new Blob([JSON.stringify(this.props.data || HolyGrailDataManager.current.grail, null, 2)], {
+      type: "text/json"
+    });
     const isIE = !!(document as any).documentMode;
     if (isIE) {
       window.navigator.msSaveOrOpenBlob(file, fileName);

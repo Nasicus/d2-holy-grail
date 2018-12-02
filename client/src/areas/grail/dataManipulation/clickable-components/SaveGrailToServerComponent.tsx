@@ -14,6 +14,9 @@ export interface IServerSaveButtonState {
 
 export interface IServerSaveButtonProps {
   renderAsListItem?: boolean;
+  text?: string;
+  token?: string;
+  reload?: boolean;
 }
 
 class SaveGrailToServerComponent extends React.Component<IServerSaveButtonProps, IServerSaveButtonState> {
@@ -40,7 +43,7 @@ class SaveGrailToServerComponent extends React.Component<IServerSaveButtonProps,
   private onSaveButtonClick = () => {
     clearTimeout(this.secondIconTimeoutHandler);
     this.setState({ showSecondIcon: false, isSaving: true });
-    HolyGrailDataManager.current.saveGrailToServer().subscribe(this.onSaveSuccessful, error =>
+    HolyGrailDataManager.current.saveGrailToServer(this.props.token).subscribe(this.onSaveSuccessful, error =>
       this.setState({
         showSecondIcon: false,
         isSaving: false,
@@ -54,6 +57,10 @@ class SaveGrailToServerComponent extends React.Component<IServerSaveButtonProps,
 
   private onSaveSuccessful = () => {
     this.setState({ showSecondIcon: true, isSaving: false });
+
+    if (this.props.reload) {
+      location.reload();
+    }
 
     // reset to the default icon (this should go together with the dismissing of a success message, once we have any)
     clearTimeout(this.secondIconTimeoutHandler);
@@ -78,7 +85,7 @@ class SaveGrailToServerComponent extends React.Component<IServerSaveButtonProps,
             firstIcon="save"
             secondIcon="check"
             showSecondIcon={this.state.showSecondIcon}
-            primaryText={"Save to server"}
+            primaryText={this.props.text || "Save to server"}
             isDisabled={!this.state.isEnabled}
             isLoading={this.state.isSaving}
           />
@@ -94,7 +101,7 @@ class SaveGrailToServerComponent extends React.Component<IServerSaveButtonProps,
           isLoading={this.state.isSaving}
           showSecondIcon={this.state.showSecondIcon}
           isDisabled={!this.state.isEnabled}
-          text="Save to server"
+          text={this.props.text || "Save to server"}
           firstIcon="save"
           secondIcon="check"
         />
