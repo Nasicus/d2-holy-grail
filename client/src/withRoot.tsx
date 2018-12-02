@@ -8,8 +8,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { Theme } from "@material-ui/core/styles/createMuiTheme";
 import { BrowserRouter } from "react-router-dom";
 
-// A theme with custom primary and secondary color.
-// It's optional.
 const normalTheme: Theme = createMuiTheme({
   typography: {
     useNextVariants: true

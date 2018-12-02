@@ -5,6 +5,7 @@ import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
 import * as React from "react";
 import * as classNames from "classnames";
 import Icon from "@material-ui/core/Icon/Icon";
+import Fab from "@material-ui/core/Fab";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -72,8 +73,7 @@ const ButtonWithProgress: React.SFC<Props> = props => {
       {!!props.firstIcon && (
         <div className={classes.wrapper}>
           <div>
-            <Button
-              variant="fab"
+            <Fab
               color="primary"
               className={buttonClassName}
               onClick={onClick}
@@ -81,7 +81,7 @@ const ButtonWithProgress: React.SFC<Props> = props => {
               title={props.text}
             >
               <Icon>{!showSecondIcon ? props.firstIcon : props.secondIcon}</Icon>
-            </Button>
+            </Fab>
           </div>
           {isLoading && <CircularProgress size={68} className={classes.fabProgress} />}
         </div>
