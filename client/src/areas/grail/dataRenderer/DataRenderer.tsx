@@ -6,7 +6,7 @@ import { WithStyles, createStyles, Theme, withStyles } from "@material-ui/core";
 import { Util } from "../../../common/utils/Util";
 import { CheckboxItemRenderer } from "./CheckboxItemRenderer";
 import { ThemeStyle } from "@material-ui/core/styles/createTypography";
-import { HolyGrailDataManager } from "../HolyGrailDataManager";
+import { GrailManager } from "../GrailManager";
 import CountItemRenderer from "./CountItemRenderer";
 
 export interface ILevels {
@@ -97,7 +97,7 @@ const NextData: React.SFC<{
   modifyLevels: (level: ILevels, key: string) => ILevels;
 }> = props => {
   if (Util.isItem(props.nextData)) {
-    return HolyGrailDataManager.current.settings.useItemCountMode ? (
+    return GrailManager.current.settings.useItemCountMode ? (
       <CountItemRenderer itemName={props.levelKey} item={props.nextData} />
     ) : (
       <CheckboxItemRenderer itemName={props.levelKey} item={props.nextData} />

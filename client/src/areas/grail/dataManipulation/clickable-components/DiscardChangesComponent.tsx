@@ -1,5 +1,5 @@
 import * as React from "react";
-import { HolyGrailDataManager } from "../../HolyGrailDataManager";
+import { GrailManager } from "../../GrailManager";
 import ButtonWithProgress from "../../../../common/components/ButtonWithProgress";
 import { Subscription } from "rxjs";
 import ChoiceDialog, { createDefaultConfirmButtons } from "../../../../common/components/ChoiceDialog";
@@ -24,7 +24,7 @@ class DiscardChangesComponent extends React.Component<IDiscardChangesButtonProps
   }
 
   public componentWillMount() {
-    this.localChangesSubscription = HolyGrailDataManager.current.hasLocalChanges$.subscribe(hasChanges =>
+    this.localChangesSubscription = GrailManager.current.hasLocalChanges$.subscribe(hasChanges =>
       this.setState({ isEnabled: hasChanges })
     );
   }
@@ -36,7 +36,7 @@ class DiscardChangesComponent extends React.Component<IDiscardChangesButtonProps
   }
 
   public render() {
-    if (HolyGrailDataManager.current.isReadOnly) {
+    if (GrailManager.current.isReadOnly) {
       return null;
     }
 
@@ -70,7 +70,7 @@ class DiscardChangesComponent extends React.Component<IDiscardChangesButtonProps
 
   private onConfirmDialogClose = (ok?: boolean) => {
     if (ok) {
-      HolyGrailDataManager.current.discardGrailCache();
+      GrailManager.current.discardGrailCache();
       location.reload();
     }
     this.setState({ showConfirm: false });

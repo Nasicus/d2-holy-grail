@@ -4,15 +4,16 @@ import Icon from "@material-ui/core/Icon/Icon";
 import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 import { ChangeEvent } from "react";
-import { IHolyGrailData } from "../../../common/definitions/IHolyGrailData";
+import { IHolyGrailData } from "../../../common/definitions/union/IHolyGrailData";
 import { Util } from "../../../common/utils/Util";
-import { IEthGrailData } from "../../../common/definitions/IEthGrailData";
-import { Item } from "../../../common/definitions/IItems";
+import { Item } from "../../../common/definitions/union/Item";
 import * as Mousetrap from "mousetrap";
+import { AllBusinessGrailsType } from "../../../common/definitions/business/AllBusinessGrailsType";
+import { Runeword } from "../../../common/definitions/business/Runeword";
 require("mousetrap-global-bind");
 
 export interface ISearchBoxProps {
-  data: IHolyGrailData | IEthGrailData;
+  data: AllBusinessGrailsType;
   onSearchResult: (result: Partial<IHolyGrailData>) => any;
 }
 
@@ -84,13 +85,30 @@ class SearchBox extends React.Component<Props, ISearchBoxState> {
       return;
     }
 
-    const result = Util.findData(
-      (k: string, i: Item) =>
-        k.toLowerCase().indexOf(value.toLowerCase()) > -1 ||
-        (i.note && i.note.toLowerCase().indexOf(value.toLowerCase()) > -1),
-      data
-    );
+    const result = Util.findData((k: string, i: Item) => this.isMatch(k, i, value.toLowerCase()), data);
     this.props.onSearchResult(result);
+  };
+
+  private isMatch = (name: string, item: Item | Runeword, searchValue: string): boolean => {
+    let isMatch =
+      name.toLowerCase().indexOf(searchValue) > -1 || (item.note && item.note.toLowerCase().indexOf(searchValue) > -1);
+
+    if (isMatch || !(item instanceof Runeword)) {
+      return isMatch;
+    }
+
+    const runeword = item as Runeword;
+    isMatch =
+      runeword.sockets.toString() === searchValue ||
+      runeword.types.some(t => t.toLowerCase() === searchValue) ||
+      runeword.detailTypes.some(t => t.toLowerCase() === searchValue);
+
+    if (isMatch) {
+      return true;
+    }
+
+    const splitWords = searchValue.split(" ");
+    return splitWords.every(rune => runeword.runes.some(r => r.toLowerCase() === rune));
   };
 }
 

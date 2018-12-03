@@ -1,8 +1,9 @@
 import * as React from "react";
-import { HolyGrailDataManager } from "../../HolyGrailDataManager";
+import { GrailManager } from "../../GrailManager";
 import ImportDialog from "../ImportDialog";
 import { Subscription } from "rxjs";
 import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
+import { GrailMode } from "../../GrailMode";
 
 export interface IImportListItemState {
   isSaving?: boolean;
@@ -19,7 +20,7 @@ class ImportListItem extends React.Component<{}, IImportListItemState> {
   }
 
   public componentWillMount() {
-    this.localChangesSubscription = HolyGrailDataManager.current.hasLocalChanges$.subscribe(hasChanges =>
+    this.localChangesSubscription = GrailManager.current.hasLocalChanges$.subscribe(hasChanges =>
       this.setState({ hasChanges })
     );
   }
@@ -31,7 +32,7 @@ class ImportListItem extends React.Component<{}, IImportListItemState> {
   }
 
   public render() {
-    if (HolyGrailDataManager.current.isReadOnly || HolyGrailDataManager.current.isEthMode) {
+    if (GrailManager.current.isReadOnly || GrailManager.current.grailMode !== GrailMode.Holy) {
       return null;
     }
 

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { HolyGrailDataManager } from "../../HolyGrailDataManager";
+import { GrailManager } from "../../GrailManager";
 import ButtonWithProgress from "../../../../common/components/ButtonWithProgress";
 import { Subscription } from "rxjs";
 import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
@@ -32,7 +32,7 @@ class SaveGrailToServerComponent extends React.Component<IServerSaveButtonProps,
   }
 
   public componentWillMount() {
-    this.localChangesSubscription = HolyGrailDataManager.current.hasLocalChanges$.subscribe(hasChanges =>
+    this.localChangesSubscription = GrailManager.current.hasLocalChanges$.subscribe(hasChanges =>
       this.setState({ isEnabled: hasChanges })
     );
   }
@@ -59,7 +59,7 @@ class SaveGrailToServerComponent extends React.Component<IServerSaveButtonProps,
   private onSaveButtonClick = () => {
     clearTimeout(this.secondIconTimeoutHandler);
     this.setState({ showSecondIcon: false, isSaving: true });
-    HolyGrailDataManager.current.saveGrailToServer(this.props.token).subscribe(this.onSaveSuccessful, error =>
+    GrailManager.current.saveGrailToServer(this.props.token).subscribe(this.onSaveSuccessful, error =>
       this.setState({
         showSecondIcon: false,
         isSaving: false,
@@ -88,7 +88,7 @@ class SaveGrailToServerComponent extends React.Component<IServerSaveButtonProps,
   }
 
   public render() {
-    if (HolyGrailDataManager.current.isReadOnly) {
+    if (GrailManager.current.isReadOnly) {
       return null;
     }
 

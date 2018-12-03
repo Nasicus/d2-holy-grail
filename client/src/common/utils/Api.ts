@@ -1,28 +1,13 @@
 import { Observable, Subscriber } from "rxjs";
-import { IHolyGrailData } from "../definitions/IHolyGrailData";
-import { IEthGrailData } from "../definitions/IEthGrailData";
-
-export interface IHolyGrailApiModel {
-  address: string;
-  password?: string;
-  data: IHolyGrailData;
-  ethData: IEthGrailData;
-  token: string;
-  settings: IHolyGrailSettings;
-}
-
-export interface IHolyGrailSettings {
-  useItemCountMode: boolean;
-}
+import { IHolyGrailData } from "../definitions/union/IHolyGrailData";
+import { IEthGrailData } from "../definitions/union/IEthGrailData";
+import { IRunewordGrailApiData } from "../definitions/api/IRunewordGrailApiData";
+import { IHolyGrailApiModel } from "../definitions/api/IHolyGrailApiModel";
+import { IHolyGrailSettings } from "../definitions/union/IHolyGrailSettings";
 
 export interface IApiResponse<T> {
   status: number;
   data: T;
-}
-
-export interface IRegistration {
-  address: string;
-  password: string;
 }
 
 export class Api {
@@ -37,12 +22,13 @@ export class Api {
     password: string,
     token: string,
     grail: IHolyGrailData,
-    ethGrail: IEthGrailData
+    ethGrail: IEthGrailData,
+    runewordGrail: IRunewordGrailApiData
   ): Observable<IApiResponse<IHolyGrailApiModel>> {
     return this.fetchToObservable(
       fetch(Api.apiUrl + address, {
         method: "put",
-        body: JSON.stringify({ grail, ethGrail, password, token }),
+        body: JSON.stringify({ grail, ethGrail, runewordGrail, password, token }),
         headers: { "Content-Type": "application/json" }
       })
     );
@@ -63,12 +49,10 @@ export class Api {
   }
 
   public static createGrail(address: string, password: string): Observable<IApiResponse<IHolyGrailApiModel>> {
-    const data: IRegistration = { address, password };
-
     return this.fetchToObservable(
       fetch(Api.apiUrl, {
         method: "post",
-        body: JSON.stringify(data),
+        body: JSON.stringify({ address, password }),
         headers: { "Content-Type": "application/json" }
       })
     );

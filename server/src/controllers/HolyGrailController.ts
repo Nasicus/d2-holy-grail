@@ -64,6 +64,7 @@ export class HolyGrailController {
     const password = req.body.password;
     const grailData = req.body.grail;
     const ethGrailData = req.body.ethGrail;
+    const runewordGrailData = req.body.runewordGrail;
     const token = req.body.token;
 
     if (!grailData) {
@@ -74,6 +75,7 @@ export class HolyGrailController {
     await this.update(req, res, address, password, token, dataToSet => {
       dataToSet.data = grailData;
       dataToSet.ethData = ethGrailData;
+      dataToSet.runewordData = runewordGrailData;
       return dataToSet;
     });
   };
@@ -151,6 +153,7 @@ export class HolyGrailController {
       address: originalAddress,
       data: grail.data,
       ethData: grail.ethData,
+      runewordData: grail.runewordData,
       settings: grail.settings,
       token: grail.token
     } as IHolyGrail);

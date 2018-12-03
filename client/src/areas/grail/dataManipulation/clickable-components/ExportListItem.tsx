@@ -1,6 +1,7 @@
 import * as React from "react";
-import { HolyGrailDataManager } from "../../HolyGrailDataManager";
+import { GrailManager } from "../../GrailManager";
 import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
+import { Util } from "../../../../common/utils/Util";
 
 export interface IExportListItemState {
   isExporting?: boolean;
@@ -28,9 +29,7 @@ class ExportListItem extends React.Component<IExportListItemProps, IExportListIt
           onClick={() => this.onExportButtonClick()}
           isLoading={this.state.isExporting}
           showSecondIcon={this.state.showSecondIcon}
-          primaryText={
-            this.props.text || `Export ${HolyGrailDataManager.current.isEthMode ? "Eth" : "Holy"} Grail data`
-          }
+          primaryText={this.props.text || `Export ${Util.capitalize(GrailManager.current.grailMode)} Grail data`}
           firstIcon="get_app"
           secondIcon="check"
         />
@@ -47,12 +46,11 @@ class ExportListItem extends React.Component<IExportListItemProps, IExportListIt
   private download() {
     const fileName =
       (this.props.fileName ||
-        `${HolyGrailDataManager.current.isEthMode ? "Eth" : "Holy"}Grail_${HolyGrailDataManager.current.address}`) +
-      ".json";
-    const file = new Blob([JSON.stringify(this.props.data || HolyGrailDataManager.current.grail, null, 2)], {
-      type: "text/json"
-    });
+        `${Util.capitalize(GrailManager.current.grailMode)}Grail_${GrailManager.current.address}`) + ".json";
+    const data = JSON.stringify(this.props.data || GrailManager.current.grailData, null, 2);
+    const file = new Blob([data], { type: "text/json" });
     const isIE = !!(document as any).documentMode;
+
     if (isIE) {
       window.navigator.msSaveOrOpenBlob(file, fileName);
     } else {
@@ -62,6 +60,7 @@ class ExportListItem extends React.Component<IExportListItemProps, IExportListIt
       a.download = fileName;
       a.click();
     }
+
     this.setState({ showSecondIcon: true, isExporting: false });
 
     // reset to the default icon (this should go together with the dismissing of a success message, once we have any)

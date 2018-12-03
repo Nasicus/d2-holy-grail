@@ -1,11 +1,20 @@
 import { LocalStorageHandler } from "../../common/utils/LocalStorageHandler";
-import { Api, IHolyGrailApiModel, IHolyGrailSettings } from "../../common/utils/Api";
-import { holyGrailSeedData } from "./HolyGrailSeedData";
-import { ReplaySubject, Observable, Subscriber } from "rxjs";
-import { IHolyGrailData } from "../../common/definitions/IHolyGrailData";
-import { IEthGrailData } from "../../common/definitions/IEthGrailData";
-import { ethGrailSeedData } from "./EthGrailSeedData";
-import { IGrailData } from "../../common/definitions/IGrailData";
+import { Api } from "../../common/utils/Api";
+import { holyGrailSeedData } from "../../common/seeds/HolyGrailSeedData";
+import { Observable, ReplaySubject, Subscriber } from "rxjs";
+import { IHolyGrailData } from "../../common/definitions/union/IHolyGrailData";
+import { IEthGrailData } from "../../common/definitions/union/IEthGrailData";
+import { ethGrailSeedData } from "../../common/seeds/EthGrailSeedData";
+import { IGrailData } from "../../common/definitions/api/IGrailData";
+import { GrailMode } from "./GrailMode";
+import { runewordGrailSeedData } from "../../common/seeds/RunewordGrailSeedData";
+import { IRunewordGrailApiData } from "../../common/definitions/api/IRunewordGrailApiData";
+import { AllBusinessGrailsType } from "../../common/definitions/business/AllBusinessGrailsType";
+import { IHolyGrailApiModel } from "../../common/definitions/api/IHolyGrailApiModel";
+import { IHolyGrailSettings } from "../../common/definitions/union/IHolyGrailSettings";
+import { IHolyGrailBusinessModel } from "../../common/definitions/business/IHolyGrailBusinessModel";
+import { HolyGrailBusinessModelWrapper } from "./HolyGrailBusinessModelWrapper";
+import { AllApiGrailsType } from "../../common/definitions/api/AllApiGrailsType";
 
 export interface IGrailError {
   status: number;
@@ -15,13 +24,14 @@ export interface IGrailError {
   serverData?: IGrailData;
 }
 
-export class HolyGrailDataManager {
-  public static get current(): HolyGrailDataManager {
+export class GrailManager {
+  public static get current(): GrailManager {
     return this._current;
   }
-  private static _current: HolyGrailDataManager;
+  private static _current: GrailManager;
 
-  private data: IHolyGrailApiModel;
+  private apiData: IHolyGrailApiModel;
+  private businessData: IHolyGrailBusinessModel;
   private grailLocalStorage: LocalStorageHandler<IHolyGrailApiModel>;
   private hasLocalChangesStorage: LocalStorageHandler<boolean>;
 
@@ -35,36 +45,58 @@ export class HolyGrailDataManager {
   }
 
   public get settings(): IHolyGrailSettings {
-    return this.data.settings;
+    return this.apiData.settings;
   }
 
-  public get grail(): IHolyGrailData | IEthGrailData {
-    return this.isEthMode ? this.data.ethData : this.data.data;
+  public get grail(): AllBusinessGrailsType {
+    switch (this.grailMode) {
+      case GrailMode.Eth:
+        return this.businessData.ethData;
+      case GrailMode.Runeword:
+        return this.businessData.runewordData;
+      default:
+        return this.businessData.data;
+    }
+  }
+
+  public get grailData(): AllApiGrailsType {
+    switch (this.grailMode) {
+      case GrailMode.Eth:
+        return this.apiData.ethData;
+      case GrailMode.Runeword:
+        return this.apiData.runewordData;
+      default:
+        return this.apiData.data;
+    }
   }
 
   public get normalGrail(): IHolyGrailData {
-    return this.data.data;
+    return this.apiData.data;
   }
 
   public get ethGrail(): IEthGrailData {
-    return this.data.ethData;
+    return this.apiData.ethData;
   }
 
-  public get isEthMode(): boolean {
-    return this._isEthMode;
+  public get runewordGrail(): IRunewordGrailApiData {
+    return this.apiData.runewordData;
+  }
+
+  public get grailMode(): GrailMode {
+    return this._grailMode;
   }
 
   public static createInstance(
-    isEthMode: boolean,
+    grailMode: GrailMode,
     address: string,
     password?: string,
     savePassword?: boolean
-  ): HolyGrailDataManager {
-    return (this._current = new HolyGrailDataManager(isEthMode, address, password, savePassword));
+  ): GrailManager {
+    return (this._current = new GrailManager(grailMode, address, password, savePassword));
   }
 
   private constructor(
-    private _isEthMode: boolean,
+    private _grailMode: GrailMode,
     public readonly address: string,
     private password?: string,
     savePassword?: boolean
@@ -81,15 +113,16 @@ export class HolyGrailDataManager {
     this.initializeGrailData();
   }
 
-  public setGrailMode(isEthMode: boolean) {
-    this._isEthMode = isEthMode;
+  public setGrailMode(grailMode: GrailMode) {
+    this._grailMode = grailMode;
     this.dataInitializer.next();
   }
 
   public updateGrailCache = () => {
     const cachedData = this.grailLocalStorage.getValue();
-    cachedData.data = this.data.data;
-    cachedData.ethData = this.data.ethData;
+    cachedData.data = this.apiData.data;
+    cachedData.ethData = this.apiData.ethData;
+    cachedData.runewordData = this.apiData.runewordData;
     this.updateLocaleStorage(cachedData, true);
   };
 
@@ -106,15 +139,16 @@ export class HolyGrailDataManager {
       Api.updateGrail(
         this.address,
         this.password,
-        tokenOverride || this.data.token,
-        this.data.data,
-        this.data.ethData
+        tokenOverride || this.apiData.token,
+        this.apiData.data,
+        this.apiData.ethData,
+        this.apiData.runewordData
       ).subscribe(
         response => {
           this.updateLocaleStorage(response.data, false);
           // update the token for the current object which we keep by reference everywhere
           // we could also do this.with ready$ next, however this would trigger state chances, even though the ui doesn't care
-          this.data.token = response.data.token;
+          this.apiData.token = response.data.token;
           observer.next();
           observer.complete();
         },
@@ -125,12 +159,13 @@ export class HolyGrailDataManager {
 
   public saveSettingsToServer = (): Observable<void> => {
     return Observable.create((observer: Subscriber<void>) => {
-      Api.updateSettings(this.address, this.password, this.data.token, this.settings).subscribe(
+      Api.updateSettings(this.address, this.password, this.apiData.token, this.settings).subscribe(
         response => {
           // we have to set back the data to the current grail data, or else we update the local storage with wrong data
-          response.data.data = this.data.data;
-          response.data.ethData = this.data.ethData;
-          this.data.token = response.data.token;
+          response.data.data = this.apiData.data;
+          response.data.ethData = this.apiData.ethData;
+          response.data.runewordData = this.apiData.runewordData;
+          this.apiData.token = response.data.token;
           this.grailLocalStorage.setValue(response.data);
           observer.next();
           observer.complete();
@@ -180,7 +215,7 @@ export class HolyGrailDataManager {
           type: "conflict",
           serverToken: apiData.token,
           localToken: cachedData.token,
-          serverData: { grailData: apiData.data, ethData: apiData.ethData }
+          serverData: { grailData: apiData.data, ethData: apiData.ethData, runewordData: apiData.runewordData }
         } as IGrailError);
       },
       err => this.dataInitializer.error(err as IGrailError)
@@ -196,11 +231,16 @@ export class HolyGrailDataManager {
       data.ethData = ethGrailSeedData;
     }
 
+    if (!data.runewordData) {
+      data.runewordData = runewordGrailSeedData;
+    }
+
     if (!data.settings) {
       data.settings = {} as any;
     }
 
-    this.data = data;
+    this.apiData = data;
+    this.businessData = new HolyGrailBusinessModelWrapper(data);
     this.dataInitializer.next();
   }
 }

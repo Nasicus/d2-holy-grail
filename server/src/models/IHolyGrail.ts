@@ -4,5 +4,6 @@ export interface IHolyGrail {
   token: string;
   data?: any;
   ethData?: any;
+  runewordData?: any;
   settings?: any;
 }

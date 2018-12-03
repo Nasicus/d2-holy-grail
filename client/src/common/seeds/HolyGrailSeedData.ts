@@ -1,6 +1,6 @@
-import { IEthGrailData } from "../../common/definitions/IEthGrailData";
+import { IHolyGrailData } from "../../common/definitions/union/IHolyGrailData";
 
-export const ethGrailSeedData: IEthGrailData = {
+export const holyGrailSeedData: IHolyGrailData = {
   uniques: {
     armor: {
       chest: {
@@ -42,8 +42,10 @@ export const ethGrailSeedData: IEthGrailData = {
           "Ormus' Robes": {},
           "The Gladiator's Bane": {},
           "Arkaine's Valor": {},
+          Leviathan: {},
           "Steel Carapace": {},
-          "Templar's Might": {}
+          "Templar's Might": {},
+          "Tyrael's Might": {}
         }
       },
       helm: {
@@ -69,6 +71,7 @@ export const ethGrailSeedData: IEthGrailData = {
         },
         elite: {
           "Andariel's Visage": {},
+          "Crown of Ages": {},
           "Giant Skull": {},
           "Harlequin Crest": {},
           "Nightwing's Veil": {},
@@ -168,6 +171,7 @@ export const ethGrailSeedData: IEthGrailData = {
         },
         elite: {
           "Blackoak Shield": {},
+          Stormshield: {},
           "Head Hunter's Glory": {},
           "Medusa's Gaze": {},
           "Spike Thorn": {},
@@ -186,6 +190,7 @@ export const ethGrailSeedData: IEthGrailData = {
         },
         exceptional: {
           Coldkill: {},
+          "Butcher's Pupil": {},
           Islestrike: {},
           "Pompeii's Wrath": {},
           "Guardian Naga": {}
@@ -213,9 +218,55 @@ export const ethGrailSeedData: IEthGrailData = {
           "The Minotaur": {}
         },
         elite: {
+          "Ethereal Edge": {},
           Hellslayer: {},
           "Messerschmidt's Reaver": {},
           "Executioner's Justice": {}
+        }
+      },
+      bow: {
+        normal: {
+          Pluckeye: {},
+          Witherstring: {},
+          "Raven Claw": {},
+          "Rogue's Bow": {},
+          Stormstrike: {},
+          Wizendraw: {},
+          Hellclap: {},
+          Blastbark: {}
+        },
+        exceptional: {
+          Skystrike: {},
+          Riphook: {},
+          "Kuko Shakaku": {},
+          Endlesshail: {},
+          "Witchwild String": {},
+          Cliffkiller: {},
+          Magewrath: {},
+          "Goldstrike Arch": {}
+        },
+        elite: {
+          Widowmaker: {},
+          Eaglehorn: {},
+          Windforce: {}
+        }
+      },
+      crossbow: {
+        normal: {
+          Leadcrow: {},
+          Ichorsting: {},
+          Hellcast: {},
+          Doomslinger: {}
+        },
+        exceptional: {
+          "Langer Briser": {},
+          "Pus Spitter": {},
+          "Buriza-Do Kyanon": {},
+          "Demon Machine": {}
+        },
+        elite: {
+          "Gut Siphon": {},
+          Hellrack: {}
         }
       },
       dagger: {
@@ -232,7 +283,9 @@ export const ethGrailSeedData: IEthGrailData = {
           Stormspike: {}
         },
         elite: {
-          Fleshripper: {}
+          Fleshripper: {},
+          Ghostflame: {},
+          Wizardspike: {}
         }
       },
       "clubs (1-h)": {
@@ -258,7 +311,8 @@ export const ethGrailSeedData: IEthGrailData = {
           "Demon Limb ": {},
           "Stormlash ": {},
           "Horizon's Tornado ": {},
-          "Stone Crusher ": {}
+          "Stone Crusher ": {},
+          "Schaefer's Hammer ": {}
         }
       },
       "clubs (2-h)": {
@@ -267,11 +321,13 @@ export const ethGrailSeedData: IEthGrailData = {
           Steeldriver: {}
         },
         exceptional: {
-          "Bloodtree Stump": {}
+          "Bloodtree Stump": {},
+          "The Gavel of Pain": {}
         },
         elite: {
           Windhammer: {},
-          "Earth Shifter": {}
+          "Earth Shifter": {},
+          "The Cranium Basher": {}
         }
       },
       polearms: {
@@ -294,7 +350,8 @@ export const ethGrailSeedData: IEthGrailData = {
         elite: {
           Bonehew: {},
           "The Reaper's Toll": {},
-          "Tomb Reaver": {}
+          "Tomb Reaver": {},
+          Stormspire: {}
         }
       },
       scepters: {
@@ -331,6 +388,7 @@ export const ethGrailSeedData: IEthGrailData = {
         },
         elite: {
           "Arioc's Needle": {},
+          "Steel Pillar": {},
           Viperfork: {}
         }
       },
@@ -375,9 +433,11 @@ export const ethGrailSeedData: IEthGrailData = {
           "The Atlantean": {}
         },
         elite: {
+          Azurewrath: {},
           Bloodmoon: {},
           "Djinn Slayer": {},
-          Frostwind: {}
+          Frostwind: {},
+          Lightsabre: {}
         }
       },
       "swords (2-h)": {
@@ -398,7 +458,9 @@ export const ethGrailSeedData: IEthGrailData = {
           Swordguard: {}
         },
         elite: {
-          Flamebellow: {}
+          Flamebellow: {},
+          Doombringer: {},
+          "The Grandfather": {}
         }
       },
       wands: {
@@ -429,22 +491,68 @@ export const ethGrailSeedData: IEthGrailData = {
           Lacerator: {},
           Warshrike: {},
           "Demon's Arch": {},
+          "Wraith's Flight": {},
           "Gargoyle's Bite": {}
         }
       }
     },
     other: {
+      jewelry: {
+        rings: {
+          Nagelring: {},
+          "Manald Heal": {},
+          "Stone of Jordan": {},
+          "Dwarf Star": {},
+          "Raven Frost": {},
+          "Bul-Kathos' Wedding Band": {},
+          "Carrion Wind": {},
+          "Nature's Peace": {},
+          "Wisp Projector": {}
+        },
+        amulets: {
+          "Nokozan Relic": {},
+          "Eye of Etlich": {},
+          "Mahim-Oak Curio": {},
+          "Saracen's Chance": {},
+          "Cat's Eye": {},
+          "Rising Sun": {},
+          "Crescent Moon": {},
+          "Atma's Scarab": {},
+          "Highlords Wrath": {},
+          "Mara's Kaleidoscope": {},
+          "Seraph's Hymn": {},
+          Metalgrid: {}
+        }
+      },
+      charms: {
+        all: {
+          Annihilus: {},
+          "Gheed's Fortune": {},
+          "Hellfire Torch": {}
+        }
+      },
+      "rainbow facet (jewel)": {
+        all: {
+          Cold: {},
+          Light: {},
+          Fire: {},
+          Poison: {}
+        }
+      },
       classes: {
         amazon: {
+          "Lycander's Aim": {},
           "Titan's Revenge": {},
           "Lycander's Flank": {},
+          "Bloodraven's Charge": {},
           Thunderstroke: {},
           Stoneraven: {}
         },
         assasin: {
           "Bartuc's Cut-Throat": {},
           "Firelizard's Talons": {},
-          "Jade Talon": {}
+          "Jade Talon": {},
+          "Shadow Killer": {}
         },
         barbarian: {
           "Arreat's Face": {},
@@ -474,6 +582,199 @@ export const ethGrailSeedData: IEthGrailData = {
           "Eschuta's Temper": {}
         }
       }
+    }
+  },
+  sets: {
+    "Angelic Raiment": {
+      "Angelic Wings": {},
+      "Angelic Halo": {},
+      "Angelic Mantle": {},
+      "Angelic Sickle": {}
+    },
+    "Arcanna's Tricks": {
+      "Arcanna's Sign": {},
+      "Arcanna's Head": {},
+      "Arcanna's Flesh": {},
+      "Arcanna's Deathwand": {}
+    },
+    "Artic Gear": {
+      "Arctic Mitts": {},
+      "Arctic Binding": {},
+      "Arctic Furs": {},
+      "Arctic Horn": {}
+    },
+    "Berserker's Arsenal": {
+      "Berserker's Hatchet": {},
+      "Berserker's Hauberk": {},
+      "Berserker's Headgear": {}
+    },
+    "Cathan's Traps": {
+      "Cathan's Seal": {},
+      "Cathan's Sigil": {},
+      "Cathan's Visage": {},
+      "Cathan's Mesh": {},
+      "Cathan's Rule": {}
+    },
+    "Civerb's Vestments": {
+      "Civerb's Cudgel": {},
+      "Civerb's Ward": {},
+      "Civerb's Icon": {}
+    },
+    "Cleglaw's Brace": {
+      "Cleglaw's Tooth": {},
+      "Cleglaw's Claw": {},
+      "Cleglaw's Pincers": {}
+    },
+    "Death's Disguise": {
+      "Death's Touch": {},
+      "Death's Guard": {},
+      "Death's Hand": {}
+    },
+    "Hsaru's Defense": {
+      "Hsarus' Iron Stay": {},
+      "Hsarus' Iron Fist": {},
+      "Hsarus' Iron Heel": {}
+    },
+    "Infernal Tools": {
+      "Infernal Sign": {},
+      "Infernal Torch": {},
+      "Infernal Cranium": {}
+    },
+    "Iratha's Finery": {
+      "Iratha's Coil": {},
+      "Iratha's Cuff": {},
+      "Iratha's Cord": {},
+      "Iratha's Collar": {}
+    },
+    "Isenhart's Armory": {
+      "Isenhart's Lightbrand": {},
+      "Isenhart's Case": {},
+      "Isenhart's Horns": {},
+      "Isenhart's Parry": {}
+    },
+    "Milabrega's Regalia": {
+      "Milabrega's Rod": {},
+      "Milabrega's Robe": {},
+      "Milabrega's Diadem": {},
+      "Milabrega's Orb": {}
+    },
+    "Sigon's Complete Steel": {
+      "Sigon's Shelter": {},
+      "Sigon's Visor": {},
+      "Sigon's Guard": {},
+      "Sigon's Gage": {},
+      "Sigon's Sabot": {},
+      "Sigon's Wrap": {}
+    },
+    "Tancred's Battlegear": {
+      "Tancred's Skull": {},
+      "Tancred's Weird": {},
+      "Tancred's Hobnails": {},
+      "Tancred's Spine": {},
+      "Tancred's Crowbill": {}
+    },
+    "Vidala's Rig": {
+      "Vidala's Snare": {},
+      "Vidala's Ambush": {},
+      "Vidala's Fetlock": {},
+      "Vidala's Barb": {}
+    },
+    "Aldur's Watchtower": {
+      "Aldur's Rhythm": {},
+      "Aldur's Stony Gaze": {},
+      "Aldur's Deception": {},
+      "Aldur's Advance": {}
+    },
+    "Bul-Kathos' Children": {
+      "Bul-Kathos' Sacred Charge": {},
+      "Bul-Kathos' Tribal Guardian": {}
+    },
+    "Cow King's Leathers": {
+      "Cow King's Horns": {},
+      "Cow King's Hide": {},
+      "Cow King's Hooves": {}
+    },
+    "Griswold's Legacy": {
+      "Griswold's Redemption": {},
+      "Griswold's Valor": {},
+      "Griswold's Heart": {},
+      "Griswold's Honor": {}
+    },
+    "Heaven's Brethren": {
+      "Dangoon's Teaching": {},
+      "Haemosu's Adament": {},
+      "Taebaek's Glory": {},
+      "Ondal's Almighty": {}
+    },
+    "Hwanin's Majesty": {
+      "Hwanin's Justice": {},
+      "Hwanin's Refuge": {},
+      "Hwanin's Splendor": {},
+      "Hwanin's Blessing": {}
+    },
+    "Immortal King": {
+      "Immortal King's Stone Crusher": {},
+      "Immortal King's Will": {},
+      "Immortal King's Soul Cage": {},
+      "Immortal King's Detail": {},
+      "Immortal King's Forge": {},
+      "Immortal King's Pillar": {}
+    },
+    "M'avina's Battle Hymn": {
+      "M'avina's Caster": {},
+      "M'avina's Embrace": {},
+      "M'avina's True Sight": {},
+      "M'avina's Tenet": {},
+      "M'avina's Icy Clutch": {}
+    },
+    "Naj's Ancient Vestige": {
+      "Naj's Circlet": {},
+      "Naj's Light Plate": {},
+      "Naj's Puzzler": {}
+    },
+    "Natalya's Odium": {
+      "Natalya's Mark": {},
+      "Natalya's Shadow": {},
+      "Natalya's Totem": {},
+      "Natalya's Soul": {}
+    },
+    "Orphan's Call": {
+      "Whitstan's Guard": {},
+      "Guillaume's Face": {},
+      "Wilhelm's Pride": {},
+      "Magnus' Skin": {}
+    },
+    "Sander's Folly": {
+      "Sander's Superstition": {},
+      "Sander's Paragon": {},
+      "Sander's Taboo": {},
+      "Sander's Riprap": {}
+    },
+    "Sazabi's Grand Tribute": {
+      "Sazabi's Cobalt Redeemer": {},
+      "Sazabi's Ghost Liberator": {},
+      "Sazabi's Mental Sheath": {}
+    },
+    "Tal Rasha's Wrappings": {
+      "Tal Rasha's Adjudication": {},
+      "Tal Rasha's Lidless Eye": {},
+      "Tal Rasha's Guardianship": {},
+      "Tal Rasha's Horadric Crest": {},
+      "Tal Rasha's Fine-Spun Cloth": {}
+    },
+    "The Disciple": {
+      "Dark Adherent": {},
+      Credendum: {},
+      "Laying of Hands": {},
+      "Rite of Passage": {},
+      "Telling of Beads": {}
+    },
+    "Trang-Oul's Avatar": {
+      "Trang-Oul's Guise": {},
+      "Trang-Oul's Scales": {},
+      "Trang-Oul's Girth": {},
+      "Trang-Oul's Claws": {},
+      "Trang-Oul's Wing": {}
     }
   }
 };

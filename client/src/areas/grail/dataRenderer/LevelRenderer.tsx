@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Util } from "../../../common/utils/Util";
 import { DataRenderer, ILevels } from "./DataRenderer";
-import { IHolyGrailData } from "../../../common/definitions/IHolyGrailData";
+import { IHolyGrailData } from "../../../common/definitions/union/IHolyGrailData";
 import ChoiceDialog from "../../../common/components/ChoiceDialog";
-import { HolyGrailDataManager } from "../HolyGrailDataManager";
+import { GrailManager } from "../GrailManager";
 
 export interface ILevelRendererProps {
   levelKey: string;
@@ -54,14 +54,14 @@ class LevelRenderer extends React.Component<ILevelRendererProps, ILevelRendererS
     if (markAsFound != null) {
       Util.toggleData(markAsFound, data);
       this.setState({ showDialog: false });
-      HolyGrailDataManager.current.updateGrailCache();
+      GrailManager.current.updateGrailCache();
     } else {
       this.setState({ showDialog: false });
     }
   };
 
   private renderLevelHeader() {
-    if (HolyGrailDataManager.current.isReadOnly) {
+    if (GrailManager.current.isReadOnly) {
       return <span>{this.props.levelKey}</span>;
     }
 

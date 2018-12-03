@@ -1,8 +1,8 @@
 import * as React from "react";
 import * as classNames from "classnames";
-import { HolyGrailDataManager } from "../HolyGrailDataManager";
+import { GrailManager } from "../GrailManager";
 import { Icon, createStyles, WithStyles, withStyles } from "@material-ui/core";
-import { Item } from "../../../common/definitions/IItems";
+import { Item } from "../../../common/definitions/union/Item";
 import { ItemName } from "./ItemName";
 
 export interface IItemProps {
@@ -47,7 +47,7 @@ class CountItemRenderer extends React.Component<Props, IItemState> {
   }
 
   private handleHover = () => {
-    if (HolyGrailDataManager.current.isReadOnly) {
+    if (GrailManager.current.isReadOnly) {
       return;
     }
 
@@ -87,7 +87,7 @@ class CountItemRenderer extends React.Component<Props, IItemState> {
     }
     this.state.item.wasFound = count;
     this.setState({ item: this.state.item });
-    HolyGrailDataManager.current.updateGrailCache();
+    GrailManager.current.updateGrailCache();
   };
 }
 

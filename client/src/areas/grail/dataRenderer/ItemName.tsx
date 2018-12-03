@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Item } from "../../../common/definitions/IItems";
+import { Item } from "../../../common/definitions/union/Item";
 import { ItemPropsDialog } from "./ItemPropsDialog";
 import { Icon, createStyles, WithStyles, withStyles, Theme } from "@material-ui/core";
-import { HolyGrailDataManager } from "../HolyGrailDataManager";
+import { GrailManager } from "../GrailManager";
 
 export interface IItemNameProps {
   item: Item;
@@ -44,7 +44,7 @@ class ItemNameComponent extends React.PureComponent<Props, IItemNameState> {
 
     if (changedProps && changedProps.itemNote !== this.state.item.note) {
       this.state.item.note = changedProps.itemNote;
-      HolyGrailDataManager.current.updateGrailCache();
+      GrailManager.current.updateGrailCache();
       newState.item = this.state.item;
     }
 

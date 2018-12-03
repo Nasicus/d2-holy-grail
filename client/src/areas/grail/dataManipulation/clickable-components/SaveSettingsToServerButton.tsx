@@ -1,5 +1,5 @@
 import * as React from "react";
-import { HolyGrailDataManager } from "../../HolyGrailDataManager";
+import { GrailManager } from "../../GrailManager";
 import ButtonWithProgress from "../../../../common/components/ButtonWithProgress";
 import { ErrorNotification } from "../../../../common/components/ErrorNotification";
 
@@ -25,7 +25,7 @@ class SaveSettingsToServerButton extends React.Component<{}, IServerSaveButtonSt
   private onSaveButtonClick = () => {
     clearTimeout(this.secondIconTimeoutHandler);
     this.setState({ showSecondIcon: false, isSaving: true });
-    HolyGrailDataManager.current.saveSettingsToServer().subscribe(this.onSaveSuccessful, error =>
+    GrailManager.current.saveSettingsToServer().subscribe(this.onSaveSuccessful, error =>
       this.setState({
         showSecondIcon: false,
         isSaving: false,

@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Item } from "../../../common/definitions/IItems";
+import { Item } from "../../../common/definitions/union/Item";
 import CloseableDialog from "../../../common/components/CloseableDialog";
-import { HolyGrailDataManager } from "../HolyGrailDataManager";
+import { GrailManager } from "../GrailManager";
 import { TextField, Button, WithStyles, withStyles, createStyles, Theme } from "@material-ui/core";
 
 export interface IItemPropsDialogProps {
@@ -46,14 +46,16 @@ class ItemPropsDialogComponent extends React.PureComponent<Props, IItemPropsDial
         onDialogClosed={() => this.closeDialog(false)}
         actions={() => (
           <>
-            {!HolyGrailDataManager.current.isReadOnly && <Button onClick={() => this.closeDialog(true)}>Ok</Button>}
-            {!HolyGrailDataManager.current.isReadOnly && (
-              <Button onClick={() => this.closeDialog(false)}>Cancel</Button>
+            {!GrailManager.current.isReadOnly && (
+              <>
+                <Button onClick={() => this.closeDialog(true)}>Ok</Button>
+                <Button onClick={() => this.closeDialog(false)}>Cancel</Button>
+              </>
             )}
           </>
         )}
       >
-        {HolyGrailDataManager.current.isReadOnly ? (
+        {GrailManager.current.isReadOnly ? (
           <div className={this.props.classes.readOnlyContainer}>{this.state.itemNote || "No notes for this item."}</div>
         ) : (
           <TextField

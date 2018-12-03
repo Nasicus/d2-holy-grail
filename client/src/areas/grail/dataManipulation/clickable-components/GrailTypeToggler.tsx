@@ -1,61 +1,104 @@
 import * as React from "react";
-import { HolyGrailDataManager } from "../../HolyGrailDataManager";
+import { GrailManager } from "../../GrailManager";
 import ButtonWithProgress from "../../../../common/components/ButtonWithProgress";
 import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
 import { LocationDescriptorObject } from "history";
 import { Redirect } from "react-router-dom";
+import { GrailMode } from "../../GrailMode";
 
 export interface IGrailTypeTogglerState {
-  doToggle?: boolean;
-  isEthMode?: boolean;
+  nextMode?: GrailMode;
+  grailMode: GrailMode;
 }
 
 export interface IGrailTypeTogglerProps {
   renderAsListItem?: boolean;
-  isEthMode: boolean;
+  grailMode: GrailMode;
 }
 
 export class GrailTypeToggler extends React.Component<IGrailTypeTogglerProps, IGrailTypeTogglerState> {
   public constructor(props: IGrailTypeTogglerProps) {
     super(props);
-    this.state = { isEthMode: props.isEthMode };
+    this.state = { grailMode: props.grailMode };
   }
 
   public static getDerivedStateFromProps(props: IGrailTypeTogglerProps, state: IGrailTypeTogglerState) {
-    if (props.isEthMode !== state.isEthMode) {
-      state.isEthMode = props.isEthMode;
-      state.doToggle = false;
+    if (props.grailMode !== state.grailMode) {
+      state.grailMode = props.grailMode;
+      state.nextMode = undefined;
     }
 
     return state;
   }
 
-  public render() {
-    const { isEthMode } = this.state;
+  private onTogglerClick = (newMode: GrailMode) => {
+    this.setState({ nextMode: newMode });
+  };
 
-    if (this.state.doToggle) {
+  private renderToggleButton(mode: GrailMode, renderAsListItem?: boolean) {
+    const isDisabled = this.state.grailMode === mode;
+    let text: string;
+    let icon: string;
+    switch (mode) {
+      case GrailMode.Eth:
+        text = "Eth Grail";
+        icon = "broken_image";
+        break;
+      case GrailMode.Runeword:
+        text = "Runeword Grail";
+        icon = "ac_unit";
+        break;
+      default:
+        text = "Holy Grail";
+        icon = "local_bar";
+        break;
+    }
+
+    if (renderAsListItem) {
+      return (
+        <ListItemWithProgress
+          onClick={() => this.onTogglerClick(mode)}
+          firstIcon={icon}
+          primaryText={text}
+          isDisabled={isDisabled}
+        />
+      );
+    }
+
+    return (
+      <ButtonWithProgress
+        onClick={() => this.onTogglerClick(mode)}
+        text={text}
+        firstIcon={icon}
+        isDisabled={isDisabled}
+      />
+    );
+  }
+
+  public render() {
+    if (this.state.nextMode) {
       const to: LocationDescriptorObject = {
-        pathname: `/${HolyGrailDataManager.current.address}/${isEthMode ? "" : "eth"}`
+        pathname: `/${GrailManager.current.address}/${this.state.nextMode}`
       };
       return <Redirect to={to} push={true} />;
     }
 
-    const buttonText = `Switch to ${isEthMode ? "Holy Grail" : "Eth Grail"}`;
-
     if (this.props.renderAsListItem) {
       return (
-        <ListItemWithProgress onClick={() => this.onTogglerClick()} firstIcon="broken_image" primaryText={buttonText} />
+        <>
+          {this.renderToggleButton(GrailMode.Holy, true)}
+          {this.renderToggleButton(GrailMode.Eth, true)}
+          {this.renderToggleButton(GrailMode.Runeword, true)}
+        </>
       );
     }
 
     return (
       <div>
-        <ButtonWithProgress onClick={() => this.onTogglerClick()} text={buttonText} firstIcon="broken_image" />
+        {this.renderToggleButton(GrailMode.Holy)}
+        {this.renderToggleButton(GrailMode.Eth)}
+        {this.renderToggleButton(GrailMode.Runeword)}
       </div>
     );
   }
-
-  private onTogglerClick = () => {
-    this.setState({ doToggle: true });
-  };
 }

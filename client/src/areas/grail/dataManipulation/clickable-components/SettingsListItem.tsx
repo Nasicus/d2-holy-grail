@@ -1,5 +1,5 @@
 import * as React from "react";
-import { HolyGrailDataManager } from "../../HolyGrailDataManager";
+import { GrailManager } from "../../GrailManager";
 import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
 import SettingsDialog from "../SettingsDialog";
 
@@ -18,7 +18,7 @@ export class SettingsListItem extends React.Component<ISettingsListItemProps, IS
   }
 
   public render() {
-    if (HolyGrailDataManager.current.isReadOnly) {
+    if (GrailManager.current.isReadOnly) {
       return null;
     }
 

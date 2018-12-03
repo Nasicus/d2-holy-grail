@@ -1,8 +1,8 @@
 import * as React from "react";
 import { createStyles, WithStyles, Theme, withStyles, Checkbox } from "@material-ui/core";
 import DialogContentText from "@material-ui/core/DialogContentText/DialogContentText";
-import { HolyGrailDataManager } from "../HolyGrailDataManager";
-import { IHolyGrailSettings } from "../../../common/utils/Api";
+import { GrailManager } from "../GrailManager";
+import { IHolyGrailSettings } from "../../../common/definitions/union/IHolyGrailSettings";
 import CloseableDialog from "../../../common/components/CloseableDialog";
 import SaveSettingsToServerButton from "./clickable-components/SaveSettingsToServerButton";
 
@@ -37,13 +37,13 @@ type Props = ISettingsDialogProps & WithStyles<typeof styles>;
 class SettingsDialog extends React.Component<Props, ISettingsDialogState> {
   public constructor(props: Props) {
     super(props);
-    this.state = { settings: HolyGrailDataManager.current.settings };
+    this.state = { settings: GrailManager.current.settings };
   }
 
   private onItemCountModeChange = (event: any) => {
-    HolyGrailDataManager.current.settings.useItemCountMode = event.target.checked;
-    HolyGrailDataManager.current.updateGrailCache();
-    this.setState({ settings: HolyGrailDataManager.current.settings, wasSaved: true });
+    GrailManager.current.settings.useItemCountMode = event.target.checked;
+    GrailManager.current.updateGrailCache();
+    this.setState({ settings: GrailManager.current.settings, wasSaved: true });
   };
 
   public render() {
@@ -58,7 +58,7 @@ class SettingsDialog extends React.Component<Props, ISettingsDialogState> {
           <div className={this.props.classes.settingsEntry}>
             <div>
               <Checkbox
-                checked={HolyGrailDataManager.current.settings.useItemCountMode}
+                checked={GrailManager.current.settings.useItemCountMode}
                 onChange={event => this.onItemCountModeChange(event)}
                 value="Use counter instead of checkbox for items"
               />

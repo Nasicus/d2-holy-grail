@@ -6,9 +6,10 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import { createStyles, WithStyles, Theme, withStyles } from "@material-ui/core";
+import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography/Typography";
-import { HolyGrailDataManager } from "../HolyGrailDataManager";
+import { GrailManager } from "../GrailManager";
+import { GrailMode } from "../GrailMode";
 
 export interface IStatisticsTableProps {
   data: any;
@@ -57,13 +58,28 @@ class StatisticsTable extends React.Component<Props, IStatisticsTableSTate> {
   }
 
   public render() {
-    const stats: Stats[] = [
-      this.calculateStats(() => this.state.data.uniques.armor, new Stats("Unique Armors")),
-      this.calculateStats(() => this.state.data.uniques.weapons, new Stats("Unique Weapons")),
-      this.calculateStats(() => this.state.data.uniques.other, new Stats("Unique Other")),
-      HolyGrailDataManager.current.isEthMode ? null : this.calculateStats(() => this.state.data.sets, new Stats("Sets"))
-    ].filter(s => !!s);
+    let stats: Stats[];
 
+    switch (GrailManager.current.grailMode) {
+      case GrailMode.Eth:
+        stats = [
+          this.calculateStats(() => this.state.data.uniques.armor, new Stats("Unique Armors")),
+          this.calculateStats(() => this.state.data.uniques.weapons, new Stats("Unique Weapons")),
+          this.calculateStats(() => this.state.data.uniques.other, new Stats("Unique Other"))
+        ];
+        break;
+      case GrailMode.Runeword:
+        stats = [this.calculateStats(() => this.state.data, new Stats("Runewords"))];
+        break;
+      default:
+        stats = [
+          this.calculateStats(() => this.state.data.uniques.armor, new Stats("Unique Armors")),
+          this.calculateStats(() => this.state.data.uniques.weapons, new Stats("Unique Weapons")),
+          this.calculateStats(() => this.state.data.uniques.other, new Stats("Unique Other")),
+          this.calculateStats(() => this.state.data.sets, new Stats("Sets"))
+        ];
+        break;
+    }
     const totalStats = new Stats("Total");
     stats.reduce((accumulator, currentValue) => {
       accumulator.found += currentValue.found;

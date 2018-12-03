@@ -1,11 +1,12 @@
 import * as React from "react";
-import { Theme, WithStyles, createStyles, withStyles } from "@material-ui/core";
+import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography/Typography";
 import withRoot, { IWithRootPassDownProps } from "./withRoot";
 import { Route, Switch } from "react-router-dom";
 import GrailArea from "./areas/grail/GrailArea";
 import { Home } from "./areas/home/Home";
 import { GithubRibbon } from "./common/components/GithubRibbon";
+import { GrailMode } from "./areas/grail/GrailMode";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -24,11 +25,11 @@ const styles = (theme: Theme) =>
   });
 
 interface IAppState {
-  isEthMode?: boolean;
+  grailMode?: GrailMode;
 }
 
 export interface IPassDownAppProps {
-  onGrailModeChange: (isEth: boolean) => void;
+  onGrailModeChange: (grailMode: GrailMode) => void;
 }
 
 type Props = WithStyles<typeof styles> & IWithRootPassDownProps;
@@ -39,21 +40,30 @@ class App extends React.Component<Props, IAppState> {
     this.state = {};
   }
 
-  private onGrailModeChange = (isEthMode: boolean) => {
-    if (this.state.isEthMode !== isEthMode) {
-      this.setState({ isEthMode });
-      this.props.onGrailModeChange(isEthMode);
+  private onGrailModeChange = (grailMode: GrailMode) => {
+    if (this.state.grailMode !== grailMode) {
+      this.setState({ grailMode });
+      this.props.onGrailModeChange(grailMode);
     }
   };
+
+  private getAppTitle() {
+    switch (this.state.grailMode) {
+      case GrailMode.Eth:
+        return "Diablo II - Eth Grail";
+      case GrailMode.Runeword:
+        return "Diablo II - Runeword Grail";
+      default:
+        return "Diablo II - Holy Grail";
+    }
+  }
 
   public render() {
     const passDownProps = { onGrailModeChange: this.onGrailModeChange } as IPassDownAppProps;
     return (
       <div className={this.props.classes.root}>
         <div className={this.props.classes.header}>
-          <Typography variant="h5">
-            {this.state.isEthMode ? "Diablo II - Eth Grail" : "Diablo II - Holy Grail"}
-          </Typography>
+          <Typography variant="h5">{this.getAppTitle()}</Typography>
         </div>
         <GithubRibbon url="https://github.com/Nasicus/d2-holy-grail" />
         <div className={this.props.classes.content}>

@@ -2,7 +2,7 @@ import * as React from "react";
 import { createStyles, WithStyles, Typography, Theme, withStyles } from "@material-ui/core";
 import DialogContentText from "@material-ui/core/DialogContentText/DialogContentText";
 import ButtonWithProgress from "../../../common/components/ButtonWithProgress";
-import { HolyGrailDataManager } from "../HolyGrailDataManager";
+import { GrailManager } from "../GrailManager";
 import { Util } from "../../../common/utils/Util";
 import FileUploader from "../../../common/components/FIleUploader";
 import CloseableDialog from "src/common/components/CloseableDialog";
@@ -46,14 +46,14 @@ class ImportDialog extends React.Component<Props, IImportDialogState> {
 
   private import = () => {
     this.setState({ isImporting: true });
-    const data = HolyGrailDataManager.current.normalGrail;
+    const data = GrailManager.current.normalGrail;
     const importedFoundItems: string[] = [];
     this.importSection(data.uniques.armor, this.state.armor, importedFoundItems);
     this.importSection(data.uniques.weapons, this.state.weapons, importedFoundItems);
     this.importSection(data.uniques.other, this.state.other, importedFoundItems);
     this.importSection(data.sets, this.state.sets, importedFoundItems);
     if (importedFoundItems.length) {
-      HolyGrailDataManager.current.updateGrailCache();
+      GrailManager.current.updateGrailCache();
     }
     this.setState({ isImporting: false, numberOfImportedItems: importedFoundItems.length });
   };

@@ -4,10 +4,11 @@ import AppBar from "@material-ui/core/AppBar/AppBar";
 import Tab from "@material-ui/core/Tab/Tab";
 import StatisticsTable from "../statisticsTable/StatisticsTable";
 import Typography from "@material-ui/core/Typography/Typography";
-import { Theme, WithStyles, createStyles, withStyles } from "@material-ui/core";
+import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
 import { DataRenderer, ILevels } from "../dataRenderer/DataRenderer";
 import { Util } from "../../../common/utils/Util";
-import { HolyGrailDataManager } from "../HolyGrailDataManager";
+import { GrailManager } from "../GrailManager";
+import { GrailMode } from "../GrailMode";
 
 export interface ITabRendererProps {
   allData: any;
@@ -26,7 +27,8 @@ enum TabType {
   UniqueOther,
   Sets,
   SearchResults,
-  MissingItems
+  MissingItems,
+  Runewords
 }
 
 const styles = (theme: Theme) =>
@@ -45,6 +47,8 @@ const TabContainer: React.SFC<{}> = props => {
     </Typography>
   );
 };
+
+const runewordLevels: ILevels = { variantLevel: 4, level: 1 };
 
 class TabRenderer extends React.Component<Props, ITabRendererState> {
   public constructor(props: Props) {
@@ -90,13 +94,28 @@ class TabRenderer extends React.Component<Props, ITabRendererState> {
       return null;
     }
 
-    return [
-      <Tab label="Unique Armor" key="tabUniqueArmor" value={TabType.UniqueArmor} />,
-      <Tab label="Unique Weapons" key="tabUniqueWeapons" value={TabType.UniqueWeapons} />,
-      <Tab label="Unique Other" key="tabUniqueOther" value={TabType.UniqueOther} />,
-      HolyGrailDataManager.current.isEthMode ? null : <Tab label="Sets" key="tabSets" value={TabType.Sets} />,
-      <Tab label="Missing Items" key="tabMissingItems" value={TabType.MissingItems} />
-    ].filter(t => !!t);
+    switch (GrailManager.current.grailMode) {
+      case GrailMode.Eth:
+        return [
+          <Tab label="Unique Armor" key="tabUniqueArmor" value={TabType.UniqueArmor} />,
+          <Tab label="Unique Weapons" key="tabUniqueWeapons" value={TabType.UniqueWeapons} />,
+          <Tab label="Unique Other" key="tabUniqueOther" value={TabType.UniqueOther} />,
+          <Tab label="Missing Items" key="tabMissingItems" value={TabType.MissingItems} />
+        ];
+      case GrailMode.Runeword:
+        return [
+          <Tab label="Runewords" key="tabRunewords" value={TabType.Runewords} />,
+          <Tab label="Missing Items" key="tabMissingItems" value={TabType.MissingItems} />
+        ];
+      default:
+        return [
+          <Tab label="Unique Armor" key="tabUniqueArmor" value={TabType.UniqueArmor} />,
+          <Tab label="Unique Weapons" key="tabUniqueWeapons" value={TabType.UniqueWeapons} />,
+          <Tab label="Unique Other" key="tabUniqueOther" value={TabType.UniqueOther} />,
+          <Tab label="Sets" key="tabSets" value={TabType.Sets} />,
+          <Tab label="Missing Items" key="tabMissingItems" value={TabType.MissingItems} />
+        ];
+    }
   }
 
   private getData() {
@@ -104,7 +123,13 @@ class TabRenderer extends React.Component<Props, ITabRendererState> {
 
     switch (this.state.activeTab) {
       case TabType.SearchResults:
-        return <DataRenderer data={searchData} modifyLevels={this.modifyLevelsForSearch} />;
+        return (
+          <DataRenderer
+            data={searchData}
+            modifyLevels={this.modifyLevelsForSearch}
+            levels={TabRenderer.getLevelsForSearch()}
+          />
+        );
       case TabType.UniqueArmor:
         return (
           <DataRenderer data={allData.uniques.armor} levels={{ variantLevel: 2 }} ancestorKeys={["Uniques", "Armor"]} />
@@ -123,8 +148,16 @@ class TabRenderer extends React.Component<Props, ITabRendererState> {
         );
       case TabType.Sets:
         return <DataRenderer data={allData.sets} levels={{ variantLevel: 3, level: 1 }} ancestorKeys={["Sets"]} />;
+      case TabType.Runewords:
+        return <DataRenderer data={allData} levels={runewordLevels} />;
       case TabType.MissingItems:
-        return <DataRenderer data={Util.getMissingItems(allData)} modifyLevels={this.modifyLevelsForSearch} />;
+        return (
+          <DataRenderer
+            data={Util.getMissingItems(allData)}
+            modifyLevels={this.modifyLevelsForSearch}
+            levels={TabRenderer.getLevelsForSearch()}
+          />
+        );
       default:
         return <StatisticsTable data={searchData || allData} />;
     }
@@ -139,6 +172,14 @@ class TabRenderer extends React.Component<Props, ITabRendererState> {
     }
     return nextLevels;
   };
+
+  private static getLevelsForSearch(): ILevels {
+    if (GrailManager.current.grailMode !== GrailMode.Runeword) {
+      return null;
+    }
+
+    return runewordLevels;
+  }
 }
 
 export default withStyles(styles)(TabRenderer);

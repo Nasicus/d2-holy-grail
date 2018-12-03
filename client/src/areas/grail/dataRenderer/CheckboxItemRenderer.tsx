@@ -1,7 +1,7 @@
 import * as React from "react";
 import Checkbox from "@material-ui/core/Checkbox/Checkbox";
-import { HolyGrailDataManager } from "../HolyGrailDataManager";
-import { Item } from "../../../common/definitions/IItems";
+import { GrailManager } from "../GrailManager";
+import { Item } from "../../../common/definitions/union/Item";
 import { ItemName } from "./ItemName";
 import { withStyles, createStyles, WithStyles } from "@material-ui/core";
 
@@ -35,7 +35,7 @@ class CheckboxItemRendererComponent extends React.Component<Props, IItemState> {
     return (
       <div className={this.props.classes.container}>
         <Checkbox
-          disabled={HolyGrailDataManager.current.isReadOnly}
+          disabled={GrailManager.current.isReadOnly}
           checked={!!this.state.item.wasFound}
           onChange={event => this.onItemCheckBoxChanged(this.state.item, event)}
           value={this.props.itemName}
@@ -48,7 +48,7 @@ class CheckboxItemRendererComponent extends React.Component<Props, IItemState> {
   private onItemCheckBoxChanged = (item: Item, event: any) => {
     item.wasFound = event.target.checked;
     this.setState({ item: this.state.item });
-    HolyGrailDataManager.current.updateGrailCache();
+    GrailManager.current.updateGrailCache();
   };
 }
 

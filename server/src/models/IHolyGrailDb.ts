@@ -7,5 +7,6 @@ export interface IHolyGrailDb {
   updateCount: number;
   data?: any;
   ethData?: any;
+  runewordData?: any;
   settings?: any;
 }

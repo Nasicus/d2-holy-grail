@@ -1,12 +1,12 @@
 import * as React from "react";
 import TabRenderer from "./tabRenderer/TabRenderer";
 import SearchBox from "./searchBox/SearchBox";
-import { HolyGrailDataManager, IGrailError } from "./HolyGrailDataManager";
+import { GrailManager, IGrailError } from "./GrailManager";
 import { CircularProgress, createStyles, Divider, Theme, withStyles, WithStyles } from "@material-ui/core";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { ILoginInfo } from "../home/loginForm/LoginForm";
 import SaveGrailToServerComponent from "./dataManipulation/clickable-components/SaveGrailToServerComponent";
-import { IHolyGrailData } from "../../common/definitions/IHolyGrailData";
+import { IHolyGrailData } from "../../common/definitions/union/IHolyGrailData";
 import HomeButton from "./homeButton/HomeButton";
 import MenuButton from "./menu/MenuButton";
 import ExportListItem from "./dataManipulation/clickable-components/ExportListItem";
@@ -16,14 +16,15 @@ import DiscardChangesComponent from "./dataManipulation/clickable-components/Dis
 import ListItemWithProgress from "../../common/components/ListItemWithProgress";
 import { SettingsListItem } from "./dataManipulation/clickable-components/SettingsListItem";
 import VersionNotifier from "./VersionNotifier";
-import { IEthGrailData } from "../../common/definitions/IEthGrailData";
 import { GrailTypeToggler } from "./dataManipulation/clickable-components/GrailTypeToggler";
 import { IPassDownAppProps } from "../../App";
 import { GrailErrorHandler } from "./GrailErrorHandler";
+import { GrailMode } from "./GrailMode";
+import { AllBusinessGrailsType } from "../../common/definitions/business/AllBusinessGrailsType";
 
 export interface IGrailAreaState {
   searchResult?: Partial<IHolyGrailData>;
-  data?: IHolyGrailData | IEthGrailData;
+  data?: AllBusinessGrailsType;
   error?: IGrailError;
   loading?: boolean;
 }
@@ -74,13 +75,13 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
   }
 
   public static getDerivedStateFromProps(props: Props, state: IGrailAreaState) {
-    const isNowEthMode = props.match.params.grailMode === "eth";
-    if (HolyGrailDataManager.current && HolyGrailDataManager.current.isEthMode !== isNowEthMode) {
+    const newMode = GrailArea.getGrailModeFromRouteParams(props);
+    if (GrailManager.current && GrailManager.current.grailMode !== newMode) {
       state.loading = true;
       state.data = null;
       state.searchResult = null;
-      HolyGrailDataManager.current.setGrailMode(isNowEthMode);
-      props.onGrailModeChange(isNowEthMode);
+      GrailManager.current.setGrailMode(newMode);
+      props.onGrailModeChange(newMode);
     }
 
     return state;
@@ -89,20 +90,26 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
   public componentDidMount() {
     const loginInfo = (this.props.location.state || {}) as ILoginInfo;
     const address = loginInfo.address || this.props.match.params.address;
-    const isEthMode = this.props.match.params.grailMode === "eth";
-    this.props.onGrailModeChange(isEthMode);
-    const dataManager = HolyGrailDataManager.createInstance(
-      isEthMode,
-      address,
-      loginInfo.password,
-      loginInfo.keepLoggedIn
-    );
+    const grailMode = GrailArea.getGrailModeFromRouteParams(this.props);
+    this.props.onGrailModeChange(grailMode);
+    const dataManager = GrailManager.createInstance(grailMode, address, loginInfo.password, loginInfo.keepLoggedIn);
     dataManager.initialize().subscribe(
       () => this.setState({ data: dataManager.grail, loading: false }),
       // todo: if we have local storage data, and an error occurs, only show a warning instead of an error
       // so you can also use the app offline
       (err: IGrailError) => this.setState({ error: err })
     );
+  }
+
+  private static getGrailModeFromRouteParams(props: Props) {
+    switch (props.match.params.grailMode as GrailMode) {
+      case GrailMode.Eth:
+        return GrailMode.Eth;
+      case GrailMode.Runeword:
+        return GrailMode.Runeword;
+      default:
+        return GrailMode.Holy;
+    }
   }
 
   public render() {
@@ -143,13 +150,13 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
             <DiscardChangesComponent />
           </div>
           <div className={this.props.classes.buttonRow}>
-            <GrailTypeToggler isEthMode={HolyGrailDataManager.current.isEthMode} />
+            <GrailTypeToggler grailMode={GrailManager.current.grailMode} />
           </div>
           <div className={this.props.classes.buttonRow}>
             <MenuButton>
               <ListItemWithProgress
-                primaryText={HolyGrailDataManager.current.address}
-                secondaryText={HolyGrailDataManager.current.isReadOnly ? "Read-only" : null}
+                primaryText={GrailManager.current.address}
+                secondaryText={GrailManager.current.isReadOnly ? "Read-only" : null}
                 firstIcon="person"
               />
               <Divider />
@@ -158,8 +165,8 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
               <ToggleAllListItem onToggle={d => this.setState({ data: d })} />
               <ImportListItem />
               <ExportListItem />
-              <GrailTypeToggler renderAsListItem={true} isEthMode={HolyGrailDataManager.current.isEthMode} />
-              <SettingsListItem onSettingsChanged={() => this.setState({ data: HolyGrailDataManager.current.grail })} />
+              <GrailTypeToggler renderAsListItem={true} grailMode={GrailManager.current.grailMode} />
+              <SettingsListItem onSettingsChanged={() => this.setState({ data: GrailManager.current.grail })} />
             </MenuButton>
           </div>
         </div>

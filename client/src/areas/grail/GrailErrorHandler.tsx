@@ -1,10 +1,10 @@
 import * as React from "react";
 import { createStyles, WithStyles, withStyles, Typography } from "@material-ui/core";
-import { HolyGrailDataManager, IGrailError } from "./HolyGrailDataManager";
+import { GrailManager, IGrailError } from "./GrailManager";
 import DiscardChangesComponent from "./dataManipulation/clickable-components/DiscardChangesComponent";
 import SaveGrailToServerComponent from "./dataManipulation/clickable-components/SaveGrailToServerComponent";
 import ExportListItem from "./dataManipulation/clickable-components/ExportListItem";
-import { IGrailData } from "../../common/definitions/IGrailData";
+import { IGrailData } from "../../common/definitions/api/IGrailData";
 
 interface IGrailErrorHandlerProps {
   error: IGrailError;
@@ -36,8 +36,9 @@ const ConflictHandler: React.SFC<IGrailErrorHandlerProps> = props => {
         fileName="Local Data"
         data={
           {
-            grailData: HolyGrailDataManager.current.normalGrail,
-            ethData: HolyGrailDataManager.current.ethGrail
+            grailData: GrailManager.current.normalGrail,
+            ethData: GrailManager.current.ethGrail,
+            runewordData: GrailManager.current.runewordGrail
           } as IGrailData
         }
       />
@@ -48,7 +49,7 @@ const ConflictHandler: React.SFC<IGrailErrorHandlerProps> = props => {
 
 function getErrorMessage(error: IGrailError) {
   if (error.status === 404) {
-    return `No Holy Grail for the address '${HolyGrailDataManager.current.address}' exists!`;
+    return `No Holy Grail for the address '${GrailManager.current.address}' exists!`;
   }
 
   if (error.type === "conflict") {
