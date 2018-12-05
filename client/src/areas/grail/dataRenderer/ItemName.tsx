@@ -20,7 +20,7 @@ const styles = (theme: Theme) =>
       cursor: "pointer",
       display: "flex"
     },
-    propsIcon: {
+    propsIcons: {
       fontSize: "1.5em",
       marginLeft: theme.spacing.unit
     }
@@ -39,11 +39,15 @@ class ItemNameComponent extends React.PureComponent<Props, IItemNameState> {
     return state;
   }
 
-  private toggleDialog = (changedProps: { itemNote: string }) => {
+  private toggleDialog = (changedProps: { itemNote: string; isPerfect: boolean }) => {
     const newState: Partial<IItemNameState> = { isPropsDialogOpen: !this.state.isPropsDialogOpen };
 
-    if (changedProps && changedProps.itemNote !== this.state.item.note) {
+    if (
+      changedProps &&
+      (changedProps.itemNote !== this.state.item.note || changedProps.isPerfect !== this.state.item.isPerfect)
+    ) {
       this.state.item.note = changedProps.itemNote;
+      this.state.item.isPerfect = changedProps.isPerfect;
       GrailManager.current.updateGrailCache();
       newState.item = this.state.item;
     }
@@ -59,8 +63,13 @@ class ItemNameComponent extends React.PureComponent<Props, IItemNameState> {
         )}
         <div className={this.props.classes.container} onClick={() => this.toggleDialog(null)}>
           <span>{this.props.itemName}</span>
+          {this.props.item.isPerfect && (
+            <Icon className={this.props.classes.propsIcons} title="This item is perfect!">
+              star
+            </Icon>
+          )}
           {this.props.item.note && (
-            <Icon className={this.props.classes.propsIcon} title="This item has notes.">
+            <Icon className={this.props.classes.propsIcons} title="This item has notes.">
               info
             </Icon>
           )}

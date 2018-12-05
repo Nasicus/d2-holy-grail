@@ -1,9 +1,20 @@
 export type ChangeLogCollection = { [version: string]: (string | { change: string; children: string[] })[] };
 
 export const changeLogs: ChangeLogCollection = {
+  "1.6.0": [
+    {
+      change: `Introduce "Perfect Grails":`,
+      children: [
+        "Click on an item to mark it as perfect",
+        "Perfect items are displayed with a start right next to it",
+        "Perfect items are contained in the statistics table",
+        "Perfect items can be found by searching for 'perfect'"
+      ]
+    }
+  ],
   "1.5.0": [
     {
-      change: `Introduce the Runeword Grail:`,
+      change: `Introduce the "Runeword Grail":`,
       children: [
         "Switch to it by clicking the icon on the right side",
         "You can search for a combination of runes and it will find the corresponding runeword (try 'Jah Ber' or 'Shael' for example)",

@@ -91,7 +91,9 @@ class SearchBox extends React.Component<Props, ISearchBoxState> {
 
   private isMatch = (name: string, item: Item | Runeword, searchValue: string): boolean => {
     let isMatch =
-      name.toLowerCase().indexOf(searchValue) > -1 || (item.note && item.note.toLowerCase().indexOf(searchValue) > -1);
+      name.toLowerCase().indexOf(searchValue) > -1 ||
+      (item.note && item.note.toLowerCase().indexOf(searchValue) > -1) ||
+      (item.isPerfect && searchValue === "perfect");
 
     if (isMatch || !(item instanceof Runeword)) {
       return isMatch;

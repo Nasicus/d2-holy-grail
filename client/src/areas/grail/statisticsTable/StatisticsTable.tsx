@@ -6,10 +6,11 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
+import { createStyles, Theme, WithStyles, withStyles, Icon } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography/Typography";
 import { GrailManager } from "../GrailManager";
 import { GrailMode } from "../GrailMode";
+import { IItem } from "../../../common/definitions/union/IItem";
 
 export interface IStatisticsTableProps {
   data: any;
@@ -32,6 +33,9 @@ const styles = (theme: Theme) =>
     },
     total: {
       ...theme.typography.subheading
+    },
+    rowHeader: {
+      display: "flex"
     }
   });
 
@@ -40,8 +44,18 @@ type Props = IStatisticsTableProps & WithStyles<typeof styles>;
 class Stats {
   public total: number = 0;
   public found: number = 0;
+  public perfects: number = 0;
 
-  public constructor(public name: string) {}
+  public get renderValue(): number {
+    return this.usePerfects ? this.perfects : this.found;
+  }
+
+  public constructor(
+    public name: string,
+    public icon?: string,
+    public iconTooltip?: string,
+    public usePerfects?: boolean
+  ) {}
 }
 
 class StatisticsTable extends React.Component<Props, IStatisticsTableSTate> {
@@ -83,9 +97,17 @@ class StatisticsTable extends React.Component<Props, IStatisticsTableSTate> {
     const totalStats = new Stats("Total");
     stats.reduce((accumulator, currentValue) => {
       accumulator.found += currentValue.found;
+      accumulator.perfects += currentValue.perfects;
       accumulator.total += currentValue.total;
       return accumulator;
     }, totalStats);
+
+    const totalPerfectStats = new Stats("Total Perfects");
+    totalPerfectStats.usePerfects = true;
+    totalPerfectStats.icon = "star";
+    totalPerfectStats.iconTooltip = "Perfect items";
+    totalPerfectStats.perfects = totalStats.perfects;
+    totalPerfectStats.total = totalStats.total;
 
     const classes = this.props.classes;
 
@@ -106,8 +128,9 @@ class StatisticsTable extends React.Component<Props, IStatisticsTableSTate> {
               </TableRow>
             </TableHead>
             <TableBody>
-              {stats.map(s => StatisticsTable.renderRow(s))}
-              {StatisticsTable.renderRow(totalStats, true, classes.total)}
+              {stats.map(s => this.renderRow(s))}
+              {this.renderRow(totalStats, true, classes.total)}
+              {this.renderRow(totalPerfectStats)}
             </TableBody>
           </Table>
         </Paper>
@@ -115,16 +138,19 @@ class StatisticsTable extends React.Component<Props, IStatisticsTableSTate> {
     );
   }
 
-  private static renderRow(stats: Stats, isSelected?: boolean, className?: string) {
+  private renderRow(stats: Stats, isSelected?: boolean, className?: string) {
     return (
       <TableRow key={`${stats.name}Stat`} hover={true} selected={isSelected} className={className}>
         <TableCell component="th" scope="row">
-          {stats.name}
+          <div className={this.props.classes.rowHeader}>
+            {stats.icon && <Icon title={stats.iconTooltip}>{stats.icon}</Icon>}
+            {!stats.icon && stats.name}
+          </div>
         </TableCell>
         <TableCell numeric={true}>{stats.total}</TableCell>
-        <TableCell numeric={true}>{stats.found}</TableCell>
-        <TableCell numeric={true}>{stats.total - stats.found}</TableCell>
-        <TableCell numeric={true}>{(stats.total ? (stats.found * 100) / stats.total : 0).toFixed(2)}</TableCell>
+        <TableCell numeric={true}>{stats.renderValue}</TableCell>
+        <TableCell numeric={true}>{stats.total - stats.renderValue}</TableCell>
+        <TableCell numeric={true}>{(stats.total ? (stats.renderValue * 100) / stats.total : 0).toFixed(2)}</TableCell>
       </TableRow>
     );
   }
@@ -142,11 +168,14 @@ class StatisticsTable extends React.Component<Props, IStatisticsTableSTate> {
     }
 
     Object.keys(data).forEach(key => {
-      const possibleItem = data[key];
+      const possibleItem = data[key] as IItem;
       if (Util.isItem(possibleItem)) {
         stats.total++;
         if (possibleItem.wasFound) {
           stats.found++;
+        }
+        if (possibleItem.isPerfect) {
+          stats.perfects++;
         }
       } else {
         this.calculateStats(() => possibleItem, stats);

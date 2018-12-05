@@ -25,6 +25,14 @@ export class Runeword implements IItem, IRunewordDefinition {
     this._item.note = value;
   }
 
+  public get isPerfect(): boolean {
+    return this._item.isPerfect;
+  }
+
+  public set isPerfect(value: boolean) {
+    this._item.isPerfect = value;
+  }
+
   public constructor(runewordDefinition: IRunewordDefinition, item: IItem) {
     this.runes = runewordDefinition.runes;
     this.types = runewordDefinition.types;
