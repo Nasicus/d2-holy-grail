@@ -19,7 +19,7 @@ export interface IChoiceDialogProps {
   isOpen?: boolean;
 }
 
-export const ChoiceDialog: React.SFC<IChoiceDialogProps> = props => {
+export const ChoiceDialog: React.FunctionComponent<IChoiceDialogProps> = props => {
   return (
     <Dialog
       open={!!props.isOpen}

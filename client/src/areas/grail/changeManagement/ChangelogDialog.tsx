@@ -7,7 +7,7 @@ export interface IChangelogDialogProps {
   onClose: () => any;
 }
 
-export const ChangelogDialog: React.SFC<IChangelogDialogProps> = props => {
+export const ChangelogDialog: React.FunctionComponent<IChangelogDialogProps> = props => {
   const changeLog = VersionManager.current.fullChangeLog;
 
   return (

@@ -24,7 +24,7 @@ export interface IDataRendererProps {
 
 type Props = IDataRendererProps & WithStyles<typeof styles>;
 
-const DataRendererInternal: React.SFC<Props> = props => {
+const DataRendererInternal: React.FunctionComponent<Props> = props => {
   if (!props.data) {
     return null;
   }
@@ -64,7 +64,7 @@ const DataRendererInternal: React.SFC<Props> = props => {
   );
 };
 
-const NextData: React.SFC<{
+const NextData: React.FunctionComponent<{
   levelKey: string;
   nextData: any;
   ancestorKeys: string[];

@@ -20,7 +20,7 @@ export interface IButtonWithProgressProps {
 
 type Props = IButtonWithProgressProps & WithStyles<typeof styles>;
 
-const ButtonWithProgressInternal: React.SFC<Props> = props => {
+const ButtonWithProgressInternal: React.FunctionComponent<Props> = props => {
   const onClick = () => {
     if (props.isLoading) {
       return;

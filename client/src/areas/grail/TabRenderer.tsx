@@ -167,7 +167,7 @@ class TabRendererInternal extends React.Component<Props, ITabRendererState> {
   }
 }
 
-const TabContainer: React.SFC<{}> = props => {
+const TabContainer: React.FunctionComponent<{}> = props => {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
       {props.children}

@@ -13,7 +13,7 @@ export interface IGrailErrorHandlerProps {
 
 type Props = IGrailErrorHandlerProps & WithStyles<typeof styles>;
 
-const GrailErrorHandlerInternal: React.SFC<Props> = props => {
+const GrailErrorHandlerInternal: React.FunctionComponent<Props> = props => {
   return (
     <div className={props.classes.container}>
       <Typography variant="body1">{getErrorMessage(props.error)}</Typography>
@@ -22,7 +22,7 @@ const GrailErrorHandlerInternal: React.SFC<Props> = props => {
   );
 };
 
-const ConflictHandler: React.SFC<IGrailErrorHandlerProps> = props => {
+const ConflictHandler: React.FunctionComponent<IGrailErrorHandlerProps> = props => {
   return (
     <div>
       <ChangeDiscarder renderAsListItem={true} text="Discard local changes and use server data" />

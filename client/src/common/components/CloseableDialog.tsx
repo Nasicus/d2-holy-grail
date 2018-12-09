@@ -15,7 +15,7 @@ export interface ISettingsDialogProps {
 
 type Props = ISettingsDialogProps & WithStyles<typeof styles>;
 
-const CloseableDialogInternal: React.SFC<Props> = props => {
+const CloseableDialogInternal: React.FunctionComponent<Props> = props => {
   return (
     <Dialog open={true} onClose={() => props.onDialogClosed()}>
       <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>

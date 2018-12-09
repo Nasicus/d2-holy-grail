@@ -7,7 +7,7 @@ export interface IMenuProps {
 }
 type Props = IMenuProps & WithStyles<typeof styles>;
 
-const MenuInternal: React.SFC<Props> = props => {
+const MenuInternal: React.FunctionComponent<Props> = props => {
   return (
     <Drawer anchor="right" open={!!props.isOpen} onClose={() => props.onClose()}>
       <div tabIndex={0} role="button">

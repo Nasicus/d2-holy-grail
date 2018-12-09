@@ -17,7 +17,7 @@ export interface IListItemWithProgressProps {
 
 type Props = IListItemWithProgressProps & WithStyles<typeof styles>;
 
-const ListItemWithProgressInternal: React.SFC<Props> = props => {
+const ListItemWithProgressInternal: React.FunctionComponent<Props> = props => {
   const { isLoading } = props;
   const { classes } = props;
 
