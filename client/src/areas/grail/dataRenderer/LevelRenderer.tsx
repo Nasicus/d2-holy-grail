@@ -2,8 +2,8 @@ import * as React from "react";
 import { Util } from "../../../common/utils/Util";
 import { DataRenderer, ILevels } from "./DataRenderer";
 import { IHolyGrailData } from "../../../common/definitions/union/IHolyGrailData";
-import ChoiceDialog from "../../../common/components/ChoiceDialog";
 import { GrailManager } from "../GrailManager";
+import { ChoiceDialog } from "../../../common/components/ChoiceDialog";
 
 export interface ILevelRendererProps {
   levelKey: string;
@@ -12,14 +12,29 @@ export interface ILevelRendererProps {
   ancestorKeys?: string[];
 }
 
-export interface ILevelRendererState {
+interface ILevelRendererState {
   showDialog?: boolean;
 }
 
-class LevelRenderer extends React.Component<ILevelRendererProps, ILevelRendererState> {
+export class LevelRenderer extends React.Component<ILevelRendererProps, ILevelRendererState> {
   public constructor(props: ILevelRendererProps) {
     super(props);
     this.state = {};
+  }
+
+  public render() {
+    const { nextData, levelKey } = this.props;
+
+    const ancestorKeys = this.props.ancestorKeys ? this.props.ancestorKeys.map(k => k) : [];
+    ancestorKeys.push(levelKey);
+
+    return (
+      <div>
+        {this.state.showDialog && this.getChoiceDialog(ancestorKeys, nextData)}
+        {this.renderLevelHeader()}
+        <DataRenderer data={nextData} levels={this.props.levels} isRecursive={true} ancestorKeys={ancestorKeys} />
+      </div>
+    );
   }
 
   private getChoiceDialog(ancestorKeys: string[], data: Partial<IHolyGrailData>) {
@@ -75,20 +90,4 @@ class LevelRenderer extends React.Component<ILevelRendererProps, ILevelRendererS
       </span>
     );
   }
-  public render() {
-    const { nextData, levelKey } = this.props;
-
-    const ancestorKeys = this.props.ancestorKeys ? this.props.ancestorKeys.map(k => k) : [];
-    ancestorKeys.push(levelKey);
-
-    return (
-      <div>
-        {this.state.showDialog && this.getChoiceDialog(ancestorKeys, nextData)}
-        {this.renderLevelHeader()}
-        <DataRenderer data={nextData} levels={this.props.levels} isRecursive={true} ancestorKeys={ancestorKeys} />
-      </div>
-    );
-  }
 }
-
-export default LevelRenderer;

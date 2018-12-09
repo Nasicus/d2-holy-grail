@@ -6,26 +6,16 @@ import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import Icon from "@material-ui/core/Icon/Icon";
 
-interface ISettingsDialogProps {
+export interface ISettingsDialogProps {
   onDialogClosed: () => any;
   title: string;
   actions?: () => JSX.Element;
   className?: string;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    closeIcon: {
-      position: "absolute",
-      top: theme.spacing.unit,
-      right: theme.spacing.unit,
-      cursor: "pointer"
-    }
-  });
-
 type Props = ISettingsDialogProps & WithStyles<typeof styles>;
 
-const CloseableDialog: React.SFC<Props> = props => {
+const CloseableDialogInternal: React.SFC<Props> = props => {
   return (
     <Dialog open={true} onClose={() => props.onDialogClosed()}>
       <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
@@ -42,4 +32,14 @@ const CloseableDialog: React.SFC<Props> = props => {
   );
 };
 
-export default withStyles(styles)(CloseableDialog);
+const styles = (theme: Theme) =>
+  createStyles({
+    closeIcon: {
+      position: "absolute",
+      top: theme.spacing.unit,
+      right: theme.spacing.unit,
+      cursor: "pointer"
+    }
+  });
+
+export const CloseableDialog = withStyles(styles)(CloseableDialogInternal);

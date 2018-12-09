@@ -1,17 +1,17 @@
 import * as React from "react";
 import { GrailManager } from "../../GrailManager";
-import ImportDialog from "../ImportDialog";
 import { Subscription } from "rxjs";
-import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
 import { GrailMode } from "../../GrailMode";
+import { ImportDialog } from "../ImportDialog";
+import { ListItemWithProgress } from "../../../../common/components/ListItemWithProgress";
 
-export interface IImportListItemState {
+interface IImportListItemState {
   isSaving?: boolean;
   showDialog?: boolean;
   hasChanges?: boolean;
 }
 
-class ImportListItem extends React.Component<{}, IImportListItemState> {
+export class ImportListItem extends React.Component<{}, IImportListItemState> {
   private localChangesSubscription: Subscription;
 
   public constructor(props: {}) {
@@ -53,5 +53,3 @@ class ImportListItem extends React.Component<{}, IImportListItemState> {
     this.setState({ showDialog: true });
   };
 }
-
-export default ImportListItem;

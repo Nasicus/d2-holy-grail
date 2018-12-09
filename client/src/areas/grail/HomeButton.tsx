@@ -1,8 +1,8 @@
 import * as React from "react";
-import ButtonWithProgress from "../../../common/components/ButtonWithProgress";
 import { withRouter, RouteComponentProps } from "react-router-dom";
+import { ButtonWithProgress } from "../../common/components/ButtonWithProgress";
 
-const HomeButton: React.SFC<RouteComponentProps<{}>> = props => {
+const HomeButtonInternal: React.SFC<RouteComponentProps<{}>> = props => {
   return (
     <div>
       <ButtonWithProgress onClick={() => props.history.push("/")} text="Go to login page" firstIcon="home" />
@@ -10,4 +10,4 @@ const HomeButton: React.SFC<RouteComponentProps<{}>> = props => {
   );
 };
 
-export default withRouter(HomeButton);
+export const HomeButton = withRouter(HomeButtonInternal);

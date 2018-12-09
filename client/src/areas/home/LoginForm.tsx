@@ -5,11 +5,13 @@ import TextField from "@material-ui/core/TextField/TextField";
 import { Redirect } from "react-router";
 import { LocationDescriptorObject } from "history";
 import Typography from "@material-ui/core/Typography/Typography";
-import RegisterFormDialog from "../registerForm/RegisterFormDialog";
 import Icon from "@material-ui/core/Icon/Icon";
 import Paper from "@material-ui/core/Paper/Paper";
-import { Api } from "../../../common/utils/Api";
-import ButtonWithProgress from "../../../common/components/ButtonWithProgress";
+import { Api } from "../../common/utils/Api";
+import { RegisterFormDialog } from "./RegisterFormDialog";
+import { ButtonWithProgress } from "../../common/components/ButtonWithProgress";
+
+type Props = WithStyles<typeof styles>;
 
 export interface ILoginInfo {
   address?: string;
@@ -24,54 +26,7 @@ interface ILoginFormState extends ILoginInfo {
   error?: string;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      width: 350,
-      margin: "auto"
-    },
-    textField: {
-      width: 300,
-      marginTop: theme.spacing.unit * 2
-    },
-    loginButtonContainer: {
-      marginLeft: 0
-    },
-    loginButtonWithProgressWrapper: {
-      "& > div": {
-        marginLeft: 0
-      }
-    },
-    createInfo: {
-      width: 300,
-      margin: "auto",
-      marginTop: theme.spacing.unit * 4,
-      padding: theme.spacing.unit,
-      textAlign: "center"
-    },
-    createInfoLink: {
-      marginTop: theme.spacing.unit
-    },
-    formValues: {
-      textAlign: "left"
-    },
-    passwordRow: {
-      display: "flex"
-    },
-    infoIcon: {
-      alignSelf: "center"
-    },
-    error: {
-      color: theme.palette.error.main
-    },
-    keepMeLoggedInBox: {
-      paddingLeft: 0
-    }
-  });
-
-type Props = WithStyles<typeof styles>;
-
-class LoginForm extends React.Component<Props, ILoginFormState> {
+class LoginFormInternal extends React.Component<Props, ILoginFormState> {
   public constructor(props: Props) {
     super(props);
     this.state = {};
@@ -199,4 +154,49 @@ class LoginForm extends React.Component<Props, ILoginFormState> {
   }
 }
 
-export default withStyles(styles)(LoginForm);
+const styles = (theme: Theme) =>
+  createStyles({
+    root: {
+      width: 350,
+      margin: "auto"
+    },
+    textField: {
+      width: 300,
+      marginTop: theme.spacing.unit * 2
+    },
+    loginButtonContainer: {
+      marginLeft: 0
+    },
+    loginButtonWithProgressWrapper: {
+      "& > div": {
+        marginLeft: 0
+      }
+    },
+    createInfo: {
+      width: 300,
+      margin: "auto",
+      marginTop: theme.spacing.unit * 4,
+      padding: theme.spacing.unit,
+      textAlign: "center"
+    },
+    createInfoLink: {
+      marginTop: theme.spacing.unit
+    },
+    formValues: {
+      textAlign: "left"
+    },
+    passwordRow: {
+      display: "flex"
+    },
+    infoIcon: {
+      alignSelf: "center"
+    },
+    error: {
+      color: theme.palette.error.main
+    },
+    keepMeLoggedInBox: {
+      paddingLeft: 0
+    }
+  });
+
+export const LoginForm = withStyles(styles)(LoginFormInternal);

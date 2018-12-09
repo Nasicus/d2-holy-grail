@@ -4,37 +4,25 @@ import Icon from "@material-ui/core/Icon/Icon";
 import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 import { ChangeEvent } from "react";
-import { IHolyGrailData } from "../../../common/definitions/union/IHolyGrailData";
-import { Util } from "../../../common/utils/Util";
-import { Item } from "../../../common/definitions/union/Item";
+import { Util } from "../../common/utils/Util";
+import { Item } from "../../common/definitions/union/Item";
 import * as Mousetrap from "mousetrap";
-import { AllBusinessGrailsType } from "../../../common/definitions/business/AllBusinessGrailsType";
-import { Runeword } from "../../../common/definitions/business/Runeword";
+import { AllBusinessGrailsType } from "../../common/definitions/business/AllBusinessGrailsType";
+import { Runeword } from "../../common/definitions/business/Runeword";
 require("mousetrap-global-bind");
 
 export interface ISearchBoxProps {
   data: AllBusinessGrailsType;
-  onSearchResult: (result: Partial<IHolyGrailData>) => any;
+  onSearchResult: (result: Partial<AllBusinessGrailsType>) => any;
 }
-
-export interface ISearchBoxState {
-  searchValue: string;
-}
-
-const styles = () =>
-  createStyles({
-    searchBox: {
-      width: 300
-    },
-    icon: {
-      cursor: "pointer",
-      verticalAlign: "middle"
-    }
-  });
 
 type Props = ISearchBoxProps & WithStyles<typeof styles>;
 
-class SearchBox extends React.Component<Props, ISearchBoxState> {
+interface ISearchBoxState {
+  searchValue: string;
+}
+
+class SearchBoxInternal extends React.Component<Props, ISearchBoxState> {
   private onSearch$ = new Subject<string>();
   private searchBoxRef: HTMLInputElement;
 
@@ -114,4 +102,15 @@ class SearchBox extends React.Component<Props, ISearchBoxState> {
   };
 }
 
-export default withStyles(styles)(SearchBox);
+const styles = () =>
+  createStyles({
+    searchBox: {
+      width: 300
+    },
+    icon: {
+      cursor: "pointer",
+      verticalAlign: "middle"
+    }
+  });
+
+export const SearchBox = withStyles(styles)(SearchBoxInternal);

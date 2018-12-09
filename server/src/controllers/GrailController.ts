@@ -1,27 +1,27 @@
 import { Request, Response } from "express";
 import { Db, Collection, MongoError } from "mongodb";
 import { ConfigManager } from "../ConfigManager";
-import { IHolyGrailDb } from "../models/IHolyGrailDb";
+import { IGrailCollection } from "../models/IGrailCollection";
 import { IHolyGrail } from "../models/IHolyGrail";
 import { MongoErrorCodes } from "../models/MongoErrorCodes";
 
-export class HolyGrailController {
-  private get grailCollection(): Collection<IHolyGrailDb> {
-    return this.db.collection<IHolyGrailDb>(ConfigManager.db.holyGrailCollection);
+export class GrailController {
+  private get grailCollection(): Collection<IGrailCollection> {
+    return this.db.collection<IGrailCollection>(ConfigManager.db.holyGrailCollection);
   }
 
   public constructor(private db: Db) {}
 
   public add = async (req: Request, res: Response) => {
-    let newGrail: IHolyGrailDb = req.body;
+    let newGrail: IGrailCollection = req.body;
     const originalAddress = newGrail.address;
-    newGrail.address = this.trimAndToLower(newGrail.address);
-    newGrail.token = HolyGrailController.getToken();
+    newGrail.address = GrailController.trimAndToLower(newGrail.address);
+    newGrail.token = GrailController.getToken();
     newGrail.created = newGrail.modified = new Date();
 
     try {
       const result = await this.grailCollection.insertOne(newGrail);
-      HolyGrailController.mapAndReturnGrailData(
+      GrailController.mapAndReturnGrailData(
         originalAddress,
         res,
         await this.grailCollection.findOne({ _id: result.insertedId })
@@ -33,13 +33,13 @@ export class HolyGrailController {
         return;
       }
 
-      HolyGrailController.sendUnknownError(res, err);
+      GrailController.sendUnknownError(res, err);
     }
   };
 
   public get = async (req: Request, res: Response) => {
     const address = req.params.address;
-    await this.getByAddress(address, res, grail => HolyGrailController.mapAndReturnGrailData(address, res, grail));
+    await this.getByAddress(address, res, grail => GrailController.mapAndReturnGrailData(address, res, grail));
   };
 
   public updateSettings = async (req: Request, res: Response) => {
@@ -89,7 +89,7 @@ export class HolyGrailController {
       return;
     }
 
-    const grail = await this.grailCollection.findOne({ address: this.trimAndToLower(address) });
+    const grail = await this.grailCollection.findOne({ address: GrailController.trimAndToLower(address) });
     if (!grail) {
       res.status(404).send({ type: "notFound", address });
     } else {
@@ -103,20 +103,20 @@ export class HolyGrailController {
     address: string,
     password: string,
     token: string,
-    modifyDataToSaveFunc: (data: Partial<IHolyGrailDb>) => Partial<IHolyGrailDb>
+    modifyDataToSaveFunc: (data: Partial<IGrailCollection>) => Partial<IGrailCollection>
   ) => {
     try {
       const result = await this.grailCollection.findOneAndUpdate(
-        { address: this.trimAndToLower(address), password: password, token: token },
+        { address: GrailController.trimAndToLower(address), password: password, token: token },
         {
-          $set: modifyDataToSaveFunc({ token: HolyGrailController.getToken(), modified: new Date() }),
+          $set: modifyDataToSaveFunc({ token: GrailController.getToken(), modified: new Date() }),
           $inc: { updateCount: 1 }
         },
         { returnOriginal: false }
       );
 
       if (result && result.ok && result.value) {
-        HolyGrailController.mapAndReturnGrailData(address, res, result.value);
+        GrailController.mapAndReturnGrailData(address, res, result.value);
         return;
       }
 
@@ -129,13 +129,13 @@ export class HolyGrailController {
         }
       });
     } catch (err) {
-      HolyGrailController.sendUnknownError(res, err);
+      GrailController.sendUnknownError(res, err);
     }
   };
 
   private async getByAddress(address: string, res: Response, onSuccess: (grail) => any) {
     try {
-      const grail = await this.grailCollection.findOne({ address: this.trimAndToLower(address) });
+      const grail = await this.grailCollection.findOne({ address: GrailController.trimAndToLower(address) });
       if (!grail) {
         res.status(404).send({ type: "notFound", address });
         return;
@@ -143,11 +143,11 @@ export class HolyGrailController {
 
       onSuccess(grail);
     } catch (err) {
-      HolyGrailController.sendUnknownError(res, err);
+      GrailController.sendUnknownError(res, err);
     }
   }
 
-  private static mapAndReturnGrailData(originalAddress: string, res: Response, grail: IHolyGrailDb) {
+  private static mapAndReturnGrailData(originalAddress: string, res: Response, grail: IGrailCollection) {
     // important: never send the grail grailData back directly, because the password is saved in there!
     res.json({
       address: originalAddress,
@@ -167,7 +167,7 @@ export class HolyGrailController {
     return new Date().toISOString();
   }
 
-  private trimAndToLower(value: string): string {
+  private static trimAndToLower(value: string): string {
     return value ? value.toLowerCase().trim() : null;
   }
 }

@@ -1,12 +1,7 @@
 import * as React from "react";
 import { GrailManager } from "../../GrailManager";
-import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
 import { Util } from "../../../../common/utils/Util";
-
-export interface IExportListItemState {
-  isExporting?: boolean;
-  showSecondIcon?: boolean;
-}
+import { ListItemWithProgress } from "../../../../common/components/ListItemWithProgress";
 
 export interface IExportListItemProps {
   data?: any;
@@ -14,7 +9,12 @@ export interface IExportListItemProps {
   fileName?: string;
 }
 
-class ExportListItem extends React.Component<IExportListItemProps, IExportListItemState> {
+interface IExportListItemState {
+  isExporting?: boolean;
+  showSecondIcon?: boolean;
+}
+
+export class ExportListItem extends React.Component<IExportListItemProps, IExportListItemState> {
   private secondIconTimeoutHandler: any;
 
   public constructor(props: IExportListItemProps) {
@@ -68,5 +68,3 @@ class ExportListItem extends React.Component<IExportListItemProps, IExportListIt
     this.secondIconTimeoutHandler = setTimeout(() => this.setState({ showSecondIcon: false }), 5000);
   }
 }
-
-export default ExportListItem;

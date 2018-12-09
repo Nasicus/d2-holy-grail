@@ -1,20 +1,13 @@
 import * as React from "react";
 import { GrailManager } from "../../GrailManager";
-import ButtonWithProgress from "../../../../common/components/ButtonWithProgress";
 import { Subscription } from "rxjs";
-import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
 import { ErrorNotification } from "../../../../common/components/ErrorNotification";
 import * as Mousetrap from "mousetrap";
+import { ListItemWithProgress } from "../../../../common/components/ListItemWithProgress";
+import { ButtonWithProgress } from "../../../../common/components/ButtonWithProgress";
 require("mousetrap-global-bind");
 
-export interface IServerSaveButtonState {
-  isSaving?: boolean;
-  isEnabled?: boolean;
-  showSecondIcon?: boolean;
-  error?: string;
-}
-
-export interface IServerSaveButtonProps {
+export interface IGrailToServerSaverProps {
   renderAsListItem?: boolean;
   text?: string;
   token?: string;
@@ -22,11 +15,18 @@ export interface IServerSaveButtonProps {
   registerShortCut?: boolean;
 }
 
-class SaveGrailToServerComponent extends React.Component<IServerSaveButtonProps, IServerSaveButtonState> {
+interface IGrailToServerSaverState {
+  isSaving?: boolean;
+  isEnabled?: boolean;
+  showSecondIcon?: boolean;
+  error?: string;
+}
+
+export class GrailToServerSaver extends React.Component<IGrailToServerSaverProps, IGrailToServerSaverState> {
   private secondIconTimeoutHandler: any;
   private localChangesSubscription: Subscription;
 
-  public constructor(props: IServerSaveButtonProps) {
+  public constructor(props: IGrailToServerSaverProps) {
     super(props);
     this.state = {};
   }
@@ -125,5 +125,3 @@ class SaveGrailToServerComponent extends React.Component<IServerSaveButtonProps,
     );
   }
 }
-
-export default SaveGrailToServerComponent;

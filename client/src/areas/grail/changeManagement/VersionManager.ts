@@ -1,6 +1,6 @@
-import { LocalStorageHandler } from "../../common/utils/LocalStorageHandler";
+import { LocalStorageHandler } from "../../../common/utils/LocalStorageHandler";
 import { ChangeLogCollection, changeLogs } from "./ChangeLogs";
-const packageJson = require("../../../package.json");
+const packageJson = require("../../../../package.json");
 
 export class VersionManager {
   private static readonly versionStorage: LocalStorageHandler<string> = new LocalStorageHandler<string>("appVersion");
@@ -38,7 +38,7 @@ export class VersionManager {
     ));
   }
 
-  public upgradeStorage() {
+  public static upgradeStorage() {
     VersionManager.versionStorage.setValue(VersionManager.currentVersion);
   }
 }

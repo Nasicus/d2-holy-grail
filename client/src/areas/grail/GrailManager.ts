@@ -5,24 +5,16 @@ import { Observable, ReplaySubject, Subscriber } from "rxjs";
 import { IHolyGrailData } from "../../common/definitions/union/IHolyGrailData";
 import { IEthGrailData } from "../../common/definitions/union/IEthGrailData";
 import { ethGrailSeedData } from "../../common/seeds/EthGrailSeedData";
-import { IGrailData } from "../../common/definitions/api/IGrailData";
 import { GrailMode } from "./GrailMode";
 import { runewordGrailSeedData } from "../../common/seeds/RunewordGrailSeedData";
 import { IRunewordGrailApiData } from "../../common/definitions/api/IRunewordGrailApiData";
 import { AllBusinessGrailsType } from "../../common/definitions/business/AllBusinessGrailsType";
 import { IHolyGrailApiModel } from "../../common/definitions/api/IHolyGrailApiModel";
-import { IHolyGrailSettings } from "../../common/definitions/union/IHolyGrailSettings";
+import { IGrailSettings } from "../../common/definitions/union/IGrailSettings";
 import { IHolyGrailBusinessModel } from "../../common/definitions/business/IHolyGrailBusinessModel";
-import { HolyGrailBusinessModelWrapper } from "./HolyGrailBusinessModelWrapper";
+import { GrailBusinessModelWrapper } from "../../common/definitions/business/GrailBusinessModelWrapper";
 import { AllApiGrailsType } from "../../common/definitions/api/AllApiGrailsType";
-
-export interface IGrailError {
-  status: number;
-  type: string;
-  serverToken?: string;
-  localToken?: string;
-  serverData?: IGrailData;
-}
+import { IGrailError } from "./IGrailError";
 
 export class GrailManager {
   public static get current(): GrailManager {
@@ -44,7 +36,7 @@ export class GrailManager {
     return !this.password;
   }
 
-  public get settings(): IHolyGrailSettings {
+  public get settings(): IGrailSettings {
     return this.apiData.settings;
   }
 
@@ -240,7 +232,7 @@ export class GrailManager {
     }
 
     this.apiData = data;
-    this.businessData = new HolyGrailBusinessModelWrapper(data);
+    this.businessData = new GrailBusinessModelWrapper(data);
     this.dataInitializer.next();
   }
 }

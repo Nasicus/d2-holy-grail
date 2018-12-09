@@ -9,26 +9,14 @@ export interface IItemNameProps {
   itemName: string;
 }
 
-export interface IItemNameState {
+type Props = IItemNameProps & WithStyles<typeof styles>;
+
+interface IItemNameState {
   isPropsDialogOpen?: boolean;
   item: Item;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    container: {
-      cursor: "pointer",
-      display: "flex"
-    },
-    propsIcons: {
-      fontSize: "1.5em",
-      marginLeft: theme.spacing.unit
-    }
-  });
-
-type Props = IItemNameProps & WithStyles<typeof styles>;
-
-class ItemNameComponent extends React.PureComponent<Props, IItemNameState> {
+class ItemNameRendererInternal extends React.PureComponent<Props, IItemNameState> {
   public constructor(props: Props) {
     super(props);
     this.state = { item: this.props.item };
@@ -38,22 +26,6 @@ class ItemNameComponent extends React.PureComponent<Props, IItemNameState> {
     state.item = props.item;
     return state;
   }
-
-  private toggleDialog = (changedProps: { itemNote: string; isPerfect: boolean }) => {
-    const newState: Partial<IItemNameState> = { isPropsDialogOpen: !this.state.isPropsDialogOpen };
-
-    if (
-      changedProps &&
-      (changedProps.itemNote !== this.state.item.note || changedProps.isPerfect !== this.state.item.isPerfect)
-    ) {
-      this.state.item.note = changedProps.itemNote;
-      this.state.item.isPerfect = changedProps.isPerfect;
-      GrailManager.current.updateGrailCache();
-      newState.item = this.state.item;
-    }
-
-    this.setState(newState as IItemNameState);
-  };
 
   public render() {
     return (
@@ -77,6 +49,34 @@ class ItemNameComponent extends React.PureComponent<Props, IItemNameState> {
       </>
     );
   }
+
+  private toggleDialog = (changedProps: { itemNote: string; isPerfect: boolean }) => {
+    const newState: Partial<IItemNameState> = { isPropsDialogOpen: !this.state.isPropsDialogOpen };
+
+    if (
+      changedProps &&
+      (changedProps.itemNote !== this.state.item.note || changedProps.isPerfect !== this.state.item.isPerfect)
+    ) {
+      this.state.item.note = changedProps.itemNote;
+      this.state.item.isPerfect = changedProps.isPerfect;
+      GrailManager.current.updateGrailCache();
+      newState.item = this.state.item;
+    }
+
+    this.setState(newState as IItemNameState);
+  };
 }
 
-export const ItemName = withStyles(styles)(ItemNameComponent);
+const styles = (theme: Theme) =>
+  createStyles({
+    container: {
+      cursor: "pointer",
+      display: "flex"
+    },
+    propsIcons: {
+      fontSize: "1.5em",
+      marginLeft: theme.spacing.unit
+    }
+  });
+
+export const ItemNameRenderer = withStyles(styles)(ItemNameRendererInternal);

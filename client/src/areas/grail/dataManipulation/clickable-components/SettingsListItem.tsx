@@ -1,7 +1,7 @@
 import * as React from "react";
 import { GrailManager } from "../../GrailManager";
-import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
-import SettingsDialog from "../SettingsDialog";
+import { SettingsDialog } from "../SettingsDialog";
+import { ListItemWithProgress } from "../../../../common/components/ListItemWithProgress";
 
 export interface ISettingsListItemState {
   showDialog?: boolean;

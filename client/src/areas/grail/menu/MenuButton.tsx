@@ -1,12 +1,12 @@
 import * as React from "react";
-import ButtonWithProgress from "../../../common/components/ButtonWithProgress";
-import Menu from "./Menu";
+import { Menu } from "./Menu";
+import { ButtonWithProgress } from "../../../common/components/ButtonWithProgress";
 
-export interface IMenuButtonState {
+interface IMenuButtonState {
   isOpen?: boolean;
 }
 
-class MenuButton extends React.Component<{}, IMenuButtonState> {
+export class MenuButton extends React.Component<{}, IMenuButtonState> {
   public constructor(props: {}) {
     super(props);
     this.state = {};
@@ -27,5 +27,3 @@ class MenuButton extends React.Component<{}, IMenuButtonState> {
     this.setState({ isOpen: true });
   };
 }
-
-export default MenuButton;

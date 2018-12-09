@@ -1,9 +1,9 @@
-import { IHolyGrailDb } from "../models/IHolyGrailDb";
+import { IGrailCollection } from "../models/IGrailCollection";
 import { ConfigManager } from "../ConfigManager";
 import { MongoClient, Db } from "mongodb";
 
-async function crateHolyGrailAddressIndex(db: Db) {
-  const holyGrailCollection = db.collection<IHolyGrailDb>(ConfigManager.db.holyGrailCollection);
+async function crateAddressIndex(db: Db) {
+  const holyGrailCollection = db.collection<IGrailCollection>(ConfigManager.db.holyGrailCollection);
   await holyGrailCollection.createIndex(
     { address: 1 },
     { name: "address_idx", unique: true, collation: { locale: "en", strength: 2 } }
@@ -16,6 +16,6 @@ export async function initializeDb(): Promise<Db> {
     { useNewUrlParser: true }
   );
   const db = mongoClient.db();
-  await crateHolyGrailAddressIndex(db);
+  await crateAddressIndex(db);
   return db;
 }

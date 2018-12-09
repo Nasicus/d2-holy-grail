@@ -1,6 +1,6 @@
-import { IHolyGrailData } from "../definitions/union/IHolyGrailData";
 import { Item } from "../definitions/union/Item";
 import { Runeword } from "../definitions/business/Runeword";
+import { AllBusinessGrailsType } from "../definitions/business/AllBusinessGrailsType";
 
 export class Util {
   public static isItem(data: any): boolean {
@@ -13,7 +13,7 @@ export class Util {
     );
   }
 
-  public static getMissingItems(data: IHolyGrailData): Partial<IHolyGrailData> {
+  public static getMissingItems(data: AllBusinessGrailsType): Partial<AllBusinessGrailsType> {
     return this.findData((k, d) => this.isItem(d) && !d.wasFound, data);
   }
 
@@ -21,7 +21,7 @@ export class Util {
     condition: (key: string, value: any) => boolean,
     dataToSearch: any,
     dataResultFunc?: () => any
-  ): Partial<IHolyGrailData> {
+  ): Partial<AllBusinessGrailsType> {
     if (!dataToSearch) {
       return null;
     }

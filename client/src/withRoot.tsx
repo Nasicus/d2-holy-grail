@@ -9,45 +9,15 @@ import { Theme } from "@material-ui/core/styles/createMuiTheme";
 import { BrowserRouter } from "react-router-dom";
 import { GrailMode } from "./areas/grail/GrailMode";
 
-const normalTheme: Theme = createMuiTheme({
-  typography: {
-    useNextVariants: true
-  },
-  palette: {
-    primary: purple,
-    secondary: green
-  }
-});
-
-const ethTheme: Theme = createMuiTheme({
-  typography: {
-    useNextVariants: true
-  },
-  palette: {
-    primary: brown,
-    secondary: grey
-  }
-});
-
-const runewordTheme: Theme = createMuiTheme({
-  typography: {
-    useNextVariants: true
-  },
-  palette: {
-    primary: grey,
-    secondary: brown
-  }
-});
+export interface IWithRootPassDownProps {
+  onGrailModeChange: (grailMode: GrailMode) => any;
+}
 
 interface IWithRootState {
   grailMode: GrailMode;
 }
 
-export interface IWithRootPassDownProps {
-  onGrailModeChange: (grailMode: GrailMode) => any;
-}
-
-function withRoot(Component: React.ComponentType) {
+export function withRoot(Component: React.ComponentType) {
   return class extends React.Component<{}, IWithRootState> {
     public constructor(props: {}) {
       super(props);
@@ -88,4 +58,32 @@ function withRoot(Component: React.ComponentType) {
   };
 }
 
-export default withRoot;
+const normalTheme: Theme = createMuiTheme({
+  typography: {
+    useNextVariants: true
+  },
+  palette: {
+    primary: purple,
+    secondary: green
+  }
+});
+
+const ethTheme: Theme = createMuiTheme({
+  typography: {
+    useNextVariants: true
+  },
+  palette: {
+    primary: brown,
+    secondary: grey
+  }
+});
+
+const runewordTheme: Theme = createMuiTheme({
+  typography: {
+    useNextVariants: true
+  },
+  palette: {
+    primary: grey,
+    secondary: brown
+  }
+});

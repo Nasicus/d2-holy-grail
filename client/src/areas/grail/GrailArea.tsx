@@ -1,81 +1,49 @@
 import * as React from "react";
-import TabRenderer from "./tabRenderer/TabRenderer";
-import SearchBox from "./searchBox/SearchBox";
-import { GrailManager, IGrailError } from "./GrailManager";
+import { GrailManager } from "./GrailManager";
 import { CircularProgress, createStyles, Divider, Theme, withStyles, WithStyles } from "@material-ui/core";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import { ILoginInfo } from "../home/loginForm/LoginForm";
-import SaveGrailToServerComponent from "./dataManipulation/clickable-components/SaveGrailToServerComponent";
-import { IHolyGrailData } from "../../common/definitions/union/IHolyGrailData";
-import HomeButton from "./homeButton/HomeButton";
-import MenuButton from "./menu/MenuButton";
-import ExportListItem from "./dataManipulation/clickable-components/ExportListItem";
-import ImportListItem from "./dataManipulation/clickable-components/ImportListItem";
-import ToggleAllListItem from "./dataManipulation/clickable-components/ToggleAllListItem";
-import DiscardChangesComponent from "./dataManipulation/clickable-components/DiscardChangesComponent";
-import ListItemWithProgress from "../../common/components/ListItemWithProgress";
+import { ILoginInfo } from "../home/LoginForm";
 import { SettingsListItem } from "./dataManipulation/clickable-components/SettingsListItem";
-import VersionNotifier from "./VersionNotifier";
 import { GrailTypeToggler } from "./dataManipulation/clickable-components/GrailTypeToggler";
 import { IPassDownAppProps } from "../../App";
 import { GrailErrorHandler } from "./GrailErrorHandler";
 import { GrailMode } from "./GrailMode";
 import { AllBusinessGrailsType } from "../../common/definitions/business/AllBusinessGrailsType";
+import { ToggleAllListItem } from "./dataManipulation/clickable-components/ToggleAllListItem";
+import { ExportListItem } from "./dataManipulation/clickable-components/ExportListItem";
+import { HomeButton } from "./HomeButton";
+import { MenuButton } from "./menu/MenuButton";
+import { GrailToServerSaver } from "./dataManipulation/clickable-components/GrailToServerSaver";
+import { ChangeDiscarder } from "./dataManipulation/clickable-components/ChangeDiscarder";
+import { ImportListItem } from "./dataManipulation/clickable-components/ImportListItem";
+import { IGrailError } from "./IGrailError";
+import { SearchBox } from "./SearchBox";
+import { VersionNotifier } from "./changeManagement/VersionNotifier";
+import { TabRenderer } from "./TabRenderer";
+import { ListItemWithProgress } from "../../common/components/ListItemWithProgress";
 
-export interface IGrailAreaState {
-  searchResult?: Partial<IHolyGrailData>;
-  data?: AllBusinessGrailsType;
-  error?: IGrailError;
-  loading?: boolean;
-}
-
-const styles = (theme: Theme) =>
-  createStyles({
-    tabs: {
-      marginTop: theme.spacing.unit * 4
-    },
-    searchContainer: {
-      maxWidth: 700,
-      margin: "auto",
-      textAlign: "center"
-    },
-    rightButtonsContainer: {
-      position: "fixed",
-      right: theme.spacing.unit,
-      bottom: theme.spacing.unit
-    },
-    leftButtonsContainer: {
-      position: "fixed",
-      left: theme.spacing.unit,
-      bottom: theme.spacing.unit
-    },
-    buttonRow: {
-      display: "flex",
-      justifyContent: "flex-end"
-    },
-    loader: {
-      position: "fixed",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)"
-    }
-  });
-
-export interface IGrailAreaRouterParams {
+interface IGrailAreaRouterParams {
   address: string;
   grailMode: string;
 }
 
 type Props = IPassDownAppProps & WithStyles<typeof styles> & RouteComponentProps<IGrailAreaRouterParams>;
 
-class GrailArea extends React.Component<Props, IGrailAreaState> {
+interface IGrailAreaState {
+  searchResult?: Partial<AllBusinessGrailsType>;
+  data?: AllBusinessGrailsType;
+  error?: IGrailError;
+  loading?: boolean;
+}
+
+class GrailAreaInternal extends React.Component<Props, IGrailAreaState> {
   public constructor(props: Props) {
     super(props);
     this.state = { loading: true };
   }
 
   public static getDerivedStateFromProps(props: Props, state: IGrailAreaState) {
-    const newMode = GrailArea.getGrailModeFromRouteParams(props);
+    const newMode = GrailAreaInternal.getGrailModeFromRouteParams(props);
     if (GrailManager.current && GrailManager.current.grailMode !== newMode) {
       state.loading = true;
       state.data = null;
@@ -90,7 +58,7 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
   public componentDidMount() {
     const loginInfo = (this.props.location.state || {}) as ILoginInfo;
     const address = loginInfo.address || this.props.match.params.address;
-    const grailMode = GrailArea.getGrailModeFromRouteParams(this.props);
+    const grailMode = GrailAreaInternal.getGrailModeFromRouteParams(this.props);
     this.props.onGrailModeChange(grailMode);
     const dataManager = GrailManager.createInstance(grailMode, address, loginInfo.password, loginInfo.keepLoggedIn);
     dataManager.initialize().subscribe(
@@ -99,17 +67,6 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
       // so you can also use the app offline
       (err: IGrailError) => this.setState({ error: err })
     );
-  }
-
-  private static getGrailModeFromRouteParams(props: Props) {
-    switch (props.match.params.grailMode as GrailMode) {
-      case GrailMode.Eth:
-        return GrailMode.Eth;
-      case GrailMode.Runeword:
-        return GrailMode.Runeword;
-      default:
-        return GrailMode.Holy;
-    }
   }
 
   public render() {
@@ -144,10 +101,10 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
 
         <div className={this.props.classes.rightButtonsContainer}>
           <div className={this.props.classes.buttonRow}>
-            <SaveGrailToServerComponent registerShortCut={true} />
+            <GrailToServerSaver registerShortCut={true} />
           </div>
           <div className={this.props.classes.buttonRow}>
-            <DiscardChangesComponent />
+            <ChangeDiscarder />
           </div>
           <div className={this.props.classes.buttonRow}>
             <GrailTypeToggler grailMode={GrailManager.current.grailMode} />
@@ -160,8 +117,8 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
                 firstIcon="person"
               />
               <Divider />
-              <SaveGrailToServerComponent renderAsListItem={true} />
-              <DiscardChangesComponent renderAsListItem={true} />
+              <GrailToServerSaver renderAsListItem={true} />
+              <ChangeDiscarder renderAsListItem={true} />
               <ToggleAllListItem onToggle={d => this.setState({ data: d })} />
               <ImportListItem />
               <ExportListItem />
@@ -174,9 +131,52 @@ class GrailArea extends React.Component<Props, IGrailAreaState> {
     );
   }
 
-  private onSearchResult = (result: Partial<IHolyGrailData>) => {
+  private static getGrailModeFromRouteParams(props: Props) {
+    switch (props.match.params.grailMode as GrailMode) {
+      case GrailMode.Eth:
+        return GrailMode.Eth;
+      case GrailMode.Runeword:
+        return GrailMode.Runeword;
+      default:
+        return GrailMode.Holy;
+    }
+  }
+
+  private onSearchResult = (result: Partial<AllBusinessGrailsType>) => {
     this.setState({ searchResult: result });
   };
 }
 
-export default withRouter(withStyles(styles)(GrailArea));
+const styles = (theme: Theme) =>
+  createStyles({
+    tabs: {
+      marginTop: theme.spacing.unit * 4
+    },
+    searchContainer: {
+      maxWidth: 700,
+      margin: "auto",
+      textAlign: "center"
+    },
+    rightButtonsContainer: {
+      position: "fixed",
+      right: theme.spacing.unit,
+      bottom: theme.spacing.unit
+    },
+    leftButtonsContainer: {
+      position: "fixed",
+      left: theme.spacing.unit,
+      bottom: theme.spacing.unit
+    },
+    buttonRow: {
+      display: "flex",
+      justifyContent: "flex-end"
+    },
+    loader: {
+      position: "fixed",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)"
+    }
+  });
+
+export const GrailArea = withRouter(withStyles(styles)(GrailAreaInternal));

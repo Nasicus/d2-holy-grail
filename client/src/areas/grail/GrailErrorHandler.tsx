@@ -1,30 +1,32 @@
 import * as React from "react";
 import { createStyles, WithStyles, withStyles, Typography } from "@material-ui/core";
-import { GrailManager, IGrailError } from "./GrailManager";
-import DiscardChangesComponent from "./dataManipulation/clickable-components/DiscardChangesComponent";
-import SaveGrailToServerComponent from "./dataManipulation/clickable-components/SaveGrailToServerComponent";
-import ExportListItem from "./dataManipulation/clickable-components/ExportListItem";
+import { GrailManager } from "./GrailManager";
 import { IGrailData } from "../../common/definitions/api/IGrailData";
+import { ChangeDiscarder } from "./dataManipulation/clickable-components/ChangeDiscarder";
+import { GrailToServerSaver } from "./dataManipulation/clickable-components/GrailToServerSaver";
+import { ExportListItem } from "./dataManipulation/clickable-components/ExportListItem";
+import { IGrailError } from "./IGrailError";
 
-interface IGrailErrorHandlerProps {
+export interface IGrailErrorHandlerProps {
   error: IGrailError;
 }
 
-const styles = () =>
-  createStyles({
-    container: {
-      maxWidth: "700px",
-      margin: "auto"
-    }
-  });
-
 type Props = IGrailErrorHandlerProps & WithStyles<typeof styles>;
+
+const GrailErrorHandlerInternal: React.SFC<Props> = props => {
+  return (
+    <div className={props.classes.container}>
+      <Typography variant="body1">{getErrorMessage(props.error)}</Typography>
+      {props.error.type === "conflict" && <ConflictHandler error={props.error} />}
+    </div>
+  );
+};
 
 const ConflictHandler: React.SFC<IGrailErrorHandlerProps> = props => {
   return (
     <div>
-      <DiscardChangesComponent renderAsListItem={true} text="Discard local changes and use server data" />
-      <SaveGrailToServerComponent
+      <ChangeDiscarder renderAsListItem={true} text="Discard local changes and use server data" />
+      <GrailToServerSaver
         renderAsListItem={true}
         text="Ignore server changes and use local data"
         token={props.error.serverToken}
@@ -62,13 +64,12 @@ function getErrorMessage(error: IGrailError) {
   return "There was an error getting the Holy Grail Data from the server. Please try again.";
 }
 
-const GrailErrorHandlerComponent: React.SFC<Props> = props => {
-  return (
-    <div className={props.classes.container}>
-      <Typography variant="body1">{getErrorMessage(props.error)}</Typography>
-      {props.error.type === "conflict" && <ConflictHandler error={props.error} />}
-    </div>
-  );
-};
+const styles = () =>
+  createStyles({
+    container: {
+      maxWidth: "700px",
+      margin: "auto"
+    }
+  });
 
-export const GrailErrorHandler = withStyles(styles)(GrailErrorHandlerComponent);
+export const GrailErrorHandler = withStyles(styles)(GrailErrorHandlerInternal);

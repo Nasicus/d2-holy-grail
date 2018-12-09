@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Util } from "../../../common/utils/Util";
+import { Util } from "../../common/utils/Util";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -8,38 +8,19 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { createStyles, Theme, WithStyles, withStyles, Icon } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography/Typography";
-import { GrailManager } from "../GrailManager";
-import { GrailMode } from "../GrailMode";
-import { IItem } from "../../../common/definitions/union/IItem";
+import { GrailManager } from "./GrailManager";
+import { GrailMode } from "./GrailMode";
+import { IItem } from "../../common/definitions/union/IItem";
 
 export interface IStatisticsTableProps {
   data: any;
 }
 
-export interface IStatisticsTableSTate {
+type Props = IStatisticsTableProps & WithStyles<typeof styles>;
+
+interface IStatisticsTableSTate {
   data: any;
 }
-
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      maxWidth: 700,
-      margin: "auto",
-      marginTop: theme.spacing.unit * 3,
-      overflowX: "auto"
-    },
-    table: {
-      maxWidth: 700
-    },
-    total: {
-      ...theme.typography.subheading
-    },
-    rowHeader: {
-      display: "flex"
-    }
-  });
-
-type Props = IStatisticsTableProps & WithStyles<typeof styles>;
 
 class Stats {
   public total: number = 0;
@@ -58,7 +39,7 @@ class Stats {
   ) {}
 }
 
-class StatisticsTable extends React.Component<Props, IStatisticsTableSTate> {
+class StatisticsTableInternal extends React.Component<Props, IStatisticsTableSTate> {
   public constructor(props: Props) {
     super(props);
     this.state = {
@@ -185,4 +166,23 @@ class StatisticsTable extends React.Component<Props, IStatisticsTableSTate> {
   }
 }
 
-export default withStyles(styles)(StatisticsTable);
+const styles = (theme: Theme) =>
+  createStyles({
+    root: {
+      maxWidth: 700,
+      margin: "auto",
+      marginTop: theme.spacing.unit * 3,
+      overflowX: "auto"
+    },
+    table: {
+      maxWidth: 700
+    },
+    total: {
+      ...theme.typography.subheading
+    },
+    rowHeader: {
+      display: "flex"
+    }
+  });
+
+export const StatisticsTable = withStyles(styles)(StatisticsTableInternal);

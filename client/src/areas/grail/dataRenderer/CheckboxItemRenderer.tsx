@@ -2,7 +2,7 @@ import * as React from "react";
 import Checkbox from "@material-ui/core/Checkbox/Checkbox";
 import { GrailManager } from "../GrailManager";
 import { Item } from "../../../common/definitions/union/Item";
-import { ItemName } from "./ItemName";
+import { ItemNameRenderer } from "./ItemNameRenderer";
 import { withStyles, createStyles, WithStyles } from "@material-ui/core";
 
 export interface IItemProps {
@@ -10,20 +10,13 @@ export interface IItemProps {
   itemName: string;
 }
 
+type Props = IItemProps & WithStyles<typeof styles>;
+
 interface IItemState {
   item: Item;
 }
-const styles = () =>
-  createStyles({
-    container: {
-      display: "flex",
-      alignItems: "center"
-    }
-  });
 
-type Props = IItemProps & WithStyles<typeof styles>;
-
-class CheckboxItemRendererComponent extends React.Component<Props, IItemState> {
+class CheckboxItemRendererInternal extends React.Component<Props, IItemState> {
   public constructor(props: Props) {
     super(props);
     this.state = {
@@ -40,7 +33,7 @@ class CheckboxItemRendererComponent extends React.Component<Props, IItemState> {
           onChange={event => this.onItemCheckBoxChanged(this.state.item, event)}
           value={this.props.itemName}
         />
-        <ItemName itemName={this.props.itemName} item={this.props.item} />
+        <ItemNameRenderer itemName={this.props.itemName} item={this.props.item} />
       </div>
     );
   }
@@ -52,4 +45,12 @@ class CheckboxItemRendererComponent extends React.Component<Props, IItemState> {
   };
 }
 
-export const CheckboxItemRenderer = withStyles(styles)(CheckboxItemRendererComponent);
+const styles = () =>
+  createStyles({
+    container: {
+      display: "flex",
+      alignItems: "center"
+    }
+  });
+
+export const CheckboxItemRenderer = withStyles(styles)(CheckboxItemRendererInternal);

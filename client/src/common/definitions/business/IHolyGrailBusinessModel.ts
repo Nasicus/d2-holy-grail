@@ -1,6 +1,6 @@
 import { IHolyGrailData } from "../union/IHolyGrailData";
 import { IEthGrailData } from "../union/IEthGrailData";
-import { IHolyGrailSettings } from "../union/IHolyGrailSettings";
+import { IGrailSettings } from "../union/IGrailSettings";
 import { IRunewordGrailBusinessData } from "./IRunewordGrailBusinessData";
 
 export interface IHolyGrailBusinessModel {
@@ -10,5 +10,5 @@ export interface IHolyGrailBusinessModel {
   ethData: IEthGrailData;
   runewordData: IRunewordGrailBusinessData;
   token: string;
-  settings: IHolyGrailSettings;
+  settings: IGrailSettings;
 }

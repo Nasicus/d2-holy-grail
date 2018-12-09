@@ -3,21 +3,14 @@ import { Button, createStyles, Icon, IconButton, Snackbar, Theme, withStyles, Wi
 import { VersionManager } from "./VersionManager";
 import { ChangelogDialog } from "./ChangelogDialog";
 
-export interface IVersionNotifierState {
+type Props = WithStyles<typeof styles>;
+
+interface IVersionNotifierState {
   showNotification?: boolean;
   showChangelog?: boolean;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    close: {
-      padding: theme.spacing.unit / 2
-    }
-  });
-
-type Props = WithStyles<typeof styles>;
-
-class VersionNotifier extends React.Component<Props, IVersionNotifierState> {
+class VersionNotifierInternal extends React.Component<Props, IVersionNotifierState> {
   public constructor(props: Props) {
     super(props);
     this.state = {};
@@ -31,12 +24,12 @@ class VersionNotifier extends React.Component<Props, IVersionNotifierState> {
   }
 
   private handleClose = () => {
-    VersionManager.current.upgradeStorage();
+    VersionManager.upgradeStorage();
     this.setState({ showNotification: false });
   };
 
   private showChangeLog = () => {
-    VersionManager.current.upgradeStorage();
+    VersionManager.upgradeStorage();
     this.setState({ showNotification: false, showChangelog: true });
   };
 
@@ -84,4 +77,11 @@ class VersionNotifier extends React.Component<Props, IVersionNotifierState> {
   }
 }
 
-export default withStyles(styles)(VersionNotifier);
+const styles = (theme: Theme) =>
+  createStyles({
+    close: {
+      padding: theme.spacing.unit / 2
+    }
+  });
+
+export const VersionNotifier = withStyles(styles)(VersionNotifierInternal);

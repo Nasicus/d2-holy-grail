@@ -4,24 +4,6 @@ import { ListItem, ListItemIcon, ListItemText, Icon, createStyles, WithStyles, w
 import * as React from "react";
 import * as classNames from "classnames";
 
-const styles = () =>
-  createStyles({
-    root: {
-      display: "flex",
-      alignItems: "center"
-    },
-    secondIcon: {
-      color: green[500],
-      "&:hover": {
-        color: green[700]
-      }
-    },
-    buttonProgress: {
-      color: green[500],
-      verticalAlign: "middle"
-    }
-  });
-
 export interface IListItemWithProgressProps {
   isLoading?: boolean;
   onClick?: () => any;
@@ -35,7 +17,7 @@ export interface IListItemWithProgressProps {
 
 type Props = IListItemWithProgressProps & WithStyles<typeof styles>;
 
-const ListItemWithProgress: React.SFC<Props> = props => {
+const ListItemWithProgressInternal: React.SFC<Props> = props => {
   const { isLoading } = props;
   const { classes } = props;
 
@@ -58,4 +40,22 @@ const ListItemWithProgress: React.SFC<Props> = props => {
   );
 };
 
-export default withStyles(styles)(ListItemWithProgress);
+const styles = () =>
+  createStyles({
+    root: {
+      display: "flex",
+      alignItems: "center"
+    },
+    secondIcon: {
+      color: green[500],
+      "&:hover": {
+        color: green[700]
+      }
+    },
+    buttonProgress: {
+      color: green[500],
+      verticalAlign: "middle"
+    }
+  });
+
+export const ListItemWithProgress = withStyles(styles)(ListItemWithProgressInternal);

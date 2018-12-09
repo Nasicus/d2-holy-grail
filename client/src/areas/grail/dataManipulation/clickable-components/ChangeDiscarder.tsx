@@ -1,21 +1,21 @@
 import * as React from "react";
 import { GrailManager } from "../../GrailManager";
-import ButtonWithProgress from "../../../../common/components/ButtonWithProgress";
 import { Subscription } from "rxjs";
-import ChoiceDialog, { createDefaultConfirmButtons } from "../../../../common/components/ChoiceDialog";
-import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
+import { ChoiceDialog, createDefaultConfirmButtons } from "../../../../common/components/ChoiceDialog";
+import { ListItemWithProgress } from "../../../../common/components/ListItemWithProgress";
+import { ButtonWithProgress } from "../../../../common/components/ButtonWithProgress";
 
-export interface IDiscardChangesButtonState {
-  isEnabled?: boolean;
-  showConfirm?: boolean;
-}
-
-export interface IDiscardChangesButtonProps {
+export interface IChangeDiscarderProps {
   renderAsListItem?: boolean;
   text?: string;
 }
 
-class DiscardChangesComponent extends React.Component<IDiscardChangesButtonProps, IDiscardChangesButtonState> {
+interface IChangeDiscarderState {
+  isEnabled?: boolean;
+  showConfirm?: boolean;
+}
+
+export class ChangeDiscarder extends React.Component<IChangeDiscarderProps, IChangeDiscarderState> {
   private localChangesSubscription: Subscription;
 
   public constructor(props: {}) {
@@ -76,5 +76,3 @@ class DiscardChangesComponent extends React.Component<IDiscardChangesButtonProps
     this.setState({ showConfirm: false });
   };
 }
-
-export default DiscardChangesComponent;

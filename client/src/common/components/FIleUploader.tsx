@@ -8,34 +8,13 @@ export interface IFileUploaderProps {
   mimeTypes?: string[];
 }
 
+type Props = IFileUploaderProps & WithStyles<typeof styles>;
+
 interface IFileUploaderState {
   activeFileNames?: string[];
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    dropZone: {
-      height: 50,
-      borderWidth: 2,
-      borderStyle: "dashed",
-      borderRadius: theme.spacing.unit,
-      borderColor: theme.palette.primary.main,
-      fontFamily: theme.typography.fontFamily,
-      color: theme.palette.text.primary,
-      cursor: "pointer",
-      marginTop: theme.spacing.unit,
-      marginBottom: theme.spacing.unit
-    },
-    dropZoneText: {
-      verticalAlign: "middle",
-      lineHeight: "50px",
-      padding: theme.spacing.unit
-    }
-  });
-
-type Props = IFileUploaderProps & WithStyles<typeof styles>;
-
-class FileUploader extends React.Component<Props, IFileUploaderState> {
+class FileUploaderInternal extends React.Component<Props, IFileUploaderState> {
   public constructor(props: Props) {
     super(props);
     this.state = {};
@@ -64,4 +43,25 @@ class FileUploader extends React.Component<Props, IFileUploaderState> {
   }
 }
 
-export default withStyles(styles)(FileUploader);
+const styles = (theme: Theme) =>
+  createStyles({
+    dropZone: {
+      height: 50,
+      borderWidth: 2,
+      borderStyle: "dashed",
+      borderRadius: theme.spacing.unit,
+      borderColor: theme.palette.primary.main,
+      fontFamily: theme.typography.fontFamily,
+      color: theme.palette.text.primary,
+      cursor: "pointer",
+      marginTop: theme.spacing.unit,
+      marginBottom: theme.spacing.unit
+    },
+    dropZoneText: {
+      verticalAlign: "middle",
+      lineHeight: "50px",
+      padding: theme.spacing.unit
+    }
+  });
+
+export const FileUploader = withStyles(styles)(FileUploaderInternal);

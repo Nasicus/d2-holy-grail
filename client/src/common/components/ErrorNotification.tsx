@@ -6,20 +6,13 @@ export interface IErrorNotificationProps {
   onDismiss: () => any;
 }
 
+type Props = IErrorNotificationProps & WithStyles<typeof styles>;
+
 interface IErrorNotificationState {
   isOpen: boolean;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    message: {
-      color: theme.palette.error.main
-    }
-  });
-
-type Props = IErrorNotificationProps & WithStyles<typeof styles>;
-
-class ErrorNotificationComponent extends React.PureComponent<Props, IErrorNotificationState> {
+class ErrorNotificationInternal extends React.PureComponent<Props, IErrorNotificationState> {
   public constructor(props: Props) {
     super(props);
     this.state = { isOpen: true };
@@ -49,4 +42,11 @@ class ErrorNotificationComponent extends React.PureComponent<Props, IErrorNotifi
   }
 }
 
-export const ErrorNotification = withStyles(styles)(ErrorNotificationComponent);
+const styles = (theme: Theme) =>
+  createStyles({
+    message: {
+      color: theme.palette.error.main
+    }
+  });
+
+export const ErrorNotification = withStyles(styles)(ErrorNotificationInternal);

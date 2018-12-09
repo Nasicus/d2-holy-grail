@@ -3,7 +3,7 @@ import { IHolyGrailData } from "../definitions/union/IHolyGrailData";
 import { IEthGrailData } from "../definitions/union/IEthGrailData";
 import { IRunewordGrailApiData } from "../definitions/api/IRunewordGrailApiData";
 import { IHolyGrailApiModel } from "../definitions/api/IHolyGrailApiModel";
-import { IHolyGrailSettings } from "../definitions/union/IHolyGrailSettings";
+import { IGrailSettings } from "../definitions/union/IGrailSettings";
 
 export interface IApiResponse<T> {
   status: number;
@@ -37,7 +37,7 @@ export class Api {
     address: string,
     password: string,
     token: string,
-    settings: IHolyGrailSettings
+    settings: IGrailSettings
   ): Observable<IApiResponse<IHolyGrailApiModel>> {
     return this.fetchToObservable(
       fetch(`${Api.apiUrl}${address}/settings`, {

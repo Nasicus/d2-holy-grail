@@ -19,12 +19,7 @@ export interface IChoiceDialogProps {
   isOpen?: boolean;
 }
 
-export const createDefaultConfirmButtons = (okText?: string, cancelText?: string): IChoiceDialogButton[] => [
-  { text: okText || "Ok", value: true },
-  { text: cancelText || "Cancel", value: false }
-];
-
-const ChoiceDialog: React.SFC<IChoiceDialogProps> = props => {
+export const ChoiceDialog: React.SFC<IChoiceDialogProps> = props => {
   return (
     <Dialog
       open={!!props.isOpen}
@@ -49,4 +44,7 @@ const ChoiceDialog: React.SFC<IChoiceDialogProps> = props => {
   );
 };
 
-export default ChoiceDialog;
+export const createDefaultConfirmButtons = (okText?: string, cancelText?: string): IChoiceDialogButton[] => [
+  { text: okText || "Ok", value: true },
+  { text: cancelText || "Cancel", value: false }
+];

@@ -4,7 +4,7 @@ import { ConfigManager } from "../ConfigManager";
 import * as cors from "cors";
 import * as path from "path";
 import { Db } from "mongodb";
-import { HolyGrailController } from "../controllers/HolyGrailController";
+import { GrailController } from "../controllers/GrailController";
 
 function initializeExpressServer(express: expressServer.Express): void {
   express.use(bodyParser.urlencoded({ extended: true }));
@@ -20,7 +20,7 @@ function initializeExpressServerForClient(express: expressServer.Express, rootDi
 }
 
 function configureRoutes(db: Db, express: expressServer.Express): void {
-  const grailController: HolyGrailController = new HolyGrailController(db);
+  const grailController: GrailController = new GrailController(db);
 
   express.route("/api/grail").post(grailController.add);
 

@@ -1,16 +1,16 @@
 import * as React from "react";
 import { GrailManager } from "../../GrailManager";
-import ButtonWithProgress from "../../../../common/components/ButtonWithProgress";
 import { ErrorNotification } from "../../../../common/components/ErrorNotification";
+import { ButtonWithProgress } from "../../../../common/components/ButtonWithProgress";
 
-export interface IServerSaveButtonState {
+interface IServerSaveButtonState {
   isSaving?: boolean;
   isEnabled?: boolean;
   showSecondIcon?: boolean;
   error?: string;
 }
 
-class SaveSettingsToServerButton extends React.Component<{}, IServerSaveButtonState> {
+export class SettingsToServerSaver extends React.Component<{}, IServerSaveButtonState> {
   private secondIconTimeoutHandler: any;
 
   public constructor(props: {}) {
@@ -20,6 +20,27 @@ class SaveSettingsToServerButton extends React.Component<{}, IServerSaveButtonSt
 
   public componentWillUnmount() {
     clearTimeout(this.secondIconTimeoutHandler);
+  }
+
+  public render() {
+    console.log(this.state.error);
+    return (
+      <>
+        {this.state.error && (
+          <div>
+            <ErrorNotification error={this.state.error} onDismiss={() => this.setState({ error: null })} />
+          </div>
+        )}
+        <ButtonWithProgress
+          isLoading={this.state.isSaving}
+          onClick={() => this.onSaveButtonClick()}
+          text="Save"
+          isDisabled={!this.state.isEnabled}
+          secondIcon="check"
+          showSecondIcon={this.state.showSecondIcon}
+        />
+      </>
+    );
   }
 
   private onSaveButtonClick = () => {
@@ -44,27 +65,4 @@ class SaveSettingsToServerButton extends React.Component<{}, IServerSaveButtonSt
     clearTimeout(this.secondIconTimeoutHandler);
     this.secondIconTimeoutHandler = setTimeout(() => this.setState({ showSecondIcon: false }), 500000);
   };
-
-  public render() {
-    console.log(this.state.error);
-    return (
-      <>
-        {this.state.error && (
-          <div>
-            <ErrorNotification error={this.state.error} onDismiss={() => this.setState({ error: null })} />
-          </div>
-        )}
-        <ButtonWithProgress
-          isLoading={this.state.isSaving}
-          onClick={() => this.onSaveButtonClick()}
-          text="Save"
-          isDisabled={!this.state.isEnabled}
-          secondIcon="check"
-          showSecondIcon={this.state.showSecondIcon}
-        />
-      </>
-    );
-  }
 }
-
-export default SaveSettingsToServerButton;

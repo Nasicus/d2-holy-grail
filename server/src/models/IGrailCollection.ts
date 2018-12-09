@@ -1,4 +1,4 @@
-export interface IHolyGrailDb {
+export interface IGrailCollection {
   address: string;
   password: string;
   token: string;

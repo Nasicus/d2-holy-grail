@@ -7,40 +7,6 @@ import * as classNames from "classnames";
 import Icon from "@material-ui/core/Icon/Icon";
 import Fab from "@material-ui/core/Fab";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      display: "flex",
-      alignItems: "center"
-    },
-    wrapper: {
-      margin: theme.spacing.unit,
-      position: "relative"
-    },
-    buttonSuccess: {
-      backgroundColor: green[500],
-      "&:hover": {
-        backgroundColor: green[700]
-      }
-    },
-    fabProgress: {
-      color: green[500],
-      position: "absolute",
-      top: -6,
-      left: -6,
-      zIndex: 1
-    },
-    buttonProgress: {
-      color: green[500],
-      verticalAlign: "middle",
-      marginRight: theme.spacing.unit
-    },
-    secondIconNormalButton: {
-      verticalAlign: "middle",
-      marginRight: theme.spacing.unit
-    }
-  });
-
 export interface IButtonWithProgressProps {
   isLoading?: boolean;
   showSecondIcon?: boolean;
@@ -54,7 +20,7 @@ export interface IButtonWithProgressProps {
 
 type Props = IButtonWithProgressProps & WithStyles<typeof styles>;
 
-const ButtonWithProgress: React.SFC<Props> = props => {
+const ButtonWithProgressInternal: React.SFC<Props> = props => {
   const onClick = () => {
     if (props.isLoading) {
       return;
@@ -105,4 +71,38 @@ const ButtonWithProgress: React.SFC<Props> = props => {
   );
 };
 
-export default withStyles(styles)(ButtonWithProgress);
+const styles = (theme: Theme) =>
+  createStyles({
+    root: {
+      display: "flex",
+      alignItems: "center"
+    },
+    wrapper: {
+      margin: theme.spacing.unit,
+      position: "relative"
+    },
+    buttonSuccess: {
+      backgroundColor: green[500],
+      "&:hover": {
+        backgroundColor: green[700]
+      }
+    },
+    fabProgress: {
+      color: green[500],
+      position: "absolute",
+      top: -6,
+      left: -6,
+      zIndex: 1
+    },
+    buttonProgress: {
+      color: green[500],
+      verticalAlign: "middle",
+      marginRight: theme.spacing.unit
+    },
+    secondIconNormalButton: {
+      verticalAlign: "middle",
+      marginRight: theme.spacing.unit
+    }
+  });
+
+export const ButtonWithProgress = withStyles(styles)(ButtonWithProgressInternal);

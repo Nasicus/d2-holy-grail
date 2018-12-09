@@ -1,7 +1,7 @@
 import * as React from "react";
 import { createStyles, WithStyles, Theme, withStyles } from "@material-ui/core";
-import { ILoginInfo } from "../loginForm/LoginForm";
-import { Api } from "../../../common/utils/Api";
+import { ILoginInfo } from "./LoginForm";
+import { Api } from "../../common/utils/Api";
 import Dialog from "@material-ui/core/Dialog/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent/DialogContent";
@@ -9,11 +9,13 @@ import DialogContentText from "@material-ui/core/DialogContentText/DialogContent
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import Icon from "@material-ui/core/Icon/Icon";
 import TextField from "@material-ui/core/TextField/TextField";
-import ButtonWithProgress from "../../../common/components/ButtonWithProgress";
+import { ButtonWithProgress } from "../../common/components/ButtonWithProgress";
 
-interface IRegisterFormDialogProps {
+export interface IRegisterFormDialogProps {
   onDialogClosed: (loginInfo?: ILoginInfo) => any;
 }
+
+type Props = IRegisterFormDialogProps & WithStyles<typeof styles>;
 
 interface IRegisterFormDialogState {
   address?: string;
@@ -22,61 +24,11 @@ interface IRegisterFormDialogState {
   isLoading?: boolean;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    closeIcon: {
-      position: "absolute",
-      top: theme.spacing.unit,
-      right: theme.spacing.unit,
-      cursor: "pointer"
-    },
-    textField: {
-      width: 300,
-      marginTop: theme.spacing.unit * 2
-    },
-    securityInfo: {
-      fontStyle: "italic",
-      paddingTop: theme.spacing.unit * 4,
-      display: "flex"
-    },
-    infoIconContainer: {
-      alignSelf: "center",
-      paddingRight: theme.spacing.unit
-    },
-    errorMessage: {
-      color: theme.palette.error.main
-    }
-  });
-
-type Props = IRegisterFormDialogProps & WithStyles<typeof styles>;
-
-class RegisterFormDialog extends React.Component<Props, IRegisterFormDialogState> {
+class RegisterFormDialogInternal extends React.Component<Props, IRegisterFormDialogState> {
   public constructor(props: Props) {
     super(props);
     this.state = {};
   }
-
-  private register = () => {
-    this.setState({ isLoading: true });
-    Api.createGrail(this.state.address, this.state.password).subscribe(
-      () => {
-        this.setState({ isLoading: false });
-        this.props.onDialogClosed({
-          address: this.state.address,
-          password: this.state.password,
-          keepLoggedIn: false
-        });
-      },
-      err =>
-        this.setState({
-          isLoading: false,
-          error:
-            err.data && err.data.type === "duplicateKey"
-              ? "There is already a Holy Grail for this address! Please choose another one!"
-              : "There was an unknown error when trying to create your Holy Grail!"
-        })
-    );
-  };
 
   public render() {
     return (
@@ -130,6 +82,54 @@ class RegisterFormDialog extends React.Component<Props, IRegisterFormDialogState
       </Dialog>
     );
   }
+
+  private register = () => {
+    this.setState({ isLoading: true });
+    Api.createGrail(this.state.address, this.state.password).subscribe(
+      () => {
+        this.setState({ isLoading: false });
+        this.props.onDialogClosed({
+          address: this.state.address,
+          password: this.state.password,
+          keepLoggedIn: false
+        });
+      },
+      err =>
+        this.setState({
+          isLoading: false,
+          error:
+            err.data && err.data.type === "duplicateKey"
+              ? "There is already a Holy Grail for this address! Please choose another one!"
+              : "There was an unknown error when trying to create your Holy Grail!"
+        })
+    );
+  };
 }
 
-export default withStyles(styles)(RegisterFormDialog);
+const styles = (theme: Theme) =>
+  createStyles({
+    closeIcon: {
+      position: "absolute",
+      top: theme.spacing.unit,
+      right: theme.spacing.unit,
+      cursor: "pointer"
+    },
+    textField: {
+      width: 300,
+      marginTop: theme.spacing.unit * 2
+    },
+    securityInfo: {
+      fontStyle: "italic",
+      paddingTop: theme.spacing.unit * 4,
+      display: "flex"
+    },
+    infoIconContainer: {
+      alignSelf: "center",
+      paddingRight: theme.spacing.unit
+    },
+    errorMessage: {
+      color: theme.palette.error.main
+    }
+  });
+
+export const RegisterFormDialog = withStyles(styles)(RegisterFormDialogInternal);

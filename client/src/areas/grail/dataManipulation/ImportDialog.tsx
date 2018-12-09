@@ -1,15 +1,17 @@
 import * as React from "react";
 import { createStyles, WithStyles, Typography, Theme, withStyles } from "@material-ui/core";
 import DialogContentText from "@material-ui/core/DialogContentText/DialogContentText";
-import ButtonWithProgress from "../../../common/components/ButtonWithProgress";
 import { GrailManager } from "../GrailManager";
 import { Util } from "../../../common/utils/Util";
-import FileUploader from "../../../common/components/FIleUploader";
-import CloseableDialog from "src/common/components/CloseableDialog";
+import { CloseableDialog } from "../../../common/components/CloseableDialog";
+import { ButtonWithProgress } from "../../../common/components/ButtonWithProgress";
+import { FileUploader } from "../../../common/components/FIleUploader";
 
-interface IImportDialogProps {
+export interface IImportDialogProps {
   onDialogClosed: () => any;
 }
+
+type Props = IImportDialogProps & WithStyles<typeof styles>;
 
 interface IImportDialogState {
   armor?: string;
@@ -20,28 +22,59 @@ interface IImportDialogState {
   numberOfImportedItems?: number;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    closeIcon: {
-      position: "absolute",
-      top: theme.spacing.unit,
-      right: theme.spacing.unit,
-      cursor: "pointer"
-    },
-    uploadContainer: {
-      marginTop: theme.spacing.unit
-    },
-    successMessage: {
-      color: theme.palette.secondary.main
-    }
-  });
-
-type Props = IImportDialogProps & WithStyles<typeof styles>;
-
-class ImportDialog extends React.Component<Props, IImportDialogState> {
+class ImportDialogInternal extends React.Component<Props, IImportDialogState> {
   public constructor(props: Props) {
     super(props);
     this.state = {};
+  }
+
+  public render() {
+    return (
+      <CloseableDialog
+        title="Import from CSV"
+        onDialogClosed={() => this.props.onDialogClosed()}
+        actions={() => (
+          <ButtonWithProgress
+            isLoading={this.state.isImporting}
+            onClick={() => this.import()}
+            text="Import"
+            isDisabled={
+              this.state.numberOfImportedItems != null ||
+              (!this.state.armor && !this.state.weapons && !this.state.other && !this.state.sets)
+            }
+          />
+        )}
+      >
+        {this.state.numberOfImportedItems != null && (
+          <DialogContentText className={this.props.classes.successMessage}>
+            The import was done! We imported {this.state.numberOfImportedItems} items! Close this dialog and check if
+            the data is correct. If it is, simply save the data to the server, if not just discard it!
+          </DialogContentText>
+        )}
+        {this.state.numberOfImportedItems == null && (
+          <DialogContentText>
+            You can import the data from the{" "}
+            <a
+              href="https://docs.google.com/spreadsheets/d/1Sr7liMtMigd95IwWD6oa3Tky5oEjKzOKAk7pOmdmdCA"
+              target="_blank"
+            >
+              Google Holy Grail Sheet
+            </a>{" "}
+            here. You have to download each tab as CSV (
+            <span style={{ fontStyle: "italic", fontSize: "0.8em" }}>
+              File => Download as => Comma-separated values (.csv current sheet)
+            </span>
+            ) and then upload the file here. You can also only import the tabs you want.
+          </DialogContentText>
+        )}
+        <div>
+          {this.getFileUploader("Unique Armor", "armor")}
+          {this.getFileUploader("Unique Weapons", "weapons")}
+          {this.getFileUploader("Unique Other", "other")}
+          {this.getFileUploader("Sets", "sets")}
+        </div>
+      </CloseableDialog>
+    );
   }
 
   private import = () => {
@@ -105,55 +138,22 @@ class ImportDialog extends React.Component<Props, IImportDialogState> {
       </div>
     );
   }
-
-  public render() {
-    return (
-      <CloseableDialog
-        title="Import from CSV"
-        onDialogClosed={() => this.props.onDialogClosed()}
-        actions={() => (
-          <ButtonWithProgress
-            isLoading={this.state.isImporting}
-            onClick={() => this.import()}
-            text="Import"
-            isDisabled={
-              this.state.numberOfImportedItems != null ||
-              (!this.state.armor && !this.state.weapons && !this.state.other && !this.state.sets)
-            }
-          />
-        )}
-      >
-        {this.state.numberOfImportedItems != null && (
-          <DialogContentText className={this.props.classes.successMessage}>
-            The import was done! We imported {this.state.numberOfImportedItems} items! Close this dialog and check if
-            the data is correct. If it is, simply save the data to the server, if not just discard it!
-          </DialogContentText>
-        )}
-        {this.state.numberOfImportedItems == null && (
-          <DialogContentText>
-            You can import the data from the{" "}
-            <a
-              href="https://docs.google.com/spreadsheets/d/1Sr7liMtMigd95IwWD6oa3Tky5oEjKzOKAk7pOmdmdCA"
-              target="_blank"
-            >
-              Google Holy Grail Sheet
-            </a>{" "}
-            here. You have to download each tab as CSV (
-            <span style={{ fontStyle: "italic", fontSize: "0.8em" }}>
-              File => Download as => Comma-separated values (.csv current sheet)
-            </span>
-            ) and then upload the file here. You can also only import the tabs you want.
-          </DialogContentText>
-        )}
-        <div>
-          {this.getFileUploader("Unique Armor", "armor")}
-          {this.getFileUploader("Unique Weapons", "weapons")}
-          {this.getFileUploader("Unique Other", "other")}
-          {this.getFileUploader("Sets", "sets")}
-        </div>
-      </CloseableDialog>
-    );
-  }
 }
 
-export default withStyles(styles)(ImportDialog);
+const styles = (theme: Theme) =>
+  createStyles({
+    closeIcon: {
+      position: "absolute",
+      top: theme.spacing.unit,
+      right: theme.spacing.unit,
+      cursor: "pointer"
+    },
+    uploadContainer: {
+      marginTop: theme.spacing.unit
+    },
+    successMessage: {
+      color: theme.palette.secondary.main
+    }
+  });
+
+export const ImportDialog = withStyles(styles)(ImportDialogInternal);

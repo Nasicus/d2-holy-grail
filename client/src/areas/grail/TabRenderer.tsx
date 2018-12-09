@@ -2,20 +2,22 @@ import * as React from "react";
 import Tabs from "@material-ui/core/Tabs/Tabs";
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import Tab from "@material-ui/core/Tab/Tab";
-import StatisticsTable from "../statisticsTable/StatisticsTable";
 import Typography from "@material-ui/core/Typography/Typography";
 import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
-import { DataRenderer, ILevels } from "../dataRenderer/DataRenderer";
-import { Util } from "../../../common/utils/Util";
-import { GrailManager } from "../GrailManager";
-import { GrailMode } from "../GrailMode";
+import { DataRenderer, ILevels } from "./dataRenderer/DataRenderer";
+import { Util } from "../../common/utils/Util";
+import { GrailManager } from "./GrailManager";
+import { GrailMode } from "./GrailMode";
+import { StatisticsTable } from "./StatisticsTable";
 
 export interface ITabRendererProps {
   allData: any;
   searchData: any;
 }
 
-export interface ITabRendererState {
+type Props = ITabRendererProps & WithStyles<typeof styles>;
+
+interface ITabRendererState {
   activeTab: TabType;
   hasActiveSearch: boolean;
 }
@@ -31,26 +33,9 @@ enum TabType {
   Runewords
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      backgroundColor: theme.palette.background.paper
-    }
-  });
-
-type Props = ITabRendererProps & WithStyles<typeof styles>;
-
-const TabContainer: React.SFC<{}> = props => {
-  return (
-    <Typography component="div" style={{ padding: 8 * 3 }}>
-      {props.children}
-    </Typography>
-  );
-};
-
 const runewordLevels: ILevels = { variantLevel: 4, level: 1 };
 
-class TabRenderer extends React.Component<Props, ITabRendererState> {
+class TabRendererInternal extends React.Component<Props, ITabRendererState> {
   public constructor(props: Props) {
     super(props);
     this.state = {
@@ -127,7 +112,7 @@ class TabRenderer extends React.Component<Props, ITabRendererState> {
           <DataRenderer
             data={searchData}
             modifyLevels={this.modifyLevelsForSearch}
-            levels={TabRenderer.getLevelsForSearch()}
+            levels={TabRendererInternal.getLevelsForSearch()}
           />
         );
       case TabType.UniqueArmor:
@@ -155,7 +140,7 @@ class TabRenderer extends React.Component<Props, ITabRendererState> {
           <DataRenderer
             data={Util.getMissingItems(allData)}
             modifyLevels={this.modifyLevelsForSearch}
-            levels={TabRenderer.getLevelsForSearch()}
+            levels={TabRendererInternal.getLevelsForSearch()}
           />
         );
       default:
@@ -182,4 +167,19 @@ class TabRenderer extends React.Component<Props, ITabRendererState> {
   }
 }
 
-export default withStyles(styles)(TabRenderer);
+const TabContainer: React.SFC<{}> = props => {
+  return (
+    <Typography component="div" style={{ padding: 8 * 3 }}>
+      {props.children}
+    </Typography>
+  );
+};
+
+const styles = (theme: Theme) =>
+  createStyles({
+    root: {
+      backgroundColor: theme.palette.background.paper
+    }
+  });
+
+export const TabRenderer = withStyles(styles)(TabRendererInternal);

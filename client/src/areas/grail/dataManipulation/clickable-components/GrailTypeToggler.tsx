@@ -1,18 +1,18 @@
 import * as React from "react";
 import { GrailManager } from "../../GrailManager";
-import ButtonWithProgress from "../../../../common/components/ButtonWithProgress";
-import ListItemWithProgress from "../../../../common/components/ListItemWithProgress";
 import { LocationDescriptorObject } from "history";
 import { Redirect } from "react-router-dom";
 import { GrailMode } from "../../GrailMode";
-
-export interface IGrailTypeTogglerState {
-  nextMode?: GrailMode;
-  grailMode: GrailMode;
-}
+import { ButtonWithProgress } from "../../../../common/components/ButtonWithProgress";
+import { ListItemWithProgress } from "../../../../common/components/ListItemWithProgress";
 
 export interface IGrailTypeTogglerProps {
   renderAsListItem?: boolean;
+  grailMode: GrailMode;
+}
+
+interface IGrailTypeTogglerState {
+  nextMode?: GrailMode;
   grailMode: GrailMode;
 }
 
@@ -29,6 +29,33 @@ export class GrailTypeToggler extends React.Component<IGrailTypeTogglerProps, IG
     }
 
     return state;
+  }
+
+  public render() {
+    if (this.state.nextMode) {
+      const to: LocationDescriptorObject = {
+        pathname: `/${GrailManager.current.address}/${this.state.nextMode}`
+      };
+      return <Redirect to={to} push={true} />;
+    }
+
+    if (this.props.renderAsListItem) {
+      return (
+        <>
+          {this.renderToggleButton(GrailMode.Holy, true)}
+          {this.renderToggleButton(GrailMode.Eth, true)}
+          {this.renderToggleButton(GrailMode.Runeword, true)}
+        </>
+      );
+    }
+
+    return (
+      <div>
+        {this.renderToggleButton(GrailMode.Holy)}
+        {this.renderToggleButton(GrailMode.Eth)}
+        {this.renderToggleButton(GrailMode.Runeword)}
+      </div>
+    );
   }
 
   private onTogglerClick = (newMode: GrailMode) => {
@@ -72,33 +99,6 @@ export class GrailTypeToggler extends React.Component<IGrailTypeTogglerProps, IG
         firstIcon={icon}
         isDisabled={isDisabled}
       />
-    );
-  }
-
-  public render() {
-    if (this.state.nextMode) {
-      const to: LocationDescriptorObject = {
-        pathname: `/${GrailManager.current.address}/${this.state.nextMode}`
-      };
-      return <Redirect to={to} push={true} />;
-    }
-
-    if (this.props.renderAsListItem) {
-      return (
-        <>
-          {this.renderToggleButton(GrailMode.Holy, true)}
-          {this.renderToggleButton(GrailMode.Eth, true)}
-          {this.renderToggleButton(GrailMode.Runeword, true)}
-        </>
-      );
-    }
-
-    return (
-      <div>
-        {this.renderToggleButton(GrailMode.Holy)}
-        {this.renderToggleButton(GrailMode.Eth)}
-        {this.renderToggleButton(GrailMode.Runeword)}
-      </div>
     );
   }
 }

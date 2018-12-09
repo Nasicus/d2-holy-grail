@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Item } from "../../../common/definitions/union/Item";
-import CloseableDialog from "../../../common/components/CloseableDialog";
 import { GrailManager } from "../GrailManager";
 import { TextField, Button, WithStyles, withStyles, createStyles, Theme, Checkbox, Icon } from "@material-ui/core";
+import { CloseableDialog } from "../../../common/components/CloseableDialog";
 
 export interface IItemPropsDialogProps {
   item: Item;
@@ -10,47 +10,38 @@ export interface IItemPropsDialogProps {
   onDialogClosed: (changedProps: { itemNote: string; isPerfect: boolean }) => any;
 }
 
-export interface IItemPropsDialogState {
+type Props = IItemPropsDialogProps & WithStyles<typeof styles>;
+
+interface IItemPropsDialogState {
   itemNote: string;
   isPerfect: boolean;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    textArea: {
-      minWidth: "550px",
-      fontFamily: theme.typography.fontFamily
-    },
-    readOnlyContent: {
-      minWidth: "550px",
-      fontFamily: theme.typography.fontFamily
-    },
-    readOnlyNotesContainer: {
-      whiteSpace: "pre-line"
-    },
-    readOnlyNotesTitle: {
-      paddingBottom: theme.spacing.unit * 2
-    },
-    readOnlyPerfectContainer: {
-      display: "flex",
-      alignItems: "center",
-      paddingBottom: theme.spacing.unit * 4
-    },
-    perfectCheckbox: {
-      paddingLeft: 0
-    },
-    isPerfectContainer: {
-      display: "flex",
-      alignItems: "center"
-    }
-  });
-
-type Props = IItemPropsDialogProps & WithStyles<typeof styles>;
-
-class ItemPropsDialogComponent extends React.PureComponent<Props, IItemPropsDialogState> {
+class ItemPropsDialogInternal extends React.PureComponent<Props, IItemPropsDialogState> {
   public constructor(props: Props) {
     super(props);
     this.state = { itemNote: props.item.note, isPerfect: props.item.isPerfect };
+  }
+
+  public render() {
+    return (
+      <CloseableDialog
+        title={this.props.itemName}
+        onDialogClosed={() => this.closeDialog(false)}
+        actions={() => (
+          <>
+            {!GrailManager.current.isReadOnly && (
+              <>
+                <Button onClick={() => this.closeDialog(true)}>Ok</Button>
+                <Button onClick={() => this.closeDialog(false)}>Cancel</Button>
+              </>
+            )}
+          </>
+        )}
+      >
+        <div className={this.props.classes.readOnlyContent}>{this.renderContent()}</div>
+      </CloseableDialog>
+    );
   }
 
   private closeDialog = (passbackChanges: boolean) => {
@@ -98,27 +89,36 @@ class ItemPropsDialogComponent extends React.PureComponent<Props, IItemPropsDial
       </>
     );
   }
-
-  public render() {
-    return (
-      <CloseableDialog
-        title={this.props.itemName}
-        onDialogClosed={() => this.closeDialog(false)}
-        actions={() => (
-          <>
-            {!GrailManager.current.isReadOnly && (
-              <>
-                <Button onClick={() => this.closeDialog(true)}>Ok</Button>
-                <Button onClick={() => this.closeDialog(false)}>Cancel</Button>
-              </>
-            )}
-          </>
-        )}
-      >
-        <div className={this.props.classes.readOnlyContent}>{this.renderContent()}</div>
-      </CloseableDialog>
-    );
-  }
 }
 
-export const ItemPropsDialog = withStyles(styles)(ItemPropsDialogComponent);
+const styles = (theme: Theme) =>
+  createStyles({
+    textArea: {
+      minWidth: "550px",
+      fontFamily: theme.typography.fontFamily
+    },
+    readOnlyContent: {
+      minWidth: "550px",
+      fontFamily: theme.typography.fontFamily
+    },
+    readOnlyNotesContainer: {
+      whiteSpace: "pre-line"
+    },
+    readOnlyNotesTitle: {
+      paddingBottom: theme.spacing.unit * 2
+    },
+    readOnlyPerfectContainer: {
+      display: "flex",
+      alignItems: "center",
+      paddingBottom: theme.spacing.unit * 4
+    },
+    perfectCheckbox: {
+      paddingLeft: 0
+    },
+    isPerfectContainer: {
+      display: "flex",
+      alignItems: "center"
+    }
+  });
+
+export const ItemPropsDialog = withStyles(styles)(ItemPropsDialogInternal);

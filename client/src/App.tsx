@@ -1,32 +1,12 @@
 import * as React from "react";
 import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography/Typography";
-import withRoot, { IWithRootPassDownProps } from "./withRoot";
 import { Route, Switch } from "react-router-dom";
-import GrailArea from "./areas/grail/GrailArea";
 import { Home } from "./areas/home/Home";
 import { GithubRibbon } from "./common/components/GithubRibbon";
 import { GrailMode } from "./areas/grail/GrailMode";
-
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      fontFamily: theme.typography.fontFamily
-    },
-    header: {
-      maxWidth: 700,
-      margin: "auto",
-      textAlign: "center",
-      paddingTop: theme.spacing.unit * 4
-    },
-    content: {
-      paddingTop: theme.spacing.unit * 6
-    }
-  });
-
-interface IAppState {
-  grailMode?: GrailMode;
-}
+import { GrailArea } from "./areas/grail/GrailArea";
+import { IWithRootPassDownProps, withRoot } from "./withRoot";
 
 export interface IPassDownAppProps {
   onGrailModeChange: (grailMode: GrailMode) => void;
@@ -34,7 +14,11 @@ export interface IPassDownAppProps {
 
 type Props = WithStyles<typeof styles> & IWithRootPassDownProps;
 
-class App extends React.Component<Props, IAppState> {
+interface IAppState {
+  grailMode?: GrailMode;
+}
+
+class AppInternal extends React.Component<Props, IAppState> {
   public constructor(props: Props) {
     super(props);
     this.state = {};
@@ -77,4 +61,20 @@ class App extends React.Component<Props, IAppState> {
   }
 }
 
-export default withRoot(withStyles(styles)(App));
+const styles = (theme: Theme) =>
+  createStyles({
+    root: {
+      fontFamily: theme.typography.fontFamily
+    },
+    header: {
+      maxWidth: 700,
+      margin: "auto",
+      textAlign: "center",
+      paddingTop: theme.spacing.unit * 4
+    },
+    content: {
+      paddingTop: theme.spacing.unit * 6
+    }
+  });
+
+export const App = withRoot(withStyles(styles)(AppInternal));

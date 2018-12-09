@@ -1,13 +1,13 @@
 import * as React from "react";
 import Typography from "@material-ui/core/Typography/Typography";
 import * as classNames from "classnames";
-import LevelRenderer from "./LevelRenderer";
 import { WithStyles, createStyles, Theme, withStyles } from "@material-ui/core";
 import { Util } from "../../../common/utils/Util";
 import { CheckboxItemRenderer } from "./CheckboxItemRenderer";
 import { ThemeStyle } from "@material-ui/core/styles/createTypography";
 import { GrailManager } from "../GrailManager";
-import CountItemRenderer from "./CountItemRenderer";
+import { CountItemRenderer } from "./CountItemRenderer";
+import { LevelRenderer } from "./LevelRenderer";
 
 export interface ILevels {
   level?: number;
@@ -22,34 +22,9 @@ export interface IDataRendererProps {
   modifyLevels?: (level: ILevels, key: string) => ILevels;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    dataRenderer: {
-      textTransform: "capitalize",
-      textAlign: "left"
-    },
-    rootLevel: {
-      maxWidth: 1000,
-      margin: "auto"
-    },
-    level1: {
-      display: "flex",
-      flexWrap: "wrap",
-      "& > *": {
-        flex: "0 0 33.3333%"
-      }
-    },
-    level2: {
-      padding: theme.spacing.unit
-    },
-    level3: {
-      paddingLeft: theme.spacing.unit * 0.75
-    }
-  });
-
 type Props = IDataRendererProps & WithStyles<typeof styles>;
 
-const DataRendererComponent: React.SFC<Props> = props => {
+const DataRendererInternal: React.SFC<Props> = props => {
   if (!props.data) {
     return null;
   }
@@ -143,4 +118,29 @@ const mapLevelToTypographyVariant = (level: number): ThemeStyle => {
   }
 };
 
-export const DataRenderer = withStyles(styles)(DataRendererComponent);
+const styles = (theme: Theme) =>
+  createStyles({
+    dataRenderer: {
+      textTransform: "capitalize",
+      textAlign: "left"
+    },
+    rootLevel: {
+      maxWidth: 1000,
+      margin: "auto"
+    },
+    level1: {
+      display: "flex",
+      flexWrap: "wrap",
+      "& > *": {
+        flex: "0 0 33.3333%"
+      }
+    },
+    level2: {
+      padding: theme.spacing.unit
+    },
+    level3: {
+      paddingLeft: theme.spacing.unit * 0.75
+    }
+  });
+
+export const DataRenderer = withStyles(styles)(DataRendererInternal);
