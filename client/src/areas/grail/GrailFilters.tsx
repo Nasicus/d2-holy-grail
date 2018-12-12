@@ -99,10 +99,17 @@ class GrailFiltersInternal extends React.Component<Props, IGrailFilterState> {
       return;
     }
 
-    const result = Util.findData(
-      (k: string, i: Item) => this.isMatch(k, i, searchValue, missingItemsOnly),
-      this.props.data
-    );
+    let result = this.props.data as any;
+    if (searchValue) {
+      result = Util.findData((k: string, i: any) => this.isSearchMatch(k, i, searchValue), result);
+    }
+
+    // we execute the find a second time, reason is that it's not really possible to do in one turn
+    // because when we search for "normal" we want all normal items AND also all items which are not found
+    // performance wise it shouldn't matter at all
+    if (missingItemsOnly) {
+      result = Util.findData((k: string, i: any) => Util.isItem(i) && !i.wasFound, result);
+    }
 
     this.props.onFilterResult({
       data: result,
@@ -110,17 +117,7 @@ class GrailFiltersInternal extends React.Component<Props, IGrailFilterState> {
     } as IFilterResult);
   };
 
-  private isMatch = (name: string, item: Item | Runeword, searchValue: string, missingItemsOnly: boolean): boolean => {
-    if (missingItemsOnly && item.wasFound) {
-      return false;
-    }
-
-    if (!searchValue) {
-      // only return true if it's an item
-      // else we match all categories (uniques, elites, etc)
-      return Util.isItem(item);
-    }
-
+  private isSearchMatch = (name: string, item: Item | Runeword, searchValue: string): boolean => {
     searchValue = searchValue.toLowerCase();
 
     let isMatch =
