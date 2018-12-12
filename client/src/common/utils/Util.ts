@@ -13,12 +13,8 @@ export class Util {
     );
   }
 
-  public static getMissingItems(data: AllBusinessGrailsType): Partial<AllBusinessGrailsType> {
-    return this.findData((k, d) => this.isItem(d) && !d.wasFound, data);
-  }
-
   public static findData(
-    condition: (key: string, value: any) => boolean,
+    isMatch: (key: string, value: any) => boolean,
     dataToSearch: any,
     dataResultFunc?: () => any
   ): Partial<AllBusinessGrailsType> {
@@ -38,10 +34,10 @@ export class Util {
 
     Object.keys(dataToSearch).forEach(key => {
       const subData = dataToSearch[key];
-      if (condition(key, subData)) {
+      if (isMatch(key, subData)) {
         dataResultFunc()[key] = subData;
       } else {
-        this.findData(condition, subData, () => {
+        this.findData(isMatch, subData, () => {
           const parentObj = dataResultFunc();
           return parentObj[key] || (parentObj[key] = {});
         });

@@ -70,7 +70,7 @@ const styles = (theme: Theme) =>
       maxWidth: 700,
       margin: "auto",
       textAlign: "center",
-      paddingTop: theme.spacing.unit * 4
+      paddingTop: theme.spacing.unit * 2
     },
     content: {
       paddingTop: theme.spacing.unit * 6

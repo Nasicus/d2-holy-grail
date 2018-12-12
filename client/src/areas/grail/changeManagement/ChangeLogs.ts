@@ -1,6 +1,15 @@
 export type ChangeLogCollection = { [version: string]: (string | { change: string; children: string[] })[] };
 
 export const changeLogs: ChangeLogCollection = {
+  "1.7.0": [
+    {
+      change: `Improve the 'Missing items' functionality":`,
+      children: [
+        "Add a checkbox 'Missing items only' (if the checkbox is checked, then in each tab only the missing items are shown)",
+        "Remove the missing items tab (rendering was ugly there)"
+      ]
+    }
+  ],
   "1.6.0": [
     {
       change: `Introduce "Perfect Grails":`,

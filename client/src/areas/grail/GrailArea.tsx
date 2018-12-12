@@ -17,7 +17,7 @@ import { GrailToServerSaver } from "./dataManipulation/clickable-components/Grai
 import { ChangeDiscarder } from "./dataManipulation/clickable-components/ChangeDiscarder";
 import { ImportListItem } from "./dataManipulation/clickable-components/ImportListItem";
 import { IGrailError } from "./IGrailError";
-import { SearchBox } from "./SearchBox";
+import { GrailFilters, IFilterResult } from "./GrailFilters";
 import { VersionNotifier } from "./changeManagement/VersionNotifier";
 import { TabRenderer } from "./TabRenderer";
 import { ListItemWithProgress } from "../../common/components/ListItemWithProgress";
@@ -30,7 +30,7 @@ interface IGrailAreaRouterParams {
 type Props = IPassDownAppProps & WithStyles<typeof styles> & RouteComponentProps<IGrailAreaRouterParams>;
 
 interface IGrailAreaState {
-  searchResult?: Partial<AllBusinessGrailsType>;
+  filterResult?: IFilterResult;
   data?: AllBusinessGrailsType;
   error?: IGrailError;
   loading?: boolean;
@@ -47,7 +47,7 @@ class GrailAreaInternal extends React.Component<Props, IGrailAreaState> {
     if (GrailManager.current && GrailManager.current.grailMode !== newMode) {
       state.loading = true;
       state.data = null;
-      state.searchResult = null;
+      state.filterResult = null;
       GrailManager.current.setGrailMode(newMode);
       props.onGrailModeChange(newMode);
     }
@@ -88,11 +88,11 @@ class GrailAreaInternal extends React.Component<Props, IGrailAreaState> {
     return (
       <div>
         <VersionNotifier />
-        <div className={this.props.classes.searchContainer}>
-          <SearchBox data={this.state.data} onSearchResult={this.onSearchResult} />
+        <div>
+          <GrailFilters data={this.state.data} onFilterResult={this.onFilterResult} />
         </div>
-        <div className={this.props.classes.tabs}>
-          <TabRenderer allData={this.state.data} searchData={this.state.searchResult} />
+        <div>
+          <TabRenderer allData={this.state.data} filterResult={this.state.filterResult} />
         </div>
 
         <div className={this.props.classes.leftButtonsContainer}>
@@ -142,21 +142,13 @@ class GrailAreaInternal extends React.Component<Props, IGrailAreaState> {
     }
   }
 
-  private onSearchResult = (result: Partial<AllBusinessGrailsType>) => {
-    this.setState({ searchResult: result });
+  private onFilterResult = (result: IFilterResult) => {
+    this.setState({ filterResult: result });
   };
 }
 
 const styles = (theme: Theme) =>
   createStyles({
-    tabs: {
-      marginTop: theme.spacing.unit * 4
-    },
-    searchContainer: {
-      maxWidth: 700,
-      margin: "auto",
-      textAlign: "center"
-    },
     rightButtonsContainer: {
       position: "fixed",
       right: theme.spacing.unit,
