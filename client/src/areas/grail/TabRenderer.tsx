@@ -3,19 +3,18 @@ import Tabs from "@material-ui/core/Tabs/Tabs";
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import Tab from "@material-ui/core/Tab/Tab";
 import Typography from "@material-ui/core/Typography/Typography";
-import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
 import { DataRenderer, ILevels } from "./dataRenderer/DataRenderer";
 import { GrailManager } from "./GrailManager";
 import { GrailMode } from "./GrailMode";
 import { StatisticsTable } from "./StatisticsTable";
 import { FilterRenderMode, IFilterResult } from "./GrailFilters";
+import styled from "src/TypedStyledComponents";
+import { ITabRendererProps } from "./TabRenderer";
 
 export interface ITabRendererProps {
   allData: any;
   filterResult: IFilterResult;
 }
-
-type Props = ITabRendererProps & WithStyles<typeof styles>;
 
 interface ITabRendererState {
   activeTab: TabType;
@@ -34,8 +33,8 @@ enum TabType {
 
 const runewordLevels: ILevels = { variantLevel: 4, level: 1 };
 
-class TabRendererInternal extends React.Component<Props, ITabRendererState> {
-  public constructor(props: Props) {
+export class TabRenderer extends React.Component<ITabRendererProps, ITabRendererState> {
+  public constructor(props: ITabRendererProps) {
     super(props);
     this.state = {
       activeTab: TabType.Statistics,
@@ -43,8 +42,8 @@ class TabRendererInternal extends React.Component<Props, ITabRendererState> {
     };
   }
 
-  public static getDerivedStateFromProps(props: Props, state: ITabRendererState) {
-    const renderAsSearchResult = TabRendererInternal.shouldRenderAsSearchResult(props);
+  public static getDerivedStateFromProps(props: ITabRendererProps, state: ITabRendererState) {
+    const renderAsSearchResult = TabRenderer.shouldRenderAsSearchResult(props);
     if (renderAsSearchResult && !state.hasActiveSearch) {
       state.activeTab = TabType.SearchResults;
     } else if (!renderAsSearchResult && state.hasActiveSearch) {
@@ -57,24 +56,24 @@ class TabRendererInternal extends React.Component<Props, ITabRendererState> {
 
   public render() {
     return (
-      <div className={this.props.classes.root}>
+      <RootContainer>
         <AppBar position="sticky">
           <Tabs value={this.state.activeTab} onChange={this.handleChange} centered={true}>
             <Tab label="Statistics" value={TabType.Statistics} />
-            {!this.renderAsSearchResult && this.getCategoryTabs()}
+            {!this.renderAsSearchResult && TabRenderer.getCategoryTabs()}
             {this.renderAsSearchResult && <Tab label="Search Results" value={TabType.SearchResults} />}
           </Tabs>
         </AppBar>
         <TabContainer>{this.getData()}</TabContainer>
-      </div>
+      </RootContainer>
     );
   }
 
   private get renderAsSearchResult(): boolean {
-    return TabRendererInternal.shouldRenderAsSearchResult(this.props);
+    return TabRenderer.shouldRenderAsSearchResult(this.props);
   }
 
-  private static shouldRenderAsSearchResult(props: Props): boolean {
+  private static shouldRenderAsSearchResult(props: ITabRendererProps): boolean {
     return props.filterResult && props.filterResult.renderMode === FilterRenderMode.Search;
   }
 
@@ -86,7 +85,7 @@ class TabRendererInternal extends React.Component<Props, ITabRendererState> {
     this.setState({ activeTab: nextTab });
   };
 
-  private getCategoryTabs() {
+  private static getCategoryTabs() {
     switch (GrailManager.current.grailMode) {
       case GrailMode.Eth:
         return [
@@ -113,7 +112,7 @@ class TabRendererInternal extends React.Component<Props, ITabRendererState> {
           <DataRenderer
             data={this.dataToRender}
             modifyLevels={this.modifyLevelsForSearch}
-            levels={TabRendererInternal.getLevelsForSearch()}
+            levels={TabRenderer.getLevelsForSearch()}
           />
         );
       case TabType.UniqueArmor:
@@ -178,11 +177,6 @@ const TabContainer: React.FunctionComponent<{}> = props => {
   );
 };
 
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      backgroundColor: theme.palette.background.paper
-    }
-  });
-
-export const TabRenderer = withStyles(styles)(TabRendererInternal);
+const RootContainer = styled.div`
+  background-color: ${p => p.theme.palette.background.paper};
+`;

@@ -1,29 +1,25 @@
-import { Drawer, withStyles, WithStyles, List, createStyles } from "@material-ui/core";
+import { Drawer, List } from "@material-ui/core";
 import * as React from "react";
+import { IMenuProps } from "./Menu";
+import styled from "src/TypedStyledComponents";
 
 export interface IMenuProps {
   onClose(): any;
   isOpen?: boolean;
 }
-type Props = IMenuProps & WithStyles<typeof styles>;
 
-const MenuInternal: React.FunctionComponent<Props> = props => {
+export const Menu: React.FunctionComponent<IMenuProps> = props => {
   return (
     <Drawer anchor="right" open={!!props.isOpen} onClose={() => props.onClose()}>
       <div tabIndex={0} role="button">
-        <div className={props.classes.list}>
+        <ListContainer>
           <List>{props.children}</List>
-        </div>
+        </ListContainer>
       </div>
     </Drawer>
   );
 };
 
-const styles = () =>
-  createStyles({
-    list: {
-      width: 300
-    }
-  });
-
-export const Menu = withStyles(styles)(MenuInternal);
+const ListContainer = styled.div`
+  width: 300px;
+`;

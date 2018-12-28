@@ -1,8 +1,12 @@
 import * as React from "react";
 import { Item } from "../../../common/definitions/union/Item";
 import { GrailManager } from "../GrailManager";
-import { TextField, Button, WithStyles, withStyles, createStyles, Theme, Checkbox, Icon } from "@material-ui/core";
+import { Button, Checkbox, Icon, TextField } from "@material-ui/core";
 import { CloseableDialog } from "../../../common/components/CloseableDialog";
+import { IItemPropsDialogProps } from "./ItemPropsDialog";
+import styled from "../../../TypedStyledComponents";
+import { TextFieldProps } from "@material-ui/core/TextField";
+import { CheckboxProps } from "@material-ui/core/Checkbox";
 
 export interface IItemPropsDialogProps {
   item: Item;
@@ -10,15 +14,13 @@ export interface IItemPropsDialogProps {
   onDialogClosed: (changedProps: { itemNote: string; isPerfect: boolean }) => any;
 }
 
-type Props = IItemPropsDialogProps & WithStyles<typeof styles>;
-
 interface IItemPropsDialogState {
   itemNote: string;
   isPerfect: boolean;
 }
 
-class ItemPropsDialogInternal extends React.PureComponent<Props, IItemPropsDialogState> {
-  public constructor(props: Props) {
+export class ItemPropsDialog extends React.PureComponent<IItemPropsDialogProps, IItemPropsDialogState> {
+  public constructor(props: IItemPropsDialogProps) {
     super(props);
     this.state = { itemNote: props.item.note, isPerfect: props.item.isPerfect };
   }
@@ -39,7 +41,7 @@ class ItemPropsDialogInternal extends React.PureComponent<Props, IItemPropsDialo
           </>
         )}
       >
-        <div className={this.props.classes.readOnlyContent}>{this.renderContent()}</div>
+        <ReadOnlyContentContainer>{this.renderContent()}</ReadOnlyContentContainer>
       </CloseableDialog>
     );
   }
@@ -55,32 +57,30 @@ class ItemPropsDialogInternal extends React.PureComponent<Props, IItemPropsDialo
       return (
         <>
           {this.state.isPerfect && (
-            <div className={this.props.classes.readOnlyPerfectContainer}>
+            <ReadOnlyPerfectContainer>
               <Icon>star</Icon> This item is perfect! <Icon>star</Icon>
-            </div>
+            </ReadOnlyPerfectContainer>
           )}
-          <div className={this.props.classes.readOnlyNotesContainer}>
+          <ReadOnlyNotesContainer>
             {this.state.itemNote && this.state.isPerfect && (
-              <div className={this.props.classes.readOnlyNotesTitle}>Notes:</div>
+              <ReadOnlyNotesTitleContainer>Notes:</ReadOnlyNotesTitleContainer>
             )}
             {this.state.itemNote || (!this.state.isPerfect && "No notes for this item.")}
-          </div>
+          </ReadOnlyNotesContainer>
         </>
       );
     }
 
     return (
       <>
-        <div className={this.props.classes.isPerfectContainer}>
-          <Checkbox
-            className={this.props.classes.perfectCheckbox}
+        <PerfectContainer>
+          <PerfectCheckbox
             checked={this.state.isPerfect}
             onChange={e => this.setState({ isPerfect: e.target.checked })}
           />
           <span>Is perfect</span>
-        </div>
-        <TextField
-          className={this.props.classes.textArea}
+        </PerfectContainer>
+        <TextArea
           value={this.state.itemNote}
           onChange={e => this.setState({ itemNote: e.target.value })}
           multiline={true}
@@ -91,34 +91,39 @@ class ItemPropsDialogInternal extends React.PureComponent<Props, IItemPropsDialo
   }
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    textArea: {
-      minWidth: "550px",
-      fontFamily: theme.typography.fontFamily
-    },
-    readOnlyContent: {
-      minWidth: "550px",
-      fontFamily: theme.typography.fontFamily
-    },
-    readOnlyNotesContainer: {
-      whiteSpace: "pre-line"
-    },
-    readOnlyNotesTitle: {
-      paddingBottom: theme.spacing.unit * 2
-    },
-    readOnlyPerfectContainer: {
-      display: "flex",
-      alignItems: "center",
-      paddingBottom: theme.spacing.unit * 4
-    },
-    perfectCheckbox: {
-      paddingLeft: 0
-    },
-    isPerfectContainer: {
-      display: "flex",
-      alignItems: "center"
-    }
-  });
+const TextArea: React.ComponentType<TextFieldProps> = styled(TextField)`
+  && {
+    min-width: 550px;
+    font-family: ${p => p.theme.typography.fontFamily};
+  }
+` as any;
 
-export const ItemPropsDialog = withStyles(styles)(ItemPropsDialogInternal);
+const ReadOnlyContentContainer = styled.div`
+  min-width: 550px;
+  font-family: ${p => p.theme.typography.fontFamily};
+`;
+
+const ReadOnlyNotesContainer = styled.div`
+  white-space: pre-line;
+`;
+
+const ReadOnlyNotesTitleContainer = styled.div`
+  padding-bottom: ${p => p.theme.spacing.unit * 2}px;
+`;
+
+const ReadOnlyPerfectContainer = styled.div`
+  display: flex;
+  align-items: center;
+  padding-bottom: ${p => p.theme.spacing.unit * 4}px;
+`;
+
+const PerfectContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const PerfectCheckbox: React.ComponentType<CheckboxProps> = styled(Checkbox)`
+  && {
+    padding-left: 0;
+  }
+`;

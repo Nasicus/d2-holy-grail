@@ -1,13 +1,13 @@
 import * as React from "react";
-import Typography from "@material-ui/core/Typography/Typography";
-import * as classNames from "classnames";
-import { WithStyles, createStyles, Theme, withStyles } from "@material-ui/core";
+import Typography, { TypographyProps } from "@material-ui/core/Typography/Typography";
 import { Util } from "../../../common/utils/Util";
 import { CheckboxItemRenderer } from "./CheckboxItemRenderer";
 import { ThemeStyle } from "@material-ui/core/styles/createTypography";
 import { GrailManager } from "../GrailManager";
 import { CountItemRenderer } from "./CountItemRenderer";
 import { LevelRenderer } from "./LevelRenderer";
+import { IDataRendererProps } from "./DataRenderer";
+import styled, { css } from "../../../TypedStyledComponents";
 
 export interface ILevels {
   level?: number;
@@ -22,9 +22,20 @@ export interface IDataRendererProps {
   modifyLevels?: (level: ILevels, key: string) => ILevels;
 }
 
-type Props = IDataRendererProps & WithStyles<typeof styles>;
+function getDataRendererTypography(level: number): StyledLevelRenderer {
+  switch (level) {
+    case 1:
+      return Level1Renderer;
+    case 2:
+      return Level2Renderer;
+    case 3:
+      return Level3Renderer;
+    default:
+      return BaseDataRenderer;
+  }
+}
 
-const DataRendererInternal: React.FunctionComponent<Props> = props => {
+export const DataRenderer: React.FunctionComponent<IDataRendererProps> = props => {
   if (!props.data) {
     return null;
   }
@@ -37,14 +48,14 @@ const DataRendererInternal: React.FunctionComponent<Props> = props => {
     levels.variantLevel = 0;
   }
 
-  const classes = classNames([
-    props.classes.dataRenderer,
-    props.classes[`level${levels.level}`],
-    !props.isRecursive ? props.classes.rootLevel : null
-  ]);
+  const DataRendererTypography = getDataRendererTypography(levels.level);
 
   return (
-    <Typography component="div" variant={mapLevelToTypographyVariant(levels.variantLevel)} className={classes}>
+    <DataRendererTypography
+      component="div"
+      variant={mapLevelToTypographyVariant(levels.variantLevel)}
+      root={props.isRecursive ? undefined : true.toString()}
+    >
       {Object.keys(props.data).map(key => {
         return (
           <div key={`${key}-${levels.level}`}>
@@ -60,7 +71,7 @@ const DataRendererInternal: React.FunctionComponent<Props> = props => {
           </div>
         );
       })}
-    </Typography>
+    </DataRendererTypography>
   );
 };
 
@@ -118,29 +129,45 @@ const mapLevelToTypographyVariant = (level: number): ThemeStyle => {
   }
 };
 
-const styles = (theme: Theme) =>
-  createStyles({
-    dataRenderer: {
-      textTransform: "capitalize",
-      textAlign: "left"
-    },
-    rootLevel: {
-      maxWidth: 1000,
-      margin: "auto"
-    },
-    level1: {
-      display: "flex",
-      flexWrap: "wrap",
-      "& > *": {
-        flex: "0 0 33.3333%"
-      }
-    },
-    level2: {
-      padding: theme.spacing.unit
-    },
-    level3: {
-      paddingLeft: theme.spacing.unit * 0.75
-    }
-  });
+interface IStyledLevelRendererProps {
+  // note: must be all lowercase and a string because the Typography components writes it on the dom element
+  // if it's not all lowercase and a boolean react will write a warning to the console
+  root: string;
+}
+type StyledLevelRenderer = React.ComponentType<TypographyProps & IStyledLevelRendererProps>;
 
-export const DataRenderer = withStyles(styles)(DataRendererInternal);
+const BaseDataRenderer: StyledLevelRenderer = styled(Typography)<IStyledLevelRendererProps>`
+  && {
+    text-transform: capitalize;
+    text-align: left;
+    ${p =>
+      p.root
+        ? css`
+            max-width: 1000px;
+            margin: auto;
+          `
+        : null}
+  }
+`;
+
+const Level1Renderer: StyledLevelRenderer = styled(BaseDataRenderer)<IStyledLevelRendererProps>`
+  && {
+    display: flex;
+    flex-wrap: wrap;
+    & > * {
+      flex: 0 0 33.3333%;
+    }
+  }
+`;
+
+const Level2Renderer: StyledLevelRenderer = styled(BaseDataRenderer)<IStyledLevelRendererProps>`
+  && {
+    padding: ${p => p.theme.spacing.unit}px;
+  }
+`;
+
+const Level3Renderer: StyledLevelRenderer = styled(BaseDataRenderer)<IStyledLevelRendererProps>`
+  && {
+    padding-left: ${p => p.theme.spacing.unit * 0.75}px;
+  }
+`;

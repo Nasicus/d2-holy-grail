@@ -1,24 +1,24 @@
 import * as React from "react";
-import { createStyles, WithStyles, withStyles, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { GrailManager } from "./GrailManager";
 import { IGrailData } from "../../common/definitions/api/IGrailData";
 import { ChangeDiscarder } from "./dataManipulation/clickable-components/ChangeDiscarder";
 import { GrailToServerSaver } from "./dataManipulation/clickable-components/GrailToServerSaver";
 import { ExportListItem } from "./dataManipulation/clickable-components/ExportListItem";
 import { IGrailError } from "./IGrailError";
+import { IGrailErrorHandlerProps } from "./GrailErrorHandler";
+import styled from "src/TypedStyledComponents";
 
 export interface IGrailErrorHandlerProps {
   error: IGrailError;
 }
 
-type Props = IGrailErrorHandlerProps & WithStyles<typeof styles>;
-
-const GrailErrorHandlerInternal: React.FunctionComponent<Props> = props => {
+export const GrailErrorHandler: React.FunctionComponent<IGrailErrorHandlerProps> = props => {
   return (
-    <div className={props.classes.container}>
+    <RootContainer>
       <Typography variant="body1">{getErrorMessage(props.error)}</Typography>
       {props.error.type === "conflict" && <ConflictHandler error={props.error} />}
-    </div>
+    </RootContainer>
   );
 };
 
@@ -64,12 +64,7 @@ function getErrorMessage(error: IGrailError) {
   return "There was an error getting the Holy Grail Data from the server. Please try again.";
 }
 
-const styles = () =>
-  createStyles({
-    container: {
-      maxWidth: "700px",
-      margin: "auto"
-    }
-  });
-
-export const GrailErrorHandler = withStyles(styles)(GrailErrorHandlerInternal);
+const RootContainer = styled.div`
+  max-width: 700px;
+  margin: auto;
+`;

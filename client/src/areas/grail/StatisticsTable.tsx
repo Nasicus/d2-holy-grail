@@ -1,22 +1,22 @@
 import * as React from "react";
 import { Util } from "../../common/utils/Util";
-import Table from "@material-ui/core/Table";
+import Table, { TableProps } from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import { createStyles, Theme, WithStyles, withStyles, Icon } from "@material-ui/core";
+import Paper, { PaperProps } from "@material-ui/core/Paper";
+import { Icon } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography/Typography";
 import { GrailManager } from "./GrailManager";
 import { GrailMode } from "./GrailMode";
 import { IItem } from "../../common/definitions/union/IItem";
+import { IStatisticsTableProps } from "./StatisticsTable";
+import styled from "src/TypedStyledComponents";
 
 export interface IStatisticsTableProps {
   data: any;
 }
-
-type Props = IStatisticsTableProps & WithStyles<typeof styles>;
 
 interface IStatisticsTableSTate {
   data: any;
@@ -39,15 +39,15 @@ class Stats {
   ) {}
 }
 
-class StatisticsTableInternal extends React.Component<Props, IStatisticsTableSTate> {
-  public constructor(props: Props) {
+export class StatisticsTable extends React.Component<IStatisticsTableProps, IStatisticsTableSTate> {
+  public constructor(props: IStatisticsTableProps) {
     super(props);
     this.state = {
       data: props.data
     };
   }
 
-  public static getDerivedStateFromProps(props: Props, state: IStatisticsTableSTate) {
+  public static getDerivedStateFromProps(props: IStatisticsTableProps, state: IStatisticsTableSTate) {
     state.data = props.data;
     return state;
   }
@@ -90,15 +90,13 @@ class StatisticsTableInternal extends React.Component<Props, IStatisticsTableSTa
     totalPerfectStats.perfects = totalStats.perfects;
     totalPerfectStats.total = totalStats.total;
 
-    const classes = this.props.classes;
-
     return (
       <div>
         <Typography variant="h6" align={"center"}>
           Statistics
         </Typography>
-        <Paper className={classes.root}>
-          <Table className={classes.table}>
+        <StyledPaper>
+          <StyledTable>
             <TableHead>
               <TableRow>
                 <TableCell>&nbsp;</TableCell>
@@ -109,24 +107,24 @@ class StatisticsTableInternal extends React.Component<Props, IStatisticsTableSTa
               </TableRow>
             </TableHead>
             <TableBody>
-              {stats.map(s => this.renderRow(s))}
-              {this.renderRow(totalStats, true, classes.total)}
-              {this.renderRow(totalPerfectStats)}
+              {stats.map(s => StatisticsTable.renderRow(s))}
+              {StatisticsTable.renderRow(totalStats, true)}
+              {StatisticsTable.renderRow(totalPerfectStats)}
             </TableBody>
-          </Table>
-        </Paper>
+          </StyledTable>
+        </StyledPaper>
       </div>
     );
   }
 
-  private renderRow(stats: Stats, isSelected?: boolean, className?: string) {
+  private static renderRow(stats: Stats, isSelected?: boolean) {
     return (
-      <TableRow key={`${stats.name}Stat`} hover={true} selected={isSelected} className={className}>
+      <TableRow key={`${stats.name}Stat`} hover={true} selected={isSelected}>
         <TableCell component="th" scope="row">
-          <div className={this.props.classes.rowHeader}>
+          <RowHeader>
             {stats.icon && <Icon title={stats.iconTooltip}>{stats.icon}</Icon>}
             {!stats.icon && stats.name}
-          </div>
+          </RowHeader>
         </TableCell>
         <TableCell numeric={true}>{stats.total}</TableCell>
         <TableCell numeric={true}>{stats.renderValue}</TableCell>
@@ -166,23 +164,20 @@ class StatisticsTableInternal extends React.Component<Props, IStatisticsTableSTa
   }
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      maxWidth: 700,
-      margin: "auto",
-      marginTop: theme.spacing.unit * 3,
-      overflowX: "auto"
-    },
-    table: {
-      maxWidth: 700
-    },
-    total: {
-      ...theme.typography.subheading
-    },
-    rowHeader: {
-      display: "flex"
-    }
-  });
+const StyledPaper: React.ComponentType<PaperProps> = styled(Paper)`
+  && {
+    max-width: 700px;
+    margin: ${p => p.theme.spacing.unit * 3}px auto auto;
+    overflow-x: auto;
+  }
+`;
 
-export const StatisticsTable = withStyles(styles)(StatisticsTableInternal);
+const StyledTable: React.ComponentType<TableProps> = styled(Table)`
+  && {
+    max-width: 700px;
+  }
+`;
+
+const RowHeader = styled.div`
+  display: flex;
+`;

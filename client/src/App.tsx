@@ -1,5 +1,4 @@
 import * as React from "react";
-import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography/Typography";
 import { Route, Switch } from "react-router-dom";
 import { Home } from "./areas/home/Home";
@@ -7,19 +6,18 @@ import { GithubRibbon } from "./common/components/GithubRibbon";
 import { GrailMode } from "./areas/grail/GrailMode";
 import { GrailArea } from "./areas/grail/GrailArea";
 import { IWithRootPassDownProps, withRoot } from "./withRoot";
+import styled from "./TypedStyledComponents";
 
 export interface IPassDownAppProps {
   onGrailModeChange: (grailMode: GrailMode) => void;
 }
 
-type Props = WithStyles<typeof styles> & IWithRootPassDownProps;
-
 interface IAppState {
   grailMode?: GrailMode;
 }
 
-class AppInternal extends React.Component<Props, IAppState> {
-  public constructor(props: Props) {
+class AppInternal extends React.Component<IWithRootPassDownProps, IAppState> {
+  public constructor(props: IWithRootPassDownProps) {
     super(props);
     this.state = {};
   }
@@ -45,36 +43,35 @@ class AppInternal extends React.Component<Props, IAppState> {
   public render() {
     const passDownProps = { onGrailModeChange: this.onGrailModeChange } as IPassDownAppProps;
     return (
-      <div className={this.props.classes.root}>
-        <div className={this.props.classes.header}>
+      <RootContainer>
+        <HeaderContainer>
           <Typography variant="h5">{this.getAppTitle()}</Typography>
-        </div>
+        </HeaderContainer>
         <GithubRibbon url="https://github.com/Nasicus/d2-holy-grail" />
-        <div className={this.props.classes.content}>
+        <ContentContainer>
           <Switch>
             <Route exact={true} path="/" component={Home} />
             <Route path="/:address/:grailMode?" render={props => <GrailArea {...props as any} {...passDownProps} />} />
           </Switch>
-        </div>
-      </div>
+        </ContentContainer>
+      </RootContainer>
     );
   }
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      fontFamily: theme.typography.fontFamily
-    },
-    header: {
-      maxWidth: 700,
-      margin: "auto",
-      textAlign: "center",
-      paddingTop: theme.spacing.unit * 2
-    },
-    content: {
-      paddingTop: theme.spacing.unit * 6
-    }
-  });
+const RootContainer = styled.div`
+  font-family: ${p => p.theme.typography.fontFamily};
+`;
 
-export const App = withRoot(withStyles(styles)(AppInternal));
+const HeaderContainer = styled.div`
+  max-width: 700;
+  margin: auto;
+  text-align: center;
+  padding-top: ${p => p.theme.spacing.unit * 2}px;
+`;
+
+const ContentContainer = styled.div`
+  padding-top: ${p => p.theme.spacing.unit * 6}px;
+`;
+
+export const App = withRoot(AppInternal);

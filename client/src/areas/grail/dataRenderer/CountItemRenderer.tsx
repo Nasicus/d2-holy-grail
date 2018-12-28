@@ -1,24 +1,24 @@
 import * as React from "react";
-import * as classNames from "classnames";
 import { GrailManager } from "../GrailManager";
-import { Icon, createStyles, WithStyles, withStyles } from "@material-ui/core";
+import { Icon } from "@material-ui/core";
 import { Item } from "../../../common/definitions/union/Item";
 import { ItemNameRenderer } from "./ItemNameRenderer";
+import { IItemProps } from "./CountItemRenderer";
+import styled from "src/TypedStyledComponents";
+import { IconProps } from "@material-ui/core/Icon";
 
 export interface IItemProps {
   item: Item;
   itemName: string;
 }
 
-type Props = IItemProps & WithStyles<typeof styles>;
-
 interface IItemState {
   item: Item;
   isHovered?: boolean;
 }
 
-class CountItemRendererInternal extends React.Component<Props, IItemState> {
-  public constructor(props: Props) {
+export class CountItemRenderer extends React.Component<IItemProps, IItemState> {
+  public constructor(props: IItemProps) {
     super(props);
     this.state = {
       item: this.props.item
@@ -26,26 +26,17 @@ class CountItemRendererInternal extends React.Component<Props, IItemState> {
   }
 
   public render() {
-    const arrowClassNames = classNames([
-      this.props.classes.arrow,
-      this.state.isHovered ? this.props.classes.arrowVisible : null
-    ]);
+    const ArrowIcon = this.state.isHovered ? VisibleArrowIcon : InvisibleArrowIcon;
 
     return (
-      <div className={this.props.classes.container}>
+      <RootContainer>
         <span onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
-          <Icon onClick={() => this.onArrowClick(-1)} className={arrowClassNames}>
-            keyboard_arrow_down
-          </Icon>
-
-          <span className={this.props.classes.itemText}>{Number(this.state.item.wasFound || 0)}</span>
-
-          <Icon onClick={() => this.onArrowClick(1)} className={arrowClassNames}>
-            keyboard_arrow_up
-          </Icon>
+          <ArrowIcon onClick={() => this.onArrowClick(-1)}>keyboard_arrow_down</ArrowIcon>
+          <ItemTextContainer>{Number(this.state.item.wasFound || 0)}</ItemTextContainer>
+          <ArrowIcon onClick={() => this.onArrowClick(1)}>keyboard_arrow_up</ArrowIcon>
         </span>
         <ItemNameRenderer itemName={this.props.itemName} item={this.props.item} />
-      </div>
+      </RootContainer>
     );
   }
 
@@ -70,25 +61,27 @@ class CountItemRendererInternal extends React.Component<Props, IItemState> {
   };
 }
 
-const styles = () =>
-  createStyles({
-    container: {
-      padding: "3px 0 3px 0",
-      display: "flex"
-    },
-    arrow: {
-      verticalAlign: "middle",
-      cursor: "pointer",
-      visibility: "hidden"
-    },
-    arrowVisible: {
-      visibility: "visible"
-    },
-    itemText: {
-      minWidth: "15px",
-      display: "inline-block",
-      textAlign: "center"
-    }
-  });
+const RootContainer = styled.div`
+  padding: 3px 0 3px 0;
+  display: flex;
+`;
 
-export const CountItemRenderer = withStyles(styles)(CountItemRendererInternal);
+const InvisibleArrowIcon: React.ComponentType<IconProps> = styled(Icon)`
+  && {
+    vertical-align: middle;
+    cursor: pointer;
+    visibility: hidden;
+  }
+`;
+
+const VisibleArrowIcon: React.ComponentType<IconProps> = styled(InvisibleArrowIcon)`
+  && {
+    visibility: visible;
+  }
+`;
+
+const ItemTextContainer = styled.span`
+  min-width: 15px;
+  display: inline-block;
+  text-align: center;
+`;

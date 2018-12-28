@@ -8,6 +8,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { Theme } from "@material-ui/core/styles/createMuiTheme";
 import { BrowserRouter } from "react-router-dom";
 import { GrailMode } from "./areas/grail/GrailMode";
+import { ThemeProvider } from "./TypedStyledComponents";
 
 export interface IWithRootPassDownProps {
   onGrailModeChange: (grailMode: GrailMode) => any;
@@ -46,12 +47,17 @@ export function withRoot(Component: React.ComponentType) {
         onGrailModeChange: this.onGrailModeChange
       } as IWithRootPassDownProps;
 
+      const theme = this.getTheme();
       return (
-        <MuiThemeProvider theme={this.getTheme()}>
-          <CssBaseline />
-          <BrowserRouter>
-            <Component {...this.props} {...passDownProps} />
-          </BrowserRouter>
+        <MuiThemeProvider theme={theme}>
+          <ThemeProvider theme={theme}>
+            <>
+              <CssBaseline />
+              <BrowserRouter>
+                <Component {...this.props} {...passDownProps} />
+              </BrowserRouter>
+            </>
+          </ThemeProvider>
         </MuiThemeProvider>
       );
     }

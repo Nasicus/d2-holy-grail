@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ChangeEvent } from "react";
-import { Checkbox, createStyles, Input, withStyles, WithStyles } from "@material-ui/core";
-import Icon from "@material-ui/core/Icon/Icon";
+import { Checkbox, Input } from "@material-ui/core";
+import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
 import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 import { Util } from "../../common/utils/Util";
@@ -9,6 +9,10 @@ import { Item } from "../../common/definitions/union/Item";
 import * as Mousetrap from "mousetrap";
 import { AllBusinessGrailsType } from "../../common/definitions/business/AllBusinessGrailsType";
 import { Runeword } from "../../common/definitions/business/Runeword";
+import styled from "src/TypedStyledComponents";
+import { CheckboxProps } from "@material-ui/core/Checkbox";
+import { InputProps } from "@material-ui/core/Input";
+import { IGrailFilterProps } from "./GrailFilters";
 
 require("mousetrap-global-bind");
 
@@ -27,18 +31,16 @@ export interface IGrailFilterProps {
   onFilterResult: (result: IFilterResult) => any;
 }
 
-type Props = IGrailFilterProps & WithStyles<typeof styles>;
-
 interface IGrailFilterState {
   searchValue: string;
   missingItemsOnly?: boolean;
 }
 
-class GrailFiltersInternal extends React.Component<Props, IGrailFilterState> {
+export class GrailFilters extends React.Component<IGrailFilterProps, IGrailFilterState> {
   private onSearch$ = new Subject<string>();
   private searchBoxRef: HTMLInputElement;
 
-  public constructor(props: Props) {
+  public constructor(props: IGrailFilterProps) {
     super(props);
     this.state = {
       searchValue: ""
@@ -60,23 +62,22 @@ class GrailFiltersInternal extends React.Component<Props, IGrailFilterState> {
 
   public render() {
     return (
-      <div className={this.props.classes.filterContainer}>
+      <FilterContainer>
         <div>
           <div>
-            <Input
+            <SearchBox
               inputRef={e => (this.searchBoxRef = e)}
-              className={this.props.classes.searchBox}
               onChange={this.onInputChange}
               value={this.state.searchValue}
             />
-            <Icon className={this.props.classes.icon}>search</Icon>
+            <SearchIcon>search</SearchIcon>
           </div>
           <div>
-            <Checkbox className={this.props.classes.missingItemsCheckbox} onChange={this.onMissingItemsOnlyChange} />
-            <span className={this.props.classes.missingItemsCheckboxLabel}>Missing items only</span>
+            <MissingItemsCheckbox onChange={this.onMissingItemsOnlyChange} />
+            <MissingItemsCheckboxLabel>Missing items only</MissingItemsCheckboxLabel>
           </div>
         </div>
-      </div>
+      </FilterContainer>
     );
   }
 
@@ -144,26 +145,31 @@ class GrailFiltersInternal extends React.Component<Props, IGrailFilterState> {
   };
 }
 
-const styles = () =>
-  createStyles({
-    missingItemsCheckbox: {
-      paddingLeft: "0"
-    },
-    missingItemsCheckboxLabel: {
-      verticalAlign: "middle"
-    },
-    filterContainer: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center"
-    },
-    searchBox: {
-      width: 300
-    },
-    icon: {
-      cursor: "pointer",
-      verticalAlign: "middle"
-    }
-  });
+const MissingItemsCheckbox: React.ComponentType<CheckboxProps> = styled(Checkbox)`
+  && {
+    padding-left: 0;
+  }
+`;
 
-export const GrailFilters = withStyles(styles)(GrailFiltersInternal);
+const MissingItemsCheckboxLabel = styled.span`
+  vertical-align: middle;
+`;
+
+const FilterContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const SearchBox: React.ComponentType<InputProps> = styled(Input)`
+  && {
+    width: 300px;
+  }
+`;
+
+const SearchIcon: React.ComponentType<IconProps> = styled(Icon)`
+  && {
+    cursor: pointer;
+    vertical-align: middle;
+  }
+`;

@@ -1,17 +1,17 @@
 import * as React from "react";
-import { Button, createStyles, Icon, IconButton, Snackbar, Theme, withStyles, WithStyles } from "@material-ui/core";
+import { Button, Icon, IconButton, Snackbar } from "@material-ui/core";
 import { VersionManager } from "./VersionManager";
 import { ChangelogDialog } from "./ChangelogDialog";
-
-type Props = WithStyles<typeof styles>;
+import styled from "src/TypedStyledComponents";
+import { IconButtonProps } from "@material-ui/core/IconButton";
 
 interface IVersionNotifierState {
   showNotification?: boolean;
   showChangelog?: boolean;
 }
 
-class VersionNotifierInternal extends React.Component<Props, IVersionNotifierState> {
-  public constructor(props: Props) {
+export class VersionNotifier extends React.Component<{}, IVersionNotifierState> {
+  public constructor(props: {}) {
     super(props);
     this.state = {};
   }
@@ -62,26 +62,17 @@ class VersionNotifierInternal extends React.Component<Props, IVersionNotifierSta
           <Button key="undo" color="secondary" size="small" onClick={this.showChangeLog}>
             Show changes
           </Button>,
-          <IconButton
-            key="close"
-            aria-label="Close"
-            color="inherit"
-            className={this.props.classes.close}
-            onClick={this.handleClose}
-          >
+          <CloseButton key="close" aria-label="Close" color="inherit" onClick={this.handleClose}>
             <Icon>close</Icon>
-          </IconButton>
+          </CloseButton>
         ]}
       />
     );
   }
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    close: {
-      padding: theme.spacing.unit / 2
-    }
-  });
-
-export const VersionNotifier = withStyles(styles)(VersionNotifierInternal);
+const CloseButton: React.ComponentType<IconButtonProps> = styled(IconButton)`
+  && {
+    padding: ${p => p.theme.spacing.unit / 2}px;
+  }
+`;

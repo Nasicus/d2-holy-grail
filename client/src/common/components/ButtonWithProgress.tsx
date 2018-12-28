@@ -1,11 +1,10 @@
-import CircularProgress from "@material-ui/core/CircularProgress";
+import CircularProgress, { CircularProgressProps } from "@material-ui/core/CircularProgress";
 import green from "@material-ui/core/colors/green";
-import Button from "@material-ui/core/Button";
-import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
+import Button, { ButtonProps } from "@material-ui/core/Button";
 import * as React from "react";
-import * as classNames from "classnames";
-import Icon from "@material-ui/core/Icon/Icon";
-import Fab from "@material-ui/core/Fab";
+import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
+import Fab, { FabProps } from "@material-ui/core/Fab";
+import styled from "../../TypedStyledComponents";
 
 export interface IButtonWithProgressProps {
   isLoading?: boolean;
@@ -18,9 +17,7 @@ export interface IButtonWithProgressProps {
   className?: string;
 }
 
-type Props = IButtonWithProgressProps & WithStyles<typeof styles>;
-
-const ButtonWithProgressInternal: React.FunctionComponent<Props> = props => {
+export const ButtonWithProgress: React.FunctionComponent<IButtonWithProgressProps> = props => {
   const onClick = () => {
     if (props.isLoading) {
       return;
@@ -29,80 +26,84 @@ const ButtonWithProgressInternal: React.FunctionComponent<Props> = props => {
   };
 
   const { isLoading, showSecondIcon, className } = props;
-  const { classes } = props;
-  const buttonClassName = classNames({
-    [classes.buttonSuccess]: showSecondIcon
-  });
+
+  const FabButton = showSecondIcon ? FabSuccess : Fab;
+  const NormalButton = showSecondIcon ? ButtonSuccess : Button;
 
   return (
-    <div className={classNames(classes.root, className)}>
+    <RootContainer className={className}>
       {!!props.firstIcon && (
-        <div className={classes.wrapper}>
+        <Wrapper>
           <div>
-            <Fab
-              color="primary"
-              className={buttonClassName}
-              onClick={onClick}
-              disabled={isLoading || props.isDisabled}
-              title={props.text}
-            >
+            <FabButton color="primary" onClick={onClick} disabled={isLoading || props.isDisabled} title={props.text}>
               <Icon>{!showSecondIcon ? props.firstIcon : props.secondIcon}</Icon>
-            </Fab>
+            </FabButton>
           </div>
-          {isLoading && <CircularProgress size={68} className={classes.fabProgress} />}
-        </div>
+          {isLoading && <FabProgress size={68} />}
+        </Wrapper>
       )}
       {!props.firstIcon && (
-        <div className={classes.wrapper}>
-          {isLoading && <CircularProgress size={24} className={classes.buttonProgress} />}
-          {showSecondIcon && <Icon className={classes.secondIconNormalButton}>{props.secondIcon}</Icon>}
-          <Button
-            variant="contained"
-            color="primary"
-            className={buttonClassName}
-            disabled={isLoading || props.isDisabled}
-            onClick={onClick}
-          >
+        <Wrapper>
+          {isLoading && <ButtonProgress size={24} />}
+          {showSecondIcon && <SecondIconNormalButton>{props.secondIcon}</SecondIconNormalButton>}
+          <NormalButton variant="contained" color="primary" disabled={isLoading || props.isDisabled} onClick={onClick}>
             {props.text}
-          </Button>
-        </div>
+          </NormalButton>
+        </Wrapper>
       )}
-    </div>
+    </RootContainer>
   );
 };
 
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      display: "flex",
-      alignItems: "center"
-    },
-    wrapper: {
-      margin: theme.spacing.unit,
-      position: "relative"
-    },
-    buttonSuccess: {
-      backgroundColor: green[500],
-      "&:hover": {
-        backgroundColor: green[700]
-      }
-    },
-    fabProgress: {
-      color: green[500],
-      position: "absolute",
-      top: -6,
-      left: -6,
-      zIndex: 1
-    },
-    buttonProgress: {
-      color: green[500],
-      verticalAlign: "middle",
-      marginRight: theme.spacing.unit
-    },
-    secondIconNormalButton: {
-      verticalAlign: "middle",
-      marginRight: theme.spacing.unit
-    }
-  });
+const RootContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
-export const ButtonWithProgress = withStyles(styles)(ButtonWithProgressInternal);
+const Wrapper = styled.div`
+  margin: ${p => p.theme.spacing.unit}px;
+  position: relative;
+`;
+
+const FabSuccess: React.ComponentType<FabProps> = styled(Fab)`
+  && {
+    background-color: ${() => green[500]};
+    &:hover {
+      background-color: ${() => green[700]};
+    }
+  }
+`;
+
+const ButtonSuccess: React.ComponentType<ButtonProps> = styled(Button)`
+  && {
+    background-color: ${() => green[500]};
+    &:hover {
+      background-color: ${() => green[700]};
+    }
+  }
+`;
+
+const SecondIconNormalButton: React.ComponentType<IconProps> = styled(Icon)`
+  && {
+    vertical-align: middle;
+    margin-right: ${p => p.theme.spacing.unit}px;
+  }
+`;
+
+const FabProgress: React.ComponentType<CircularProgressProps> = styled(CircularProgress)`
+  && {
+    color: ${() => green[500]};
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    z-index: 1;
+  }
+`;
+
+const ButtonProgress: React.ComponentType<CircularProgressProps> = styled(CircularProgress)`
+  && {
+    color: ${() => green[500]};
+    vertical-align: middle;
+    margin-right: ${p => p.theme.spacing.unit}px;
+  }
+`;

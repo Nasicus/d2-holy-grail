@@ -1,19 +1,19 @@
 import * as React from "react";
-import { createStyles, WithStyles, Theme, withStyles, Snackbar } from "@material-ui/core";
+import { Snackbar } from "@material-ui/core";
+import { IErrorNotificationProps } from "./ErrorNotification";
+import styled from "src/TypedStyledComponents";
 
 export interface IErrorNotificationProps {
   error: string;
   onDismiss: () => any;
 }
 
-type Props = IErrorNotificationProps & WithStyles<typeof styles>;
-
 interface IErrorNotificationState {
   isOpen: boolean;
 }
 
-class ErrorNotificationInternal extends React.PureComponent<Props, IErrorNotificationState> {
-  public constructor(props: Props) {
+export class ErrorNotification extends React.PureComponent<IErrorNotificationProps, IErrorNotificationState> {
+  public constructor(props: IErrorNotificationProps) {
     super(props);
     this.state = { isOpen: true };
   }
@@ -32,21 +32,12 @@ class ErrorNotificationInternal extends React.PureComponent<Props, IErrorNotific
         ContentProps={{
           "aria-describedby": "message-id"
         }}
-        message={
-          <span id="message-id" className={this.props.classes.message}>
-            {this.props.error}
-          </span>
-        }
+        message={<ErrorContainer id="message-id">{this.props.error}</ErrorContainer>}
       />
     );
   }
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    message: {
-      color: theme.palette.error.main
-    }
-  });
-
-export const ErrorNotification = withStyles(styles)(ErrorNotificationInternal);
+const ErrorContainer = styled.span`
+  color: ${p => p.theme.palette.error.main};
+`;

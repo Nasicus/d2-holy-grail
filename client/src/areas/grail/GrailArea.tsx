@@ -1,6 +1,6 @@
 import * as React from "react";
 import { GrailManager } from "./GrailManager";
-import { CircularProgress, createStyles, Divider, Theme, withStyles, WithStyles } from "@material-ui/core";
+import { CircularProgress, Divider } from "@material-ui/core";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { ILoginInfo } from "../home/LoginForm";
 import { SettingsListItem } from "./dataManipulation/clickable-components/SettingsListItem";
@@ -21,13 +21,14 @@ import { GrailFilters, IFilterResult } from "./GrailFilters";
 import { VersionNotifier } from "./changeManagement/VersionNotifier";
 import { TabRenderer } from "./TabRenderer";
 import { ListItemWithProgress } from "../../common/components/ListItemWithProgress";
+import styled from "../../TypedStyledComponents";
 
 interface IGrailAreaRouterParams {
   address: string;
   grailMode: string;
 }
 
-type Props = IPassDownAppProps & WithStyles<typeof styles> & RouteComponentProps<IGrailAreaRouterParams>;
+type Props = IPassDownAppProps & RouteComponentProps<IGrailAreaRouterParams>;
 
 interface IGrailAreaState {
   filterResult?: IFilterResult;
@@ -76,9 +77,9 @@ class GrailAreaInternal extends React.Component<Props, IGrailAreaState> {
 
     if (this.state.loading) {
       return (
-        <div className={this.props.classes.loader}>
+        <LoaderContainer>
           <CircularProgress size={100} />
-        </div>
+        </LoaderContainer>
       );
     }
 
@@ -95,21 +96,21 @@ class GrailAreaInternal extends React.Component<Props, IGrailAreaState> {
           <TabRenderer allData={this.state.data} filterResult={this.state.filterResult} />
         </div>
 
-        <div className={this.props.classes.leftButtonsContainer}>
+        <LeftSideButtons>
           <HomeButton />
-        </div>
+        </LeftSideButtons>
 
-        <div className={this.props.classes.rightButtonsContainer}>
-          <div className={this.props.classes.buttonRow}>
+        <RightSideButtons>
+          <ButtonRow>
             <GrailToServerSaver registerShortCut={true} />
-          </div>
-          <div className={this.props.classes.buttonRow}>
+          </ButtonRow>
+          <ButtonRow>
             <ChangeDiscarder />
-          </div>
-          <div className={this.props.classes.buttonRow}>
+          </ButtonRow>
+          <ButtonRow>
             <GrailTypeToggler grailMode={GrailManager.current.grailMode} />
-          </div>
-          <div className={this.props.classes.buttonRow}>
+          </ButtonRow>
+          <ButtonRow>
             <MenuButton>
               <ListItemWithProgress
                 primaryText={GrailManager.current.address}
@@ -125,8 +126,8 @@ class GrailAreaInternal extends React.Component<Props, IGrailAreaState> {
               <GrailTypeToggler renderAsListItem={true} grailMode={GrailManager.current.grailMode} />
               <SettingsListItem onSettingsChanged={() => this.setState({ data: GrailManager.current.grail })} />
             </MenuButton>
-          </div>
-        </div>
+          </ButtonRow>
+        </RightSideButtons>
       </div>
     );
   }
@@ -147,28 +148,28 @@ class GrailAreaInternal extends React.Component<Props, IGrailAreaState> {
   };
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    rightButtonsContainer: {
-      position: "fixed",
-      right: theme.spacing.unit,
-      bottom: theme.spacing.unit
-    },
-    leftButtonsContainer: {
-      position: "fixed",
-      left: theme.spacing.unit,
-      bottom: theme.spacing.unit
-    },
-    buttonRow: {
-      display: "flex",
-      justifyContent: "flex-end"
-    },
-    loader: {
-      position: "fixed",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)"
-    }
-  });
+const RightSideButtons = styled.div`
+  position: fixed;
+  right: ${p => p.theme.spacing.unit}px;
+  bottom: ${p => p.theme.spacing.unit}px;
+`;
 
-export const GrailArea = withRouter(withStyles(styles)(GrailAreaInternal));
+const LeftSideButtons = styled.div`
+  position: fixed;
+  left: ${p => p.theme.spacing.unit}px;
+  bottom: ${p => p.theme.spacing.unit}px;
+`;
+
+const ButtonRow = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const LoaderContainer = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+export const GrailArea = withRouter(GrailAreaInternal);

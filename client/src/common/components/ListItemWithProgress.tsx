@@ -1,8 +1,10 @@
-import CircularProgress from "@material-ui/core/CircularProgress";
+import CircularProgress, { CircularProgressProps } from "@material-ui/core/CircularProgress";
 import green from "@material-ui/core/colors/green";
-import { ListItem, ListItemIcon, ListItemText, Icon, createStyles, WithStyles, withStyles } from "@material-ui/core";
+import { Icon, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import * as React from "react";
-import * as classNames from "classnames";
+import { IListItemWithProgressProps } from "./ListItemWithProgress";
+import styled from "../../TypedStyledComponents";
+import { IconProps } from "@material-ui/core/Icon";
 
 export interface IListItemWithProgressProps {
   isLoading?: boolean;
@@ -15,47 +17,43 @@ export interface IListItemWithProgressProps {
   isDisabled?: boolean;
 }
 
-type Props = IListItemWithProgressProps & WithStyles<typeof styles>;
-
-const ListItemWithProgressInternal: React.FunctionComponent<Props> = props => {
+export const ListItemWithProgress: React.FunctionComponent<IListItemWithProgressProps> = props => {
   const { isLoading } = props;
-  const { classes } = props;
 
-  const buttonClassName = classNames({
-    [classes.secondIcon]: props.showSecondIcon
-  });
+  const IconToRender = props.showSecondIcon ? SecondIcon : Icon;
 
   return (
-    <div className={classes.root}>
+    <RootContainer>
       {
         <ListItem button={!!props.onClick} onClick={props.onClick} disabled={props.isDisabled}>
           <ListItemIcon>
-            <Icon className={buttonClassName}>{props.showSecondIcon ? props.secondIcon : props.firstIcon}</Icon>
+            <IconToRender>{props.showSecondIcon ? props.secondIcon : props.firstIcon}</IconToRender>
           </ListItemIcon>
           <ListItemText primary={props.primaryText} secondary={props.secondaryText} />
-          {isLoading && <CircularProgress size={24} className={classes.buttonProgress} />}
+          {isLoading && <StyledCircularProgress size={24} />}
         </ListItem>
       }
-    </div>
+    </RootContainer>
   );
 };
 
-const styles = () =>
-  createStyles({
-    root: {
-      display: "flex",
-      alignItems: "center"
-    },
-    secondIcon: {
-      color: green[500],
-      "&:hover": {
-        color: green[700]
-      }
-    },
-    buttonProgress: {
-      color: green[500],
-      verticalAlign: "middle"
-    }
-  });
+const RootContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
-export const ListItemWithProgress = withStyles(styles)(ListItemWithProgressInternal);
+const StyledCircularProgress: React.ComponentType<CircularProgressProps> = styled(CircularProgress)`
+  && {
+    color: ${() => green[500]};
+    vertical-align: middle;
+  }
+`;
+
+const SecondIcon: React.ComponentType<IconProps> = styled(Icon)`
+  && {
+    color: ${() => green[500]};
+    &:hover {
+      ${() => green[700]};
+    }
+  }
+`;

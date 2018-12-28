@@ -1,17 +1,17 @@
 import * as React from "react";
-import { createStyles, WithStyles, Typography, Theme, withStyles } from "@material-ui/core";
-import DialogContentText from "@material-ui/core/DialogContentText/DialogContentText";
+import { Typography } from "@material-ui/core";
+import DialogContentText, { DialogContentTextProps } from "@material-ui/core/DialogContentText/DialogContentText";
 import { GrailManager } from "../GrailManager";
 import { Util } from "../../../common/utils/Util";
 import { CloseableDialog } from "../../../common/components/CloseableDialog";
 import { ButtonWithProgress } from "../../../common/components/ButtonWithProgress";
 import { FileUploader } from "../../../common/components/FIleUploader";
+import { IImportDialogProps } from "./ImportDialog";
+import styled from "src/TypedStyledComponents";
 
 export interface IImportDialogProps {
   onDialogClosed: () => any;
 }
-
-type Props = IImportDialogProps & WithStyles<typeof styles>;
 
 interface IImportDialogState {
   armor?: string;
@@ -22,8 +22,8 @@ interface IImportDialogState {
   numberOfImportedItems?: number;
 }
 
-class ImportDialogInternal extends React.Component<Props, IImportDialogState> {
-  public constructor(props: Props) {
+export class ImportDialog extends React.Component<IImportDialogProps, IImportDialogState> {
+  public constructor(props: IImportDialogProps) {
     super(props);
     this.state = {};
   }
@@ -46,10 +46,10 @@ class ImportDialogInternal extends React.Component<Props, IImportDialogState> {
         )}
       >
         {this.state.numberOfImportedItems != null && (
-          <DialogContentText className={this.props.classes.successMessage}>
+          <DialogContentTextContainer>
             The import was done! We imported {this.state.numberOfImportedItems} items! Close this dialog and check if
             the data is correct. If it is, simply save the data to the server, if not just discard it!
-          </DialogContentText>
+          </DialogContentTextContainer>
         )}
         {this.state.numberOfImportedItems == null && (
           <DialogContentText>
@@ -132,28 +132,20 @@ class ImportDialogInternal extends React.Component<Props, IImportDialogState> {
 
   private getFileUploader(title: string, stateKey: string) {
     return (
-      <div className={this.props.classes.uploadContainer}>
+      <UploadContainer>
         <Typography variant="subtitle1">{title}</Typography>
         <FileUploader onFilesDropped={(files: File[]) => this.getContent(stateKey, files)} />
-      </div>
+      </UploadContainer>
     );
   }
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    closeIcon: {
-      position: "absolute",
-      top: theme.spacing.unit,
-      right: theme.spacing.unit,
-      cursor: "pointer"
-    },
-    uploadContainer: {
-      marginTop: theme.spacing.unit
-    },
-    successMessage: {
-      color: theme.palette.secondary.main
-    }
-  });
+const UploadContainer = styled.div`
+  margin-top: ${p => p.theme.spacing.unit}px;
+`;
 
-export const ImportDialog = withStyles(styles)(ImportDialogInternal);
+const DialogContentTextContainer: React.ComponentType<DialogContentTextProps> = styled(DialogContentText)`
+  && {
+    color: ${p => p.theme.palette.secondary.main};
+  }
+`;

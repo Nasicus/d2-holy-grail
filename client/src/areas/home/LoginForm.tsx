@@ -1,17 +1,17 @@
 import * as React from "react";
-import { Button, Theme, WithStyles, createStyles, withStyles } from "@material-ui/core";
-import Checkbox from "@material-ui/core/Checkbox/Checkbox";
-import TextField from "@material-ui/core/TextField/TextField";
+import { Button } from "@material-ui/core";
+import Checkbox, { CheckboxProps } from "@material-ui/core/Checkbox/Checkbox";
+import TextField, { TextFieldProps } from "@material-ui/core/TextField/TextField";
 import { Redirect } from "react-router";
 import { LocationDescriptorObject } from "history";
 import Typography from "@material-ui/core/Typography/Typography";
-import Icon from "@material-ui/core/Icon/Icon";
-import Paper from "@material-ui/core/Paper/Paper";
+import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
+import Paper, { PaperProps } from "@material-ui/core/Paper/Paper";
 import { Api } from "../../common/utils/Api";
 import { RegisterFormDialog } from "./RegisterFormDialog";
-import { ButtonWithProgress } from "../../common/components/ButtonWithProgress";
-
-type Props = WithStyles<typeof styles>;
+import { ButtonWithProgress, IButtonWithProgressProps } from "../../common/components/ButtonWithProgress";
+import styled from "../../TypedStyledComponents";
+import { ButtonProps } from "@material-ui/core/Button";
 
 export interface ILoginInfo {
   address?: string;
@@ -26,8 +26,8 @@ interface ILoginFormState extends ILoginInfo {
   error?: string;
 }
 
-class LoginFormInternal extends React.Component<Props, ILoginFormState> {
-  public constructor(props: Props) {
+export class LoginForm extends React.Component<{}, ILoginFormState> {
+  public constructor(props: {}) {
     super(props);
     this.state = {};
   }
@@ -88,115 +88,117 @@ class LoginFormInternal extends React.Component<Props, ILoginFormState> {
     }
 
     return (
-      <div className={this.props.classes.root}>
+      <RootContainer>
         {this.state.renderRegisterDialog && (
           <RegisterFormDialog onDialogClosed={(loginInfo: ILoginInfo) => this.onRegisterDialogClosed(loginInfo)} />
         )}
         <Typography variant="h6">Login</Typography>
-        <div className={this.props.classes.formValues}>
+        <FormContainer>
           <div>
-            <TextField
-              className={this.props.classes.textField}
+            <StyledTextField
               label="Holy Grail address"
               onChange={e => this.setState({ address: e.target.value })}
               onKeyPress={e => this.onKeyPress(e)}
             />
           </div>
-          <div className={this.props.classes.passwordRow}>
-            <TextField
-              className={this.props.classes.textField}
+          <PasswordContainer>
+            <StyledTextField
               type="password"
               label="Optional: Password"
               onChange={e => this.setState({ password: e.target.value })}
               onKeyPress={e => this.onKeyPress(e)}
             />
-            <Icon
-              className={this.props.classes.infoIcon}
-              title="You only have to enter a password if you want to edit the Holy Grail. You can also leave this blank and view the Holy Grail in a read-only mode!"
-            >
+            <InfoIcon title="You only have to enter a password if you want to edit the Holy Grail. You can also leave this blank and view the Holy Grail in a read-only mode!">
               info
-            </Icon>
-          </div>
+            </InfoIcon>
+          </PasswordContainer>
           <div>
             {this.state.password && (
               <div>
-                <Checkbox
-                  onChange={e => this.setState({ keepLoggedIn: e.target.checked })}
-                  className={this.props.classes.keepMeLoggedInBox}
-                />{" "}
-                Keep me logged in
+                <KeepMeLoggedInCheckbox onChange={e => this.setState({ keepLoggedIn: e.target.checked })} /> Keep me
+                logged in
               </div>
             )}
           </div>
-        </div>
+        </FormContainer>
 
-        <div className={this.props.classes.loginButtonContainer}>
-          {this.state.error && <div className={this.props.classes.error}>{this.state.error}</div>}
-          <ButtonWithProgress
-            className={this.props.classes.loginButtonWithProgressWrapper}
+        <LoginButtonContainer>
+          {this.state.error && <ErrorContainer>{this.state.error}</ErrorContainer>}
+          <LoginButtonWithProgressWrapper
             isLoading={this.state.isLoading}
             isDisabled={!this.state.address}
             onClick={this.login}
             text={this.state.password ? "Login" : "View"}
           />
-        </div>
-        <Paper className={this.props.classes.createInfo}>
+        </LoginButtonContainer>
+        <StyledPaper>
           Don't have an own Holy Grail yet?
-          <Button
-            onClick={() => this.setState({ renderRegisterDialog: true })}
-            className={this.props.classes.createInfoLink}
-          >
-            Create one!
-          </Button>
-        </Paper>
-      </div>
+          <CreateButton onClick={() => this.setState({ renderRegisterDialog: true })}>Create one!</CreateButton>
+        </StyledPaper>
+      </RootContainer>
     );
   }
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      width: 350,
-      margin: "auto"
-    },
-    textField: {
-      width: 300,
-      marginTop: theme.spacing.unit * 2
-    },
-    loginButtonContainer: {
-      marginLeft: 0
-    },
-    loginButtonWithProgressWrapper: {
-      "& > div": {
-        marginLeft: 0
-      }
-    },
-    createInfo: {
-      width: 300,
-      margin: "auto",
-      marginTop: theme.spacing.unit * 4,
-      padding: theme.spacing.unit,
-      textAlign: "center"
-    },
-    createInfoLink: {
-      marginTop: theme.spacing.unit
-    },
-    formValues: {
-      textAlign: "left"
-    },
-    passwordRow: {
-      display: "flex"
-    },
-    infoIcon: {
-      alignSelf: "center"
-    },
-    error: {
-      color: theme.palette.error.main
-    },
-    keepMeLoggedInBox: {
-      paddingLeft: 0
-    }
-  });
+const RootContainer = styled.div`
+  width: 350px;
+  margin: auto;
+`;
 
-export const LoginForm = withStyles(styles)(LoginFormInternal);
+const StyledTextField: React.ComponentType<TextFieldProps> = styled(TextField)`
+  && {
+    width: 300px;
+    margin-top: ${p => p.theme.spacing.unit * 2}px;
+  }
+` as any;
+
+const LoginButtonContainer = styled.div`
+  margin-left: 0;
+`;
+
+const LoginButtonWithProgressWrapper: React.ComponentType<IButtonWithProgressProps> = styled(ButtonWithProgress)`
+  && {
+    & > div {
+      margin-left: 0;
+    }
+  }
+`;
+
+const StyledPaper: React.ComponentType<PaperProps> = styled(Paper)`
+  && {
+    width: 300px;
+    margin: ${p => p.theme.spacing.unit * 4}px auto auto;
+    padding: ${p => p.theme.spacing.unit}px;
+    text-align: center;
+  }
+`;
+
+const CreateButton: React.ComponentType<ButtonProps> = styled(Button)`
+  && {
+    margin-top: ${p => p.theme.spacing.unit}px;
+  }
+`;
+
+const FormContainer = styled.div`
+  text-align: left;
+`;
+
+const ErrorContainer = styled.div`
+  color: ${p => p.theme.palette.error.main};
+`;
+
+const PasswordContainer = styled.div`
+  display: flex;
+`;
+
+const InfoIcon: React.ComponentType<IconProps> = styled(Icon)`
+  && {
+    align-self: center;
+  }
+`;
+
+const KeepMeLoggedInCheckbox: React.ComponentType<CheckboxProps> = styled(Checkbox)`
+  && {
+    padding-left: 0;
+  }
+`;

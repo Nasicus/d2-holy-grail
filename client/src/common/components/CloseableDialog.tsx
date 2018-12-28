@@ -1,10 +1,11 @@
 import * as React from "react";
-import { createStyles, WithStyles, Theme, withStyles } from "@material-ui/core";
 import Dialog from "@material-ui/core/Dialog/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
-import Icon from "@material-ui/core/Icon/Icon";
+import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
+import { ISettingsDialogProps } from "./CloseableDialog";
+import styled from "src/TypedStyledComponents";
 
 export interface ISettingsDialogProps {
   onDialogClosed: () => any;
@@ -13,17 +14,13 @@ export interface ISettingsDialogProps {
   className?: string;
 }
 
-type Props = ISettingsDialogProps & WithStyles<typeof styles>;
-
-const CloseableDialogInternal: React.FunctionComponent<Props> = props => {
+export const CloseableDialog: React.FunctionComponent<ISettingsDialogProps> = props => {
   return (
     <Dialog open={true} onClose={() => props.onDialogClosed()}>
       <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
       <DialogContent>
         <div className={props.className}>
-          <Icon className={props.classes.closeIcon} onClick={() => props.onDialogClosed()}>
-            close
-          </Icon>
+          <CloseIcon onClick={() => props.onDialogClosed()}>close</CloseIcon>
           {props.children}
         </div>
       </DialogContent>
@@ -32,14 +29,11 @@ const CloseableDialogInternal: React.FunctionComponent<Props> = props => {
   );
 };
 
-const styles = (theme: Theme) =>
-  createStyles({
-    closeIcon: {
-      position: "absolute",
-      top: theme.spacing.unit,
-      right: theme.spacing.unit,
-      cursor: "pointer"
-    }
-  });
-
-export const CloseableDialog = withStyles(styles)(CloseableDialogInternal);
+const CloseIcon: React.ComponentType<IconProps> = styled(Icon)`
+  && {
+    position: absolute;
+    top: ${p => p.theme.spacing.unit}px;
+    right: ${p => p.theme.spacing.unit}px;
+    cursor: pointer;
+  }
+`;

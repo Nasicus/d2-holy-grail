@@ -1,6 +1,7 @@
 import * as React from "react";
-import { Theme, createStyles, WithStyles, withStyles } from "@material-ui/core";
 import Dropzone from "react-dropzone";
+import { IFileUploaderProps } from "./FIleUploader";
+import styled from "src/TypedStyledComponents";
 
 export interface IFileUploaderProps {
   allowMultiple?: boolean;
@@ -8,14 +9,12 @@ export interface IFileUploaderProps {
   mimeTypes?: string[];
 }
 
-type Props = IFileUploaderProps & WithStyles<typeof styles>;
-
 interface IFileUploaderState {
   activeFileNames?: string[];
 }
 
-class FileUploaderInternal extends React.Component<Props, IFileUploaderState> {
-  public constructor(props: Props) {
+export class FileUploader extends React.Component<IFileUploaderProps, IFileUploaderState> {
+  public constructor(props: IFileUploaderProps) {
     super(props);
     this.state = {};
   }
@@ -23,45 +22,42 @@ class FileUploaderInternal extends React.Component<Props, IFileUploaderState> {
   public render() {
     return (
       <div>
-        <Dropzone
+        <StyledDropZone
           accept={this.props.mimeTypes ? this.props.mimeTypes.join(", ") : null}
-          className={this.props.classes.dropZone}
           multiple={this.props.allowMultiple}
           onDropAccepted={(files: File[]) => {
             this.setState({ activeFileNames: files.map(f => f.name) });
             this.props.onFilesDropped(files);
           }}
         >
-          <span className={this.props.classes.dropZoneText}>
+          <DropZoneText>
             {!this.state.activeFileNames
               ? "Drop files here or click to choose a file from your computer."
               : this.state.activeFileNames.join(" ")}
-          </span>
-        </Dropzone>
+          </DropZoneText>
+        </StyledDropZone>
       </div>
     );
   }
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    dropZone: {
-      height: 50,
-      borderWidth: 2,
-      borderStyle: "dashed",
-      borderRadius: theme.spacing.unit,
-      borderColor: theme.palette.primary.main,
-      fontFamily: theme.typography.fontFamily,
-      color: theme.palette.text.primary,
-      cursor: "pointer",
-      marginTop: theme.spacing.unit,
-      marginBottom: theme.spacing.unit
-    },
-    dropZoneText: {
-      verticalAlign: "middle",
-      lineHeight: "50px",
-      padding: theme.spacing.unit
-    }
-  });
+const StyledDropZone = styled(Dropzone)`
+  && {
+    height: 50px;
+    border-width: 2px;
+    border-style: dashed;
+    border-radius: ${p => p.theme.spacing.unit}px;
+    border-color: ${p => p.theme.palette.primary.main};
+    font-family: ${p => p.theme.typography.fontFamily};
+    color: ${p => p.theme.palette.text.primary};
+    cursor: pointer;
+    margin-top: ${p => p.theme.spacing.unit}px;
+    margin-bottom: ${p => p.theme.spacing.unit}px;
+  }
+`;
 
-export const FileUploader = withStyles(styles)(FileUploaderInternal);
+const DropZoneText = styled.span`
+  vertical-align: middle;
+  line-height: 50px;
+  padding: ${p => p.theme.spacing.unit}px;
+`;

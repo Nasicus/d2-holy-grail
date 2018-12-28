@@ -1,21 +1,20 @@
 import * as React from "react";
-import { createStyles, WithStyles, Theme, withStyles } from "@material-ui/core";
 import { ILoginInfo } from "./LoginForm";
 import { Api } from "../../common/utils/Api";
 import Dialog from "@material-ui/core/Dialog/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText/DialogContentText";
+import DialogContentText, { DialogContentTextProps } from "@material-ui/core/DialogContentText/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
-import Icon from "@material-ui/core/Icon/Icon";
-import TextField from "@material-ui/core/TextField/TextField";
+import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
+import TextField, { TextFieldProps } from "@material-ui/core/TextField/TextField";
 import { ButtonWithProgress } from "../../common/components/ButtonWithProgress";
+import { IRegisterFormDialogProps } from "./RegisterFormDialog";
+import styled from "../../TypedStyledComponents";
 
 export interface IRegisterFormDialogProps {
   onDialogClosed: (loginInfo?: ILoginInfo) => any;
 }
-
-type Props = IRegisterFormDialogProps & WithStyles<typeof styles>;
 
 interface IRegisterFormDialogState {
   address?: string;
@@ -24,8 +23,8 @@ interface IRegisterFormDialogState {
   isLoading?: boolean;
 }
 
-class RegisterFormDialogInternal extends React.Component<Props, IRegisterFormDialogState> {
-  public constructor(props: Props) {
+export class RegisterFormDialog extends React.Component<IRegisterFormDialogProps, IRegisterFormDialogState> {
+  public constructor(props: IRegisterFormDialogProps) {
     super(props);
     this.state = {};
   }
@@ -36,38 +35,26 @@ class RegisterFormDialogInternal extends React.Component<Props, IRegisterFormDia
         <DialogTitle id="form-dialog-title">Create your own Holy Grail</DialogTitle>
         <DialogContent>
           <div>
-            <Icon className={this.props.classes.closeIcon} onClick={() => this.props.onDialogClosed()}>
-              close
-            </Icon>
-            {this.state.error && (
-              <DialogContentText className={this.props.classes.errorMessage}>{this.state.error}</DialogContentText>
-            )}
+            <CloseIcon onClick={() => this.props.onDialogClosed()}>close</CloseIcon>
+            {this.state.error && <ErrorText>{this.state.error}</ErrorText>}
             <div>
-              <TextField
-                className={this.props.classes.textField}
-                label="Holy Grail address"
-                onChange={e => this.setState({ address: e.target.value })}
-              />
+              <StyledTextField label="Holy Grail address" onChange={e => this.setState({ address: e.target.value })} />
             </div>
             <div>
-              <TextField
-                className={this.props.classes.textField}
-                label="Password"
-                onChange={e => this.setState({ password: e.target.value })}
-              />
-              <div className={this.props.classes.securityInfo}>
-                <div className={this.props.classes.infoIconContainer}>
+              <StyledTextField label="Password" onChange={e => this.setState({ password: e.target.value })} />
+              <SecurityInfoContainer>
+                <InfoIconContainer>
                   <DialogContentText>
                     <Icon>info</Icon>
                   </DialogContentText>
-                </div>
+                </InfoIconContainer>
                 <div>
                   <DialogContentText>
                     Please do not choose a sensitive password, since we're not really paying attention to data security
                     ;)
                   </DialogContentText>
                 </div>
-              </div>
+              </SecurityInfoContainer>
             </div>
           </div>
         </DialogContent>
@@ -106,30 +93,35 @@ class RegisterFormDialogInternal extends React.Component<Props, IRegisterFormDia
   };
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    closeIcon: {
-      position: "absolute",
-      top: theme.spacing.unit,
-      right: theme.spacing.unit,
-      cursor: "pointer"
-    },
-    textField: {
-      width: 300,
-      marginTop: theme.spacing.unit * 2
-    },
-    securityInfo: {
-      fontStyle: "italic",
-      paddingTop: theme.spacing.unit * 4,
-      display: "flex"
-    },
-    infoIconContainer: {
-      alignSelf: "center",
-      paddingRight: theme.spacing.unit
-    },
-    errorMessage: {
-      color: theme.palette.error.main
-    }
-  });
+const CloseIcon: React.ComponentType<IconProps> = styled(Icon)`
+  && {
+    position: absolute;
+    top: ${p => p.theme.spacing.unit}px;
+    right: ${p => p.theme.spacing.unit}px;
+    cursor: pointer;
+  }
+`;
 
-export const RegisterFormDialog = withStyles(styles)(RegisterFormDialogInternal);
+const StyledTextField: React.ComponentType<TextFieldProps> = styled(TextField)`
+  && {
+    width: 300px;
+    margin-top: ${p => p.theme.spacing.unit * 2}px;
+  }
+` as any;
+
+const ErrorText: React.ComponentType<DialogContentTextProps> = styled(DialogContentText)`
+  && {
+    color: ${p => p.theme.palette.error.main};
+  }
+`;
+
+const SecurityInfoContainer = styled.div`
+  font-style: italic;
+  padding-top: ${p => p.theme.spacing.unit * 4}px;
+  display: flex;
+`;
+
+const InfoIconContainer = styled.div`
+  align-self: center;
+  padding-right: ${p => p.theme.spacing.unit}px;
+`;
