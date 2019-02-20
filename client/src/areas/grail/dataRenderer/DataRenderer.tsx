@@ -6,7 +6,6 @@ import { ThemeStyle } from "@material-ui/core/styles/createTypography";
 import { GrailManager } from "../GrailManager";
 import { CountItemRenderer } from "./CountItemRenderer";
 import { LevelRenderer } from "./LevelRenderer";
-import { IDataRendererProps } from "./DataRenderer";
 import styled, { css } from "../../../TypedStyledComponents";
 
 export interface ILevels {

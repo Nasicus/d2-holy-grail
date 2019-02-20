@@ -4,6 +4,8 @@ import { IEthGrailData } from "../definitions/union/IEthGrailData";
 import { IRunewordGrailApiData } from "../definitions/api/IRunewordGrailApiData";
 import { IHolyGrailApiModel } from "../definitions/api/IHolyGrailApiModel";
 import { IGrailSettings } from "../definitions/union/IGrailSettings";
+import { IItemInfo } from "../definitions/api/IItemInfo";
+import { IRunewordInfo } from "../definitions/api/IRunewordInfo";
 
 export interface IApiResponse<T> {
   status: number;
@@ -11,10 +13,19 @@ export interface IApiResponse<T> {
 }
 
 export class Api {
-  private static readonly apiUrl = "/api/grail/";
+  private static readonly apiUrl = "/api/";
+  private static readonly grailApiUrl = Api.apiUrl + "grail/";
+
+  public static getItem(itemName: string): Observable<IApiResponse<IItemInfo>> {
+    return this.fetchToObservable(fetch(`${Api.apiUrl}items/${itemName}`));
+  }
+
+  public static getRuneword(runewordName: string): Observable<IApiResponse<IRunewordInfo>> {
+    return this.fetchToObservable(fetch(`${Api.apiUrl}runewords/${runewordName}`));
+  }
 
   public static getGrail(address: string): Observable<IApiResponse<IHolyGrailApiModel>> {
-    return this.fetchToObservable(fetch(Api.apiUrl + address));
+    return this.fetchToObservable(fetch(Api.grailApiUrl + address));
   }
 
   public static updateGrail(
@@ -26,7 +37,7 @@ export class Api {
     runewordGrail: IRunewordGrailApiData
   ): Observable<IApiResponse<IHolyGrailApiModel>> {
     return this.fetchToObservable(
-      fetch(Api.apiUrl + address, {
+      fetch(Api.grailApiUrl + address, {
         method: "put",
         body: JSON.stringify({ grail, ethGrail, runewordGrail, password, token }),
         headers: { "Content-Type": "application/json" }
@@ -40,7 +51,7 @@ export class Api {
     settings: IGrailSettings
   ): Observable<IApiResponse<IHolyGrailApiModel>> {
     return this.fetchToObservable(
-      fetch(`${Api.apiUrl}${address}/settings`, {
+      fetch(`${Api.grailApiUrl}${address}/settings`, {
         method: "put",
         body: JSON.stringify({ settings, password, token }),
         headers: { "Content-Type": "application/json" }
@@ -50,7 +61,7 @@ export class Api {
 
   public static createGrail(address: string, password: string): Observable<IApiResponse<IHolyGrailApiModel>> {
     return this.fetchToObservable(
-      fetch(Api.apiUrl, {
+      fetch(Api.grailApiUrl, {
         method: "post",
         body: JSON.stringify({ address, password }),
         headers: { "Content-Type": "application/json" }
@@ -60,7 +71,7 @@ export class Api {
 
   public static validatePassword(address: string, password: string): Observable<IApiResponse<boolean>> {
     return this.fetchToObservable(
-      fetch(`${Api.apiUrl}${address}/password/validate`, {
+      fetch(`${Api.grailApiUrl}${address}/password/validate`, {
         method: "put",
         body: JSON.stringify({ password }),
         headers: { "Content-Type": "application/json" }

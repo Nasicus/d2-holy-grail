@@ -73,7 +73,7 @@ export interface IUniqueJewels {
 export interface ISetItems {
   "Angelic Raiment": IItems;
   "Arcanna's Tricks": IItems;
-  "Artic Gear": IItems;
+  "Arctic Gear": IItems;
   "Berserker's Arsenal": IItems;
   "Cathan's Traps": IItems;
   "Civerb's Vestments": IItems;

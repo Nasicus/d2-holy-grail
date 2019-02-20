@@ -26,7 +26,7 @@ export const holyGrailSeedData: IHolyGrailData = {
           "Skin of the Vipermagi": {},
           "Skin of the Flayed One": {},
           "Iron Pelt": {},
-          "Crow Cow": {},
+          "Crow Caw": {},
           "Spirit Forge": {},
           "Duriel's Shell": {},
           Shaftstop: {},
@@ -75,7 +75,7 @@ export const holyGrailSeedData: IHolyGrailData = {
           "Giant Skull": {},
           "Harlequin Crest": {},
           "Nightwing's Veil": {},
-          Steelshade: {},
+          "Steel Shade": {},
           "Veil of Steel": {}
         }
       },
@@ -89,7 +89,7 @@ export const holyGrailSeedData: IHolyGrailData = {
         normal: {
           "The Hand of Broc": {},
           Bloodfist: {},
-          "Chance Gaurds": {},
+          "Chance Guards": {},
           Magefist: {},
           Frostburn: {}
         },
@@ -145,7 +145,7 @@ export const holyGrailSeedData: IHolyGrailData = {
         elite: {
           Marrowwalk: {},
           "Sandstorm Trek": {},
-          "Shawdow Dancer": {}
+          "Shadow Dancer": {}
         }
       },
       shields: {
@@ -160,7 +160,7 @@ export const holyGrailSeedData: IHolyGrailData = {
           "The Ward": {}
         },
         exceptional: {
-          Viscerataunt: {},
+          Visceratuant: {},
           "Moser's Blessed Circle": {},
           Stormchaser: {},
           "Lance Guard": {},
@@ -206,7 +206,7 @@ export const holyGrailSeedData: IHolyGrailData = {
         normal: {
           "Axe of Fechmar": {},
           Goreshovel: {},
-          "The Chieftan": {},
+          "The Chieftain": {},
           Brainhew: {},
           Humongous: {}
         },
@@ -294,7 +294,7 @@ export const holyGrailSeedData: IHolyGrailData = {
           Stoutnail: {},
           Crushflange: {},
           Bloodrise: {},
-          "General's Tan Do Li Ga": {},
+          "The General's Tan Do Li Ga": {},
           Ironstone: {}
         },
         exceptional: {
@@ -307,12 +307,12 @@ export const holyGrailSeedData: IHolyGrailData = {
         },
         elite: {
           "Nord's Tenderizer": {},
-          "Baranar's Star ": {},
-          "Demon Limb ": {},
-          "Stormlash ": {},
-          "Horizon's Tornado ": {},
-          "Stone Crusher ": {},
-          "Schaefer's Hammer ": {}
+          "Baranar's Star": {},
+          "Demon Limb": {},
+          Stormlash: {},
+          "Horizon's Tornado": {},
+          "Stone Crusher": {},
+          "Schaefer's Hammer": {}
         }
       },
       "clubs (2-h)": {
@@ -420,7 +420,7 @@ export const holyGrailSeedData: IHolyGrailData = {
           Gleamscythe: {},
           "Griswold's Edge": {},
           Hellplague: {},
-          "Culwen's point": {}
+          "Culwen's Point": {}
         },
         exceptional: {
           Bloodletter: {},
@@ -491,7 +491,7 @@ export const holyGrailSeedData: IHolyGrailData = {
           Lacerator: {},
           Warshrike: {},
           "Demon's Arch": {},
-          "Wraith's Flight": {},
+          "Wraith Flight": {},
           "Gargoyle's Bite": {}
         }
       }
@@ -511,14 +511,14 @@ export const holyGrailSeedData: IHolyGrailData = {
         },
         amulets: {
           "Nokozan Relic": {},
-          "Eye of Etlich": {},
-          "Mahim-Oak Curio": {},
+          "The Eye of Etlich": {},
+          "The Mahim-Oak Curio": {},
           "Saracen's Chance": {},
-          "Cat's Eye": {},
-          "Rising Sun": {},
+          "The Cat's Eye": {},
+          "The Rising Sun": {},
           "Crescent Moon": {},
           "Atma's Scarab": {},
-          "Highlords Wrath": {},
+          "Highlord's Wrath": {},
           "Mara's Kaleidoscope": {},
           "Seraph's Hymn": {},
           Metalgrid: {}
@@ -544,7 +544,7 @@ export const holyGrailSeedData: IHolyGrailData = {
           "Lycander's Aim": {},
           "Titan's Revenge": {},
           "Lycander's Flank": {},
-          "Bloodraven's Charge": {},
+          "Blood Raven's Charge": {},
           Thunderstroke: {},
           Stoneraven: {}
         },
@@ -597,7 +597,7 @@ export const holyGrailSeedData: IHolyGrailData = {
       "Arcanna's Flesh": {},
       "Arcanna's Deathwand": {}
     },
-    "Artic Gear": {
+    "Arctic Gear": {
       "Arctic Mitts": {},
       "Arctic Binding": {},
       "Arctic Furs": {},
@@ -760,7 +760,7 @@ export const holyGrailSeedData: IHolyGrailData = {
       "Tal Rasha's Lidless Eye": {},
       "Tal Rasha's Guardianship": {},
       "Tal Rasha's Horadric Crest": {},
-      "Tal Rasha's Fine-Spun Cloth": {}
+      "Tal Rasha's Fine Spun Cloth": {}
     },
     "The Disciple": {
       "Dark Adherent": {},

@@ -7,6 +7,11 @@ import { IItemPropsDialogProps } from "./ItemPropsDialog";
 import styled from "../../../TypedStyledComponents";
 import { TextFieldProps } from "@material-ui/core/TextField";
 import { CheckboxProps } from "@material-ui/core/Checkbox";
+import { GrailMode } from "../GrailMode";
+import { withRouter, RouteComponentProps } from "react-router-dom";
+import { IGrailAreaRouterParams } from "../GrailArea";
+import { RunewordInfoRenderer } from "./propsRenderer/RunewordInfoRenderer";
+import { ItemInfoRenderer } from "./propsRenderer/ItemInfoRenderer";
 
 export interface IItemPropsDialogProps {
   item: Item;
@@ -14,18 +19,22 @@ export interface IItemPropsDialogProps {
   onDialogClosed: (changedProps: { itemNote: string; isPerfect: boolean }) => any;
 }
 
+type Props = IItemPropsDialogProps & RouteComponentProps<IGrailAreaRouterParams>;
+
 interface IItemPropsDialogState {
   itemNote: string;
   isPerfect: boolean;
 }
 
-export class ItemPropsDialog extends React.PureComponent<IItemPropsDialogProps, IItemPropsDialogState> {
-  public constructor(props: IItemPropsDialogProps) {
+class ItemPropsDialogInternal extends React.PureComponent<Props, IItemPropsDialogState> {
+  public constructor(props: Props) {
     super(props);
     this.state = { itemNote: props.item.note, isPerfect: props.item.isPerfect };
   }
 
   public render() {
+    const grailMode = this.props.match.params.grailMode as GrailMode;
+
     return (
       <CloseableDialog
         title={this.props.itemName}
@@ -41,7 +50,14 @@ export class ItemPropsDialog extends React.PureComponent<IItemPropsDialogProps, 
           </>
         )}
       >
-        <ReadOnlyContentContainer>{this.renderContent()}</ReadOnlyContentContainer>
+        <ContentContainer>
+          {this.renderContent()}
+          {grailMode === GrailMode.Runeword ? (
+            <RunewordInfoRenderer runewordName={this.props.itemName} />
+          ) : (
+            <ItemInfoRenderer itemName={this.props.itemName} />
+          )}
+        </ContentContainer>
       </CloseableDialog>
     );
   }
@@ -91,6 +107,8 @@ export class ItemPropsDialog extends React.PureComponent<IItemPropsDialogProps, 
   }
 }
 
+export const ItemPropsDialog = withRouter(ItemPropsDialogInternal);
+
 const TextArea: React.ComponentType<TextFieldProps> = styled(TextField)`
   && {
     min-width: 550px;
@@ -98,7 +116,7 @@ const TextArea: React.ComponentType<TextFieldProps> = styled(TextField)`
   }
 ` as any;
 
-const ReadOnlyContentContainer = styled.div`
+const ContentContainer = styled.div`
   min-width: 550px;
   font-family: ${p => p.theme.typography.fontFamily};
 `;

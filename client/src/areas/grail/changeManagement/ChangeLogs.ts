@@ -1,6 +1,17 @@
 export type ChangeLogCollection = { [version: string]: (string | { change: string; children: string[] })[] };
 
 export const changeLogs: ChangeLogCollection = {
+  "1.8.0": [
+    {
+      change: `Add stats / props for all items and runewords:`,
+      children: [
+        "Click to an item or runeword to see its stats!",
+        "There are probably still a lot of errors => report them to me on Discord or via Github!",
+        "Item Infos taken from: http://www.d2tomb.com/",
+        "Runeword Infos taken from: https://diablo2.diablowiki.net/Runewords"
+      ]
+    }
+  ],
   "1.7.0": [
     {
       change: `Improve the 'Missing items' functionality":`,

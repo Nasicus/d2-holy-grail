@@ -5,6 +5,7 @@ import * as cors from "cors";
 import * as path from "path";
 import { Db } from "mongodb";
 import { GrailController } from "../controllers/GrailController";
+import { ItemsController } from "../controllers/ItemsController";
 
 function initializeExpressServer(express: expressServer.Express): void {
   express.use(bodyParser.urlencoded({ extended: true }));
@@ -31,6 +32,11 @@ function configureRoutes(db: Db, express: expressServer.Express): void {
 
   express.route("/api/grail/:address/settings").put(grailController.updateSettings);
   express.route("/api/grail/:address/password/validate").put(grailController.validatePassword);
+
+  const itemsController: ItemsController = new ItemsController();
+
+  express.route("/api/items/:itemName").get(itemsController.getItem);
+  express.route("/api/runewords/:runewordName").get(itemsController.getRuneword);
 }
 
 export function initializeApp(db: Db, rootDirectoryPath: string) {

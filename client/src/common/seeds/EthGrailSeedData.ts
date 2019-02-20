@@ -26,7 +26,7 @@ export const ethGrailSeedData: IEthGrailData = {
           "Skin of the Vipermagi": {},
           "Skin of the Flayed One": {},
           "Iron Pelt": {},
-          "Crow Cow": {},
+          "Crow Caw": {},
           "Spirit Forge": {},
           "Duriel's Shell": {},
           Shaftstop: {},
@@ -72,7 +72,7 @@ export const ethGrailSeedData: IEthGrailData = {
           "Giant Skull": {},
           "Harlequin Crest": {},
           "Nightwing's Veil": {},
-          Steelshade: {},
+          "Steel Shade": {},
           "Veil of Steel": {}
         }
       },
@@ -86,7 +86,7 @@ export const ethGrailSeedData: IEthGrailData = {
         normal: {
           "The Hand of Broc": {},
           Bloodfist: {},
-          "Chance Gaurds": {},
+          "Chance Guards": {},
           Magefist: {},
           Frostburn: {}
         },
@@ -142,7 +142,7 @@ export const ethGrailSeedData: IEthGrailData = {
         elite: {
           Marrowwalk: {},
           "Sandstorm Trek": {},
-          "Shawdow Dancer": {}
+          "Shadow Dancer": {}
         }
       },
       shields: {
@@ -157,7 +157,7 @@ export const ethGrailSeedData: IEthGrailData = {
           "The Ward": {}
         },
         exceptional: {
-          Viscerataunt: {},
+          Visceratuant: {},
           "Moser's Blessed Circle": {},
           Stormchaser: {},
           "Lance Guard": {},
@@ -201,7 +201,7 @@ export const ethGrailSeedData: IEthGrailData = {
         normal: {
           "Axe of Fechmar": {},
           Goreshovel: {},
-          "The Chieftan": {},
+          "The Chieftain": {},
           Brainhew: {},
           Humongous: {}
         },
@@ -241,7 +241,7 @@ export const ethGrailSeedData: IEthGrailData = {
           Stoutnail: {},
           Crushflange: {},
           Bloodrise: {},
-          "General's Tan Do Li Ga": {},
+          "The General's Tan Do Li Ga": {},
           Ironstone: {}
         },
         exceptional: {
@@ -254,11 +254,11 @@ export const ethGrailSeedData: IEthGrailData = {
         },
         elite: {
           "Nord's Tenderizer": {},
-          "Baranar's Star ": {},
-          "Demon Limb ": {},
-          "Stormlash ": {},
-          "Horizon's Tornado ": {},
-          "Stone Crusher ": {}
+          "Baranar's Star": {},
+          "Demon Limb": {},
+          Stormlash: {},
+          "Horizon's Tornado": {},
+          "Stone Crusher": {}
         }
       },
       "clubs (2-h)": {
@@ -362,7 +362,7 @@ export const ethGrailSeedData: IEthGrailData = {
           Gleamscythe: {},
           "Griswold's Edge": {},
           Hellplague: {},
-          "Culwen's point": {}
+          "Culwen's Point": {}
         },
         exceptional: {
           Bloodletter: {},

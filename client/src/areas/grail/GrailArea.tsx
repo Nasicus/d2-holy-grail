@@ -23,7 +23,7 @@ import { TabRenderer } from "./TabRenderer";
 import { ListItemWithProgress } from "../../common/components/ListItemWithProgress";
 import styled from "../../TypedStyledComponents";
 
-interface IGrailAreaRouterParams {
+export interface IGrailAreaRouterParams {
   address: string;
   grailMode: string;
 }
