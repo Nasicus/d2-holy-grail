@@ -2083,7 +2083,7 @@ const uniqueItems = {
   },
   "Goldstrike Arch": {
     name: "Goldstrike Arch",
-    type: "Gothic Bow ",
+    type: "Gothic Bow",
     image: "http://www.d2tomb.com/images/items/longwarbow.gif",
     props: [
       "Req Dexterity: 118",
@@ -6904,7 +6904,7 @@ const uniqueItems = {
       "Originally was Ladder only, but has been reportedly found in single player games.",
       "found in v1.10 or later"
     ],
-    category: "Unique Amazon Weapons "
+    category: "Unique Amazon Weapons"
   },
   "Lycander's Flank": {
     name: "Lycander's Flank",
@@ -6926,7 +6926,7 @@ const uniqueItems = {
       "+2 to Javelin and Spear Skills",
       "found in v1.09 or later"
     ],
-    category: "Unique Amazon Weapons "
+    category: "Unique Amazon Weapons"
   },
   "Lycander's Aim": {
     name: "Lycander's Aim",
@@ -6947,7 +6947,7 @@ const uniqueItems = {
       "+2 to Bow and Crossbow Skills",
       "found in v1.09 or later"
     ],
-    category: "Unique Amazon Weapons "
+    category: "Unique Amazon Weapons"
   },
   "Titan's Revenge": {
     name: "Titan's Revenge",
@@ -6970,7 +6970,7 @@ const uniqueItems = {
       "+2 to Javelin and Spear Skills",
       "found in v1.09 or later"
     ],
-    category: "Unique Amazon Weapons "
+    category: "Unique Amazon Weapons"
   },
   Thunderstroke: {
     name: "Thunderstroke",
@@ -6992,7 +6992,7 @@ const uniqueItems = {
       "Ladder only",
       "found in v1.10 or later"
     ],
-    category: "Unique Amazon Weapons "
+    category: "Unique Amazon Weapons"
   },
   "Blood Raven's Charge": {
     name: "Blood Raven's Charge",
@@ -7010,7 +7010,7 @@ const uniqueItems = {
       "+2-4 to Bow and Crossbow Skills (Amazon only)",
       "found in v1.10 or later"
     ],
-    category: "Unique Amazon Weapons "
+    category: "Unique Amazon Weapons"
   },
   "Shadow Killer": {
     name: "Shadow Killer",
@@ -7031,7 +7031,7 @@ const uniqueItems = {
       "Ladder only",
       "found in v1.10 or later"
     ],
-    category: "Unique Assassin Katars "
+    category: "Unique Assassin Katars"
   },
   "Bartuc's Cut-Throat": {
     name: "Bartuc's Cut-Throat",
@@ -7053,7 +7053,7 @@ const uniqueItems = {
       "+1 to Martial Arts Skills",
       "found in v1.09 or later"
     ],
-    category: "Unique Assassin Katars "
+    category: "Unique Assassin Katars"
   },
   "Jade Talon": {
     name: "Jade Talon",
@@ -7073,7 +7073,7 @@ const uniqueItems = {
       "+40-50 to all Resistances",
       "found in v1.10 or later"
     ],
-    category: "Unique Assassin Katars "
+    category: "Unique Assassin Katars"
   },
   "Firelizard's Talons": {
     name: "Firelizard's Talons",
@@ -7094,7 +7094,7 @@ const uniqueItems = {
       "+40-70% Fire Resist",
       "found in v1.10 or later"
     ],
-    category: "Unique Assassin Katars "
+    category: "Unique Assassin Katars"
   },
   "Arreat's Face": {
     name: "Arreat's Face",
@@ -7115,7 +7115,7 @@ const uniqueItems = {
       "+2 to Combat Skills",
       "found in v1.09 or later"
     ],
-    category: "Unique Barbarian Helms "
+    category: "Unique Barbarian Helms"
   },
   Wolfhowl: {
     name: "Wolfhowl",
@@ -7137,7 +7137,7 @@ const uniqueItems = {
       "18 Charges Level 15 Summon Dire Wolf",
       "found in v1.10 or later"
     ],
-    category: "Unique Barbarian Helms "
+    category: "Unique Barbarian Helms"
   },
   "Demonhorn's Edge": {
     name: "Demonhorn's Edge",
@@ -7158,7 +7158,7 @@ const uniqueItems = {
       "Ladder only",
       "found in v1.10 or later"
     ],
-    category: "Unique Barbarian Helms "
+    category: "Unique Barbarian Helms"
   },
   "Halaberd's Reign": {
     name: "Halaberd's Reign",
@@ -7178,7 +7178,7 @@ const uniqueItems = {
       "+1-2 to Battle Orders (Barbarian only)",
       "found in v1.10 or later"
     ],
-    category: "Unique Barbarian Helms "
+    category: "Unique Barbarian Helms"
   },
   "Jalal's Mane": {
     name: "Jalal's Mane",
@@ -7200,7 +7200,7 @@ const uniqueItems = {
       "+20 to Energy",
       "found in v1.09 or later"
     ],
-    category: "Unique Druid Pelts "
+    category: "Unique Druid Pelts"
   },
   "Cerebus' Bite": {
     name: "Cerebus' Bite",
@@ -7220,7 +7220,7 @@ const uniqueItems = {
       "Originally was Ladder only, but has been reportedly found in single player games",
       "found in v1.10 or later"
     ],
-    category: "Unique Druid Pelts "
+    category: "Unique Druid Pelts"
   },
   "Spirit Keeper": {
     name: "Spirit Keeper",
@@ -7240,7 +7240,7 @@ const uniqueItems = {
       "15-25% Cold Absorb",
       "found in v1.10 or later"
     ],
-    category: "Unique Druid Pelts "
+    category: "Unique Druid Pelts"
   },
   Ravenlore: {
     name: "Ravenlore",
@@ -7259,7 +7259,7 @@ const uniqueItems = {
       "+15-25 to all Resistances",
       "found v1.10 or later"
     ],
-    category: "Unique Druid Pelts "
+    category: "Unique Druid Pelts"
   },
   Homunculus: {
     name: "Homunculus",
@@ -7364,7 +7364,7 @@ const uniqueItems = {
       "+2 to Combat Skills",
       "found in v1.09 or later"
     ],
-    category: "Unique Paladin Shields "
+    category: "Unique Paladin Shields"
   },
   "Alma Negra": {
     name: "Alma Negra",
@@ -7385,7 +7385,7 @@ const uniqueItems = {
       "30% Faster Block Rate",
       "found in v1.10 or later"
     ],
-    category: "Unique Paladin Shields "
+    category: "Unique Paladin Shields"
   },
   Dragonscale: {
     name: "Dragonscale",
@@ -7406,7 +7406,7 @@ const uniqueItems = {
       "10-20% Fire Absorb",
       "found in v1.10 or later"
     ],
-    category: "Unique Paladin Shields "
+    category: "Unique Paladin Shields"
   },
   "Protector's Gleam": {
     name: "Protector's Gleam",
@@ -7425,7 +7425,7 @@ const uniqueItems = {
       "+10 to all Resistances",
       "found in v1.11 or later"
     ],
-    category: "Unique Paladin Shields "
+    category: "Unique Paladin Shields"
   },
   "The Oculus": {
     name: "The Oculus",
@@ -7445,7 +7445,7 @@ const uniqueItems = {
       "50% better chance of getting Magic Items",
       "found in v1.09 or later"
     ],
-    category: "Unique Sorceress Orbs "
+    category: "Unique Sorceress Orbs"
   },
   "Eschuta's Temper": {
     name: "Eschuta's Temper",
@@ -7462,7 +7462,7 @@ const uniqueItems = {
       "+20-30 to Energy",
       "found in v1.10 or later"
     ],
-    category: "Unique Sorceress Orbs "
+    category: "Unique Sorceress Orbs"
   },
   "Death's Fathom": {
     name: "Death's Fathom",
@@ -7480,7 +7480,7 @@ const uniqueItems = {
       "Ladder only",
       "found in v1.10 or later"
     ],
-    category: "Unique Sorceress Orbs "
+    category: "Unique Sorceress Orbs"
   },
   Annihilus: {
     name: "Annihilus",
@@ -10934,7 +10934,7 @@ const runewords = {
     ]
   },
   Venom: {
-    runes: ["Tal", "Dol", "Mal "],
+    runes: ["Tal", "Dol", "Mal"],
     types: ["Weapons"],
     detailTypes: ["All Weapons"],
     sockets: 3,

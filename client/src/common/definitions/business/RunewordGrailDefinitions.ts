@@ -167,7 +167,7 @@ export const runewordGrailDefinitions: { [runewordName: string]: IRunewordDefini
   Stone: { runes: ["Shael", "Um", "Pul", "Lum"], types: ["Armor"], detailTypes: ["Armor"], sockets: 4 },
   Strength: { runes: ["Amn", "Tir"], types: ["Weapons"], detailTypes: ["Melee Weapons"], sockets: 2 },
   Treachery: { runes: ["Shael", "Thul", "Lem"], types: ["Armor"], detailTypes: ["Armor"], sockets: 3 },
-  Venom: { runes: ["Tal", "Dol", "Mal "], types: ["Weapons"], detailTypes: ["All Weapons"], sockets: 3 },
+  Venom: { runes: ["Tal", "Dol", "Mal"], types: ["Weapons"], detailTypes: ["All Weapons"], sockets: 3 },
   "Voice of Reason": {
     runes: ["Lem", "Ko", "El", "Eld"],
     types: ["Weapons"],
