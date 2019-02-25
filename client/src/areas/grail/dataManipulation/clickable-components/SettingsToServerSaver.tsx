@@ -23,7 +23,6 @@ export class SettingsToServerSaver extends React.Component<{}, IServerSaveButton
   }
 
   public render() {
-    console.log(this.state.error);
     return (
       <>
         {this.state.error && (
