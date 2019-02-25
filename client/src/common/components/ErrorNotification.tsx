@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Snackbar } from "@material-ui/core";
 import { IErrorNotificationProps } from "./ErrorNotification";
-import styled from "src/TypedStyledComponents";
+import styled from "../../TypedStyledComponents";
 
 export interface IErrorNotificationProps {
   error: string;

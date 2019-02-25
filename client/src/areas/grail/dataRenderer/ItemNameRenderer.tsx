@@ -3,9 +3,9 @@ import { Item } from "../../../common/definitions/union/Item";
 import { ItemPropsDialog } from "./ItemPropsDialog";
 import { Icon } from "@material-ui/core";
 import { GrailManager } from "../GrailManager";
-import styled from "src/TypedStyledComponents";
 import { IItemNameProps } from "./ItemNameRenderer";
 import { IconProps } from "@material-ui/core/Icon";
+import styled from "../../../TypedStyledComponents";
 
 export interface IItemNameProps {
   item: Item;

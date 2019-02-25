@@ -40,7 +40,7 @@ export class ItemInfoRenderer extends React.PureComponent<IItemInfoRendererProps
           <div>
             <NoMarginList>
               {itemInfos.props.map(p => (
-                <li>{p}</li>
+                <li key={p}>{p}</li>
               ))}
             </NoMarginList>
           </div>

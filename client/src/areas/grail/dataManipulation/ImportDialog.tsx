@@ -5,9 +5,9 @@ import { GrailManager } from "../GrailManager";
 import { Util } from "../../../common/utils/Util";
 import { CloseableDialog } from "../../../common/components/CloseableDialog";
 import { ButtonWithProgress } from "../../../common/components/ButtonWithProgress";
-import { FileUploader } from "../../../common/components/FIleUploader";
+import { FileUploader } from "../../../common/components/FileUploader";
 import { IImportDialogProps } from "./ImportDialog";
-import styled from "src/TypedStyledComponents";
+import styled from "../../../TypedStyledComponents";
 
 export interface IImportDialogProps {
   onDialogClosed: () => any;

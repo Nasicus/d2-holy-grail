@@ -12,7 +12,7 @@ import { GrailManager } from "./GrailManager";
 import { GrailMode } from "./GrailMode";
 import { IItem } from "../../common/definitions/union/IItem";
 import { IStatisticsTableProps } from "./StatisticsTable";
-import styled from "src/TypedStyledComponents";
+import styled from "../../TypedStyledComponents";
 
 export interface IStatisticsTableProps {
   data: any;
@@ -100,10 +100,10 @@ export class StatisticsTable extends React.Component<IStatisticsTableProps, ISta
             <TableHead>
               <TableRow>
                 <TableCell>&nbsp;</TableCell>
-                <TableCell numeric={true}>Exist</TableCell>
-                <TableCell numeric={true}>Owned</TableCell>
-                <TableCell numeric={true}>Remaining</TableCell>
-                <TableCell numeric={true}>% Completed</TableCell>
+                <TableCell align="right">Exist</TableCell>
+                <TableCell align="right">Owned</TableCell>
+                <TableCell align="right">Remaining</TableCell>
+                <TableCell align="right">% Completed</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -126,10 +126,10 @@ export class StatisticsTable extends React.Component<IStatisticsTableProps, ISta
             {!stats.icon && stats.name}
           </RowHeader>
         </TableCell>
-        <TableCell numeric={true}>{stats.total}</TableCell>
-        <TableCell numeric={true}>{stats.renderValue}</TableCell>
-        <TableCell numeric={true}>{stats.total - stats.renderValue}</TableCell>
-        <TableCell numeric={true}>{(stats.total ? (stats.renderValue * 100) / stats.total : 0).toFixed(2)}</TableCell>
+        <TableCell align="right">{stats.total}</TableCell>
+        <TableCell align="right">{stats.renderValue}</TableCell>
+        <TableCell align="right">{stats.total - stats.renderValue}</TableCell>
+        <TableCell align="right">{(stats.total ? (stats.renderValue * 100) / stats.total : 0).toFixed(2)}</TableCell>
       </TableRow>
     );
   }

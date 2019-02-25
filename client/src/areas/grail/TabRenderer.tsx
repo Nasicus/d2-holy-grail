@@ -8,8 +8,8 @@ import { GrailManager } from "./GrailManager";
 import { GrailMode } from "./GrailMode";
 import { StatisticsTable } from "./StatisticsTable";
 import { FilterRenderMode, IFilterResult } from "./GrailFilters";
-import styled from "src/TypedStyledComponents";
 import { ITabRendererProps } from "./TabRenderer";
+import styled from "../../TypedStyledComponents";
 
 export interface ITabRendererProps {
   allData: any;

@@ -2,8 +2,8 @@ import * as React from "react";
 import { Button, Icon, IconButton, Snackbar } from "@material-ui/core";
 import { VersionManager } from "./VersionManager";
 import { ChangelogDialog } from "./ChangelogDialog";
-import styled from "src/TypedStyledComponents";
 import { IconButtonProps } from "@material-ui/core/IconButton";
+import styled from "../../../TypedStyledComponents";
 
 interface IVersionNotifierState {
   showNotification?: boolean;

@@ -9,10 +9,10 @@ import { Item } from "../../common/definitions/union/Item";
 import * as Mousetrap from "mousetrap";
 import { AllBusinessGrailsType } from "../../common/definitions/business/AllBusinessGrailsType";
 import { Runeword } from "../../common/definitions/business/Runeword";
-import styled from "src/TypedStyledComponents";
 import { CheckboxProps } from "@material-ui/core/Checkbox";
 import { InputProps } from "@material-ui/core/Input";
 import { IGrailFilterProps } from "./GrailFilters";
+import styled from "../../TypedStyledComponents";
 
 require("mousetrap-global-bind");
 

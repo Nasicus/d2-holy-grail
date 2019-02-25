@@ -4,8 +4,8 @@ import { Icon } from "@material-ui/core";
 import { Item } from "../../../common/definitions/union/Item";
 import { ItemNameRenderer } from "./ItemNameRenderer";
 import { IItemProps } from "./CountItemRenderer";
-import styled from "src/TypedStyledComponents";
 import { IconProps } from "@material-ui/core/Icon";
+import styled from "../../../TypedStyledComponents";
 
 export interface IItemProps {
   item: Item;

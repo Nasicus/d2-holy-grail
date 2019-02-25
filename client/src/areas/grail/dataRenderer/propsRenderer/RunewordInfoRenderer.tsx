@@ -36,7 +36,7 @@ export class RunewordInfoRenderer extends React.PureComponent<IRunewordInfoRende
         <ItemInfosDetails>
           <div>
             {runewordInfos.runes.map(r => (
-              <RuneContainer>
+              <RuneContainer key={r}>
                 <img
                   src={`http://www.d2tomb.com/images/runes/${RunewordInfoRenderer.getRuneImageName(r)}.gif`}
                   alt={r}
@@ -49,7 +49,7 @@ export class RunewordInfoRenderer extends React.PureComponent<IRunewordInfoRende
               Can be placed in...
               <NoMarginList>
                 {runewordInfos.detailTypes.map(d => (
-                  <li>{d}</li>
+                  <li key={d}>{d}</li>
                 ))}
               </NoMarginList>
               ... with exactly <b>{runewordInfos.sockets}</b> sockets!
@@ -77,17 +77,17 @@ export class RunewordInfoRenderer extends React.PureComponent<IRunewordInfoRende
 
   private static renderRunewordProps(prop: string | { description: string; props: string[] }) {
     if (typeof prop === "string") {
-      return <li>{prop as string}</li>;
+      return <li key={prop}>{prop as string}</li>;
     }
 
     const objProps = prop as { description: string; props: string[] };
 
     return (
-      <li>
+      <li key={"top" + objProps.description}>
         {objProps.description}
         <NoMarginList>
           {objProps.props.map(p => (
-            <li>{p}</li>
+            <li key={"child" + p}>{p}</li>
           ))}
         </NoMarginList>
       </li>

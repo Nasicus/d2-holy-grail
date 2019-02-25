@@ -64,7 +64,7 @@ const RootContainer = styled.div`
 `;
 
 const HeaderContainer = styled.div`
-  max-width: 700;
+  max-width: 700px;
   margin: auto;
   text-align: center;
   padding-top: ${p => p.theme.spacing.unit * 2}px;

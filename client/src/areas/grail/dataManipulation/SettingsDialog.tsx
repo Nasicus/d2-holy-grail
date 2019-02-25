@@ -6,7 +6,7 @@ import { IGrailSettings } from "../../../common/definitions/union/IGrailSettings
 import { SettingsToServerSaver } from "./clickable-components/SettingsToServerSaver";
 import { CloseableDialog } from "../../../common/components/CloseableDialog";
 import { ISettingsDialogProps } from "./SettingsDialog";
-import styled from "src/TypedStyledComponents";
+import styled from "../../../TypedStyledComponents";
 
 export interface ISettingsDialogProps {
   onDialogClosed: (wasUpdated: boolean) => any;
