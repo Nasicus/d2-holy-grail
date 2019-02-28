@@ -9,9 +9,9 @@ import { TextFieldProps } from "@material-ui/core/TextField";
 import { CheckboxProps } from "@material-ui/core/Checkbox";
 import { GrailMode } from "../GrailMode";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import { IGrailAreaRouterParams } from "../GrailArea";
 import { RunewordInfoRenderer } from "./propsRenderer/RunewordInfoRenderer";
 import { ItemInfoRenderer } from "./propsRenderer/ItemInfoRenderer";
+import { IGrailAreaRouterParams } from "../../../RouteManager";
 
 export interface IItemPropsDialogProps {
   item: Item;
@@ -33,7 +33,7 @@ class ItemPropsDialogInternal extends React.PureComponent<Props, IItemPropsDialo
   }
 
   public render() {
-    const grailMode = this.props.match.params.grailMode as GrailMode;
+    const grailMode = this.props.match.params.grailMode;
 
     return (
       <CloseableDialog

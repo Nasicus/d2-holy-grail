@@ -1,6 +1,16 @@
 export type ChangeLogCollection = { [version: string]: (string | { change: string; children: string[] })[] };
 
 export const changeLogs: ChangeLogCollection = {
+  "1.9.0": [
+    {
+      change: `Sharing just got way better! Now whenever you click on something it will update the URL in your browser and you can directly point a friend to a specific place or refresh the page without losing context. Some examples:`,
+      children: [
+        "Link directly to Unique Armors: https://d2-holy-grail.herokuapp.com/Nasicus/holy/unique-armor",
+        "Link directly to the search for the runeword 'Enigma': http://d2-holy-grail.herokuapp.com/Nasicus/runeword/search?q=Enigma",
+        "Link which directly opens the item 'TombReaver: http://d2-holy-grail.herokuapp.com/Nasicus/holy/unique-weapons?itemName=Tomb%20Reaver"
+      ]
+    }
+  ],
   "1.8.0": [
     {
       change: `Add stats / props for all items and runewords:`,

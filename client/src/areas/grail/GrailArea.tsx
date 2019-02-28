@@ -22,11 +22,7 @@ import { VersionNotifier } from "./changeManagement/VersionNotifier";
 import { TabRenderer } from "./TabRenderer";
 import { ListItemWithProgress } from "../../common/components/ListItemWithProgress";
 import styled from "../../TypedStyledComponents";
-
-export interface IGrailAreaRouterParams {
-  address: string;
-  grailMode: string;
-}
+import { IGrailAreaRouterParams } from "../../RouteManager";
 
 type Props = IPassDownAppProps & RouteComponentProps<IGrailAreaRouterParams>;
 

@@ -10,31 +10,26 @@ import { StatisticsTable } from "./StatisticsTable";
 import { FilterRenderMode, IFilterResult } from "./GrailFilters";
 import { ITabRendererProps } from "./TabRenderer";
 import styled from "../../TypedStyledComponents";
+import { RouteComponentProps, withRouter } from "react-router-dom";
+import { TabType } from "./TabType";
+import { IGrailAreaRouterParams, RouteManager } from "../../RouteManager";
 
 export interface ITabRendererProps {
   allData: any;
   filterResult: IFilterResult;
 }
 
+type Props = ITabRendererProps & RouteComponentProps<IGrailAreaRouterParams>;
+
 interface ITabRendererState {
   activeTab: TabType;
   hasActiveSearch: boolean;
 }
 
-enum TabType {
-  Statistics,
-  UniqueArmor,
-  UniqueWeapons,
-  UniqueOther,
-  Sets,
-  SearchResults,
-  Runewords
-}
-
 const runewordLevels: ILevels = { variantLevel: 4, level: 1 };
 
-export class TabRenderer extends React.Component<ITabRendererProps, ITabRendererState> {
-  public constructor(props: ITabRendererProps) {
+class TabRendererInternal extends React.Component<Props, ITabRendererState> {
+  public constructor(props: Props) {
     super(props);
     this.state = {
       activeTab: TabType.Statistics,
@@ -43,7 +38,7 @@ export class TabRenderer extends React.Component<ITabRendererProps, ITabRenderer
   }
 
   public static getDerivedStateFromProps(props: ITabRendererProps, state: ITabRendererState) {
-    const renderAsSearchResult = TabRenderer.shouldRenderAsSearchResult(props);
+    const renderAsSearchResult = TabRendererInternal.shouldRenderAsSearchResult(props);
     if (renderAsSearchResult && !state.hasActiveSearch) {
       state.activeTab = TabType.SearchResults;
     } else if (!renderAsSearchResult && state.hasActiveSearch) {
@@ -58,19 +53,23 @@ export class TabRenderer extends React.Component<ITabRendererProps, ITabRenderer
     return (
       <RootContainer>
         <AppBar position="sticky">
-          <Tabs value={this.state.activeTab} onChange={this.handleChange} centered={true}>
+          <Tabs
+            value={this.props.match.params.tabType || TabType.Statistics}
+            onChange={this.handleChange}
+            centered={true}
+          >
             <Tab label="Statistics" value={TabType.Statistics} />
-            {!this.renderAsSearchResult && TabRenderer.getCategoryTabs()}
+            {!this.renderAsSearchResult && TabRendererInternal.getCategoryTabs()}
             {this.renderAsSearchResult && <Tab label="Search Results" value={TabType.SearchResults} />}
           </Tabs>
         </AppBar>
-        <TabContainer>{this.getData()}</TabContainer>
+        <TabContainer>{this.getData(this.props.match.params.tabType)}</TabContainer>
       </RootContainer>
     );
   }
 
   private get renderAsSearchResult(): boolean {
-    return TabRenderer.shouldRenderAsSearchResult(this.props);
+    return TabRendererInternal.shouldRenderAsSearchResult(this.props);
   }
 
   private static shouldRenderAsSearchResult(props: ITabRendererProps): boolean {
@@ -83,6 +82,7 @@ export class TabRenderer extends React.Component<ITabRendererProps, ITabRenderer
 
   private handleChange = (event: any, nextTab: TabType) => {
     this.setState({ activeTab: nextTab });
+    RouteManager.updateTabType(this.props, nextTab);
   };
 
   private static getCategoryTabs() {
@@ -105,14 +105,14 @@ export class TabRenderer extends React.Component<ITabRendererProps, ITabRenderer
     }
   }
 
-  private getData() {
-    switch (this.state.activeTab) {
+  private getData(activeTab: TabType) {
+    switch (activeTab) {
       case TabType.SearchResults:
         return (
           <DataRenderer
             data={this.dataToRender}
             modifyLevels={this.modifyLevelsForSearch}
-            levels={TabRenderer.getLevelsForSearch()}
+            levels={TabRendererInternal.getLevelsForSearch()}
           />
         );
       case TabType.UniqueArmor:
@@ -168,6 +168,8 @@ export class TabRenderer extends React.Component<ITabRendererProps, ITabRenderer
     return runewordLevels;
   }
 }
+
+export const TabRenderer = withRouter(TabRendererInternal);
 
 const TabContainer: React.FunctionComponent<{}> = props => {
   return (

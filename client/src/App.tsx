@@ -51,7 +51,10 @@ class AppInternal extends React.Component<IWithRootPassDownProps, IAppState> {
         <ContentContainer>
           <Switch>
             <Route exact={true} path="/" component={Home} />
-            <Route path="/:address/:grailMode?" render={props => <GrailArea {...props as any} {...passDownProps} />} />
+            <Route
+              path="/:address/:grailMode?/:tabType?"
+              render={props => <GrailArea {...props as any} {...passDownProps} />}
+            />
           </Switch>
         </ContentContainer>
       </RootContainer>

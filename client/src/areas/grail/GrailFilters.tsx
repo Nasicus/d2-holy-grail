@@ -13,6 +13,9 @@ import { CheckboxProps } from "@material-ui/core/Checkbox";
 import { InputProps } from "@material-ui/core/Input";
 import { IGrailFilterProps } from "./GrailFilters";
 import styled from "../../TypedStyledComponents";
+import { RouteComponentProps, withRouter } from "react-router-dom";
+import { TabType } from "./TabType";
+import { IGrailAreaRouterParams, RouteManager } from "../../RouteManager";
 
 require("mousetrap-global-bind");
 
@@ -36,11 +39,13 @@ interface IGrailFilterState {
   missingItemsOnly?: boolean;
 }
 
-export class GrailFilters extends React.Component<IGrailFilterProps, IGrailFilterState> {
+type Props = IGrailFilterProps & RouteComponentProps<IGrailAreaRouterParams>;
+
+class GrailFiltersInternal extends React.Component<Props, IGrailFilterState> {
   private onSearch$ = new Subject<string>();
   private searchBoxRef: HTMLInputElement;
 
-  public constructor(props: IGrailFilterProps) {
+  public constructor(props: Props) {
     super(props);
     this.state = {
       searchValue: ""
@@ -54,6 +59,13 @@ export class GrailFilters extends React.Component<IGrailFilterProps, IGrailFilte
       this.searchBoxRef.select();
       return false;
     });
+
+    const query = RouteManager.getQuery(this.props);
+    if (query.q || query.missingOnly) {
+      this.setState({ missingItemsOnly: query.missingOnly === "true", searchValue: query.q || null }, () =>
+        this.handleFilterChanged()
+      );
+    }
   }
 
   public componentWillMount(): void {
@@ -73,7 +85,7 @@ export class GrailFilters extends React.Component<IGrailFilterProps, IGrailFilte
             <SearchIcon>search</SearchIcon>
           </div>
           <div>
-            <MissingItemsCheckbox onChange={this.onMissingItemsOnlyChange} />
+            <MissingItemsCheckbox checked={!!this.state.missingItemsOnly} onChange={this.onMissingItemsOnlyChange} />
             <MissingItemsCheckboxLabel>Missing items only</MissingItemsCheckboxLabel>
           </div>
         </div>
@@ -94,6 +106,8 @@ export class GrailFilters extends React.Component<IGrailFilterProps, IGrailFilte
 
   private handleFilterChanged = () => {
     const { searchValue, missingItemsOnly } = this.state;
+
+    this.pushRoute(searchValue, missingItemsOnly);
 
     if (!searchValue && !missingItemsOnly) {
       this.props.onFilterResult(null);
@@ -117,6 +131,31 @@ export class GrailFilters extends React.Component<IGrailFilterProps, IGrailFilte
       renderMode: searchValue ? FilterRenderMode.Search : FilterRenderMode.Normal
     } as IFilterResult);
   };
+
+  private pushRoute(searchValue: string, missingItemsOnly: boolean) {
+    const query = RouteManager.getQuery(this.props);
+
+    delete query.q;
+    delete query.missingOnly;
+
+    if (searchValue) {
+      query.q = searchValue;
+    }
+
+    if (missingItemsOnly) {
+      query.missingOnly = missingItemsOnly.toString();
+    }
+
+    RouteManager.updateTabType(
+      this.props,
+      searchValue
+        ? TabType.SearchResults
+        : this.props.match.params.tabType !== TabType.SearchResults
+        ? this.props.match.params.tabType
+        : null,
+      query
+    );
+  }
 
   private isSearchMatch = (name: string, item: Item | Runeword, searchValue: string): boolean => {
     searchValue = searchValue.toLowerCase();
@@ -144,6 +183,8 @@ export class GrailFilters extends React.Component<IGrailFilterProps, IGrailFilte
     return searchValue.split(" ").every(rune => runeword.runes.some(r => r.toLowerCase() === rune));
   };
 }
+
+export const GrailFilters = withRouter(GrailFiltersInternal);
 
 const MissingItemsCheckbox: React.ComponentType<CheckboxProps> = styled(Checkbox)`
   && {
