@@ -3,7 +3,9 @@ import { ChangeLogCollection, changeLogs } from "./ChangeLogs";
 const packageJson = require("../../../../package.json");
 
 export class VersionManager {
-  private static readonly versionStorage: LocalStorageHandler<string> = new LocalStorageHandler<string>("appVersion");
+  private static readonly versionStorage: LocalStorageHandler<
+    string
+  > = new LocalStorageHandler<string>("appVersion");
 
   public static get current(): VersionManager {
     return this._current;
@@ -29,7 +31,8 @@ export class VersionManager {
     const storedVersion = VersionManager.versionStorage.getValue();
     const hasStoredVersion = !!storedVersion;
     const hasNewVersion = storedVersion !== VersionManager.currentVersion;
-    const hasNewChangelog = hasNewVersion && changeLogs[VersionManager.currentVersion];
+    const hasNewChangelog =
+      hasNewVersion && changeLogs[VersionManager.currentVersion];
     return (VersionManager._current = new VersionManager(
       storedVersion,
       hasStoredVersion,

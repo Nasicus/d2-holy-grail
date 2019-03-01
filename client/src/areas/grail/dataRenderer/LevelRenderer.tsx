@@ -16,7 +16,10 @@ interface ILevelRendererState {
   showDialog?: boolean;
 }
 
-export class LevelRenderer extends React.Component<ILevelRendererProps, ILevelRendererState> {
+export class LevelRenderer extends React.Component<
+  ILevelRendererProps,
+  ILevelRendererState
+> {
   public constructor(props: ILevelRendererProps) {
     super(props);
     this.state = {};
@@ -25,19 +28,29 @@ export class LevelRenderer extends React.Component<ILevelRendererProps, ILevelRe
   public render() {
     const { nextData, levelKey } = this.props;
 
-    const ancestorKeys = this.props.ancestorKeys ? this.props.ancestorKeys.map(k => k) : [];
+    const ancestorKeys = this.props.ancestorKeys
+      ? this.props.ancestorKeys.map(k => k)
+      : [];
     ancestorKeys.push(levelKey);
 
     return (
       <div>
         {this.state.showDialog && this.getChoiceDialog(ancestorKeys, nextData)}
         {this.renderLevelHeader()}
-        <DataRenderer data={nextData} levels={this.props.levels} isRecursive={true} ancestorKeys={ancestorKeys} />
+        <DataRenderer
+          data={nextData}
+          levels={this.props.levels}
+          isRecursive={true}
+          ancestorKeys={ancestorKeys}
+        />
       </div>
     );
   }
 
-  private getChoiceDialog(ancestorKeys: string[], data: Partial<IHolyGrailData>) {
+  private getChoiceDialog(
+    ancestorKeys: string[],
+    data: Partial<IHolyGrailData>
+  ) {
     const buttons = [
       {
         value: true,
@@ -65,7 +78,10 @@ export class LevelRenderer extends React.Component<ILevelRendererProps, ILevelRe
     );
   }
 
-  private onDialogClose = (markAsFound: boolean, data: Partial<IHolyGrailData>) => {
+  private onDialogClose = (
+    markAsFound: boolean,
+    data: Partial<IHolyGrailData>
+  ) => {
     if (markAsFound != null) {
       Util.toggleData(markAsFound, data);
       this.setState({ showDialog: false });

@@ -16,13 +16,19 @@ interface IGrailTypeTogglerState {
   grailMode: GrailMode;
 }
 
-export class GrailTypeToggler extends React.Component<IGrailTypeTogglerProps, IGrailTypeTogglerState> {
+export class GrailTypeToggler extends React.Component<
+  IGrailTypeTogglerProps,
+  IGrailTypeTogglerState
+> {
   public constructor(props: IGrailTypeTogglerProps) {
     super(props);
     this.state = { grailMode: props.grailMode };
   }
 
-  public static getDerivedStateFromProps(props: IGrailTypeTogglerProps, state: IGrailTypeTogglerState) {
+  public static getDerivedStateFromProps(
+    props: IGrailTypeTogglerProps,
+    state: IGrailTypeTogglerState
+  ) {
     if (props.grailMode !== state.grailMode) {
       state.grailMode = props.grailMode;
       state.nextMode = undefined;

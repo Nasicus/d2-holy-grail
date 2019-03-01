@@ -37,8 +37,13 @@ class TabRendererInternal extends React.Component<Props, ITabRendererState> {
     };
   }
 
-  public static getDerivedStateFromProps(props: ITabRendererProps, state: ITabRendererState) {
-    const renderAsSearchResult = TabRendererInternal.shouldRenderAsSearchResult(props);
+  public static getDerivedStateFromProps(
+    props: ITabRendererProps,
+    state: ITabRendererState
+  ) {
+    const renderAsSearchResult = TabRendererInternal.shouldRenderAsSearchResult(
+      props
+    );
     if (renderAsSearchResult && !state.hasActiveSearch) {
       state.activeTab = TabType.SearchResults;
     } else if (!renderAsSearchResult && state.hasActiveSearch) {
@@ -59,11 +64,16 @@ class TabRendererInternal extends React.Component<Props, ITabRendererState> {
             centered={true}
           >
             <Tab label="Statistics" value={TabType.Statistics} />
-            {!this.renderAsSearchResult && TabRendererInternal.getCategoryTabs()}
-            {this.renderAsSearchResult && <Tab label="Search Results" value={TabType.SearchResults} />}
+            {!this.renderAsSearchResult &&
+              TabRendererInternal.getCategoryTabs()}
+            {this.renderAsSearchResult && (
+              <Tab label="Search Results" value={TabType.SearchResults} />
+            )}
           </Tabs>
         </AppBar>
-        <TabContainer>{this.getData(this.props.match.params.tabType)}</TabContainer>
+        <TabContainer>
+          {this.getData(this.props.match.params.tabType)}
+        </TabContainer>
       </RootContainer>
     );
   }
@@ -73,11 +83,16 @@ class TabRendererInternal extends React.Component<Props, ITabRendererState> {
   }
 
   private static shouldRenderAsSearchResult(props: ITabRendererProps): boolean {
-    return props.filterResult && props.filterResult.renderMode === FilterRenderMode.Search;
+    return (
+      props.filterResult &&
+      props.filterResult.renderMode === FilterRenderMode.Search
+    );
   }
 
   private get dataToRender(): any {
-    return !this.props.filterResult ? this.props.allData : this.props.filterResult.data;
+    return !this.props.filterResult
+      ? this.props.allData
+      : this.props.filterResult.data;
   }
 
   private handleChange = (event: any, nextTab: TabType) => {
@@ -89,17 +104,43 @@ class TabRendererInternal extends React.Component<Props, ITabRendererState> {
     switch (GrailManager.current.grailMode) {
       case GrailMode.Eth:
         return [
-          <Tab label="Unique Armor" key="tabUniqueArmor" value={TabType.UniqueArmor} />,
-          <Tab label="Unique Weapons" key="tabUniqueWeapons" value={TabType.UniqueWeapons} />,
-          <Tab label="Unique Other" key="tabUniqueOther" value={TabType.UniqueOther} />
+          <Tab
+            label="Unique Armor"
+            key="tabUniqueArmor"
+            value={TabType.UniqueArmor}
+          />,
+          <Tab
+            label="Unique Weapons"
+            key="tabUniqueWeapons"
+            value={TabType.UniqueWeapons}
+          />,
+          <Tab
+            label="Unique Other"
+            key="tabUniqueOther"
+            value={TabType.UniqueOther}
+          />
         ];
       case GrailMode.Runeword:
-        return [<Tab label="Runewords" key="tabRunewords" value={TabType.Runewords} />];
+        return [
+          <Tab label="Runewords" key="tabRunewords" value={TabType.Runewords} />
+        ];
       default:
         return [
-          <Tab label="Unique Armor" key="tabUniqueArmor" value={TabType.UniqueArmor} />,
-          <Tab label="Unique Weapons" key="tabUniqueWeapons" value={TabType.UniqueWeapons} />,
-          <Tab label="Unique Other" key="tabUniqueOther" value={TabType.UniqueOther} />,
+          <Tab
+            label="Unique Armor"
+            key="tabUniqueArmor"
+            value={TabType.UniqueArmor}
+          />,
+          <Tab
+            label="Unique Weapons"
+            key="tabUniqueWeapons"
+            value={TabType.UniqueWeapons}
+          />,
+          <Tab
+            label="Unique Other"
+            key="tabUniqueOther"
+            value={TabType.UniqueOther}
+          />,
           <Tab label="Sets" key="tabSets" value={TabType.Sets} />
         ];
     }
@@ -141,10 +182,16 @@ class TabRendererInternal extends React.Component<Props, ITabRendererState> {
         );
       case TabType.Sets:
         return (
-          <DataRenderer data={this.dataToRender.sets} levels={{ variantLevel: 3, level: 1 }} ancestorKeys={["Sets"]} />
+          <DataRenderer
+            data={this.dataToRender.sets}
+            levels={{ variantLevel: 3, level: 1 }}
+            ancestorKeys={["Sets"]}
+          />
         );
       case TabType.Runewords:
-        return <DataRenderer data={this.dataToRender} levels={runewordLevels} />;
+        return (
+          <DataRenderer data={this.dataToRender} levels={runewordLevels} />
+        );
       default:
         return <StatisticsTable data={this.dataToRender} />;
     }

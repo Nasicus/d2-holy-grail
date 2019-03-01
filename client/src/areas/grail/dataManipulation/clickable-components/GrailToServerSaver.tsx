@@ -22,7 +22,10 @@ interface IGrailToServerSaverState {
   error?: string;
 }
 
-export class GrailToServerSaver extends React.Component<IGrailToServerSaverProps, IGrailToServerSaverState> {
+export class GrailToServerSaver extends React.Component<
+  IGrailToServerSaverProps,
+  IGrailToServerSaverState
+> {
   private secondIconTimeoutHandler: any;
   private localChangesSubscription: Subscription;
 
@@ -32,8 +35,8 @@ export class GrailToServerSaver extends React.Component<IGrailToServerSaverProps
   }
 
   public componentWillMount() {
-    this.localChangesSubscription = GrailManager.current.hasLocalChanges$.subscribe(hasChanges =>
-      this.setState({ isEnabled: hasChanges })
+    this.localChangesSubscription = GrailManager.current.hasLocalChanges$.subscribe(
+      hasChanges => this.setState({ isEnabled: hasChanges })
     );
   }
 
@@ -59,16 +62,18 @@ export class GrailToServerSaver extends React.Component<IGrailToServerSaverProps
   private onSaveButtonClick = () => {
     clearTimeout(this.secondIconTimeoutHandler);
     this.setState({ showSecondIcon: false, isSaving: true });
-    GrailManager.current.saveGrailToServer(this.props.token).subscribe(this.onSaveSuccessful, error =>
-      this.setState({
-        showSecondIcon: false,
-        isSaving: false,
-        error:
-          error.status === 401
-            ? "Access denied! You are not allowed to save data for this grail! Are you sure your password is correct? Try to log out and log in again!"
-            : "An error occurred while trying to save your grail data on the server."
-      })
-    );
+    GrailManager.current
+      .saveGrailToServer(this.props.token)
+      .subscribe(this.onSaveSuccessful, error =>
+        this.setState({
+          showSecondIcon: false,
+          isSaving: false,
+          error:
+            error.status === 401
+              ? "Access denied! You are not allowed to save data for this grail! Are you sure your password is correct? Try to log out and log in again!"
+              : "An error occurred while trying to save your grail data on the server."
+        })
+      );
   };
 
   private onSaveSuccessful = () => {
@@ -80,11 +85,19 @@ export class GrailToServerSaver extends React.Component<IGrailToServerSaverProps
 
     // reset to the default icon (this should go together with the dismissing of a success message, once we have any)
     clearTimeout(this.secondIconTimeoutHandler);
-    this.secondIconTimeoutHandler = setTimeout(() => this.setState({ showSecondIcon: false }), 5000);
+    this.secondIconTimeoutHandler = setTimeout(
+      () => this.setState({ showSecondIcon: false }),
+      5000
+    );
   };
 
   private renderError() {
-    return <ErrorNotification error={this.state.error} onDismiss={() => this.setState({ error: null })} />;
+    return (
+      <ErrorNotification
+        error={this.state.error}
+        onDismiss={() => this.setState({ error: null })}
+      />
+    );
   }
 
   public render() {

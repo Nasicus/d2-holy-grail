@@ -1,7 +1,10 @@
 import * as React from "react";
 import { GrailManager } from "../../GrailManager";
 import { Subscription } from "rxjs";
-import { ChoiceDialog, createDefaultConfirmButtons } from "../../../../common/components/ChoiceDialog";
+import {
+  ChoiceDialog,
+  createDefaultConfirmButtons
+} from "../../../../common/components/ChoiceDialog";
 import { ListItemWithProgress } from "../../../../common/components/ListItemWithProgress";
 import { ButtonWithProgress } from "../../../../common/components/ButtonWithProgress";
 
@@ -15,7 +18,10 @@ interface IChangeDiscarderState {
   showConfirm?: boolean;
 }
 
-export class ChangeDiscarder extends React.Component<IChangeDiscarderProps, IChangeDiscarderState> {
+export class ChangeDiscarder extends React.Component<
+  IChangeDiscarderProps,
+  IChangeDiscarderState
+> {
   private localChangesSubscription: Subscription;
 
   public constructor(props: {}) {
@@ -24,8 +30,8 @@ export class ChangeDiscarder extends React.Component<IChangeDiscarderProps, ICha
   }
 
   public componentWillMount() {
-    this.localChangesSubscription = GrailManager.current.hasLocalChanges$.subscribe(hasChanges =>
-      this.setState({ isEnabled: hasChanges })
+    this.localChangesSubscription = GrailManager.current.hasLocalChanges$.subscribe(
+      hasChanges => this.setState({ isEnabled: hasChanges })
     );
   }
 

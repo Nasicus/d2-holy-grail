@@ -13,19 +13,28 @@ export interface IGrailErrorHandlerProps {
   error: IGrailError;
 }
 
-export const GrailErrorHandler: React.FunctionComponent<IGrailErrorHandlerProps> = props => {
+export const GrailErrorHandler: React.FunctionComponent<
+  IGrailErrorHandlerProps
+> = props => {
   return (
     <RootContainer>
       <Typography variant="body1">{getErrorMessage(props.error)}</Typography>
-      {props.error.type === "conflict" && <ConflictHandler error={props.error} />}
+      {props.error.type === "conflict" && (
+        <ConflictHandler error={props.error} />
+      )}
     </RootContainer>
   );
 };
 
-const ConflictHandler: React.FunctionComponent<IGrailErrorHandlerProps> = props => {
+const ConflictHandler: React.FunctionComponent<
+  IGrailErrorHandlerProps
+> = props => {
   return (
     <div>
-      <ChangeDiscarder renderAsListItem={true} text="Discard local changes and use server data" />
+      <ChangeDiscarder
+        renderAsListItem={true}
+        text="Discard local changes and use server data"
+      />
       <GrailToServerSaver
         renderAsListItem={true}
         text="Ignore server changes and use local data"
@@ -44,14 +53,20 @@ const ConflictHandler: React.FunctionComponent<IGrailErrorHandlerProps> = props 
           } as IGrailData
         }
       />
-      <ExportListItem text="Download server data" fileName="Server Data" data={props.error.serverData} />
+      <ExportListItem
+        text="Download server data"
+        fileName="Server Data"
+        data={props.error.serverData}
+      />
     </div>
   );
 };
 
 function getErrorMessage(error: IGrailError) {
   if (error.status === 404) {
-    return `No Holy Grail for the address '${GrailManager.current.address}' exists!`;
+    return `No Holy Grail for the address '${
+      GrailManager.current.address
+    }' exists!`;
   }
 
   if (error.type === "conflict") {

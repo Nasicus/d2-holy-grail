@@ -34,7 +34,11 @@ export class GrailBusinessModelWrapper implements IHolyGrailBusinessModel {
     this.runewordData = {};
     if (_data.runewordData) {
       Object.keys(_data.runewordData).forEach(
-        k => (this.runewordData[k] = new Runeword(runewordGrailDefinitions[k], _data.runewordData[k]))
+        k =>
+          (this.runewordData[k] = new Runeword(
+            runewordGrailDefinitions[k],
+            _data.runewordData[k]
+          ))
       );
     }
   }

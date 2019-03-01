@@ -42,7 +42,9 @@ class AppInternal extends React.Component<IWithRootPassDownProps, IAppState> {
   }
 
   public render() {
-    const passDownProps = { onGrailModeChange: this.onGrailModeChange } as IPassDownAppProps;
+    const passDownProps = {
+      onGrailModeChange: this.onGrailModeChange
+    } as IPassDownAppProps;
     return (
       <RootContainer>
         <HeaderContainer>
@@ -55,7 +57,9 @@ class AppInternal extends React.Component<IWithRootPassDownProps, IAppState> {
             <Route exact={true} path="/stats" component={GrailStatistics} />
             <Route
               path="/:address/:grailMode?/:tabType?"
-              render={props => <GrailArea {...props as any} {...passDownProps} />}
+              render={props => (
+                <GrailArea {...props as any} {...passDownProps} />
+              )}
             />
           </Switch>
         </ContentContainer>

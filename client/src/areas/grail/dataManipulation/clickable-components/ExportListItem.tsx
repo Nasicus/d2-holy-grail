@@ -14,7 +14,10 @@ interface IExportListItemState {
   showSecondIcon?: boolean;
 }
 
-export class ExportListItem extends React.Component<IExportListItemProps, IExportListItemState> {
+export class ExportListItem extends React.Component<
+  IExportListItemProps,
+  IExportListItemState
+> {
   private secondIconTimeoutHandler: any;
 
   public constructor(props: IExportListItemProps) {
@@ -29,7 +32,12 @@ export class ExportListItem extends React.Component<IExportListItemProps, IExpor
           onClick={() => this.onExportButtonClick()}
           isLoading={this.state.isExporting}
           showSecondIcon={this.state.showSecondIcon}
-          primaryText={this.props.text || `Export ${Util.capitalize(GrailManager.current.grailMode)} Grail data`}
+          primaryText={
+            this.props.text ||
+            `Export ${Util.capitalize(
+              GrailManager.current.grailMode
+            )} Grail data`
+          }
           firstIcon="get_app"
           secondIcon="check"
         />
@@ -46,8 +54,14 @@ export class ExportListItem extends React.Component<IExportListItemProps, IExpor
   private download() {
     const fileName =
       (this.props.fileName ||
-        `${Util.capitalize(GrailManager.current.grailMode)}Grail_${GrailManager.current.address}`) + ".json";
-    const data = JSON.stringify(this.props.data || GrailManager.current.grailData, null, 2);
+        `${Util.capitalize(GrailManager.current.grailMode)}Grail_${
+          GrailManager.current.address
+        }`) + ".json";
+    const data = JSON.stringify(
+      this.props.data || GrailManager.current.grailData,
+      null,
+      2
+    );
     const file = new Blob([data], { type: "text/json" });
     const isIE = !!(document as any).documentMode;
 
@@ -65,6 +79,9 @@ export class ExportListItem extends React.Component<IExportListItemProps, IExpor
 
     // reset to the default icon (this should go together with the dismissing of a success message, once we have any)
     clearTimeout(this.secondIconTimeoutHandler);
-    this.secondIconTimeoutHandler = setTimeout(() => this.setState({ showSecondIcon: false }), 5000);
+    this.secondIconTimeoutHandler = setTimeout(
+      () => this.setState({ showSecondIcon: false }),
+      5000
+    );
   }
 }

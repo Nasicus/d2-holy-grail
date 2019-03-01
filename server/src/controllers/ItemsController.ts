@@ -33,10 +33,18 @@ export class ItemsController {
       return;
     }
 
-    ItemsController.getItemValue(res, items.runewords[runewordName], ItemCategory.Runeword);
+    ItemsController.getItemValue(
+      res,
+      items.runewords[runewordName],
+      ItemCategory.Runeword
+    );
   };
 
-  private static getItemValue(res: Response, item: any, category: ItemCategory) {
+  private static getItemValue(
+    res: Response,
+    item: any,
+    category: ItemCategory
+  ) {
     if (!item) {
       res.status(404).send();
       return;

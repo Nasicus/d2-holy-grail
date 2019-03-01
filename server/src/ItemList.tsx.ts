@@ -7876,7 +7876,12 @@ const setItems = {
     name: "Cathan's Seal",
     type: "Ring",
     image: "http://www.d2tomb.com/images/setitems/ring4.gif",
-    props: ["6% Life stolen per hit", "Required Level: 11", "Damage reduced by 2", "+10 to Strength (2 set items)"],
+    props: [
+      "6% Life stolen per hit",
+      "Required Level: 11",
+      "Damage reduced by 2",
+      "+10 to Strength (2 set items)"
+    ],
     category: "Cathan's Traps"
   },
   "Civerb's Cudgel": {
@@ -8614,7 +8619,8 @@ const setItems = {
   "Bul-Kathos' Tribal Guardian": {
     name: "Bul-Kathos' Tribal Guardian",
     type: "Mythical Sword",
-    image: "http://www.d2tomb.com/images/setitems/bulkathos_tribal_guardian.gif",
+    image:
+      "http://www.d2tomb.com/images/setitems/bulkathos_tribal_guardian.gif",
     props: [
       "One-handed Damage: 120-156",
       "Required Strength: 147",
@@ -8987,7 +8993,8 @@ const setItems = {
   "Immortal King's Stone Crusher": {
     name: "Immortal King's Stone Crusher",
     type: "Ogre Maul",
-    image: "http://www.d2tomb.com/images/setitems/immortal_kings_stone_crusher.gif",
+    image:
+      "http://www.d2tomb.com/images/setitems/immortal_kings_stone_crusher.gif",
     props: [
       "Damage:  231-318",
       "Required Strength:  225",
@@ -9521,7 +9528,8 @@ const setItems = {
   "Tal Rasha's Fine Spun Cloth": {
     name: "Tal Rasha's Fine Spun Cloth",
     type: "Mesh Belt",
-    image: "http://www.d2tomb.com/images/setitems/talrashas_fine_spun_cloth.gif",
+    image:
+      "http://www.d2tomb.com/images/setitems/talrashas_fine_spun_cloth.gif",
     props: [
       "Defense:  35-100",
       "Required Strength:  47",
@@ -10825,7 +10833,12 @@ const runewords = {
       },
       {
         description: "Shields",
-        props: ["Cold Resist +35%", "Lightning Resist +35%", "Poison Resist +35%", "Attacker Takes Damage of 14"]
+        props: [
+          "Cold Resist +35%",
+          "Lightning Resist +35%",
+          "Poison Resist +35%",
+          "Attacker Takes Damage of 14"
+        ]
       },
       {
         description: "Swords",
@@ -11057,7 +11070,8 @@ uniqueItems["Crow Cow"] = uniqueItems["Crow Caw"];
 uniqueItems["Chance Gaurds"] = uniqueItems["Chance Guards"];
 uniqueItems["Shawdow Dancer"] = uniqueItems["Shadow Dancer"];
 uniqueItems["The Chieftan"] = uniqueItems["The Chieftain"];
-uniqueItems["General's Tan Do Li Ga"] = uniqueItems["The General's Tan Do Li Ga"];
+uniqueItems["General's Tan Do Li Ga"] =
+  uniqueItems["The General's Tan Do Li Ga"];
 uniqueItems["Baranar's Star "] = uniqueItems["Baranar's Star"];
 uniqueItems["Demon Limb "] = uniqueItems["Demon Limb"];
 uniqueItems["Stormlash "] = uniqueItems.Stormlash;
@@ -11075,6 +11089,7 @@ uniqueItems["Bloodraven's Charge"] = uniqueItems["Blood Raven's Charge"];
 (uniqueItems as any).Viscerataunt = uniqueItems.Visceratuant;
 (uniqueItems as any).Steelshade = uniqueItems["Steel Shade"];
 
-setItems["Tal Rasha's Fine-Spun Cloth"] = setItems["Tal Rasha's Fine Spun Cloth"];
+setItems["Tal Rasha's Fine-Spun Cloth"] =
+  setItems["Tal Rasha's Fine Spun Cloth"];
 
 export const items = { uniqueItems, setItems, runewords };

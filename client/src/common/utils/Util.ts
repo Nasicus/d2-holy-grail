@@ -9,7 +9,8 @@ export class Util {
       data &&
       typeof data === "object" &&
       (data instanceof Runeword ||
-        (!Object.keys(data).length || Object.keys(itemProto).some(k => data.hasOwnProperty(k))))
+        (!Object.keys(data).length ||
+          Object.keys(itemProto).some(k => data.hasOwnProperty(k))))
     );
   }
 
@@ -28,7 +29,11 @@ export class Util {
       dataResultFunc = () => resultObj;
     }
 
-    if (typeof dataToSearch !== "object" || dataToSearch instanceof Array || Util.isItem(dataToSearch)) {
+    if (
+      typeof dataToSearch !== "object" ||
+      dataToSearch instanceof Array ||
+      Util.isItem(dataToSearch)
+    ) {
       return resultObj;
     }
 

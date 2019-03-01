@@ -22,7 +22,13 @@ export const GrailStatistics: React.FunctionComponent<{}> = () => {
     <div>
       <div>Total Grails: {stats.totalGrails}</div>
       <div>Grail Updates in the last 7 days: {stats.modifiedStats.length}</div>
-      <div>Grail Updates today: {stats.modifiedStats.filter(s => new Date(s.modified) >= aDayAgo).length}</div>
+      <div>
+        Grail Updates today:{" "}
+        {
+          stats.modifiedStats.filter(s => new Date(s.modified) >= aDayAgo)
+            .length
+        }
+      </div>
     </div>
   );
 };

@@ -15,7 +15,10 @@ interface IItemState {
   item: Item;
 }
 
-export class CheckboxItemRenderer extends React.Component<IItemProps, IItemState> {
+export class CheckboxItemRenderer extends React.Component<
+  IItemProps,
+  IItemState
+> {
   public constructor(props: IItemProps) {
     super(props);
     this.state = {
@@ -32,7 +35,10 @@ export class CheckboxItemRenderer extends React.Component<IItemProps, IItemState
           onChange={event => this.onItemCheckBoxChanged(this.state.item, event)}
           value={this.props.itemName}
         />
-        <ItemNameRenderer itemName={this.props.itemName} item={this.props.item} />
+        <ItemNameRenderer
+          itemName={this.props.itemName}
+          item={this.props.item}
+        />
       </RootContainer>
     );
   }

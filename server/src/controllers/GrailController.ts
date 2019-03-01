@@ -7,7 +7,9 @@ import { MongoErrorCodes } from "../models/MongoErrorCodes";
 
 export class GrailController {
   private get grailCollection(): Collection<IGrailCollection> {
-    return this.db.collection<IGrailCollection>(ConfigManager.db.holyGrailCollection);
+    return this.db.collection<IGrailCollection>(
+      ConfigManager.db.holyGrailCollection
+    );
   }
 
   public constructor(private db: Db) {}
@@ -29,7 +31,9 @@ export class GrailController {
     } catch (err) {
       const mongoError = err as MongoError;
       if (mongoError.code === MongoErrorCodes.DuplicateKey) {
-        res.status(400).send({ type: "duplicateKey", address: originalAddress });
+        res
+          .status(400)
+          .send({ type: "duplicateKey", address: originalAddress });
         return;
       }
 
@@ -39,7 +43,9 @@ export class GrailController {
 
   public get = async (req: Request, res: Response) => {
     const address = req.params.address;
-    await this.getByAddress(address, res, grail => GrailController.mapAndReturnGrailData(address, res, grail));
+    await this.getByAddress(address, res, grail =>
+      GrailController.mapAndReturnGrailData(address, res, grail)
+    );
   };
 
   public updateSettings = async (req: Request, res: Response) => {
@@ -89,7 +95,9 @@ export class GrailController {
       return;
     }
 
-    const grail = await this.grailCollection.findOne({ address: GrailController.trimAndToLower(address) });
+    const grail = await this.grailCollection.findOne({
+      address: GrailController.trimAndToLower(address)
+    });
     if (!grail) {
       res.status(404).send({ type: "notFound", address });
     } else {
@@ -123,13 +131,22 @@ export class GrailController {
     address: string,
     password: string,
     token: string,
-    modifyDataToSaveFunc: (data: Partial<IGrailCollection>) => Partial<IGrailCollection>
+    modifyDataToSaveFunc: (
+      data: Partial<IGrailCollection>
+    ) => Partial<IGrailCollection>
   ) => {
     try {
       const result = await this.grailCollection.findOneAndUpdate(
-        { address: GrailController.trimAndToLower(address), password: password, token: token },
         {
-          $set: modifyDataToSaveFunc({ token: GrailController.getToken(), modified: new Date() }),
+          address: GrailController.trimAndToLower(address),
+          password: password,
+          token: token
+        },
+        {
+          $set: modifyDataToSaveFunc({
+            token: GrailController.getToken(),
+            modified: new Date()
+          }),
           $inc: { updateCount: 1 }
         },
         { returnOriginal: false }
@@ -145,7 +162,12 @@ export class GrailController {
         if (existingGrail.password !== password) {
           res.status(401).send({ type: "password", address });
         } else {
-          res.status(403).send({ type: "token", correctToken: existingGrail.token, specifiedToken: token, address });
+          res.status(403).send({
+            type: "token",
+            correctToken: existingGrail.token,
+            specifiedToken: token,
+            address
+          });
         }
       });
     } catch (err) {
@@ -153,9 +175,15 @@ export class GrailController {
     }
   };
 
-  private async getByAddress(address: string, res: Response, onSuccess: (grail) => any) {
+  private async getByAddress(
+    address: string,
+    res: Response,
+    onSuccess: (grail) => any
+  ) {
     try {
-      const grail = await this.grailCollection.findOne({ address: GrailController.trimAndToLower(address) });
+      const grail = await this.grailCollection.findOne({
+        address: GrailController.trimAndToLower(address)
+      });
       if (!grail) {
         res.status(404).send({ type: "notFound", address });
         return;
@@ -167,7 +195,11 @@ export class GrailController {
     }
   }
 
-  private static mapAndReturnGrailData(originalAddress: string, res: Response, grail: IGrailCollection) {
+  private static mapAndReturnGrailData(
+    originalAddress: string,
+    res: Response,
+    grail: IGrailCollection
+  ) {
     // important: never send the grail grailData back directly, because the password is saved in there!
     res.json({
       address: originalAddress,

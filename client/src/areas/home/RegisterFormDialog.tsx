@@ -4,10 +4,14 @@ import { Api } from "../../common/utils/Api";
 import Dialog from "@material-ui/core/Dialog/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent/DialogContent";
-import DialogContentText, { DialogContentTextProps } from "@material-ui/core/DialogContentText/DialogContentText";
+import DialogContentText, {
+  DialogContentTextProps
+} from "@material-ui/core/DialogContentText/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
-import TextField, { TextFieldProps } from "@material-ui/core/TextField/TextField";
+import TextField, {
+  TextFieldProps
+} from "@material-ui/core/TextField/TextField";
 import { ButtonWithProgress } from "../../common/components/ButtonWithProgress";
 import { IRegisterFormDialogProps } from "./RegisterFormDialog";
 import styled from "../../TypedStyledComponents";
@@ -23,7 +27,10 @@ interface IRegisterFormDialogState {
   isLoading?: boolean;
 }
 
-export class RegisterFormDialog extends React.Component<IRegisterFormDialogProps, IRegisterFormDialogState> {
+export class RegisterFormDialog extends React.Component<
+  IRegisterFormDialogProps,
+  IRegisterFormDialogState
+> {
   public constructor(props: IRegisterFormDialogProps) {
     super(props);
     this.state = {};
@@ -32,16 +39,26 @@ export class RegisterFormDialog extends React.Component<IRegisterFormDialogProps
   public render() {
     return (
       <Dialog open={true} onClose={() => this.props.onDialogClosed()}>
-        <DialogTitle id="form-dialog-title">Create your own Holy Grail</DialogTitle>
+        <DialogTitle id="form-dialog-title">
+          Create your own Holy Grail
+        </DialogTitle>
         <DialogContent>
           <div>
-            <CloseIcon onClick={() => this.props.onDialogClosed()}>close</CloseIcon>
+            <CloseIcon onClick={() => this.props.onDialogClosed()}>
+              close
+            </CloseIcon>
             {this.state.error && <ErrorText>{this.state.error}</ErrorText>}
             <div>
-              <StyledTextField label="Holy Grail address" onChange={e => this.setState({ address: e.target.value })} />
+              <StyledTextField
+                label="Holy Grail address"
+                onChange={e => this.setState({ address: e.target.value })}
+              />
             </div>
             <div>
-              <StyledTextField label="Password" onChange={e => this.setState({ password: e.target.value })} />
+              <StyledTextField
+                label="Password"
+                onChange={e => this.setState({ password: e.target.value })}
+              />
               <SecurityInfoContainer>
                 <InfoIconContainer>
                   <DialogContentText>
@@ -50,8 +67,8 @@ export class RegisterFormDialog extends React.Component<IRegisterFormDialogProps
                 </InfoIconContainer>
                 <div>
                   <DialogContentText>
-                    Please do not choose a sensitive password, since we're not really paying attention to data security
-                    ;)
+                    Please do not choose a sensitive password, since we're not
+                    really paying attention to data security ;)
                   </DialogContentText>
                 </div>
               </SecurityInfoContainer>
@@ -109,7 +126,9 @@ const StyledTextField: React.ComponentType<TextFieldProps> = styled(TextField)`
   }
 ` as any;
 
-const ErrorText: React.ComponentType<DialogContentTextProps> = styled(DialogContentText)`
+const ErrorText: React.ComponentType<DialogContentTextProps> = styled(
+  DialogContentText
+)`
   && {
     color: ${p => p.theme.palette.error.main};
   }

@@ -22,6 +22,6 @@
     "pretty-quick": "^1.10.0"
   },
   "prettier": {
-    "printWidth": 120
+    "printWidth": 80
   }
 }

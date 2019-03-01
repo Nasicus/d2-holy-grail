@@ -16,17 +16,24 @@ import { IGrailAreaRouterParams } from "../../../RouteManager";
 export interface IItemPropsDialogProps {
   item: Item;
   itemName: string;
-  onDialogClosed: (changedProps: { itemNote: string; isPerfect: boolean }) => any;
+  onDialogClosed: (changedProps: {
+    itemNote: string;
+    isPerfect: boolean;
+  }) => any;
 }
 
-type Props = IItemPropsDialogProps & RouteComponentProps<IGrailAreaRouterParams>;
+type Props = IItemPropsDialogProps &
+  RouteComponentProps<IGrailAreaRouterParams>;
 
 interface IItemPropsDialogState {
   itemNote: string;
   isPerfect: boolean;
 }
 
-class ItemPropsDialogInternal extends React.PureComponent<Props, IItemPropsDialogState> {
+class ItemPropsDialogInternal extends React.PureComponent<
+  Props,
+  IItemPropsDialogState
+> {
   public constructor(props: Props) {
     super(props);
     this.state = { itemNote: props.item.note, isPerfect: props.item.isPerfect };
@@ -64,7 +71,9 @@ class ItemPropsDialogInternal extends React.PureComponent<Props, IItemPropsDialo
 
   private closeDialog = (passbackChanges: boolean) => {
     this.props.onDialogClosed(
-      passbackChanges ? { itemNote: this.state.itemNote, isPerfect: this.state.isPerfect } : null
+      passbackChanges
+        ? { itemNote: this.state.itemNote, isPerfect: this.state.isPerfect }
+        : null
     );
   };
 
@@ -81,7 +90,8 @@ class ItemPropsDialogInternal extends React.PureComponent<Props, IItemPropsDialo
             {this.state.itemNote && this.state.isPerfect && (
               <ReadOnlyNotesTitleContainer>Notes:</ReadOnlyNotesTitleContainer>
             )}
-            {this.state.itemNote || (!this.state.isPerfect && "No notes for this item.")}
+            {this.state.itemNote ||
+              (!this.state.isPerfect && "No notes for this item.")}
           </ReadOnlyNotesContainer>
         </>
       );

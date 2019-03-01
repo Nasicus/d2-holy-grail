@@ -15,10 +15,17 @@ export class MenuButton extends React.Component<{}, IMenuButtonState> {
   public render() {
     return (
       <div>
-        <Menu isOpen={!!this.state.isOpen} onClose={() => this.setState({ isOpen: false })}>
+        <Menu
+          isOpen={!!this.state.isOpen}
+          onClose={() => this.setState({ isOpen: false })}
+        >
           {this.props.children}
         </Menu>
-        <ButtonWithProgress onClick={() => this.onOpenMenuButtonClick()} text="Open menu" firstIcon="menu" />
+        <ButtonWithProgress
+          onClick={() => this.onOpenMenuButtonClick()}
+          text="Open menu"
+          firstIcon="menu"
+        />
       </div>
     );
   }

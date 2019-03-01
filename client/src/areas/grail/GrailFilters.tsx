@@ -53,7 +53,9 @@ class GrailFiltersInternal extends React.Component<Props, IGrailFilterState> {
   }
 
   public componentDidMount() {
-    this.onSearch$.pipe(debounceTime(300)).subscribe(() => this.handleFilterChanged());
+    this.onSearch$
+      .pipe(debounceTime(300))
+      .subscribe(() => this.handleFilterChanged());
     Mousetrap.bindGlobal(["command+f", "ctrl+f"], () => {
       this.searchBoxRef.focus();
       this.searchBoxRef.select();
@@ -62,8 +64,12 @@ class GrailFiltersInternal extends React.Component<Props, IGrailFilterState> {
 
     const query = RouteManager.getQuery(this.props);
     if (query.q || query.missingOnly) {
-      this.setState({ missingItemsOnly: query.missingOnly === "true", searchValue: query.q || null }, () =>
-        this.handleFilterChanged()
+      this.setState(
+        {
+          missingItemsOnly: query.missingOnly === "true",
+          searchValue: query.q || null
+        },
+        () => this.handleFilterChanged()
       );
     }
   }
@@ -85,8 +91,13 @@ class GrailFiltersInternal extends React.Component<Props, IGrailFilterState> {
             <SearchIcon>search</SearchIcon>
           </div>
           <div>
-            <MissingItemsCheckbox checked={!!this.state.missingItemsOnly} onChange={this.onMissingItemsOnlyChange} />
-            <MissingItemsCheckboxLabel>Missing items only</MissingItemsCheckboxLabel>
+            <MissingItemsCheckbox
+              checked={!!this.state.missingItemsOnly}
+              onChange={this.onMissingItemsOnlyChange}
+            />
+            <MissingItemsCheckboxLabel>
+              Missing items only
+            </MissingItemsCheckboxLabel>
           </div>
         </div>
       </FilterContainer>
@@ -116,19 +127,27 @@ class GrailFiltersInternal extends React.Component<Props, IGrailFilterState> {
 
     let result = this.props.data as any;
     if (searchValue) {
-      result = Util.findData((k: string, i: any) => this.isSearchMatch(k, i, searchValue), result);
+      result = Util.findData(
+        (k: string, i: any) => this.isSearchMatch(k, i, searchValue),
+        result
+      );
     }
 
     // we execute the find a second time, reason is that it's not really possible to do in one turn
     // because when we search for "normal" we want all normal items AND also all items which are not found
     // performance wise it shouldn't matter at all
     if (missingItemsOnly) {
-      result = Util.findData((k: string, i: any) => Util.isItem(i) && !i.wasFound, result);
+      result = Util.findData(
+        (k: string, i: any) => Util.isItem(i) && !i.wasFound,
+        result
+      );
     }
 
     this.props.onFilterResult({
       data: result,
-      renderMode: searchValue ? FilterRenderMode.Search : FilterRenderMode.Normal
+      renderMode: searchValue
+        ? FilterRenderMode.Search
+        : FilterRenderMode.Normal
     } as IFilterResult);
   };
 
@@ -157,7 +176,11 @@ class GrailFiltersInternal extends React.Component<Props, IGrailFilterState> {
     );
   }
 
-  private isSearchMatch = (name: string, item: Item | Runeword, searchValue: string): boolean => {
+  private isSearchMatch = (
+    name: string,
+    item: Item | Runeword,
+    searchValue: string
+  ): boolean => {
     searchValue = searchValue.toLowerCase();
 
     let isMatch =
@@ -180,13 +203,17 @@ class GrailFiltersInternal extends React.Component<Props, IGrailFilterState> {
       return true;
     }
 
-    return searchValue.split(" ").every(rune => runeword.runes.some(r => r.toLowerCase() === rune));
+    return searchValue
+      .split(" ")
+      .every(rune => runeword.runes.some(r => r.toLowerCase() === rune));
   };
 }
 
 export const GrailFilters = withRouter(GrailFiltersInternal);
 
-const MissingItemsCheckbox: React.ComponentType<CheckboxProps> = styled(Checkbox)`
+const MissingItemsCheckbox: React.ComponentType<CheckboxProps> = styled(
+  Checkbox
+)`
   && {
     padding-left: 0;
   }

@@ -3,7 +3,11 @@ import { IRunewordInfo } from "../../../../common/definitions/api/IRunewordInfo"
 import { Api } from "../../../../common/utils/Api";
 import styled from "../../../../TypedStyledComponents";
 import Typography from "@material-ui/core/Typography";
-import { ItemInfosContainer, ItemInfosDetails, NoMarginList } from "./CommonStyles";
+import {
+  ItemInfosContainer,
+  ItemInfosDetails,
+  NoMarginList
+} from "./CommonStyles";
 
 export interface IRunewordInfoRendererProps {
   runewordName: string;
@@ -13,14 +17,19 @@ interface IRunewordInfoRendererState {
   runewordInfos?: IRunewordInfo;
 }
 
-export class RunewordInfoRenderer extends React.PureComponent<IRunewordInfoRendererProps, IRunewordInfoRendererState> {
+export class RunewordInfoRenderer extends React.PureComponent<
+  IRunewordInfoRendererProps,
+  IRunewordInfoRendererState
+> {
   public constructor(props: IRunewordInfoRendererProps) {
     super(props);
     this.state = {};
   }
 
   public componentDidMount(): void {
-    Api.getRuneword(this.props.runewordName).subscribe(res => this.setState({ runewordInfos: res.data }));
+    Api.getRuneword(this.props.runewordName).subscribe(res =>
+      this.setState({ runewordInfos: res.data })
+    );
   }
 
   public render() {
@@ -38,7 +47,9 @@ export class RunewordInfoRenderer extends React.PureComponent<IRunewordInfoRende
             {runewordInfos.runes.map(r => (
               <RuneContainer key={r}>
                 <img
-                  src={`http://www.d2tomb.com/images/runes/${RunewordInfoRenderer.getRuneImageName(r)}.gif`}
+                  src={`http://www.d2tomb.com/images/runes/${RunewordInfoRenderer.getRuneImageName(
+                    r
+                  )}.gif`}
                   alt={r}
                   title={r}
                 />
@@ -56,7 +67,11 @@ export class RunewordInfoRenderer extends React.PureComponent<IRunewordInfoRende
             </SocketsContainer>
           </div>
           <div>
-            <NoMarginList>{runewordInfos.props.map(RunewordInfoRenderer.renderRunewordProps)}</NoMarginList>
+            <NoMarginList>
+              {runewordInfos.props.map(
+                RunewordInfoRenderer.renderRunewordProps
+              )}
+            </NoMarginList>
           </div>
         </ItemInfosDetails>
       </ItemInfosContainer>
@@ -75,7 +90,9 @@ export class RunewordInfoRenderer extends React.PureComponent<IRunewordInfoRende
     }
   }
 
-  private static renderRunewordProps(prop: string | { description: string; props: string[] }) {
+  private static renderRunewordProps(
+    prop: string | { description: string; props: string[] }
+  ) {
     if (typeof prop === "string") {
       return <li key={prop}>{prop as string}</li>;
     }

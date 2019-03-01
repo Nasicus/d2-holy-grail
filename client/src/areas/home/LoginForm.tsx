@@ -1,7 +1,9 @@
 import * as React from "react";
 import { Button } from "@material-ui/core";
 import Checkbox, { CheckboxProps } from "@material-ui/core/Checkbox/Checkbox";
-import TextField, { TextFieldProps } from "@material-ui/core/TextField/TextField";
+import TextField, {
+  TextFieldProps
+} from "@material-ui/core/TextField/TextField";
 import { Redirect } from "react-router";
 import { LocationDescriptorObject } from "history";
 import Typography from "@material-ui/core/Typography/Typography";
@@ -9,7 +11,10 @@ import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
 import Paper, { PaperProps } from "@material-ui/core/Paper/Paper";
 import { Api } from "../../common/utils/Api";
 import { RegisterFormDialog } from "./RegisterFormDialog";
-import { ButtonWithProgress, IButtonWithProgressProps } from "../../common/components/ButtonWithProgress";
+import {
+  ButtonWithProgress,
+  IButtonWithProgressProps
+} from "../../common/components/ButtonWithProgress";
 import styled from "../../TypedStyledComponents";
 import { ButtonProps } from "@material-ui/core/Button";
 
@@ -48,7 +53,10 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
         if (r.data) {
           this.setState({ doLogin: true });
         } else {
-          this.setState({ isLoading: false, error: "The entered password is not correct." });
+          this.setState({
+            isLoading: false,
+            error: "The entered password is not correct."
+          });
         }
       },
       res => {
@@ -56,7 +64,10 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
           // if we have a 404 just do a login, because it will be handled there
           this.setState({ doLogin: true });
         } else {
-          this.setState({ isLoading: false, error: "An error occurred when trying to validate your password." });
+          this.setState({
+            isLoading: false,
+            error: "An error occurred when trying to validate your password."
+          });
         }
       }
     );
@@ -74,7 +85,11 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
     if (!loginInfo) {
       this.setState({ renderRegisterDialog: false });
     } else {
-      this.setState({ ...loginInfo, doLogin: true, renderRegisterDialog: false });
+      this.setState({
+        ...loginInfo,
+        doLogin: true,
+        renderRegisterDialog: false
+      });
     }
   };
 
@@ -90,7 +105,11 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
     return (
       <RootContainer>
         {this.state.renderRegisterDialog && (
-          <RegisterFormDialog onDialogClosed={(loginInfo: ILoginInfo) => this.onRegisterDialogClosed(loginInfo)} />
+          <RegisterFormDialog
+            onDialogClosed={(loginInfo: ILoginInfo) =>
+              this.onRegisterDialogClosed(loginInfo)
+            }
+          />
         )}
         <Typography variant="h6">Login</Typography>
         <FormContainer>
@@ -115,15 +134,21 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
           <div>
             {this.state.password && (
               <div>
-                <KeepMeLoggedInCheckbox onChange={e => this.setState({ keepLoggedIn: e.target.checked })} /> Keep me
-                logged in
+                <KeepMeLoggedInCheckbox
+                  onChange={e =>
+                    this.setState({ keepLoggedIn: e.target.checked })
+                  }
+                />{" "}
+                Keep me logged in
               </div>
             )}
           </div>
         </FormContainer>
 
         <LoginButtonContainer>
-          {this.state.error && <ErrorContainer>{this.state.error}</ErrorContainer>}
+          {this.state.error && (
+            <ErrorContainer>{this.state.error}</ErrorContainer>
+          )}
           <LoginButtonWithProgressWrapper
             isLoading={this.state.isLoading}
             isDisabled={!this.state.address}
@@ -133,7 +158,11 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
         </LoginButtonContainer>
         <StyledPaper>
           Don't have an own Holy Grail yet?
-          <CreateButton onClick={() => this.setState({ renderRegisterDialog: true })}>Create one!</CreateButton>
+          <CreateButton
+            onClick={() => this.setState({ renderRegisterDialog: true })}
+          >
+            Create one!
+          </CreateButton>
         </StyledPaper>
       </RootContainer>
     );
@@ -156,7 +185,9 @@ const LoginButtonContainer = styled.div`
   margin-left: 0;
 `;
 
-const LoginButtonWithProgressWrapper: React.ComponentType<IButtonWithProgressProps> = styled(ButtonWithProgress)`
+const LoginButtonWithProgressWrapper: React.ComponentType<
+  IButtonWithProgressProps
+> = styled(ButtonWithProgress)`
   && {
     & > div {
       margin-left: 0;
@@ -197,7 +228,9 @@ const InfoIcon: React.ComponentType<IconProps> = styled(Icon)`
   }
 `;
 
-const KeepMeLoggedInCheckbox: React.ComponentType<CheckboxProps> = styled(Checkbox)`
+const KeepMeLoggedInCheckbox: React.ComponentType<CheckboxProps> = styled(
+  Checkbox
+)`
   && {
     padding-left: 0;
   }

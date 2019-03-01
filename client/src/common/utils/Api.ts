@@ -25,11 +25,17 @@ export class Api {
     return this.fetchToObservable(fetch(`${Api.apiUrl}items/${itemName}`));
   }
 
-  public static getRuneword(runewordName: string): Observable<IApiResponse<IRunewordInfo>> {
-    return this.fetchToObservable(fetch(`${Api.apiUrl}runewords/${runewordName}`));
+  public static getRuneword(
+    runewordName: string
+  ): Observable<IApiResponse<IRunewordInfo>> {
+    return this.fetchToObservable(
+      fetch(`${Api.apiUrl}runewords/${runewordName}`)
+    );
   }
 
-  public static getGrail(address: string): Observable<IApiResponse<IHolyGrailApiModel>> {
+  public static getGrail(
+    address: string
+  ): Observable<IApiResponse<IHolyGrailApiModel>> {
     return this.fetchToObservable(fetch(Api.grailApiUrl + address));
   }
 
@@ -44,7 +50,13 @@ export class Api {
     return this.fetchToObservable(
       fetch(Api.grailApiUrl + address, {
         method: "put",
-        body: JSON.stringify({ grail, ethGrail, runewordGrail, password, token }),
+        body: JSON.stringify({
+          grail,
+          ethGrail,
+          runewordGrail,
+          password,
+          token
+        }),
         headers: { "Content-Type": "application/json" }
       })
     );
@@ -64,7 +76,10 @@ export class Api {
     );
   }
 
-  public static createGrail(address: string, password: string): Observable<IApiResponse<IHolyGrailApiModel>> {
+  public static createGrail(
+    address: string,
+    password: string
+  ): Observable<IApiResponse<IHolyGrailApiModel>> {
     return this.fetchToObservable(
       fetch(Api.grailApiUrl, {
         method: "post",
@@ -74,7 +89,10 @@ export class Api {
     );
   }
 
-  public static validatePassword(address: string, password: string): Observable<IApiResponse<boolean>> {
+  public static validatePassword(
+    address: string,
+    password: string
+  ): Observable<IApiResponse<boolean>> {
     return this.fetchToObservable(
       fetch(`${Api.grailApiUrl}${address}/password/validate`, {
         method: "put",
@@ -84,7 +102,9 @@ export class Api {
     );
   }
 
-  private static fetchToObservable = <T>(fetchPromise: Promise<Response>): Observable<IApiResponse<T>> => {
+  private static fetchToObservable = <T>(
+    fetchPromise: Promise<Response>
+  ): Observable<IApiResponse<T>> => {
     return Observable.create(async (observer: Subscriber<IApiResponse<T>>) => {
       try {
         const response = await fetchPromise;

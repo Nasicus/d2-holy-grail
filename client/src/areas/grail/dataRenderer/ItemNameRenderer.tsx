@@ -20,13 +20,19 @@ interface IItemNameState {
 
 type Props = IItemNameProps & RouteComponentProps<IGrailAreaRouterParams>;
 
-class ItemNameRendererInternal extends React.PureComponent<Props, IItemNameState> {
+class ItemNameRendererInternal extends React.PureComponent<
+  Props,
+  IItemNameState
+> {
   public constructor(props: Props) {
     super(props);
     this.state = { item: this.props.item };
   }
 
-  public static getDerivedStateFromProps(props: IItemNameProps, state: IItemNameState) {
+  public static getDerivedStateFromProps(
+    props: IItemNameProps,
+    state: IItemNameState
+  ) {
     state.item = props.item;
     return state;
   }
@@ -35,12 +41,20 @@ class ItemNameRendererInternal extends React.PureComponent<Props, IItemNameState
     return (
       <>
         {this.props.itemName === RouteManager.getQuery(this.props).itemName && (
-          <ItemPropsDialog onDialogClosed={this.closeDialog} item={this.props.item} itemName={this.props.itemName} />
+          <ItemPropsDialog
+            onDialogClosed={this.closeDialog}
+            item={this.props.item}
+            itemName={this.props.itemName}
+          />
         )}
         <RootContainer onClick={this.openDialog}>
           <span>{this.props.itemName}</span>
-          {this.props.item.isPerfect && <PropsIcon title="This item is perfect!">star</PropsIcon>}
-          {this.props.item.note && <PropsIcon title="This item has notes.">info</PropsIcon>}
+          {this.props.item.isPerfect && (
+            <PropsIcon title="This item is perfect!">star</PropsIcon>
+          )}
+          {this.props.item.note && (
+            <PropsIcon title="This item has notes.">info</PropsIcon>
+          )}
         </RootContainer>
       </>
     );
@@ -62,12 +76,16 @@ class ItemNameRendererInternal extends React.PureComponent<Props, IItemNameState
     RouteManager.updateQuery(this.props, query);
   }
 
-  private closeDialog = (changedProps: { itemNote: string; isPerfect: boolean }) => {
+  private closeDialog = (changedProps: {
+    itemNote: string;
+    isPerfect: boolean;
+  }) => {
     const newState: Partial<IItemNameState> = {};
 
     if (
       changedProps &&
-      (changedProps.itemNote !== this.state.item.note || changedProps.isPerfect !== this.state.item.isPerfect)
+      (changedProps.itemNote !== this.state.item.note ||
+        changedProps.isPerfect !== this.state.item.isPerfect)
     ) {
       this.state.item.note = changedProps.itemNote;
       this.state.item.isPerfect = changedProps.isPerfect;

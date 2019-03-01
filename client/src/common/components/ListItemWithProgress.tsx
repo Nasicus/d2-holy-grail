@@ -1,4 +1,6 @@
-import CircularProgress, { CircularProgressProps } from "@material-ui/core/CircularProgress";
+import CircularProgress, {
+  CircularProgressProps
+} from "@material-ui/core/CircularProgress";
 import green from "@material-ui/core/colors/green";
 import { Icon, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import * as React from "react";
@@ -17,7 +19,9 @@ export interface IListItemWithProgressProps {
   isDisabled?: boolean;
 }
 
-export const ListItemWithProgress: React.FunctionComponent<IListItemWithProgressProps> = props => {
+export const ListItemWithProgress: React.FunctionComponent<
+  IListItemWithProgressProps
+> = props => {
   const { isLoading } = props;
 
   const IconToRender = props.showSecondIcon ? SecondIcon : Icon;
@@ -25,11 +29,20 @@ export const ListItemWithProgress: React.FunctionComponent<IListItemWithProgress
   return (
     <RootContainer>
       {
-        <ListItem button={!!props.onClick} onClick={props.onClick} disabled={props.isDisabled}>
+        <ListItem
+          button={!!props.onClick}
+          onClick={props.onClick}
+          disabled={props.isDisabled}
+        >
           <ListItemIcon>
-            <IconToRender>{props.showSecondIcon ? props.secondIcon : props.firstIcon}</IconToRender>
+            <IconToRender>
+              {props.showSecondIcon ? props.secondIcon : props.firstIcon}
+            </IconToRender>
           </ListItemIcon>
-          <ListItemText primary={props.primaryText} secondary={props.secondaryText} />
+          <ListItemText
+            primary={props.primaryText}
+            secondary={props.secondaryText}
+          />
           {isLoading && <StyledCircularProgress size={24} />}
         </ListItem>
       }
@@ -42,7 +55,9 @@ const RootContainer = styled.div`
   align-items: center;
 `;
 
-const StyledCircularProgress: React.ComponentType<CircularProgressProps> = styled(CircularProgress)`
+const StyledCircularProgress: React.ComponentType<
+  CircularProgressProps
+> = styled(CircularProgress)`
   && {
     color: ${() => green[500]};
     vertical-align: middle;

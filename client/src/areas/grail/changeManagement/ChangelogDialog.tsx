@@ -7,7 +7,9 @@ export interface IChangelogDialogProps {
   onClose: () => any;
 }
 
-export const ChangelogDialog: React.FunctionComponent<IChangelogDialogProps> = props => {
+export const ChangelogDialog: React.FunctionComponent<
+  IChangelogDialogProps
+> = props => {
   const changeLog = VersionManager.current.fullChangeLog;
 
   return (
@@ -42,7 +44,9 @@ function renderEntry(entry: string | { change: string; children: string[] }) {
   return (
     <li key={change}>
       {change}
-      {children.length > 0 && <ul>{children.map(childEntry => renderEntry(childEntry))}</ul>}
+      {children.length > 0 && (
+        <ul>{children.map(childEntry => renderEntry(childEntry))}</ul>
+      )}
     </li>
   );
 }

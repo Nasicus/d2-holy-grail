@@ -12,7 +12,10 @@ interface IErrorNotificationState {
   isOpen: boolean;
 }
 
-export class ErrorNotification extends React.PureComponent<IErrorNotificationProps, IErrorNotificationState> {
+export class ErrorNotification extends React.PureComponent<
+  IErrorNotificationProps,
+  IErrorNotificationState
+> {
   public constructor(props: IErrorNotificationProps) {
     super(props);
     this.state = { isOpen: true };
@@ -32,7 +35,9 @@ export class ErrorNotification extends React.PureComponent<IErrorNotificationPro
         ContentProps={{
           "aria-describedby": "message-id"
         }}
-        message={<ErrorContainer id="message-id">{this.props.error}</ErrorContainer>}
+        message={
+          <ErrorContainer id="message-id">{this.props.error}</ErrorContainer>
+        }
       />
     );
   }

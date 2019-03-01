@@ -17,7 +17,10 @@ interface ISettingsDialogState {
   wasSaved?: boolean;
 }
 
-export class SettingsDialog extends React.Component<ISettingsDialogProps, ISettingsDialogState> {
+export class SettingsDialog extends React.Component<
+  ISettingsDialogProps,
+  ISettingsDialogState
+> {
   public constructor(props: ISettingsDialogProps) {
     super(props);
     this.state = { settings: GrailManager.current.settings };
@@ -30,7 +33,9 @@ export class SettingsDialog extends React.Component<ISettingsDialogProps, ISetti
         title="Settings"
         actions={() => <SettingsToServerSaver />}
       >
-        <DialogContentText>You can change your settings here.</DialogContentText>
+        <DialogContentText>
+          You can change your settings here.
+        </DialogContentText>
         <DialogContainer>
           <SettingsEntryContainer>
             <div>
@@ -40,7 +45,10 @@ export class SettingsDialog extends React.Component<ISettingsDialogProps, ISetti
                 value="Use counter instead of checkbox for items"
               />
             </div>
-            <div>Use counters instead of checkboxes for items (you can switch between the modes without data loss)</div>
+            <div>
+              Use counters instead of checkboxes for items (you can switch
+              between the modes without data loss)
+            </div>
           </SettingsEntryContainer>
         </DialogContainer>
       </CloseableDialog>

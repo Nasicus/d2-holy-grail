@@ -4,7 +4,9 @@ export interface IGithubRibbonProps {
   url: string;
 }
 
-export const GithubRibbon: React.FunctionComponent<IGithubRibbonProps> = props => {
+export const GithubRibbon: React.FunctionComponent<
+  IGithubRibbonProps
+> = props => {
   return (
     <a href={props.url} target="_blank">
       <img

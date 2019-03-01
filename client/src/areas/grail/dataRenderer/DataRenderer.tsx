@@ -1,5 +1,7 @@
 import * as React from "react";
-import Typography, { TypographyProps } from "@material-ui/core/Typography/Typography";
+import Typography, {
+  TypographyProps
+} from "@material-ui/core/Typography/Typography";
 import { Util } from "../../../common/utils/Util";
 import { CheckboxItemRenderer } from "./CheckboxItemRenderer";
 import { ThemeStyle } from "@material-ui/core/styles/createTypography";
@@ -34,7 +36,9 @@ function getDataRendererTypography(level: number): StyledLevelRenderer {
   }
 }
 
-export const DataRenderer: React.FunctionComponent<IDataRendererProps> = props => {
+export const DataRenderer: React.FunctionComponent<
+  IDataRendererProps
+> = props => {
   if (!props.data) {
     return null;
   }
@@ -104,7 +108,10 @@ const getNextLevels = (
   key: string,
   modifyLevels?: (levels: ILevels, key: string) => ILevels
 ): ILevels => {
-  const nextLevels: ILevels = { level: levels.level + 1, variantLevel: levels.variantLevel + 1 };
+  const nextLevels: ILevels = {
+    level: levels.level + 1,
+    variantLevel: levels.variantLevel + 1
+  };
 
   if (!modifyLevels) {
     return nextLevels;
@@ -133,9 +140,13 @@ interface IStyledLevelRendererProps {
   // if it's not all lowercase and a boolean react will write a warning to the console
   root: string;
 }
-type StyledLevelRenderer = React.ComponentType<TypographyProps & IStyledLevelRendererProps>;
+type StyledLevelRenderer = React.ComponentType<
+  TypographyProps & IStyledLevelRendererProps
+>;
 
-const BaseDataRenderer: StyledLevelRenderer = styled(Typography)<IStyledLevelRendererProps>`
+const BaseDataRenderer: StyledLevelRenderer = styled(Typography)<
+  IStyledLevelRendererProps
+>`
   && {
     text-transform: capitalize;
     text-align: left;
@@ -149,7 +160,9 @@ const BaseDataRenderer: StyledLevelRenderer = styled(Typography)<IStyledLevelRen
   }
 `;
 
-const Level1Renderer: StyledLevelRenderer = styled(BaseDataRenderer)<IStyledLevelRendererProps>`
+const Level1Renderer: StyledLevelRenderer = styled(BaseDataRenderer)<
+  IStyledLevelRendererProps
+>`
   && {
     display: flex;
     flex-wrap: wrap;
@@ -159,13 +172,17 @@ const Level1Renderer: StyledLevelRenderer = styled(BaseDataRenderer)<IStyledLeve
   }
 `;
 
-const Level2Renderer: StyledLevelRenderer = styled(BaseDataRenderer)<IStyledLevelRendererProps>`
+const Level2Renderer: StyledLevelRenderer = styled(BaseDataRenderer)<
+  IStyledLevelRendererProps
+>`
   && {
     padding: ${p => p.theme.spacing.unit}px;
   }
 `;
 
-const Level3Renderer: StyledLevelRenderer = styled(BaseDataRenderer)<IStyledLevelRendererProps>`
+const Level3Renderer: StyledLevelRenderer = styled(BaseDataRenderer)<
+  IStyledLevelRendererProps
+>`
   && {
     padding-left: ${p => p.theme.spacing.unit * 0.75}px;
   }

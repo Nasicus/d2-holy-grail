@@ -11,7 +11,10 @@ export interface ISettingsListItemProps {
   onSettingsChanged: () => any;
 }
 
-export class SettingsListItem extends React.Component<ISettingsListItemProps, ISettingsListItemState> {
+export class SettingsListItem extends React.Component<
+  ISettingsListItemProps,
+  ISettingsListItemState
+> {
   public constructor(props: ISettingsListItemProps) {
     super(props);
     this.state = {};
@@ -24,7 +27,11 @@ export class SettingsListItem extends React.Component<ISettingsListItemProps, IS
 
     return (
       <div>
-        <ListItemWithProgress onClick={() => this.onClick()} primaryText="Settings" firstIcon="settings" />
+        <ListItemWithProgress
+          onClick={() => this.onClick()}
+          primaryText="Settings"
+          firstIcon="settings"
+        />
         {this.state.showDialog && (
           <SettingsDialog
             onDialogClosed={wasUpdated => {

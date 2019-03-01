@@ -10,7 +10,10 @@ interface IVersionNotifierState {
   showChangelog?: boolean;
 }
 
-export class VersionNotifier extends React.Component<{}, IVersionNotifierState> {
+export class VersionNotifier extends React.Component<
+  {},
+  IVersionNotifierState
+> {
   public constructor(props: {}) {
     super(props);
     this.state = {};
@@ -19,7 +22,8 @@ export class VersionNotifier extends React.Component<{}, IVersionNotifierState> 
   public componentDidMount() {
     const versionManager = VersionManager.initialize();
     this.setState({
-      showNotification: versionManager.hasNewVersion && versionManager.hasNewChangeLog
+      showNotification:
+        versionManager.hasNewVersion && versionManager.hasNewChangeLog
     });
   }
 
@@ -35,7 +39,11 @@ export class VersionNotifier extends React.Component<{}, IVersionNotifierState> 
 
   public render() {
     if (this.state.showChangelog) {
-      return <ChangelogDialog onClose={() => this.setState({ showChangelog: false })} />;
+      return (
+        <ChangelogDialog
+          onClose={() => this.setState({ showChangelog: false })}
+        />
+      );
     }
 
     if (!this.state.showNotification) {
@@ -54,15 +62,27 @@ export class VersionNotifier extends React.Component<{}, IVersionNotifierState> 
           <span id="message-id">
             {!VersionManager.current.hasStoredVersion
               ? "Current version "
-              : `Upgraded version from ${VersionManager.current.storedVersion} to `}
+              : `Upgraded version from ${
+                  VersionManager.current.storedVersion
+                } to `}
             {VersionManager.currentVersion}
           </span>
         }
         action={[
-          <Button key="undo" color="secondary" size="small" onClick={this.showChangeLog}>
+          <Button
+            key="undo"
+            color="secondary"
+            size="small"
+            onClick={this.showChangeLog}
+          >
             Show changes
           </Button>,
-          <CloseButton key="close" aria-label="Close" color="inherit" onClick={this.handleClose}>
+          <CloseButton
+            key="close"
+            aria-label="Close"
+            color="inherit"
+            onClick={this.handleClose}
+          >
             <Icon>close</Icon>
           </CloseButton>
         ]}

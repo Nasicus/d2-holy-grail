@@ -1,4 +1,6 @@
-import CircularProgress, { CircularProgressProps } from "@material-ui/core/CircularProgress";
+import CircularProgress, {
+  CircularProgressProps
+} from "@material-ui/core/CircularProgress";
 import green from "@material-ui/core/colors/green";
 import Button, { ButtonProps } from "@material-ui/core/Button";
 import * as React from "react";
@@ -17,7 +19,9 @@ export interface IButtonWithProgressProps {
   className?: string;
 }
 
-export const ButtonWithProgress: React.FunctionComponent<IButtonWithProgressProps> = props => {
+export const ButtonWithProgress: React.FunctionComponent<
+  IButtonWithProgressProps
+> = props => {
   const onClick = () => {
     if (props.isLoading) {
       return;
@@ -35,8 +39,15 @@ export const ButtonWithProgress: React.FunctionComponent<IButtonWithProgressProp
       {!!props.firstIcon && (
         <Wrapper>
           <div>
-            <FabButton color="primary" onClick={onClick} disabled={isLoading || props.isDisabled} title={props.text}>
-              <Icon>{!showSecondIcon ? props.firstIcon : props.secondIcon}</Icon>
+            <FabButton
+              color="primary"
+              onClick={onClick}
+              disabled={isLoading || props.isDisabled}
+              title={props.text}
+            >
+              <Icon>
+                {!showSecondIcon ? props.firstIcon : props.secondIcon}
+              </Icon>
             </FabButton>
           </div>
           {isLoading && <FabProgress size={68} />}
@@ -45,8 +56,15 @@ export const ButtonWithProgress: React.FunctionComponent<IButtonWithProgressProp
       {!props.firstIcon && (
         <Wrapper>
           {isLoading && <ButtonProgress size={24} />}
-          {showSecondIcon && <SecondIconNormalButton>{props.secondIcon}</SecondIconNormalButton>}
-          <NormalButton variant="contained" color="primary" disabled={isLoading || props.isDisabled} onClick={onClick}>
+          {showSecondIcon && (
+            <SecondIconNormalButton>{props.secondIcon}</SecondIconNormalButton>
+          )}
+          <NormalButton
+            variant="contained"
+            color="primary"
+            disabled={isLoading || props.isDisabled}
+            onClick={onClick}
+          >
             {props.text}
           </NormalButton>
         </Wrapper>
@@ -90,7 +108,9 @@ const SecondIconNormalButton: React.ComponentType<IconProps> = styled(Icon)`
   }
 `;
 
-const FabProgress: React.ComponentType<CircularProgressProps> = styled(CircularProgress)`
+const FabProgress: React.ComponentType<CircularProgressProps> = styled(
+  CircularProgress
+)`
   && {
     color: ${() => green[500]};
     position: absolute;
@@ -100,7 +120,9 @@ const FabProgress: React.ComponentType<CircularProgressProps> = styled(CircularP
   }
 `;
 
-const ButtonProgress: React.ComponentType<CircularProgressProps> = styled(CircularProgress)`
+const ButtonProgress: React.ComponentType<CircularProgressProps> = styled(
+  CircularProgress
+)`
   && {
     color: ${() => green[500]};
     vertical-align: middle;

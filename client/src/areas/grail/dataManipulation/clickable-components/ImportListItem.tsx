@@ -20,8 +20,8 @@ export class ImportListItem extends React.Component<{}, IImportListItemState> {
   }
 
   public componentWillMount() {
-    this.localChangesSubscription = GrailManager.current.hasLocalChanges$.subscribe(hasChanges =>
-      this.setState({ hasChanges })
+    this.localChangesSubscription = GrailManager.current.hasLocalChanges$.subscribe(
+      hasChanges => this.setState({ hasChanges })
     );
   }
 
@@ -32,7 +32,10 @@ export class ImportListItem extends React.Component<{}, IImportListItemState> {
   }
 
   public render() {
-    if (GrailManager.current.isReadOnly || GrailManager.current.grailMode !== GrailMode.Holy) {
+    if (
+      GrailManager.current.isReadOnly ||
+      GrailManager.current.grailMode !== GrailMode.Holy
+    ) {
       return null;
     }
 
@@ -44,7 +47,11 @@ export class ImportListItem extends React.Component<{}, IImportListItemState> {
           primaryText="Import from CSV"
           firstIcon="backup"
         />
-        {this.state.showDialog && <ImportDialog onDialogClosed={() => this.setState({ showDialog: false })} />}
+        {this.state.showDialog && (
+          <ImportDialog
+            onDialogClosed={() => this.setState({ showDialog: false })}
+          />
+        )}
       </div>
     );
   }

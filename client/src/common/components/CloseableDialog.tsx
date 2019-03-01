@@ -14,7 +14,9 @@ export interface ISettingsDialogProps {
   className?: string;
 }
 
-export const CloseableDialog: React.FunctionComponent<ISettingsDialogProps> = props => {
+export const CloseableDialog: React.FunctionComponent<
+  ISettingsDialogProps
+> = props => {
   return (
     <Dialog open={true} onClose={() => props.onDialogClosed()}>
       <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>

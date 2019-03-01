@@ -39,7 +39,10 @@ class Stats {
   ) {}
 }
 
-export class StatisticsTable extends React.Component<IStatisticsTableProps, IStatisticsTableSTate> {
+export class StatisticsTable extends React.Component<
+  IStatisticsTableProps,
+  IStatisticsTableSTate
+> {
   public constructor(props: IStatisticsTableProps) {
     super(props);
     this.state = {
@@ -47,7 +50,10 @@ export class StatisticsTable extends React.Component<IStatisticsTableProps, ISta
     };
   }
 
-  public static getDerivedStateFromProps(props: IStatisticsTableProps, state: IStatisticsTableSTate) {
+  public static getDerivedStateFromProps(
+    props: IStatisticsTableProps,
+    state: IStatisticsTableSTate
+  ) {
     state.data = props.data;
     return state;
   }
@@ -58,19 +64,39 @@ export class StatisticsTable extends React.Component<IStatisticsTableProps, ISta
     switch (GrailManager.current.grailMode) {
       case GrailMode.Eth:
         stats = [
-          this.calculateStats(() => this.state.data.uniques.armor, new Stats("Unique Armors")),
-          this.calculateStats(() => this.state.data.uniques.weapons, new Stats("Unique Weapons")),
-          this.calculateStats(() => this.state.data.uniques.other, new Stats("Unique Other"))
+          this.calculateStats(
+            () => this.state.data.uniques.armor,
+            new Stats("Unique Armors")
+          ),
+          this.calculateStats(
+            () => this.state.data.uniques.weapons,
+            new Stats("Unique Weapons")
+          ),
+          this.calculateStats(
+            () => this.state.data.uniques.other,
+            new Stats("Unique Other")
+          )
         ];
         break;
       case GrailMode.Runeword:
-        stats = [this.calculateStats(() => this.state.data, new Stats("Runewords"))];
+        stats = [
+          this.calculateStats(() => this.state.data, new Stats("Runewords"))
+        ];
         break;
       default:
         stats = [
-          this.calculateStats(() => this.state.data.uniques.armor, new Stats("Unique Armors")),
-          this.calculateStats(() => this.state.data.uniques.weapons, new Stats("Unique Weapons")),
-          this.calculateStats(() => this.state.data.uniques.other, new Stats("Unique Other")),
+          this.calculateStats(
+            () => this.state.data.uniques.armor,
+            new Stats("Unique Armors")
+          ),
+          this.calculateStats(
+            () => this.state.data.uniques.weapons,
+            new Stats("Unique Weapons")
+          ),
+          this.calculateStats(
+            () => this.state.data.uniques.other,
+            new Stats("Unique Other")
+          ),
           this.calculateStats(() => this.state.data.sets, new Stats("Sets"))
         ];
         break;
@@ -129,7 +155,11 @@ export class StatisticsTable extends React.Component<IStatisticsTableProps, ISta
         <TableCell align="right">{stats.total}</TableCell>
         <TableCell align="right">{stats.renderValue}</TableCell>
         <TableCell align="right">{stats.total - stats.renderValue}</TableCell>
-        <TableCell align="right">{(stats.total ? (stats.renderValue * 100) / stats.total : 0).toFixed(2)}</TableCell>
+        <TableCell align="right">
+          {(stats.total ? (stats.renderValue * 100) / stats.total : 0).toFixed(
+            2
+          )}
+        </TableCell>
       </TableRow>
     );
   }

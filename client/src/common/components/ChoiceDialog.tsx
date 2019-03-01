@@ -19,7 +19,9 @@ export interface IChoiceDialogProps {
   isOpen?: boolean;
 }
 
-export const ChoiceDialog: React.FunctionComponent<IChoiceDialogProps> = props => {
+export const ChoiceDialog: React.FunctionComponent<
+  IChoiceDialogProps
+> = props => {
   return (
     <Dialog
       open={!!props.isOpen}
@@ -27,24 +29,38 @@ export const ChoiceDialog: React.FunctionComponent<IChoiceDialogProps> = props =
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      {props.title && <DialogTitle id="alert-dialog-title">{props.title}</DialogTitle>}
+      {props.title && (
+        <DialogTitle id="alert-dialog-title">{props.title}</DialogTitle>
+      )}
       {props.content && (
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">{props.content}</DialogContentText>
+          <DialogContentText id="alert-dialog-description">
+            {props.content}
+          </DialogContentText>
         </DialogContent>
       )}
       <DialogActions>
-        {(props.buttons || createDefaultConfirmButtons()).reverse().map((button, index) => (
-          <Button key={index} onClick={() => props.onClose(button.value)} color="primary" autoFocus={index === 0}>
-            {button.text}
-          </Button>
-        ))}
+        {(props.buttons || createDefaultConfirmButtons())
+          .reverse()
+          .map((button, index) => (
+            <Button
+              key={index}
+              onClick={() => props.onClose(button.value)}
+              color="primary"
+              autoFocus={index === 0}
+            >
+              {button.text}
+            </Button>
+          ))}
       </DialogActions>
     </Dialog>
   );
 };
 
-export const createDefaultConfirmButtons = (okText?: string, cancelText?: string): IChoiceDialogButton[] => [
+export const createDefaultConfirmButtons = (
+  okText?: string,
+  cancelText?: string
+): IChoiceDialogButton[] => [
   { text: okText || "Ok", value: true },
   { text: cancelText || "Cancel", value: false }
 ];

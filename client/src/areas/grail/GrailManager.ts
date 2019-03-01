@@ -84,7 +84,12 @@ export class GrailManager {
     password?: string,
     savePassword?: boolean
   ): GrailManager {
-    return (this._current = new GrailManager(grailMode, address, password, savePassword));
+    return (this._current = new GrailManager(
+      grailMode,
+      address,
+      password,
+      savePassword
+    ));
   }
 
   private constructor(
@@ -97,8 +102,12 @@ export class GrailManager {
       throw new Error("Address must be specified");
     }
 
-    this.grailLocalStorage = new LocalStorageHandler(`holyGrail-${this.address}`);
-    this.hasLocalChangesStorage = new LocalStorageHandler(`holyGrail-hasLocalChanges-${this.address}`);
+    this.grailLocalStorage = new LocalStorageHandler(
+      `holyGrail-${this.address}`
+    );
+    this.hasLocalChangesStorage = new LocalStorageHandler(
+      `holyGrail-hasLocalChanges-${this.address}`
+    );
     this.hasLocalChanges.next(this.hasLocalChangesStorage.getValue());
 
     this.setPassword(savePassword);
@@ -151,7 +160,12 @@ export class GrailManager {
 
   public saveSettingsToServer = (): Observable<void> => {
     return Observable.create((observer: Subscriber<void>) => {
-      Api.updateSettings(this.address, this.password, this.apiData.token, this.settings).subscribe(
+      Api.updateSettings(
+        this.address,
+        this.password,
+        this.apiData.token,
+        this.settings
+      ).subscribe(
         response => {
           // we have to set back the data to the current grail data, or else we update the local storage with wrong data
           response.data.data = this.apiData.data;
@@ -167,14 +181,19 @@ export class GrailManager {
     });
   };
 
-  private updateLocaleStorage = (data: IHolyGrailApiModel, hasLocalChanges: boolean) => {
+  private updateLocaleStorage = (
+    data: IHolyGrailApiModel,
+    hasLocalChanges: boolean
+  ) => {
     this.grailLocalStorage.setValue(data);
     this.hasLocalChangesStorage.setValue(hasLocalChanges);
     this.hasLocalChanges.next(hasLocalChanges);
   };
 
   private setPassword(savePassword?: boolean) {
-    const passwordLocalStorageHandler = new LocalStorageHandler<string>(`holyGrail-password-${this.address}`);
+    const passwordLocalStorageHandler = new LocalStorageHandler<string>(
+      `holyGrail-password-${this.address}`
+    );
     if (!this.password) {
       this.password = passwordLocalStorageHandler.getValue();
     } else if (savePassword) {
@@ -192,7 +211,11 @@ export class GrailManager {
     Api.getGrail(this.address).subscribe(
       response => {
         const apiData = response.data;
-        if (!cachedData || (cachedData.token !== apiData.token && !this.hasLocalChangesStorage.getValue())) {
+        if (
+          !cachedData ||
+          (cachedData.token !== apiData.token &&
+            !this.hasLocalChangesStorage.getValue())
+        ) {
           this.grailLocalStorage.setValue(apiData);
           this.emitData(apiData);
           return;
@@ -207,7 +230,11 @@ export class GrailManager {
           type: "conflict",
           serverToken: apiData.token,
           localToken: cachedData.token,
-          serverData: { grailData: apiData.data, ethData: apiData.ethData, runewordData: apiData.runewordData }
+          serverData: {
+            grailData: apiData.data,
+            ethData: apiData.ethData,
+            runewordData: apiData.runewordData
+          }
         } as IGrailError);
       },
       err => this.dataInitializer.error(err as IGrailError)

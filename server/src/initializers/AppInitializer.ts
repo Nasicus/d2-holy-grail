@@ -13,11 +13,16 @@ function initializeExpressServer(express: expressServer.Express): void {
   express.use(cors());
 }
 
-function initializeExpressServerForClient(express: expressServer.Express, rootDirectoryPath: string) {
+function initializeExpressServerForClient(
+  express: expressServer.Express,
+  rootDirectoryPath: string
+) {
   // Serve any static files
   express.use(expressServer.static(path.join(rootDirectoryPath, "client")));
   // Handle React routing, return all requests to React app
-  express.get("*", (req, res) => res.sendFile(path.join(rootDirectoryPath, "client", "index.html")));
+  express.get("*", (req, res) =>
+    res.sendFile(path.join(rootDirectoryPath, "client", "index.html"))
+  );
 }
 
 function configureRoutes(db: Db, express: expressServer.Express): void {
@@ -30,15 +35,21 @@ function configureRoutes(db: Db, express: expressServer.Express): void {
     .get(grailController.get)
     .put(grailController.updateGrail);
 
-  express.route("/api/grail/:address/settings").put(grailController.updateSettings);
-  express.route("/api/grail/:address/password/validate").put(grailController.validatePassword);
+  express
+    .route("/api/grail/:address/settings")
+    .put(grailController.updateSettings);
+  express
+    .route("/api/grail/:address/password/validate")
+    .put(grailController.validatePassword);
 
   express.route("/api/stats").get(grailController.getStatistics);
 
   const itemsController: ItemsController = new ItemsController();
 
   express.route("/api/items/:itemName").get(itemsController.getItem);
-  express.route("/api/runewords/:runewordName").get(itemsController.getRuneword);
+  express
+    .route("/api/runewords/:runewordName")
+    .get(itemsController.getRuneword);
 }
 
 export function initializeApp(db: Db, rootDirectoryPath: string) {

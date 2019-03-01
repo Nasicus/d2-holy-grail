@@ -26,16 +26,27 @@ export class CountItemRenderer extends React.Component<IItemProps, IItemState> {
   }
 
   public render() {
-    const ArrowIcon = this.state.isHovered ? VisibleArrowIcon : InvisibleArrowIcon;
+    const ArrowIcon = this.state.isHovered
+      ? VisibleArrowIcon
+      : InvisibleArrowIcon;
 
     return (
       <RootContainer>
         <span onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
-          <ArrowIcon onClick={() => this.onArrowClick(-1)}>keyboard_arrow_down</ArrowIcon>
-          <ItemTextContainer>{Number(this.state.item.wasFound || 0)}</ItemTextContainer>
-          <ArrowIcon onClick={() => this.onArrowClick(1)}>keyboard_arrow_up</ArrowIcon>
+          <ArrowIcon onClick={() => this.onArrowClick(-1)}>
+            keyboard_arrow_down
+          </ArrowIcon>
+          <ItemTextContainer>
+            {Number(this.state.item.wasFound || 0)}
+          </ItemTextContainer>
+          <ArrowIcon onClick={() => this.onArrowClick(1)}>
+            keyboard_arrow_up
+          </ArrowIcon>
         </span>
-        <ItemNameRenderer itemName={this.props.itemName} item={this.props.item} />
+        <ItemNameRenderer
+          itemName={this.props.itemName}
+          item={this.props.item}
+        />
       </RootContainer>
     );
   }
@@ -74,7 +85,9 @@ const InvisibleArrowIcon: React.ComponentType<IconProps> = styled(Icon)`
   }
 `;
 
-const VisibleArrowIcon: React.ComponentType<IconProps> = styled(InvisibleArrowIcon)`
+const VisibleArrowIcon: React.ComponentType<IconProps> = styled(
+  InvisibleArrowIcon
+)`
   && {
     visibility: visible;
   }

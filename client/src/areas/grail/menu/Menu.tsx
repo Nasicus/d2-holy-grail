@@ -10,7 +10,11 @@ export interface IMenuProps {
 
 export const Menu: React.FunctionComponent<IMenuProps> = props => {
   return (
-    <Drawer anchor="right" open={!!props.isOpen} onClose={() => props.onClose()}>
+    <Drawer
+      anchor="right"
+      open={!!props.isOpen}
+      onClose={() => props.onClose()}
+    >
       <div tabIndex={0} role="button">
         <ListContainer>
           <List>{props.children}</List>

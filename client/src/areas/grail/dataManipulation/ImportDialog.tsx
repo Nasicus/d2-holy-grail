@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Typography } from "@material-ui/core";
-import DialogContentText, { DialogContentTextProps } from "@material-ui/core/DialogContentText/DialogContentText";
+import DialogContentText, {
+  DialogContentTextProps
+} from "@material-ui/core/DialogContentText/DialogContentText";
 import { GrailManager } from "../GrailManager";
 import { Util } from "../../../common/utils/Util";
 import { CloseableDialog } from "../../../common/components/CloseableDialog";
@@ -22,7 +24,10 @@ interface IImportDialogState {
   numberOfImportedItems?: number;
 }
 
-export class ImportDialog extends React.Component<IImportDialogProps, IImportDialogState> {
+export class ImportDialog extends React.Component<
+  IImportDialogProps,
+  IImportDialogState
+> {
   public constructor(props: IImportDialogProps) {
     super(props);
     this.state = {};
@@ -40,15 +45,19 @@ export class ImportDialog extends React.Component<IImportDialogProps, IImportDia
             text="Import"
             isDisabled={
               this.state.numberOfImportedItems != null ||
-              (!this.state.armor && !this.state.weapons && !this.state.other && !this.state.sets)
+              (!this.state.armor &&
+                !this.state.weapons &&
+                !this.state.other &&
+                !this.state.sets)
             }
           />
         )}
       >
         {this.state.numberOfImportedItems != null && (
           <DialogContentTextContainer>
-            The import was done! We imported {this.state.numberOfImportedItems} items! Close this dialog and check if
-            the data is correct. If it is, simply save the data to the server, if not just discard it!
+            The import was done! We imported {this.state.numberOfImportedItems}{" "}
+            items! Close this dialog and check if the data is correct. If it is,
+            simply save the data to the server, if not just discard it!
           </DialogContentTextContainer>
         )}
         {this.state.numberOfImportedItems == null && (
@@ -64,7 +73,8 @@ export class ImportDialog extends React.Component<IImportDialogProps, IImportDia
             <span style={{ fontStyle: "italic", fontSize: "0.8em" }}>
               File => Download as => Comma-separated values (.csv current sheet)
             </span>
-            ) and then upload the file here. You can also only import the tabs you want.
+            ) and then upload the file here. You can also only import the tabs
+            you want.
           </DialogContentText>
         )}
         <div>
@@ -81,24 +91,49 @@ export class ImportDialog extends React.Component<IImportDialogProps, IImportDia
     this.setState({ isImporting: true });
     const data = GrailManager.current.normalGrail;
     const importedFoundItems: string[] = [];
-    this.importSection(data.uniques.armor, this.state.armor, importedFoundItems);
-    this.importSection(data.uniques.weapons, this.state.weapons, importedFoundItems);
-    this.importSection(data.uniques.other, this.state.other, importedFoundItems);
+    this.importSection(
+      data.uniques.armor,
+      this.state.armor,
+      importedFoundItems
+    );
+    this.importSection(
+      data.uniques.weapons,
+      this.state.weapons,
+      importedFoundItems
+    );
+    this.importSection(
+      data.uniques.other,
+      this.state.other,
+      importedFoundItems
+    );
     this.importSection(data.sets, this.state.sets, importedFoundItems);
     if (importedFoundItems.length) {
       GrailManager.current.updateGrailCache();
     }
-    this.setState({ isImporting: false, numberOfImportedItems: importedFoundItems.length });
+    this.setState({
+      isImporting: false,
+      numberOfImportedItems: importedFoundItems.length
+    });
   };
 
-  private importSection(possibleItem: any, importData: string, importedFoundItems: string[], itemName?: string) {
+  private importSection(
+    possibleItem: any,
+    importData: string,
+    importedFoundItems: string[],
+    itemName?: string
+  ) {
     if (!importData || !possibleItem) {
       return;
     }
 
     if (!Util.isItem(possibleItem) || !itemName) {
       Object.keys(possibleItem).forEach(possibleItemName =>
-        this.importSection(possibleItem[possibleItemName], importData, importedFoundItems, possibleItemName)
+        this.importSection(
+          possibleItem[possibleItemName],
+          importData,
+          importedFoundItems,
+          possibleItemName
+        )
       );
       return;
     }
@@ -134,7 +169,9 @@ export class ImportDialog extends React.Component<IImportDialogProps, IImportDia
     return (
       <UploadContainer>
         <Typography variant="subtitle1">{title}</Typography>
-        <FileUploader onFilesDropped={(files: File[]) => this.getContent(stateKey, files)} />
+        <FileUploader
+          onFilesDropped={(files: File[]) => this.getContent(stateKey, files)}
+        />
       </UploadContainer>
     );
   }
@@ -144,7 +181,9 @@ const UploadContainer = styled.div`
   margin-top: ${p => p.theme.spacing.unit}px;
 `;
 
-const DialogContentTextContainer: React.ComponentType<DialogContentTextProps> = styled(DialogContentText)`
+const DialogContentTextContainer: React.ComponentType<
+  DialogContentTextProps
+> = styled(DialogContentText)`
   && {
     color: ${p => p.theme.palette.secondary.main};
   }

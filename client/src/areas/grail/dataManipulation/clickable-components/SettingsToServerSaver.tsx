@@ -10,7 +10,10 @@ interface IServerSaveButtonState {
   error?: string;
 }
 
-export class SettingsToServerSaver extends React.Component<{}, IServerSaveButtonState> {
+export class SettingsToServerSaver extends React.Component<
+  {},
+  IServerSaveButtonState
+> {
   private secondIconTimeoutHandler: any;
 
   public constructor(props: {}) {
@@ -27,7 +30,10 @@ export class SettingsToServerSaver extends React.Component<{}, IServerSaveButton
       <>
         {this.state.error && (
           <div>
-            <ErrorNotification error={this.state.error} onDismiss={() => this.setState({ error: null })} />
+            <ErrorNotification
+              error={this.state.error}
+              onDismiss={() => this.setState({ error: null })}
+            />
           </div>
         )}
         <ButtonWithProgress
@@ -45,16 +51,18 @@ export class SettingsToServerSaver extends React.Component<{}, IServerSaveButton
   private onSaveButtonClick = () => {
     clearTimeout(this.secondIconTimeoutHandler);
     this.setState({ showSecondIcon: false, isSaving: true });
-    GrailManager.current.saveSettingsToServer().subscribe(this.onSaveSuccessful, error =>
-      this.setState({
-        showSecondIcon: false,
-        isSaving: false,
-        error:
-          error.status === 401
-            ? "Access denied! You are not allowed to save data for this grail! Are you sure your password is correct? Try to log out and log in again!"
-            : "An error occurred while trying to save your grail data on the server."
-      })
-    );
+    GrailManager.current
+      .saveSettingsToServer()
+      .subscribe(this.onSaveSuccessful, error =>
+        this.setState({
+          showSecondIcon: false,
+          isSaving: false,
+          error:
+            error.status === 401
+              ? "Access denied! You are not allowed to save data for this grail! Are you sure your password is correct? Try to log out and log in again!"
+              : "An error occurred while trying to save your grail data on the server."
+        })
+      );
   };
 
   private onSaveSuccessful = () => {
@@ -62,6 +70,9 @@ export class SettingsToServerSaver extends React.Component<{}, IServerSaveButton
 
     // reset to the default icon (this should go together with the dismissing of a success message, once we have any)
     clearTimeout(this.secondIconTimeoutHandler);
-    this.secondIconTimeoutHandler = setTimeout(() => this.setState({ showSecondIcon: false }), 500000);
+    this.secondIconTimeoutHandler = setTimeout(
+      () => this.setState({ showSecondIcon: false }),
+      500000
+    );
   };
 }

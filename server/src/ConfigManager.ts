@@ -5,7 +5,10 @@ export class DbConfig {
 
   private _mongoUrl: string;
   public get mongoUrl(): string {
-    return this._mongoUrl || (this._mongoUrl = process.env.MONGODB_URI || this.defaultMongoUrl);
+    return (
+      this._mongoUrl ||
+      (this._mongoUrl = process.env.MONGODB_URI || this.defaultMongoUrl)
+    );
   }
 }
 
@@ -14,7 +17,9 @@ export class ConfigManager {
 
   private static _port: number;
   public static get port(): number {
-    return this._port || (this._port = Number(process.env.PORT) || this.defaultPort);
+    return (
+      this._port || (this._port = Number(process.env.PORT) || this.defaultPort)
+    );
   }
 
   private static _db: DbConfig;

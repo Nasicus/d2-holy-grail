@@ -16,13 +16,18 @@ export interface IGrailAreaQueryObject {
 }
 
 export class RouteManager {
-  public static updateQuery(props: RouteComponentProps<IGrailAreaRouterParams>, newQuery: IGrailAreaQueryObject) {
+  public static updateQuery(
+    props: RouteComponentProps<IGrailAreaRouterParams>,
+    newQuery: IGrailAreaQueryObject
+  ) {
     props.history.push({
       search: stringify(newQuery)
     });
   }
 
-  public static getQuery(props: RouteComponentProps<IGrailAreaRouterParams>): IGrailAreaQueryObject {
+  public static getQuery(
+    props: RouteComponentProps<IGrailAreaRouterParams>
+  ): IGrailAreaQueryObject {
     return parse(props.location.search) as IGrailAreaQueryObject;
   }
 
@@ -34,7 +39,8 @@ export class RouteManager {
     const params = props.match.params;
 
     props.history.push({
-      pathname: `/${params.address}/${params.grailMode || GrailMode.Holy}/${tabType || TabType.Statistics}`,
+      pathname: `/${params.address}/${params.grailMode ||
+        GrailMode.Holy}/${tabType || TabType.Statistics}`,
       search: newQuery ? stringify(newQuery) : props.location.search
     });
   }

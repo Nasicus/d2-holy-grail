@@ -2,7 +2,10 @@ import * as React from "react";
 import { GrailManager } from "../../GrailManager";
 import { Util } from "../../../../common/utils/Util";
 import { AllBusinessGrailsType } from "../../../../common/definitions/business/AllBusinessGrailsType";
-import { ChoiceDialog, IChoiceDialogButton } from "../../../../common/components/ChoiceDialog";
+import {
+  ChoiceDialog,
+  IChoiceDialogButton
+} from "../../../../common/components/ChoiceDialog";
 import { ListItemWithProgress } from "../../../../common/components/ListItemWithProgress";
 
 export interface IToggleAllListItemProps {
@@ -13,7 +16,10 @@ interface IToggleAllListItemState {
   showConfirm?: boolean;
 }
 
-export class ToggleAllListItem extends React.Component<IToggleAllListItemProps, IToggleAllListItemState> {
+export class ToggleAllListItem extends React.Component<
+  IToggleAllListItemProps,
+  IToggleAllListItemState
+> {
   public constructor(props: IToggleAllListItemProps) {
     super(props);
     this.state = {};

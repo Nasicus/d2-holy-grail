@@ -13,7 +13,10 @@ interface IFileUploaderState {
   activeFileNames?: string[];
 }
 
-export class FileUploader extends React.Component<IFileUploaderProps, IFileUploaderState> {
+export class FileUploader extends React.Component<
+  IFileUploaderProps,
+  IFileUploaderState
+> {
   public constructor(props: IFileUploaderProps) {
     super(props);
     this.state = {};

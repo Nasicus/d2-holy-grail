@@ -57,7 +57,12 @@ class GrailAreaInternal extends React.Component<Props, IGrailAreaState> {
     const address = loginInfo.address || this.props.match.params.address;
     const grailMode = GrailAreaInternal.getGrailModeFromRouteParams(this.props);
     this.props.onGrailModeChange(grailMode);
-    const dataManager = GrailManager.createInstance(grailMode, address, loginInfo.password, loginInfo.keepLoggedIn);
+    const dataManager = GrailManager.createInstance(
+      grailMode,
+      address,
+      loginInfo.password,
+      loginInfo.keepLoggedIn
+    );
     dataManager.initialize().subscribe(
       () => this.setState({ data: dataManager.grail, loading: false }),
       // todo: if we have local storage data, and an error occurs, only show a warning instead of an error
@@ -86,10 +91,16 @@ class GrailAreaInternal extends React.Component<Props, IGrailAreaState> {
       <div>
         <VersionNotifier />
         <div>
-          <GrailFilters data={this.state.data} onFilterResult={this.onFilterResult} />
+          <GrailFilters
+            data={this.state.data}
+            onFilterResult={this.onFilterResult}
+          />
         </div>
         <div>
-          <TabRenderer allData={this.state.data} filterResult={this.state.filterResult} />
+          <TabRenderer
+            allData={this.state.data}
+            filterResult={this.state.filterResult}
+          />
         </div>
 
         <LeftSideButtons>
@@ -110,7 +121,9 @@ class GrailAreaInternal extends React.Component<Props, IGrailAreaState> {
             <MenuButton>
               <ListItemWithProgress
                 primaryText={GrailManager.current.address}
-                secondaryText={GrailManager.current.isReadOnly ? "Read-only" : null}
+                secondaryText={
+                  GrailManager.current.isReadOnly ? "Read-only" : null
+                }
                 firstIcon="person"
               />
               <Divider />
@@ -119,8 +132,15 @@ class GrailAreaInternal extends React.Component<Props, IGrailAreaState> {
               <ToggleAllListItem onToggle={d => this.setState({ data: d })} />
               <ImportListItem />
               <ExportListItem />
-              <GrailTypeToggler renderAsListItem={true} grailMode={GrailManager.current.grailMode} />
-              <SettingsListItem onSettingsChanged={() => this.setState({ data: GrailManager.current.grail })} />
+              <GrailTypeToggler
+                renderAsListItem={true}
+                grailMode={GrailManager.current.grailMode}
+              />
+              <SettingsListItem
+                onSettingsChanged={() =>
+                  this.setState({ data: GrailManager.current.grail })
+                }
+              />
             </MenuButton>
           </ButtonRow>
         </RightSideButtons>
