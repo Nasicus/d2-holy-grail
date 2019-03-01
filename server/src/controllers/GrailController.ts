@@ -97,6 +97,26 @@ export class GrailController {
     }
   };
 
+  public getStatistics = async (req: Request, res: Response) => {
+    const totalGrails = await this.grailCollection.estimatedDocumentCount();
+
+    const aWeekAgo = new Date();
+    aWeekAgo.setDate(aWeekAgo.getDate() - 7);
+
+    const modifiedStats = await this.grailCollection
+      .aggregate([
+        { $match: { modified: { $gt: aWeekAgo } } },
+        { $project: { updateCount: 1, modified: 1 } },
+        { $sort: { modified: -1 } }
+      ])
+      .toArray();
+
+    res.json({
+      totalGrails,
+      modifiedStats
+    });
+  };
+
   private update = async (
     req: Request,
     res: Response,

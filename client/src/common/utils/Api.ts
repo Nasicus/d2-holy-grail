@@ -6,6 +6,7 @@ import { IHolyGrailApiModel } from "../definitions/api/IHolyGrailApiModel";
 import { IGrailSettings } from "../definitions/union/IGrailSettings";
 import { IItemInfo } from "../definitions/api/IItemInfo";
 import { IRunewordInfo } from "../definitions/api/IRunewordInfo";
+import { IGrailStatistics } from "../definitions/api/IGrailStatistics";
 
 export interface IApiResponse<T> {
   status: number;
@@ -15,6 +16,10 @@ export interface IApiResponse<T> {
 export class Api {
   private static readonly apiUrl = "/api/";
   private static readonly grailApiUrl = Api.apiUrl + "grail/";
+
+  public static getStatistics(): Observable<IApiResponse<IGrailStatistics>> {
+    return this.fetchToObservable(fetch(`${Api.apiUrl}stats`));
+  }
 
   public static getItem(itemName: string): Observable<IApiResponse<IItemInfo>> {
     return this.fetchToObservable(fetch(`${Api.apiUrl}items/${itemName}`));

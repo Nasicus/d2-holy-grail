@@ -2,7 +2,7 @@
   "name": "d2-holy-grail-server",
   "version": "1.0.0",
   "scripts": {
-    "dev": "ts-node ./src/Init.ts",
+    "dev": "ts-node-dev ./src/Init.ts ",
     "build": "tsc",
     "prod": "node ./dist/Init.js"
   },
@@ -19,7 +19,7 @@
     "@types/mongodb": "^3.1.19",
     "cors": "^2.8.5",
     "nodemon": "^1.18.10",
-    "ts-node": "^8.0.2",
+    "ts-node-dev": "^1.0.0-pre.32",
     "typescript": "^3.3.3333"
   }
 }
