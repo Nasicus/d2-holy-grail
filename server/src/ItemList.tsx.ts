@@ -8836,8 +8836,8 @@ const setItems = {
     ],
     category: "Griswold's Legacy"
   },
-  "Haemosu's Adament": {
-    name: "Haemosu's Adament",
+  "Haemosu's Adamant": {
+    name: "Haemosu's Adamant",
     type: "Cuirass",
     image: "http://www.d2tomb.com/images/setitems/haemosus_adament.gif",
     props: [
@@ -11092,5 +11092,6 @@ uniqueItems["Sparkling Mail"] = uniqueItems["Sparking Mail"];
 
 setItems["Tal Rasha's Fine-Spun Cloth"] =
   setItems["Tal Rasha's Fine Spun Cloth"];
+setItems["Haemosu's Adament"] = setItems["Haemosu's Adamant"];
 
 export const items = { uniqueItems, setItems, runewords };

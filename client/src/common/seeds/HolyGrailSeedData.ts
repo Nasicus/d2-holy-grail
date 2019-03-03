@@ -702,7 +702,7 @@ export const holyGrailSeedData: IHolyGrailData = {
     },
     "Heaven's Brethren": {
       "Dangoon's Teaching": {},
-      "Haemosu's Adament": {},
+      "Haemosu's Adamant": {},
       "Taebaek's Glory": {},
       "Ondal's Almighty": {}
     },
