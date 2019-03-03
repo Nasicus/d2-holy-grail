@@ -12,7 +12,7 @@ export const holyGrailSeedData: IHolyGrailData = {
           Darkglow: {},
           Hawkmail: {},
           "Venom Ward": {},
-          "Sparkling Mail": {},
+          "Sparking Mail": {},
           Iceblink: {},
           "Heavenly Garb": {},
           Rockfleece: {},

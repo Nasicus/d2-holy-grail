@@ -136,8 +136,8 @@ const uniqueItems = {
     ],
     category: "Unique Armor"
   },
-  "Sparkling Mail": {
-    name: "Sparkling Mail",
+  "Sparking Mail": {
+    name: "Sparking Mail",
     type: "Chain Mail",
     image: "http://www.d2tomb.com/images/uniques/sparklingmail.gif",
     props: [
@@ -11086,6 +11086,7 @@ uniqueItems["Cat's Eye"] = uniqueItems["The Cat's Eye"];
 uniqueItems["Rising Sun"] = uniqueItems["The Rising Sun"];
 uniqueItems["Highlords Wrath"] = uniqueItems["Highlord's Wrath"];
 uniqueItems["Bloodraven's Charge"] = uniqueItems["Blood Raven's Charge"];
+uniqueItems["Sparkling Mail"] = uniqueItems["Sparking Mail"];
 (uniqueItems as any).Viscerataunt = uniqueItems.Visceratuant;
 (uniqueItems as any).Steelshade = uniqueItems["Steel Shade"];
 
