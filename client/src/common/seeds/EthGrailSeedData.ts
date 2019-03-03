@@ -215,7 +215,8 @@ export const ethGrailSeedData: IEthGrailData = {
         elite: {
           Hellslayer: {},
           "Messerschmidt's Reaver": {},
-          "Executioner's Justice": {}
+          "Executioner's Justice": {},
+          "Ethereal Edge": {}
         }
       },
       dagger: {
@@ -232,7 +233,8 @@ export const ethGrailSeedData: IEthGrailData = {
           Stormspike: {}
         },
         elite: {
-          Fleshripper: {}
+          Fleshripper: {},
+          Ghostflame: {}
         }
       },
       "clubs (1-h)": {
@@ -429,7 +431,8 @@ export const ethGrailSeedData: IEthGrailData = {
           Lacerator: {},
           Warshrike: {},
           "Demon's Arch": {},
-          "Gargoyle's Bite": {}
+          "Gargoyle's Bite": {},
+          "Wraith Flight": {}
         }
       }
     },
@@ -444,7 +447,8 @@ export const ethGrailSeedData: IEthGrailData = {
         assasin: {
           "Bartuc's Cut-Throat": {},
           "Firelizard's Talons": {},
-          "Jade Talon": {}
+          "Jade Talon": {},
+          "Shadow Killer": {}
         },
         barbarian: {
           "Arreat's Face": {},
