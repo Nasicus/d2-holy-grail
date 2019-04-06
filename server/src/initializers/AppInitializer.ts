@@ -8,8 +8,8 @@ import { GrailController } from "../controllers/GrailController";
 import { ItemsController } from "../controllers/ItemsController";
 
 function initializeExpressServer(express: expressServer.Express): void {
-  express.use(bodyParser.urlencoded({ extended: true }));
-  express.use(bodyParser.json());
+  express.use(bodyParser.urlencoded({ extended: true, limit: '1mb' }));
+  express.use(bodyParser.json({ limit: '1mb' }));
   express.use(cors());
 }
 
