@@ -15,8 +15,7 @@ const uniqueItems = {
       "Cold resist 20%",
       "Fire resist 20%",
       "+20 to Defense",
-      "+10 to Dexterity",
-      "found in any patch"
+      "+10 to Dexterity"
     ],
     category: "Unique Armor"
   },
@@ -33,8 +32,7 @@ const uniqueItems = {
       "Add 3-6 Fire Damage",
       "40% Faster Hit Recovery",
       "+50 Defense vs. missles",
-      "+25 Defense",
-      "found in v1.09 or later"
+      "+25 Defense"
     ],
     category: "Unique Armor"
   },
@@ -54,8 +52,7 @@ const uniqueItems = {
       "25% Slower Stamina Drain",
       "+15 to Mana",
       "+15 to max Stamina",
-      "+15 to Life",
-      "found in v1.09 or later"
+      "+15 to Life"
     ],
     category: "Unique Armor"
   },
@@ -73,8 +70,7 @@ const uniqueItems = {
       "20% Increased Attack Speed",
       "+25 to Defense",
       "+10 to Dexterity",
-      "+10 to Strength",
-      "found in v1.09 or later"
+      "+10 to Strength"
     ],
     category: "Unique Armor"
   },
@@ -95,8 +91,7 @@ const uniqueItems = {
       "5% to max Fire resist",
       "+50 Defense vs. Melee",
       "+20 to Attack Rating",
-      "All Resistances +10",
-      "found in v1.09 or later"
+      "All Resistances +10"
     ],
     category: "Unique Armor"
   },
@@ -113,8 +108,7 @@ const uniqueItems = {
       "15% to max Cold Resist",
       "+15% Cold Resist",
       "+80-100% Enhanced Defense",
-      "10% Faster Run/Walk",
-      "found in v1.09 or later"
+      "10% Faster Run/Walk"
     ],
     category: "Unique Armor"
   },
@@ -131,8 +125,7 @@ const uniqueItems = {
       "+60-100% Enhanced Defense",
       "15% to max Poison Resist",
       "+90% Poison Resist",
-      "Poison Length reduced by 50%",
-      "found in v1.09 or later"
+      "Poison Length reduced by 50%"
     ],
     category: "Unique Armor"
   },
@@ -148,8 +141,7 @@ const uniqueItems = {
       "Attacker takes 10-14 Lightning Damage",
       "Adds 1-20 Lightning Damage",
       "+75-85% Enhanced Defense",
-      "+30% Lightning Resist",
-      "found in v1.09 or later"
+      "+30% Lightning Resist"
     ],
     category: "Unique Armor"
   },
@@ -166,8 +158,7 @@ const uniqueItems = {
       "+4 to Light Radius",
       "+70-80% Enhanced Defense",
       "Magic damage reduced by 1",
-      "+30% Cold Resist",
-      "found in v1.09 or later"
+      "+30% Cold Resist"
     ],
     category: "Unique Armor"
   },
@@ -185,8 +176,7 @@ const uniqueItems = {
       "+50% Damage to Undead",
       "+100 to Attack Rating against Undead",
       "Regenerate Mana 25%",
-      "All Resistances +10",
-      "found in v1.09 or later"
+      "All Resistances +10"
     ],
     category: "Unique Armor"
   },
@@ -202,8 +192,7 @@ const uniqueItems = {
       "5% Life stolen per hit",
       "+100-120% Enhanced Defense",
       "25% Chance of Open Wounds",
-      "+35 to Attack Rating",
-      "found in v1.09 or later"
+      "+35 to Attack Rating"
     ],
     category: "Unique Armor"
   },
@@ -220,8 +209,7 @@ const uniqueItems = {
       "Damage reduced by 10%",
       "+100-130% Enhanced Defense",
       "+5 to Strength",
-      "Damage reduced by 5",
-      "found in v1.09 or later"
+      "Damage reduced by 5"
     ],
     category: "Unique Armor"
   },
@@ -237,8 +225,7 @@ const uniqueItems = {
       "+200 to Defense",
       "25% Chance of Crushing Blow",
       "40% Hit causes monsters to flee",
-      "+45 to Attack Rating",
-      "found in any patch"
+      "+45 to Attack Rating"
     ],
     category: "Unique Armor"
   },
@@ -255,8 +242,7 @@ const uniqueItems = {
       "+35 to All Resistances",
       "+120-150% Enhanced Defense",
       "100% Extra Gold from Monsters",
-      "Attacker takes damage of 10",
-      "found in v1.09 or later"
+      "Attacker takes damage of 10"
     ],
     category: "Unique Armor"
   },
@@ -272,8 +258,7 @@ const uniqueItems = {
       "+2 to Light Radius",
       "+100-120% Enhanced Defense",
       "+1 to all Skills",
-      "5% Mana stolen per hit",
-      "found in v1.09 or later"
+      "5% Mana stolen per hit"
     ],
     category: "Unique Armor"
   },
@@ -290,8 +275,7 @@ const uniqueItems = {
       "Cannot be Frozen",
       "+1 to All Skills",
       "+10 Replenish Life",
-      "Magic Damage Reduced by 7-11",
-      "found in v1.09 or later"
+      "Magic Damage Reduced by 7-11"
     ],
     category: "Exceptional Unique Armor"
   },
@@ -308,8 +292,7 @@ const uniqueItems = {
       "+1 to All skills",
       "30% Faster Cast Rate",
       "Magic Damage Reduced by 9-13",
-      "+20-35 to All Resistances",
-      "found in v1.09 or later"
+      "+20-35 to All Resistances"
     ],
     category: "Exceptional Unique Armor"
   },
@@ -326,8 +309,7 @@ const uniqueItems = {
       "Repairs 1 Durability in 10 sec",
       "5-7% Life Stolen per Hit",
       "+15-25 Replenish Life",
-      "Attacker takes Damage of 15",
-      "found in v1.09 or later"
+      "Attacker takes Damage of 15"
     ],
     category: "Exceptional Unique Armor"
   },
@@ -344,8 +326,7 @@ const uniqueItems = {
       "+3 per character level to Defense",
       "Damage reduced by 15-20",
       "Magic Damage reduced by 10-16",
-      "+25 to Life",
-      "found in v1.09 or later"
+      "+25 to Life"
     ],
     category: "Exceptional Unique Armor"
   },
@@ -364,8 +345,7 @@ const uniqueItems = {
       "Adds 20-65 Fire Damage",
       "+15 to Strength",
       "+4 to Light Radius",
-      "2 sockets",
-      "found in v1.09 or later"
+      "2 sockets"
     ],
     category: "Exceptional Unique Armor"
   },
@@ -382,8 +362,7 @@ const uniqueItems = {
       "15% Increased Attack Speed",
       "15% Faster Hit recovery",
       "35% Chance of Open Wounds",
-      "+15 to Dexterity",
-      "found in v1.09 or later"
+      "+15 to Dexterity"
     ],
     category: "Exceptional Unique Armor"
   },
@@ -402,8 +381,7 @@ const uniqueItems = {
       "+20% to Fire, Lightning, Posion Resist",
       "+50% to Cold Resist",
       "Cannot be Frozen",
-      "+15 to Strength",
-      "found in v1.09 or later"
+      "+15 to Strength"
     ],
     category: "Exceptional Unique Armor"
   },
@@ -419,8 +397,7 @@ const uniqueItems = {
       "+180-220% Enhanced Defense",
       "Damage Reduced by 30%",
       "+250 Defense against missles",
-      "+60 to Life",
-      "found in v1.09 or later"
+      "+60 to Life"
     ],
     category: "Exceptional Unique Armor"
   },
@@ -437,8 +414,7 @@ const uniqueItems = {
       "Repairs 1 durability in 5 seconds",
       "+1.25 per character level % better chance of getting Magic Items",
       "+1 to all Skill Levels",
-      "Magic Damage reduced by 10",
-      "found in v1.09 or later"
+      "Magic Damage reduced by 10"
     ],
     category: "Exceptional Unique Armor"
   },
@@ -457,8 +433,7 @@ const uniqueItems = {
       "20% Faster Cast Rate",
       "20% Faster Hit Recovery",
       "Magic Damage reduced by 6-10",
-      "+15 to Energy",
-      "found in v1.09 or later"
+      "+15 to Energy"
     ],
     category: "Exceptional Unique Armor"
   },
@@ -477,8 +452,7 @@ const uniqueItems = {
       "+2.5 per character level to Attack Rating against demons",
       "+1 to Paladin Skill Levels",
       "+4 to Light Radius",
-      "15% to all maximum Resistances",
-      "found in v1.09 or later"
+      "15% to all maximum Resistances"
     ],
     category: "Exceptional Unique Armor"
   },
@@ -496,8 +470,7 @@ const uniqueItems = {
       "40% chance of Open Wounds",
       "+15% Fire Resist",
       "+10 Strength",
-      "Attacker takes damage of 20-40",
-      "found in v1.09 or later"
+      "Attacker takes damage of 20-40"
     ],
     category: "Exceptional Unique Armor"
   },
@@ -516,8 +489,7 @@ const uniqueItems = {
       "+10 Replenish Life",
       "15% increased maximum Mana",
       "+15 Dexterity",
-      "20% better chance of getting Magic Items",
-      "found in v1.09 or later"
+      "20% better chance of getting Magic Items"
     ],
     category: "Exceptional Unique Armor"
   },
@@ -535,8 +507,7 @@ const uniqueItems = {
       "+200-250 to Attack Rating against Demons",
       "Half Freeze Duration",
       "-2 to Light Radius",
-      "3 sockets",
-      "found in v1.09 or later"
+      "3 sockets"
     ],
     category: "Exceptional Unique Armor"
   },
@@ -555,8 +526,7 @@ const uniqueItems = {
       "6% chance to cast level 2 Iron Maiden",
       "+35% Cold Resist",
       "+10 to Vitality",
-      "+8 to Strength",
-      "found in v1.09 or later"
+      "+8 to Strength"
     ],
     category: "Exceptional Unique Armor"
   },
@@ -576,8 +546,7 @@ const uniqueItems = {
       "+10-15% to Fire Skill Damage",
       "+10-15% to Lightning Skill Damage",
       "+3 to a random Sorceress Skill",
-      "10-15% Regenerate Mana",
-      "found in v1.10 or later"
+      "10-15% Regenerate Mana"
     ],
     category: "Elite Unique Armor"
   },
@@ -597,8 +566,7 @@ const uniqueItems = {
       "30% Faster Hit Recovery",
       "Damage reduced by 15-20",
       "Magic damage reduced by 15-20",
-      "Attacker takes damage of 20",
-      "found in v1.09 or later"
+      "Attacker takes damage of 20"
     ],
     category: "Elite Unique Armor"
   },
@@ -615,8 +583,7 @@ const uniqueItems = {
       "+1-2 to all Skill Levels",
       "+(0.5 per character level) to Vitality",
       "30% Faster Hit Recovery",
-      "Damage Reduced by 10-15",
-      "found in v1.10 or later"
+      "Damage Reduced by 10-15"
     ],
     category: "Elite Unique Armor"
   },
@@ -633,9 +600,7 @@ const uniqueItems = {
       "+170-200% Enhanced Defense",
       "+100-150 Defense",
       "+40-50 to Strength",
-      "Damage Reduced by 15-25%",
-      "Ladder only",
-      "found in v1.10 or later"
+      "Damage Reduced by 15-25%"
     ],
     category: "Elite Unique Armor"
   },
@@ -655,8 +620,7 @@ const uniqueItems = {
       "+40-60% Cold Resist",
       "Damage Reduced by 9-14",
       "Repairs 1 Durability in 20 seconds",
-      "8% Chance to cast Level 6 Iron Maiden when struck",
-      "found in v1.10 or later"
+      "8% Chance to cast Level 6 Iron Maiden when struck"
     ],
     category: "Elite Unique Armor"
   },
@@ -676,8 +640,7 @@ const uniqueItems = {
       "+10-15 to Vitality",
       "20% Faster Hit Recovery",
       "+40-50 Maximum Stamina",
-      "+1-2 to Offensive Auras (Paladin only)",
-      "found in v1.10 or later"
+      "+1-2 to Offensive Auras (Paladin only)"
     ],
     category: "Elite Unique Armor"
   },
@@ -698,9 +661,7 @@ const uniqueItems = {
       "+20-30 to all Resistances",
       "Cannot be Frozen",
       "-100% Requirements",
-      "Slain Monsters Rest in Peace",
-      "Ladder only",
-      "found in v1.10 or later"
+      "Slain Monsters Rest in Peace"
     ],
     category: "Elite Unique Armor"
   },
@@ -715,8 +676,7 @@ const uniqueItems = {
       "20% Chance of Crushing Blow",
       "50% Chance of Open Wounds",
       "+60-70% Enhanced Damage",
-      "+8 to Strength",
-      "found in v1.10 or later"
+      "+8 to Strength"
     ],
     category: "Unique Axes"
   },
@@ -733,8 +693,7 @@ const uniqueItems = {
       "+4 Mana after each kill",
       "15% Bonus to Attack Rating",
       "Hit Blinds Target",
-      "+8 to minimum Damage",
-      "found in v1.09 or later"
+      "+8 to minimum Damage"
     ],
     category: "Unique Axes"
   },
@@ -752,8 +711,7 @@ const uniqueItems = {
       "+40 to Attack Rating vs. Undead",
       "100% Damage to Undead",
       "Adds 8-12 Fire Damage",
-      "+20 Defense",
-      "found in v1.09 or later"
+      "+20 Defense"
     ],
     category: "Unique Axes"
   },
@@ -772,8 +730,7 @@ const uniqueItems = {
       "Adds 1-15 Lightning Damage",
       "+60-100% Enhanced Damage",
       "+50-100 to Attack Rating",
-      "15% Chance of Open Wounds",
-      "found in v1.09 or later"
+      "15% Chance of Open Wounds"
     ],
     category: "Unique Axes"
   },
@@ -790,8 +747,7 @@ const uniqueItems = {
       "+75-150% Enhanced Damage",
       "+38 Poison Damage for 3 sec",
       "30% Increased Attack Speed",
-      "+50 to Attack Rating",
-      "found in v1.09 or later"
+      "+50 to Attack Rating"
     ],
     category: "Unique Axes"
   },
@@ -807,8 +763,7 @@ const uniqueItems = {
       "+3 Freezes Target",
       "+2 to Light Radius",
       "+70-90% Enhanced Damage",
-      "+50% Cold Resist",
-      "found in v1.09 or later"
+      "+50% Cold Resist"
     ],
     category: "Unique Axes"
   },
@@ -825,8 +780,7 @@ const uniqueItems = {
       "+25 to Strength",
       "30% Increased Attack Speed",
       "+40-50% Enhanced Damage",
-      "+9 to maximum Damage",
-      "found in v1.09 or later"
+      "+9 to maximum Damage"
     ],
     category: "Unique Axes"
   },
@@ -843,8 +797,7 @@ const uniqueItems = {
       "+10-20 to Resist All",
       "20% Increased Attack Speed",
       "Adds 1-40 Lightning Damage",
-      "+6 Mana after each Kill",
-      "found in v1.09 or later"
+      "+6 Mana after each Kill"
     ],
     category: "Unique Axes"
   },
@@ -863,8 +816,7 @@ const uniqueItems = {
       "+4 to Light Radius",
       "10-13% Mana stolen per hit",
       "+25 to Mana",
-      "+14 to minimum Damage",
-      "found in v1.09 or later"
+      "+14 to minimum Damage"
     ],
     category: "Unique Axes"
   },
@@ -881,8 +833,7 @@ const uniqueItems = {
       "33% Chance of Crushing Blow",
       "+20% to Requirements",
       "Adds 8-25 Damage",
-      "+20-30 to Strength",
-      "found in v1.09 or later"
+      "+20-30 to Strength"
     ],
     category: "Unique Axes"
   },
@@ -902,8 +853,7 @@ const uniqueItems = {
       "10% Chance to cast level 5 Frost Nova when struck",
       "+40 Cold Damage for 2 sec",
       "15% to maximum Cold Resist",
-      "+15% Cold Resist",
-      "found in v1.09 or later"
+      "+15% Cold Resist"
     ],
     category: "Exceptional Unique Axes"
   },
@@ -920,8 +870,7 @@ const uniqueItems = {
       "Adds 30-50 Damage",
       "35% Deadly Strike",
       "25% Chance of Open Wounds",
-      "30% Increased Attack Speed",
-      "found in v1.09 or later"
+      "30% Increased Attack Speed"
     ],
     category: "Exceptional Unique Axes"
   },
@@ -940,8 +889,7 @@ const uniqueItems = {
       "+50 Defense vs. Missles",
       "+10 to Energy, Vitality, Dexterity and Strength",
       "+1 to Fury (Druid only)",
-      "+1 to Maul (Druid only)",
-      "found in v1.09 or later"
+      "+1 to Maul (Druid only)"
     ],
     category: "Exceptional Unique Axes"
   },
@@ -959,8 +907,7 @@ const uniqueItems = {
       "Adds 35-150 Fire Damage",
       "Slows Target by 50%",
       "4% Chance to cast level 8 Volcano on striking",
-      "Knockback",
-      "found in v1.09 or later"
+      "Knockback"
     ],
     category: "Exceptional Unique Axes"
   },
@@ -978,8 +925,7 @@ const uniqueItems = {
       "+250 Poison Damage over 10 sec",
       "5% Chance to cast level 8 Poison Nova on striking",
       "+30% Poison resist",
-      "Attacker takes damage of 15",
-      "found in v1.09 or later"
+      "Attacker takes damage of 15"
     ],
     category: "Exceptional Unique Axes"
   },
@@ -997,8 +943,7 @@ const uniqueItems = {
       "+0.5 per character level to Vitality",
       "+20 Replenish Life",
       "+10 to All Resistances",
-      "+75 Defense",
-      "found in v1.09 or later"
+      "+75 Defense"
     ],
     category: "Exceptional Unique Axes"
   },
@@ -1020,8 +965,7 @@ const uniqueItems = {
       "100 charges level 10 Holy Bolt",
       "30 charges level 3 Decrepify",
       "20 charges level 1 Teleport",
-      "Magic Damage reduced by 12-15",
-      "found in v1.09 or later"
+      "Magic Damage reduced by 12-15"
     ],
     category: "Exceptional Unique Axes"
   },
@@ -1040,8 +984,7 @@ const uniqueItems = {
       "15% Chance to cast level 5 Charged Bolt when struck",
       "10% Chance to cast level 13-20 Charged Bolt on striking",
       "5% Chance to cast level 10 Chain Lightning on striking",
-      "Attacker takes lightning Damage of 15",
-      "found in v1.10 or later"
+      "Attacker takes lightning Damage of 15"
     ],
     category: "Exceptional Unique Axes"
   },
@@ -1062,8 +1005,7 @@ const uniqueItems = {
       "20% Increased Attack Speed",
       "35% Bonus to Attack Rating",
       "200 charges Level 20 Holy Bolt",
-      "+8 to Strength",
-      "found in v1.10 or later"
+      "+8 to Strength"
     ],
     category: "Exceptional Unique Axes"
   },
@@ -1082,8 +1024,7 @@ const uniqueItems = {
       "30% chance of Crushing Blow",
       "+2 Hit Blinds Target",
       "Half Freeze Duration",
-      "+15-20 to Strength",
-      "found in v1.09 or later"
+      "+15-20 to Strength"
     ],
     category: "Exceptional Unique Axes"
   },
@@ -1102,8 +1043,7 @@ const uniqueItems = {
       "+40% Increased Attack Speed",
       "-33% Target Defense",
       "50% Deadly Strike",
-      "50% Chance of Open Wounds",
-      "found in v1.10 or later"
+      "50% Chance of Open Wounds"
     ],
     category: "Elite Unique Axes"
   },
@@ -1121,9 +1061,7 @@ const uniqueItems = {
       "+220-270% Enhanced Damage",
       "+5% Maximum Cold Resist",
       "Cannot be Frozen",
-      "3-5 Sockets",
-      "Ladder Only",
-      "found in v1.10 or later"
+      "3-5 Sockets"
     ],
     category: "Elite Unique Axes"
   },
@@ -1143,8 +1081,7 @@ const uniqueItems = {
       "-25% Target Defense",
       "Adds 1-305 Lightning Damage",
       "20-50% Better Chance of Magic Items",
-      "15 Charges of Level 8 Raven",
-      "found in v1.10 or later"
+      "15 Charges of Level 8 Raven"
     ],
     category: "Elite Unique Axes"
   },
@@ -1163,9 +1100,7 @@ const uniqueItems = {
       "+40% Increased Attack Speed",
       "-33% Target Defense",
       "66% Deadly Strike",
-      "+6-9 Life after each Kill",
-      "Ladder only",
-      "found in v1.10 or later"
+      "+6-9 Life after each Kill"
     ],
     category: "Elite Unique Axes"
   },
@@ -1186,8 +1121,7 @@ const uniqueItems = {
       "+25% Increased Attack Speed",
       "+10-12 Fire Absorb",
       "+5-10 Life after each Demon Kill",
-      "Ethereal",
-      "found in v1.10 or later"
+      "Ethereal"
     ],
     category: "Elite Unique Axes"
   },
@@ -1207,8 +1141,7 @@ const uniqueItems = {
       "Adds 150-250 Fire Damage",
       "+0.5 per character level to Strength and Vitality",
       "10% chance to cast level 16-20 Fire Ball on attack",
-      "+25 to Life",
-      "found in v1.10 or later"
+      "+25 to Life"
     ],
     category: "Elite Unique Axes"
   },
@@ -1230,8 +1163,7 @@ const uniqueItems = {
       "+15 to Dexterity",
       "+15 to Strength",
       "+2.5 per character level to Maximum Damage",
-      "100% Bonus to Attack Rating",
-      "found in v1.09 or later"
+      "100% Bonus to Attack Rating"
     ],
     category: "Elite Unique Axes"
   },
@@ -1250,9 +1182,7 @@ const uniqueItems = {
       "25% Chance of Crushing Blow",
       "30% Increased Attack Speed",
       "-33% Target's Defense",
-      "50% Chance to cast Level 6 Decrepify when you kill an enemy",
-      "Ladder only",
-      "found in v1.10 or later"
+      "50% Chance to cast Level 6 Decrepify when you kill an enemy"
     ],
     category: "Elite Unique Axes"
   },
@@ -1269,8 +1199,7 @@ const uniqueItems = {
       "+1 to Light Radius",
       "Regenerate Mana 30%",
       "All Resistances +5",
-      "+15 to Mana",
-      "found in any patch"
+      "+15 to Mana"
     ],
     category: "Unique Belts"
   },
@@ -1289,8 +1218,7 @@ const uniqueItems = {
       "+20-30% Enhanced Defense",
       "Poison length reduced by 50%",
       "+12 Poison Damage for 3 sec",
-      "+10 Defense",
-      "found in v1.09 or later"
+      "+10 Defense"
     ],
     category: "Unique Belts"
   },
@@ -1309,8 +1237,7 @@ const uniqueItems = {
       "All Resistances +10",
       "+15 Defense",
       "+30-50% Enhanced Defense",
-      "+20 to Mana",
-      "found in v1.09 or later"
+      "+20 to Mana"
     ],
     category: "Unique Belts"
   },
@@ -1329,8 +1256,7 @@ const uniqueItems = {
       "10% Increased Attack Speed",
       "+40-60% Enhanced Defense",
       "50-80% Extra Gold from Monsters",
-      "30% better chance of getting magic item",
-      "found in v1.09 or later"
+      "30% better chance of getting magic item"
     ],
     category: "Unique Belts"
   },
@@ -1350,8 +1276,7 @@ const uniqueItems = {
       "+30 Defense",
       "+10 to Dexterity",
       "+5 to Strength",
-      "Attacker takes damage of 8",
-      "found in v1.09 or later"
+      "Attacker takes damage of 8"
     ],
     category: "Unique Belts"
   },
@@ -1369,8 +1294,7 @@ const uniqueItems = {
       "+15 Defense",
       "6-8% Life Stolen per Hit",
       "Damage Reduced by 10-15%",
-      "Magic Damage reduced by 10-15",
-      "found in v1.09 or later"
+      "Magic Damage reduced by 10-15"
     ],
     category: "Exceptional Unique Belts"
   },
@@ -1389,8 +1313,7 @@ const uniqueItems = {
       "+10 to maximum Damage",
       "Piercing Attack",
       "+15 to Dexterity",
-      "Attacker takes Damage of 1 per character level",
-      "found in v1.09 or later"
+      "Attacker takes Damage of 1 per character level"
     ],
     category: "Exceptional Unique Belts"
   },
@@ -1409,8 +1332,7 @@ const uniqueItems = {
       "15% increased Maximum Mana",
       "15% Regenerate Mana",
       "+15 to Vitality",
-      "-3 to Light Radius",
-      "found in v1.09 or later"
+      "-3 to Light Radius"
     ],
     category: "Exceptional Unique Belts"
   },
@@ -1431,8 +1353,7 @@ const uniqueItems = {
       "Adds 13-21 Cold Damage for 3 sec",
       "+2 to Chilling Armor (Sorceress only)",
       "+2 to Blizzard (Sorceress only)",
-      "+3 to Glacial Spike (Sorceress only)",
-      "found in v1.10 or later"
+      "+3 to Glacial Spike (Sorceress only)"
     ],
     category: "Exceptional Unique Belts"
   },
@@ -1453,8 +1374,7 @@ const uniqueItems = {
       "10% to maximum Lightning Resist",
       "+20 to Strength and Vitality",
       "+3 to Lightning Fury (Amazon only)",
-      "+3 to Lightning Strike (Amazon only)",
-      "found in v1.09 or later"
+      "+3 to Lightning Strike (Amazon only)"
     ],
     category: "Exceptional Unique Belts"
   },
@@ -1473,8 +1393,7 @@ const uniqueItems = {
       "+1 to all Skills",
       "+20% Faster Cast Rate",
       "5% Increased Maximum Mana",
-      "11 Charges Level 3 Venom",
-      "found in v1.10 or later"
+      "11 Charges Level 3 Venom"
     ],
     category: "Elite Unique Belts"
   },
@@ -1493,8 +1412,7 @@ const uniqueItems = {
       "-3 to Light Radius",
       "5-7% Life Stolen per Hit",
       "+15 to Strength",
-      "10% increased Attack Speed",
-      "found in v1.10 or later"
+      "10% increased Attack Speed"
     ],
     category: "Elite Unique Belts"
   },
@@ -1513,8 +1431,7 @@ const uniqueItems = {
       "+30-40 to Vitality",
       "+10-13 Replenish Life",
       "+100-120 Maximum Stamina",
-      "Damage Reduced by 10-15%",
-      "found in v1.10 or later"
+      "Damage Reduced by 10-15%"
     ],
     category: "Elite Unique Belts"
   },
@@ -1533,8 +1450,7 @@ const uniqueItems = {
       "+45% Fire Resist",
       "Adds 3-6 Fire Damage",
       "+15 to Life",
-      "15% to maximum Fire Resist",
-      "found in v1.09 or later"
+      "15% to maximum Fire Resist"
     ],
     category: "Unique Boots"
   },
@@ -1553,8 +1469,7 @@ const uniqueItems = {
       "20% Faster Run/Walk",
       "2% Mana stolen per hit",
       "+12 to Defense",
-      "Attacker takes damage of 2",
-      "found in v1.09 or later"
+      "Attacker takes damage of 2"
     ],
     category: "Unique Boots"
   },
@@ -1573,8 +1488,7 @@ const uniqueItems = {
       "50% slower Stamina Drain",
       "30% Faster Run/Walk",
       "+50 Defense vs. missle",
-      "+10 to Life",
-      "found in v1.09 or later"
+      "+10 to Life"
     ],
     category: "Unique Boots"
   },
@@ -1593,8 +1507,7 @@ const uniqueItems = {
       "-1 to Light Radius",
       "Damage Reduced by 1",
       "Magic damage reduced by 1",
-      "+15 to Defense",
-      "found in v1.09 or later"
+      "+15 to Defense"
     ],
     category: "Unique Boots"
   },
@@ -1614,8 +1527,7 @@ const uniqueItems = {
       "+35 Defense",
       "+5 to Dexterity",
       "+5 to Strength",
-      "+2 to Vigor (Paladin only)",
-      "found in v1.09 or later"
+      "+2 to Vigor (Paladin only)"
     ],
     category: "Unique Boots"
   },
@@ -1637,8 +1549,7 @@ const uniqueItems = {
       "+30% Fire Resist",
       "10% to maximum Fire Resist",
       "40-70% extra Gold from monsters",
-      "+2 to Light Radius",
-      "found in v1.09 or later"
+      "+2 to Light Radius"
     ],
     category: "Exceptional Unique Boots"
   },
@@ -1659,8 +1570,7 @@ const uniqueItems = {
       "+5% to maximum Fire Resist",
       "+50% Heal Stamina",
       "+40 to maximum Stamina",
-      "+45-65 to Life",
-      "found in v1.09 or later"
+      "+45-65 to Life"
     ],
     category: "Exceptional Unique Boots"
   },
@@ -1679,8 +1589,7 @@ const uniqueItems = {
       "Run/Walk",
       "+5 to Mana after each kill",
       "10% increased maximum Mana",
-      "+200 Defense vs. missles",
-      "found in v1.09 or later"
+      "+200 Defense vs. missles"
     ],
     category: "Exceptional Unique Boots"
   },
@@ -1700,8 +1609,7 @@ const uniqueItems = {
       "Adds 15-25 Damage",
       "40% Slower Stamina Drain",
       "Attacker takes Damage of 5-10",
-      "30-50% better chance of getting Magic Items",
-      "found in v1.09 or later"
+      "30-50% better chance of getting Magic Items"
     ],
     category: "Exceptional Unique Boots"
   },
@@ -1721,8 +1629,7 @@ const uniqueItems = {
       "15% chance of Crushing Blow",
       "15% chance of Deadly Strike",
       "-25% Requirements",
-      "+20 to maximum Stamina",
-      "found in v1.09 or later"
+      "+20 to maximum Stamina"
     ],
     category: "Exceptional Unique Boots"
   },
@@ -1744,8 +1651,7 @@ const uniqueItems = {
       "+10-15 to Vitality",
       "50% Slower Stamina Drain",
       "+40-70% Poison Resist",
-      "Repairs 1 Durability in 20 seconds",
-      "found in v1.10 or later"
+      "Repairs 1 Durability in 20 seconds"
     ],
     category: "Elite Unique Boots"
   },
@@ -1768,8 +1674,7 @@ const uniqueItems = {
       "+10% Heal Stamina",
       "Half Freeze Duration",
       "13 Charges Level 33 Bone Prison",
-      "10 Charges Level 12 Life Tap",
-      "found in v1.10 or later"
+      "10 Charges Level 12 Life Tap"
     ],
     category: "Elite Unique Boots"
   },
@@ -1788,9 +1693,7 @@ const uniqueItems = {
       "+30% Faster Run/Walk",
       "+30% Faster Hit Recovery",
       "+15-25 to Dexterity",
-      "-20% Requirements",
-      "Ladder only",
-      "found in v1.10 or later"
+      "-20% Requirements"
     ],
     category: "Elite Unique Boots"
   },
@@ -1807,8 +1710,7 @@ const uniqueItems = {
       "+100% Enhanced Damage",
       "+28 to Attack Rating",
       "+2 to Mana after each kill",
-      "+10 to Life",
-      "found in v1.09 or later"
+      "+10 to Life"
     ],
     category: "Unique Bows"
   },
@@ -1824,8 +1726,7 @@ const uniqueItems = {
       "Fires level 3 Magic Arrows",
       "+50 to Attack Rating",
       "Adds 1-3 Damage",
-      "30% increased attack speed",
-      "found in v1.10 or later"
+      "30% increased attack speed"
     ],
     category: "Unique Bows"
   },
@@ -1842,8 +1743,7 @@ const uniqueItems = {
       "Fires level 3 Explosive Arrows",
       "50% bonus to Attack Rating",
       "+3 to Dexterity",
-      "+3 to Strength",
-      "found in v1.10 or later"
+      "+3 to Strength"
     ],
     category: "Unique Bows"
   },
@@ -1861,8 +1761,7 @@ const uniqueItems = {
       "+100% Damage to Undead",
       "+10 to all Resistances",
       "+60 to Attack Rating",
-      "50% Increased Attack Speed",
-      "found in v1.09 or later"
+      "50% Increased Attack Speed"
     ],
     category: "Unique Bows"
   },
@@ -1880,8 +1779,7 @@ const uniqueItems = {
       "+25% Lightning Resist",
       "+28 to Attack Rating",
       "Adds 1-30 Lightning Damage",
-      "+8 to Strength",
-      "found in v1.09 or later"
+      "+8 to Strength"
     ],
     category: "Unique Bows"
   },
@@ -1901,8 +1799,7 @@ const uniqueItems = {
       "+15 to Energy",
       "+30 to Mana",
       "20% Increased Attack Speed",
-      "-20-35% to enemy Cold Resist",
-      "found in v1.10 or later"
+      "-20-35% to enemy Cold Resist"
     ],
     category: "Unique Bows"
   },
@@ -1921,8 +1818,7 @@ const uniqueItems = {
       "+50-75 to Attack Rating",
       "+12 to Dexterity",
       "10% increased attack speed",
-      "+1 to Fire Skills",
-      "found in v1.09 or later"
+      "+1 to Fire Skills"
     ],
     category: "Unique Bows"
   },
@@ -1939,8 +1835,7 @@ const uniqueItems = {
       "+1 to Amazon Skill levels",
       "3% Mana stolen per hit",
       "+5 to Strength",
-      "+2 to Exploding Arrow (Amazon only)",
-      "found in v1.09 or later"
+      "+2 to Exploding Arrow (Amazon only)"
     ],
     category: "Unique Bows"
   },
@@ -1959,8 +1854,7 @@ const uniqueItems = {
       "30% Increased Attack Rate",
       "+100 to Attack Rating",
       "+1 to Amazon Skill Levels (Amazon only)",
-      "+10 to Energy",
-      "found in v1.09 or later"
+      "+10 to Energy"
     ],
     category: "Exceptional Unique Bows"
   },
@@ -1978,8 +1872,7 @@ const uniqueItems = {
       "30% chance of Open Wounds",
       "30% Increased Attack Speed",
       "7-10% Life stolen per hit",
-      "+35 to Mana",
-      "found in v1.09 or later"
+      "+35 to Mana"
     ],
     category: "Exceptional Unique Bows"
   },
@@ -1997,8 +1890,7 @@ const uniqueItems = {
       "Piercing Attack",
       "Adds 40-180 Fire Damage",
       "+3 to Immolation Arrow (Amazon only)",
-      "+3 to Bow and Crossbow Skills (Amazon only)",
-      "found in v1.10 or later"
+      "+3 to Bow and Crossbow Skills (Amazon only)"
     ],
     category: "Exceptional Unique Bows"
   },
@@ -2016,8 +1908,7 @@ const uniqueItems = {
       "+35% Cold Resist",
       "+50 Defense vs. missles",
       "+40 to Mana",
-      "+3-5 to Strafe (Amazon only)",
-      "found in v1.09 or later"
+      "+3-5 to Strafe (Amazon only)"
     ],
     category: "Exceptional Unique Bows"
   },
@@ -2035,8 +1926,7 @@ const uniqueItems = {
       "2% chance to cast level 5 Amplify Damage on striking",
       "+1 per character level % Deadly strike",
       "+40 to all Resistances",
-      "2 sockets",
-      "found in v1.10 or later"
+      "2 sockets"
     ],
     category: "Exceptional Unique Bows"
   },
@@ -2054,8 +1944,7 @@ const uniqueItems = {
       "+80 Defense vs. missles",
       "+50 to Life",
       "Knockback",
-      "+2 to Amazon Skill Levels",
-      "found in v1.09 or later"
+      "+2 to Amazon Skill Levels"
     ],
     category: "Exceptional Unique Bows"
   },
@@ -2076,8 +1965,7 @@ const uniqueItems = {
       "Magic Damage reduced by 9-13",
       "+10 to Dexterity",
       "+3 to Guided Arrow (Amazon only)",
-      "+1 to Amazon Skill Levels",
-      "found in v1.09 or later"
+      "+1 to Amazon Skill Levels"
     ],
     category: "Exceptional Unique Bows"
   },
@@ -2096,8 +1984,7 @@ const uniqueItems = {
       "50% Increased Attack Speed",
       "5% chance to cast level 7 Fist of Heavens on striking",
       "+12 Replenish Life",
-      "+100-150% Bonus to Attack Rating",
-      "found in v1.09 or later"
+      "+100-150% Bonus to Attack Rating"
     ],
     category: "Exceptional Unique Bows"
   },
@@ -2115,8 +2002,7 @@ const uniqueItems = {
       "+(6 per character level) to Attack Rating",
       "Ignore's Target Defense",
       "+25 to Dexterity",
-      "+1 to Amazon Skills",
-      "found in v1.09 or later"
+      "+1 to Amazon Skills"
     ],
     category: "Elite Unique Bows"
   },
@@ -2133,9 +2019,7 @@ const uniqueItems = {
       "Ignore Target's Defense",
       "33% Deadly Strike",
       "+3-5 to Guided Arrow",
-      "Fires level 11 Magic Arrows",
-      "Ladder only; reported to be found in single player in v1.13",
-      "found in v1.10 or later"
+      "Fires level 11 Magic Arrows"
     ],
     category: "Elite Unique Bows"
   },
@@ -2155,8 +2039,7 @@ const uniqueItems = {
       "6-8% Mana stolen per hit",
       "+30% Heal Stamina",
       "+5 to Dexterity",
-      "Knockback",
-      "found in v1.09 or later"
+      "Knockback"
     ],
     category: "Elite Unique Bows"
   },
@@ -2174,8 +2057,7 @@ const uniqueItems = {
       "+30% Poison Resist",
       "+40 to Attack Rating",
       "+10 to Life",
-      "+10 to Dexterity",
-      "found in any patch"
+      "+10 to Dexterity"
     ],
     category: "Unique Crossbows"
   },
@@ -2193,8 +2075,7 @@ const uniqueItems = {
       "Piercing Attack",
       "Adds 30 Poison Damage for 3 seconds",
       "+50 to Attack Rating",
-      "+20 to Dexterity",
-      "found in v1.09 or later"
+      "+20 to Dexterity"
     ],
     category: "Unique Crossbows"
   },
@@ -2213,8 +2094,7 @@ const uniqueItems = {
       "15% to Max Fire resist",
       "15% Fire Resist",
       "+70 to Attack Rating",
-      "20% Increased Attack Speed",
-      "found in v1.10 or later"
+      "20% Increased Attack Speed"
     ],
     category: "Unique Crossbows"
   },
@@ -2231,8 +2111,7 @@ const uniqueItems = {
       "Piercing Attack",
       "+1 to Amazon Skill levels",
       "+15 to Life",
-      "+30% increased Attack Speed",
-      "found in v1.09 or later"
+      "+30% increased Attack Speed"
     ],
     category: "Unique Crossbows"
   },
@@ -2251,8 +2130,7 @@ const uniqueItems = {
       "Adds 1-212 Lightning Damage",
       "+30 to Life",
       "Knockback",
-      "30-60% better chance of getting Magic items",
-      "found in v1.09 or later"
+      "30-60% better chance of getting Magic item"
     ],
     category: "Exceptional Unique Crossbows"
   },
@@ -2271,8 +2149,7 @@ const uniqueItems = {
       "9% chance to cast level 6 Poison Nova when struck",
       "4% chance to cast level 1 Lower Resist",
       "+5 per character level to Attack Rating",
-      "+2 to Necromancer Skill Levels",
-      "found in v1.09 or later"
+      "+2 to Necromancer Skill Levels"
     ],
     category: "Exceptional Unique Crossbows"
   },
@@ -2292,8 +2169,7 @@ const uniqueItems = {
       "+3 Freezes Target",
       "+75-150 Defense",
       "+35 to Dexterity",
-      "80% Increased Attack Speed",
-      "found in v1.09 or later"
+      "80% Increased Attack Speed"
     ],
     category: "Exceptional Unique Crossbows"
   },
@@ -2312,8 +2188,7 @@ const uniqueItems = {
       "+632 to Attack Rating",
       "Piercing Attack",
       "+321 Defense",
-      "+36 to Mana",
-      "found in v1.10 or later"
+      "+36 to Mana"
     ],
     category: "Exceptional Unique Crossbows"
   },
@@ -2333,8 +2208,7 @@ const uniqueItems = {
       "Adds 63-324 Cold Damage",
       "Adds 63-324 Lightning Damage",
       "+20% Increased Attack Speed",
-      "150 Charges Level 18 Immolation Arrow",
-      "found in v1.10 or later"
+      "150 Charges Level 18 Immolation Arrow"
     ],
     category: "Elite Unique Crossbows"
   },
@@ -2351,8 +2225,7 @@ const uniqueItems = {
       "Piercing Attack",
       "12-18% Life Stolen per Hit",
       "33% Chance of Open Wounds",
-      "Slows Target by 25%",
-      "found in v1.10 or later"
+      "Slows Target by 25%"
     ],
     category: "Elite Unique Crossbows"
   },
@@ -2366,8 +2239,7 @@ const uniqueItems = {
       "Req Level: 4",
       "-5 to Mana",
       "Adds 1-15 to Damage",
-      "100% better chance of getting magic item",
-      "found in v1.09 or later"
+      "100% better chance of getting magic items"
     ],
     category: "Unique Daggers"
   },
@@ -2385,8 +2257,7 @@ const uniqueItems = {
       "+25% Fire Resist",
       "+10 to Dexterity",
       "30% increased attack speed",
-      "Ignores Target Defense",
-      "found in v1.09 or later"
+      "Ignores Target Defense"
     ],
     category: "Unique Daggers"
   },
@@ -2403,8 +2274,7 @@ const uniqueItems = {
       "Cannot be Frozen",
       "+180 Poison Damage for 4 sec",
       "+95% Poison Resist",
-      "+20% to maximum Poison Resist",
-      "found in v1.09 or later"
+      "+20% to maximum Poison Resist"
     ],
     category: "Unique Daggers"
   },
@@ -2421,8 +2291,7 @@ const uniqueItems = {
       "50% Faster Cast Rate",
       "+10 to All Resistances",
       "+55 to Attack Rating",
-      "+50 to Mana",
-      "found in v1.09 or later"
+      "+50 to Mana"
     ],
     category: "Unique Daggers"
   },
@@ -2442,8 +2311,7 @@ const uniqueItems = {
       "Prevent Monster Heal",
       "Ignore Targets Defense",
       "8% Life stolen per hit",
-      "+10 to Dexterity",
-      "found in v1.09 or later"
+      "+10 to Dexterity"
     ],
     category: "Exceptional Unique Daggers"
   },
@@ -2463,8 +2331,7 @@ const uniqueItems = {
       "Ignores targets defense",
       "+4 to Grim Ward (Barbarian only)",
       "+4 to Find Item (Barbarian only)",
-      "+4 to Find Potion (Barbarian only)",
-      "found in v1.09 or later"
+      "+4 to Find Potion (Barbarian only)"
     ],
     category: "Exceptional Unique Daggers"
   },
@@ -2485,8 +2352,7 @@ const uniqueItems = {
       "+50 Defense",
       "+4 to Poison Nova (Necromancer only)",
       "+4 to Poison Explosion (Necromancer only)",
-      "+5 to Poison Dagger (Necromancer only)",
-      "found in v1.09 or later"
+      "+5 to Poison Dagger (Necromancer only)"
     ],
     category: "Exceptional Unique Daggers"
   },
@@ -2504,8 +2370,7 @@ const uniqueItems = {
       "Adds 1-120 Lightning Damage",
       "25% chance to cast level 3 Charged Bolt when struck",
       "+1 per character level to Lightning Resist",
-      "Attacker takes Lightning Damage of 20",
-      "found in v1.09 or later"
+      "Attacker takes Lightning Damage of 20"
     ],
     category: "Exceptional Unique Daggers"
   },
@@ -2523,8 +2388,7 @@ const uniqueItems = {
       "15% Regenerate Mana",
       "15% increased maximum Mana",
       "+75 to all Resistances",
-      "Indestructible",
-      "found in any patch"
+      "Indestructible"
     ],
     category: "Elite Unique Daggers"
   },
@@ -2544,8 +2408,7 @@ const uniqueItems = {
       "33% Deadly Strike",
       "50% Chance of Open Wounds",
       "Prevent Monster Heal",
-      "Slows Target by 20%",
-      "found in v1.10 or later"
+      "Slows Target by 20%"
     ],
     category: "Elite Unique Daggers"
   },
@@ -2564,8 +2427,7 @@ const uniqueItems = {
       "+108 Magic Damage",
       "10-15% Mana Stolen per Hit",
       "+2 to Light Radius",
-      "Ethereal",
-      "found in v1.10 or later"
+      "Ethereal"
     ],
     category: "Elite Unique Daggers"
   },
@@ -2583,8 +2445,7 @@ const uniqueItems = {
       "3% Life Stolen per hit",
       "3% Mana Stolen per hit",
       "+10% Poison Resist",
-      "+20 to Mana",
-      "found in v1.09 or later"
+      "+20 to Mana"
     ],
     category: "Unique Gloves"
   },
@@ -2602,8 +2463,7 @@ const uniqueItems = {
       "10% Increased Attack Speed",
       "30% Faster Hit Recovery",
       "+40 to Life",
-      "+5 to min Damage",
-      "found in v1.09 or later"
+      "+5 to min Damage"
     ],
     category: "Unique Gloves"
   },
@@ -2621,8 +2481,7 @@ const uniqueItems = {
       "+15 to Defense",
       "+25 to Attack Rating",
       "25-40% better chance of getting Magic Item",
-      "200% extra Gold from monsters",
-      "found in v1.09 or later"
+      "200% extra Gold from monsters"
     ],
     category: "Unique Gloves"
   },
@@ -2640,8 +2499,7 @@ const uniqueItems = {
       "+1 to Fire Skills",
       "20% Faster Cast Rate",
       "Regenerate Mana 25%",
-      "Add 1-6 Fire Damage",
-      "found in v1.09 or later"
+      "Add 1-6 Fire Damage"
     ],
     category: "Unique Gloves"
   },
@@ -2658,8 +2516,7 @@ const uniqueItems = {
       "5% Enhanced Damage",
       "Increased maximum Mana 40%",
       "Adds 1-6 Cold Damage for 2 seconds",
-      "+30 Defense",
-      "found in v1.09 or later"
+      "+30 Defense"
     ],
     category: "Unique Gloves"
   },
@@ -2678,8 +2535,7 @@ const uniqueItems = {
       "+60 Poison Damage for 4 sec",
       "5% Life Stolen per hit",
       "5% to maximum Poison Resist",
-      "+30% Poison Resist",
-      "found in v1.09 or later"
+      "+30% Poison Resist"
     ],
     category: "Exceptional Unique Gloves"
   },
@@ -2695,8 +2551,7 @@ const uniqueItems = {
       "+140-180% Enhanced Defense",
       "+100-200% Damage to Undead",
       "+100-200 to Attack Rating vs. Undead",
-      "+10 to Energy and Strength",
-      "found in v1.09 or later"
+      "+10 to Energy and Strength"
     ],
     category: "Exceptional Unique Gloves"
   },
@@ -2713,8 +2568,7 @@ const uniqueItems = {
       "+8 per character level to Attack Rating vs. Undead",
       "+2 per character level to % Damage vs. Undead",
       "4-5% Mana stolen per hit",
-      "+20 to Life",
-      "found in v1.09 or later"
+      "+20 to Life"
     ],
     category: "Exceptional Unique Gloves"
   },
@@ -2732,8 +2586,7 @@ const uniqueItems = {
       "Half Freeze Duration",
       "Adds 13-46 Fire Damage",
       "20% Increased Attack Speed",
-      "+24% Fire Resist",
-      "found in v1.09 or later"
+      "+24% Fire Resist"
     ],
     category: "Exceptional Unique Gloves"
   },
@@ -2750,8 +2603,7 @@ const uniqueItems = {
       "4% chance to cast level 12 Firestorm on striking",
       "2% chance to cast level 4 Meteor on striking",
       "+15 Fire Absorb",
-      "Adds 15-72 Fire Damage",
-      "found in v1.09 or later"
+      "Adds 15-72 Fire Damage"
     ],
     category: "Exceptional Unique Gloves"
   },
@@ -2769,8 +2621,7 @@ const uniqueItems = {
       "+5-10 Life after each Kill",
       "25% Chance of Open Wounds",
       "7-10% Life Stolen per Hit",
-      "5% Chance to cast Level 10 Life Tap on striking",
-      "found in v1.10 or later"
+      "5% Chance to cast Level 10 Life Tap on striking"
     ],
     category: "Elite Unique Gloves"
   },
@@ -2787,8 +2638,7 @@ const uniqueItems = {
       "4-7% Mana Stolen per Hit",
       "4-7% Life Stolen per Hit",
       "-50 to Monster Defense",
-      "8% Chance to cast Level 3 Weaken on striking",
-      "found in v1.10 or later"
+      "8% Chance to cast Level 3 Weaken on striking"
     ],
     category: "Elite Unique Gloves"
   },
@@ -2804,8 +2654,7 @@ const uniqueItems = {
       "+170-210 Defense",
       "+30-60% Enhanced Damage",
       "10% Chance of Crushing Blow",
-      "+15-20 to Strength",
-      "found in v1.10 or later"
+      "+15-20 to Strength"
     ],
     category: "Elite Unique Gloves"
   },
@@ -2821,8 +2670,7 @@ const uniqueItems = {
       "+30 to Attack Rating",
       "+15 to Mana",
       "+14 to Defense",
-      "+15 to Life",
-      "found in any patch"
+      "+15 to Life"
     ],
     category: "Unique Helms"
   },
@@ -2837,8 +2685,7 @@ const uniqueItems = {
       "Req Level: 15",
       "+1 to all Skill Levels",
       "25-50% chance of getting Magic item",
-      "75% extra gold from Monsters",
-      "found in any patch"
+      "75% extra gold from Monsters"
     ],
     category: "Unique Helms"
   },
@@ -2855,8 +2702,7 @@ const uniqueItems = {
       "+10 to Defense",
       "Hit blinds target",
       "Lightning Resist +15%",
-      "+100% Defense against missles",
-      "found in v1.09 or later"
+      "+100% Defense against missles"
     ],
     category: "Unique Helms"
   },
@@ -2874,8 +2720,7 @@ const uniqueItems = {
       "Damage reduced by 7",
       "+8 to maximum Damage",
       "+10-20 to Defense",
-      "+15 to All Resistances",
-      "found in v1.09 or later"
+      "+15 to All Resistances"
     ],
     category: "Unique Helms"
   },
@@ -2893,8 +2738,7 @@ const uniqueItems = {
       "Knockback",
       "25% Hit causes monster to flee",
       "Magic Damage Reduced by 2",
-      "Attacker takes damage of 3",
-      "found in v1.09 or later"
+      "Attacker takes damage of 3"
     ],
     category: "Unique Helms"
   },
@@ -2911,8 +2755,7 @@ const uniqueItems = {
       "50% Hit causes monsters to flee",
       "+10 to All Resistances",
       "+25 to Defense",
-      "+20 to Strength",
-      "found in v1.09 or later"
+      "+20 to Strength"
     ],
     category: "Unique Helms"
   },
@@ -2932,8 +2775,7 @@ const uniqueItems = {
       "Half Freeze Duration",
       "5% Life Stolen per hit",
       "+50% Poison Resist",
-      "+40 to Defense",
-      "found in v1.09 or later"
+      "+40 to Defense"
     ],
     category: "Unique Helms"
   },
@@ -2950,8 +2792,7 @@ const uniqueItems = {
       "5% Life stolen per hit",
       "+80 Poison Damage over 8 sec",
       "+25% Poison Resist",
-      "+10 to Mana",
-      "found in v1.09 or later"
+      "+10 to Mana"
     ],
     category: "Unique Helms"
   },
@@ -2968,8 +2809,7 @@ const uniqueItems = {
       "+1 to all Skills",
       "15% Faster Run/Walk",
       "+6-12 Replenish Life",
-      "+20 to Energy and Vitality",
-      "found in v1.09 or later"
+      "+20 to Energy and Vitality"
     ],
     category: "Unique Exceptional Helms"
   },
@@ -2988,8 +2828,7 @@ const uniqueItems = {
       "+20-40% Cold Resist",
       "+20-50% Fire Resist",
       "+20-40% Lightning Resist",
-      "+15 to Vitality",
-      "found in v1.09 or later"
+      "+15 to Vitality"
     ],
     category: "Unique Exceptional Helms"
   },
@@ -3007,8 +2846,7 @@ const uniqueItems = {
       "10% Faster Hit Recovery",
       "5% Life Stolen per hit",
       "5% Mana stolen per hit",
-      "30-50% better chance of getting Magic Items",
-      "found in v1.09 or later"
+      "30-50% better chance of getting Magic Items"
     ],
     category: "Unique Exceptional Helms"
   },
@@ -3027,8 +2865,7 @@ const uniqueItems = {
       "Cannot be Frozen",
       "+20-40% Fire Resist",
       "5% Mana Stolen per hit",
-      "-4 to Light Radius",
-      "found in v1.09 or later"
+      "-4 to Light Radius"
     ],
     category: "Unique Exceptional Helms"
   },
@@ -3045,8 +2882,7 @@ const uniqueItems = {
       "+1-2 to Amazon Skill Levels",
       "20% Faster Run/Walk",
       "20% Faster Hit Recovery",
-      "+2-4 to Mana after each kill",
-      "found in v1.09 or later"
+      "+2-4 to Mana after each kill"
     ],
     category: "Unique Exceptional Helms"
   },
@@ -3064,8 +2900,7 @@ const uniqueItems = {
       "Attacker takes Lightning Damage of 25",
       "Prevent Monster Heal",
       "+20 Lightning Absorb",
-      "+15% Lightning Resist",
-      "found in v1.09 or later"
+      "+15% Lightning Resist"
     ],
     category: "Unique Exceptional Helms"
   },
@@ -3084,8 +2919,7 @@ const uniqueItems = {
       "+35 to Mana",
       "+50 to Life",
       "+25 to Dexterity",
-      "80-100% Extra Gold from Monsters",
-      "found in v1.09 or later"
+      "80-100% Extra Gold from Monsters"
     ],
     category: "Unique Exceptional Helms"
   },
@@ -3104,8 +2938,7 @@ const uniqueItems = {
       "6-8% Life stolen per hit",
       "6-8% Mana stolen per hit",
       "Damage reduced by 15-20%",
-      "Magic Damage reduced by 10-15",
-      "found in v1.09 or later"
+      "Magic Damage reduced by 10-15"
     ],
     category: "Unique Exceptional Helms"
   },
@@ -3126,8 +2959,7 @@ const uniqueItems = {
       "+2 to Dexterity",
       "+2 to Vitality",
       "+2 to Energy",
-      "50% better chance to get Magic Items",
-      "found in v1.09 or later"
+      "50% better chance to get Magic Items"
     ],
     category: "Unique Elite Helms"
   },
@@ -3143,8 +2975,7 @@ const uniqueItems = {
       "+100-130% Enhanced Defense",
       "+10-18 Replenish Life",
       "+4-8% Mana Stolen per Hit",
-      "+5-11 Fire Absorb",
-      "found in v1.10 or later"
+      "+5-11 Fire Absorb"
     ],
     category: "Unique Elite Helms"
   },
@@ -3161,8 +2992,7 @@ const uniqueItems = {
       "-4 to Light Radius",
       "+50 to all Resistances",
       "+140 to Defense",
-      "+15 to Strength and Vitality",
-      "found in v1.09 or later"
+      "+15 to Strength and Vitality"
     ],
     category: "Unique Elite Helms"
   },
@@ -3181,8 +3011,7 @@ const uniqueItems = {
       "+10-20 to Dexterity",
       "+5-9 Cold Absorb",
       "Half Freeze Duration",
-      "-50% Requirements",
-      "found in v1.10 or later"
+      "-50% Requirements"
     ],
     category: "Unique Elite Helms"
   },
@@ -3204,9 +3033,7 @@ const uniqueItems = {
       "-30% Fire Resist",
       "+70% Poison Resist",
       "15% Chance to cast Level 15 Poison Nova when struck",
-      "20 Charges Level 3 Venom",
-      "Originally was Ladder only, but has been reportedly found in single player games.",
-      "found in v1.10 or later"
+      "20 Charges Level 3 Venom"
     ],
     category: "Unique Elite Helms"
   },
@@ -3225,8 +3052,7 @@ const uniqueItems = {
       "Damage Reduced by 10-15%",
       "+20-30 to all Resistances",
       "+30% Faster Hit Recovery",
-      "1-2 Sockets",
-      "found in v1.10 or later"
+      "1-2 Sockets"
     ],
     category: "Unique Elite Helms"
   },
@@ -3243,8 +3069,7 @@ const uniqueItems = {
       "+250-320 Defense",
       "10% Chance of Crushing Blow",
       "Knockback",
-      "+25-35 to Strength",
-      "found in v1.10 or later"
+      "+25-35 to Strength"
     ],
     category: "Unique Elite Helms"
   },
@@ -3259,9 +3084,7 @@ const uniqueItems = {
       "+50-120 Defense",
       "+20% Faster Hit Recovery",
       "Cannot be Frozen",
-      "+50-70 to all Resistances",
-      "Ladder only, but it has been found in single player games (thanks, David!)",
-      "found in v1.10 or later"
+      "+50-70 to all Resistances"
     ],
     category: "Elite Unique Circlets"
   },
@@ -3277,9 +3100,7 @@ const uniqueItems = {
       "+1 to all Skills",
       "+25% Faster Cast Rate",
       "-15-20% to Enemy Lightning Resistance",
-      "+10-15% to Lightning Skill Damage",
-      "Originally found in Ladder only, but has been reportedly found in single player games.",
-      "found in v1.10 or later"
+      "+10-15% to Lightning Skill Damage"
     ],
     category: "Elite Unique Circlets"
   },
@@ -3298,8 +3119,7 @@ const uniqueItems = {
       "+81 to Attack Rating",
       "+97 to Attack Rating (based on Character Level)",
       "Prevent Monster Heal",
-      "Increased Stack Size",
-      "found in v1.11 or later"
+      "Increased Stack Size"
     ],
     category: "Unique Javelins"
   },
@@ -3318,8 +3138,7 @@ const uniqueItems = {
       "+130% Enhanced Damage",
       "Ignore Target's Defense",
       "Prevent Monster Heal",
-      "+8 to LIght Radius",
-      "found in v1.11 or later"
+      "+8 to Light Radius"
     ],
     category: "Unique Javelins"
   },
@@ -3338,8 +3157,7 @@ const uniqueItems = {
       "+12 Damage",
       "25% chance of Crushing Blow",
       "25% Deadly Strike",
-      "20% chance of Open Wounds",
-      "found in v1.11 or later"
+      "20% chance of Open Wounds"
     ],
     category: "Unique Javelins"
   },
@@ -3359,8 +3177,7 @@ const uniqueItems = {
       "+30% Increased Attack Speed",
       "6-12% Life Stolen per hit",
       "Replenishes Quantity",
-      "Max stack: 80",
-      "found in v1.10 or later"
+      "Max stack: 80"
     ],
     category: "Elite Unique Javelins"
   },
@@ -3379,9 +3196,7 @@ const uniqueItems = {
       "+15 to Mana after each Kill",
       "Replenishes Quantity",
       "Ethereal",
-      "Max stack: 75",
-      "Ladder only",
-      "found in v1.10 or later"
+      "Max stack: 75"
     ],
     category: "Elite Unique Javelins"
   },
@@ -3400,8 +3215,7 @@ const uniqueItems = {
       "60 Charges Level 11 Plague Javelin",
       "9-15% Life stolen per Hit",
       "Replenishes Quantity",
-      "Max stack: 80",
-      "found in v1.10 or later"
+      "Max stack: 80"
     ],
     category: "Elite Unique Javelins"
   },
@@ -3415,8 +3229,7 @@ const uniqueItems = {
       "+10% to max Fire Resist",
       "+20% Faster Hit Recovery",
       "+50% Fire Resist",
-      "Adds 3-6 Fire Damage<",
-      "found in v1.09 or later"
+      "Adds 3-6 Fire Damage<"
     ],
     category: "Unique Amulets"
   },
@@ -3430,8 +3243,7 @@ const uniqueItems = {
       "+1 to Skill Levels",
       "3-7% Life stolen per hit",
       "Adds 1-5 Cold Damage for 2-10 sec",
-      "+10-40 Defense vs. Missles",
-      "found in any patch"
+      "+10-40 Defense vs. Missles"
     ],
     category: "Unique Amulets"
   },
@@ -3445,8 +3257,7 @@ const uniqueItems = {
       "+10 to Vitality, Dexterity, Energy, and Strength",
       "+10% Enhanced Defense",
       "+10% bonus to Attack Rating",
-      "+10 to all Resistances",
-      "found in v1.09 or later"
+      "+10 to all Resistances"
     ],
     category: "Unique Amulets"
   },
@@ -3458,8 +3269,7 @@ const uniqueItems = {
       "Req Level: 47",
       "10% chance to cast level 2 Iron Maiden when struck",
       "+15-25 to All Resistances",
-      "+12 to Dexterity, Strength, Vitality, and Energy",
-      "found in v1.09 or later"
+      "+12 to Dexterity, Strength, Vitality, and Energy"
     ],
     category: "Unique Amulets"
   },
@@ -3473,8 +3283,7 @@ const uniqueItems = {
       "+100 Defense against missles",
       "+100 Defense",
       "+25 to Dexterity",
-      "+20% Increased Attack Speed",
-      "found in v1.09 or later"
+      "+20% Increased Attack Speed"
     ],
     category: "Unique Amulets"
   },
@@ -3489,8 +3298,7 @@ const uniqueItems = {
       "-2 to Light Radius",
       "11-15% Mana stolen per hit",
       "Magic Damage is reduced by 10",
-      "+45 to Mana",
-      "found in v1.09 or later"
+      "+45 to Mana"
     ],
     category: "Unique Amulets"
   },
@@ -3505,8 +3313,7 @@ const uniqueItems = {
       "+3 to Light Radius",
       "+75% Poison Resist",
       "Attacker takes damage of 5",
-      "+40 Poison Damage over 4 sec",
-      "found in v1.09 or later"
+      "+40 Poison Damage over 4 sec"
     ],
     category: "Unique Amulets"
   },
@@ -3521,8 +3328,7 @@ const uniqueItems = {
       "+10 Replenish Life",
       "+4 to Light Radius",
       "Adds 24-48 Fire Damage",
-      "Adds 0.75 per character level to Fire Absorb",
-      "found in v1.10 or later"
+      "Adds 0.75 per character level to Fire Absorb"
     ],
     category: "Unique Amulets"
   },
@@ -3537,8 +3343,7 @@ const uniqueItems = {
       "+35% Lightning Resist",
       "Adds 1-30 Lightning Damage",
       "+0.375 per character level to Deadly Strike",
-      "Attacker takes Lightning damage of 15",
-      "found in v1.09 or later"
+      "Attacker takes Lightning damage of 15"
     ],
     category: "Unique Amulets"
   },
@@ -3553,8 +3358,7 @@ const uniqueItems = {
       "+5 to Energy",
       "+5 to Vitality",
       "+5 to Dexterity",
-      "+5 to Strength",
-      "found in v1.09 or later"
+      "+5 to Strength"
     ],
     category: "Unique Amulets"
   },
@@ -3570,9 +3374,7 @@ const uniqueItems = {
       "+150-250 to Attack Rating vs. Demons",
       "+20-50% Damage to Undead",
       "+150-250 to Attack Rating vs. Undead",
-      "+2 to Light Radius",
-      "Ladder only",
-      "found in v1.10 or later"
+      "+2 to Light Radius"
     ],
     category: "Unique Amulets"
   },
@@ -3586,9 +3388,7 @@ const uniqueItems = {
       "11 Charges Level 22 Iron Golem",
       "20 Charges Level 12 Iron Maiden",
       "+25-35 to all Resistances",
-      "+300-350 Defense",
-      "Ladder only",
-      "found in v1.10 or later"
+      "+300-350 Defense"
     ],
     category: "Unique Amulets"
   },
@@ -3601,8 +3401,7 @@ const uniqueItems = {
       "Magic Damage reduced by 3",
       "+50-75 to Attack Rating",
       "Attacker takes 3 Damage",
-      "15-30% better chance of getting magic item",
-      "found in v1.09 or later"
+      "15-30% better chance of getting magic item"
     ],
     category: "Unique Rings"
   },
@@ -3615,8 +3414,7 @@ const uniqueItems = {
       "4-7% Mana stolen per hit",
       "+5-8 Replenish Life",
       "20% Regenerate Mana",
-      "+20 to Life",
-      "found in v1.09 or later"
+      "+20 to Life"
     ],
     category: "Unique Rings"
   },
@@ -3629,8 +3427,7 @@ const uniqueItems = {
       "+1 to all Skill levels",
       "Increase max Mana 25%",
       "Adds 1-12 Lightning damage",
-      "+20 to Mana",
-      "found in any patch"
+      "+20 to Mana"
     ],
     category: "Unique Rings"
   },
@@ -3645,8 +3442,7 @@ const uniqueItems = {
       "+40 to maximum Stamina",
       "+40 to Life",
       "15% Fire Absorb",
-      "100% extra gold from Monsters",
-      "found in v1.09 or later"
+      "100% extra gold from Monsters"
     ],
     category: "Unique Rings"
   },
@@ -3661,8 +3457,7 @@ const uniqueItems = {
       "+40 to Mana",
       "20% Cold Absorb",
       "Cannot be frozen",
-      "Adds 15-45 Cold Damage for 4 sec",
-      "found in v1.09 or later"
+      "Adds 15-45 Cold Damage for 4 sec"
     ],
     category: "Unique Rings"
   },
@@ -3675,8 +3470,7 @@ const uniqueItems = {
       "+1 to all Skill Levels",
       "3-5% Life stolen per hit",
       "+50 to maximum Stamina",
-      "+0.5 per character level to Life",
-      "found in v1.09 or later"
+      "+0.5 per character level to Life"
     ],
     category: "Unique Rings"
   },
@@ -3692,8 +3486,7 @@ const uniqueItems = {
       "+100-160 Defense vs. Missile",
       "+55% Poison Resist",
       "10% Damage taken goes to Mana",
-      "15 Charges Level 21 Poison Creeper",
-      "found in v1.10 or later"
+      "15 Charges Level 21 Poison Creeper"
     ],
     category: "Unique Rings"
   },
@@ -3707,9 +3500,7 @@ const uniqueItems = {
       "Prevent Monster Heal",
       "+20-30% Poison Resist",
       "Damage Reduced by 7-11",
-      "27 Charges Level 5 Oak Sage",
-      "Ladder only",
-      "found in v1.10 or later"
+      "27 Charges Level 5 Oak Sage"
     ],
     category: "Unique Rings"
   },
@@ -3724,8 +3515,7 @@ const uniqueItems = {
       "10-20% better chance for getting Magic Items",
       "11 Charges Level 7 Spirit of Barbs",
       "13 Charges Level 5 Heart of Wolverine",
-      "15 Charges Level 2 Oak Sage",
-      "found in v1.10 or later"
+      "15 Charges Level 2 Oak Sage"
     ],
     category: "Unique Rings"
   },
@@ -3742,8 +3532,7 @@ const uniqueItems = {
       "+20% Fire Resist",
       "Adds 6-8 Fire Damage",
       "Knockback",
-      "+50% Damage vs. Undead",
-      "found in v1.09 or later"
+      "+50% Damage vs. Undead"
     ],
     category: "Unique Maces"
   },
@@ -3759,8 +3548,7 @@ const uniqueItems = {
       "+7 to Vitality",
       "Magic Damage reduced by 2",
       "Attacker takes Damage of 3-10",
-      "+50% Damage vs. Undead",
-      "found in v1.09 or later"
+      "+50% Damage vs. Undead"
     ],
     category: "Unique Maces"
   },
@@ -3779,8 +3567,7 @@ const uniqueItems = {
       "+50% Fire Resist",
       "+15 to Strength",
       "Knockback",
-      "+50% Damage vs. Undead",
-      "found in v1.09 or later"
+      "+50% Damage vs. Undead"
     ],
     category: "Unique Maces"
   },
@@ -3800,8 +3587,7 @@ const uniqueItems = {
       "50% bonus to Attack Rating",
       "+2 to Light Radius",
       "+3 to Sacrifice (Paladin only)",
-      "+50% Damage vs. Undead",
-      "found in v1.09 or later"
+      "+50% Damage vs. Undead"
     ],
     category: "Unique Maces"
   },
@@ -3821,8 +3607,7 @@ const uniqueItems = {
       "5% Mana stolen per hit",
       "+25 Defense",
       "Adds 1-20 Damage",
-      "+50% Damage vs. Undead",
-      "found in v1.09 or later"
+      "+50% Damage vs. Undead"
     ],
     category: "Unique Maces"
   },
@@ -3839,8 +3624,7 @@ const uniqueItems = {
       "+100-150 to Attack Rating",
       "+10 to Strength",
       "Adds 1-10 Lightning Damage",
-      "+50% Damage vs. Undead",
-      "found in v1.09 or later"
+      "+50% Damage vs. Undead"
     ],
     category: "Unique Maces"
   },
@@ -3857,8 +3641,7 @@ const uniqueItems = {
       "+100% Damage to Undead",
       "40% chance of Crushing Blow",
       "30% Cold Resist",
-      "30% Fire Resist",
-      "found in v1.09 or later"
+      "30% Fire Resist"
     ],
     category: "Unique Maces"
   },
@@ -3875,8 +3658,7 @@ const uniqueItems = {
       "40% increased Attack Speed",
       "Requirements -50%",
       "Heal Stamina +25%",
-      "+50% Damage vs. Undead",
-      "found in v1.09 or later"
+      "+50% Damage vs. Undead"
     ],
     category: "Unique Maces"
   },
@@ -3895,8 +3677,7 @@ const uniqueItems = {
       "+15 to Life after each demon kill",
       "+2 to Druid Skill Levels",
       "+50% Damage to Undead",
-      "+200 to Attack Rating against Demons",
-      "found in v1.09 or later"
+      "+200 to Attack Rating against Demons"
     ],
     category: "Exceptional Unique Maces"
   },
@@ -3917,8 +3698,7 @@ const uniqueItems = {
       "25% chance of Open Wounds",
       "+1 to Druid Skills",
       "+2 to Shape Shifting Skills (Druid only)",
-      "Prevent Monster Heal",
-      "found in v1.09 or later"
+      "Prevent Monster Heal"
     ],
     category: "Exceptional Unique Maces"
   },
@@ -3937,8 +3717,7 @@ const uniqueItems = {
       "Adds 63-112 Cold Damage for 5 sec",
       "+3 Freezes Target",
       "50 charges Level 9 Frozen Orb",
-      "Cannot be frozen",
-      "found in v1.09 or later"
+      "Cannot be frozen"
     ],
     category: "Exceptional Unique Maces"
   },
@@ -3958,8 +3737,7 @@ const uniqueItems = {
       "+2 to Light Radius",
       "5% chance to cast level 6 Meteor on striking",
       "60 charges Level 11 Meteor",
-      "Magic damage reduced by 9-12",
-      "found in v1.09 or later"
+      "Magic damage reduced by 9-12"
     ],
     category: "Exceptional Unique Maces"
   },
@@ -3980,8 +3758,7 @@ const uniqueItems = {
       "5% chance to cast level 8 Nova on striking",
       "80 charges level 15 Nova",
       "25% Lightning Resist",
-      "+100 to Mana",
-      "found in v1.09 or later"
+      "+100 to Mana"
     ],
     category: "Exceptional Unique Maces"
   },
@@ -4000,8 +3777,7 @@ const uniqueItems = {
       "30% Increase Attack Speed",
       "Hit Blinds Target",
       "Knockback",
-      "+3 to Elemental Skills (Druid only)",
-      "found in v1.09 or later"
+      "+3 to Elemental Skills (Druid only)"
     ],
     category: "Exceptional Unique Maces"
   },
@@ -4020,8 +3796,7 @@ const uniqueItems = {
       "+20 to all Resistances",
       "+25 to Strength",
       "+2 to Masteries (Barbarian only)",
-      "+3 to Mace Masteries (Barbarian only)",
-      "found in v1.09 or later"
+      "+3 to Mace Masteries (Barbarian only)"
     ],
     category: "Exceptional Unique Maces"
   },
@@ -4040,8 +3815,7 @@ const uniqueItems = {
       "5% chance to cast level 1 Iron Maiden when struck",
       "5% chance to cast level 1 Amplify Damage on striking",
       "3 charges level 8 Amplify Damage",
-      "Attacker takes Damage of 26",
-      "found in v1.09 or later"
+      "Attacker takes Damage of 26"
     ],
     category: "Exceptional Unique Maces"
   },
@@ -4063,8 +3837,7 @@ const uniqueItems = {
       "5-15% Cold Absorb",
       "+25% Increased Attack Speed",
       "12 Charges Level 16 Blizzard",
-      "+150-180% Bonus to Attack Rating",
-      "found in v1.10 or later"
+      "+150-180% Bonus to Attack Rating"
     ],
     category: "Elite Unique Maces"
   },
@@ -4085,8 +3858,7 @@ const uniqueItems = {
       "7-13% Life Stolen per Hit",
       "+15-20% Fire Resist",
       "20 Charges Level 23 Enchant",
-      "Repairs 1 Durability in 20 seconds",
-      "found in v1.10 or later"
+      "Repairs 1 Durability in 20 seconds"
     ],
     category: "Elite Unique Maces"
   },
@@ -4107,8 +3879,7 @@ const uniqueItems = {
       "Adds 1-200 Fire Damage",
       "Adds 1-200 Lightning Damage",
       "Adds 1-200 Cold Damage",
-      "+15 to Dexterity and Strength",
-      "found in v1.09 or later"
+      "+15 to Dexterity and Strength"
     ],
     category: "Elite Unique Maces"
   },
@@ -4128,8 +3899,7 @@ const uniqueItems = {
       "+50% Increased Attack Speed",
       "Slows Target by 20%",
       "20% Chance to cast Level 15 Tornado on striking",
-      "-20% Requirements",
-      "found in v1.10 or later"
+      "-20% Requirements"
     ],
     category: "Elite Unique Maces"
   },
@@ -4152,8 +3922,7 @@ const uniqueItems = {
       "15% chance to cast level 10 Static Field on striking",
       "+3-9 Lightning Absorb",
       "Attacker takes Lightning Damage of 30",
-      "20% chance to cast level 18 Tornado on striking",
-      "found in v1.10 or later"
+      "20% chance to cast level 18 Tornado on striking"
     ],
     category: "Elite Unique Maces"
   },
@@ -4175,8 +3944,7 @@ const uniqueItems = {
       "+75% Lightning Resist",
       "Adds 50-200 Lightning Damage",
       "+1 to Light Radius",
-      "+50 to Life",
-      "found in v1.09 or later"
+      "+50 to Life"
     ],
     category: "Elite Unique Maces"
   },
@@ -4196,8 +3964,7 @@ const uniqueItems = {
       "-25% Targets Defense",
       "40% Chance of Crushing Blow",
       "-100 to Monster Defense per Hit",
-      "+20-30 to Strength",
-      "found in v1.10 or later"
+      "+20-30 to Strength"
     ],
     category: "Elite Unique Maces"
   },
@@ -4215,8 +3982,7 @@ const uniqueItems = {
       "50% Chance of Crushing Blow",
       "60% Increased Attack Speed",
       "33% Chance to cast Level 22 Twister on striking",
-      "+50% Damage to Undead",
-      "found in v1.10 or later"
+      "+50% Damage to Undead"
     ],
     category: "Elite Unique Maces"
   },
@@ -4236,8 +4002,7 @@ const uniqueItems = {
       "4% chance to cast level 4 Amplify Damage on striking",
       "20% increased Attack Speed",
       "+25 to all Resistances",
-      "+25 to Strength",
-      "found in v1.09 or later"
+      "+25 to Strength"
     ],
     category: "Elite Unique Maces"
   },
@@ -4258,8 +4023,7 @@ const uniqueItems = {
       "10% Increased Attack Speed",
       "33% Chance of Crushing Blow",
       "30 Charges Level 14 Volcano",
-      "10% Faster Cast Rate",
-      "found in v1.10 or later"
+      "10% Faster Cast Rate"
     ],
     category: "Elite Unique Maces"
   },
@@ -4276,8 +4040,7 @@ const uniqueItems = {
       "+100% Enhanced Damage",
       "-8 Defense",
       "+15 Dexterity",
-      "+20% Increased Attack Speed",
-      "found in any patch"
+      "+20% Increased Attack Speed"
     ],
     category: "Unique Polearms"
   },
@@ -4295,8 +4058,7 @@ const uniqueItems = {
       "30% Deadly Strike",
       "75% Hit causes monster to flee",
       "+5 to All Resistances",
-      "+30 to Attack Rating",
-      "found in v1.09 or later"
+      "+30 to Attack Rating"
     ],
     category: "Unique Polearms"
   },
@@ -4315,8 +4077,7 @@ const uniqueItems = {
       "10% Mana Stolen per hit",
       "+20 to All Resistances",
       "+5 to Energy",
-      "+45 to Attack Rating",
-      "found in v1.09 or later"
+      "+45 to Attack Rating"
     ],
     category: "Unique Polearms"
   },
@@ -4334,8 +4095,7 @@ const uniqueItems = {
       "7% Life Stolen per hit",
       "+50-100 to Attack Rating",
       "+10 to Dexterity",
-      "+30% increased Attack Speed",
-      "found in v1.09 or later"
+      "+30% increased Attack Speed"
     ],
     category: "Unique Polearms"
   },
@@ -4356,8 +4116,7 @@ const uniqueItems = {
       "-50 to Monster defense",
       "Hit Freezes target",
       "Prevent Monster Heal",
-      "-3 to Light Radius",
-      "found in v1.09 or later"
+      "-3 to Light Radius"
     ],
     category: "Unique Polearms"
   },
@@ -4375,8 +4134,7 @@ const uniqueItems = {
       "Prevent Monster Heal",
       "5% Mana stolen per hit",
       "+20% Enhanced Damage",
-      "+15 to minimum Damage",
-      "found in v1.09 or later"
+      "+15 to minimum Damage"
     ],
     category: "Unique Polearms"
   },
@@ -4395,8 +4153,7 @@ const uniqueItems = {
       "30% increased Attack Speed",
       "10% Life Stolen per hit",
       "25% better chance of getting Magic items",
-      "+3 to Masteries (Barbarian only)",
-      "found in v1.09 or later"
+      "+3 to Masteries (Barbarian only)"
     ],
     category: "Exceptional Unique Polearms"
   },
@@ -4415,8 +4172,7 @@ const uniqueItems = {
       "5% chance to cast level 5 Weaken on striking",
       "-25% Requirements",
       "-2 to Light Radius",
-      "8% Life Stolen per hit",
-      "found in v1.09 or later"
+      "8% Life Stolen per hit"
     ],
     category: "Exceptional Unique Polearms"
   },
@@ -4435,8 +4191,7 @@ const uniqueItems = {
       "+1 per character level to Life",
       "30% Increased Attack Speed",
       "+1-3 to Druid Skill levels",
-      "+15 to Dexterity",
-      "found in v1.09 or later"
+      "+15 to Dexterity"
     ],
     category: "Exceptional Unique Polearms"
   },
@@ -4456,8 +4211,7 @@ const uniqueItems = {
       "+100-200 to Attack Rating",
       "+3 to Barbarian Skill Levels",
       "6% Mana stolen per hit",
-      "30% Faster Hit Recovery",
-      "found in v1.09 or later"
+      "30% Faster Hit Recovery"
     ],
     category: "Exceptional Unique Polearms"
   },
@@ -4476,8 +4230,7 @@ const uniqueItems = {
       "20% Increased Attack Speed",
       "+200-250 to Attack Rating",
       "Prevent Monster Heal",
-      "+20 Replenish Life",
-      "found in v1.09 or later"
+      "+20 Replenish Life"
     ],
     category: "Exceptional Unique Polearms"
   },
@@ -4499,8 +4252,7 @@ const uniqueItems = {
       "+200-250 to Attack Rating",
       "+45% Fire Resist",
       "-50% Requirements",
-      "Attacker takes Damage of 8",
-      "found in v1.09 or later"
+      "Attacker takes Damage of 8"
     ],
     category: "Exceptional Unique Polearms"
   },
@@ -4519,8 +4271,7 @@ const uniqueItems = {
       "30 Charges Level 14 Corpse Explosion",
       "Prevent Monster Heal",
       "30% Increased Attack Speed",
-      "50% Chance to Cast Level 16 Bone Spear on striking",
-      "found in v1.10 or later"
+      "50% Chance to Cast Level 16 Bone Spear on striking"
     ],
     category: "Elite Unique Polearms"
   },
@@ -4540,9 +4291,7 @@ const uniqueItems = {
       "11-15% Life Stolen per Hit",
       "33% Deadly Strike",
       "33% Chance to cast Level 1 Decrepify on striking",
-      "-25% Requirements",
-      "Ladder only",
-      "found in v1.10 or later"
+      "-25% Requirements"
     ],
     category: "Elite Unique Polearms"
   },
@@ -4565,9 +4314,7 @@ const uniqueItems = {
       "10% Chance to reanimate a corpse as Undead",
       "+10-14 Life after each Kill",
       "+50-80% Better Chance to getting Magic Items",
-      "+4 to Light Radius",
-      "Ladder only (it has been confirmed that it can be found in non-ladder games)",
-      "found in v1.10 or later"
+      "+4 to Light Radius"
     ],
     category: "Elite Unique Polearms"
   },
@@ -4588,8 +4335,7 @@ const uniqueItems = {
       "+10 to Strength",
       "Attacker takes Lightning Damage of 27",
       "5% Chance to cast Level 5 Chain Lightning when struck",
-      "2% Chance to cast Level 20 Charged Bolt when struck",
-      "found in v1.10 or later"
+      "2% Chance to cast Level 20 Charged Bolt when struck"
     ],
     category: "Elite Unique Polearms"
   },
@@ -4608,8 +4354,7 @@ const uniqueItems = {
       "+20% Fire Resist",
       "+35 to Attack Rating",
       "+15 to Mana",
-      "+50% Damage vs. Undead",
-      "found in v1.09 or later"
+      "+50% Damage vs. Undead"
     ],
     category: "Unique Scepters"
   },
@@ -4629,8 +4374,7 @@ const uniqueItems = {
       "+1 to Paladin Skill levels",
       "8% Life stolen per hit",
       "Magic damage reduced by 1",
-      "Adds 3-7 Damage",
-      "found in v1.09 or later"
+      "Adds 3-7 Damage"
     ],
     category: "Unique Scepters"
   },
@@ -4650,8 +4394,7 @@ const uniqueItems = {
       "Replenish Life +10",
       "Adds 3-5 Cold Damage for 3 sec",
       "Adds 1-6 Lightning Damage",
-      "+50% Damage vs. Undead",
-      "found in v1.09 or later"
+      "+50% Damage vs. Undead"
     ],
     category: "Unique Scepters"
   },
@@ -4673,8 +4416,7 @@ const uniqueItems = {
       "10% Regenerate Mana",
       "15% Heal Stamina",
       "+2 to Holy Shock (Paladin only)",
-      "+2 to Holy Freeze (Paladin only)",
-      "found in v1.09 or later"
+      "+2 to Holy Freeze (Paladin only)"
     ],
     category: "Exceptional Unique Scepters"
   },
@@ -4694,8 +4436,7 @@ const uniqueItems = {
       "10% chance to cast level 1 Confuse on striking",
       "5% chance to cast level 1 Decrepify on striking",
       "+160 Poison Damage for 4 sec",
-      "+150-200 to Attack Rating",
-      "found in v1.09 or later"
+      "+150-200 to Attack Rating"
     ],
     category: "Exceptional Unique Scepters"
   },
@@ -4718,8 +4459,7 @@ const uniqueItems = {
       "5% chance to cast level 4 Fist of Heavens on striking",
       "+2 to Fist of Heavens (Paladin only)",
       "+4 Holy Bolt (Paladin only)",
-      "+4 to Light Radius",
-      "found in v1.09 or later"
+      "+4 to Light Radius"
     ],
     category: "Exceptional Unique Scepters"
   },
@@ -4741,9 +4481,7 @@ const uniqueItems = {
       "33% Chance of Crushing Blow",
       "+15-20 Life after Each Demon Kill",
       "+2-3 to Paladin Skill Levels",
-      "+3 to Light Radius",
-      "Ladder only (it has been reported to be found in non-Ladder games)",
-      "found in v1.10 or later"
+      "+3 to Light Radius"
     ],
     category: "Elite Unique Scepters"
   },
@@ -4767,8 +4505,7 @@ const uniqueItems = {
       "+2-4 to Redemption (Paladin only)",
       "+2-4 to Holy Bolt (Paladin only)",
       "+3 to Light Radius",
-      "-60% Requirements",
-      "found in v1.10 or later"
+      "-60% Requirements"
     ],
     category: "Elite Unique Scepters"
   },
@@ -4791,8 +4528,7 @@ const uniqueItems = {
       "Damage Reduced by 4-7",
       "+2-4 to Combat Skills (Paladin only)",
       "+10% Increased Attack Speed",
-      "150-200% Bonus to Attack Rating",
-      "found in v1.10 or later"
+      "150-200% Bonus to Attack Rating"
     ],
     category: "Elite Unique Scepters"
   },
@@ -4811,8 +4547,7 @@ const uniqueItems = {
       "20% increased chance of Blocking",
       "40% Faster Block Rate",
       "+10 to Energy and Vitality",
-      "+2 to Strength",
-      "found in v1.09 or later"
+      "+2 to Strength"
     ],
     category: "Unique Shields"
   },
@@ -4833,8 +4568,7 @@ const uniqueItems = {
       "+30 to Defense",
       "+20 to Life",
       "+10 to Dexterity",
-      "+10-15 to Durability",
-      "found in v1.09 or later"
+      "+10-15 to Durability"
     ],
     category: "Unique Shields"
   },
@@ -4854,8 +4588,7 @@ const uniqueItems = {
       "+25% Lightning Resist",
       "Attacker takes Lightning damage of 3",
       "Magic damage reduced by 1",
-      "Adds 1-6 Lightning damage",
-      "found in v1.09 or later"
+      "Adds 1-6 Lightning damage"
     ],
     category: "Unique Shields"
   },
@@ -4876,8 +4609,7 @@ const uniqueItems = {
       "25% Increased chance of blocking",
       "+3 to Light radius",
       "+1 to Paladin skills",
-      "Damage reduced by 3",
-      "found in v1.09 or later"
+      "Damage reduced by 3"
     ],
     category: "Unique Shields"
   },
@@ -4895,8 +4627,7 @@ const uniqueItems = {
       "+10 to Defense",
       "20% increased chance of blocking",
       "50% chance of open wounds",
-      "Attacker takes Damage of 10",
-      "found in v1.09 or later"
+      "Attacker takes Damage of 10"
     ],
     category: "Unique Shields"
   },
@@ -4915,8 +4646,7 @@ const uniqueItems = {
       "Magic damage reduced by 5",
       "+75% Fire resist",
       "+30 Defense",
-      "+5 to Strength",
-      "found in v1.09 or later"
+      "+5 to Strength"
     ],
     category: "Unique Shields"
   },
@@ -4935,8 +4665,7 @@ const uniqueItems = {
       "+5 to Mana after each kill",
       "20% Faster Cast Rate",
       "3% Mana stolen per hit",
-      "+20% Poison resist",
-      "found in v1.09 or later"
+      "+20% Poison resist"
     ],
     category: "Unique Shields"
   },
@@ -4955,8 +4684,7 @@ const uniqueItems = {
       "+30-50 to all Resistances",
       "Magic damage reduced by 2",
       "+40 Defense",
-      "+10 to Strength",
-      "found in v1.09 or later"
+      "+10 to Strength"
     ],
     category: "Unique Shields"
   },
@@ -4974,8 +4702,7 @@ const uniqueItems = {
       "30% increased chance of Blocking",
       "30% Faster Block Rate",
       "+1 to Sorceress Skill Levels",
-      "Attacker takes Lightning Damage of 10",
-      "found in v1.09 or later"
+      "Attacker takes Lightning Damage of 10"
     ],
     category: "Exceptional Unique Shields"
   },
@@ -4993,8 +4720,7 @@ const uniqueItems = {
       "+25% Increase chance of Blocking",
       "30% Faster Block Rate",
       "+25 to all Resistances",
-      "2 sockets",
-      "found in v1.09 or later"
+      "2 sockets"
     ],
     category: "Exceptional Unique Shields"
   },
@@ -5016,8 +4742,7 @@ const uniqueItems = {
       "+150 to Attack Rating",
       "+50% Lightning Resist",
       "Half Freeze Duration",
-      "Adds 1-60 Lightning Damage",
-      "found in v1.09 or later"
+      "Adds 1-60 Lightning Damage"
     ],
     category: "Exceptional Unique Shields"
   },
@@ -5038,8 +4763,7 @@ const uniqueItems = {
       "3% chance to cast level 6 Hydra when struck",
       "5% chance to cast level 7 Nova when struck",
       "5% chance to cast level 9 Frost Nova when struck",
-      "+25-35% to all Resistances",
-      "found in v1.09 or later"
+      "+25-35% to all Resistances"
     ],
     category: "Exceptional Unique Shields"
   },
@@ -5058,8 +4782,7 @@ const uniqueItems = {
       "30% Faster Hit recovery",
       "20% Deadly Strike",
       "+50 to Life",
-      "Attacker takes damage of 47",
-      "found in v1.09 or later"
+      "Attacker takes damage of 47"
     ],
     category: "Exceptional Unique Shields"
   },
@@ -5078,8 +4801,7 @@ const uniqueItems = {
       "+20-30 to all Resistances",
       "+15 Replenish Life",
       "Damage reduced by 11-16",
-      "Magic Damage reduced by 14-18",
-      "found in v1.09 or later"
+      "Magic Damage reduced by 14-18"
     ],
     category: "Exceptional Unique Shields"
   },
@@ -5099,8 +4821,7 @@ const uniqueItems = {
       "20% faster Cast Rate",
       "+3-5 to Mana after each kill",
       "+10 to Energy",
-      "+1 to Light Radius",
-      "found in v1.09 or later"
+      "+1 to Light Radius"
     ],
     category: "Exceptional Unique Shields"
   },
@@ -5120,8 +4841,7 @@ const uniqueItems = {
       "5% chance to cast level 5 Poison Nova when struck",
       "40 charges level 6 Poison Explosion",
       "+75% Poison Resist",
-      "+80 Poison Damage for 4 sec",
-      "found in v1.09 or later"
+      "+80 Poison Damage for 4 sec"
     ],
     category: "Exceptional Unique Shields"
   },
@@ -5141,8 +4861,7 @@ const uniqueItems = {
       "1.25 per character level to Life",
       "+50% faster Block Rate",
       "Half Freeze Duration",
-      "4% chance to cast level 5 Weaken when struck",
-      "found in v1.10 or later"
+      "4% chance to cast level 5 Weaken when struck"
     ],
     category: "Unique Elite Shields"
   },
@@ -5163,8 +4882,7 @@ const uniqueItems = {
       "Damage reduced by 35%",
       "+60% Cold Resist",
       "+25% Lightning Resist",
-      "+30 to Strength",
-      "found in v1.09 or later"
+      "+30 to Strength"
     ],
     category: "Unique Elite Shields"
   },
@@ -5182,8 +4900,7 @@ const uniqueItems = {
       "+120-150% Enhanced Defense",
       "+30% Faster Hit Recovery",
       "Damage Reduced by 15-20%",
-      "+1.375 per character level to Damage taken by attacker",
-      "found in v1.10 or later"
+      "+1.375 per character level to Damage taken by attacker"
     ],
     category: "Unique Elite Shields"
   },
@@ -5202,8 +4919,7 @@ const uniqueItems = {
       "Slows Target by 20%",
       "+40-80% Cold Resist",
       "10% Chance to cast Level 7 Lower Resist when struck",
-      "100% Chance to cast Level 44 Nova when you die",
-      "found in v1.10 or later"
+      "100% Chance to cast Level 44 Nova when you die"
     ],
     category: "Unique Elite Shields"
   },
@@ -5222,8 +4938,7 @@ const uniqueItems = {
       "+300-350 Defense vs. Missile",
       "+20-30% Fire Resist",
       "+30-40% Poison Resist",
-      "+5-7 Life after each Kill",
-      "found in v1.10 or later"
+      "+5-7 Life after each Kill"
     ],
     category: "Unique Elite Shields"
   },
@@ -5242,8 +4957,7 @@ const uniqueItems = {
       "20-30% Increased Chance of Blocking",
       "+30-40 to all Resistances",
       "+6-11 Cold Absorb",
-      "5% Chance to cast Level 8 Fade when struck",
-      "found in v1.10 or later"
+      "5% Chance to cast Level 8 Fade when struck"
     ],
     category: "Unique Elite Shields"
   },
@@ -5260,8 +4974,7 @@ const uniqueItems = {
       "100% Damage vs. Undead",
       "+2 to Light Radius",
       "+35 to Attack Rating",
-      "+10 to minimum damage",
-      "found in v1.09 or later"
+      "+10 to minimum damage"
     ],
     category: "Unique Spears"
   },
@@ -5280,8 +4993,7 @@ const uniqueItems = {
       "50% target defense",
       "+8 to Dexterity",
       "+15 to Strength",
-      "30% increased attack speed",
-      "found in v1.09 or later"
+      "30% increased attack speed"
     ],
     category: "Unique Spears"
   },
@@ -5299,8 +5011,7 @@ const uniqueItems = {
       "35% chance of Open Wounds",
       "8-12% Life stolen per hit",
       "+26 to Life",
-      "+10 to Strength",
-      "found in v1.09 or later"
+      "+10 to Strength"
     ],
     category: "Unique Spears"
   },
@@ -5317,8 +5028,7 @@ const uniqueItems = {
       "Adds 1-60 Lightning Damage",
       "+15 to All Resistances",
       "+40% increased Attack Speed",
-      "Attacker takes 8 Damage",
-      "found in v1.09 or later"
+      "Attacker takes 8 Damage"
     ],
     category: "Unique Spears"
   },
@@ -5338,8 +5048,7 @@ const uniqueItems = {
       "15% Fire Resist",
       "Adds 23-54 Fire Damage",
       "+60 to Attack Rating",
-      "+30 to Life",
-      "found in v1.09 or later"
+      "+30 to Life"
     ],
     category: "Unique Spears"
   },
@@ -5360,8 +5069,7 @@ const uniqueItems = {
       "+150 to Attack Rating",
       "Prevent Monster Heal",
       "+5 to Impale (Amazon only)",
-      "+3 to Power Strike (Amazon only)",
-      "found in v1.09 or later"
+      "+3 to Power Strike (Amazon only)"
     ],
     category: "Exceptional Unique Spears"
   },
@@ -5380,8 +5088,7 @@ const uniqueItems = {
       "Slows Target by 75%",
       "+1.25 per character level to Life",
       "+50% Fire Resist",
-      "+10 to Strength",
-      "found in v1.09 or later"
+      "+10 to Strength"
     ],
     category: "Exceptional Unique Spears"
   },
@@ -5400,8 +5107,7 @@ const uniqueItems = {
       "-20% Requirements",
       "7% Life stolen per hit",
       "7% Mana stolen per hit",
-      "20% Stamina Drain",
-      "found in v1.09 or later"
+      "20% Stamina Drain"
     ],
     category: "Exceptional Unique Spears"
   },
@@ -5418,8 +5124,7 @@ const uniqueItems = {
       "Adds 20-40 Damage",
       "45% chance of Crushing Blow",
       "Repairs 1 durability in 10 seconds",
-      "3 sockets",
-      "found in v1.09 or later"
+      "3 sockets"
     ],
     category: "Exceptional Unique Spears"
   },
@@ -5441,8 +5146,7 @@ const uniqueItems = {
       "+25% Bonus to Attack Rating",
       "+25% Enhanced defense",
       "+3 to Combat Skills (Paladin only)",
-      "+3 to Light Radius",
-      "found in v1.09 or later"
+      "+3 to Light Radius"
     ],
     category: "Exceptional Unique Spears"
   },
@@ -5461,8 +5165,7 @@ const uniqueItems = {
       "+394 Poison Damage over 10 seconds",
       "+30% Increased Attack Speed",
       "+2-4 to all Skills",
-      "Ignores Target's Defense",
-      "found in v1.10 or later"
+      "Ignores Target's Defense"
     ],
     category: "Elite Unique Spears"
   },
@@ -5481,8 +5184,7 @@ const uniqueItems = {
       "+50% Increased Attack Speed",
       "+325 Poison Damage over 10 seconds",
       "+30-50% Poison Resist",
-      "15% Chance to cast Level 9 Poison Explosion on striking",
-      "found in v1.10 or later"
+      "15% Chance to cast Level 9 Poison Explosion on striking"
     ],
     category: "Elite Unique Spears"
   },
@@ -5500,8 +5202,7 @@ const uniqueItems = {
       "25% Chance of Crushing Blow",
       "-20% Target Defense",
       "+25% Increased Attack Speed",
-      "+50-80% Enhanced Defense",
-      "found in v1.10 or later"
+      "+50-80% Enhanced Defense"
     ],
     category: "Elite Unique Spears"
   },
@@ -5520,8 +5221,7 @@ const uniqueItems = {
       "+30 to Mana",
       "20% Increased Attack Speed",
       "+5 to Fire Bolt (Sorceress only)",
-      "+2 to Warmth (Sorceress only)",
-      "found in v1.09 or later"
+      "+2 to Warmth (Sorceress only)"
     ],
     category: "Unique Staves"
   },
@@ -5540,8 +5240,7 @@ const uniqueItems = {
       "-1 to Light Radius",
       "+50% Poison Resist",
       "Adds 12 Poison Damage for 3 seconds",
-      "+10 to Mana",
-      "found in v1.09 or later"
+      "+10 to Mana"
     ],
     category: "Unique Staves"
   },
@@ -5562,8 +5261,7 @@ const uniqueItems = {
       "+75% Lightning Resistance",
       "+2 to Lightning (Sorceress only)",
       "+1 to Chain Lightning (Sorceress only)",
-      "+3 to Static Field (Sorceress only)",
-      "found in v1.09 or later"
+      "+3 to Static Field (Sorceress only)"
     ],
     category: "Unique Staves"
   },
@@ -5581,8 +5279,7 @@ const uniqueItems = {
       "+2 to Fire Skills",
       "+30% Fire Resist",
       "Adds 15-32 Fire Damage",
-      "+3 to Warmth (Sorceress only)",
-      "found in v1.09 or later"
+      "+3 to Warmth (Sorceress only)"
     ],
     category: "Unique Staves"
   },
@@ -5602,8 +5299,7 @@ const uniqueItems = {
       "+30 Defense",
       "+3 to Frost Nova (Sorceress only)",
       "+2 to Blaze (Sorceress only)",
-      "+2 to Nova (Sorceress only)",
-      "found in v1.09 or later"
+      "+2 to Nova (Sorceress only)"
     ],
     category: "Unique Staves"
   },
@@ -5623,8 +5319,7 @@ const uniqueItems = {
       "+50 to all Resistances",
       "+175 to Mana",
       "+80 to Life",
-      "Attacker takes damage of 15",
-      "found in v1.09 or later"
+      "Attacker takes damage of 15"
     ],
     category: "Exceptional Unique Staves"
   },
@@ -5645,8 +5340,7 @@ const uniqueItems = {
       "50% Faster Hit Recovery",
       "100% Enhanced Defense",
       "+100 Defense",
-      "+15 to Dexterity",
-      "found in v1.09 or later"
+      "+15 to Dexterity"
     ],
     category: "Exceptional Unique Staves"
   },
@@ -5667,8 +5361,7 @@ const uniqueItems = {
       "Attacker takes Lightning Damage of 20",
       "+1 to Cold Mastery (Sorceress only)",
       "+1 to Lightning Mastery (Sorceress only)",
-      "+1 to Fire Mastery (Sorceress only)",
-      "found in v1.09 or later"
+      "+1 to Fire Mastery (Sorceress only)"
     ],
     category: "Exceptional Unique Staves"
   },
@@ -5687,8 +5380,7 @@ const uniqueItems = {
       "+3 to Sorceress Skill Levels",
       "+3 to Energy Shield (Sorceress only)",
       "+3 to Telekinesis (Sorceress only)",
-      "+3 to Teleport (Sorceress only)",
-      "found in v1.09 or later"
+      "+3 to Teleport (Sorceress only)"
     ],
     category: "Exceptional Unique Staves"
   },
@@ -5705,8 +5397,7 @@ const uniqueItems = {
       "+20 to Mana after each kill",
       "20% increased maximum Mana",
       "+1 per character level better chance of getting Magic items",
-      "+2 to all Skill Levels",
-      "found in v1.09 or later"
+      "+2 to all Skill Levels"
     ],
     category: "Exceptional Unique Staves"
   },
@@ -5726,8 +5417,7 @@ const uniqueItems = {
       "+40-50 to Energy",
       "Magic Damage reduced by 5-8",
       "+5% to Experience Gained",
-      "+50% Damage to Undead",
-      "found in v1.10 or later"
+      "+50% Damage to Undead"
     ],
     category: "Elite Unique Staves"
   },
@@ -5746,9 +5436,7 @@ const uniqueItems = {
       "-7-15% to Enemy Cold Resistance",
       "-7-15% to Enemy Fire Resistance",
       "10% Regenerate Mana",
-      "+50% Damage to Undead",
-      "Ladder only",
-      "found in v1.10 or later"
+      "+50% Damage to Undead"
     ],
     category: "Elite Unique Staves"
   },
@@ -5766,8 +5454,7 @@ const uniqueItems = {
       "20% Bonus to Attack Rating",
       "+2 to Light Radius",
       "+5 to Minimum Damage",
-      "+25 Defense",
-      "found in any patch"
+      "+25 Defense"
     ],
     category: "Unique Swords"
   },
@@ -5787,8 +5474,7 @@ const uniqueItems = {
       "15% Life stolen per hit",
       "+4 to Light Radius",
       "+15 to All Resistances",
-      "+15 to Life",
-      "found in v1.09 or later"
+      "+15 to Life"
     ],
     category: "Unique Swords"
   },
@@ -5808,8 +5494,7 @@ const uniqueItems = {
       "+50% Enhanced Damage",
       "Adds 3-7 Damage",
       "+10 to Dexterity",
-      "+10 to Strength",
-      "found in v1.09 or later"
+      "+10 to Strength"
     ],
     category: "Unique Swords"
   },
@@ -5828,8 +5513,7 @@ const uniqueItems = {
       "+3 to Light Radius",
       "+20 Defense",
       "+30 to Mana",
-      "20% Increased Attack Speed",
-      "found in v1.09 or later"
+      "20% Increased Attack Speed"
     ],
     category: "Unique Swords"
   },
@@ -5848,8 +5532,7 @@ const uniqueItems = {
       "Adds 10-25 Fire Damage",
       "+100 to Attack Rating",
       "10% Increased Attack Speed",
-      "Knockback",
-      "found in v1.09 or later"
+      "Knockback"
     ],
     category: "Unique Swords"
   },
@@ -5869,8 +5552,7 @@ const uniqueItems = {
       "Adds 25-75 Fire Damage",
       "5% Life stolen per hit",
       "5% Mana stolen per hit",
-      "Adds 28-56 Poison damage for 3 seconds",
-      "found in v1.09 or later"
+      "Adds 28-56 Poison damage for 3 seconds"
     ],
     category: "Unique Swords"
   },
@@ -5890,8 +5572,7 @@ const uniqueItems = {
       "Poison Length reduced by 50%",
       "20% Faster Hit Recovery",
       "+1 to all Skill Levels",
-      "+60 to Attack Rating",
-      "found in any patch"
+      "+60 to Attack Rating"
     ],
     category: "Unique Swords"
   },
@@ -5911,8 +5592,7 @@ const uniqueItems = {
       "-2 to Light Radius",
       "9% Mana stolen per hit",
       "Cold Resist 20%",
-      "Adds 10-30 Cold Damage for 6 sec",
-      "found in v1.09 or later"
+      "Adds 10-30 Cold Damage for 6 sec"
     ],
     category: "Unique Swords"
   },
@@ -5930,8 +5610,7 @@ const uniqueItems = {
       "4-10% Mana stolen per hit",
       "+70-100% Enhanced Damage",
       "10% Increased Attack Speed",
-      "5 to All Resistances",
-      "found in v1.09 or later"
+      "5 to All Resistances"
     ],
     category: "Unique Swords"
   },
@@ -5950,8 +5629,7 @@ const uniqueItems = {
       "+100-150 to Attack Rating",
       "Adds 6-40 Fire Damage",
       "+6 to Holy Fire (Paladin only)",
-      "+20 to Mana",
-      "found in v1.09 or later"
+      "+20 to Mana"
     ],
     category: "Unique Swords"
   },
@@ -5969,8 +5647,7 @@ const uniqueItems = {
       "+113 Poison Damage for 6 sec",
       "+50 to Attack Rating",
       "Prevent Monster Heal",
-      "50% Poison Resist",
-      "found in v1.09 or later"
+      "50% Poison Resist"
     ],
     category: "Unique Swords"
   },
@@ -5988,8 +5665,7 @@ const uniqueItems = {
       "+80-100% Enhanced Damage",
       "80% chance of Open Wounds",
       "6% Mana stolen per hit",
-      "+15 to max Damage",
-      "found in v1.09 or later"
+      "+15 to max Damage"
     ],
     category: "Unique Swords"
   },
@@ -6009,8 +5685,7 @@ const uniqueItems = {
       "Damage reduced by 3",
       "Magic Damage reduced by 3",
       "100% extra gold from monsters",
-      "+10 to Strength",
-      "found in v1.09 or later"
+      "+10 to Strength"
     ],
     category: "Unique Swords"
   },
@@ -6031,8 +5706,7 @@ const uniqueItems = {
       "10% Slower Stamina Drain",
       "8% Life Stolen per Hit",
       "+1-3 to Whirlwind (Barbarian only)",
-      "+2-4 to Sword Mastery (Barbarian only)",
-      "found in v1.09 or later"
+      "+2-4 to Sword Mastery (Barbarian only)"
     ],
     category: "Exceptional Unique Swords"
   },
@@ -6052,8 +5726,7 @@ const uniqueItems = {
       "20% Increased Attack Speed",
       "6% Mana stolen per hit",
       "Slows Target by 30%",
-      "Hit Blinds Target",
-      "found in v1.09 or later"
+      "Hit Blinds Target"
     ],
     category: "Exceptional Unique Swords"
   },
@@ -6074,8 +5747,7 @@ const uniqueItems = {
       "36 charges level 6 Hydra",
       "Ignore Targets Defense",
       "+25% Fire Resist",
-      "10% to maximum Fire Resist",
-      "found in v1.09 or later"
+      "10% to maximum Fire Resist"
     ],
     category: "Exceptional Unique Swords"
   },
@@ -6095,8 +5767,7 @@ const uniqueItems = {
       "+1 per character level % better chance of getting magic items",
       "+15 to Mana",
       "+5-15 to Dexterity",
-      "2 Sockets",
-      "found in v1.09 or later"
+      "2 Sockets"
     ],
     category: "Exceptional Unique Swords"
   },
@@ -6115,8 +5786,7 @@ const uniqueItems = {
       "Adds 50-120 Magic Damage",
       "30% Increased Attack Rate",
       "Magic Damage reduced by 7-12",
-      "Repairs 1 durability in 5 seconds",
-      "found in v1.09 or later"
+      "Repairs 1 durability in 5 seconds"
     ],
     category: "Exceptional Unique Swords"
   },
@@ -6135,8 +5805,7 @@ const uniqueItems = {
       "+1 per character level to maximum Damage",
       "+1.5 per character level to % Deadly Strike",
       "Prevent Monster Heal",
-      "+15 to Strength",
-      "found in v1.09 or later"
+      "+15 to Strength"
     ],
     category: "Exceptional Unique Swords"
   },
@@ -6156,8 +5825,7 @@ const uniqueItems = {
       "+300 Poison Damage over 8 seconds",
       "5% chance to cast level 4 Poison Nova on striking",
       "+45% Poison Resist",
-      "+5 to Rabies (Druid only)",
-      "found in v1.09 or later"
+      "+5 to Rabies (Druid only)"
     ],
     category: "Exceptional Unique Swords"
   },
@@ -6178,8 +5846,7 @@ const uniqueItems = {
       "+75 Defense",
       "+8 to Vitality",
       "+12 to Dexterity",
-      "+16 to Strength",
-      "found in v1.09 or later"
+      "+16 to Strength"
     ],
     category: "Exceptional Unique Swords"
   },
@@ -6199,8 +5866,7 @@ const uniqueItems = {
       "Slows Target by 35%",
       "-70 to Monster Defense per hit",
       "20% Faster Run/Walk",
-      "Damage reduced by 10%",
-      "found in v1.09 or later"
+      "Damage reduced by 10%"
     ],
     category: "Exceptional Unique Swords"
   },
@@ -6220,8 +5886,7 @@ const uniqueItems = {
       "5% chance to cast level 3 Frozen Orb on striking",
       "+2 Freezes Target",
       "-30% Requirements",
-      "+20 to Strength",
-      "found in v1.09 or later"
+      "+20 to Strength"
     ],
     category: "Exceptional Unique Swords"
   },
@@ -6241,8 +5906,7 @@ const uniqueItems = {
       "+10 per character level to Attack Rating",
       "+250 Poison Damage over 6 seconds",
       "6% chance to cast level 1 Amplify Damage on striking",
-      "+50% Poison Resist",
-      "found in v1.09 or later"
+      "+50% Poison Resist"
     ],
     category: "Exceptional Unique Swords"
   },
@@ -6265,8 +5929,7 @@ const uniqueItems = {
       "Attacker takes Lightning Damage of 15",
       "+2 to Defensive Auras (Paladin only)",
       "+2 to Offensive Auras (Paladin only)",
-      "+2 to Light Radius",
-      "found in v1.09 or later"
+      "+2 to Light Radius"
     ],
     category: "Exceptional Unique Swords"
   },
@@ -6287,8 +5950,7 @@ const uniqueItems = {
       "20 charges level 10 Fire Wall",
       "45 charges level 10 Enchant",
       "+10 Fire Absorb",
-      "+40% Fire Resist",
-      "found in v1.09 or later"
+      "+40% Fire Resist"
     ],
     category: "Exceptional Unique Swords"
   },
@@ -6311,8 +5973,7 @@ const uniqueItems = {
       "20% Faster Hit Recovery",
       "20% Increased chance of Blocking",
       "+100 Defense against Missles",
-      "+200 Defense against Melee",
-      "found in v1.09 or later"
+      "+200 Defense against Melee"
     ],
     category: "Exceptional Unique Swords"
   },
@@ -6333,9 +5994,7 @@ const uniqueItems = {
       "Adds 250-500 Fire Damage",
       "3-6% Mana Stolen per Hit",
       "+3-7 Lightning Damage",
-      "+200-300 to Attack Rating vs. Demons",
-      "Ladder only, but reported to be found in single player games (thanks, David!)",
-      "found in v1.10 or later"
+      "+200-300 to Attack Rating vs. Demons"
     ],
     category: "Elite Unique Swords"
   },
@@ -6354,8 +6013,7 @@ const uniqueItems = {
       "10-15% Life Stolen per Hit",
       "50% Chance of Open Wounds",
       "+7-13 Life after each Kill",
-      "9 Charges Level 15 Blood Golem",
-      "found in v1.10 or later"
+      "9 Charges Level 15 Blood Golem"
     ],
     category: "Elite Unique Swords"
   },
@@ -6377,9 +6035,7 @@ const uniqueItems = {
       "+1 to all Skills",
       "+5-10 to all Attributes",
       "Level 10-13 Sanctuary Aura when equipped",
-      "+3 to Light Radius",
-      "Ladder only",
-      "found in v1.10 or later"
+      "+3 to Light Radius"
     ],
     category: "Elite Unique Swords"
   },
@@ -6403,8 +6059,7 @@ const uniqueItems = {
       "Adds 10-30 Damage",
       "Adds 60-120 Magic Damage",
       "Adds 1-200 Lightning Damage",
-      "5-7% Mana stolen per hit",
-      "found in v1.10 or later"
+      "5-7% Mana stolen per hit"
     ],
     category: "Elite Unique Swords"
   },
@@ -6425,8 +6080,7 @@ const uniqueItems = {
       "+4 to Freezes Target",
       "7-15% Cold Absorb",
       "Half Freeze Duration",
-      "+25% Increased Attack Speed",
-      "found in v1.10 or later"
+      "+25% Increased Attack Speed"
     ],
     category: "Elite Unique Swords"
   },
@@ -6448,8 +6102,7 @@ const uniqueItems = {
       "+10-20 to Strength",
       "+5-10 to Vitality",
       "12% Chance to cast level 16 Firestorm on striking",
-      "20-30% Fire Absorb",
-      "found in v1.10 or later"
+      "20-30% Fire Absorb"
     ],
     category: "Elite Unique Swords"
   },
@@ -6469,8 +6122,7 @@ const uniqueItems = {
       "8% chance to cast level 3 Weaken on striking",
       "40% bonus to Attack Rating",
       "5-7% Life stolen per hit",
-      "20% increased maximum Life",
-      "found in v1.09 or later"
+      "20% increased maximum Life"
     ],
     category: "Elite Unique Swords"
   },
@@ -6489,8 +6141,7 @@ const uniqueItems = {
       "+(2.5 per character level) to maximum Damage",
       "50 % bonus to Attack Rating",
       "+80 to Life",
-      "+20 to Dexterity, Strength, Vitality, and Energy",
-      "found in v1.09 or later"
+      "+20 to Dexterity, Strength, Vitality, and Energy"
     ],
     category: "Elite Unique Swords"
   },
@@ -6509,8 +6160,7 @@ const uniqueItems = {
       "Adds 20-36 Cold Damage",
       "+1 to Double Throw",
       "Increased Stack Size",
-      "Replenishes Quantity",
-      "found in v1.11 or later"
+      "Replenishes Quantity"
     ],
     category: "Unique Throwing Weapons"
   },
@@ -6529,8 +6179,7 @@ const uniqueItems = {
       "Adds 1-20 Fire Damage",
       "Adds 1-20 Lightning Damage",
       "Adds 10-20 Cold Damage",
-      "Increased Stack Size",
-      "found in v1.11 or later"
+      "Increased Stack Size"
     ],
     category: "Unique Throwing Weapons"
   },
@@ -6547,8 +6196,7 @@ const uniqueItems = {
       "+25% Increased Attack Speed",
       "Adds 14-27 Damage",
       "Adds 22-33 Cold Damage",
-      "+19 Poison Damage over 6 seconds",
-      "found in v1.11 or later"
+      "+19 Poison Damage over 6 seconds"
     ],
     category: "Unique Throwing Weapons"
   },
@@ -6568,8 +6216,7 @@ const uniqueItems = {
       "Damage +27",
       "Adds 7-14 Magic Damage",
       "Increased Stack Size",
-      "Replenishes Quantity",
-      "found in v1.11 or later"
+      "Replenishes Quantity"
     ],
     category: "Unique Throwing Weapons"
   },
@@ -6589,8 +6236,7 @@ const uniqueItems = {
       "7-9% Life stolen per hit",
       "4-6% Mana stolen per hit",
       "Replenishes quantity (1 in 4 sec)",
-      "Max stack: 160",
-      "found in v1.10 or later"
+      "Max stack: 160"
     ],
     category: "Exceptional Unique Throwing Weapons"
   },
@@ -6611,8 +6257,7 @@ const uniqueItems = {
       "25% bonus to Attack Rating",
       "4-6% Life stolen per hit",
       "Replenishes quantity (1 in 3 sec)",
-      "Max stack: 130",
-      "found in v1.10 or later"
+      "Max stack: 130"
     ],
     category: "Exceptional Unique Throwing Weapons"
   },
@@ -6632,9 +6277,7 @@ const uniqueItems = {
       "Piercing Attack",
       "25% Chance to cast Level 9 Nova on striking",
       "Replenishes Quantity (1 in 3 sec)",
-      "Max stack: 200",
-      "Ladder only",
-      "found in v1.10 or later"
+      "Max stack: 200"
     ],
     category: "Elite Unique Throwing Weapons"
   },
@@ -6654,8 +6297,7 @@ const uniqueItems = {
       "Adds 176-397 Cold Damage",
       "+30% Increased Attack Speed",
       "Increased Stack Size",
-      "Max stack: 240",
-      "found in v1.10 or later"
+      "Max stack: 240"
     ],
     category: "Elite Unique Throwing Weapons"
   },
@@ -6676,8 +6318,7 @@ const uniqueItems = {
       "33% Chance to cast Level 3 Amplify Damage on striking",
       "33% chance of Open Wounds",
       "Max stack: 180",
-      "Replenishes Quantity (1 in 4 sec)",
-      "found in v1.10 or later"
+      "Replenishes Quantity (1 in 4 sec)"
     ],
     category: "Elite Unique Throwing Weapons"
   },
@@ -6695,8 +6336,7 @@ const uniqueItems = {
       "+50% Damage vs. Undead",
       "+10 to Energy",
       "5% Regenerate Mana",
-      "+3 to Light Radius",
-      "found in v1.09 or later"
+      "+3 to Light Radius"
     ],
     category: "Unique Wands"
   },
@@ -6716,8 +6356,7 @@ const uniqueItems = {
       "+1-3 to Iron Maiden (Necro only)",
       "+1-3 to Amplify Damage (Necro only)",
       "+1-3 to Terror (Necro only)",
-      "+1-3 to Corpse Explosion (Necro only)",
-      "found in v1.09 or later"
+      "+1-3 to Corpse Explosion (Necro only)"
     ],
     category: "Unique Wands"
   },
@@ -6735,8 +6374,7 @@ const uniqueItems = {
       "+10 to Strength",
       "+25-50 Mana",
       "+50% Damage vs. Undead",
-      "+2 to Necromancer Skill Levels",
-      "found in v1.09 or later"
+      "+2 to Necromancer Skill Levels"
     ],
     category: "Unique Wands"
   },
@@ -6754,8 +6392,7 @@ const uniqueItems = {
       "+40 to Mana",
       "+50% Damage vs. Undead",
       "+2 to Decrepify (Necro only)",
-      "+3 to Terror (Necro only)",
-      "found in v1.09 or later"
+      "+3 to Terror (Necro only)"
     ],
     category: "Unique Wands"
   },
@@ -6774,8 +6411,7 @@ const uniqueItems = {
       "10% increase maximum Mana",
       "+10 to all Resistances",
       "+40 to Life",
-      "Attacker takes Damage of 25",
-      "found in v1.09 or later"
+      "Attacker takes Damage of 25"
     ],
     category: "Exceptional Unique Wands"
   },
@@ -6795,8 +6431,7 @@ const uniqueItems = {
       "+2 to Summoning Skills (Necro only)",
       "10% Faster Cast Rate",
       "30% Faster Hit Recovery",
-      "+5 Replenish Life",
-      "found in v1.09 or later"
+      "+5 Replenish Life"
     ],
     category: "Exceptional Unique Wands"
   },
@@ -6819,8 +6454,7 @@ const uniqueItems = {
       "+3 to Skeleton Mastery (Necro only)",
       "+3 to Raise Skeleton (Necro only)",
       "+2 to Summoning Skills (Necro only)",
-      "+2 to Poison and Bone Skills (Necro only)",
-      "found in v1.09 or later"
+      "+2 to Poison and Bone Skills (Necro only)"
     ],
     category: "Exceptional Unique Wands"
   },
@@ -6841,8 +6475,7 @@ const uniqueItems = {
       "+37% Fire Resist",
       "+50 to Life",
       "30 charges level 13 Grim Ward",
-      "-2 to Light Radius",
-      "found in v1.09 or later"
+      "-2 to Light Radius"
     ],
     category: "Exceptional Unique Wands"
   },
@@ -6862,8 +6495,7 @@ const uniqueItems = {
       "+2-3 to Bone Wall (Necro only)",
       "+4-5 to Bone Armor (Necro only)",
       "+4-5 to Teeth (Necro only)",
-      "25% Faster Cast Rate",
-      "found in v1.10 or later"
+      "25% Faster Cast Rate"
     ],
     category: "Elite Unique Wands"
   },
@@ -6881,8 +6513,7 @@ const uniqueItems = {
       "+7-12 to Mana after each Kill",
       "+7-12 Life after each Kill",
       "+2 to all Skills",
-      "+2 to Poison and Bone Skills (Necro only)",
-      "found in v1.10 or later"
+      "+2 to Poison and Bone Skills (Necro only)"
     ],
     category: "Elite Unique Wands"
   },
@@ -6900,9 +6531,7 @@ const uniqueItems = {
       "Adds 101-187 Magic Damage",
       "+400-600 Defense",
       "+30-50 to all Resistances",
-      "+1-3 to Javelin and Spear Skills (Amazon only)",
-      "Originally was Ladder only, but has been reportedly found in single player games.",
-      "found in v1.10 or later"
+      "+1-3 to Javelin and Spear Skills (Amazon only)"
     ],
     category: "Unique Amazon Weapons"
   },
@@ -6923,8 +6552,7 @@ const uniqueItems = {
       "5-9% Life stolen per hit",
       "+20 to Strength and Vitality",
       "+20% Enhanced Defense",
-      "+2 to Javelin and Spear Skills",
-      "found in v1.09 or later"
+      "+2 to Javelin and Spear Skills"
     ],
     category: "Unique Amazon Weapons"
   },
@@ -6944,8 +6572,7 @@ const uniqueItems = {
       "5-8% Mana stolen per hit",
       "+20 to Energy and Dexterity",
       "+20% Enhanced Defense",
-      "+2 to Bow and Crossbow Skills",
-      "found in v1.09 or later"
+      "+2 to Bow and Crossbow Skills"
     ],
     category: "Unique Amazon Weapons"
   },
@@ -6967,8 +6594,7 @@ const uniqueItems = {
       "5-9% Life stolen per hit",
       "30% Faster Run/Walk",
       "+20 to Strength and Dexterity",
-      "+2 to Javelin and Spear Skills",
-      "found in v1.09 or later"
+      "+2 to Javelin and Spear Skills"
     ],
     category: "Unique Amazon Weapons"
   },
@@ -6988,9 +6614,7 @@ const uniqueItems = {
       "-15% to Enemy Lightning Resistance",
       "20% Chance to cast Level 14 Lightning on striking",
       "+2-4 to Javelin and Spear Skills (Amazon only)",
-      "+3 to Lightning Bolt (Amazon only)",
-      "Ladder only",
-      "found in v1.10 or later"
+      "+3 to Lightning Bolt (Amazon only)"
     ],
     category: "Unique Amazon Weapons"
   },
@@ -7007,8 +6631,7 @@ const uniqueItems = {
       "200-300% Bonus to Attack Rating",
       "Fires level 13 Explosive Arrows",
       "30 Charges Level 5 Revive",
-      "+2-4 to Bow and Crossbow Skills (Amazon only)",
-      "found in v1.10 or later"
+      "+2-4 to Bow and Crossbow Skills (Amazon only)"
     ],
     category: "Unique Amazon Weapons"
   },
@@ -7027,9 +6650,7 @@ const uniqueItems = {
       "+2 Freezes Target",
       "+10-15 Mana after each Kill",
       "33% Chance to Cast Level 8 Frost Nova on striking",
-      "Ethereal",
-      "Ladder only",
-      "found in v1.10 or later"
+      "Ethereal"
     ],
     category: "Unique Assassin Katars"
   },
@@ -7050,8 +6671,7 @@ const uniqueItems = {
       "5-9% Life stolen per hit",
       "+20 to Strength and Dexterity",
       "+2 to Assassin Skill Levels",
-      "+1 to Martial Arts Skills",
-      "found in v1.09 or later"
+      "+1 to Martial Arts Skills"
     ],
     category: "Unique Assassin Katars"
   },
@@ -7070,8 +6690,7 @@ const uniqueItems = {
       "+1-2 to Shadow Disciplines (Assassin only)",
       "+30% Faster Hit Recovery",
       "10-15% Mana Stolen per Hit",
-      "+40-50 to all Resistances",
-      "found in v1.10 or later"
+      "+40-50 to all Resistances"
     ],
     category: "Unique Assassin Katars"
   },
@@ -7091,8 +6710,7 @@ const uniqueItems = {
       "+1-3 to Martial Arts (Assassin only)",
       "+1-2 to Wake of Inferno (Assassin only)",
       "+1-2 to Wake of Fire (Assassin only)",
-      "+40-70% Fire Resist",
-      "found in v1.10 or later"
+      "+40-70% Fire Resist"
     ],
     category: "Unique Assassin Katars"
   },
@@ -7112,8 +6730,7 @@ const uniqueItems = {
       "3-6% Life stolen per hit",
       "+30 to all Resistances",
       "+20 to Strength and Dexterity",
-      "+2 to Combat Skills",
-      "found in v1.09 or later"
+      "+2 to Combat Skills"
     ],
     category: "Unique Barbarian Helms"
   },
@@ -7134,8 +6751,7 @@ const uniqueItems = {
       "+8-15 to Strength",
       "+8-15 to Dexterity",
       "+8-15 to Vitality",
-      "18 Charges Level 15 Summon Dire Wolf",
-      "found in v1.10 or later"
+      "18 Charges Level 15 Summon Dire Wolf"
     ],
     category: "Unique Barbarian Helms"
   },
@@ -7154,9 +6770,7 @@ const uniqueItems = {
       "Attacker takes Damage of 55-77",
       "+1-3 to Warcries (Barbarian only)",
       "+1-3 to Masteries (Barbarian only)",
-      "+1-3 to Combat Skills (Barbarian only)",
-      "Ladder only",
-      "found in v1.10 or later"
+      "+1-3 to Combat Skills (Barbarian only)"
     ],
     category: "Unique Barbarian Helms"
   },
@@ -7175,8 +6789,7 @@ const uniqueItems = {
       "+2 to Barbarian Skill Levels",
       "+1 to Masteries (Barbarian only)",
       "+1-2 to Battle Commands (Barbarian only)",
-      "+1-2 to Battle Orders (Barbarian only)",
-      "found in v1.10 or later"
+      "+1-2 to Battle Orders (Barbarian only)"
     ],
     category: "Unique Barbarian Helms"
   },
@@ -7197,8 +6810,7 @@ const uniqueItems = {
       "+5 to Mana after each kill",
       "+20 to Strength",
       "+2 to Shapeshifting Skills",
-      "+20 to Energy",
-      "found in v1.09 or later"
+      "+20 to Energy"
     ],
     category: "Unique Druid Pelts"
   },
@@ -7216,9 +6828,7 @@ const uniqueItems = {
       "7-10% Life Stolen per Hit",
       "33% Chance of Open Wounds",
       "+2-4 to Shape Shifting Skills (Druid only)",
-      "+1-2 to Feral Rage (Druid only)",
-      "Originally was Ladder only, but has been reportedly found in single player games",
-      "found in v1.10 or later"
+      "+1-2 to Feral Rage (Druid only)"
     ],
     category: "Unique Druid Pelts"
   },
@@ -7237,8 +6847,7 @@ const uniqueItems = {
       "+10% to Maximum Poison Resist",
       "+30-40% Fire Resist",
       "+9-14% Lightning Absorb",
-      "15-25% Cold Absorb",
-      "found in v1.10 or later"
+      "15-25% Cold Absorb"
     ],
     category: "Unique Druid Pelts"
   },
@@ -7256,8 +6865,7 @@ const uniqueItems = {
       "+3 to Elemental Skills (Druid only)",
       "+20-30 to Energy",
       "-10-20% to Enemy Fire Resistance",
-      "+15-25 to all Resistances",
-      "found v1.10 or later"
+      "+15-25 to all Resistances"
     ],
     category: "Unique Druid Pelts"
   },
@@ -7279,8 +6887,7 @@ const uniqueItems = {
       "+20 to Energy",
       "33% Regenerate Mana",
       "+40 to All Resistances",
-      "+2 to Curses Skills",
-      "found in v1.09 or later"
+      "+2 to Curses Skills"
     ],
     category: "Unique Necromancer Shrunken Heads"
   },
@@ -7298,8 +6905,7 @@ const uniqueItems = {
       "+20% Faster Run/Walk",
       "+2-3 to Necro Skill Levels",
       "+20-30 to all Resistances",
-      "15% Chance to cast Level 3 Terror when struck",
-      "found in v1.10 or later"
+      "15% Chance to cast Level 3 Terror when struck"
     ],
     category: "Unique Necromancer Shrunken Heads"
   },
@@ -7318,9 +6924,7 @@ const uniqueItems = {
       "+1-3 to Poison and Bone Skills (Necro only)",
       "+1-3 to Curses (Necro only)",
       "+30% Faster Cast Rate",
-      "10% Increase Maximum Mana",
-      "Ladder only",
-      "found in v1.10 or later"
+      "10% Increase Maximum Mana"
     ],
     category: "Unique Necromancer Shrunken Heads"
   },
@@ -7339,8 +6943,7 @@ const uniqueItems = {
       "+50 Defense vs Melee",
       "15% Regenerate Mana",
       "+25 to all Resistances",
-      "2 Sockets",
-      "found in v1.11 or later"
+      "2 Sockets"
     ],
     category: "Unique Necromancer Shrunken Heads"
   },
@@ -7361,8 +6964,7 @@ const uniqueItems = {
       "+20 to Strength and Vitality",
       "+50 to all Resistances",
       "+2 to Paladin Skill Levels",
-      "+2 to Combat Skills",
-      "found in v1.09 or later"
+      "+2 to Combat Skills"
     ],
     category: "Unique Paladin Shields"
   },
@@ -7382,8 +6984,7 @@ const uniqueItems = {
       "+40-75% Enhanced Damage",
       "+40-75% Bonus to Attack Rating",
       "Magic Damage Reduced by 5-9",
-      "30% Faster Block Rate",
-      "found in v1.10 or later"
+      "30% Faster Block Rate"
     ],
     category: "Unique Paladin Shields"
   },
@@ -7403,8 +7004,7 @@ const uniqueItems = {
       "+10 to Hydra",
       "+5% to Maximum Fire Resist",
       "+15-25 to Strength",
-      "10-20% Fire Absorb",
-      "found in v1.10 or later"
+      "10-20% Fire Absorb"
     ],
     category: "Unique Paladin Shields"
   },
@@ -7422,8 +7022,7 @@ const uniqueItems = {
       "+20% Faster Block Rate",
       "+36% Enhanced Damage",
       "+80% Enhanced Defense",
-      "+10 to all Resistances",
-      "found in v1.11 or later"
+      "+10 to all Resistances"
     ],
     category: "Unique Paladin Shields"
   },
@@ -7442,8 +7041,7 @@ const uniqueItems = {
       "30% Faster Cast Rate",
       "+20 to Vitality and Energy",
       "+20% Enhanced Defense",
-      "50% better chance of getting Magic Items",
-      "found in v1.09 or later"
+      "50% better chance of getting Magic Items"
     ],
     category: "Unique Sorceress Orbs"
   },
@@ -7459,8 +7057,7 @@ const uniqueItems = {
       "40% Faster Cast Rate",
       "+10-20% Fire Skill Damage",
       "+10-20% Lightning Skill Damage",
-      "+20-30 to Energy",
-      "found in v1.10 or later"
+      "+20-30 to Energy"
     ],
     category: "Unique Sorceress Orbs"
   },
@@ -7476,9 +7073,7 @@ const uniqueItems = {
       "+20% Faster Cast Rate",
       "+15-30% to Cold Skill Damage",
       "+25-40% Lightning Resist",
-      "+25-40% Fire Resist",
-      "Ladder only",
-      "found in v1.10 or later"
+      "+25-40% Fire Resist"
     ],
     category: "Unique Sorceress Orbs"
   },
@@ -7491,8 +7086,7 @@ const uniqueItems = {
       "+10-20 To All Attributes",
       "All Resistances +10-20",
       "+5-10% To Experience Gained",
-      "Required Level: 70",
-      "Only Spawns In Patch 1.10 or later"
+      "Required Level: 70"
     ],
     category: "Unique Charms"
   },
@@ -7504,8 +7098,7 @@ const uniqueItems = {
       "80-160% Extra Gold From Monsters",
       "Reduces All Vendor Prices 10-15%",
       "20-40% Better Chance of Getting Magic Items",
-      "Required Level: 62",
-      "Only Spawns In Patch 1.10 or later"
+      "Required Level: 62"
     ],
     category: "Unique Charms"
   },
@@ -7520,8 +7113,7 @@ const uniqueItems = {
       "All Resistances +10-20%",
       "+8 to Light Radius",
       "Level 30 Hydra (10 Charges)",
-      "Required Level: 75",
-      "Only Spawns In Patch 1.10 or later"
+      "Required Level: 75"
     ],
     category: "Unique Charms"
   },
@@ -7534,8 +7126,7 @@ const uniqueItems = {
       "Adds 24-38 Cold Damage - 0.12 Second Duration",
       "+3-5% to Cold Skill Damage (varies)",
       "-3-5% to Enemy Cold Resistance (varies)",
-      "Required Level: 49",
-      "Only Spawns In Patch 1.10 or later"
+      "Required Level: 49"
     ],
     category: "Unique Jewels"
   },
@@ -7548,8 +7139,7 @@ const uniqueItems = {
       "Adds 17-45 Fire Damage",
       "+3-5% to Fire Skill Damage (varies)",
       "-3-5% to Enemy Fire Resistance (varies)",
-      "Required Level: 49",
-      "Only Spawns In Patch 1.10 or later"
+      "Required Level: 49"
     ],
     category: "Unique Jewels"
   },
@@ -7562,8 +7152,7 @@ const uniqueItems = {
       "Adds 1-74 Lightning Damage",
       "+3-5% to Lightning Skill Damage (varies)",
       "-3-5% to Enemy Lightning Resistance (varies)",
-      "Required Level: 49",
-      "Only Spawns In Patch 1.10 or later"
+      "Required Level: 49"
     ],
     category: "Unique Jewels"
   },
@@ -7576,8 +7165,7 @@ const uniqueItems = {
       "+37 Poison Damage Over 2 Seconds",
       "+3-5% to Poison Skill Damage (varies)",
       "-3-5% to Enemy Poison Resistance (varies)",
-      "Required Level: 49",
-      "Only Spawns In Patch 1.10 or later"
+      "Required Level: 49"
     ],
     category: "Unique Jewels"
   }
