@@ -3138,7 +3138,7 @@ const uniqueItems = {
       "+130% Enhanced Damage",
       "Ignore Target's Defense",
       "Prevent Monster Heal",
-      "+8 to LIght Radius"
+      "+8 to Light Radius"
     ],
     category: "Unique Javelins"
   },
