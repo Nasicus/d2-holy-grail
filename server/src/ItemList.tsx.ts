@@ -8865,10 +8865,10 @@ const setItems = {
       "Required Level: 25",
       "Durability: 66",
       "Assassin Kick Damage: 23-52",
-      "+0.25 per character level to Regenerate Stamina",
+      "Heal Stamina Plus (0.25 Per Character Level) 0-24% (Based On Character Level)",
       "+40% Faster Run/Walk",
       "+15-25% Cold Resist",
-      "+15% Lightning Resist",
+      "+15-25% Lightning Resist",
       "+75-125 to Defense"
     ],
     category: "Natalya's Odium"
