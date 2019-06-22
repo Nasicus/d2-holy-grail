@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ChangeEvent } from "react";
 import { Checkbox, Input } from "@material-ui/core";
-import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
+import Icon from "@material-ui/core/Icon/Icon";
 import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 import { Util } from "../../common/utils/Util";
@@ -9,10 +9,8 @@ import { Item } from "../../common/definitions/union/Item";
 import * as Mousetrap from "mousetrap";
 import { AllBusinessGrailsType } from "../../common/definitions/business/AllBusinessGrailsType";
 import { Runeword } from "../../common/definitions/business/Runeword";
-import { CheckboxProps } from "@material-ui/core/Checkbox";
-import { InputProps } from "@material-ui/core/Input";
 import { IGrailFilterProps } from "./GrailFilters";
-import styled from "../../TypedStyledComponents";
+import styled from "styled-components";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { TabType } from "./TabType";
 import { IGrailAreaRouterParams, RouteManager } from "../../RouteManager";
@@ -86,7 +84,7 @@ class GrailFiltersInternal extends React.Component<Props, IGrailFilterState> {
             <SearchBox
               inputRef={e => (this.searchBoxRef = e)}
               onChange={this.onInputChange}
-              value={this.state.searchValue}
+              value={this.state.searchValue || ""}
             />
             <SearchIcon>search</SearchIcon>
           </div>
@@ -211,9 +209,7 @@ class GrailFiltersInternal extends React.Component<Props, IGrailFilterState> {
 
 export const GrailFilters = withRouter(GrailFiltersInternal);
 
-const MissingItemsCheckbox: React.ComponentType<CheckboxProps> = styled(
-  Checkbox
-)`
+const MissingItemsCheckbox = styled(Checkbox)`
   && {
     padding-left: 0;
   }
@@ -229,13 +225,13 @@ const FilterContainer = styled.div`
   align-items: center;
 `;
 
-const SearchBox: React.ComponentType<InputProps> = styled(Input)`
+const SearchBox = styled(Input)`
   && {
     width: 300px;
   }
 `;
 
-const SearchIcon: React.ComponentType<IconProps> = styled(Icon)`
+const SearchIcon = styled(Icon)`
   && {
     cursor: pointer;
     vertical-align: middle;

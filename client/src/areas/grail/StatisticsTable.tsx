@@ -12,7 +12,7 @@ import { GrailManager } from "./GrailManager";
 import { GrailMode } from "./GrailMode";
 import { IItem } from "../../common/definitions/union/IItem";
 import { IStatisticsTableProps } from "./StatisticsTable";
-import styled from "../../TypedStyledComponents";
+import styled from "styled-components";
 
 export interface IStatisticsTableProps {
   data: any;
@@ -197,7 +197,7 @@ export class StatisticsTable extends React.Component<
 const StyledPaper: React.ComponentType<PaperProps> = styled(Paper)`
   && {
     max-width: 700px;
-    margin: ${p => p.theme.spacing.unit * 3}px auto auto;
+    margin: ${p => p.theme.spacing(1) * 3}px auto auto;
     overflow-x: auto;
   }
 `;

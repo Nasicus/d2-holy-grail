@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Button } from "@material-ui/core";
-import Checkbox, { CheckboxProps } from "@material-ui/core/Checkbox/Checkbox";
+import Checkbox from "@material-ui/core/Checkbox/Checkbox";
 import TextField, {
   TextFieldProps
 } from "@material-ui/core/TextField/TextField";
@@ -15,7 +15,7 @@ import {
   ButtonWithProgress,
   IButtonWithProgressProps
 } from "../../common/components/ButtonWithProgress";
-import styled from "../../TypedStyledComponents";
+import styled from "styled-components";
 import { ButtonProps } from "@material-ui/core/Button";
 
 export interface ILoginInfo {
@@ -177,7 +177,7 @@ const RootContainer = styled.div`
 const StyledTextField: React.ComponentType<TextFieldProps> = styled(TextField)`
   && {
     width: 300px;
-    margin-top: ${p => p.theme.spacing.unit * 2}px;
+    margin-top: ${p => p.theme.spacing(1) * 2}px;
   }
 ` as any;
 
@@ -198,15 +198,15 @@ const LoginButtonWithProgressWrapper: React.ComponentType<
 const StyledPaper: React.ComponentType<PaperProps> = styled(Paper)`
   && {
     width: 300px;
-    margin: ${p => p.theme.spacing.unit * 4}px auto auto;
-    padding: ${p => p.theme.spacing.unit}px;
+    margin: ${p => p.theme.spacing(1) * 4}px auto auto;
+    padding: ${p => p.theme.spacing(1)}px;
     text-align: center;
   }
 `;
 
 const CreateButton: React.ComponentType<ButtonProps> = styled(Button)`
   && {
-    margin-top: ${p => p.theme.spacing.unit}px;
+    margin-top: ${p => p.theme.spacing(1)}px;
   }
 `;
 
@@ -228,9 +228,7 @@ const InfoIcon: React.ComponentType<IconProps> = styled(Icon)`
   }
 `;
 
-const KeepMeLoggedInCheckbox: React.ComponentType<CheckboxProps> = styled(
-  Checkbox
-)`
+const KeepMeLoggedInCheckbox = styled(Checkbox)`
   && {
     padding-left: 0;
   }

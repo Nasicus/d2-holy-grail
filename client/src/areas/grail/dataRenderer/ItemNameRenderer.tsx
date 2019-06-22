@@ -5,98 +5,71 @@ import { Icon } from "@material-ui/core";
 import { GrailManager } from "../GrailManager";
 import { IItemNameProps } from "./ItemNameRenderer";
 import { IconProps } from "@material-ui/core/Icon";
-import styled from "../../../TypedStyledComponents";
+import styled from "styled-components";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { IGrailAreaRouterParams, RouteManager } from "../../../RouteManager";
+import { FC } from "react";
 
 export interface IItemNameProps {
   item: Item;
   itemName: string;
 }
 
-interface IItemNameState {
-  item: Item;
-}
-
 type Props = IItemNameProps & RouteComponentProps<IGrailAreaRouterParams>;
 
-class ItemNameRendererInternal extends React.PureComponent<
-  Props,
-  IItemNameState
-> {
-  public constructor(props: Props) {
-    super(props);
-    this.state = { item: this.props.item };
-  }
+const ItemNameRendererInternal: FC<Props> = props => {
+  const item = props.item;
+  const itemName = props.itemName;
 
-  public static getDerivedStateFromProps(
-    props: IItemNameProps,
-    state: IItemNameState
-  ) {
-    state.item = props.item;
-    return state;
-  }
-
-  public render() {
-    return (
-      <>
-        {this.props.itemName === RouteManager.getQuery(this.props).itemName && (
-          <ItemPropsDialog
-            onDialogClosed={this.closeDialog}
-            item={this.props.item}
-            itemName={this.props.itemName}
-          />
+  return (
+    <>
+      {itemName === RouteManager.getQuery(props).itemName && (
+        <ItemPropsDialog
+          onDialogClosed={closeDialog}
+          item={item}
+          itemName={itemName}
+        />
+      )}
+      <RootContainer onClick={openDialog}>
+        <span>{itemName}</span>
+        {item.isPerfect && (
+          <PropsIcon title="This item is perfect!">star</PropsIcon>
         )}
-        <RootContainer onClick={this.openDialog}>
-          <span>{this.props.itemName}</span>
-          {this.props.item.isPerfect && (
-            <PropsIcon title="This item is perfect!">star</PropsIcon>
-          )}
-          {this.props.item.note && (
-            <PropsIcon title="This item has notes.">info</PropsIcon>
-          )}
-        </RootContainer>
-      </>
-    );
+        {item.note && <PropsIcon title="This item has notes.">info</PropsIcon>}
+      </RootContainer>
+    </>
+  );
+
+  function openDialog() {
+    updateQuery(true);
   }
 
-  private openDialog = () => {
-    this.updateQuery(true);
-  };
-
-  private updateQuery(appendItemName: boolean) {
-    const query = RouteManager.getQuery(this.props);
+  function updateQuery(appendItemName: boolean) {
+    const query = RouteManager.getQuery(props);
 
     delete query.itemName;
 
     if (appendItemName) {
-      query.itemName = this.props.itemName;
+      query.itemName = itemName;
     }
 
-    RouteManager.updateQuery(this.props, query);
+    RouteManager.updateQuery(props, query);
   }
 
-  private closeDialog = (changedProps: {
-    itemNote: string;
-    isPerfect: boolean;
-  }) => {
-    const newState: Partial<IItemNameState> = {};
-
+  function closeDialog(changedProps: { itemNote: string; isPerfect: boolean }) {
     if (
       changedProps &&
-      (changedProps.itemNote !== this.state.item.note ||
-        changedProps.isPerfect !== this.state.item.isPerfect)
+      (changedProps.itemNote !== item.note ||
+        changedProps.isPerfect !== item.isPerfect)
     ) {
-      this.state.item.note = changedProps.itemNote;
-      this.state.item.isPerfect = changedProps.isPerfect;
+      item.note = changedProps.itemNote;
+      item.isPerfect = changedProps.isPerfect;
       GrailManager.current.updateGrailCache();
-      newState.item = this.state.item;
     }
 
-    this.setState(newState as IItemNameState);
-    this.updateQuery(false);
-  };
-}
+    updateQuery(false);
+  }
+};
 
 export const ItemNameRenderer = withRouter(ItemNameRendererInternal);
 
@@ -108,6 +81,6 @@ const RootContainer = styled.div`
 const PropsIcon: React.ComponentType<IconProps> = styled(Icon)`
   && {
     font-size: 1.5em;
-    margin-left: ${p => p.theme.spacing.unit}px;
+    margin-left: ${p => p.theme.spacing(1)}px;
   }
 `;

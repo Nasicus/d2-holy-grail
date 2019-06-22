@@ -3,7 +3,7 @@ import { Button, Icon, IconButton, Snackbar } from "@material-ui/core";
 import { VersionManager } from "./VersionManager";
 import { ChangelogDialog } from "./ChangelogDialog";
 import { IconButtonProps } from "@material-ui/core/IconButton";
-import styled from "../../../TypedStyledComponents";
+import styled from "styled-components";
 
 interface IVersionNotifierState {
   showNotification?: boolean;
@@ -62,9 +62,7 @@ export class VersionNotifier extends React.Component<
           <span id="message-id">
             {!VersionManager.current.hasStoredVersion
               ? "Current version "
-              : `Upgraded version from ${
-                  VersionManager.current.storedVersion
-                } to `}
+              : `Upgraded version from ${VersionManager.current.storedVersion} to `}
             {VersionManager.currentVersion}
           </span>
         }
@@ -93,6 +91,6 @@ export class VersionNotifier extends React.Component<
 
 const CloseButton: React.ComponentType<IconButtonProps> = styled(IconButton)`
   && {
-    padding: ${p => p.theme.spacing.unit / 2}px;
+    padding: ${p => p.theme.spacing(1) / 2}px;
   }
 `;

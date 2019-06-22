@@ -5,72 +5,56 @@ import { Item } from "../../../common/definitions/union/Item";
 import { ItemNameRenderer } from "./ItemNameRenderer";
 import { IItemProps } from "./CountItemRenderer";
 import { IconProps } from "@material-ui/core/Icon";
-import styled from "../../../TypedStyledComponents";
+import styled from "styled-components";
+import { FC, useState, useEffect } from "react";
 
 export interface IItemProps {
   item: Item;
   itemName: string;
 }
 
-interface IItemState {
-  item: Item;
-  isHovered?: boolean;
-}
+export const CountItemRenderer: FC<IItemProps> = ({ item, itemName }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [count, setCount] = useState(0);
 
-export class CountItemRenderer extends React.Component<IItemProps, IItemState> {
-  public constructor(props: IItemProps) {
-    super(props);
-    this.state = {
-      item: this.props.item
-    };
-  }
+  useEffect(() => setCount(Number(item.wasFound || 0)), [item, item.wasFound]);
 
-  public render() {
-    const ArrowIcon = this.state.isHovered
-      ? VisibleArrowIcon
-      : InvisibleArrowIcon;
+  const ArrowIcon = isHovered ? VisibleArrowIcon : InvisibleArrowIcon;
 
-    return (
-      <RootContainer>
-        <span onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
-          <ArrowIcon onClick={() => this.onArrowClick(-1)}>
-            keyboard_arrow_down
-          </ArrowIcon>
-          <ItemTextContainer>
-            {Number(this.state.item.wasFound || 0)}
-          </ItemTextContainer>
-          <ArrowIcon onClick={() => this.onArrowClick(1)}>
-            keyboard_arrow_up
-          </ArrowIcon>
-        </span>
-        <ItemNameRenderer
-          itemName={this.props.itemName}
-          item={this.props.item}
-        />
-      </RootContainer>
-    );
-  }
+  return (
+    <RootContainer>
+      <span onMouseEnter={handleHover} onMouseLeave={handleHover}>
+        <ArrowIcon onClick={() => onArrowClick(-1)}>
+          keyboard_arrow_down
+        </ArrowIcon>
+        <ItemTextContainer>{count}</ItemTextContainer>
+        <ArrowIcon onClick={() => onArrowClick(1)}>keyboard_arrow_up</ArrowIcon>
+      </span>
+      <ItemNameRenderer itemName={itemName} item={item} />
+    </RootContainer>
+  );
 
-  private handleHover = () => {
+  function handleHover() {
     if (GrailManager.current.isReadOnly) {
       return;
     }
 
-    this.setState({
-      isHovered: !this.state.isHovered
-    });
-  };
+    setIsHovered(!isHovered);
+  }
 
-  private onArrowClick = (increment: number) => {
-    let count = Number(this.state.item.wasFound || 0) + increment;
-    if (count < 0) {
-      count = 0;
+  function onArrowClick(increment: number) {
+    let newCount = count + increment;
+    if (newCount < 0) {
+      newCount = 0;
     }
-    this.state.item.wasFound = count;
-    this.setState({ item: this.state.item });
+    setCount(newCount);
+
+    // should also not be done like this
+    item.wasFound = newCount;
+
     GrailManager.current.updateGrailCache();
-  };
-}
+  }
+};
 
 const RootContainer = styled.div`
   padding: 3px 0 3px 0;

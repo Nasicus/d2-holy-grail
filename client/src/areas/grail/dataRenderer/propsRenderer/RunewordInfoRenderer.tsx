@@ -1,7 +1,7 @@
 import * as React from "react";
 import { IRunewordInfo } from "../../../../common/definitions/api/IRunewordInfo";
 import { Api } from "../../../../common/utils/Api";
-import styled from "../../../../TypedStyledComponents";
+import styled from "styled-components";
 import Typography from "@material-ui/core/Typography";
 import {
   ItemInfosContainer,
@@ -44,8 +44,8 @@ export class RunewordInfoRenderer extends React.PureComponent<
         <Typography variant="h6">Runeword Info</Typography>
         <ItemInfosDetails>
           <div>
-            {runewordInfos.runes.map(r => (
-              <RuneContainer key={r}>
+            {runewordInfos.runes.map((r, i) => (
+              <RuneContainer key={r + i}>
                 <img
                   src={`http://www.d2tomb.com/images/runes/${RunewordInfoRenderer.getRuneImageName(
                     r
@@ -113,7 +113,7 @@ export class RunewordInfoRenderer extends React.PureComponent<
 }
 
 const SocketsContainer = styled.div`
-  margin-top: ${p => p.theme.spacing.unit}px;
+  margin-top: ${p => p.theme.spacing(1)}px;
 `;
 
 const RuneContainer = styled.div`
@@ -121,6 +121,6 @@ const RuneContainer = styled.div`
   align-items: center;
 
   span {
-    padding-left: ${p => p.theme.spacing.unit}px;
+    padding-left: ${p => p.theme.spacing(1)}px;
   }
 `;

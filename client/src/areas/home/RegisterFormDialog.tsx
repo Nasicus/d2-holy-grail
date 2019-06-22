@@ -14,7 +14,7 @@ import TextField, {
 } from "@material-ui/core/TextField/TextField";
 import { ButtonWithProgress } from "../../common/components/ButtonWithProgress";
 import { IRegisterFormDialogProps } from "./RegisterFormDialog";
-import styled from "../../TypedStyledComponents";
+import styled from "styled-components";
 
 export interface IRegisterFormDialogProps {
   onDialogClosed: (loginInfo?: ILoginInfo) => any;
@@ -113,8 +113,8 @@ export class RegisterFormDialog extends React.Component<
 const CloseIcon: React.ComponentType<IconProps> = styled(Icon)`
   && {
     position: absolute;
-    top: ${p => p.theme.spacing.unit}px;
-    right: ${p => p.theme.spacing.unit}px;
+    top: ${p => p.theme.spacing(1)}px;
+    right: ${p => p.theme.spacing(1)}px;
     cursor: pointer;
   }
 `;
@@ -122,7 +122,7 @@ const CloseIcon: React.ComponentType<IconProps> = styled(Icon)`
 const StyledTextField: React.ComponentType<TextFieldProps> = styled(TextField)`
   && {
     width: 300px;
-    margin-top: ${p => p.theme.spacing.unit * 2}px;
+    margin-top: ${p => p.theme.spacing(1) * 2}px;
   }
 ` as any;
 
@@ -136,11 +136,11 @@ const ErrorText: React.ComponentType<DialogContentTextProps> = styled(
 
 const SecurityInfoContainer = styled.div`
   font-style: italic;
-  padding-top: ${p => p.theme.spacing.unit * 4}px;
+  padding-top: ${p => p.theme.spacing(1) * 4}px;
   display: flex;
 `;
 
 const InfoIconContainer = styled.div`
   align-self: center;
-  padding-right: ${p => p.theme.spacing.unit}px;
+  padding-right: ${p => p.theme.spacing(1)}px;
 `;

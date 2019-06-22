@@ -7,7 +7,7 @@ import { GrailToServerSaver } from "./dataManipulation/clickable-components/Grai
 import { ExportListItem } from "./dataManipulation/clickable-components/ExportListItem";
 import { IGrailError } from "./IGrailError";
 import { IGrailErrorHandlerProps } from "./GrailErrorHandler";
-import styled from "../../TypedStyledComponents";
+import styled from "styled-components";
 
 export interface IGrailErrorHandlerProps {
   error: IGrailError;
@@ -64,9 +64,7 @@ const ConflictHandler: React.FunctionComponent<
 
 function getErrorMessage(error: IGrailError) {
   if (error.status === 404) {
-    return `No Holy Grail for the address '${
-      GrailManager.current.address
-    }' exists!`;
+    return `No Holy Grail for the address '${GrailManager.current.address}' exists!`;
   }
 
   if (error.type === "conflict") {

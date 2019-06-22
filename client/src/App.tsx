@@ -6,7 +6,7 @@ import { GithubRibbon } from "./common/components/GithubRibbon";
 import { GrailMode } from "./areas/grail/GrailMode";
 import { GrailArea } from "./areas/grail/GrailArea";
 import { IWithRootPassDownProps, withRoot } from "./withRoot";
-import styled from "./TypedStyledComponents";
+import styled from "styled-components";
 import { GrailStatistics } from "./areas/GrailStatistics";
 
 export interface IPassDownAppProps {
@@ -58,7 +58,7 @@ class AppInternal extends React.Component<IWithRootPassDownProps, IAppState> {
             <Route
               path="/:address/:grailMode?/:tabType?"
               render={props => (
-                <GrailArea {...props as any} {...passDownProps} />
+                <GrailArea {...(props as any)} {...passDownProps} />
               )}
             />
           </Switch>
@@ -76,11 +76,11 @@ const HeaderContainer = styled.div`
   max-width: 700px;
   margin: auto;
   text-align: center;
-  padding-top: ${p => p.theme.spacing.unit * 2}px;
+  padding-top: ${p => p.theme.spacing(1) * 2}px;
 `;
 
 const ContentContainer = styled.div`
-  padding-top: ${p => p.theme.spacing.unit * 6}px;
+  padding-top: ${p => p.theme.spacing(1) * 6}px;
 `;
 
 export const App = withRoot(AppInternal);

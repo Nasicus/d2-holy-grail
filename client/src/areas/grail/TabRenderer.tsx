@@ -9,7 +9,7 @@ import { GrailMode } from "./GrailMode";
 import { StatisticsTable } from "./StatisticsTable";
 import { FilterRenderMode, IFilterResult } from "./GrailFilters";
 import { ITabRendererProps } from "./TabRenderer";
-import styled from "../../TypedStyledComponents";
+import styled from "styled-components";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { TabType } from "./TabType";
 import { IGrailAreaRouterParams, RouteManager } from "../../RouteManager";
@@ -55,11 +55,12 @@ class TabRendererInternal extends React.Component<Props, ITabRendererState> {
   }
 
   public render() {
+    const tabType = this.getTabType();
     return (
       <RootContainer>
         <AppBar position="sticky">
           <Tabs
-            value={this.props.match.params.tabType || TabType.Statistics}
+            value={tabType || TabType.Statistics}
             onChange={this.handleChange}
             centered={true}
           >
@@ -71,11 +72,20 @@ class TabRendererInternal extends React.Component<Props, ITabRendererState> {
             )}
           </Tabs>
         </AppBar>
-        <TabContainer>
-          {this.getData(this.props.match.params.tabType)}
-        </TabContainer>
+        <TabContainer>{this.getData(tabType)}</TabContainer>
       </RootContainer>
     );
+  }
+
+  private getTabType(): TabType {
+    const tabType = this.props.match.params.tabType as TabType;
+
+    // we cannot return the tab type search to early, else the Tab component from UI.Core will give an exception
+    if (tabType === TabType.SearchResults && !this.renderAsSearchResult) {
+      return this.state.activeTab || TabType.Statistics;
+    }
+
+    return tabType;
   }
 
   private get renderAsSearchResult(): boolean {

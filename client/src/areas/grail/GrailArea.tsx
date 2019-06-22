@@ -21,7 +21,7 @@ import { GrailFilters, IFilterResult } from "./GrailFilters";
 import { VersionNotifier } from "./changeManagement/VersionNotifier";
 import { TabRenderer } from "./TabRenderer";
 import { ListItemWithProgress } from "../../common/components/ListItemWithProgress";
-import styled from "../../TypedStyledComponents";
+import styled from "styled-components";
 import { IGrailAreaRouterParams } from "../../RouteManager";
 
 type Props = IPassDownAppProps & RouteComponentProps<IGrailAreaRouterParams>;
@@ -166,14 +166,14 @@ class GrailAreaInternal extends React.Component<Props, IGrailAreaState> {
 
 const RightSideButtons = styled.div`
   position: fixed;
-  right: ${p => p.theme.spacing.unit}px;
-  bottom: ${p => p.theme.spacing.unit}px;
+  right: ${p => p.theme.spacing(1)}px;
+  bottom: ${p => p.theme.spacing(1)}px;
 `;
 
 const LeftSideButtons = styled.div`
   position: fixed;
-  left: ${p => p.theme.spacing.unit}px;
-  bottom: ${p => p.theme.spacing.unit}px;
+  left: ${p => p.theme.spacing(1)}px;
+  bottom: ${p => p.theme.spacing(1)}px;
 `;
 
 const ButtonRow = styled.div`

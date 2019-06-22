@@ -8,7 +8,7 @@ import { ThemeStyle } from "@material-ui/core/styles/createTypography";
 import { GrailManager } from "../GrailManager";
 import { CountItemRenderer } from "./CountItemRenderer";
 import { LevelRenderer } from "./LevelRenderer";
-import styled, { css } from "../../../TypedStyledComponents";
+import styled, { css } from "styled-components";
 
 export interface ILevels {
   level?: number;
@@ -176,7 +176,7 @@ const Level2Renderer: StyledLevelRenderer = styled(BaseDataRenderer)<
   IStyledLevelRendererProps
 >`
   && {
-    padding: ${p => p.theme.spacing.unit}px;
+    padding: ${p => p.theme.spacing(1)}px;
   }
 `;
 
@@ -184,6 +184,6 @@ const Level3Renderer: StyledLevelRenderer = styled(BaseDataRenderer)<
   IStyledLevelRendererProps
 >`
   && {
-    padding-left: ${p => p.theme.spacing.unit * 0.75}px;
+    padding-left: ${p => p.theme.spacing(1) * 0.75}px;
   }
 `;
