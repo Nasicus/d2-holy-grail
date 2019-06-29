@@ -23,6 +23,7 @@ import { TabRenderer } from "./TabRenderer";
 import { ListItemWithProgress } from "../../common/components/ListItemWithProgress";
 import styled from "styled-components";
 import { IGrailAreaRouterParams } from "../../RouteManager";
+import { GrailVersionMigrator } from "./migrations/GrailVersionMigrator";
 
 type Props = IPassDownAppProps & RouteComponentProps<IGrailAreaRouterParams>;
 
@@ -31,6 +32,7 @@ interface IGrailAreaState {
   data?: AllBusinessGrailsType;
   error?: IGrailError;
   loading?: boolean;
+  hasGrailVersionChange?: boolean;
 }
 
 class GrailAreaInternal extends React.Component<Props, IGrailAreaState> {
@@ -64,7 +66,13 @@ class GrailAreaInternal extends React.Component<Props, IGrailAreaState> {
       loginInfo.keepLoggedIn
     );
     dataManager.initialize().subscribe(
-      () => this.setState({ data: dataManager.grail, loading: false }),
+      () => {
+        this.setState({
+          data: dataManager.grail,
+          loading: false,
+          hasGrailVersionChange: dataManager.hasNewVersion
+        });
+      },
       // todo: if we have local storage data, and an error occurs, only show a warning instead of an error
       // so you can also use the app offline
       (err: IGrailError) => this.setState({ error: err })
@@ -87,9 +95,11 @@ class GrailAreaInternal extends React.Component<Props, IGrailAreaState> {
     if (!this.state.data) {
       return null;
     }
+
     return (
       <div>
-        <VersionNotifier />
+        {!this.state.hasGrailVersionChange && <VersionNotifier />}
+        {this.state.hasGrailVersionChange && <GrailVersionMigrator />}
         <div>
           <GrailFilters
             data={this.state.data}

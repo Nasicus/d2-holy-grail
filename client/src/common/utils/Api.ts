@@ -43,6 +43,7 @@ export class Api {
     address: string,
     password: string,
     token: string,
+    version: string,
     grail: IHolyGrailData,
     ethGrail: IEthGrailData,
     runewordGrail: IRunewordGrailApiData
@@ -51,6 +52,7 @@ export class Api {
       fetch(Api.grailApiUrl + address, {
         method: "put",
         body: JSON.stringify({
+          version,
           grail,
           ethGrail,
           runewordGrail,
@@ -78,12 +80,13 @@ export class Api {
 
   public static createGrail(
     address: string,
-    password: string
+    password: string,
+    version: string
   ): Observable<IApiResponse<IHolyGrailApiModel>> {
     return this.fetchToObservable(
       fetch(Api.grailApiUrl, {
         method: "post",
-        body: JSON.stringify({ address, password }),
+        body: JSON.stringify({ address, password, version }),
         headers: { "Content-Type": "application/json" }
       })
     );

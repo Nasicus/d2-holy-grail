@@ -7120,7 +7120,8 @@ const uniqueItems = {
   Cold: {
     name: "Rainbow Facet Cold",
     type: "Jewel",
-    image: "",
+    image:
+      "https://vignette.wikia.nocookie.net/diablo/images/1/17/Jewelblue.gif/revision/latest",
     props: [
       "100% Chance to Cast Level 43 Frost Nova When You Level Up or 100% Chance to Cast Level 37 Blizzard When You Die\n",
       "Adds 24-38 Cold Damage - 0.12 Second Duration",
@@ -7133,7 +7134,8 @@ const uniqueItems = {
   Fire: {
     name: "Rainbow Facet Fire",
     type: "Jewel",
-    image: "",
+    image:
+      "https://vignette.wikia.nocookie.net/diablo/images/e/ef/Jewelred.gif/revision/latest",
     props: [
       "100% Chance to Cast Level 29 Blaze When You Level Up or 100% Chance to Cast Level 31 Meteor When You Die",
       "Adds 17-45 Fire Damage",
@@ -7146,7 +7148,8 @@ const uniqueItems = {
   Light: {
     name: "Rainbow Facet Lightning",
     type: "Jewel",
-    image: "",
+    image:
+      "https://vignette.wikia.nocookie.net/diablo/images/6/6c/Jewelwhite.gif/revision/latest",
     props: [
       "100% Chance to Cast Level 41 Nova When You Level Up or 100% Chance to Cast Level 47 Chain Lightning When You Die",
       "Adds 1-74 Lightning Damage",
@@ -7159,7 +7162,8 @@ const uniqueItems = {
   Poison: {
     name: "Rainbow Facet Poison",
     type: "Jewel",
-    image: "",
+    image:
+      "https://vignette.wikia.nocookie.net/diablo/images/2/20/Jewelgreen.gif/revision/latest",
     props: [
       "100% Chance to Cast Level 23 Venom When You Level Up or 100% Chance to Cast Level 51 Poison Nova When You Die",
       "+37 Poison Damage Over 2 Seconds",

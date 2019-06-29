@@ -15,6 +15,7 @@ import TextField, {
 import { ButtonWithProgress } from "../../common/components/ButtonWithProgress";
 import { IRegisterFormDialogProps } from "./RegisterFormDialog";
 import styled from "styled-components";
+import { GrailManager } from "../grail/GrailManager";
 
 export interface IRegisterFormDialogProps {
   onDialogClosed: (loginInfo?: ILoginInfo) => any;
@@ -89,7 +90,11 @@ export class RegisterFormDialog extends React.Component<
 
   private register = () => {
     this.setState({ isLoading: true });
-    Api.createGrail(this.state.address, this.state.password).subscribe(
+    Api.createGrail(
+      this.state.address,
+      this.state.password,
+      GrailManager.currentVersion
+    ).subscribe(
       () => {
         this.setState({ isLoading: false });
         this.props.onDialogClosed({

@@ -67,7 +67,8 @@ export interface IUniqueClasses {
 }
 
 export interface IUniqueJewels {
-  all: IItems;
+  "level up": IItems;
+  die: IItems;
 }
 
 export interface ISetItems {

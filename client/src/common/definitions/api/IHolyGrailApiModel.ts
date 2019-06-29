@@ -11,4 +11,5 @@ export interface IHolyGrailApiModel {
   runewordData: IRunewordGrailApiData;
   token: string;
   settings: IGrailSettings;
+  version?: string;
 }

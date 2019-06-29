@@ -40,6 +40,18 @@ export class GrailManager {
     return this.apiData.settings;
   }
 
+  public static get currentVersion(): string {
+    return "1.1.0";
+  }
+
+  public get grailVersion(): string {
+    return this.apiData.version || "1.0.0";
+  }
+
+  public get hasNewVersion(): boolean {
+    return this.grailVersion !== GrailManager.currentVersion;
+  }
+
   public get grail(): AllBusinessGrailsType {
     switch (this.grailMode) {
       case GrailMode.Eth:
@@ -119,8 +131,14 @@ export class GrailManager {
     this.dataInitializer.next();
   }
 
+  public updateVersion = (newVersion: string) => {
+    this.apiData.version = newVersion;
+    this.updateGrailCache();
+  };
+
   public updateGrailCache = () => {
     const cachedData = this.grailLocalStorage.getValue();
+    cachedData.version = this.apiData.version;
     cachedData.data = this.apiData.data;
     cachedData.ethData = this.apiData.ethData;
     cachedData.runewordData = this.apiData.runewordData;
@@ -141,6 +159,7 @@ export class GrailManager {
         this.address,
         this.password,
         tokenOverride || this.apiData.token,
+        this.apiData.version,
         this.apiData.data,
         this.apiData.ethData,
         this.apiData.runewordData
@@ -169,6 +188,7 @@ export class GrailManager {
         response => {
           // we have to set back the data to the current grail data, or else we update the local storage with wrong data
           response.data.data = this.apiData.data;
+          response.data.version = this.apiData.version;
           response.data.ethData = this.apiData.ethData;
           response.data.runewordData = this.apiData.runewordData;
           this.apiData.token = response.data.token;
