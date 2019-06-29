@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Button, Icon, IconButton, Snackbar } from "@material-ui/core";
-import { VersionManager } from "./VersionManager";
+import { AppVersionManager } from "./AppVersionManager";
 import { ChangelogDialog } from "./ChangelogDialog";
 import { IconButtonProps } from "@material-ui/core/IconButton";
 import styled from "styled-components";
@@ -20,7 +20,7 @@ export class VersionNotifier extends React.Component<
   }
 
   public componentDidMount() {
-    const versionManager = VersionManager.initialize();
+    const versionManager = AppVersionManager.initialize();
     this.setState({
       showNotification:
         versionManager.hasNewVersion && versionManager.hasNewChangeLog
@@ -28,12 +28,12 @@ export class VersionNotifier extends React.Component<
   }
 
   private handleClose = () => {
-    VersionManager.upgradeStorage();
+    AppVersionManager.upgradeStorage();
     this.setState({ showNotification: false });
   };
 
   private showChangeLog = () => {
-    VersionManager.upgradeStorage();
+    AppVersionManager.upgradeStorage();
     this.setState({ showNotification: false, showChangelog: true });
   };
 
@@ -60,10 +60,10 @@ export class VersionNotifier extends React.Component<
         }}
         message={
           <span id="message-id">
-            {!VersionManager.current.hasStoredVersion
+            {!AppVersionManager.current.hasStoredVersion
               ? "Current version "
-              : `Upgraded version from ${VersionManager.current.storedVersion} to `}
-            {VersionManager.currentVersion}
+              : `Upgraded version from ${AppVersionManager.current.storedVersion} to `}
+            {AppVersionManager.currentVersion}
           </span>
         }
         action={[

@@ -2,15 +2,15 @@ import { LocalStorageHandler } from "../../../common/utils/LocalStorageHandler";
 import { ChangeLogCollection, changeLogs } from "./ChangeLogs";
 const packageJson = require("../../../../package.json");
 
-export class VersionManager {
+export class AppVersionManager {
   private static readonly versionStorage: LocalStorageHandler<
     string
   > = new LocalStorageHandler<string>("appVersion");
 
-  public static get current(): VersionManager {
+  public static get current(): AppVersionManager {
     return this._current;
   }
-  private static _current: VersionManager;
+  private static _current: AppVersionManager;
 
   public static get currentVersion(): string {
     return packageJson.version;
@@ -27,13 +27,13 @@ export class VersionManager {
     public readonly hasNewChangeLog: boolean
   ) {}
 
-  public static initialize(): VersionManager {
-    const storedVersion = VersionManager.versionStorage.getValue();
+  public static initialize(): AppVersionManager {
+    const storedVersion = AppVersionManager.versionStorage.getValue();
     const hasStoredVersion = !!storedVersion;
-    const hasNewVersion = storedVersion !== VersionManager.currentVersion;
+    const hasNewVersion = storedVersion !== AppVersionManager.currentVersion;
     const hasNewChangelog =
-      hasNewVersion && changeLogs[VersionManager.currentVersion];
-    return (VersionManager._current = new VersionManager(
+      hasNewVersion && changeLogs[AppVersionManager.currentVersion];
+    return (AppVersionManager._current = new AppVersionManager(
       storedVersion,
       hasStoredVersion,
       hasNewVersion,
@@ -42,6 +42,6 @@ export class VersionManager {
   }
 
   public static upgradeStorage() {
-    VersionManager.versionStorage.setValue(VersionManager.currentVersion);
+    AppVersionManager.versionStorage.setValue(AppVersionManager.currentVersion);
   }
 }
