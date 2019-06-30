@@ -14,6 +14,7 @@ import styled from "styled-components";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { TabType } from "./TabType";
 import { IGrailAreaRouterParams, RouteManager } from "../../RouteManager";
+import { GrailManager } from "./GrailManager";
 
 require("mousetrap-global-bind");
 
@@ -43,6 +44,13 @@ class GrailFiltersInternal extends React.Component<Props, IGrailFilterState> {
   private onSearch$ = new Subject<string>();
   private searchBoxRef: HTMLInputElement;
 
+  private get useCustomSearchShortcut() {
+    return (
+      GrailManager.current.isReadOnly ||
+      !GrailManager.current.settings.disableCustomSearchShortcut
+    );
+  }
+
   public constructor(props: Props) {
     super(props);
     this.state = {
@@ -54,11 +62,12 @@ class GrailFiltersInternal extends React.Component<Props, IGrailFilterState> {
     this.onSearch$
       .pipe(debounceTime(300))
       .subscribe(() => this.handleFilterChanged());
-    Mousetrap.bindGlobal(["command+f", "ctrl+f"], () => {
-      this.searchBoxRef.focus();
-      this.searchBoxRef.select();
-      return false;
-    });
+    this.useCustomSearchShortcut &&
+      Mousetrap.bindGlobal(["command+f", "ctrl+f"], () => {
+        this.searchBoxRef.focus();
+        this.searchBoxRef.select();
+        return false;
+      });
 
     const query = RouteManager.getQuery(this.props);
     if (query.q || query.missingOnly) {
@@ -73,7 +82,7 @@ class GrailFiltersInternal extends React.Component<Props, IGrailFilterState> {
   }
 
   public componentWillMount(): void {
-    Mousetrap.unbind(["command+f", "ctrl+f"]);
+    this.useCustomSearchShortcut && Mousetrap.unbind(["command+f", "ctrl+f"]);
   }
 
   public render() {

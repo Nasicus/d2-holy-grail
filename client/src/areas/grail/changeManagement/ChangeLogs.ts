@@ -3,6 +3,9 @@ export type ChangeLogCollection = {
 };
 
 export const changeLogs: ChangeLogCollection = {
+  "1.11.0": [
+    `The custom CTRL / COMMAND + F function can now be disabled within the settings`
+  ],
   "1.10.0": [
     `Split Rainbow Facets into "Level Up" and "Die" category (now 506 instead of 502 Holy Grail Items are needed)`
   ],
