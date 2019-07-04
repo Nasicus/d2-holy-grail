@@ -1,5 +1,5 @@
 import * as React from "react";
-import { VersionManager } from "./VersionManager";
+import { AppVersionManager } from "./AppVersionManager";
 import { DialogContentText } from "@material-ui/core";
 import { CloseableDialog } from "../../../common/components/CloseableDialog";
 
@@ -10,7 +10,7 @@ export interface IChangelogDialogProps {
 export const ChangelogDialog: React.FunctionComponent<
   IChangelogDialogProps
 > = props => {
-  const changeLog = VersionManager.current.fullChangeLog;
+  const changeLog = AppVersionManager.current.fullChangeLog;
 
   return (
     <CloseableDialog onDialogClosed={props.onClose} title="Changelog">

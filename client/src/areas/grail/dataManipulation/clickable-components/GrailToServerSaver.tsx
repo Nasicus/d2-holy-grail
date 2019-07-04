@@ -80,7 +80,7 @@ export class GrailToServerSaver extends React.Component<
     this.setState({ showSecondIcon: true, isSaving: false });
 
     if (this.props.reload) {
-      location.reload();
+      window.location.reload();
     }
 
     // reset to the default icon (this should go together with the dismissing of a success message, once we have any)

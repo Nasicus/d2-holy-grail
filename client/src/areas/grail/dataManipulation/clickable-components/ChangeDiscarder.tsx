@@ -77,7 +77,7 @@ export class ChangeDiscarder extends React.Component<
   private onConfirmDialogClose = (ok?: boolean) => {
     if (ok) {
       GrailManager.current.discardGrailCache();
-      location.reload();
+      window.location.reload();
     }
     this.setState({ showConfirm: false });
   };

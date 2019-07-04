@@ -7,7 +7,7 @@ import { GrailToServerSaver } from "./dataManipulation/clickable-components/Grai
 import { ExportListItem } from "./dataManipulation/clickable-components/ExportListItem";
 import { IGrailError } from "./IGrailError";
 import { IGrailErrorHandlerProps } from "./GrailErrorHandler";
-import styled from "../../TypedStyledComponents";
+import styled from "styled-components";
 
 export interface IGrailErrorHandlerProps {
   error: IGrailError;

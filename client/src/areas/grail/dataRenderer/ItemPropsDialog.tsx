@@ -4,9 +4,8 @@ import { GrailManager } from "../GrailManager";
 import { Button, Checkbox, Icon, TextField } from "@material-ui/core";
 import { CloseableDialog } from "../../../common/components/CloseableDialog";
 import { IItemPropsDialogProps } from "./ItemPropsDialog";
-import styled from "../../../TypedStyledComponents";
+import styled from "styled-components";
 import { TextFieldProps } from "@material-ui/core/TextField";
-import { CheckboxProps } from "@material-ui/core/Checkbox";
 import { GrailMode } from "../GrailMode";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { RunewordInfoRenderer } from "./propsRenderer/RunewordInfoRenderer";
@@ -101,7 +100,7 @@ class ItemPropsDialogInternal extends React.PureComponent<
       <>
         <PerfectContainer>
           <PerfectCheckbox
-            checked={this.state.isPerfect}
+            checked={!!this.state.isPerfect}
             onChange={e => this.setState({ isPerfect: e.target.checked })}
           />
           <span>Is perfect</span>
@@ -136,13 +135,13 @@ const ReadOnlyNotesContainer = styled.div`
 `;
 
 const ReadOnlyNotesTitleContainer = styled.div`
-  padding-bottom: ${p => p.theme.spacing.unit * 2}px;
+  padding-bottom: ${p => p.theme.spacing(1) * 2}px;
 `;
 
 const ReadOnlyPerfectContainer = styled.div`
   display: flex;
   align-items: center;
-  padding-bottom: ${p => p.theme.spacing.unit * 4}px;
+  padding-bottom: ${p => p.theme.spacing(1) * 4}px;
 `;
 
 const PerfectContainer = styled.div`
@@ -150,7 +149,7 @@ const PerfectContainer = styled.div`
   align-items: center;
 `;
 
-const PerfectCheckbox: React.ComponentType<CheckboxProps> = styled(Checkbox)`
+const PerfectCheckbox = styled(Checkbox)`
   && {
     padding-left: 0;
   }

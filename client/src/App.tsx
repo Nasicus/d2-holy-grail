@@ -6,7 +6,7 @@ import { GithubRibbon } from "./common/components/GithubRibbon";
 import { GrailMode } from "./areas/grail/GrailMode";
 import { GrailArea } from "./areas/grail/GrailArea";
 import { IWithRootPassDownProps, withRoot } from "./withRoot";
-import styled from "./TypedStyledComponents";
+import styled from "styled-components";
 import { GrailStatistics } from "./areas/GrailStatistics";
 import { Leaderboard } from "./areas/leaderboard/Leaderboard";
 import { LeaderboardHome } from "./areas/leaderboard/home/LeaderboardHome";
@@ -88,11 +88,11 @@ const HeaderContainer = styled.div`
   max-width: 700px;
   margin: auto;
   text-align: center;
-  padding-top: ${p => p.theme.spacing.unit * 2}px;
+  padding-top: ${p => p.theme.spacing(1) * 2}px;
 `;
 
 const ContentContainer = styled.div`
-  padding-top: ${p => p.theme.spacing.unit * 6}px;
+  padding-top: ${p => p.theme.spacing(1) * 6}px;
 `;
 
 export const App = withRoot(AppInternal);

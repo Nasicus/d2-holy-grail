@@ -9,7 +9,7 @@ import { CloseableDialog } from "../../../common/components/CloseableDialog";
 import { ButtonWithProgress } from "../../../common/components/ButtonWithProgress";
 import { FileUploader } from "../../../common/components/FileUploader";
 import { IImportDialogProps } from "./ImportDialog";
-import styled from "../../../TypedStyledComponents";
+import styled from "styled-components";
 
 export interface IImportDialogProps {
   onDialogClosed: () => any;
@@ -66,6 +66,7 @@ export class ImportDialog extends React.Component<
             <a
               href="https://docs.google.com/spreadsheets/d/1Sr7liMtMigd95IwWD6oa3Tky5oEjKzOKAk7pOmdmdCA"
               target="_blank"
+              rel="noopener noreferrer"
             >
               Google Holy Grail Sheet
             </a>{" "}
@@ -178,7 +179,7 @@ export class ImportDialog extends React.Component<
 }
 
 const UploadContainer = styled.div`
-  margin-top: ${p => p.theme.spacing.unit}px;
+  margin-top: ${p => p.theme.spacing(1)}px;
 `;
 
 const DialogContentTextContainer: React.ComponentType<

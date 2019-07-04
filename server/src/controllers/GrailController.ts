@@ -86,6 +86,7 @@ export class GrailController {
   public updateGrail = async (req: Request, res: Response) => {
     const address = req.params.address;
     const password = req.body.password;
+    const version = req.body.version;
     const grailData = req.body.grail;
     const ethGrailData = req.body.ethGrail;
     const runewordGrailData = req.body.runewordGrail;
@@ -97,6 +98,7 @@ export class GrailController {
     }
 
     await this.update(req, res, address, password, token, dataToSet => {
+      dataToSet.version = version;
       dataToSet.data = grailData;
       dataToSet.ethData = ethGrailData;
       dataToSet.runewordData = runewordGrailData;
@@ -381,7 +383,8 @@ export class GrailController {
       ethData: grail.ethData,
       runewordData: grail.runewordData,
       settings: grail.settings,
-      token: grail.token
+      token: grail.token,
+      version: grail.version
     } as IHolyGrail);
   }
 

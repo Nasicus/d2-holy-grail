@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Button, Icon, IconButton, Snackbar } from "@material-ui/core";
-import { VersionManager } from "./VersionManager";
+import { AppVersionManager } from "./AppVersionManager";
 import { ChangelogDialog } from "./ChangelogDialog";
 import { IconButtonProps } from "@material-ui/core/IconButton";
-import styled from "../../../TypedStyledComponents";
+import styled from "styled-components";
 
 interface IVersionNotifierState {
   showNotification?: boolean;
@@ -20,7 +20,7 @@ export class VersionNotifier extends React.Component<
   }
 
   public componentDidMount() {
-    const versionManager = VersionManager.initialize();
+    const versionManager = AppVersionManager.initialize();
     this.setState({
       showNotification:
         versionManager.hasNewVersion && versionManager.hasNewChangeLog
@@ -28,12 +28,12 @@ export class VersionNotifier extends React.Component<
   }
 
   private handleClose = () => {
-    VersionManager.upgradeStorage();
+    AppVersionManager.upgradeStorage();
     this.setState({ showNotification: false });
   };
 
   private showChangeLog = () => {
-    VersionManager.upgradeStorage();
+    AppVersionManager.upgradeStorage();
     this.setState({ showNotification: false, showChangelog: true });
   };
 
@@ -60,12 +60,12 @@ export class VersionNotifier extends React.Component<
         }}
         message={
           <span id="message-id">
-            {!VersionManager.current.hasStoredVersion
+            {!AppVersionManager.current.hasStoredVersion
               ? "Current version "
               : `Upgraded version from ${
-                  VersionManager.current.storedVersion
+                  AppVersionManager.current.storedVersion
                 } to `}
-            {VersionManager.currentVersion}
+            {AppVersionManager.currentVersion}
           </span>
         }
         action={[
@@ -93,6 +93,6 @@ export class VersionNotifier extends React.Component<
 
 const CloseButton: React.ComponentType<IconButtonProps> = styled(IconButton)`
   && {
-    padding: ${p => p.theme.spacing.unit / 2}px;
+    padding: ${p => p.theme.spacing(1) / 2}px;
   }
 `;

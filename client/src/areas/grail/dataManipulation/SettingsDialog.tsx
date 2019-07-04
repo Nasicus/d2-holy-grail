@@ -6,7 +6,7 @@ import { IGrailSettings } from "../../../common/definitions/union/IGrailSettings
 import { SettingsToServerSaver } from "./clickable-components/SettingsToServerSaver";
 import { CloseableDialog } from "../../../common/components/CloseableDialog";
 import { ISettingsDialogProps } from "./SettingsDialog";
-import styled from "../../../TypedStyledComponents";
+import styled from "styled-components";
 
 export interface ISettingsDialogProps {
   onDialogClosed: (wasUpdated: boolean) => any;
@@ -41,8 +41,7 @@ export class SettingsDialog extends React.Component<
             <div>
               <Checkbox
                 checked={GrailManager.current.settings.useItemCountMode}
-                onChange={event => this.onItemCountModeChange(event)}
-                value="Use counter instead of checkbox for items"
+                onChange={event => this.handleItemCountModeChange(event)}
               />
             </div>
             <div>
@@ -50,13 +49,40 @@ export class SettingsDialog extends React.Component<
               between the modes without data loss)
             </div>
           </SettingsEntryContainer>
+          <SettingsEntryContainer>
+            <div>
+              <Checkbox
+                checked={
+                  GrailManager.current.settings.disableCustomSearchShortcut
+                }
+                onChange={event =>
+                  this.handleDisableCustomSearchShortcut(event)
+                }
+              />
+            </div>
+            <div>
+              Disable the custom <i>CTRL / COMMAND + F</i> function (which
+              focuses on the searchbox) and use the built-in browser search
+              function instead (page reload required).
+            </div>
+          </SettingsEntryContainer>
         </DialogContainer>
       </CloseableDialog>
     );
   }
 
-  private onItemCountModeChange = (event: any) => {
+  private handleItemCountModeChange = (event: any) => {
     GrailManager.current.settings.useItemCountMode = event.target.checked;
+    this.updateSettings();
+  };
+
+  private handleDisableCustomSearchShortcut = (event: any) => {
+    GrailManager.current.settings.disableCustomSearchShortcut =
+      event.target.checked;
+    this.updateSettings();
+  };
+
+  private updateSettings = () => {
     GrailManager.current.updateGrailCache();
     this.setState({ settings: GrailManager.current.settings, wasSaved: true });
   };

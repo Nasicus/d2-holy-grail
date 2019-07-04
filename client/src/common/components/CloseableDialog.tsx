@@ -5,7 +5,7 @@ import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
 import { ISettingsDialogProps } from "./CloseableDialog";
-import styled from "../../TypedStyledComponents";
+import styled from "styled-components";
 
 export interface ISettingsDialogProps {
   onDialogClosed: () => any;
@@ -34,8 +34,8 @@ export const CloseableDialog: React.FunctionComponent<
 const CloseIcon: React.ComponentType<IconProps> = styled(Icon)`
   && {
     position: absolute;
-    top: ${p => p.theme.spacing.unit}px;
-    right: ${p => p.theme.spacing.unit}px;
+    top: ${p => p.theme.spacing(1)}px;
+    right: ${p => p.theme.spacing(1)}px;
     cursor: pointer;
   }
 `;

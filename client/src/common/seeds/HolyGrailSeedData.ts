@@ -1,4 +1,4 @@
-import { IHolyGrailData } from "../../common/definitions/union/IHolyGrailData";
+import { IHolyGrailData } from "../definitions/union/IHolyGrailData";
 
 export const holyGrailSeedData: IHolyGrailData = {
   uniques: {
@@ -532,7 +532,13 @@ export const holyGrailSeedData: IHolyGrailData = {
         }
       },
       "rainbow facet (jewel)": {
-        all: {
+        "level up": {
+          Cold: {},
+          Light: {},
+          Fire: {},
+          Poison: {}
+        },
+        die: {
           Cold: {},
           Light: {},
           Fire: {},

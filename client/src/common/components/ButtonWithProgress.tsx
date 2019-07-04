@@ -6,7 +6,7 @@ import Button, { ButtonProps } from "@material-ui/core/Button";
 import * as React from "react";
 import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
 import Fab, { FabProps } from "@material-ui/core/Fab";
-import styled from "../../TypedStyledComponents";
+import styled from "styled-components";
 
 export interface IButtonWithProgressProps {
   isLoading?: boolean;
@@ -79,7 +79,7 @@ const RootContainer = styled.div`
 `;
 
 const Wrapper = styled.div`
-  margin: ${p => p.theme.spacing.unit}px;
+  margin: ${p => p.theme.spacing(1)}px;
   position: relative;
 `;
 
@@ -104,7 +104,7 @@ const ButtonSuccess: React.ComponentType<ButtonProps> = styled(Button)`
 const SecondIconNormalButton: React.ComponentType<IconProps> = styled(Icon)`
   && {
     vertical-align: middle;
-    margin-right: ${p => p.theme.spacing.unit}px;
+    margin-right: ${p => p.theme.spacing(1)}px;
   }
 `;
 
@@ -126,6 +126,6 @@ const ButtonProgress: React.ComponentType<CircularProgressProps> = styled(
   && {
     color: ${() => green[500]};
     vertical-align: middle;
-    margin-right: ${p => p.theme.spacing.unit}px;
+    margin-right: ${p => p.theme.spacing(1)}px;
   }
 `;

@@ -4,7 +4,7 @@ import { GrailManager } from "../GrailManager";
 import { Item } from "../../../common/definitions/union/Item";
 import { ItemNameRenderer } from "./ItemNameRenderer";
 import { IItemProps } from "./CheckboxItemRenderer";
-import styled from "../../../TypedStyledComponents";
+import styled from "styled-components";
 
 export interface IItemProps {
   item: Item;

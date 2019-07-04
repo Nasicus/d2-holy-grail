@@ -5,7 +5,7 @@ import green from "@material-ui/core/colors/green";
 import { Icon, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import * as React from "react";
 import { IListItemWithProgressProps } from "./ListItemWithProgress";
-import styled from "../../TypedStyledComponents";
+import styled from "styled-components";
 import { IconProps } from "@material-ui/core/Icon";
 
 export interface IListItemWithProgressProps {
@@ -30,7 +30,7 @@ export const ListItemWithProgress: React.FunctionComponent<
     <RootContainer>
       {
         <ListItem
-          button={!!props.onClick}
+          button={!!props.onClick as any}
           onClick={props.onClick}
           disabled={props.isDisabled}
         >
