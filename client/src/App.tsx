@@ -8,6 +8,8 @@ import { GrailArea } from "./areas/grail/GrailArea";
 import { IWithRootPassDownProps, withRoot } from "./withRoot";
 import styled from "./TypedStyledComponents";
 import { GrailStatistics } from "./areas/GrailStatistics";
+import { Leaderboard } from "./areas/leaderboard/Leaderboard";
+import { LeaderboardHome } from "./areas/leaderboard/home/LeaderboardHome";
 
 export interface IPassDownAppProps {
   onGrailModeChange: (grailMode: GrailMode) => void;
@@ -55,6 +57,16 @@ class AppInternal extends React.Component<IWithRootPassDownProps, IAppState> {
           <Switch>
             <Route exact={true} path="/" component={Home} />
             <Route exact={true} path="/stats" component={GrailStatistics} />
+            <Route
+              exact={true}
+              path="/leaderboard"
+              component={LeaderboardHome}
+            />
+            <Route
+              exact={true}
+              path="/leaderboard/:address/:tabType?"
+              component={Leaderboard}
+            />
             <Route
               path="/:address/:grailMode?/:tabType?"
               render={props => (

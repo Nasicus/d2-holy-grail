@@ -6,10 +6,11 @@ import * as path from "path";
 import { Db } from "mongodb";
 import { GrailController } from "../controllers/GrailController";
 import { ItemsController } from "../controllers/ItemsController";
+import { LeaderboardController } from "../controllers/LeaderboardController";
 
 function initializeExpressServer(express: expressServer.Express): void {
-  express.use(bodyParser.urlencoded({ extended: true, limit: '1mb' }));
-  express.use(bodyParser.json({ limit: '1mb' }));
+  express.use(bodyParser.urlencoded({ extended: true, limit: "1mb" }));
+  express.use(bodyParser.json({ limit: "1mb" }));
   express.use(cors());
 }
 
@@ -27,6 +28,9 @@ function initializeExpressServerForClient(
 
 function configureRoutes(db: Db, express: expressServer.Express): void {
   const grailController: GrailController = new GrailController(db);
+  const leaderboardController: LeaderboardController = new LeaderboardController(
+    db
+  );
 
   express.route("/api/grail").post(grailController.add);
 
@@ -50,6 +54,25 @@ function configureRoutes(db: Db, express: expressServer.Express): void {
   express
     .route("/api/runewords/:runewordName")
     .get(itemsController.getRuneword);
+
+  express.route("/api/leaderboard").post(leaderboardController.add);
+
+  express
+    .route("/api/leaderboard/:address")
+    .get(leaderboardController.get)
+    .put(leaderboardController.updateLeaderboard);
+
+  express
+    .route("/api/leaderboard/:address/signup")
+    .put(leaderboardController.signupToLeaderboard);
+
+  express
+    .route("/api/leaderboard/:address/manage")
+    .put(leaderboardController.updateLeaderboardUsers);
+
+  express
+    .route("/api/leaderboard/:address/password/validate")
+    .put(leaderboardController.validatePassword);
 }
 
 export function initializeApp(db: Db, rootDirectoryPath: string) {

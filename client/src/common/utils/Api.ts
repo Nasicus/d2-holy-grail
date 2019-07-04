@@ -3,6 +3,9 @@ import { IHolyGrailData } from "../definitions/union/IHolyGrailData";
 import { IEthGrailData } from "../definitions/union/IEthGrailData";
 import { IRunewordGrailApiData } from "../definitions/api/IRunewordGrailApiData";
 import { IHolyGrailApiModel } from "../definitions/api/IHolyGrailApiModel";
+import { ILeaderboardApiModel } from "../definitions/api/ILeaderboardApiModel";
+import { ILeaderboardData } from "../definitions/union/ILeaderboardData";
+import { ILeaderboardSettings } from "../definitions/union/ILeaderboardSettings";
 import { IGrailSettings } from "../definitions/union/IGrailSettings";
 import { IItemInfo } from "../definitions/api/IItemInfo";
 import { IRunewordInfo } from "../definitions/api/IRunewordInfo";
@@ -16,6 +19,7 @@ export interface IApiResponse<T> {
 export class Api {
   private static readonly apiUrl = "/api/";
   private static readonly grailApiUrl = Api.apiUrl + "grail/";
+  private static readonly leaderboardApiUrl = Api.apiUrl + "leaderboard/";
 
   public static getStatistics(): Observable<IApiResponse<IGrailStatistics>> {
     return this.fetchToObservable(fetch(`${Api.apiUrl}stats`));
@@ -125,4 +129,115 @@ export class Api {
       }
     });
   };
+
+  // Leaderboard methods
+  public static getLeaderboard(
+    address: string
+  ): Observable<IApiResponse<ILeaderboardApiModel>> {
+    return this.fetchToObservable(fetch(Api.leaderboardApiUrl + address));
+  }
+
+  public static updateLeaderboard(
+    address: string,
+    password: string,
+    token: string,
+    leaderboard: ILeaderboardData
+  ): Observable<IApiResponse<ILeaderboardApiModel>> {
+    return this.fetchToObservable(
+      fetch(Api.leaderboardApiUrl + address, {
+        method: "put",
+        body: JSON.stringify({
+          leaderboard,
+          password,
+          token
+        }),
+        headers: { "Content-Type": "application/json" }
+      })
+    );
+  }
+
+  public static updateLeaderboardSettings(
+    address: string,
+    password: string,
+    token: string,
+    settings: ILeaderboardSettings
+  ): Observable<IApiResponse<ILeaderboardApiModel>> {
+    return this.fetchToObservable(
+      fetch(`${Api.leaderboardApiUrl}${address}/settings`, {
+        method: "put",
+        body: JSON.stringify({ settings, password, token }),
+        headers: { "Content-Type": "application/json" }
+      })
+    );
+  }
+
+  public static createLeaderboard(
+    address: string,
+    password: string
+  ): Observable<IApiResponse<ILeaderboardApiModel>> {
+    return this.fetchToObservable(
+      fetch(Api.leaderboardApiUrl, {
+        method: "post",
+        body: JSON.stringify({ address, password }),
+        headers: { "Content-Type": "application/json" }
+      })
+    );
+  }
+
+  public static addUserToLeaderboard(
+    address: string,
+    userAddress: string,
+    userPassword: string
+  ): Observable<IApiResponse<ILeaderboardApiModel>> {
+    return this.fetchToObservable(
+      fetch(`${Api.leaderboardApiUrl}${address}/signup`, {
+        method: "put",
+        body: JSON.stringify({
+          address,
+          userAddress,
+          userPassword
+        }),
+        headers: { "Content-Type": "application/json" }
+      })
+    );
+  }
+
+  public static updateUsersForLeaderboard(
+    address: string,
+    password: string,
+    token: string,
+    acceptedUserlist: string[],
+    deniedUserlist: string[],
+    removedUserlist: string[],
+    userlist: string[]
+  ): Observable<IApiResponse<ILeaderboardApiModel>> {
+    return this.fetchToObservable(
+      fetch(`${Api.leaderboardApiUrl}${address}/manage`, {
+        method: "put",
+        body: JSON.stringify({
+          address,
+          password,
+          token,
+          acceptedUserlist,
+          deniedUserlist,
+          removedUserlist,
+          userlist
+        }),
+        headers: { "Content-Type": "application/json" }
+      })
+    );
+  }
+
+  public static validateLeaderboardPassword(
+    address: string,
+    password: string
+  ): Observable<IApiResponse<boolean>> {
+    return this.fetchToObservable(
+      fetch(`${Api.leaderboardApiUrl}${address}/password/validate`, {
+        method: "put",
+        body: JSON.stringify({ password }),
+        headers: { "Content-Type": "application/json" }
+      })
+    );
+  }
 }

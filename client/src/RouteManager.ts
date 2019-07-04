@@ -1,12 +1,18 @@
 import { parse, stringify } from "query-string";
 import { RouteComponentProps } from "react-router-dom";
 import { TabType } from "./areas/grail/TabType";
+import { LeaderboardTabType } from "./areas/leaderboard/LeaderboardTabType";
 import { GrailMode } from "./areas/grail/GrailMode";
 
 export interface IGrailAreaRouterParams {
   address: string;
   grailMode: string;
   tabType?: TabType;
+}
+
+export interface ILeaderboardAreaRouterParams {
+  address: string;
+  tabType?: LeaderboardTabType;
 }
 
 export interface IGrailAreaQueryObject {
@@ -42,6 +48,18 @@ export class RouteManager {
       pathname: `/${params.address}/${params.grailMode ||
         GrailMode.Holy}/${tabType || TabType.Statistics}`,
       search: newQuery ? stringify(newQuery) : props.location.search
+    });
+  }
+
+  public static updateLeaderboardTabType(
+    props: RouteComponentProps<ILeaderboardAreaRouterParams>,
+    tabType: LeaderboardTabType
+  ) {
+    const params = props.match.params;
+
+    props.history.push({
+      pathname: `/leaderboard/${params.address}/${tabType ||
+        LeaderboardTabType.Leaderboard}`
     });
   }
 }

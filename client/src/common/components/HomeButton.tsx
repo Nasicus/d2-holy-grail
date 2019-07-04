@@ -1,6 +1,6 @@
 import * as React from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import { ButtonWithProgress } from "../../common/components/ButtonWithProgress";
+import { ButtonWithProgress } from "./ButtonWithProgress";
 
 const HomeButtonInternal: React.FunctionComponent<
   RouteComponentProps<{}>

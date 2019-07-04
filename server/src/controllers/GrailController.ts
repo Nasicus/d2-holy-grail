@@ -4,11 +4,29 @@ import { ConfigManager } from "../ConfigManager";
 import { IGrailCollection } from "../models/IGrailCollection";
 import { IHolyGrail } from "../models/IHolyGrail";
 import { MongoErrorCodes } from "../models/MongoErrorCodes";
+import { IItem } from "../definitions/IItem";
+import { Item } from "../definitions/Item";
+import { ILeaderboard } from "../models/ILeaderboard";
+import { ItemScores } from "../ItemScores";
+
+class MissingItems {
+  public missing: number = 0;
+  public score: number = 0;
+  public found: number = 0;
+
+  public constructor() {}
+}
 
 export class GrailController {
   private get grailCollection(): Collection<IGrailCollection> {
     return this.db.collection<IGrailCollection>(
       ConfigManager.db.holyGrailCollection
+    );
+  }
+
+  private get leaderboardCollection(): Collection<ILeaderboard> {
+    return this.db.collection<ILeaderboard>(
+      ConfigManager.db.leaderboardCollection
     );
   }
 
@@ -84,7 +102,163 @@ export class GrailController {
       dataToSet.runewordData = runewordGrailData;
       return dataToSet;
     });
+
+    this.getMemberLeaderboards(address, leaderboards => {
+      leaderboards.forEach(leaderboard => {
+        this.saveGrailInLeaderboardDatabase(
+          address,
+          leaderboard.address,
+          grailData
+        );
+      });
+    });
   };
+
+  public saveGrailInLeaderboardDatabase = async (
+    grailAddress: string,
+    leaderboardAddress: string,
+    data: any
+  ) => {
+    let leaderboardUserData = GrailController.formatGrailForLeaderboard(data);
+    const result = await this.leaderboardCollection.findOneAndUpdate(
+      {
+        address: GrailController.trimAndToLower(leaderboardAddress),
+        "data.users.username": grailAddress
+      },
+      {
+        $set: {
+          "data.users.$.data": leaderboardUserData
+        },
+        $inc: { updateCount: 1 }
+      },
+      { returnOriginal: false }
+    );
+  };
+
+  public static formatGrailForLeaderboard = (data: any): any => {
+    let leaderboardGrailData = {
+      uniqueArmor: {
+        missing: 123
+      },
+      uniqueWeapons: {
+        missing: 197
+      },
+      uniqueOther: {
+        missing: 59
+      },
+      sets: {
+        missing: 127
+      },
+      itemScore: 0
+    };
+    if (data && data.uniques) {
+      if (data.uniques.weapons) {
+        let missingWeps = GrailController.sumMissing(
+          () => data.uniques.weapons,
+          new MissingItems()
+        );
+        leaderboardGrailData.uniqueWeapons.missing = missingWeps.missing;
+        leaderboardGrailData.itemScore += missingWeps.score;
+      }
+      if (data.uniques.armor) {
+        let missingArmor = GrailController.sumMissing(
+          () => data.uniques.armor,
+          new MissingItems()
+        );
+        leaderboardGrailData.uniqueArmor.missing = missingArmor.missing;
+        leaderboardGrailData.itemScore += missingArmor.score;
+      }
+      if (data.uniques.other) {
+        let missingOther = GrailController.sumMissing(
+          () => data.uniques.other,
+          new MissingItems()
+        );
+        leaderboardGrailData.uniqueOther.missing = missingOther.missing;
+        leaderboardGrailData.itemScore += missingOther.score;
+      }
+    }
+    if (data && data.sets) {
+      let missingSets = GrailController.sumMissing(
+        () => data.sets,
+        new MissingItems()
+      );
+      leaderboardGrailData.sets.missing = missingSets.missing;
+      leaderboardGrailData.itemScore += missingSets.score;
+    }
+    return leaderboardGrailData;
+  };
+
+  public static sumMissing = (
+    dataFunc: () => any,
+    missing: MissingItems,
+    category?: string
+  ): MissingItems => {
+    let data = {};
+    try {
+      data = dataFunc();
+    } catch (e) {
+      // ignore error
+    }
+
+    if (!data) {
+      return missing;
+    }
+
+    Object.keys(data).forEach(key => {
+      const possibleItem = data[key] as IItem;
+      if (GrailController.isItem(possibleItem)) {
+        if (!possibleItem.wasFound) {
+          missing.missing++;
+        } else {
+          missing.found++;
+          var itemScore = ItemScores[key];
+          if (!itemScore) {
+            // This is a facet
+            if (category === "all") {
+              // Using the original method, count each facet as two
+              itemScore = 2 * ItemScores["Rainbow Facet"];
+            } else {
+              // using the new split facet system, count each as one
+              itemScore = ItemScores["Rainbow Facet"];
+            }
+          }
+          missing.score += itemScore;
+        }
+      } else {
+        GrailController.sumMissing(() => possibleItem, missing, key);
+      }
+    });
+    return missing;
+  };
+
+  public static isItem(data: any): boolean {
+    const itemProto = new Item();
+    return (
+      data &&
+      typeof data === "object" &&
+      (!Object.keys(data).length ||
+        Object.keys(itemProto).some(k => data.hasOwnProperty(k)))
+    );
+  }
+
+  private async getMemberLeaderboards(
+    address: string,
+    onSuccess: (leaderboards) => any
+  ) {
+    try {
+      const leaderboards = await this.leaderboardCollection.find({
+        userlist: { $in: [GrailController.trimAndToLower(address)] }
+      });
+
+      if (!leaderboards) {
+        return;
+      }
+
+      onSuccess(leaderboards);
+    } catch (err) {
+      // dont update these leaderboards I guess
+    }
+  }
 
   public validatePassword = async (req: Request, res: Response) => {
     const address = req.params.address;

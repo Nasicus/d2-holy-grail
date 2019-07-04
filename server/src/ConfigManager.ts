@@ -2,6 +2,7 @@ export class DbConfig {
   private defaultMongoUrl = "mongodb://localhost/HolyGrail";
 
   public readonly holyGrailCollection = "holygrails";
+  public readonly leaderboardCollection = "leaderboards";
 
   private _mongoUrl: string;
   public get mongoUrl(): string {
