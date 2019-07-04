@@ -7,7 +7,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper, { PaperProps } from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography/Typography";
 import { ILeaderboardTableProps } from "./LeaderboardTable";
-import styled from "../../TypedStyledComponents";
+import styled from "styled-components";
 import { ILeaderboardData } from "../../common/definitions/union/ILeaderboardData";
 import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
 import { DataTableColumnHeader } from "./components/DataTableColumnHeader";
@@ -87,7 +87,7 @@ export class LeaderboardTable extends React.Component<
           <StyledTable>
             <TableHead>
               <TableRow>
-                <TableCell>&nbsp;</TableCell>
+                <StyledTableCell>&nbsp;</StyledTableCell>
                 <DataTableColumnHeader
                   onClick={this.changeSortingState}
                   text="Total"
@@ -140,7 +140,7 @@ export class LeaderboardTable extends React.Component<
   private static renderRow(stats: Stats, isSelected?: boolean) {
     return (
       <TableRow key={`${stats.name}Stat`} hover={true} selected={isSelected}>
-        <TableCell component="th" scope="row">
+        <StyledTableCell component="th" scope="row">
           <RowHeader>
             {stats.total == 0 && (
               <PerfectIcon title="This user has completed their grail!">
@@ -155,13 +155,13 @@ export class LeaderboardTable extends React.Component<
               {stats.name}
             </UserLink>
           </RowHeader>
-        </TableCell>
-        <TableCell>{stats.total}</TableCell>
-        <TableCell>{stats.uniqArm}</TableCell>
-        <TableCell>{stats.uniqWep}</TableCell>
-        <TableCell>{stats.uniqOth}</TableCell>
-        <TableCell>{stats.set}</TableCell>
-        <TableCell>{stats.itemScore}</TableCell>
+        </StyledTableCell>
+        <StyledTableCell>{stats.total}</StyledTableCell>
+        <StyledTableCell>{stats.uniqArm}</StyledTableCell>
+        <StyledTableCell>{stats.uniqWep}</StyledTableCell>
+        <StyledTableCell>{stats.uniqOth}</StyledTableCell>
+        <StyledTableCell>{stats.set}</StyledTableCell>
+        <StyledTableCell>{stats.itemScore}</StyledTableCell>
       </TableRow>
     );
   }
@@ -169,9 +169,9 @@ export class LeaderboardTable extends React.Component<
   private static renderEmptyRow() {
     return (
       <TableRow key={`$EmptyStat`} hover={true}>
-        <TableCell component="th" scope="row" colSpan={7}>
+        <StyledTableCell component="th" scope="row" colSpan={7}>
           <RowHeader>"No users yet! Ask them to join."</RowHeader>
-        </TableCell>
+        </StyledTableCell>
       </TableRow>
     );
   }
@@ -212,8 +212,14 @@ export class LeaderboardTable extends React.Component<
 const StyledPaper: React.ComponentType<PaperProps> = styled(Paper)`
   && {
     max-width: 800px;
-    margin: ${p => p.theme.spacing.unit * 3}px auto auto;
+    margin: ${p => p.theme.spacing(1) * 3}px auto auto;
     overflow-x: auto;
+  }
+`;
+
+const StyledTableCell: React.ComponentType<TableCellProps> = styled(TableCell)`
+  && {
+    padding: 14px 40px 14px 24px;
   }
 `;
 

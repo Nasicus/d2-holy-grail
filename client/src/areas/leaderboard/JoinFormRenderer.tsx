@@ -2,18 +2,13 @@ import * as React from "react";
 import TextField, {
   TextFieldProps
 } from "@material-ui/core/TextField/TextField";
-import { Redirect } from "react-router";
-import { LocationDescriptorObject } from "history";
 import Typography from "@material-ui/core/Typography/Typography";
 import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
-import Paper, { PaperProps } from "@material-ui/core/Paper/Paper";
-import { Api } from "../../common/utils/Api";
 import {
   ButtonWithProgress,
   IButtonWithProgressProps
 } from "../../common/components/ButtonWithProgress";
-import styled from "../../TypedStyledComponents";
-import { ButtonProps } from "@material-ui/core/Button";
+import styled from "styled-components";
 import { LeaderboardManager } from "./LeaderboardManager";
 
 export interface IJoinInfo {
@@ -142,7 +137,7 @@ const RootContainer = styled.div`
 const StyledTextField: React.ComponentType<TextFieldProps> = styled(TextField)`
   && {
     width: 300px;
-    margin-top: ${p => p.theme.spacing.unit * 2}px;
+    margin-top: ${p => p.theme.spacing(1) * 2}px;
   }
 ` as any;
 

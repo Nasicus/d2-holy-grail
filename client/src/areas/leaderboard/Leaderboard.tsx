@@ -5,7 +5,7 @@ import { LeaderboardManager } from "./LeaderboardManager";
 import { ILoginInfo } from "./home/LeaderboardLoginForm";
 import { ILeaderboardData } from "../../common/definitions/union/ILeaderboardData";
 import { LeaderboardBody } from "./LeaderboardBody";
-import styled from "../../TypedStyledComponents";
+import styled from "styled-components";
 import { CircularProgress, Divider } from "@material-ui/core";
 import { VersionNotifier } from "../grail/changeManagement/VersionNotifier";
 import { HomeButton } from "../../common/components/HomeButton";
@@ -95,14 +95,14 @@ class LeaderboardAreaInternal extends React.Component<
 
 const RightSideButtons = styled.div`
   position: fixed;
-  right: ${p => p.theme.spacing.unit}px;
-  bottom: ${p => p.theme.spacing.unit}px;
+  right: ${p => p.theme.spacing(1)}px;
+  bottom: ${p => p.theme.spacing(1)}px;
 `;
 
 const LeftSideButtons = styled.div`
   position: fixed;
-  left: ${p => p.theme.spacing.unit}px;
-  bottom: ${p => p.theme.spacing.unit}px;
+  left: ${p => p.theme.spacing(1)}px;
+  bottom: ${p => p.theme.spacing(1)}px;
 `;
 
 const ButtonRow = styled.div`

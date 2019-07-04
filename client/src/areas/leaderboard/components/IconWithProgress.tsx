@@ -4,7 +4,7 @@ import CircularProgress, {
 import green from "@material-ui/core/colors/green";
 import * as React from "react";
 import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
-import styled from "../../../TypedStyledComponents";
+import styled from "styled-components";
 
 export interface IIconWithProgressProps {
   isLoading?: boolean;

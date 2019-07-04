@@ -1,7 +1,7 @@
 import * as React from "react";
 import { LeaderboardLoginForm } from "./LeaderboardLoginForm";
 import { HomeButton } from "../../../common/components/HomeButton";
-import styled from "../../../TypedStyledComponents";
+import styled from "styled-components";
 
 export class LeaderboardHome extends React.Component {
   public render() {
@@ -19,6 +19,6 @@ export class LeaderboardHome extends React.Component {
 
 const LeftSideButtons = styled.div`
   position: fixed;
-  left: ${p => p.theme.spacing.unit}px;
-  bottom: ${p => p.theme.spacing.unit}px;
+  left: ${p => p.theme.spacing(1)}px;
+  bottom: ${p => p.theme.spacing(1)}px;
 `;

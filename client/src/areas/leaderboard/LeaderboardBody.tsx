@@ -5,7 +5,7 @@ import Tab from "@material-ui/core/Tab/Tab";
 import Typography from "@material-ui/core/Typography/Typography";
 import { LeaderboardManager } from "./LeaderboardManager";
 import { LeaderboardTable } from "./LeaderboardTable";
-import styled from "../../TypedStyledComponents";
+import styled from "styled-components";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { Redirect } from "react-router";
 import { LocationDescriptorObject } from "history";

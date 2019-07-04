@@ -1,6 +1,6 @@
 import * as React from "react";
 import TableCell, { TableCellProps } from "@material-ui/core/TableCell";
-import styled from "../../../TypedStyledComponents";
+import styled from "styled-components";
 import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
 
 export interface IDataTableColumnHeaderProps {
@@ -27,7 +27,7 @@ export const DataTableColumnHeader: React.FunctionComponent<
 
 const ColHeader: React.ComponentType<TableCellProps> = styled(TableCell)`
   && {
-    padding: 4px 20px 4px 10px;
+    padding: 4px 20px 4px 20px;
   }
 `;
 

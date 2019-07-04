@@ -6,7 +6,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper, { PaperProps } from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography/Typography";
-import styled from "../../TypedStyledComponents";
+import styled from "styled-components";
 import {
   ButtonWithProgress,
   IButtonWithProgressProps
@@ -205,7 +205,7 @@ export class UserManagerRenderer extends React.Component<
 const StyledPaper: React.ComponentType<PaperProps> = styled(Paper)`
   && {
     max-width: 800px;
-    margin: ${p => p.theme.spacing.unit * 3}px auto auto;
+    margin: ${p => p.theme.spacing(1) * 3}px auto auto;
     overflow-x: auto;
   }
 `;
