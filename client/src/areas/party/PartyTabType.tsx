@@ -1,5 +1,5 @@
 export enum PartyTabType {
-  Party = "party",
+  Leaderboard = "leaderboard",
   Join = "join",
   Manage = "manage"
 }

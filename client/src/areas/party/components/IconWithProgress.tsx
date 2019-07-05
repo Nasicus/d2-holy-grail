@@ -52,5 +52,6 @@ const CustomIcon: React.ComponentType<IconProps> = styled(Icon)`
     font-size: 1.75rem;
     margin-left: 5px;
     margin-bottom: -0.4rem;
+    cursor: pointer;
   }
 `;

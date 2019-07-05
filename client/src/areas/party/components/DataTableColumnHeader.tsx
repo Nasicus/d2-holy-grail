@@ -8,6 +8,8 @@ export interface IDataTableColumnHeaderProps {
   showIcon?: boolean;
   text?: string;
   sortText?: string;
+  secondIcon?: string;
+  secondIconText?: string;
 }
 
 export const DataTableColumnHeader: React.FunctionComponent<
@@ -21,6 +23,9 @@ export const DataTableColumnHeader: React.FunctionComponent<
     <ColHeader onClick={onClick}>
       {props.text}
       {props.showIcon && <DropDownIcon>arrow_drop_down</DropDownIcon>}
+      {props.secondIcon && (
+        <SecondIcon title={props.secondIconText}>{props.secondIcon}</SecondIcon>
+      )}
     </ColHeader>
   );
 };
@@ -28,6 +33,7 @@ export const DataTableColumnHeader: React.FunctionComponent<
 const ColHeader: React.ComponentType<TableCellProps> = styled(TableCell)`
   && {
     padding: 4px 20px 4px 20px;
+    cursor: pointer;
   }
 `;
 
@@ -35,5 +41,13 @@ const DropDownIcon: React.ComponentType<IconProps> = styled(Icon)`
   && {
     float: left;
     font-size: 1rem;
+  }
+`;
+
+const SecondIcon: React.ComponentType<IconProps> = styled(Icon)`
+  && {
+    align-self: center;
+    font-size: 1.25rem;
+    margin-bottom: -0.3rem;
   }
 `;

@@ -123,6 +123,10 @@ export class PartyTable extends React.Component<
                   text="Item Score"
                   sortText="itemScore"
                   showIcon={this.state.sorted === "itemScore"}
+                  secondIcon={"info"}
+                  secondIconText={
+                    "ItemScore is a measure of the total rarity of the items found in each grail.\nRarer items like Tyrael's contribute a large ItemScore (1135 pts), while common items like Venom Ward contribute a small ItemScore (1 pt).\nA finished grail will have an ItemScore of 10000."
+                  }
                 />
               </TableRow>
             </TableHead>

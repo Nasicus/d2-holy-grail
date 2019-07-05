@@ -3,6 +3,17 @@ export type ChangeLogCollection = {
 };
 
 export const changeLogs: ChangeLogCollection = {
+  "2.0.0": [
+    {
+      change: `You can now Party Up with your friends!`,
+      children: [
+        "Go to https://d2-holy-grail.herokuapp.com/party to create your own party!",
+        "Share and compare grail progress easily by inviting friends to your party",
+        "Grails are ranked by missing items in each category, as well as a new ItemScore feature",
+        "ItemScore is a measure of the total rarity of items collected in a Holy Grail"
+      ]
+    }
+  ],
   "1.11.0": [
     `The custom CTRL / COMMAND + F function can now be disabled within the settings`
   ],

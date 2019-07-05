@@ -58,7 +58,8 @@ export class RouteManager {
     const params = props.match.params;
 
     props.history.push({
-      pathname: `/party/${params.address}/${tabType || PartyTabType.Party}`
+      pathname: `/party/${params.address}/${tabType ||
+        PartyTabType.Leaderboard}`
     });
   }
 }

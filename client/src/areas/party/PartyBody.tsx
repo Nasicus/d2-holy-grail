@@ -30,7 +30,7 @@ class PartyBodyInternal extends React.Component<Props, IPartyBodyState> {
   public constructor(props: Props) {
     super(props);
     this.state = {
-      activeTab: PartyTabType.Party
+      activeTab: PartyTabType.Leaderboard
     };
   }
 
@@ -48,11 +48,11 @@ class PartyBodyInternal extends React.Component<Props, IPartyBodyState> {
       <RootContainer>
         <AppBar position="sticky">
           <Tabs
-            value={this.props.match.params.tabType || PartyTabType.Party}
+            value={this.props.match.params.tabType || PartyTabType.Leaderboard}
             onChange={this.handleChange}
             centered={true}
           >
-            <Tab label="party" value={"party"} />
+            <Tab label="leaderboard" value={"leaderboard"} />
             <Tab label="join" value={"join"} />
             {!PartyManager.current.isReadOnly && (
               <Tab label="manage" value={"manage"} />
@@ -68,7 +68,7 @@ class PartyBodyInternal extends React.Component<Props, IPartyBodyState> {
 
   private getBody(activeTab: PartyTabType) {
     switch (activeTab) {
-      case PartyTabType.Party:
+      case PartyTabType.Leaderboard:
         return <PartyTable data={this.props.data} />;
       case PartyTabType.Join:
         return <JoinFormRenderer />;

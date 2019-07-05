@@ -64,7 +64,7 @@ export class JoinFormRenderer extends React.Component<{}, IJoinFormState> {
             isLoading={this.state.isLoading}
             isDisabled={!this.state.join_address || !this.state.join_password}
             onClick={this.join}
-            text="Join"
+            text="Party please!"
             secondIcon="check"
             showSecondIcon={this.state.success}
           />
