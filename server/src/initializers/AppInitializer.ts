@@ -6,7 +6,7 @@ import * as path from "path";
 import { Db } from "mongodb";
 import { GrailController } from "../controllers/GrailController";
 import { ItemsController } from "../controllers/ItemsController";
-import { LeaderboardController } from "../controllers/LeaderboardController";
+import { PartyController } from "../controllers/PartyController";
 
 function initializeExpressServer(express: expressServer.Express): void {
   express.use(bodyParser.urlencoded({ extended: true, limit: "1mb" }));
@@ -28,9 +28,7 @@ function initializeExpressServerForClient(
 
 function configureRoutes(db: Db, express: expressServer.Express): void {
   const grailController: GrailController = new GrailController(db);
-  const leaderboardController: LeaderboardController = new LeaderboardController(
-    db
-  );
+  const partyController: PartyController = new PartyController(db);
 
   express.route("/api/grail").post(grailController.add);
 
@@ -55,24 +53,24 @@ function configureRoutes(db: Db, express: expressServer.Express): void {
     .route("/api/runewords/:runewordName")
     .get(itemsController.getRuneword);
 
-  express.route("/api/leaderboard").post(leaderboardController.add);
+  express.route("/api/party").post(partyController.add);
 
   express
-    .route("/api/leaderboard/:address")
-    .get(leaderboardController.get)
-    .put(leaderboardController.updateLeaderboard);
+    .route("/api/party/:address")
+    .get(partyController.get)
+    .put(partyController.updateParty);
 
   express
-    .route("/api/leaderboard/:address/signup")
-    .put(leaderboardController.signupToLeaderboard);
+    .route("/api/party/:address/signup")
+    .put(partyController.signupToParty);
 
   express
-    .route("/api/leaderboard/:address/manage")
-    .put(leaderboardController.updateLeaderboardUsers);
+    .route("/api/party/:address/manage")
+    .put(partyController.updatePartyUsers);
 
   express
-    .route("/api/leaderboard/:address/password/validate")
-    .put(leaderboardController.validatePassword);
+    .route("/api/party/:address/password/validate")
+    .put(partyController.validatePassword);
 }
 
 export function initializeApp(db: Db, rootDirectoryPath: string) {

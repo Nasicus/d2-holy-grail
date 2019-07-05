@@ -1,4 +1,4 @@
-export interface ILeaderboardData {
+export interface IPartyData {
   users?: IUserData[];
 }
 

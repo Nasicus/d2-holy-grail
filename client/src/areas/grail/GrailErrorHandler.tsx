@@ -64,9 +64,7 @@ const ConflictHandler: React.FunctionComponent<
 
 function getErrorMessage(error: IGrailError) {
   if (error.status === 404) {
-    return `No Holy Grail for the address '${
-      GrailManager.current.address
-    }' exists!`;
+    return `No Holy Grail for the address '${GrailManager.current.address}' exists!`;
   }
 
   if (error.type === "conflict") {

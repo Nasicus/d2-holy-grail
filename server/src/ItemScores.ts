@@ -229,8 +229,6 @@ export const ItemScores = {
   "Hwanin's Refuge": 3,
   "Natalya's Soul": 3,
   "Sazabi's Mental Sheath": 3,
-  "Tal Rasha's Fine-Spun Cloth": 3,
-  // Fix
   "Tal Rasha's Fine Spun Cloth": 3,
   "Trang-Oul's Claws": 3,
   "Blackhorn's Face": 3,

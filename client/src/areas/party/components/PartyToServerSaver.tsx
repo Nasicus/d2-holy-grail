@@ -1,37 +1,37 @@
 import * as React from "react";
-import { LeaderboardManager } from "../LeaderboardManager";
+import { PartyManager } from "../PartyManager";
 import { Subscription } from "rxjs";
 import { ErrorNotification } from "../../../common/components/ErrorNotification";
 import * as Mousetrap from "mousetrap";
 import { ButtonWithProgress } from "../../../common/components/ButtonWithProgress";
 require("mousetrap-global-bind");
 
-export interface ILeaderboardToServerSaverProps {
+export interface IPartyToServerSaverProps {
   text?: string;
   registerShortCut?: boolean;
 }
 
-interface ILeaderboardToServerSaverState {
+interface IPartyToServerSaverState {
   isSaving?: boolean;
   isEnabled?: boolean;
   showSecondIcon?: boolean;
   error?: string;
 }
 
-export class LeaderboardToServerSaver extends React.Component<
-  ILeaderboardToServerSaverProps,
-  ILeaderboardToServerSaverState
+export class PartyToServerSaver extends React.Component<
+  IPartyToServerSaverProps,
+  IPartyToServerSaverState
 > {
   private secondIconTimeoutHandler: any;
   private localChangesSubscription: Subscription;
 
-  public constructor(props: ILeaderboardToServerSaverProps) {
+  public constructor(props: IPartyToServerSaverProps) {
     super(props);
     this.state = {};
   }
 
   public componentWillMount() {
-    this.localChangesSubscription = LeaderboardManager.current.hasLocalChanges$.subscribe(
+    this.localChangesSubscription = PartyManager.current.hasLocalChanges$.subscribe(
       hasChanges => this.setState({ isEnabled: hasChanges })
     );
   }
@@ -58,7 +58,7 @@ export class LeaderboardToServerSaver extends React.Component<
   private onSaveButtonClick = () => {
     clearTimeout(this.secondIconTimeoutHandler);
     this.setState({ showSecondIcon: false, isSaving: true });
-    LeaderboardManager.current
+    PartyManager.current
       .updateUserlistOnServer()
       .subscribe(this.onSaveSuccessful, error =>
         this.setState({
@@ -66,15 +66,15 @@ export class LeaderboardToServerSaver extends React.Component<
           isSaving: false,
           error:
             error.status === 401
-              ? "Access denied! You are not allowed to save data for this leaderboard! Are you sure your password is correct? Try to log out and log in again!"
-              : "An error occurred while trying to save your leaderboard data on the server."
+              ? "Access denied! You are not allowed to save data for this party! Are you sure your password is correct? Try to log out and log in again!"
+              : "An error occurred while trying to save your party data on the server."
         })
       );
   };
 
   private onSaveSuccessful = () => {
     this.setState({ showSecondIcon: true, isSaving: false });
-    LeaderboardManager.current.refreshData();
+    PartyManager.current.refreshData().subscribe();
     clearTimeout(this.secondIconTimeoutHandler);
     this.secondIconTimeoutHandler = setTimeout(
       () => this.setState({ showSecondIcon: false }),
@@ -92,7 +92,7 @@ export class LeaderboardToServerSaver extends React.Component<
   }
 
   public render() {
-    if (LeaderboardManager.current.isReadOnly) {
+    if (PartyManager.current.isReadOnly) {
       return null;
     }
 

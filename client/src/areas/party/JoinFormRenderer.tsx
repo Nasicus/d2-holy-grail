@@ -9,7 +9,7 @@ import {
   IButtonWithProgressProps
 } from "../../common/components/ButtonWithProgress";
 import styled from "styled-components";
-import { LeaderboardManager } from "./LeaderboardManager";
+import { PartyManager } from "./PartyManager";
 
 export interface IJoinInfo {
   address?: string;
@@ -50,7 +50,7 @@ export class JoinFormRenderer extends React.Component<{}, IJoinFormState> {
               onChange={e => this.setState({ join_password: e.target.value })}
               onKeyPress={e => this.onKeyPress(e)}
             />
-            <InfoIcon title="You have to enter a password to sign up for this leaderboard">
+            <InfoIcon title="You have to enter a password to sign up for this party">
               info
             </InfoIcon>
           </PasswordContainer>
@@ -88,18 +88,15 @@ export class JoinFormRenderer extends React.Component<{}, IJoinFormState> {
 
     this.setState({ isLoading: true });
 
-    LeaderboardManager.current
-      .signupUserToLeaderboard(
-        this.state.join_address,
-        this.state.join_password
-      )
+    PartyManager.current
+      .signupUserToParty(this.state.join_address, this.state.join_password)
       .subscribe(
         r => {
           this.setState({
             isLoading: false,
             success: true
           });
-          LeaderboardManager.current.refreshData();
+          PartyManager.current.refreshData().subscribe();
         },
         res => {
           if (res.status === 404) {
@@ -107,16 +104,16 @@ export class JoinFormRenderer extends React.Component<{}, IJoinFormState> {
               isLoading: false,
               error: "No grail exists with this username."
             });
-          } else if (res.status == 401) {
+          } else if (res.status === 401) {
             this.setState({
               isLoading: false,
               error: "The entered password is not correct."
             });
-          } else if (res.status == 409) {
+          } else if (res.status === 409) {
             this.setState({
               isLoading: false,
               error:
-                "There is already a grail with this username signed up to the leaderboard.\n If you are not shown on the leaderboard yet, contact the owner of the leaderboard to become an accepted user."
+                "There is already a grail with this username signed up to the party.\n If you are not shown on the party yet, contact the owner of the party to become an accepted user."
             });
           } else {
             this.setState({

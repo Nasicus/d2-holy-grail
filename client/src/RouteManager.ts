@@ -1,7 +1,7 @@
 import { parse, stringify } from "query-string";
 import { RouteComponentProps } from "react-router-dom";
 import { TabType } from "./areas/grail/TabType";
-import { LeaderboardTabType } from "./areas/leaderboard/LeaderboardTabType";
+import { PartyTabType } from "./areas/party/PartyTabType";
 import { GrailMode } from "./areas/grail/GrailMode";
 
 export interface IGrailAreaRouterParams {
@@ -10,9 +10,9 @@ export interface IGrailAreaRouterParams {
   tabType?: TabType;
 }
 
-export interface ILeaderboardAreaRouterParams {
+export interface IPartyAreaRouterParams {
   address: string;
-  tabType?: LeaderboardTabType;
+  tabType?: PartyTabType;
 }
 
 export interface IGrailAreaQueryObject {
@@ -51,15 +51,14 @@ export class RouteManager {
     });
   }
 
-  public static updateLeaderboardTabType(
-    props: RouteComponentProps<ILeaderboardAreaRouterParams>,
-    tabType: LeaderboardTabType
+  public static updatePartyTabType(
+    props: RouteComponentProps<IPartyAreaRouterParams>,
+    tabType: PartyTabType
   ) {
     const params = props.match.params;
 
     props.history.push({
-      pathname: `/leaderboard/${params.address}/${tabType ||
-        LeaderboardTabType.Leaderboard}`
+      pathname: `/party/${params.address}/${tabType || PartyTabType.Party}`
     });
   }
 }

@@ -7,20 +7,16 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper, { PaperProps } from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography/Typography";
 import styled from "styled-components";
-import {
-  ButtonWithProgress,
-  IButtonWithProgressProps
-} from "../../common/components/ButtonWithProgress";
 import { UserManagementButton } from "./components/UserManagementButton";
-import { LeaderboardManager } from "./LeaderboardManager";
-import { ILeaderboardUserData } from "../../common/definitions/union/ILeaderboardUserData";
+import { PartyManager } from "./PartyManager";
+import { IPartyUserData } from "../../common/definitions/union/IPartyUserData";
 
 export interface IUserManagerRendererProps {
-  users: ILeaderboardUserData;
+  users: IPartyUserData;
 }
 
 interface IUserManagerState {
-  users: ILeaderboardUserData;
+  users: IPartyUserData;
 }
 
 export class UserManagerRenderer extends React.Component<
@@ -50,11 +46,11 @@ export class UserManagerRenderer extends React.Component<
               </TableRow>
             </TableHead>
             <TableBody>
-              {this.state.users.pendingUserlist.length != 0 &&
+              {this.state.users.pendingUserlist.length !== 0 &&
                 this.state.users.pendingUserlist.map(s =>
                   this.renderPendingUserRow(s)
                 )}
-              {this.state.users.pendingUserlist.length == 0 &&
+              {this.state.users.pendingUserlist.length === 0 &&
                 this.renderEmptyPendingUserRow()}
             </TableBody>
           </StyledTable>
@@ -73,9 +69,9 @@ export class UserManagerRenderer extends React.Component<
               </TableRow>
             </TableHead>
             <TableBody>
-              {this.state.users.userlist.length != 0 &&
+              {this.state.users.userlist.length !== 0 &&
                 this.state.users.userlist.map(s => this.renderUserRow(s))}
-              {this.state.users.userlist.length == 0 &&
+              {this.state.users.userlist.length === 0 &&
                 this.renderEmptyUserRow()}
             </TableBody>
           </StyledTable>
@@ -176,7 +172,7 @@ export class UserManagerRenderer extends React.Component<
     this.setState({
       users: newUsers
     });
-    LeaderboardManager.current.updateCache();
+    PartyManager.current.updateCache();
   };
 
   private denyUser = (user: string) => {
@@ -187,7 +183,7 @@ export class UserManagerRenderer extends React.Component<
     this.setState({
       users: newUsers
     });
-    LeaderboardManager.current.updateCache();
+    PartyManager.current.updateCache();
   };
 
   private removeUser = (user: string) => {
@@ -198,7 +194,7 @@ export class UserManagerRenderer extends React.Component<
     this.setState({
       users: newUsers
     });
-    LeaderboardManager.current.updateCache();
+    PartyManager.current.updateCache();
   };
 }
 
@@ -227,14 +223,4 @@ const RowHeader = styled.div`
 
 const UserButtonContainer = styled.div`
   margin-left: 0;
-`;
-
-const UserButtonWithProgressWrapper: React.ComponentType<
-  IButtonWithProgressProps
-> = styled(ButtonWithProgress)`
-  && {
-    & > div {
-      margin-left: 0;
-    }
-  }
 `;

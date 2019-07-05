@@ -12,7 +12,7 @@ import { AllBusinessGrailsType } from "../../common/definitions/business/AllBusi
 import { ToggleAllListItem } from "./dataManipulation/clickable-components/ToggleAllListItem";
 import { ExportListItem } from "./dataManipulation/clickable-components/ExportListItem";
 import { HomeButton } from "../../common/components/HomeButton";
-import { LeaderboardButton } from "../../common/components/LeaderboardButton";
+import { PartyButton } from "../../common/components/PartyButton";
 import { MenuButton } from "./menu/MenuButton";
 import { GrailToServerSaver } from "./dataManipulation/clickable-components/GrailToServerSaver";
 import { ChangeDiscarder } from "./dataManipulation/clickable-components/ChangeDiscarder";
@@ -115,7 +115,7 @@ class GrailAreaInternal extends React.Component<Props, IGrailAreaState> {
         </div>
 
         <LeftSideButtons>
-          <LeaderboardButton />
+          <PartyButton />
           <HomeButton />
         </LeftSideButtons>
 

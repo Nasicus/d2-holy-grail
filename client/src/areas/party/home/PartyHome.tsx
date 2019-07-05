@@ -1,13 +1,13 @@
 import * as React from "react";
-import { LeaderboardLoginForm } from "./LeaderboardLoginForm";
+import { PartyLoginForm } from "./PartyLoginForm";
 import { HomeButton } from "../../../common/components/HomeButton";
 import styled from "styled-components";
 
-export class LeaderboardHome extends React.Component {
+export class PartyHome extends React.Component {
   public render() {
     return (
       <div>
-        <LeaderboardLoginForm />
+        <PartyLoginForm />
 
         <LeftSideButtons>
           <HomeButton />

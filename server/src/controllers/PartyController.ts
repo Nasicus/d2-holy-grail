@@ -2,16 +2,14 @@ import { Request, Response } from "express";
 import { Db, Collection, MongoError } from "mongodb";
 import { ConfigManager } from "../ConfigManager";
 import { MongoErrorCodes } from "../models/MongoErrorCodes";
-import { ILeaderboard } from "../models/ILeaderboard";
-import { ILeaderboardData } from "../models/ILeaderboardData";
+import { IParty } from "../models/IParty";
+import { IPartyData } from "../models/IPartyData";
 import { IGrailCollection } from "../models/IGrailCollection";
 import { GrailController } from "./GrailController";
 
-export class LeaderboardController {
-  private get leaderboardCollection(): Collection<ILeaderboard> {
-    return this.db.collection<ILeaderboard>(
-      ConfigManager.db.leaderboardCollection
-    );
+export class PartyController {
+  private get partyCollection(): Collection<IParty> {
+    return this.db.collection<IParty>(ConfigManager.db.partyCollection);
   }
 
   private get grailCollection(): Collection<IGrailCollection> {
@@ -23,20 +21,20 @@ export class LeaderboardController {
   public constructor(private db: Db) {}
 
   public add = async (req: Request, res: Response) => {
-    let newLeaderboard: ILeaderboard = req.body;
-    const originalAddress = newLeaderboard.address;
-    newLeaderboard.address = LeaderboardController.trimAndToLower(
-      newLeaderboard.address
-    );
-    newLeaderboard.token = LeaderboardController.getToken();
-    newLeaderboard.created = newLeaderboard.modified = new Date();
-    newLeaderboard.data = { users: [] };
+    let newParty: IParty = req.body;
+    const originalAddress = newParty.address;
+    newParty.address = PartyController.trimAndToLower(newParty.address);
+    newParty.token = PartyController.getToken();
+    newParty.created = newParty.modified = new Date();
+    newParty.userlist = [];
+    newParty.pendingUserlist = [];
+    newParty.data = { users: [] };
     try {
-      const result = await this.leaderboardCollection.insertOne(newLeaderboard);
-      LeaderboardController.mapAndReturnLeaderboardData(
+      const result = await this.partyCollection.insertOne(newParty);
+      PartyController.mapAndReturnPartyData(
         originalAddress,
         res,
-        await this.leaderboardCollection.findOne({ _id: result.insertedId })
+        await this.partyCollection.findOne({ _id: result.insertedId })
       );
     } catch (err) {
       const mongoError = err as MongoError;
@@ -46,18 +44,14 @@ export class LeaderboardController {
           .send({ type: "duplicateKey", address: originalAddress });
         return;
       }
-      LeaderboardController.sendUnknownError(res, err);
+      PartyController.sendUnknownError(res, err);
     }
   };
 
   public get = async (req: Request, res: Response) => {
     const address = req.params.address;
-    await this.getByAddress(address, res, leaderboard =>
-      LeaderboardController.mapAndReturnLeaderboardData(
-        address,
-        res,
-        leaderboard
-      )
+    await this.getByAddress(address, res, party =>
+      PartyController.mapAndReturnPartyData(address, res, party)
     );
   };
 
@@ -76,19 +70,19 @@ export class LeaderboardController {
     });
   };
 
-  public updateLeaderboard = async (req: Request, res: Response) => {
+  public updateParty = async (req: Request, res: Response) => {
     const address = req.params.address;
     const password = req.body.password;
-    const leaderboardData = req.body.leaderboard;
+    const partyData = req.body.party;
     const token = req.body.token;
 
-    if (!leaderboardData) {
-      res.status(500).send({ type: "argument", argumentName: "leaderboard" });
+    if (!partyData) {
+      res.status(500).send({ type: "argument", argumentName: "party" });
       return;
     }
 
     await this.update(req, res, address, password, token, dataToSet => {
-      dataToSet.data = leaderboardData;
+      dataToSet.data = partyData;
       return dataToSet;
     });
   };
@@ -102,21 +96,21 @@ export class LeaderboardController {
       return;
     }
 
-    const leaderboard = await this.leaderboardCollection.findOne({
-      address: LeaderboardController.trimAndToLower(address)
+    const party = await this.partyCollection.findOne({
+      address: PartyController.trimAndToLower(address)
     });
-    if (!leaderboard) {
+    if (!party) {
       res.status(404).send({ type: "notFound", address });
     } else {
-      res.json(leaderboard.password === password);
+      res.json(party.password === password);
     }
   };
 
-  public signupToLeaderboard = async (req: Request, res: Response) => {
-    const userAddress = req.body.userAddress;
+  public signupToParty = async (req: Request, res: Response) => {
+    const userAddress = PartyController.trimAndToLower(req.body.userAddress);
     const password = req.body.userPassword;
     const grail = await this.grailCollection.findOne({
-      address: LeaderboardController.trimAndToLower(userAddress)
+      address: userAddress
     });
     if (!grail) {
       res.status(404).send({ type: "notFound", userAddress });
@@ -125,9 +119,10 @@ export class LeaderboardController {
       res.status(401).send({ type: "unauthorized", userAddress });
       return;
     }
-    const result = await this.leaderboardCollection.findOneAndUpdate(
+    const partyAddress = PartyController.trimAndToLower(req.params.address);
+    const result = await this.partyCollection.findOneAndUpdate(
       {
-        address: req.params.address,
+        address: partyAddress,
         userlist: { $nin: [userAddress] },
         pendingUserlist: { $nin: [userAddress] }
       },
@@ -142,63 +137,40 @@ export class LeaderboardController {
       res.json({ success: true });
       return;
     }
-    // We didnt get a result, so there must already be a user with this address in the specified leaderboard
+    // We didnt get a result, so there must already be a user with this address in the specified party
     res.status(409).send({ type: "conflict", userAddress });
   };
 
-  public getStatistics = async (req: Request, res: Response) => {
-    const totalLeaderboards = await this.leaderboardCollection.estimatedDocumentCount();
-
-    const aWeekAgo = new Date();
-    aWeekAgo.setDate(aWeekAgo.getDate() - 7);
-
-    const modifiedStats = await this.leaderboardCollection
-      .aggregate([
-        { $match: { modified: { $gt: aWeekAgo } } },
-        { $project: { updateCount: 1, modified: 1 } },
-        { $sort: { modified: -1 } }
-      ])
-      .toArray();
-
-    res.json({
-      totalLeaderboards,
-      modifiedStats
-    });
-  };
-
-  public updateLeaderboardUsers = async (req: Request, res: Response) => {
+  public updatePartyUsers = async (req: Request, res: Response) => {
     try {
       const newUserlist = req.body.userlist;
       const password = req.body.password;
-      const address = req.body.address;
+      const address = PartyController.trimAndToLower(req.body.address);
       const token = req.body.token;
       const acceptedUsers = req.body.acceptedUserlist;
       const deniedUsers = req.body.deniedUserlist;
       const removedUsers = req.body.removedUserlist;
       const resolvedUsers = acceptedUsers.concat(deniedUsers);
-      const leaderboard = await this.leaderboardCollection.findOne({
+      const party = await this.partyCollection.findOne({
         address: address,
         password: password,
         token: token
       });
-      if (leaderboard) {
-        // Got the leaderboard. Lets update the user lists
+      if (party) {
+        // Got the party. Lets update the user lists
         // TODO: Possible this might override saved updates that happen at the same time?
         let newUsers = [];
         // Keep all current users who have not been removed
-        leaderboard.data.users.forEach(user => {
+        party.data.users.forEach(user => {
           if (removedUsers.indexOf(user.username) == -1) {
             newUsers.push(user);
           }
         });
         // Add new users who have been accepted
-        const newUserGrailData = await this.pullUserGrailData(
-          address,
-          acceptedUsers
-        );
+        const newUserGrailData = await this.pullUserGrailData(acceptedUsers);
         newUsers = newUsers.concat(newUserGrailData);
         // Save the document back in the db
-        const result = await this.leaderboardCollection.findOneAndUpdate(
+        const result = await this.partyCollection.findOneAndUpdate(
           {
             address: address,
             password: password,
@@ -208,7 +180,7 @@ export class LeaderboardController {
             $set: {
               userlist: newUserlist,
               "data.users": newUsers,
-              token: LeaderboardController.getToken(),
+              token: PartyController.getToken(),
               modified: new Date()
             },
             $pull: {
@@ -227,18 +199,18 @@ export class LeaderboardController {
             pendingUserlist: result.value.pendingUserlist,
             settings: result.value.settings,
             token: result.value.token
-          } as ILeaderboard);
+          } as IParty);
           return;
         }
         // Didnt save. Handle the error
         this.handleDbError(address, password, token, res);
       } else {
-        // Couldnt find leaderboard. Lets see the error
+        // Couldnt find party. Lets see the error
         this.handleDbError(address, password, token, res);
         return;
       }
     } catch (err) {
-      LeaderboardController.sendUnknownError(res, err);
+      PartyController.sendUnknownError(res, err);
     }
   };
 
@@ -248,27 +220,24 @@ export class LeaderboardController {
     token: string,
     res: Response
   ) => {
-    await this.getByAddress(address, res, existingLeaderboard => {
-      if (existingLeaderboard.password !== password) {
+    await this.getByAddress(address, res, existingParty => {
+      if (existingParty.password !== password) {
         res.status(401).send({ type: "password", address });
-      } else if (existingLeaderboard.token !== token) {
+      } else if (existingParty.token !== token) {
         res.status(403).send({
           type: "token",
-          correctToken: existingLeaderboard.token,
+          correctToken: existingParty.token,
           specifiedToken: token,
           address
         });
       } else {
-        LeaderboardController.sendUnknownError(res, "Database error");
+        PartyController.sendUnknownError(res, "Database error");
       }
     });
   };
 
-  private pullUserGrailData = async (
-    leaderboardAddress: string,
-    userlist: string[]
-  ) => {
-    if (userlist.length == 0) return [];
+  private pullUserGrailData = async (userlist: string[]) => {
+    if (userlist.length === 0) return [];
     const result = await this.grailCollection.find({
       address: {
         $in: userlist
@@ -278,7 +247,7 @@ export class LeaderboardController {
     await result.forEach(user => {
       newUserData.push({
         username: user.address,
-        data: GrailController.formatGrailForLeaderboard(user.data)
+        data: GrailController.formatGrailForParty(user.data)
       });
     });
     return newUserData;
@@ -290,18 +259,18 @@ export class LeaderboardController {
     address: string,
     password: string,
     token: string,
-    modifyDataToSaveFunc: (data: Partial<ILeaderboard>) => Partial<ILeaderboard>
+    modifyDataToSaveFunc: (data: Partial<IParty>) => Partial<IParty>
   ) => {
     try {
-      const result = await this.leaderboardCollection.findOneAndUpdate(
+      const result = await this.partyCollection.findOneAndUpdate(
         {
-          address: LeaderboardController.trimAndToLower(address),
+          address: PartyController.trimAndToLower(address),
           password: password,
           token: token
         },
         {
           $set: modifyDataToSaveFunc({
-            token: LeaderboardController.getToken(),
+            token: PartyController.getToken(),
             modified: new Date()
           }),
           $inc: { updateCount: 1 }
@@ -310,55 +279,51 @@ export class LeaderboardController {
       );
 
       if (result && result.ok && result.value) {
-        LeaderboardController.mapAndReturnLeaderboardData(
-          address,
-          res,
-          result.value
-        );
+        PartyController.mapAndReturnPartyData(address, res, result.value);
         return;
       }
 
-      // we didn't receive a leaderboard, so either the address, password or token is wrong
+      // we didn't receive a party, so either the address, password or token is wrong
       this.handleDbError(address, password, token, res);
     } catch (err) {
-      LeaderboardController.sendUnknownError(res, err);
+      PartyController.sendUnknownError(res, err);
     }
   };
 
   private async getByAddress(
     address: string,
     res: Response,
-    onSuccess: (leaderboard) => any
+    onSuccess: (party) => any
   ) {
     try {
-      const leaderboard = await this.leaderboardCollection.findOne({
-        address: LeaderboardController.trimAndToLower(address)
+      const party = await this.partyCollection.findOne({
+        address: PartyController.trimAndToLower(address)
       });
 
-      if (!leaderboard) {
+      if (!party) {
         res.status(404).send({ type: "notFound", address });
         return;
       }
-      onSuccess(leaderboard);
+      onSuccess(party);
     } catch (err) {
-      LeaderboardController.sendUnknownError(res, err);
+      PartyController.sendUnknownError(res, err);
     }
   }
 
-  private static mapAndReturnLeaderboardData(
+  private static mapAndReturnPartyData(
     originalAddress: string,
     res: Response,
-    leaderboard: ILeaderboard
+    party: IParty
   ) {
     // important: never send the full data back directly, because the password is saved in there!
     res.json({
       address: originalAddress,
-      data: leaderboard.data,
-      userlist: leaderboard.userlist,
-      pendingUserlist: leaderboard.pendingUserlist,
-      settings: leaderboard.settings,
-      token: leaderboard.token
-    } as ILeaderboardData);
+      data: party.data,
+      userlist: party.userlist,
+      pendingUserlist: party.pendingUserlist,
+      settings: party.settings,
+      token: party.token
+    } as IPartyData);
   }
 
   private static sendUnknownError(res: Response, error?: any) {

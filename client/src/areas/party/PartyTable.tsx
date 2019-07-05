@@ -6,20 +6,20 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper, { PaperProps } from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography/Typography";
-import { ILeaderboardTableProps } from "./LeaderboardTable";
+import { IPartyTableProps } from "./PartyTable";
 import styled from "styled-components";
-import { ILeaderboardData } from "../../common/definitions/union/ILeaderboardData";
+import { IPartyData } from "../../common/definitions/union/IPartyData";
 import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
 import { DataTableColumnHeader } from "./components/DataTableColumnHeader";
-import { LeaderboardManager } from "./LeaderboardManager";
+import { PartyManager } from "./PartyManager";
 import { IconWithProgress } from "./components/IconWithProgress";
 
-export interface ILeaderboardTableProps {
-  data: ILeaderboardData;
+export interface IPartyTableProps {
+  data: IPartyData;
 }
 
-interface ILeaderboardTableState {
-  data: ILeaderboardData;
+interface IPartyTableState {
+  data: IPartyData;
   sorted: string;
   isLoading: boolean;
 }
@@ -35,11 +35,11 @@ class Stats {
   public constructor(public name: string) {}
 }
 
-export class LeaderboardTable extends React.Component<
-  ILeaderboardTableProps,
-  ILeaderboardTableState
+export class PartyTable extends React.Component<
+  IPartyTableProps,
+  IPartyTableState
 > {
-  public constructor(props: ILeaderboardTableProps) {
+  public constructor(props: IPartyTableProps) {
     super(props);
     this.state = {
       data: props.data,
@@ -49,8 +49,8 @@ export class LeaderboardTable extends React.Component<
   }
 
   public static getDerivedStateFromProps(
-    props: ILeaderboardTableProps,
-    state: ILeaderboardTableState
+    props: IPartyTableProps,
+    state: IPartyTableState
   ) {
     state.data = props.data;
     return state;
@@ -127,9 +127,9 @@ export class LeaderboardTable extends React.Component<
               </TableRow>
             </TableHead>
             <TableBody>
-              {stats.length != 0 &&
-                stats.map((s, i) => LeaderboardTable.renderRow(s, i % 2 == 0))}
-              {stats.length == 0 && LeaderboardTable.renderEmptyRow()}
+              {stats.length !== 0 &&
+                stats.map((s, i) => PartyTable.renderRow(s, i % 2 === 0))}
+              {stats.length === 0 && PartyTable.renderEmptyRow()}
             </TableBody>
           </StyledTable>
         </StyledPaper>
@@ -142,7 +142,7 @@ export class LeaderboardTable extends React.Component<
       <TableRow key={`${stats.name}Stat`} hover={true} selected={isSelected}>
         <StyledTableCell component="th" scope="row">
           <RowHeader>
-            {stats.total == 0 && (
+            {stats.total === 0 && (
               <PerfectIcon title="This user has completed their grail!">
                 star
               </PerfectIcon>
@@ -186,7 +186,7 @@ export class LeaderboardTable extends React.Component<
 
   private sortData = (data: Stats[], key: string) => {
     data.sort((a: Stats, b: Stats) => {
-      return key == "itemScore" ? b[key] - a[key] : a[key] - b[key];
+      return key === "itemScore" ? b[key] - a[key] : a[key] - b[key];
     });
   };
 
@@ -194,7 +194,7 @@ export class LeaderboardTable extends React.Component<
     this.setState({
       isLoading: true
     });
-    LeaderboardManager.current.refreshData().subscribe(
+    PartyManager.current.refreshData().subscribe(
       () => {
         this.setState({
           isLoading: false

@@ -62,9 +62,7 @@ export class VersionNotifier extends React.Component<
           <span id="message-id">
             {!AppVersionManager.current.hasStoredVersion
               ? "Current version "
-              : `Upgraded version from ${
-                  AppVersionManager.current.storedVersion
-                } to `}
+              : `Upgraded version from ${AppVersionManager.current.storedVersion} to `}
             {AppVersionManager.currentVersion}
           </span>
         }

@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography/Typography";
 import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
 import Paper, { PaperProps } from "@material-ui/core/Paper/Paper";
 import { Api } from "../../../common/utils/Api";
-import { LeaderboardRegisterFormDialog } from "./LeaderboardRegisterFormDialog";
+import { PartyRegisterFormDialog } from "./PartyRegisterFormDialog";
 import {
   ButtonWithProgress,
   IButtonWithProgressProps
@@ -31,7 +31,7 @@ interface ILoginFormState extends ILoginInfo {
   error?: string;
 }
 
-export class LeaderboardLoginForm extends React.Component<{}, ILoginFormState> {
+export class PartyLoginForm extends React.Component<{}, ILoginFormState> {
   public constructor(props: {}) {
     super(props);
     this.state = {};
@@ -48,7 +48,7 @@ export class LeaderboardLoginForm extends React.Component<{}, ILoginFormState> {
     }
 
     this.setState({ isLoading: true });
-    Api.validateLeaderboardPassword(
+    Api.validatePartyPassword(
       this.state.address,
       this.state.password
     ).subscribe(
@@ -99,7 +99,7 @@ export class LeaderboardLoginForm extends React.Component<{}, ILoginFormState> {
   public render() {
     if (this.state.doLogin) {
       const to: LocationDescriptorObject = {
-        pathname: `/leaderboard/${this.state.address}`,
+        pathname: `/party/${this.state.address}`,
         state: this.state as ILoginInfo
       };
       return <Redirect to={to} push={true} />;
@@ -108,7 +108,7 @@ export class LeaderboardLoginForm extends React.Component<{}, ILoginFormState> {
     return (
       <RootContainer>
         {this.state.renderRegisterDialog && (
-          <LeaderboardRegisterFormDialog
+          <PartyRegisterFormDialog
             onDialogClosed={(loginInfo: ILoginInfo) =>
               this.onRegisterDialogClosed(loginInfo)
             }
@@ -118,7 +118,7 @@ export class LeaderboardLoginForm extends React.Component<{}, ILoginFormState> {
         <FormContainer>
           <div>
             <StyledTextField
-              label="Leaderboard address"
+              label="Party address"
               onChange={e => this.setState({ address: e.target.value })}
               onKeyPress={e => this.onKeyPress(e)}
             />
@@ -130,7 +130,7 @@ export class LeaderboardLoginForm extends React.Component<{}, ILoginFormState> {
               onChange={e => this.setState({ password: e.target.value })}
               onKeyPress={e => this.onKeyPress(e)}
             />
-            <InfoIcon title="You only have to enter a password if you want to edit the Leaderboard. You can also leave this blank and view the Leaderboard in a read-only mode!">
+            <InfoIcon title="You only have to enter a password if you want to edit the Party. You can also leave this blank and view the Party in a read-only mode!">
               info
             </InfoIcon>
           </PasswordContainer>
@@ -160,7 +160,7 @@ export class LeaderboardLoginForm extends React.Component<{}, ILoginFormState> {
           />
         </LoginButtonContainer>
         <StyledPaper>
-          Want to create your own leaderboard?
+          Want to create your own Holy Grail Party?
           <CreateButton
             onClick={() => this.setState({ renderRegisterDialog: true })}
           >

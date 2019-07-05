@@ -6,7 +6,7 @@ import { IHolyGrail } from "../models/IHolyGrail";
 import { MongoErrorCodes } from "../models/MongoErrorCodes";
 import { IItem } from "../definitions/IItem";
 import { Item } from "../definitions/Item";
-import { ILeaderboard } from "../models/ILeaderboard";
+import { IParty } from "../models/IParty";
 import { ItemScores } from "../ItemScores";
 
 class MissingItems {
@@ -24,10 +24,8 @@ export class GrailController {
     );
   }
 
-  private get leaderboardCollection(): Collection<ILeaderboard> {
-    return this.db.collection<ILeaderboard>(
-      ConfigManager.db.leaderboardCollection
-    );
+  private get partyCollection(): Collection<IParty> {
+    return this.db.collection<IParty>(ConfigManager.db.partyCollection);
   }
 
   public constructor(private db: Db) {}
@@ -105,31 +103,27 @@ export class GrailController {
       return dataToSet;
     });
 
-    this.getMemberLeaderboards(address, leaderboards => {
-      leaderboards.forEach(leaderboard => {
-        this.saveGrailInLeaderboardDatabase(
-          address,
-          leaderboard.address,
-          grailData
-        );
+    this.getMemberParties(address, parties => {
+      parties.forEach(party => {
+        this.saveGrailInPartyDatabase(address, party.address, grailData);
       });
     });
   };
 
-  public saveGrailInLeaderboardDatabase = async (
+  public saveGrailInPartyDatabase = async (
     grailAddress: string,
-    leaderboardAddress: string,
+    partyAddress: string,
     data: any
   ) => {
-    let leaderboardUserData = GrailController.formatGrailForLeaderboard(data);
-    const result = await this.leaderboardCollection.findOneAndUpdate(
+    let partyUserData = GrailController.formatGrailForParty(data);
+    const result = await this.partyCollection.findOneAndUpdate(
       {
-        address: GrailController.trimAndToLower(leaderboardAddress),
+        address: GrailController.trimAndToLower(partyAddress),
         "data.users.username": grailAddress
       },
       {
         $set: {
-          "data.users.$.data": leaderboardUserData
+          "data.users.$.data": partyUserData
         },
         $inc: { updateCount: 1 }
       },
@@ -137,8 +131,8 @@ export class GrailController {
     );
   };
 
-  public static formatGrailForLeaderboard = (data: any): any => {
-    let leaderboardGrailData = {
+  public static formatGrailForParty = (data: any): any => {
+    let partyGrailData = {
       uniqueArmor: {
         missing: 123
       },
@@ -159,24 +153,24 @@ export class GrailController {
           () => data.uniques.weapons,
           new MissingItems()
         );
-        leaderboardGrailData.uniqueWeapons.missing = missingWeps.missing;
-        leaderboardGrailData.itemScore += missingWeps.score;
+        partyGrailData.uniqueWeapons.missing = missingWeps.missing;
+        partyGrailData.itemScore += missingWeps.score;
       }
       if (data.uniques.armor) {
         let missingArmor = GrailController.sumMissing(
           () => data.uniques.armor,
           new MissingItems()
         );
-        leaderboardGrailData.uniqueArmor.missing = missingArmor.missing;
-        leaderboardGrailData.itemScore += missingArmor.score;
+        partyGrailData.uniqueArmor.missing = missingArmor.missing;
+        partyGrailData.itemScore += missingArmor.score;
       }
       if (data.uniques.other) {
         let missingOther = GrailController.sumMissing(
           () => data.uniques.other,
           new MissingItems()
         );
-        leaderboardGrailData.uniqueOther.missing = missingOther.missing;
-        leaderboardGrailData.itemScore += missingOther.score;
+        partyGrailData.uniqueOther.missing = missingOther.missing;
+        partyGrailData.itemScore += missingOther.score;
       }
     }
     if (data && data.sets) {
@@ -184,10 +178,10 @@ export class GrailController {
         () => data.sets,
         new MissingItems()
       );
-      leaderboardGrailData.sets.missing = missingSets.missing;
-      leaderboardGrailData.itemScore += missingSets.score;
+      partyGrailData.sets.missing = missingSets.missing;
+      partyGrailData.itemScore += missingSets.score;
     }
-    return leaderboardGrailData;
+    return partyGrailData;
   };
 
   public static sumMissing = (
@@ -243,22 +237,19 @@ export class GrailController {
     );
   }
 
-  private async getMemberLeaderboards(
-    address: string,
-    onSuccess: (leaderboards) => any
-  ) {
+  private async getMemberParties(address: string, onSuccess: (parties) => any) {
     try {
-      const leaderboards = await this.leaderboardCollection.find({
+      const parties = await this.partyCollection.find({
         userlist: { $in: [GrailController.trimAndToLower(address)] }
       });
 
-      if (!leaderboards) {
+      if (!parties) {
         return;
       }
 
-      onSuccess(leaderboards);
+      onSuccess(parties);
     } catch (err) {
-      // dont update these leaderboards I guess
+      // dont update these parties I guess
     }
   }
 

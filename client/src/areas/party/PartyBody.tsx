@@ -3,48 +3,44 @@ import Tabs from "@material-ui/core/Tabs/Tabs";
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import Tab from "@material-ui/core/Tab/Tab";
 import Typography from "@material-ui/core/Typography/Typography";
-import { LeaderboardManager } from "./LeaderboardManager";
-import { LeaderboardTable } from "./LeaderboardTable";
+import { PartyManager } from "./PartyManager";
+import { PartyTable } from "./PartyTable";
 import styled from "styled-components";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { Redirect } from "react-router";
 import { LocationDescriptorObject } from "history";
-import { ILeaderboardAreaRouterParams, RouteManager } from "../../RouteManager";
-import { LeaderboardTabType } from "./LeaderboardTabType";
+import { IPartyAreaRouterParams, RouteManager } from "../../RouteManager";
+import { PartyTabType } from "./PartyTabType";
 import { UserManagerRenderer } from "./UserManagerRenderer";
 import { JoinFormRenderer } from "./JoinFormRenderer";
-import { ILeaderboardUserData } from "../../common/definitions/union/ILeaderboardUserData";
+import { IPartyUserData } from "../../common/definitions/union/IPartyUserData";
 
-export interface ILeaderboardBodyProps {
+export interface IPartyBodyProps {
   data: any;
-  users: ILeaderboardUserData;
+  users: IPartyUserData;
 }
 
-interface ILeaderboardBodyState {
-  activeTab: LeaderboardTabType;
+interface IPartyBodyState {
+  activeTab: PartyTabType;
 }
 
-type Props = ILeaderboardBodyProps &
-  RouteComponentProps<ILeaderboardAreaRouterParams>;
+type Props = IPartyBodyProps & RouteComponentProps<IPartyAreaRouterParams>;
 
-class LeaderboardBodyInternal extends React.Component<
-  Props,
-  ILeaderboardBodyState
-> {
+class PartyBodyInternal extends React.Component<Props, IPartyBodyState> {
   public constructor(props: Props) {
     super(props);
     this.state = {
-      activeTab: LeaderboardTabType.Leaderboard
+      activeTab: PartyTabType.Party
     };
   }
 
   public render() {
     if (
-      this.props.match.params.tabType === LeaderboardTabType.Manage &&
-      LeaderboardManager.current.isReadOnly
+      this.props.match.params.tabType === PartyTabType.Manage &&
+      PartyManager.current.isReadOnly
     ) {
       const to: LocationDescriptorObject = {
-        pathname: `/leaderboard/${this.props.match.params.address}`
+        pathname: `/party/${this.props.match.params.address}`
       };
       return <Redirect to={to} push={true} />;
     }
@@ -52,15 +48,13 @@ class LeaderboardBodyInternal extends React.Component<
       <RootContainer>
         <AppBar position="sticky">
           <Tabs
-            value={
-              this.props.match.params.tabType || LeaderboardTabType.Leaderboard
-            }
+            value={this.props.match.params.tabType || PartyTabType.Party}
             onChange={this.handleChange}
             centered={true}
           >
-            <Tab label="leaderboard" value={"leaderboard"} />
+            <Tab label="party" value={"party"} />
             <Tab label="join" value={"join"} />
-            {!LeaderboardManager.current.isReadOnly && (
+            {!PartyManager.current.isReadOnly && (
               <Tab label="manage" value={"manage"} />
             )}
           </Tabs>
@@ -72,22 +66,22 @@ class LeaderboardBodyInternal extends React.Component<
     );
   }
 
-  private getBody(activeTab: LeaderboardTabType) {
+  private getBody(activeTab: PartyTabType) {
     switch (activeTab) {
-      case LeaderboardTabType.Leaderboard:
-        return <LeaderboardTable data={this.props.data} />;
-      case LeaderboardTabType.Join:
+      case PartyTabType.Party:
+        return <PartyTable data={this.props.data} />;
+      case PartyTabType.Join:
         return <JoinFormRenderer />;
-      case LeaderboardTabType.Manage:
+      case PartyTabType.Manage:
         return <UserManagerRenderer users={this.props.users} />;
       default:
-        return <LeaderboardTable data={this.props.data} />;
+        return <PartyTable data={this.props.data} />;
     }
   }
 
-  private handleChange = (event: any, nextTab: LeaderboardTabType) => {
+  private handleChange = (event: any, nextTab: PartyTabType) => {
     this.setState({ activeTab: nextTab });
-    RouteManager.updateLeaderboardTabType(this.props, nextTab);
+    RouteManager.updatePartyTabType(this.props, nextTab);
   };
 }
 
@@ -104,4 +98,4 @@ const BodyContainer: React.FunctionComponent<{}> = props => {
   );
 };
 
-export const LeaderboardBody = withRouter(LeaderboardBodyInternal);
+export const PartyBody = withRouter(PartyBodyInternal);

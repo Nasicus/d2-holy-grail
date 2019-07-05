@@ -1,3 +1,3 @@
-export interface ILeaderboardSettings {
+export interface IPartySettings {
   sortByItemScore: boolean; // unused currently
 }

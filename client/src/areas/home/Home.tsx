@@ -1,6 +1,6 @@
 import * as React from "react";
 import { LoginForm } from "./LoginForm";
-import { LeaderboardButton } from "../../common/components/LeaderboardButton";
+import { PartyButton } from "../../common/components/PartyButton";
 import styled from "styled-components";
 
 export class Home extends React.Component {
@@ -10,7 +10,7 @@ export class Home extends React.Component {
         <LoginForm />
 
         <LeftSideButtons>
-          <LeaderboardButton />
+          <PartyButton />
         </LeftSideButtons>
       </div>
     );

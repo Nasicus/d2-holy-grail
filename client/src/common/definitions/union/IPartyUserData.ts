@@ -1,4 +1,4 @@
-export interface ILeaderboardUserData {
+export interface IPartyUserData {
   userlist?: string[];
   pendingUserlist?: string[];
   deniedUserlist?: string[];

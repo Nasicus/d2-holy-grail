@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ILoginInfo } from "./LeaderboardLoginForm";
+import { ILoginInfo } from "./PartyLoginForm";
 import { Api } from "../../../common/utils/Api";
 import Dialog from "@material-ui/core/Dialog/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
@@ -13,7 +13,7 @@ import TextField, {
   TextFieldProps
 } from "@material-ui/core/TextField/TextField";
 import { ButtonWithProgress } from "../../../common/components/ButtonWithProgress";
-import { IRegisterFormDialogProps } from "./LeaderboardRegisterFormDialog";
+import { IRegisterFormDialogProps } from "./PartyRegisterFormDialog";
 import styled from "styled-components";
 
 export interface IRegisterFormDialogProps {
@@ -27,7 +27,7 @@ interface IRegisterFormDialogState {
   isLoading?: boolean;
 }
 
-export class LeaderboardRegisterFormDialog extends React.Component<
+export class PartyRegisterFormDialog extends React.Component<
   IRegisterFormDialogProps,
   IRegisterFormDialogState
 > {
@@ -39,9 +39,7 @@ export class LeaderboardRegisterFormDialog extends React.Component<
   public render() {
     return (
       <Dialog open={true} onClose={() => this.props.onDialogClosed()}>
-        <DialogTitle id="form-dialog-title">
-          Create your own Leaderboard
-        </DialogTitle>
+        <DialogTitle id="form-dialog-title">Create your own Party</DialogTitle>
         <DialogContent>
           <div>
             <CloseIcon onClick={() => this.props.onDialogClosed()}>
@@ -50,7 +48,7 @@ export class LeaderboardRegisterFormDialog extends React.Component<
             {this.state.error && <ErrorText>{this.state.error}</ErrorText>}
             <div>
               <StyledTextField
-                label="Leaderboard address"
+                label="Party address"
                 onChange={e => this.setState({ address: e.target.value })}
               />
             </div>
@@ -89,7 +87,7 @@ export class LeaderboardRegisterFormDialog extends React.Component<
 
   private register = () => {
     this.setState({ isLoading: true });
-    Api.createLeaderboard(this.state.address, this.state.password).subscribe(
+    Api.createParty(this.state.address, this.state.password).subscribe(
       () => {
         this.setState({ isLoading: false });
         this.props.onDialogClosed({
@@ -103,8 +101,8 @@ export class LeaderboardRegisterFormDialog extends React.Component<
           isLoading: false,
           error:
             err.data && err.data.type === "duplicateKey"
-              ? "There is already a Leaderboard for this address! Please choose another one!"
-              : "There was an unknown error when trying to create your Leaderboard!"
+              ? "There is already a Party for this address! Please choose another one!"
+              : "There was an unknown error when trying to create your Party!"
         })
     );
   };

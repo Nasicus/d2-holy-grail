@@ -1,7 +1,7 @@
 import { IGrailCollection } from "../models/IGrailCollection";
 import { ConfigManager } from "../ConfigManager";
 import { MongoClient, Db } from "mongodb";
-import { ILeaderboard } from "../models/ILeaderboard";
+import { IParty } from "../models/IParty";
 
 async function createAddressIndex(db: Db) {
   const holyGrailCollection = db.collection<IGrailCollection>(
@@ -17,11 +17,11 @@ async function createAddressIndex(db: Db) {
   );
 }
 
-async function createLeaderboardAddressIndex(db: Db) {
-  const leaderboardCollection = db.collection<ILeaderboard>(
-    ConfigManager.db.leaderboardCollection
+async function createPartyAddressIndex(db: Db) {
+  const partyCollection = db.collection<IParty>(
+    ConfigManager.db.partyCollection
   );
-  await leaderboardCollection.createIndex(
+  await partyCollection.createIndex(
     { address: 1 },
     {
       name: "address_idx",
@@ -37,6 +37,6 @@ export async function initializeDb(): Promise<Db> {
   });
   const db = mongoClient.db();
   await createAddressIndex(db);
-  await createLeaderboardAddressIndex(db);
+  await createPartyAddressIndex(db);
   return db;
 }

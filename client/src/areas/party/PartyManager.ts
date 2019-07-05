@@ -1,21 +1,21 @@
 import { Api } from "../../common/utils/Api";
-import { ILeaderboardApiModel } from "../../common/definitions/api/ILeaderboardApiModel";
+import { IPartyApiModel } from "../../common/definitions/api/IPartyApiModel";
 import { LocalStorageHandler } from "../../common/utils/LocalStorageHandler";
 import { Observable, ReplaySubject, Subscriber } from "rxjs";
-import { ILeaderboardError } from "./ILeaderboardError";
-import { ILeaderboardData } from "../../common/definitions/union/ILeaderboardData";
-import { ILeaderboardSettings } from "../../common/definitions/union/ILeaderboardSettings";
-import { ILeaderboardUserData } from "../../common/definitions/union/ILeaderboardUserData";
-import { ILeaderboardAreaData } from "../../common/definitions/union/ILeaderboardAreaData";
+import { IPartyError } from "./IPartyError";
+import { IPartyData } from "../../common/definitions/union/IPartyData";
+import { IPartySettings } from "../../common/definitions/union/IPartySettings";
+import { IPartyUserData } from "../../common/definitions/union/IPartyUserData";
+import { IPartyAreaData } from "../../common/definitions/union/IPartyAreaData";
 
-export class LeaderboardManager {
-  public static get current(): LeaderboardManager {
+export class PartyManager {
+  public static get current(): PartyManager {
     return this._current;
   }
-  private static _current: LeaderboardManager;
+  private static _current: PartyManager;
 
-  private leaderboardData: ILeaderboardAreaData;
-  private leaderboardLocalStorage: LocalStorageHandler<ILeaderboardAreaData>;
+  private partyData: IPartyAreaData;
+  private partyLocalStorage: LocalStorageHandler<IPartyAreaData>;
   private hasLocalChangesStorage: LocalStorageHandler<boolean>;
 
   private dataInitializer = new ReplaySubject<void>(1);
@@ -32,59 +32,53 @@ export class LeaderboardManager {
       throw new Error("Address must be specified");
     }
 
-    this.leaderboardLocalStorage = new LocalStorageHandler(
-      `leaderboard-${this.address}`
-    );
+    this.partyLocalStorage = new LocalStorageHandler(`party-${this.address}`);
     this.hasLocalChangesStorage = new LocalStorageHandler(
-      `leaderboard-hasLocalChanges-${this.address}`
+      `party-hasLocalChanges-${this.address}`
     );
     this.hasLocalChanges.next(this.hasLocalChangesStorage.getValue());
 
     this.setPassword(savePassword);
-    this.initializeLeaderboardData();
+    this.initializePartyData();
   }
 
   public static createInstance(
     address: string,
     password?: string,
     savePassword?: boolean
-  ): LeaderboardManager {
-    return (this._current = new LeaderboardManager(
-      address,
-      password,
-      savePassword
-    ));
+  ): PartyManager {
+    return (this._current = new PartyManager(address, password, savePassword));
   }
 
-  public get leaderboard(): ILeaderboardData {
-    return this.leaderboardData.data;
+  public get party(): IPartyData {
+    return this.partyData.data;
   }
 
-  public get users(): ILeaderboardUserData {
-    return this.leaderboardData.users;
+  public get users(): IPartyUserData {
+    return this.partyData.users;
   }
 
   public get isReadOnly(): boolean {
     return !this.password;
   }
 
-  public get settings(): ILeaderboardSettings {
-    return this.leaderboardData.settings;
+  public get settings(): IPartySettings {
+    return this.partyData.settings;
   }
 
   private updateLocaleStorage = (
-    data: ILeaderboardAreaData,
+    data: IPartyAreaData,
     hasLocalChanges: boolean
   ) => {
-    this.leaderboardLocalStorage.setValue(data);
+    this.partyLocalStorage.setValue(data);
     this.hasLocalChangesStorage.setValue(hasLocalChanges);
     this.hasLocalChanges.next(hasLocalChanges);
   };
 
   public updateCache = () => {
-    const cachedData = this.leaderboardLocalStorage.getValue();
-    cachedData.data = this.leaderboardData.data;
-    cachedData.users = this.leaderboardData.users;
+    const cachedData = this.partyLocalStorage.getValue();
+    cachedData.data = this.partyData.data;
+    cachedData.users = this.partyData.users;
     this.updateLocaleStorage(cachedData, true);
   };
 
@@ -98,7 +92,7 @@ export class LeaderboardManager {
 
   private setPassword(savePassword?: boolean) {
     const passwordLocalStorageHandler = new LocalStorageHandler<string>(
-      `leaderboard-password-${this.address}`
+      `party-password-${this.address}`
     );
     if (!this.password) {
       this.password = passwordLocalStorageHandler.getValue();
@@ -109,23 +103,23 @@ export class LeaderboardManager {
 
   public updateUserlistOnServer = (): Observable<void> => {
     return Observable.create((observer: Subscriber<void>) => {
-      Api.updateUsersForLeaderboard(
+      Api.updateUsersForParty(
         this.address,
         this.password,
-        this.leaderboardData.token,
-        this.leaderboardData.users.acceptedUserlist,
-        this.leaderboardData.users.deniedUserlist,
-        this.leaderboardData.users.removedUserlist,
-        this.leaderboardData.users.userlist
+        this.partyData.token,
+        this.partyData.users.acceptedUserlist,
+        this.partyData.users.deniedUserlist,
+        this.partyData.users.removedUserlist,
+        this.partyData.users.userlist
       ).subscribe(
         response => {
-          // update with latest leaderboard data
+          // update with latest party data
           this.updateLocaleStorage(
             this.convertToAreaData(response.data),
             false
           );
-          this.leaderboardData.data = response.data.data;
-          this.leaderboardData.token = response.data.token;
+          this.partyData.data = response.data.data;
+          this.partyData.token = response.data.token;
           observer.next();
           observer.complete();
         },
@@ -134,16 +128,9 @@ export class LeaderboardManager {
     });
   };
 
-  public signupUserToLeaderboard = (
-    userAddress: string,
-    userPassword: string
-  ) => {
+  public signupUserToParty = (userAddress: string, userPassword: string) => {
     return Observable.create((observer: Subscriber<void>) => {
-      Api.addUserToLeaderboard(
-        this.address,
-        userAddress,
-        userPassword
-      ).subscribe(
+      Api.addUserToParty(this.address, userAddress, userPassword).subscribe(
         response => {
           observer.next();
           observer.complete();
@@ -153,9 +140,7 @@ export class LeaderboardManager {
     });
   };
 
-  private convertToAreaData = (
-    data: ILeaderboardApiModel
-  ): ILeaderboardAreaData => {
+  private convertToAreaData = (data: IPartyApiModel): IPartyAreaData => {
     const users = {
       userlist: data.userlist,
       pendingUserlist: data.pendingUserlist,
@@ -190,11 +175,11 @@ export class LeaderboardManager {
 
   private getApiDataAndEmit = (): Observable<void> => {
     return Observable.create((observer: Subscriber<void>) => {
-      Api.getLeaderboard(this.address).subscribe(
+      Api.getParty(this.address).subscribe(
         response => {
           const apiData = this.convertToAreaData(response.data);
           // Always take the API data over local data
-          this.leaderboardLocalStorage.setValue(apiData);
+          this.partyLocalStorage.setValue(apiData);
           this.emitData(apiData);
           observer.next();
           observer.complete();
@@ -206,8 +191,8 @@ export class LeaderboardManager {
     });
   };
 
-  private initializeLeaderboardData() {
-    const cachedData = this.leaderboardLocalStorage.getValue();
+  private initializePartyData() {
+    const cachedData = this.partyLocalStorage.getValue();
     if (cachedData) {
       this.emitData(cachedData);
     }
@@ -216,12 +201,12 @@ export class LeaderboardManager {
         // Dont need to do anything
       },
       err => {
-        this.dataInitializer.error(err as ILeaderboardError);
+        this.dataInitializer.error(err as IPartyError);
       }
     );
   }
 
-  private emitData(data: ILeaderboardAreaData) {
+  private emitData(data: IPartyAreaData) {
     if (!data.data) {
       data.data = {
         users: []
@@ -261,7 +246,7 @@ export class LeaderboardManager {
     if (!data.settings) {
       data.settings = {} as any;
     }
-    this.leaderboardData = data;
+    this.partyData = data;
     this.dataInitializer.next();
   }
 }

@@ -3,9 +3,9 @@ import { IHolyGrailData } from "../definitions/union/IHolyGrailData";
 import { IEthGrailData } from "../definitions/union/IEthGrailData";
 import { IRunewordGrailApiData } from "../definitions/api/IRunewordGrailApiData";
 import { IHolyGrailApiModel } from "../definitions/api/IHolyGrailApiModel";
-import { ILeaderboardApiModel } from "../definitions/api/ILeaderboardApiModel";
-import { ILeaderboardData } from "../definitions/union/ILeaderboardData";
-import { ILeaderboardSettings } from "../definitions/union/ILeaderboardSettings";
+import { IPartyApiModel } from "../definitions/api/IPartyApiModel";
+import { IPartyData } from "../definitions/union/IPartyData";
+import { IPartySettings } from "../definitions/union/IPartySettings";
 import { IGrailSettings } from "../definitions/union/IGrailSettings";
 import { IItemInfo } from "../definitions/api/IItemInfo";
 import { IRunewordInfo } from "../definitions/api/IRunewordInfo";
@@ -19,7 +19,7 @@ export interface IApiResponse<T> {
 export class Api {
   private static readonly apiUrl = "/api/";
   private static readonly grailApiUrl = Api.apiUrl + "grail/";
-  private static readonly leaderboardApiUrl = Api.apiUrl + "leaderboard/";
+  private static readonly partyApiUrl = Api.apiUrl + "party/";
 
   public static getStatistics(): Observable<IApiResponse<IGrailStatistics>> {
     return this.fetchToObservable(fetch(`${Api.apiUrl}stats`));
@@ -133,24 +133,24 @@ export class Api {
     });
   };
 
-  // Leaderboard methods
-  public static getLeaderboard(
+  // Party methods
+  public static getParty(
     address: string
-  ): Observable<IApiResponse<ILeaderboardApiModel>> {
-    return this.fetchToObservable(fetch(Api.leaderboardApiUrl + address));
+  ): Observable<IApiResponse<IPartyApiModel>> {
+    return this.fetchToObservable(fetch(Api.partyApiUrl + address));
   }
 
-  public static updateLeaderboard(
+  public static updateParty(
     address: string,
     password: string,
     token: string,
-    leaderboard: ILeaderboardData
-  ): Observable<IApiResponse<ILeaderboardApiModel>> {
+    party: IPartyData
+  ): Observable<IApiResponse<IPartyApiModel>> {
     return this.fetchToObservable(
-      fetch(Api.leaderboardApiUrl + address, {
+      fetch(Api.partyApiUrl + address, {
         method: "put",
         body: JSON.stringify({
-          leaderboard,
+          party,
           password,
           token
         }),
@@ -159,14 +159,14 @@ export class Api {
     );
   }
 
-  public static updateLeaderboardSettings(
+  public static updatePartySettings(
     address: string,
     password: string,
     token: string,
-    settings: ILeaderboardSettings
-  ): Observable<IApiResponse<ILeaderboardApiModel>> {
+    settings: IPartySettings
+  ): Observable<IApiResponse<IPartyApiModel>> {
     return this.fetchToObservable(
-      fetch(`${Api.leaderboardApiUrl}${address}/settings`, {
+      fetch(`${Api.partyApiUrl}${address}/settings`, {
         method: "put",
         body: JSON.stringify({ settings, password, token }),
         headers: { "Content-Type": "application/json" }
@@ -174,12 +174,12 @@ export class Api {
     );
   }
 
-  public static createLeaderboard(
+  public static createParty(
     address: string,
     password: string
-  ): Observable<IApiResponse<ILeaderboardApiModel>> {
+  ): Observable<IApiResponse<IPartyApiModel>> {
     return this.fetchToObservable(
-      fetch(Api.leaderboardApiUrl, {
+      fetch(Api.partyApiUrl, {
         method: "post",
         body: JSON.stringify({ address, password }),
         headers: { "Content-Type": "application/json" }
@@ -187,13 +187,13 @@ export class Api {
     );
   }
 
-  public static addUserToLeaderboard(
+  public static addUserToParty(
     address: string,
     userAddress: string,
     userPassword: string
-  ): Observable<IApiResponse<ILeaderboardApiModel>> {
+  ): Observable<IApiResponse<IPartyApiModel>> {
     return this.fetchToObservable(
-      fetch(`${Api.leaderboardApiUrl}${address}/signup`, {
+      fetch(`${Api.partyApiUrl}${address}/signup`, {
         method: "put",
         body: JSON.stringify({
           address,
@@ -205,7 +205,7 @@ export class Api {
     );
   }
 
-  public static updateUsersForLeaderboard(
+  public static updateUsersForParty(
     address: string,
     password: string,
     token: string,
@@ -213,9 +213,9 @@ export class Api {
     deniedUserlist: string[],
     removedUserlist: string[],
     userlist: string[]
-  ): Observable<IApiResponse<ILeaderboardApiModel>> {
+  ): Observable<IApiResponse<IPartyApiModel>> {
     return this.fetchToObservable(
-      fetch(`${Api.leaderboardApiUrl}${address}/manage`, {
+      fetch(`${Api.partyApiUrl}${address}/manage`, {
         method: "put",
         body: JSON.stringify({
           address,
@@ -231,12 +231,12 @@ export class Api {
     );
   }
 
-  public static validateLeaderboardPassword(
+  public static validatePartyPassword(
     address: string,
     password: string
   ): Observable<IApiResponse<boolean>> {
     return this.fetchToObservable(
-      fetch(`${Api.leaderboardApiUrl}${address}/password/validate`, {
+      fetch(`${Api.partyApiUrl}${address}/password/validate`, {
         method: "put",
         body: JSON.stringify({ password }),
         headers: { "Content-Type": "application/json" }

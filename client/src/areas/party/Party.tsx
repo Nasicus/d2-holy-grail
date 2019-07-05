@@ -1,33 +1,30 @@
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import { ILeaderboardError } from "./ILeaderboardError";
-import { LeaderboardManager } from "./LeaderboardManager";
-import { ILoginInfo } from "./home/LeaderboardLoginForm";
-import { ILeaderboardData } from "../../common/definitions/union/ILeaderboardData";
-import { LeaderboardBody } from "./LeaderboardBody";
+import { IPartyError } from "./IPartyError";
+import { PartyManager } from "./PartyManager";
+import { ILoginInfo } from "./home/PartyLoginForm";
+import { IPartyData } from "../../common/definitions/union/IPartyData";
+import { PartyBody } from "./PartyBody";
 import styled from "styled-components";
-import { CircularProgress, Divider } from "@material-ui/core";
+import { CircularProgress } from "@material-ui/core";
 import { VersionNotifier } from "../grail/changeManagement/VersionNotifier";
 import { HomeButton } from "../../common/components/HomeButton";
-import { LeaderboardButton } from "../../common/components/LeaderboardButton";
-import { ILeaderboardAreaRouterParams } from "../../RouteManager";
-import { LeaderboardToServerSaver } from "./components/LeaderboardToServerSaver";
-import { ILeaderboardUserData } from "../../common/definitions/union/ILeaderboardUserData";
-import { LeaderboardErrorHandler } from "./LeaderboardErrorHandler";
+import { PartyButton } from "../../common/components/PartyButton";
+import { IPartyAreaRouterParams } from "../../RouteManager";
+import { PartyToServerSaver } from "./components/PartyToServerSaver";
+import { IPartyUserData } from "../../common/definitions/union/IPartyUserData";
+import { PartyErrorHandler } from "./PartyErrorHandler";
 
-interface ILeaderboardAreaState {
-  data?: ILeaderboardData;
-  users?: ILeaderboardUserData;
-  error?: ILeaderboardError;
+interface IPartyAreaState {
+  data?: IPartyData;
+  users?: IPartyUserData;
+  error?: IPartyError;
   loading?: boolean;
 }
 
-type Props = RouteComponentProps<ILeaderboardAreaRouterParams>;
+type Props = RouteComponentProps<IPartyAreaRouterParams>;
 
-class LeaderboardAreaInternal extends React.Component<
-  Props,
-  ILeaderboardAreaState
-> {
+class PartyAreaInternal extends React.Component<Props, IPartyAreaState> {
   public constructor(props) {
     super(props);
     this.state = { loading: true };
@@ -36,27 +33,28 @@ class LeaderboardAreaInternal extends React.Component<
   public componentDidMount() {
     const loginInfo = (this.props.location.state || {}) as ILoginInfo;
     const address = loginInfo.address || this.props.match.params.address;
-    const dataManager = LeaderboardManager.createInstance(
+    const dataManager = PartyManager.createInstance(
       address,
       loginInfo.password,
       loginInfo.keepLoggedIn
     );
     dataManager.initialize().subscribe(
-      () =>
+      () => {
         this.setState({
-          data: dataManager.leaderboard,
+          data: dataManager.party,
           users: dataManager.users,
           loading: false
-        }),
+        });
+      },
       // todo: if we have local storage data, and an error occurs, only show a warning instead of an error
       // so you can also use the app offline
-      (err: ILeaderboardError) => this.setState({ error: err })
+      (err: IPartyError) => this.setState({ error: err })
     );
   }
 
   public render() {
     if (this.state.error) {
-      return <LeaderboardErrorHandler error={this.state.error} />;
+      return <PartyErrorHandler error={this.state.error} />;
     }
 
     if (this.state.loading) {
@@ -75,17 +73,17 @@ class LeaderboardAreaInternal extends React.Component<
         <VersionNotifier />
 
         <div>
-          <LeaderboardBody data={this.state.data} users={this.state.users} />
+          <PartyBody data={this.state.data} users={this.state.users} />
         </div>
 
         <LeftSideButtons>
-          <LeaderboardButton />
+          <PartyButton />
           <HomeButton />
         </LeftSideButtons>
 
         <RightSideButtons>
           <ButtonRow>
-            <LeaderboardToServerSaver registerShortCut={true} />
+            <PartyToServerSaver registerShortCut={true} />
           </ButtonRow>
         </RightSideButtons>
       </div>
@@ -117,4 +115,4 @@ const LoaderContainer = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-export const Leaderboard = withRouter(LeaderboardAreaInternal);
+export const Party = withRouter(PartyAreaInternal);
