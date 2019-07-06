@@ -11,7 +11,7 @@ export class PartyHome extends React.Component {
         <PartyLoginForm />
         <PartyExplanation />
         <LeftSideButtons>
-          <HomeButton />
+          <HomeButton switchToBaseTheme={true} />
         </LeftSideButtons>
       </div>
     );

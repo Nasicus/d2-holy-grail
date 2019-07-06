@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { Theme, createMuiTheme } from "@material-ui/core";
-import { purple, green, brown, grey } from "@material-ui/core/colors";
+import { purple, green, brown, grey, blue } from "@material-ui/core/colors";
 
 export const ThemeContext = createContext<{
   theme: Theme;
@@ -29,5 +29,13 @@ export const runewordTheme: Theme = createMuiTheme({
   palette: {
     primary: grey,
     secondary: brown
+  }
+});
+
+export const partyTheme: Theme = createMuiTheme({
+  typography: {},
+  palette: {
+    primary: blue,
+    secondary: grey
   }
 });

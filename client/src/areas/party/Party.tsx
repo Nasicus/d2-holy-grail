@@ -13,6 +13,8 @@ import { PartyButton } from "../../common/components/PartyButton";
 import { IPartyAreaRouterParams } from "../../RouteManager";
 import { IPartyUserData } from "../../common/definitions/union/IPartyUserData";
 import { PartyErrorHandler } from "./PartyErrorHandler";
+import { FC, useState, useEffect, useContext } from "react";
+import { partyTheme, ThemeContext } from "../../ThemeContext";
 
 interface IPartyAreaState {
   data?: IPartyData;
@@ -23,15 +25,13 @@ interface IPartyAreaState {
 
 type Props = RouteComponentProps<IPartyAreaRouterParams>;
 
-class PartyAreaInternal extends React.Component<Props, IPartyAreaState> {
-  public constructor(props) {
-    super(props);
-    this.state = { loading: true };
-  }
+const PartyAreaInternal: FC<Props> = props => {
+  const [state, setState] = useState<IPartyAreaState>({ loading: true });
+  const { setTheme } = useContext(ThemeContext);
 
-  public componentDidMount() {
-    const loginInfo = (this.props.location.state || {}) as ILoginInfo;
-    const address = loginInfo.address || this.props.match.params.address;
+  useEffect(() => {
+    const loginInfo = (props.location.state || {}) as ILoginInfo;
+    const address = loginInfo.address || props.match.params.address;
     const dataManager = PartyManager.createInstance(
       address,
       loginInfo.password,
@@ -39,7 +39,8 @@ class PartyAreaInternal extends React.Component<Props, IPartyAreaState> {
     );
     dataManager.initialize().subscribe(
       () => {
-        this.setState({
+        setState({
+          ...state,
           data: dataManager.party,
           users: dataManager.users,
           loading: false
@@ -47,40 +48,47 @@ class PartyAreaInternal extends React.Component<Props, IPartyAreaState> {
       },
       // todo: if we have local storage data, and an error occurs, only show a warning instead of an error
       // so you can also use the app offline
-      (err: IPartyError) => this.setState({ error: err })
+      (err: IPartyError) => setState({ ...state, error: err })
     );
+    setThemeAndTitle();
+  }, []);
+
+  if (state.error) {
+    return <PartyErrorHandler error={state.error} />;
   }
 
-  public render() {
-    if (this.state.error) {
-      return <PartyErrorHandler error={this.state.error} />;
-    }
-
-    if (this.state.loading) {
-      return (
-        <LoaderContainer>
-          <CircularProgress size={100} />
-        </LoaderContainer>
-      );
-    }
-
-    if (!this.state.data) {
-      return null;
-    }
+  if (state.loading) {
     return (
-      <div>
-        <VersionNotifier />
-        <div>
-          <PartyBody data={this.state.data} users={this.state.users} />
-        </div>
-        <LeftSideButtons>
-          <PartyButton />
-          <HomeButton />
-        </LeftSideButtons>
-      </div>
+      <LoaderContainer>
+        <CircularProgress size={100} />
+      </LoaderContainer>
     );
   }
-}
+
+  if (!state.data) {
+    return null;
+  }
+
+  return (
+    <div>
+      <VersionNotifier />
+      <div>
+        <PartyBody data={state.data} users={state.users} />
+      </div>
+      <LeftSideButtons>
+        <PartyButton />
+        <HomeButton switchToBaseTheme={true} />
+      </LeftSideButtons>
+    </div>
+  );
+
+  function setThemeAndTitle() {
+    const title = "Diablo II - Holy Grail Party";
+    const theme = partyTheme;
+
+    setTheme(theme, title);
+  }
+};
 
 const LeftSideButtons = styled.div`
   position: fixed;
