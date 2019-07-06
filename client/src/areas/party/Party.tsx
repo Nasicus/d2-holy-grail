@@ -11,7 +11,6 @@ import { VersionNotifier } from "../grail/changeManagement/VersionNotifier";
 import { HomeButton } from "../../common/components/HomeButton";
 import { PartyButton } from "../../common/components/PartyButton";
 import { IPartyAreaRouterParams } from "../../RouteManager";
-import { PartyToServerSaver } from "./components/PartyToServerSaver";
 import { IPartyUserData } from "../../common/definitions/union/IPartyUserData";
 import { PartyErrorHandler } from "./PartyErrorHandler";
 
@@ -71,41 +70,22 @@ class PartyAreaInternal extends React.Component<Props, IPartyAreaState> {
     return (
       <div>
         <VersionNotifier />
-
         <div>
           <PartyBody data={this.state.data} users={this.state.users} />
         </div>
-
         <LeftSideButtons>
           <PartyButton />
           <HomeButton />
         </LeftSideButtons>
-
-        <RightSideButtons>
-          <ButtonRow>
-            <PartyToServerSaver registerShortCut={true} />
-          </ButtonRow>
-        </RightSideButtons>
       </div>
     );
   }
 }
 
-const RightSideButtons = styled.div`
-  position: fixed;
-  right: ${p => p.theme.spacing(1)}px;
-  bottom: ${p => p.theme.spacing(1)}px;
-`;
-
 const LeftSideButtons = styled.div`
   position: fixed;
   left: ${p => p.theme.spacing(1)}px;
   bottom: ${p => p.theme.spacing(1)}px;
-`;
-
-const ButtonRow = styled.div`
-  display: flex;
-  justify-content: flex-end;
 `;
 
 const LoaderContainer = styled.div`

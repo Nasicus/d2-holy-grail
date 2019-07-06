@@ -16,12 +16,7 @@ export class PartyManager {
 
   private partyData: IPartyAreaData;
   private partyLocalStorage: LocalStorageHandler<IPartyAreaData>;
-  private hasLocalChangesStorage: LocalStorageHandler<boolean>;
-
   private dataInitializer = new ReplaySubject<void>(1);
-
-  private hasLocalChanges = new ReplaySubject<boolean>(1);
-  public hasLocalChanges$ = this.hasLocalChanges.asObservable();
 
   private constructor(
     public readonly address: string,
@@ -33,10 +28,6 @@ export class PartyManager {
     }
 
     this.partyLocalStorage = new LocalStorageHandler(`party-${this.address}`);
-    this.hasLocalChangesStorage = new LocalStorageHandler(
-      `party-hasLocalChanges-${this.address}`
-    );
-    this.hasLocalChanges.next(this.hasLocalChangesStorage.getValue());
 
     this.setPassword(savePassword);
     this.initializePartyData();
@@ -66,24 +57,19 @@ export class PartyManager {
     return this.partyData.settings;
   }
 
-  private updateLocaleStorage = (
-    data: IPartyAreaData,
-    hasLocalChanges: boolean
-  ) => {
+  private updateLocaleStorage = (data: IPartyAreaData) => {
     this.partyLocalStorage.setValue(data);
-    this.hasLocalChangesStorage.setValue(hasLocalChanges);
-    this.hasLocalChanges.next(hasLocalChanges);
   };
 
   public updateCache = () => {
     const cachedData = this.partyLocalStorage.getValue();
     cachedData.data = this.partyData.data;
     cachedData.users = this.partyData.users;
-    this.updateLocaleStorage(cachedData, true);
+    this.updateLocaleStorage(cachedData);
   };
 
   public discardCache = () => {
-    this.updateLocaleStorage(null, false);
+    this.updateLocaleStorage(null);
   };
 
   public initialize(): Observable<void> {
@@ -101,36 +87,36 @@ export class PartyManager {
     }
   }
 
-  public updateUserlistOnServer = (): Observable<void> => {
-    return Observable.create((observer: Subscriber<void>) => {
-      Api.updateUsersForParty(
+  public modifyPartyUser = (
+    user: string,
+    method: string
+  ): Observable<IPartyAreaData> => {
+    return Observable.create((observer: Subscriber<IPartyAreaData>) => {
+      Api.modifyPartyUser(
         this.address,
         this.password,
         this.partyData.token,
-        this.partyData.users.acceptedUserlist,
-        this.partyData.users.deniedUserlist,
-        this.partyData.users.removedUserlist,
-        this.partyData.users.userlist
+        user,
+        method
       ).subscribe(
         response => {
           // update with latest party data
-          this.updateLocaleStorage(
-            this.convertToAreaData(response.data),
-            false
-          );
-          this.partyData.data = response.data.data;
-          this.partyData.token = response.data.token;
-          observer.next();
+          const areaData = this.convertToAreaData(response.data);
+          this.updateLocaleStorage(areaData);
+          this.emitData(areaData);
+          observer.next(areaData);
           observer.complete();
         },
-        err => observer.error(err)
+        err => {
+          observer.error(err);
+        }
       );
     });
   };
 
-  public signupUserToParty = (userAddress: string, userPassword: string) => {
+  public signupUserToParty = (userAddress: string) => {
     return Observable.create((observer: Subscriber<void>) => {
-      Api.addUserToParty(this.address, userAddress, userPassword).subscribe(
+      Api.addUserToParty(this.address, userAddress).subscribe(
         response => {
           observer.next();
           observer.complete();
@@ -216,10 +202,7 @@ export class PartyManager {
     if (!data.users) {
       data.users = {
         userlist: [],
-        pendingUserlist: [],
-        acceptedUserlist: [],
-        deniedUserlist: [],
-        removedUserlist: []
+        pendingUserlist: []
       };
     }
 
@@ -229,18 +212,6 @@ export class PartyManager {
 
     if (!data.users.pendingUserlist) {
       data.users.pendingUserlist = [];
-    }
-
-    if (!data.users.acceptedUserlist) {
-      data.users.acceptedUserlist = [];
-    }
-
-    if (!data.users.deniedUserlist) {
-      data.users.deniedUserlist = [];
-    }
-
-    if (!data.users.removedUserlist) {
-      data.users.removedUserlist = [];
     }
 
     if (!data.settings) {

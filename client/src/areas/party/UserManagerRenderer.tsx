@@ -17,6 +17,7 @@ export interface IUserManagerRendererProps {
 
 interface IUserManagerState {
   users: IPartyUserData;
+  isLoading: boolean;
 }
 
 export class UserManagerRenderer extends React.Component<
@@ -26,7 +27,8 @@ export class UserManagerRenderer extends React.Component<
   public constructor(props: IUserManagerRendererProps) {
     super(props);
     this.state = {
-      users: props.users
+      users: props.users,
+      isLoading: false
     };
   }
 
@@ -65,7 +67,6 @@ export class UserManagerRenderer extends React.Component<
               <TableRow>
                 <TableCell>User</TableCell>
                 <TableCell>&nbsp;</TableCell>
-                <TableCell>&nbsp;</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -83,7 +84,7 @@ export class UserManagerRenderer extends React.Component<
   private renderEmptyPendingUserRow() {
     return (
       <TableRow key={`$EmptyPendingUser`} hover={true}>
-        <TableCell component="th" scope="row">
+        <TableCell component="th" scope="row" colSpan={3}>
           <RowHeader>No pending users.</RowHeader>
         </TableCell>
       </TableRow>
@@ -93,7 +94,7 @@ export class UserManagerRenderer extends React.Component<
   private renderEmptyUserRow() {
     return (
       <TableRow key={`$EmptyUser`} hover={true}>
-        <TableCell component="th" scope="row">
+        <TableCell component="th" scope="row" colSpan={2}>
           <RowHeader>No users yet!</RowHeader>
         </TableCell>
       </TableRow>
@@ -117,18 +118,20 @@ export class UserManagerRenderer extends React.Component<
         <TableCell>
           <UserButtonContainer>
             <UserManagementButton
-              onClick={this.acceptUser}
+              onClick={this.modifyUser}
               text={"Accept"}
               user={user}
+              isDisabled={this.state.isLoading}
             />
           </UserButtonContainer>
         </TableCell>
         <TableCell>
           <UserButtonContainer>
             <UserManagementButton
-              onClick={this.denyUser}
+              onClick={this.modifyUser}
               text={"Deny"}
               user={user}
+              isDisabled={this.state.isLoading}
             />
           </UserButtonContainer>
         </TableCell>
@@ -153,9 +156,10 @@ export class UserManagerRenderer extends React.Component<
         <TableCell align="right">
           <UserButtonContainer>
             <UserManagementButton
-              onClick={this.removeUser}
+              onClick={this.modifyUser}
               text={"Remove"}
               user={user}
+              isDisabled={this.state.isLoading}
             />
           </UserButtonContainer>
         </TableCell>
@@ -163,38 +167,24 @@ export class UserManagerRenderer extends React.Component<
     );
   }
 
-  private acceptUser = (user: string) => {
-    var userIndex = this.state.users.pendingUserlist.indexOf(user);
-    var newUsers = this.state.users;
-    newUsers.pendingUserlist.splice(userIndex, 1);
-    newUsers.userlist.push(user);
-    newUsers.acceptedUserlist.push(user);
-    this.setState({
-      users: newUsers
-    });
+  private modifyUser = (user: string, method: string) => {
     PartyManager.current.updateCache();
-  };
-
-  private denyUser = (user: string) => {
-    var userIndex = this.state.users.pendingUserlist.indexOf(user);
-    var newUsers = this.state.users;
-    newUsers.pendingUserlist.splice(userIndex, 1);
-    newUsers.deniedUserlist.push(user);
     this.setState({
-      users: newUsers
+      isLoading: true
     });
-    PartyManager.current.updateCache();
-  };
-
-  private removeUser = (user: string) => {
-    var userIndex = this.state.users.userlist.indexOf(user);
-    var newUsers = this.state.users;
-    newUsers.userlist.splice(userIndex, 1);
-    newUsers.removedUserlist.push(user);
-    this.setState({
-      users: newUsers
-    });
-    PartyManager.current.updateCache();
+    PartyManager.current.modifyPartyUser(user, method).subscribe(
+      result => {
+        this.setState({
+          users: result.users,
+          isLoading: false
+        });
+      },
+      err => {
+        // Couldnt modify user for some reason
+        // Display an error message to the user?
+        // TODO
+      }
+    );
   };
 }
 

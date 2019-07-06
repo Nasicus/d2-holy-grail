@@ -21,10 +21,10 @@ export const ItemScoreInfoDialog: FC<IInfoProps> = ({ onDialogClosed }) => {
       <DialogContent>
         <div>
           <CloseIcon onClick={onDialogClosed}>close</CloseIcon>
-          <Typography variant="h4">
+          <TitleText variant="h4">
             Introducing ItemScore! <br />
             <br />
-          </Typography>
+          </TitleText>
           <Typography variant="body1">
             A unique or set item's "Item Score" is based on it's relative rarity
             to that ultimate Holy Grail in Diablo II: Tyrael's Might. <br />
@@ -92,7 +92,7 @@ const CloseIcon: React.ComponentType<IconProps> = styled(Icon)`
   && {
     position: absolute;
     top: ${p => p.theme.spacing(1)}px;
-    right: ${p => p.theme.spacing(1)}px;
+    right: ${p => p.theme.spacing(1) * 2}px;
     cursor: pointer;
   }
 `;
@@ -107,6 +107,12 @@ const StyledTable: React.ComponentType<TableProps> = styled(Table)`
   && {
     max-width: 800px;
     text-align: center;
+  }
+`;
+
+const TitleText = styled(Typography)`
+  && {
+    margin-top: 10px;
   }
 `;
 

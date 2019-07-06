@@ -4,8 +4,6 @@ import { IEthGrailData } from "../definitions/union/IEthGrailData";
 import { IRunewordGrailApiData } from "../definitions/api/IRunewordGrailApiData";
 import { IHolyGrailApiModel } from "../definitions/api/IHolyGrailApiModel";
 import { IPartyApiModel } from "../definitions/api/IPartyApiModel";
-import { IPartyData } from "../definitions/union/IPartyData";
-import { IPartySettings } from "../definitions/union/IPartySettings";
 import { IGrailSettings } from "../definitions/union/IGrailSettings";
 import { IItemInfo } from "../definitions/api/IItemInfo";
 import { IRunewordInfo } from "../definitions/api/IRunewordInfo";
@@ -140,40 +138,6 @@ export class Api {
     return this.fetchToObservable(fetch(Api.partyApiUrl + address));
   }
 
-  public static updateParty(
-    address: string,
-    password: string,
-    token: string,
-    party: IPartyData
-  ): Observable<IApiResponse<IPartyApiModel>> {
-    return this.fetchToObservable(
-      fetch(Api.partyApiUrl + address, {
-        method: "put",
-        body: JSON.stringify({
-          party,
-          password,
-          token
-        }),
-        headers: { "Content-Type": "application/json" }
-      })
-    );
-  }
-
-  public static updatePartySettings(
-    address: string,
-    password: string,
-    token: string,
-    settings: IPartySettings
-  ): Observable<IApiResponse<IPartyApiModel>> {
-    return this.fetchToObservable(
-      fetch(`${Api.partyApiUrl}${address}/settings`, {
-        method: "put",
-        body: JSON.stringify({ settings, password, token }),
-        headers: { "Content-Type": "application/json" }
-      })
-    );
-  }
-
   public static createParty(
     address: string,
     password: string
@@ -189,42 +153,36 @@ export class Api {
 
   public static addUserToParty(
     address: string,
-    userAddress: string,
-    userPassword: string
+    userAddress: string
   ): Observable<IApiResponse<IPartyApiModel>> {
     return this.fetchToObservable(
       fetch(`${Api.partyApiUrl}${address}/signup`, {
         method: "put",
         body: JSON.stringify({
           address,
-          userAddress,
-          userPassword
+          userAddress
         }),
         headers: { "Content-Type": "application/json" }
       })
     );
   }
 
-  public static updateUsersForParty(
+  public static modifyPartyUser(
     address: string,
     password: string,
     token: string,
-    acceptedUserlist: string[],
-    deniedUserlist: string[],
-    removedUserlist: string[],
-    userlist: string[]
+    user: string,
+    method: string
   ): Observable<IApiResponse<IPartyApiModel>> {
     return this.fetchToObservable(
-      fetch(`${Api.partyApiUrl}${address}/manage`, {
+      fetch(`${Api.partyApiUrl}${address}/manage/${method}`, {
         method: "put",
         body: JSON.stringify({
           address,
           password,
           token,
-          acceptedUserlist,
-          deniedUserlist,
-          removedUserlist,
-          userlist
+          user,
+          method
         }),
         headers: { "Content-Type": "application/json" }
       })

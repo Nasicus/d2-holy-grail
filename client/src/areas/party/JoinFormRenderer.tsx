@@ -3,7 +3,6 @@ import TextField, {
   TextFieldProps
 } from "@material-ui/core/TextField/TextField";
 import Typography from "@material-ui/core/Typography/Typography";
-import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
 import {
   ButtonWithProgress,
   IButtonWithProgressProps
@@ -15,7 +14,6 @@ export interface IJoinInfo {
   address?: string;
   password?: string;
   join_address?: string;
-  join_password?: string;
 }
 
 interface IJoinFormState extends IJoinInfo {
@@ -24,12 +22,15 @@ interface IJoinFormState extends IJoinInfo {
   isLoading?: boolean;
   error?: string;
   success?: boolean;
+  joinButtonText: string;
 }
 
 export class JoinFormRenderer extends React.Component<{}, IJoinFormState> {
   public constructor(props: {}) {
     super(props);
-    this.state = {};
+    this.state = {
+      joinButtonText: "Party please!"
+    };
   }
 
   public render() {
@@ -40,20 +41,10 @@ export class JoinFormRenderer extends React.Component<{}, IJoinFormState> {
           <div>
             <StyledTextField
               label="Holy Grail address"
-              onChange={e => this.setState({ join_address: e.target.value })}
+              onChange={e => this.handleAddressChange(e)}
               onKeyPress={e => this.onKeyPress(e)}
             />
           </div>
-          <PasswordContainer>
-            <StyledTextField
-              type="Password"
-              onChange={e => this.setState({ join_password: e.target.value })}
-              onKeyPress={e => this.onKeyPress(e)}
-            />
-            <InfoIcon title="You have to enter a password to sign up for this party">
-              info
-            </InfoIcon>
-          </PasswordContainer>
         </FormContainer>
 
         <JoinButtonContainer>
@@ -62,9 +53,9 @@ export class JoinFormRenderer extends React.Component<{}, IJoinFormState> {
           )}
           <JoinButtonWithProgressWrapper
             isLoading={this.state.isLoading}
-            isDisabled={!this.state.join_address || !this.state.join_password}
+            isDisabled={!this.state.join_address}
             onClick={this.join}
-            text="Party please!"
+            text={this.state.joinButtonText}
             secondIcon="check"
             showSecondIcon={this.state.success}
           />
@@ -73,56 +64,65 @@ export class JoinFormRenderer extends React.Component<{}, IJoinFormState> {
     );
   }
 
+  private handleAddressChange = (e: any) => {
+    this.setState({ join_address: e.target.value });
+    if (this.state.success) {
+      // We just successfully saved, so reset the button state on new grail address
+      this.resetJoinButtonState();
+    }
+  };
+
+  private resetJoinButtonState = () => {
+    this.setState({
+      isLoading: false,
+      joinButtonText: "Party please!",
+      success: false
+    });
+  };
+
   private onKeyPress = (e: any) => {
     if (e.key !== "Enter") {
       return;
     }
-
     this.join();
   };
 
   private join = () => {
-    if (!this.state.join_address || !this.state.join_password) {
+    if (!this.state.join_address) {
       return;
     }
 
     this.setState({ isLoading: true });
 
-    PartyManager.current
-      .signupUserToParty(this.state.join_address, this.state.join_password)
-      .subscribe(
-        r => {
+    PartyManager.current.signupUserToParty(this.state.join_address).subscribe(
+      r => {
+        this.setState({
+          isLoading: false,
+          success: true,
+          joinButtonText: "Partied!"
+        });
+        PartyManager.current.refreshData().subscribe();
+      },
+      res => {
+        if (res.status === 404) {
           this.setState({
             isLoading: false,
-            success: true
+            error: "No grail exists with this username."
           });
-          PartyManager.current.refreshData().subscribe();
-        },
-        res => {
-          if (res.status === 404) {
-            this.setState({
-              isLoading: false,
-              error: "No grail exists with this username."
-            });
-          } else if (res.status === 401) {
-            this.setState({
-              isLoading: false,
-              error: "The entered password is not correct."
-            });
-          } else if (res.status === 409) {
-            this.setState({
-              isLoading: false,
-              error:
-                "There is already a grail with this username signed up to the party.\n If you are not shown on the party yet, contact the owner of the party to become an accepted user."
-            });
-          } else {
-            this.setState({
-              isLoading: false,
-              error: "An error occurred when trying to validate your password."
-            });
-          }
+        } else if (res.status === 409) {
+          this.setState({
+            isLoading: false,
+            error:
+              "There is already a grail with this username signed up to the party.\n If you are not shown on the party yet, contact the owner of the party to become an accepted user."
+          });
+        } else {
+          this.setState({
+            isLoading: false,
+            error: "An error occurred when trying to validate your password."
+          });
         }
-      );
+      }
+    );
   };
 }
 
@@ -158,14 +158,4 @@ const FormContainer = styled.div`
 
 const ErrorContainer = styled.div`
   color: ${p => p.theme.palette.error.main};
-`;
-
-const PasswordContainer = styled.div`
-  display: flex;
-`;
-
-const InfoIcon: React.ComponentType<IconProps> = styled(Icon)`
-  && {
-    align-self: center;
-  }
 `;

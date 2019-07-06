@@ -55,38 +55,6 @@ export class PartyController {
     );
   };
 
-  public updateSettings = async (req: Request, res: Response) => {
-    const address = req.params.address;
-    const password = req.body.password;
-    const settings = req.body.settings;
-    const token = req.body.token;
-    if (!settings) {
-      res.status(500).send({ type: "argument", argumentName: "settings" });
-      return;
-    }
-    await this.update(req, res, address, password, token, dataToSet => {
-      dataToSet.settings = settings;
-      return dataToSet;
-    });
-  };
-
-  public updateParty = async (req: Request, res: Response) => {
-    const address = req.params.address;
-    const password = req.body.password;
-    const partyData = req.body.party;
-    const token = req.body.token;
-
-    if (!partyData) {
-      res.status(500).send({ type: "argument", argumentName: "party" });
-      return;
-    }
-
-    await this.update(req, res, address, password, token, dataToSet => {
-      dataToSet.data = partyData;
-      return dataToSet;
-    });
-  };
-
   public validatePassword = async (req: Request, res: Response) => {
     const address = req.params.address;
     const password = req.body.password;
@@ -108,15 +76,11 @@ export class PartyController {
 
   public signupToParty = async (req: Request, res: Response) => {
     const userAddress = PartyController.trimAndToLower(req.body.userAddress);
-    const password = req.body.userPassword;
     const grail = await this.grailCollection.findOne({
       address: userAddress
     });
     if (!grail) {
       res.status(404).send({ type: "notFound", userAddress });
-      return;
-    } else if (grail.password !== password) {
-      res.status(401).send({ type: "unauthorized", userAddress });
       return;
     }
     const partyAddress = PartyController.trimAndToLower(req.params.address);
@@ -141,77 +105,126 @@ export class PartyController {
     res.status(409).send({ type: "conflict", userAddress });
   };
 
-  public updatePartyUsers = async (req: Request, res: Response) => {
+  public updatePartyUser = async (req: Request, res: Response) => {
     try {
-      const newUserlist = req.body.userlist;
-      const password = req.body.password;
-      const address = PartyController.trimAndToLower(req.body.address);
-      const token = req.body.token;
-      const acceptedUsers = req.body.acceptedUserlist;
-      const deniedUsers = req.body.deniedUserlist;
-      const removedUsers = req.body.removedUserlist;
-      const resolvedUsers = acceptedUsers.concat(deniedUsers);
-      const party = await this.partyCollection.findOne({
-        address: address,
-        password: password,
-        token: token
-      });
-      if (party) {
-        // Got the party. Lets update the user lists
-        // TODO: Possible this might override saved updates that happen at the same time?
-        let newUsers = [];
-        // Keep all current users who have not been removed
-        party.data.users.forEach(user => {
-          if (removedUsers.indexOf(user.username) == -1) {
-            newUsers.push(user);
-          }
-        });
-        // Add new users who have been accepted
-        const newUserGrailData = await this.pullUserGrailData(acceptedUsers);
-        newUsers = newUsers.concat(newUserGrailData);
-        // Save the document back in the db
-        const result = await this.partyCollection.findOneAndUpdate(
-          {
-            address: address,
-            password: password,
-            token: token
-          },
-          {
-            $set: {
-              userlist: newUserlist,
-              "data.users": newUsers,
-              token: PartyController.getToken(),
-              modified: new Date()
-            },
-            $pull: {
-              pendingUserlist: {
-                $in: resolvedUsers
-              }
-            }
-          },
-          { returnOriginal: false }
-        );
-        if (result && result.ok && result.value) {
-          res.json({
-            address: address,
-            data: result.value.data,
-            userlist: result.value.userlist,
-            pendingUserlist: result.value.pendingUserlist,
-            settings: result.value.settings,
-            token: result.value.token
-          } as IParty);
-          return;
-        }
-        // Didnt save. Handle the error
-        this.handleDbError(address, password, token, res);
-      } else {
-        // Couldnt find party. Lets see the error
-        this.handleDbError(address, password, token, res);
-        return;
+      const method = req.body.method;
+      switch (method) {
+        case "accept":
+          this.acceptPartyUser(req, res);
+          break;
+        case "deny":
+          this.denyPartyUser(req, res);
+          break;
+        case "remove":
+          this.removePartyUser(req, res);
+          break;
+        default:
+          res.status(404).send({ type: "methodUnknown", method });
       }
     } catch (err) {
       PartyController.sendUnknownError(res, err);
     }
+  };
+
+  private acceptPartyUser = async (req: Request, res: Response) => {
+    const password = req.body.password;
+    const address = PartyController.trimAndToLower(req.body.address);
+    const token = req.body.token;
+    const acceptedUser = req.body.user;
+    const result = await this.partyCollection.findOne({
+      address: address,
+      password: password,
+      token: token
+    });
+    if (result) {
+      const newUserGrailData = await this.pullUserGrailData(acceptedUser);
+      var newUsers = [];
+      var newUserlist = [];
+      var foundCurrentEntry = false;
+      result.data.users.forEach(user => {
+        if (user.username === acceptedUser) {
+          newUsers.push(newUserGrailData);
+          foundCurrentEntry = true;
+        } else {
+          newUsers.push(user);
+        }
+        newUserlist.push(user.username);
+      });
+      if (!foundCurrentEntry) {
+        newUsers.push(newUserGrailData);
+        newUserlist.push(acceptedUser);
+      }
+      result.data.users = newUsers;
+      const userPendingIndex = result.pendingUserlist.indexOf(acceptedUser);
+      if (userPendingIndex !== -1) {
+        result.pendingUserlist.splice(userPendingIndex, 1);
+      }
+      this.update(res, address, password, token, dataToSet => {
+        dataToSet.data = result.data;
+        dataToSet.userlist = newUserlist;
+        dataToSet.pendingUserlist = result.pendingUserlist;
+        return dataToSet;
+      });
+      return;
+    }
+    // Didnt get the party document. Handle the error
+    this.handleDbError(address, password, token, res);
+  };
+
+  private denyPartyUser = async (req: Request, res: Response) => {
+    const password = req.body.password;
+    const address = PartyController.trimAndToLower(req.body.address);
+    const token = req.body.token;
+    const deniedUser = req.body.user;
+    const result = await this.partyCollection.findOne({
+      address: address,
+      password: password,
+      token: token
+    });
+    if (result) {
+      const userIndex = result.pendingUserlist.indexOf(deniedUser);
+      if (userIndex !== -1) {
+        result.pendingUserlist.splice(userIndex, 1);
+      }
+      this.update(res, address, password, token, dataToSet => {
+        dataToSet.pendingUserlist = result.pendingUserlist;
+        return dataToSet;
+      });
+      return;
+    }
+    // Didnt get the party document. Handle the error
+    this.handleDbError(address, password, token, res);
+  };
+
+  private removePartyUser = async (req: Request, res: Response) => {
+    const password = req.body.password;
+    const address = PartyController.trimAndToLower(req.body.address);
+    const token = req.body.token;
+    const removedUser = req.body.user;
+    const result = await this.partyCollection.findOne({
+      address: address,
+      password: password,
+      token: token
+    });
+    if (result) {
+      var newUsers = [];
+      var newUserlist = [];
+      result.data.users.forEach(user => {
+        if (user.username !== removedUser) {
+          newUsers.push(user);
+          newUserlist.push(user.username);
+        }
+      });
+      result.data.users = newUsers;
+      this.update(res, address, password, token, dataToSet => {
+        dataToSet.data = result.data;
+        dataToSet.userlist = newUserlist;
+        return dataToSet;
+      });
+      return;
+    }
+    // Didnt get the party document. Handle the error
+    this.handleDbError(address, password, token, res);
   };
 
   private handleDbError = async (
@@ -236,25 +249,17 @@ export class PartyController {
     });
   };
 
-  private pullUserGrailData = async (userlist: string[]) => {
-    if (userlist.length === 0) return [];
-    const result = await this.grailCollection.find({
-      address: {
-        $in: userlist
-      }
+  private pullUserGrailData = async (user: string) => {
+    const result = await this.grailCollection.findOne({
+      address: user
     });
-    let newUserData = [];
-    await result.forEach(user => {
-      newUserData.push({
-        username: user.address,
-        data: GrailController.formatGrailForParty(user.data)
-      });
-    });
-    return newUserData;
+    return {
+      username: user,
+      data: GrailController.formatGrailForParty(result.data)
+    };
   };
 
   private update = async (
-    req: Request,
     res: Response,
     address: string,
     password: string,
