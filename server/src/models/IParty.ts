@@ -7,6 +7,4 @@ export interface IParty {
   updateCount: number;
   userlist?: any;
   pendingUserlist?: any;
-  data?: any;
-  settings?: any;
 }

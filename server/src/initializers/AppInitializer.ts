@@ -58,10 +58,6 @@ function configureRoutes(db: Db, express: expressServer.Express): void {
   express.route("/api/party/:address").get(partyController.get);
 
   express
-    .route("/api/party/:address/signup")
-    .put(partyController.signupToParty);
-
-  express
     .route("/api/party/:address/manage/:method")
     .put(partyController.updatePartyUser);
 

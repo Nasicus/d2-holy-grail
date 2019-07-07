@@ -6,5 +6,6 @@ export interface IHolyGrail {
   data?: any;
   ethData?: any;
   runewordData?: any;
+  partyData?: any;
   settings?: any;
 }

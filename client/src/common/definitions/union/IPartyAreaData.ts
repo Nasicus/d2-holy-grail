@@ -1,5 +1,4 @@
 import { IPartyData } from "./IPartyData";
-import { IPartySettings } from "./IPartySettings";
 import { IPartyUserData } from "./IPartyUserData";
 
 export interface IPartyAreaData {
@@ -8,5 +7,4 @@ export interface IPartyAreaData {
   data: IPartyData;
   users: IPartyUserData;
   token: string;
-  settings: IPartySettings;
 }

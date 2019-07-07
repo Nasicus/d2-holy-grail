@@ -25,7 +25,7 @@ export const PartyExplanation: FC = () => {
         Simply create a Holy Grail Party above and invite your friends! <br />
         The party will automatically keep track of each member's grail progress
         as they enter new items. <br />
-        Compare your progress with a simple table of all users' grails in your
+        Compare your progress with a simple table of all members' grails in your
         party. <br />
         <br />
         Also introducing ItemScore! A way to compare grail progress based on the
@@ -43,7 +43,5 @@ export const PartyExplanation: FC = () => {
 };
 
 const RootContainer = styled.div`
-  width: 700px;
-  margin: auto;
-  padding-top: 50px;
+  margin: 50px 50px auto 100px;
 `;

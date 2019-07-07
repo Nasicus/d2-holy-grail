@@ -12,7 +12,8 @@ import { IPartyData } from "../../common/definitions/union/IPartyData";
 import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
 import { DataTableColumnHeader } from "./components/DataTableColumnHeader";
 import { PartyManager } from "./PartyManager";
-import { IconWithProgress } from "./components/IconWithProgress";
+import { IconWithProgress } from "../../common/components/IconWithProgress";
+import { ItemTotal } from "./ItemTotal";
 
 export interface IPartyTableProps {
   data: IPartyData;
@@ -58,19 +59,27 @@ export class PartyTable extends React.Component<
 
   public render() {
     let stats: Stats[] = [];
-    for (let i = 0; i < this.state.data.users.length; i++) {
-      var user = this.state.data.users[i];
-      var statRow = new Stats(user.username);
-      statRow.uniqArm = user.data.uniqueArmor.missing;
-      statRow.uniqWep = user.data.uniqueWeapons.missing;
-      statRow.uniqOth = user.data.uniqueOther.missing;
-      statRow.set = user.data.sets.missing;
-      statRow.itemScore = user.data.itemScore;
-      statRow.total =
-        statRow.uniqArm + statRow.uniqWep + statRow.uniqOth + statRow.set;
-      stats.push(statRow);
+    if (this.state.data.users) {
+      for (let i = 0; i < this.state.data.users.length; i++) {
+        let user = this.state.data.users[i];
+        let statRow = new Stats(user.username);
+        statRow.uniqArm = user.data
+          ? user.data.uniqueArmor.missing
+          : ItemTotal.Armor;
+        statRow.uniqWep = user.data
+          ? user.data.uniqueWeapons.missing
+          : ItemTotal.Weapons;
+        statRow.uniqOth = user.data
+          ? user.data.uniqueOther.missing
+          : ItemTotal.Other;
+        statRow.set = user.data ? user.data.sets.missing : ItemTotal.Sets;
+        statRow.itemScore = user.data ? user.data.itemScore : 0;
+        statRow.total =
+          statRow.uniqArm + statRow.uniqWep + statRow.uniqOth + statRow.set;
+        stats.push(statRow);
+      }
+      this.sortData(stats, this.state.sorted);
     }
-    this.sortData(stats, this.state.sorted);
 
     return (
       <div>
@@ -125,7 +134,7 @@ export class PartyTable extends React.Component<
                   showIcon={this.state.sorted === "itemScore"}
                   secondIcon={"info"}
                   secondIconText={
-                    "ItemScore is a measure of the total rarity of the items found in each grail.\nRarer items like Tyrael's contribute a large ItemScore (1135 pts), while common items like Venom Ward contribute a small ItemScore (1 pt).\nA finished grail will have an ItemScore of 10000."
+                    "ItemScore is a measure of the total rarity of the items found in each grail.\nRarer items like Tyrael's contribute a large ItemScore (1000 pts), while common items like Venom Ward contribute a small ItemScore (1 pt).\nA finished grail will have an ItemScore of 10000."
                   }
                 />
               </TableRow>
@@ -174,7 +183,7 @@ export class PartyTable extends React.Component<
     return (
       <TableRow key={`$EmptyStat`} hover={true}>
         <StyledTableCell component="th" scope="row" colSpan={7}>
-          <RowHeader>"No users yet! Ask them to join."</RowHeader>
+          <RowHeader>"No members yet! Ask them to join."</RowHeader>
         </StyledTableCell>
       </TableRow>
     );

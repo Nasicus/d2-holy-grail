@@ -5,7 +5,7 @@ export type ChangeLogCollection = {
 export const changeLogs: ChangeLogCollection = {
   "2.0.0": [
     {
-      change: `You can now Party Up with your friends!`,
+      change: `You can now Party Up with your friends! Implemented by github user mpherman (or glymph on Discord)`,
       children: [
         "Go to https://d2-holy-grail.herokuapp.com/party to create your own party!",
         "Share and compare grail progress easily by inviting friends to your party",

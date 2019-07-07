@@ -4,28 +4,13 @@ import { ConfigManager } from "../ConfigManager";
 import { IGrailCollection } from "../models/IGrailCollection";
 import { IHolyGrail } from "../models/IHolyGrail";
 import { MongoErrorCodes } from "../models/MongoErrorCodes";
-import { IItem } from "../definitions/IItem";
-import { Item } from "../definitions/Item";
-import { IParty } from "../models/IParty";
-import { ItemScores } from "../ItemScores";
-
-class MissingItems {
-  public missing: number = 0;
-  public score: number = 0;
-  public found: number = 0;
-
-  public constructor() {}
-}
+import { StatisticsController } from "./StatisticsController";
 
 export class GrailController {
   private get grailCollection(): Collection<IGrailCollection> {
     return this.db.collection<IGrailCollection>(
       ConfigManager.db.holyGrailCollection
     );
-  }
-
-  private get partyCollection(): Collection<IParty> {
-    return this.db.collection<IParty>(ConfigManager.db.partyCollection);
   }
 
   public constructor(private db: Db) {}
@@ -88,6 +73,7 @@ export class GrailController {
     const grailData = req.body.grail;
     const ethGrailData = req.body.ethGrail;
     const runewordGrailData = req.body.runewordGrail;
+    const partyData = StatisticsController.formatGrailForParty(grailData);
     const token = req.body.token;
 
     if (!grailData) {
@@ -100,158 +86,10 @@ export class GrailController {
       dataToSet.data = grailData;
       dataToSet.ethData = ethGrailData;
       dataToSet.runewordData = runewordGrailData;
+      dataToSet.partyData = partyData;
       return dataToSet;
     });
-
-    this.getMemberParties(address, parties => {
-      parties.forEach(party => {
-        this.saveGrailInPartyDatabase(address, party.address, grailData);
-      });
-    });
   };
-
-  public saveGrailInPartyDatabase = async (
-    grailAddress: string,
-    partyAddress: string,
-    data: any
-  ) => {
-    let partyUserData = GrailController.formatGrailForParty(data);
-    const result = await this.partyCollection.findOneAndUpdate(
-      {
-        address: GrailController.trimAndToLower(partyAddress),
-        "data.users.username": grailAddress
-      },
-      {
-        $set: {
-          "data.users.$.data": partyUserData
-        },
-        $inc: { updateCount: 1 }
-      },
-      { returnOriginal: false }
-    );
-  };
-
-  public static formatGrailForParty = (data: any): any => {
-    let partyGrailData = {
-      uniqueArmor: {
-        missing: 123
-      },
-      uniqueWeapons: {
-        missing: 197
-      },
-      uniqueOther: {
-        missing: 59
-      },
-      sets: {
-        missing: 127
-      },
-      itemScore: 0
-    };
-    if (data && data.uniques) {
-      if (data.uniques.weapons) {
-        let missingWeps = GrailController.sumMissing(
-          () => data.uniques.weapons,
-          new MissingItems()
-        );
-        partyGrailData.uniqueWeapons.missing = missingWeps.missing;
-        partyGrailData.itemScore += missingWeps.score;
-      }
-      if (data.uniques.armor) {
-        let missingArmor = GrailController.sumMissing(
-          () => data.uniques.armor,
-          new MissingItems()
-        );
-        partyGrailData.uniqueArmor.missing = missingArmor.missing;
-        partyGrailData.itemScore += missingArmor.score;
-      }
-      if (data.uniques.other) {
-        let missingOther = GrailController.sumMissing(
-          () => data.uniques.other,
-          new MissingItems()
-        );
-        partyGrailData.uniqueOther.missing = missingOther.missing;
-        partyGrailData.itemScore += missingOther.score;
-      }
-    }
-    if (data && data.sets) {
-      let missingSets = GrailController.sumMissing(
-        () => data.sets,
-        new MissingItems()
-      );
-      partyGrailData.sets.missing = missingSets.missing;
-      partyGrailData.itemScore += missingSets.score;
-    }
-    return partyGrailData;
-  };
-
-  public static sumMissing = (
-    dataFunc: () => any,
-    missing: MissingItems,
-    category?: string
-  ): MissingItems => {
-    let data = {};
-    try {
-      data = dataFunc();
-    } catch (e) {
-      // ignore error
-    }
-
-    if (!data) {
-      return missing;
-    }
-
-    Object.keys(data).forEach(key => {
-      const possibleItem = data[key] as IItem;
-      if (GrailController.isItem(possibleItem)) {
-        if (!possibleItem.wasFound) {
-          missing.missing++;
-        } else {
-          missing.found++;
-          var itemScore = ItemScores[key];
-          if (!itemScore) {
-            // This is a facet
-            if (category === "all") {
-              // Using the original method, count each facet as two
-              itemScore = 2 * ItemScores["Rainbow Facet"];
-            } else {
-              // using the new split facet system, count each as one
-              itemScore = ItemScores["Rainbow Facet"];
-            }
-          }
-          missing.score += itemScore;
-        }
-      } else {
-        GrailController.sumMissing(() => possibleItem, missing, key);
-      }
-    });
-    return missing;
-  };
-
-  public static isItem(data: any): boolean {
-    const itemProto = new Item();
-    return (
-      data &&
-      typeof data === "object" &&
-      (!Object.keys(data).length ||
-        Object.keys(itemProto).some(k => data.hasOwnProperty(k)))
-    );
-  }
-
-  private async getMemberParties(address: string, onSuccess: (parties) => any) {
-    try {
-      const parties = await this.partyCollection.find({
-        userlist: { $in: [GrailController.trimAndToLower(address)] }
-      });
-
-      if (!parties) {
-        return;
-      }
-
-      onSuccess(parties);
-    } catch (err) {
-      // dont update these parties I guess
-    }
-  }
 
   public validatePassword = async (req: Request, res: Response) => {
     const address = req.params.address;

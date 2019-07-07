@@ -8,13 +8,13 @@ export interface IUserData {
 }
 
 export interface IUserGrailData {
-  uniqueArmor?: ILBStatsData;
-  uniqueWeapons?: ILBStatsData;
-  uniqueOther?: ILBStatsData;
-  sets?: ILBStatsData;
+  uniqueArmor?: ICategoryStatsData;
+  uniqueWeapons?: ICategoryStatsData;
+  uniqueOther?: ICategoryStatsData;
+  sets?: ICategoryStatsData;
   itemScore?: number;
 }
 
-export interface ILBStatsData {
+export interface ICategoryStatsData {
   missing: number;
 }

@@ -1,5 +1,4 @@
 import { IPartyData } from "../union/IPartyData";
-import { IPartySettings } from "../union/IPartySettings";
 
 export interface IPartyApiModel {
   address: string;
@@ -8,5 +7,4 @@ export interface IPartyApiModel {
   userlist: string[];
   pendingUserlist: string[];
   token: string;
-  settings: IPartySettings;
 }

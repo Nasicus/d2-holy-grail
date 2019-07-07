@@ -4,7 +4,6 @@ import { LocalStorageHandler } from "../../common/utils/LocalStorageHandler";
 import { Observable, ReplaySubject, Subscriber } from "rxjs";
 import { IPartyError } from "./IPartyError";
 import { IPartyData } from "../../common/definitions/union/IPartyData";
-import { IPartySettings } from "../../common/definitions/union/IPartySettings";
 import { IPartyUserData } from "../../common/definitions/union/IPartyUserData";
 import { IPartyAreaData } from "../../common/definitions/union/IPartyAreaData";
 
@@ -51,10 +50,6 @@ export class PartyManager {
 
   public get isReadOnly(): boolean {
     return !this.password;
-  }
-
-  public get settings(): IPartySettings {
-    return this.partyData.settings;
   }
 
   private updateLocaleStorage = (data: IPartyAreaData) => {
@@ -114,32 +109,17 @@ export class PartyManager {
     });
   };
 
-  public signupUserToParty = (userAddress: string) => {
-    return Observable.create((observer: Subscriber<void>) => {
-      Api.addUserToParty(this.address, userAddress).subscribe(
-        response => {
-          observer.next();
-          observer.complete();
-        },
-        err => observer.error(err)
-      );
-    });
-  };
-
   private convertToAreaData = (data: IPartyApiModel): IPartyAreaData => {
     const users = {
       userlist: data.userlist,
-      pendingUserlist: data.pendingUserlist,
-      resolvedUserlist: [],
-      removedUserlist: []
+      pendingUserlist: data.pendingUserlist
     };
     const areaData = {
       address: data.address,
       password: data.password,
       token: data.token,
       users: users,
-      data: data.data,
-      settings: data.settings
+      data: data.data
     };
     return areaData;
   };
@@ -214,9 +194,6 @@ export class PartyManager {
       data.users.pendingUserlist = [];
     }
 
-    if (!data.settings) {
-      data.settings = {} as any;
-    }
     this.partyData = data;
     this.dataInitializer.next();
   }

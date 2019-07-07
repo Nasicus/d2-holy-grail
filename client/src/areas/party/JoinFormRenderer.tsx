@@ -13,7 +13,7 @@ import { PartyManager } from "./PartyManager";
 export interface IJoinInfo {
   address?: string;
   password?: string;
-  join_address?: string;
+  joinAddress?: string;
 }
 
 interface IJoinFormState extends IJoinInfo {
@@ -53,7 +53,7 @@ export class JoinFormRenderer extends React.Component<{}, IJoinFormState> {
           )}
           <JoinButtonWithProgressWrapper
             isLoading={this.state.isLoading}
-            isDisabled={!this.state.join_address}
+            isDisabled={!this.state.joinAddress}
             onClick={this.join}
             text={this.state.joinButtonText}
             secondIcon="check"
@@ -65,7 +65,7 @@ export class JoinFormRenderer extends React.Component<{}, IJoinFormState> {
   }
 
   private handleAddressChange = (e: any) => {
-    this.setState({ join_address: e.target.value });
+    this.setState({ joinAddress: e.target.value });
     if (this.state.success) {
       // We just successfully saved, so reset the button state on new grail address
       this.resetJoinButtonState();
@@ -88,41 +88,44 @@ export class JoinFormRenderer extends React.Component<{}, IJoinFormState> {
   };
 
   private join = () => {
-    if (!this.state.join_address) {
+    if (!this.state.joinAddress || this.state.success) {
       return;
     }
 
     this.setState({ isLoading: true });
 
-    PartyManager.current.signupUserToParty(this.state.join_address).subscribe(
-      r => {
-        this.setState({
-          isLoading: false,
-          success: true,
-          joinButtonText: "Partied!"
-        });
-        PartyManager.current.refreshData().subscribe();
-      },
-      res => {
-        if (res.status === 404) {
+    PartyManager.current
+      .modifyPartyUser(this.state.joinAddress, "join")
+      .subscribe(
+        r => {
           this.setState({
             isLoading: false,
-            error: "No grail exists with this username."
+            success: true,
+            joinButtonText: "Partied!"
           });
-        } else if (res.status === 409) {
-          this.setState({
-            isLoading: false,
-            error:
-              "There is already a grail with this username signed up to the party.\n If you are not shown on the party yet, contact the owner of the party to become an accepted user."
-          });
-        } else {
-          this.setState({
-            isLoading: false,
-            error: "An error occurred when trying to validate your password."
-          });
+          PartyManager.current.refreshData().subscribe();
+        },
+        res => {
+          if (res.status === 404) {
+            this.setState({
+              isLoading: false,
+              error: "No grail exists with this username."
+            });
+          } else if (res.status === 409) {
+            this.setState({
+              isLoading: false,
+              error:
+                "There is already a grail with this username signed up to the party.\n If you are not shown on the party yet, contact the owner of the party to become an accepted user."
+            });
+          } else {
+            this.setState({
+              isLoading: false,
+              error:
+                "An error occurred when trying to join the party. Try again."
+            });
+          }
         }
-      }
-    );
+      );
   };
 }
 

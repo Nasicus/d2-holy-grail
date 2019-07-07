@@ -151,22 +151,6 @@ export class Api {
     );
   }
 
-  public static addUserToParty(
-    address: string,
-    userAddress: string
-  ): Observable<IApiResponse<IPartyApiModel>> {
-    return this.fetchToObservable(
-      fetch(`${Api.partyApiUrl}${address}/signup`, {
-        method: "put",
-        body: JSON.stringify({
-          address,
-          userAddress
-        }),
-        headers: { "Content-Type": "application/json" }
-      })
-    );
-  }
-
   public static modifyPartyUser(
     address: string,
     password: string,

@@ -26,9 +26,14 @@ export const ItemScoreInfoDialog: FC<IInfoProps> = ({ onDialogClosed }) => {
             <br />
           </TitleText>
           <Typography variant="body1">
-            A unique or set item's "Item Score" is based on it's relative rarity
-            to that ultimate Holy Grail in Diablo II: Tyrael's Might. <br />
-            A list of example ItemScores can be found below: <br />
+            ItemScore is based on the relative rarity of an item. Common items
+            like a Nagelring are not worth many points. The rarer an item is,
+            the higher its ItemScore.
+            <br />
+            The ultimate Holy Grail item, Tyrael's Might, is worth 1000 points.{" "}
+            <br />
+            A fully completed grail will score 10000 points. <br />
+            Some eamples: <br />
           </Typography>
           <StyledTable>
             <TableHead>
@@ -38,10 +43,6 @@ export const ItemScoreInfoDialog: FC<IInfoProps> = ({ onDialogClosed }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableRow>
-                <StyledTableCell>Nokozan Relic</StyledTableCell>
-                <StyledTableCell>1</StyledTableCell>
-              </TableRow>
               <TableRow>
                 <StyledTableCell>Nagelring</StyledTableCell>
                 <StyledTableCell>1</StyledTableCell>
@@ -59,29 +60,23 @@ export const ItemScoreInfoDialog: FC<IInfoProps> = ({ onDialogClosed }) => {
                 <StyledTableCell>30</StyledTableCell>
               </TableRow>
               <TableRow>
-                <StyledTableCell>Windforce</StyledTableCell>
-                <StyledTableCell>110</StyledTableCell>
+                <StyledTableCell>Metalgrid</StyledTableCell>
+                <StyledTableCell>75</StyledTableCell>
               </TableRow>
               <TableRow>
                 <StyledTableCell>Crown of Ages</StyledTableCell>
-                <StyledTableCell>130</StyledTableCell>
+                <StyledTableCell>150</StyledTableCell>
               </TableRow>
               <TableRow>
                 <StyledTableCell>Astreon's Iron Ward</StyledTableCell>
-                <StyledTableCell>335</StyledTableCell>
+                <StyledTableCell>350</StyledTableCell>
               </TableRow>
               <TableRow>
                 <StyledTableCell>Tyrael's Might</StyledTableCell>
-                <StyledTableCell>1155</StyledTableCell>
+                <StyledTableCell>1000</StyledTableCell>
               </TableRow>
             </TableBody>
           </StyledTable>
-          <BottomText>
-            The values have been slightly increased across the board so that
-            each item has a value of 1 or more. <br />
-            Some items were so common compared to Tyrael's that they would round
-            down to 0.
-          </BottomText>
         </div>
       </DialogContent>
     </Dialog>
@@ -113,12 +108,5 @@ const StyledTable: React.ComponentType<TableProps> = styled(Table)`
 const TitleText = styled(Typography)`
   && {
     margin-top: 10px;
-  }
-`;
-
-const BottomText = styled(Typography)`
-  && {
-    margin-top: 10px;
-    font-size: 1em;
   }
 `;

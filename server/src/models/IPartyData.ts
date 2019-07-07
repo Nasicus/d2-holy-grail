@@ -4,5 +4,4 @@ export interface IPartyData {
   userlist?: any;
   pendingUserlist?: any;
   data?: any;
-  settings?: any;
 }
