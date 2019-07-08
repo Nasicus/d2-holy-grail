@@ -145,6 +145,9 @@ export class PartyTable extends React.Component<
               {stats.length === 0 && PartyTable.renderEmptyRow()}
             </TableBody>
           </StyledTable>
+          <TableFootNote variant="body2">
+            Note: The numbers above are the number of missing items.
+          </TableFootNote>
         </StyledPaper>
       </div>
     );
@@ -257,5 +260,11 @@ const PerfectIcon: React.ComponentType<IconProps> = styled(Icon)`
     float: left;
     font-size: 1rem;
     margin-left: -16px;
+  }
+`;
+
+const TableFootNote = styled(Typography)`
+  && {
+    margin: ${p => p.theme.spacing(1)}px;
   }
 `;
