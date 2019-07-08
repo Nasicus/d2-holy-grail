@@ -507,3 +507,31 @@ export const ItemScores = {
   "Death's Web": 350,
   "Tyrael's Might": 1000
 };
+
+// fixes for old grail seed data
+ItemScores["Crow Cow"] = ItemScores["Crow Caw"];
+ItemScores["Chance Gaurds"] = ItemScores["Chance Guards"];
+ItemScores["Shawdow Dancer"] = ItemScores["Shadow Dancer"];
+ItemScores["The Chieftan"] = ItemScores["The Chieftain"];
+ItemScores["General's Tan Do Li Ga"] = ItemScores["The General's Tan Do Li Ga"];
+ItemScores["Baranar's Star "] = ItemScores["Baranar's Star"];
+ItemScores["Demon Limb "] = ItemScores["Demon Limb"];
+ItemScores["Stormlash "] = ItemScores.Stormlash;
+ItemScores["Horizon's Tornado "] = ItemScores["Horizon's Tornado"];
+ItemScores["Stone Crusher "] = ItemScores["Stone Crusher"];
+ItemScores["Schaefer's Hammer "] = ItemScores["Schaefer's Hammer"];
+ItemScores["Culwen's point"] = ItemScores["Culwen's Point"];
+ItemScores["Wraith's Flight"] = ItemScores["Wraith Flight"];
+ItemScores["Eye of Etlich"] = ItemScores["The Eye of Etlich"];
+ItemScores["Mahim-Oak Curio"] = ItemScores["The Mahim-Oak Curio"];
+ItemScores["Cat's Eye"] = ItemScores["The Cat's Eye"];
+ItemScores["Rising Sun"] = ItemScores["The Rising Sun"];
+ItemScores["Highlords Wrath"] = ItemScores["Highlord's Wrath"];
+ItemScores["Bloodraven's Charge"] = ItemScores["Blood Raven's Charge"];
+ItemScores["Sparkling Mail"] = ItemScores["Sparking Mail"];
+(ItemScores as any).Viscerataunt = ItemScores.Visceratuant;
+(ItemScores as any).Steelshade = ItemScores["Steel Shade"];
+
+ItemScores["Tal Rasha's Fine-Spun Cloth"] =
+  ItemScores["Tal Rasha's Fine Spun Cloth"];
+ItemScores["Haemosu's Adament"] = ItemScores["Haemosu's Adamant"];
