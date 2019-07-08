@@ -53,7 +53,7 @@ export class PartyController {
   };
 
   public get = async (req: Request, res: Response) => {
-    const address = req.params.address;
+    const address = GrailController.trimAndToLower(req.params.address);
     await this.getByAddress(address, res, async party =>
       PartyController.mapAndReturnPartyData(
         address,
@@ -94,7 +94,7 @@ export class PartyController {
   };
 
   public validatePassword = async (req: Request, res: Response) => {
-    const address = req.params.address;
+    const address = GrailController.trimAndToLower(req.params.address);
     const password = req.body.password;
 
     if (!password && address) {
@@ -115,10 +115,11 @@ export class PartyController {
   public updatePartyUser = async (req: Request, res: Response) => {
     try {
       const method = req.body.method;
-      const address = req.body.address;
+      const address = GrailController.trimAndToLower(req.body.address);
       const password = req.body.password;
       const token = req.body.token;
-      const user = req.body.user;
+      const user = GrailController.trimAndToLower(req.body.user);
+
       switch (method) {
         case "accept":
           await this.update(
@@ -169,8 +170,8 @@ export class PartyController {
   };
 
   private addUserToParty = async (req: Request, res: Response) => {
-    const grailAddress = req.body.user;
-    const partyAddress = req.body.address;
+    const grailAddress = GrailController.trimAndToLower(req.body.user);
+    const partyAddress = GrailController.trimAndToLower(req.body.address);
     const result = await this.grailCollection.findOne({
       address: GrailController.trimAndToLower(grailAddress)
     });
@@ -213,7 +214,6 @@ export class PartyController {
     token: string,
     res: Response
   ) => {
-    console.log("error");
     await this.getByAddress(address, res, existingParty => {
       if (existingParty.password !== password) {
         res.status(401).send({ type: "password", address });
