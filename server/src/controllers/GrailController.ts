@@ -225,7 +225,7 @@ export class GrailController {
     return new Date().toISOString();
   }
 
-  private static trimAndToLower(value: string): string {
+  public static trimAndToLower(value: string): string {
     return value ? value.toLowerCase().trim() : null;
   }
 }

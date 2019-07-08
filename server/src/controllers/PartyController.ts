@@ -5,6 +5,7 @@ import { MongoErrorCodes } from "../models/MongoErrorCodes";
 import { IParty } from "../models/IParty";
 import { IPartyData } from "../models/IPartyData";
 import { IGrailCollection } from "../models/IGrailCollection";
+import { GrailController } from "./GrailController";
 
 export class PartyController {
   private get partyCollection(): Collection<IParty> {
@@ -64,27 +65,26 @@ export class PartyController {
   };
 
   private getPartyData = async (party: IParty): Promise<any> => {
-    const grails = await this.grailCollection.find(
-      {
+    const grails = await this.grailCollection
+      .find({
         address: {
           $in: party.userlist
         }
-      },
-      {
-        projection: {
-          address: true,
-          partyData: true
-        }
-      }
-    );
-    return await this.mapGrailsToPartyData(grails);
+      })
+      .project({
+        address: true,
+        partyData: true
+      })
+      .toArray();
+
+    return this.mapGrailsToPartyData(grails);
   };
 
-  private mapGrailsToPartyData = async (grails: Cursor) => {
+  private mapGrailsToPartyData = (grails: IGrailCollection[]) => {
     let partyData = {
       users: []
     };
-    await grails.forEach(grail => {
+    grails.forEach(grail => {
       partyData.users.push({
         username: grail.address,
         data: grail.partyData
@@ -121,10 +121,17 @@ export class PartyController {
       const user = req.body.user;
       switch (method) {
         case "accept":
-          this.update(res, address, password, token, dataToSet => dataToSet, {
-            $pull: { pendingUserlist: user },
-            $addToSet: { userlist: user }
-          });
+          await this.update(
+            res,
+            address,
+            password,
+            token,
+            dataToSet => dataToSet,
+            {
+              $pull: { pendingUserlist: user },
+              $addToSet: { userlist: user }
+            }
+          );
           break;
         case "deny":
           await this.update(
@@ -165,16 +172,18 @@ export class PartyController {
     const grailAddress = req.body.user;
     const partyAddress = req.body.address;
     const result = await this.grailCollection.findOne({
-      address: grailAddress
+      address: GrailController.trimAndToLower(grailAddress)
     });
 
     if (!result) {
       res.status(404).send({ type: "userNotFound", grailAddress });
       return;
     }
+
     const party = await this.partyCollection.findOne({
-      address: partyAddress
+      address: GrailController.trimAndToLower(partyAddress)
     });
+
     if (!party) {
       res.status(404).send({ type: "partyNotFound", partyAddress });
       return;
@@ -204,6 +213,7 @@ export class PartyController {
     token: string,
     res: Response
   ) => {
+    console.log("error");
     await this.getByAddress(address, res, existingParty => {
       if (existingParty.password !== password) {
         res.status(401).send({ type: "password", address });

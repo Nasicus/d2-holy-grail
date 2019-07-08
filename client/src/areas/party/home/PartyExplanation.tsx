@@ -8,7 +8,7 @@ import { ItemScoreInfoDialog } from "./ItemScoreInfoDialog";
 export const PartyExplanation: FC = () => {
   const [renderItemScoreInfo, setRenderItemScoreInfo] = useState(false);
   return (
-    <RootContainer>
+    <Host>
       {renderItemScoreInfo && (
         <ItemScoreInfoDialog
           onDialogClosed={() => {
@@ -38,10 +38,11 @@ export const PartyExplanation: FC = () => {
           to see more information about it.
         </span>
       </Typography>
-    </RootContainer>
+    </Host>
   );
 };
 
-const RootContainer = styled.div`
-  margin: 50px 50px auto 100px;
+const Host = styled.div`
+  margin: 50px auto;
+  max-width: 700px;
 `;
