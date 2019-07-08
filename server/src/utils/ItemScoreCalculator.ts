@@ -10,7 +10,7 @@ export class MissingItems {
   public constructor() {}
 }
 
-export class StatisticsController {
+export class ItemScoreCalculator {
   public constructor() {}
 
   public static formatGrailForParty = (data: any): any => {
@@ -31,7 +31,7 @@ export class StatisticsController {
     };
     if (data && data.uniques) {
       if (data.uniques.weapons) {
-        let missingWeps = StatisticsController.sumMissing(
+        let missingWeps = ItemScoreCalculator.sumMissing(
           () => data.uniques.weapons,
           new MissingItems()
         );
@@ -39,7 +39,7 @@ export class StatisticsController {
         partyGrailData.itemScore += missingWeps.score;
       }
       if (data.uniques.armor) {
-        let missingArmor = StatisticsController.sumMissing(
+        let missingArmor = ItemScoreCalculator.sumMissing(
           () => data.uniques.armor,
           new MissingItems()
         );
@@ -47,7 +47,7 @@ export class StatisticsController {
         partyGrailData.itemScore += missingArmor.score;
       }
       if (data.uniques.other) {
-        let missingOther = StatisticsController.sumMissing(
+        let missingOther = ItemScoreCalculator.sumMissing(
           () => data.uniques.other,
           new MissingItems()
         );
@@ -56,7 +56,7 @@ export class StatisticsController {
       }
     }
     if (data && data.sets) {
-      let missingSets = StatisticsController.sumMissing(
+      let missingSets = ItemScoreCalculator.sumMissing(
         () => data.sets,
         new MissingItems()
       );
@@ -84,7 +84,7 @@ export class StatisticsController {
 
     Object.keys(data).forEach(key => {
       const possibleItem = data[key] as IItem;
-      if (StatisticsController.isItem(possibleItem)) {
+      if (ItemScoreCalculator.isItem(possibleItem)) {
         if (!possibleItem.wasFound) {
           missing.missing++;
         } else {
@@ -103,7 +103,7 @@ export class StatisticsController {
           missing.score += itemScore;
         }
       } else {
-        StatisticsController.sumMissing(() => possibleItem, missing, key);
+        ItemScoreCalculator.sumMissing(() => possibleItem, missing, key);
       }
     });
     return missing;

@@ -4,7 +4,6 @@ export interface IParty {
   token: string;
   created: Date;
   modified: Date;
-  updateCount: number;
   userlist?: any;
   pendingUserlist?: any;
 }

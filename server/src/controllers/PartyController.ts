@@ -64,11 +64,19 @@ export class PartyController {
   };
 
   private getPartyData = async (party: IParty): Promise<any> => {
-    const grails = await this.grailCollection.find({
-      address: {
-        $in: party.userlist
+    const grails = await this.grailCollection.find(
+      {
+        address: {
+          $in: party.userlist
+        }
+      },
+      {
+        projection: {
+          address: true,
+          partyData: true
+        }
       }
-    });
+    );
     return await this.mapGrailsToPartyData(grails);
   };
 
@@ -228,7 +236,6 @@ export class PartyController {
         token: PartyController.getToken(),
         modified: new Date()
       });
-      updateQuery.$inc = { updateCount: 1 };
       const result = await this.partyCollection.findOneAndUpdate(
         {
           address: PartyController.trimAndToLower(address),

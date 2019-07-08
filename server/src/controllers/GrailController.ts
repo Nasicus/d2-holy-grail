@@ -4,7 +4,7 @@ import { ConfigManager } from "../ConfigManager";
 import { IGrailCollection } from "../models/IGrailCollection";
 import { IHolyGrail } from "../models/IHolyGrail";
 import { MongoErrorCodes } from "../models/MongoErrorCodes";
-import { StatisticsController } from "./StatisticsController";
+import { ItemScoreCalculator } from "../utils/ItemScoreCalculator";
 
 export class GrailController {
   private get grailCollection(): Collection<IGrailCollection> {
@@ -73,7 +73,7 @@ export class GrailController {
     const grailData = req.body.grail;
     const ethGrailData = req.body.ethGrail;
     const runewordGrailData = req.body.runewordGrail;
-    const partyData = StatisticsController.formatGrailForParty(grailData);
+    const partyData = ItemScoreCalculator.formatGrailForParty(grailData);
     const token = req.body.token;
 
     if (!grailData) {
