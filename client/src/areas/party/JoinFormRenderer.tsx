@@ -60,6 +60,14 @@ export class JoinFormRenderer extends React.Component<{}, IJoinFormState> {
             showSecondIcon={this.state.success}
           />
         </JoinButtonContainer>
+
+        {this.state.success && (
+          <div>
+            You have successfully applied to join this party! <br />
+            <HighlightText>**Note: </HighlightText>The owner of the party will
+            have to accept you before you can appear on the leaderboard.
+          </div>
+        )}
       </RootContainer>
     );
   }
@@ -157,6 +165,13 @@ const JoinButtonWithProgressWrapper: React.ComponentType<
 
 const FormContainer = styled.div`
   text-align: left;
+`;
+
+const HighlightText = styled.span`
+  && {
+    color: red;
+    font-weight: bold;
+  }
 `;
 
 const ErrorContainer = styled.div`
