@@ -10,24 +10,23 @@ import { GrailStatistics } from "./areas/GrailStatistics";
 import { Party } from "./areas/party/Party";
 import { PartyHome } from "./areas/party/home/PartyHome";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { MuiThemeProvider, Theme } from "@material-ui/core/styles";
+import { MuiThemeProvider } from "@material-ui/core/styles";
 
-import { normalTheme, ThemeContext } from "./ThemeContext";
+import { defaultTheme, IAppTheme, AppThemeContext } from "./AppThemeContext";
 
 export const App: FC = () => {
-  const [theme, setTheme] = useState<Theme>(normalTheme);
-  const [title, setTitle] = useState<string>("Diablo II - Holy Grail");
+  const [appTheme, setAppTheme] = useState<IAppTheme>(defaultTheme);
 
   return (
-    <ThemeContext.Provider value={{ theme, title, setTheme: handleSetTheme }}>
-      <MuiThemeProvider theme={theme}>
-        <ThemeProvider theme={theme}>
+    <AppThemeContext.Provider value={{ appTheme, setAppTheme: handleSetTheme }}>
+      <MuiThemeProvider theme={appTheme.theme}>
+        <ThemeProvider theme={appTheme.theme}>
           <>
             <CssBaseline />
             <BrowserRouter>
               <RootContainer>
                 <HeaderContainer>
-                  <Typography variant="h5">{title}</Typography>
+                  <Typography variant="h5">{appTheme.title}</Typography>
                 </HeaderContainer>
                 <GithubRibbon url="https://github.com/Nasicus/d2-holy-grail" />
                 <ContentContainer>
@@ -55,12 +54,11 @@ export const App: FC = () => {
           </>
         </ThemeProvider>
       </MuiThemeProvider>
-    </ThemeContext.Provider>
+    </AppThemeContext.Provider>
   );
 
-  function handleSetTheme(theme: Theme, title: string) {
-    setTheme(theme);
-    setTitle(title);
+  function handleSetTheme(appTheme?: IAppTheme) {
+    setAppTheme(appTheme || defaultTheme);
   }
 };
 

@@ -2,20 +2,24 @@ import * as React from "react";
 import { LoginForm } from "./LoginForm";
 import { PartyButton } from "../../common/components/PartyButton";
 import styled from "styled-components";
+import { FC, useContext, useEffect } from "react";
+import { AppThemeContext } from "../../AppThemeContext";
 
-export class Home extends React.Component {
-  public render() {
-    return (
-      <div>
-        <LoginForm />
+export const Home: FC = () => {
+  const { setAppTheme } = useContext(AppThemeContext);
 
-        <LeftSideButtons>
-          <PartyButton />
-        </LeftSideButtons>
-      </div>
-    );
-  }
-}
+  useEffect(() => setAppTheme(), []);
+
+  return (
+    <div>
+      <LoginForm />
+
+      <LeftSideButtons>
+        <PartyButton />
+      </LeftSideButtons>
+    </div>
+  );
+};
 
 const LeftSideButtons = styled.div`
   position: fixed;

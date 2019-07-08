@@ -3,20 +3,24 @@ import { PartyLoginForm } from "./PartyLoginForm";
 import { PartyExplanation } from "./PartyExplanation";
 import { HomeButton } from "../../../common/components/HomeButton";
 import styled from "styled-components";
+import { partyTheme, AppThemeContext } from "../../../AppThemeContext";
+import { FC, useEffect, useContext } from "react";
 
-export class PartyHome extends React.Component {
-  public render() {
-    return (
-      <div>
-        <PartyLoginForm />
-        <PartyExplanation />
-        <LeftSideButtons>
-          <HomeButton switchToBaseTheme={true} />
-        </LeftSideButtons>
-      </div>
-    );
-  }
-}
+export const PartyHome: FC = () => {
+  const { setAppTheme } = useContext(AppThemeContext);
+
+  useEffect(() => setAppTheme(partyTheme), []);
+
+  return (
+    <div>
+      <PartyLoginForm />
+      <PartyExplanation />
+      <LeftSideButtons>
+        <HomeButton />
+      </LeftSideButtons>
+    </div>
+  );
+};
 
 const LeftSideButtons = styled.div`
   position: fixed;

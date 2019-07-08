@@ -1,6 +1,7 @@
 import * as React from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import { GrailManager } from "./GrailManager";
-import { CircularProgress, Divider, Theme } from "@material-ui/core";
+import { CircularProgress, Divider } from "@material-ui/core";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { ILoginInfo } from "../home/LoginForm";
 import { SettingsListItem } from "./dataManipulation/clickable-components/SettingsListItem";
@@ -24,13 +25,12 @@ import { ListItemWithProgress } from "../../common/components/ListItemWithProgre
 import styled from "styled-components";
 import { IGrailAreaRouterParams } from "../../RouteManager";
 import { GrailVersionMigrator } from "./migrations/GrailVersionMigrator";
-import { FC, useState, useEffect, useContext } from "react";
 import {
+  AppThemeContext,
   ethTheme,
-  normalTheme,
-  runewordTheme,
-  ThemeContext
-} from "../../ThemeContext";
+  IAppTheme,
+  runewordTheme
+} from "../../AppThemeContext";
 
 type Props = RouteComponentProps<IGrailAreaRouterParams>;
 
@@ -44,7 +44,7 @@ interface IGrailAreaState {
 
 const GrailAreaInternal: FC<Props> = props => {
   const [state, setState] = useState<IGrailAreaState>({ loading: true });
-  const { setTheme } = useContext(ThemeContext);
+  const { setAppTheme } = useContext(AppThemeContext);
 
   const grailMode = getGrailModeFromRouteParams(props);
 
@@ -172,24 +172,19 @@ const GrailAreaInternal: FC<Props> = props => {
   }
 
   function setThemeAndTitle() {
-    let theme: Theme;
-    let title: string;
+    let theme: IAppTheme = null;
     switch (grailMode) {
       case GrailMode.Eth:
-        title = "Diablo II - Eth Grail";
         theme = ethTheme;
         break;
       case GrailMode.Runeword:
-        title = "Diablo II - Runeword Grail";
         theme = runewordTheme;
         break;
       default:
-        title = "Diablo II - Holy Grail";
-        theme = normalTheme;
         break;
     }
 
-    setTheme(theme, title);
+    setAppTheme(theme);
   }
 
   function onFilterResult(result: IFilterResult) {

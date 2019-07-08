@@ -1,4 +1,5 @@
 import * as React from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { IPartyError } from "./IPartyError";
 import { PartyManager } from "./PartyManager";
@@ -13,8 +14,7 @@ import { PartyButton } from "../../common/components/PartyButton";
 import { IPartyAreaRouterParams } from "../../RouteManager";
 import { IPartyUserData } from "../../common/definitions/union/IPartyUserData";
 import { PartyErrorHandler } from "./PartyErrorHandler";
-import { FC, useState, useEffect, useContext } from "react";
-import { partyTheme, ThemeContext } from "../../ThemeContext";
+import { AppThemeContext, partyTheme } from "../../AppThemeContext";
 
 interface IPartyAreaState {
   data?: IPartyData;
@@ -27,7 +27,7 @@ type Props = RouteComponentProps<IPartyAreaRouterParams>;
 
 const PartyAreaInternal: FC<Props> = props => {
   const [state, setState] = useState<IPartyAreaState>({ loading: true });
-  const { setTheme } = useContext(ThemeContext);
+  const { setAppTheme } = useContext(AppThemeContext);
 
   useEffect(() => {
     const loginInfo = (props.location.state || {}) as ILoginInfo;
@@ -50,7 +50,7 @@ const PartyAreaInternal: FC<Props> = props => {
       // so you can also use the app offline
       (err: IPartyError) => setState({ ...state, error: err })
     );
-    setThemeAndTitle();
+    setAppTheme(partyTheme);
   }, []);
 
   if (state.error) {
@@ -77,17 +77,10 @@ const PartyAreaInternal: FC<Props> = props => {
       </div>
       <LeftSideButtons>
         <PartyButton />
-        <HomeButton switchToBaseTheme={true} />
+        <HomeButton />
       </LeftSideButtons>
     </div>
   );
-
-  function setThemeAndTitle() {
-    const title = "Diablo II - Holy Grail Party";
-    const theme = partyTheme;
-
-    setTheme(theme, title);
-  }
 };
 
 const LeftSideButtons = styled.div`

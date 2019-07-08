@@ -1,23 +1,11 @@
 import * as React from "react";
-import { withRouter, RouteComponentProps } from "react-router-dom";
+import { FC } from "react";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 import { ButtonWithProgress } from "./ButtonWithProgress";
-import { FC, useContext } from "react";
-import { normalTheme, ThemeContext } from "../../ThemeContext";
 
-export interface IHomeButtonProps {
-  switchToBaseTheme?: boolean;
-}
-
-type Props = IHomeButtonProps & RouteComponentProps<{}>;
+type Props = RouteComponentProps<{}>;
 
 const HomeButtonInternal: FC<Props> = props => {
-  const { setTheme } = useContext(ThemeContext);
-  function handleClick() {
-    props.history.push("/");
-    if (props.switchToBaseTheme) {
-      setTheme(normalTheme, "Diablo II - Holy Grail");
-    }
-  }
   return (
     <div>
       <ButtonWithProgress
@@ -27,6 +15,10 @@ const HomeButtonInternal: FC<Props> = props => {
       />
     </div>
   );
+
+  function handleClick() {
+    props.history.push("/");
+  }
 };
 
 export const HomeButton = withRouter(HomeButtonInternal);

@@ -1,16 +1,9 @@
 import * as React from "react";
-import { withRouter, RouteComponentProps } from "react-router-dom";
+import { FC } from "react";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 import { ButtonWithProgress } from "./ButtonWithProgress";
-import { FC, useContext } from "react";
-import { partyTheme, ThemeContext } from "../../ThemeContext";
 
 const PartyButtonInternal: FC<RouteComponentProps<{}>> = props => {
-  const { setTheme } = useContext(ThemeContext);
-  function handleClick() {
-    props.history.push("/party/");
-    setTheme(partyTheme, "Diablo II - Holy Grail Party");
-  }
-
   return (
     <div>
       <ButtonWithProgress
@@ -20,6 +13,10 @@ const PartyButtonInternal: FC<RouteComponentProps<{}>> = props => {
       />
     </div>
   );
+
+  function handleClick() {
+    props.history.push("/party/");
+  }
 };
 
 export const PartyButton = withRouter(PartyButtonInternal);
