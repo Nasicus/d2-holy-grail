@@ -3,6 +3,7 @@ import { IHolyGrailData } from "../definitions/union/IHolyGrailData";
 import { IEthGrailData } from "../definitions/union/IEthGrailData";
 import { IRunewordGrailApiData } from "../definitions/api/IRunewordGrailApiData";
 import { IHolyGrailApiModel } from "../definitions/api/IHolyGrailApiModel";
+import { IPartyApiModel } from "../definitions/api/IPartyApiModel";
 import { IGrailSettings } from "../definitions/union/IGrailSettings";
 import { IItemInfo } from "../definitions/api/IItemInfo";
 import { IRunewordInfo } from "../definitions/api/IRunewordInfo";
@@ -16,6 +17,7 @@ export interface IApiResponse<T> {
 export class Api {
   private static readonly apiUrl = "/api/";
   private static readonly grailApiUrl = Api.apiUrl + "grail/";
+  private static readonly partyApiUrl = Api.apiUrl + "party/";
 
   public static getStatistics(): Observable<IApiResponse<IGrailStatistics>> {
     return this.fetchToObservable(fetch(`${Api.apiUrl}stats`));
@@ -128,4 +130,59 @@ export class Api {
       }
     });
   };
+
+  // Party methods
+  public static getParty(
+    address: string
+  ): Observable<IApiResponse<IPartyApiModel>> {
+    return this.fetchToObservable(fetch(Api.partyApiUrl + address));
+  }
+
+  public static createParty(
+    address: string,
+    password: string
+  ): Observable<IApiResponse<IPartyApiModel>> {
+    return this.fetchToObservable(
+      fetch(Api.partyApiUrl, {
+        method: "post",
+        body: JSON.stringify({ address, password }),
+        headers: { "Content-Type": "application/json" }
+      })
+    );
+  }
+
+  public static modifyPartyUser(
+    address: string,
+    password: string,
+    token: string,
+    user: string,
+    method: string
+  ): Observable<IApiResponse<IPartyApiModel>> {
+    return this.fetchToObservable(
+      fetch(`${Api.partyApiUrl}${address}/manage/${method}`, {
+        method: "put",
+        body: JSON.stringify({
+          address,
+          password,
+          token,
+          user,
+          method
+        }),
+        headers: { "Content-Type": "application/json" }
+      })
+    );
+  }
+
+  public static validatePartyPassword(
+    address: string,
+    password: string
+  ): Observable<IApiResponse<boolean>> {
+    return this.fetchToObservable(
+      fetch(`${Api.partyApiUrl}${address}/password/validate`, {
+        method: "put",
+        body: JSON.stringify({ password }),
+        headers: { "Content-Type": "application/json" }
+      })
+    );
+  }
 }

@@ -4,6 +4,7 @@ import { ConfigManager } from "../ConfigManager";
 import { IGrailCollection } from "../models/IGrailCollection";
 import { IHolyGrail } from "../models/IHolyGrail";
 import { MongoErrorCodes } from "../models/MongoErrorCodes";
+import { ItemScoreCalculator } from "../utils/ItemScoreCalculator";
 
 export class GrailController {
   private get grailCollection(): Collection<IGrailCollection> {
@@ -72,6 +73,7 @@ export class GrailController {
     const grailData = req.body.grail;
     const ethGrailData = req.body.ethGrail;
     const runewordGrailData = req.body.runewordGrail;
+    const partyData = ItemScoreCalculator.formatGrailForParty(grailData);
     const token = req.body.token;
 
     if (!grailData) {
@@ -84,6 +86,7 @@ export class GrailController {
       dataToSet.data = grailData;
       dataToSet.ethData = ethGrailData;
       dataToSet.runewordData = runewordGrailData;
+      dataToSet.partyData = partyData;
       return dataToSet;
     });
   };
@@ -222,7 +225,7 @@ export class GrailController {
     return new Date().toISOString();
   }
 
-  private static trimAndToLower(value: string): string {
+  public static trimAndToLower(value: string): string {
     return value ? value.toLowerCase().trim() : null;
   }
 }

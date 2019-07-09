@@ -6,10 +6,11 @@ import * as path from "path";
 import { Db } from "mongodb";
 import { GrailController } from "../controllers/GrailController";
 import { ItemsController } from "../controllers/ItemsController";
+import { PartyController } from "../controllers/PartyController";
 
 function initializeExpressServer(express: expressServer.Express): void {
-  express.use(bodyParser.urlencoded({ extended: true, limit: '1mb' }));
-  express.use(bodyParser.json({ limit: '1mb' }));
+  express.use(bodyParser.urlencoded({ extended: true, limit: "1mb" }));
+  express.use(bodyParser.json({ limit: "1mb" }));
   express.use(cors());
 }
 
@@ -27,6 +28,7 @@ function initializeExpressServerForClient(
 
 function configureRoutes(db: Db, express: expressServer.Express): void {
   const grailController: GrailController = new GrailController(db);
+  const partyController: PartyController = new PartyController(db);
 
   express.route("/api/grail").post(grailController.add);
 
@@ -50,6 +52,18 @@ function configureRoutes(db: Db, express: expressServer.Express): void {
   express
     .route("/api/runewords/:runewordName")
     .get(itemsController.getRuneword);
+
+  express.route("/api/party").post(partyController.add);
+
+  express.route("/api/party/:address").get(partyController.get);
+
+  express
+    .route("/api/party/:address/manage/:method")
+    .put(partyController.updatePartyUser);
+
+  express
+    .route("/api/party/:address/password/validate")
+    .put(partyController.validatePassword);
 }
 
 export function initializeApp(db: Db, rootDirectoryPath: string) {

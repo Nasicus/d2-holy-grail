@@ -9,5 +9,6 @@ export interface IGrailCollection {
   data?: any;
   ethData?: any;
   runewordData?: any;
+  partyData?: any;
   settings?: any;
 }
