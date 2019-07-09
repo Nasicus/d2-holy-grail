@@ -146,7 +146,14 @@ export class PartyTable extends React.Component<
             </TableBody>
           </StyledTable>
           <TableFootNote variant="body2">
-            Note: The numbers above are the number of missing items.
+            Notes:
+            <NoteList>
+              <li>The numbers above are the number of missing items.</li>
+              <li>
+                A grail has to be saved at least once for numbers / scores to
+                appear in the table.
+              </li>
+            </NoteList>
           </TableFootNote>
         </StyledPaper>
       </div>
@@ -267,4 +274,9 @@ const TableFootNote = styled(Typography)`
   && {
     margin: ${p => p.theme.spacing(1)}px;
   }
+`;
+
+const NoteList = styled.ul`
+  margin-top: 0;
+  padding-left: ${p => p.theme.spacing(3)}px;
 `;
