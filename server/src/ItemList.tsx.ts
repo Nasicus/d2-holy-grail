@@ -4868,7 +4868,7 @@ const uniqueItems = {
   Stormshield: {
     name: "Stormshield",
     type: "Monarch",
-    image: "http://www.d2tomb.com/images/uniques/bverritkeep.gif",
+    image: "http://www.d2tomb.com/images/uniques/steelclash.gif",
     props: [
       "Defense: 136-519",
       "Req Strength: 156",
