@@ -10,8 +10,8 @@
     "server:dev": "cd server && npm run dev",
     "client:dev": "cd client && npm run dev",
     "server:prod": "cd server && npm run prod",
-    "server:build:prod": "cd server && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
-    "client:build:prod": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build && cp -r build ../server/dist/client",
+    "server:build:prod": "cd server && npm install && npm run build",
+    "client:build:prod": "cd client && npm install && npm run build && cp -r build ../server/dist/client",
     "heroku-postbuild": "npm run server:build:prod && npm run client:build:prod"
   },
   "devDependencies": {
