@@ -8,7 +8,7 @@ export class DbConfig {
   public get mongoUrl(): string {
     return (
       this._mongoUrl ||
-      (this._mongoUrl = process.env.MONGODB_URI || this.defaultMongoUrl)
+      (this._mongoUrl = process.env.DB_URI || this.defaultMongoUrl)
     );
   }
 }
