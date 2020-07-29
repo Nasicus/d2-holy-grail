@@ -27,10 +27,17 @@ import { IGrailAreaRouterParams } from "../../RouteManager";
 import { GrailVersionMigrator } from "./migrations/GrailVersionMigrator";
 import {
   AppThemeContext,
+  defaultTheme,
+  defaultThemeDark,
   ethTheme,
+  ethThemeDark,
   IAppTheme,
-  runewordTheme
+  runewordTheme,
+  runewordThemeDark,
+  toggleDarkThemeEnabled,
+  darkThemeIsEnabled
 } from "../../AppThemeContext";
+import { ButtonWithProgress } from "../../common/components/ButtonWithProgress";
 
 type Props = RouteComponentProps<IGrailAreaRouterParams>;
 
@@ -128,6 +135,11 @@ const GrailAreaInternal: FC<Props> = props => {
         <ButtonRow>
           <GrailTypeToggler grailMode={GrailManager.current.grailMode} />
         </ButtonRow>
+        <ButtonWithProgress
+          onClick={() => toggleDarkTheme()}
+          text="Toggle dark mode"
+          firstIcon="brightness_3"
+        />
         <ButtonRow>
           <MenuButton>
             <ListItemWithProgress
@@ -173,18 +185,34 @@ const GrailAreaInternal: FC<Props> = props => {
 
   function setThemeAndTitle() {
     let theme: IAppTheme = null;
+
+    let defaultThemeToSet = defaultTheme;
+    let ethThemeToSet = ethTheme;
+    let runewordThemeToSet = runewordTheme;
+
+    if (darkThemeIsEnabled()) {
+      defaultThemeToSet = defaultThemeDark;
+      ethThemeToSet = ethThemeDark;
+      runewordThemeToSet = runewordThemeDark;
+    }
+
     switch (grailMode) {
       case GrailMode.Eth:
-        theme = ethTheme;
+        theme = ethThemeToSet;
         break;
       case GrailMode.Runeword:
-        theme = runewordTheme;
+        theme = runewordThemeToSet;
         break;
       default:
-        break;
+        theme = defaultThemeToSet;
     }
 
     setAppTheme(theme);
+  }
+
+  function toggleDarkTheme() {
+    toggleDarkThemeEnabled();
+    setThemeAndTitle();
   }
 
   function onFilterResult(result: IFilterResult) {
