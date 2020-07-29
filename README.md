@@ -41,6 +41,7 @@ The client app gets its data from the server app, which means if you want to be 
 
 - [Node JS](https://nodejs.org) (with `npm`)
 - An installed and running instance of [Mongo DB](https://docs.mongodb.com/manual/administration/install-community/)
+  - As an alternative to installing MongoDB, you can use [Docker](https://www.docker.com/) to start a [MongoDB container](https://hub.docker.com/_/mongo). Example command: `docker run -p 27017:27017 mongo`
 
 #### Initial Setup
 
