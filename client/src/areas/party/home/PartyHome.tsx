@@ -3,13 +3,13 @@ import { PartyLoginForm } from "./PartyLoginForm";
 import { PartyExplanation } from "./PartyExplanation";
 import { HomeButton } from "../../../common/components/HomeButton";
 import styled from "styled-components";
-import { AppThemeContext, getPartyTheme } from "../../../AppThemeContext";
+import { AppThemeContext, partyTheme } from "../../../AppThemeContext";
 import { FC, useEffect, useContext } from "react";
 
 export const PartyHome: FC = () => {
   const { setAppTheme } = useContext(AppThemeContext);
 
-  useEffect(() => setAppTheme(getPartyTheme()), []);
+  useEffect(() => setAppTheme(partyTheme), []);
 
   return (
     <div>

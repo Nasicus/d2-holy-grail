@@ -28,9 +28,8 @@ import { GrailVersionMigrator } from "./migrations/GrailVersionMigrator";
 import {
   AppThemeContext,
   IAppTheme,
-  darkThemeIsEnabled,
-  getEthTheme,
-  getRunewordTheme
+  ethTheme,
+  runewordTheme
 } from "../../AppThemeContext";
 import { ButtonWithProgress } from "../../common/components/ButtonWithProgress";
 
@@ -46,7 +45,7 @@ interface IGrailAreaState {
 
 const GrailAreaInternal: FC<Props> = props => {
   const [state, setState] = useState<IGrailAreaState>({ loading: true });
-  const { setAppTheme } = useContext(AppThemeContext);
+  const { setAppTheme, toggleDarkTheme } = useContext(AppThemeContext);
 
   const grailMode = getGrailModeFromRouteParams(props);
 
@@ -182,24 +181,16 @@ const GrailAreaInternal: FC<Props> = props => {
     let theme: IAppTheme = null;
     switch (grailMode) {
       case GrailMode.Eth:
-        theme = getEthTheme();
+        theme = ethTheme;
         break;
       case GrailMode.Runeword:
-        theme = getRunewordTheme();
+        theme = runewordTheme;
         break;
       default:
         break;
     }
 
     setAppTheme(theme);
-  }
-
-  function toggleDarkTheme() {
-    localStorage.setItem(
-      "d2-holy-grail-useDarkTheme",
-      (!darkThemeIsEnabled()).toString()
-    );
-    setThemeAndTitle();
   }
 
   function onFilterResult(result: IFilterResult) {

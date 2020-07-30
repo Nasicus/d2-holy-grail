@@ -14,7 +14,7 @@ import { PartyButton } from "../../common/components/PartyButton";
 import { IPartyAreaRouterParams } from "../../RouteManager";
 import { IPartyUserData } from "../../common/definitions/union/IPartyUserData";
 import { PartyErrorHandler } from "./PartyErrorHandler";
-import { AppThemeContext, getPartyTheme } from "../../AppThemeContext";
+import { AppThemeContext, partyTheme } from "../../AppThemeContext";
 
 interface IPartyAreaState {
   data?: IPartyData;
@@ -50,7 +50,7 @@ const PartyAreaInternal: FC<Props> = props => {
       // so you can also use the app offline
       (err: IPartyError) => setState({ ...state, error: err })
     );
-    setAppTheme(getPartyTheme());
+    setAppTheme(partyTheme);
   }, []);
 
   if (state.error) {
