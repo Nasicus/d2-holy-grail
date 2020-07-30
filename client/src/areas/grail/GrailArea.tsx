@@ -27,15 +27,10 @@ import { IGrailAreaRouterParams } from "../../RouteManager";
 import { GrailVersionMigrator } from "./migrations/GrailVersionMigrator";
 import {
   AppThemeContext,
-  defaultTheme,
-  defaultThemeDark,
-  ethTheme,
-  ethThemeDark,
   IAppTheme,
-  runewordTheme,
-  runewordThemeDark,
-  toggleDarkThemeEnabled,
-  darkThemeIsEnabled
+  darkThemeIsEnabled,
+  getEthTheme,
+  getRunewordTheme
 } from "../../AppThemeContext";
 import { ButtonWithProgress } from "../../common/components/ButtonWithProgress";
 
@@ -185,33 +180,25 @@ const GrailAreaInternal: FC<Props> = props => {
 
   function setThemeAndTitle() {
     let theme: IAppTheme = null;
-
-    let defaultThemeToSet = defaultTheme;
-    let ethThemeToSet = ethTheme;
-    let runewordThemeToSet = runewordTheme;
-
-    if (darkThemeIsEnabled()) {
-      defaultThemeToSet = defaultThemeDark;
-      ethThemeToSet = ethThemeDark;
-      runewordThemeToSet = runewordThemeDark;
-    }
-
     switch (grailMode) {
       case GrailMode.Eth:
-        theme = ethThemeToSet;
+        theme = getEthTheme();
         break;
       case GrailMode.Runeword:
-        theme = runewordThemeToSet;
+        theme = getRunewordTheme();
         break;
       default:
-        theme = defaultThemeToSet;
+        break;
     }
 
     setAppTheme(theme);
   }
 
   function toggleDarkTheme() {
-    toggleDarkThemeEnabled();
+    localStorage.setItem(
+      "d2-holy-grail-useDarkTheme",
+      (!darkThemeIsEnabled()).toString()
+    );
     setThemeAndTitle();
   }
 

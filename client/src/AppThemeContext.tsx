@@ -12,104 +12,62 @@ export interface IAppTheme {
   title: string;
 }
 
-let darkThemeEnabled = false;
-
-export function toggleDarkThemeEnabled() {
-  darkThemeEnabled = !darkThemeEnabled;
+export function darkThemeIsEnabled(): boolean {
+  return localStorage.getItem("d2-holy-grail-useDarkTheme") === "true";
 }
 
-export function darkThemeIsEnabled() {
-  return darkThemeEnabled;
+export function getDefaultTheme(): IAppTheme {
+  return {
+    theme: createMuiTheme({
+      typography: {},
+      palette: {
+        primary: purple,
+        secondary: green,
+        type: darkThemeIsEnabled() ? "dark" : "light"
+      }
+    }),
+    title: "Diablo II - Holy Grail"
+  };
 }
 
-export const defaultTheme: IAppTheme = {
-  theme: createMuiTheme({
-    typography: {},
-    palette: {
-      primary: purple,
-      secondary: green
-    }
-  }),
-  title: "Diablo II - Holy Grail"
-};
+export function getEthTheme(): IAppTheme {
+  return {
+    theme: createMuiTheme({
+      typography: {},
+      palette: {
+        primary: brown,
+        secondary: grey,
+        type: darkThemeIsEnabled() ? "dark" : "light"
+      }
+    }),
+    title: "Diablo II - Eth Grail"
+  };
+}
 
-export const defaultThemeDark: IAppTheme = {
-  theme: createMuiTheme({
-    typography: {},
-    palette: {
-      primary: purple,
-      secondary: green,
-      type: "dark"
-    }
-  }),
-  title: "Diablo II - Holy Grail"
-};
+export function getRunewordTheme(): IAppTheme {
+  return {
+    theme: createMuiTheme({
+      typography: {},
+      palette: {
+        primary: grey,
+        secondary: brown,
+        type: darkThemeIsEnabled() ? "dark" : "light"
+      }
+    }),
+    title: "Diablo II - Runeword Grail"
+  };
+}
 
-export const ethTheme: IAppTheme = {
-  theme: createMuiTheme({
-    typography: {},
-    palette: {
-      primary: brown,
-      secondary: grey
-    }
-  }),
-  title: "Diablo II - Eth Grail"
-};
-
-export const ethThemeDark: IAppTheme = {
-  theme: createMuiTheme({
-    typography: {},
-    palette: {
-      primary: brown,
-      secondary: grey,
-      type: "dark"
-    }
-  }),
-  title: "Diablo II - Eth Grail"
-};
-
-export const runewordTheme: IAppTheme = {
-  theme: createMuiTheme({
-    typography: {},
-    palette: {
-      primary: grey,
-      secondary: brown
-    }
-  }),
-  title: "Diablo II - Runeword Grail"
-};
-
-export const runewordThemeDark: IAppTheme = {
-  theme: createMuiTheme({
-    typography: {},
-    palette: {
-      primary: grey,
-      secondary: brown,
-      type: "dark"
-    }
-  }),
-  title: "Diablo II - Runeword Grail"
-};
-
-export const partyTheme: IAppTheme = {
-  theme: createMuiTheme({
-    typography: {},
-    palette: {
-      primary: blue,
-      secondary: grey
-    }
-  }),
-  title: "Diablo II - Holy Grail Party"
-};
-
-export const partyThemeDark: IAppTheme = {
-  theme: createMuiTheme({
-    typography: {},
-    palette: {
-      primary: blue,
-      secondary: grey,
-      type: "dark"
-    }
-  }),
-  title: "Diablo II - Holy Grail Party"
-};
+export function getPartyTheme(): IAppTheme {
+  return {
+    theme: createMuiTheme({
+      typography: {},
+      palette: {
+        primary: blue,
+        secondary: grey,
+        type: darkThemeIsEnabled() ? "dark" : "light"
+      }
+    }),
+    title: "Diablo II - Holy Grail Party"
+  };
+}

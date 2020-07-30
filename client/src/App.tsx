@@ -12,10 +12,10 @@ import { PartyHome } from "./areas/party/home/PartyHome";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 
-import { defaultTheme, IAppTheme, AppThemeContext } from "./AppThemeContext";
+import { AppThemeContext, IAppTheme, getDefaultTheme } from "./AppThemeContext";
 
 export const App: FC = () => {
-  const [appTheme, setAppTheme] = useState<IAppTheme>(defaultTheme);
+  const [appTheme, setAppTheme] = useState<IAppTheme>(getDefaultTheme());
 
   return (
     <AppThemeContext.Provider value={{ appTheme, setAppTheme: handleSetTheme }}>
@@ -58,7 +58,7 @@ export const App: FC = () => {
   );
 
   function handleSetTheme(appTheme?: IAppTheme) {
-    setAppTheme(appTheme || defaultTheme);
+    setAppTheme(appTheme || getDefaultTheme());
   }
 };
 
