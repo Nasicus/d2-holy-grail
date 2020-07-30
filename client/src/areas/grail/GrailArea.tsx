@@ -27,10 +27,11 @@ import { IGrailAreaRouterParams } from "../../RouteManager";
 import { GrailVersionMigrator } from "./migrations/GrailVersionMigrator";
 import {
   AppThemeContext,
-  ethTheme,
   IAppTheme,
+  ethTheme,
   runewordTheme
 } from "../../AppThemeContext";
+import { ButtonWithProgress } from "../../common/components/ButtonWithProgress";
 
 type Props = RouteComponentProps<IGrailAreaRouterParams>;
 
@@ -44,7 +45,7 @@ interface IGrailAreaState {
 
 const GrailAreaInternal: FC<Props> = props => {
   const [state, setState] = useState<IGrailAreaState>({ loading: true });
-  const { setAppTheme } = useContext(AppThemeContext);
+  const { setAppTheme, toggleDarkTheme } = useContext(AppThemeContext);
 
   const grailMode = getGrailModeFromRouteParams(props);
 
@@ -128,6 +129,11 @@ const GrailAreaInternal: FC<Props> = props => {
         <ButtonRow>
           <GrailTypeToggler grailMode={GrailManager.current.grailMode} />
         </ButtonRow>
+        <ButtonWithProgress
+          onClick={() => toggleDarkTheme()}
+          text="Toggle dark mode"
+          firstIcon="brightness_3"
+        />
         <ButtonRow>
           <MenuButton>
             <ListItemWithProgress

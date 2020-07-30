@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FC, useState } from "react";
+import { FC, useState, useMemo } from "react";
 import Typography from "@material-ui/core/Typography/Typography";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Home } from "./areas/home/Home";
@@ -11,22 +11,40 @@ import { Party } from "./areas/party/Party";
 import { PartyHome } from "./areas/party/home/PartyHome";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { MuiThemeProvider } from "@material-ui/core/styles";
+import { Theme, createMuiTheme } from "@material-ui/core";
+import { AppThemeContext, IAppTheme, defaultTheme } from "./AppThemeContext";
+import { PaletteOptions } from "@material-ui/core/styles/createPalette";
+import { LocalStorageHandler } from "./common/utils/LocalStorageHandler";
 
-import { defaultTheme, IAppTheme, AppThemeContext } from "./AppThemeContext";
+interface IBuiltAppTheme {
+  theme: Theme;
+  title: string;
+}
+
+const darkThemeStorageHandler = new LocalStorageHandler<boolean>(
+  `is-dark-theme`
+);
 
 export const App: FC = () => {
-  const [appTheme, setAppTheme] = useState<IAppTheme>(defaultTheme);
+  const [theme, setTheme] = useState<IAppTheme>(defaultTheme);
+  const builtTheme = useMemo(() => buildTheme(theme), [theme]);
 
   return (
-    <AppThemeContext.Provider value={{ appTheme, setAppTheme: handleSetTheme }}>
-      <MuiThemeProvider theme={appTheme.theme}>
-        <ThemeProvider theme={appTheme.theme}>
+    <AppThemeContext.Provider
+      value={{
+        appTheme: builtTheme,
+        setAppTheme: handleSetTheme,
+        toggleDarkTheme: handleToggleDarkTheme
+      }}
+    >
+      <MuiThemeProvider theme={builtTheme.theme}>
+        <ThemeProvider theme={builtTheme.theme}>
           <>
             <CssBaseline />
             <BrowserRouter>
               <RootContainer>
                 <HeaderContainer>
-                  <Typography variant="h5">{appTheme.title}</Typography>
+                  <Typography variant="h5">{builtTheme.title}</Typography>
                 </HeaderContainer>
                 <GithubRibbon url="https://github.com/Nasicus/d2-holy-grail" />
                 <ContentContainer>
@@ -57,10 +75,36 @@ export const App: FC = () => {
     </AppThemeContext.Provider>
   );
 
-  function handleSetTheme(appTheme?: IAppTheme) {
-    setAppTheme(appTheme || defaultTheme);
+  function handleSetTheme(newTheme?: IAppTheme) {
+    if (!newTheme) {
+      newTheme = defaultTheme;
+    }
+
+    setTheme({ ...newTheme });
+  }
+
+  function handleToggleDarkTheme() {
+    darkThemeStorageHandler.setValue(!isDarkThemeEnabled());
+    handleSetTheme(theme);
+  }
+
+  function buildTheme(newTheme: IAppTheme): IBuiltAppTheme {
+    return {
+      title: newTheme.title,
+      theme: createMuiTheme({
+        ...newTheme.theme,
+        palette: {
+          ...newTheme.theme.palette,
+          ...(isDarkThemeEnabled() && ({ type: "dark" } as PaletteOptions))
+        }
+      })
+    };
   }
 };
+
+function isDarkThemeEnabled() {
+  return darkThemeStorageHandler.getValue() === true;
+}
 
 const RootContainer = styled.div`
   font-family: ${p => p.theme.typography.fontFamily};
