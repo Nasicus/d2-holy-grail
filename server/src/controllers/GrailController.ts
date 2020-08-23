@@ -22,6 +22,16 @@ export class GrailController {
     newGrail.token = GrailController.getToken();
     newGrail.created = newGrail.modified = new Date();
 
+    const template = req.body.template as IGrailCollection;
+    if (template) {
+      newGrail.version = template.version;
+      newGrail.data = template.data;
+      newGrail.ethData = template.ethData;
+      newGrail.runewordData = template.runewordData;
+      newGrail.settings = template.settings;
+      delete newGrail["template"];
+    }
+
     try {
       const result = await this.grailCollection.insertOne(newGrail);
       GrailController.mapAndReturnGrailData(

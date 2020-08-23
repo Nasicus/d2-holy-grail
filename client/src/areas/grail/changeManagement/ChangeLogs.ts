@@ -3,6 +3,15 @@ export type ChangeLogCollection = {
 };
 
 export const changeLogs: ChangeLogCollection = {
+  "2.1.0": [
+    {
+      change: `Option to duplicate a grail:`,
+      children: [
+        "You can now duplicate all the data of any grail by choosing 'Duplicate' in the menu on the right side",
+        "This also helps, if you ever lose your password: You can then simply create a new grail with the exact same data and with minimal effort"
+      ]
+    }
+  ],
   "2.0.1": [
     {
       change: `Option to use dark theme:`,

@@ -16,9 +16,11 @@ import { ButtonWithProgress } from "../../common/components/ButtonWithProgress";
 import { IRegisterFormDialogProps } from "./RegisterFormDialog";
 import styled from "styled-components";
 import { GrailManager } from "../grail/GrailManager";
+import { IHolyGrailApiModel } from "../../common/definitions/api/IHolyGrailApiModel";
 
 export interface IRegisterFormDialogProps {
   onDialogClosed: (loginInfo?: ILoginInfo) => any;
+  templateData?: IHolyGrailApiModel;
 }
 
 interface IRegisterFormDialogState {
@@ -49,6 +51,14 @@ export class RegisterFormDialog extends React.Component<
               close
             </CloseIcon>
             {this.state.error && <ErrorText>{this.state.error}</ErrorText>}
+            {this.props.templateData && (
+              <div>
+                <DialogContentText>
+                  Your new grail will be created with the exact same data as the
+                  grail <strong>{this.props.templateData.address}</strong>!
+                </DialogContentText>
+              </div>
+            )}
             <div>
               <StyledTextField
                 label="Holy Grail address"
@@ -90,10 +100,11 @@ export class RegisterFormDialog extends React.Component<
 
   private register = () => {
     this.setState({ isLoading: true });
+
     Api.createGrail(
       this.state.address,
       this.state.password,
-      GrailManager.currentVersion
+      this.getTemplateData() || GrailManager.currentVersion
     ).subscribe(
       () => {
         this.setState({ isLoading: false });
@@ -113,6 +124,20 @@ export class RegisterFormDialog extends React.Component<
         })
     );
   };
+
+  private getTemplateData() {
+    if (!this.props.templateData) {
+      return null;
+    }
+
+    const templateData = { ...this.props.templateData } as IHolyGrailApiModel;
+
+    delete templateData.address;
+    delete templateData.password;
+    delete templateData.token;
+
+    return templateData;
+  }
 }
 
 const CloseIcon: React.ComponentType<IconProps> = styled(Icon)`

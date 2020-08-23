@@ -32,8 +32,7 @@ import {
   runewordTheme
 } from "../../AppThemeContext";
 import { ButtonWithProgress } from "../../common/components/ButtonWithProgress";
-
-type Props = RouteComponentProps<IGrailAreaRouterParams>;
+import { CopyGrailListItem } from "./dataManipulation/clickable-components/CopyGrailListItem";
 
 interface IGrailAreaState {
   filterResult?: IFilterResult;
@@ -43,18 +42,17 @@ interface IGrailAreaState {
   hasGrailVersionChange?: boolean;
 }
 
-const GrailAreaInternal: FC<Props> = props => {
+const GrailAreaInternal: FC<{
+  loginInfo: ILoginInfo;
+  grailMode: GrailMode;
+}> = ({ loginInfo, grailMode }) => {
   const [state, setState] = useState<IGrailAreaState>({ loading: true });
   const { setAppTheme, toggleDarkTheme } = useContext(AppThemeContext);
 
-  const grailMode = getGrailModeFromRouteParams(props);
-
   useEffect(() => {
-    const loginInfo = (props.location.state || {}) as ILoginInfo;
-    const address = loginInfo.address || props.match.params.address;
     const dataManager = GrailManager.createInstance(
       grailMode,
-      address,
+      loginInfo.address,
       loginInfo.password,
       loginInfo.keepLoggedIn
     );
@@ -151,6 +149,7 @@ const GrailAreaInternal: FC<Props> = props => {
             />
             <ImportListItem />
             <ExportListItem />
+            <CopyGrailListItem />
             <GrailTypeToggler
               renderAsListItem={true}
               grailMode={GrailManager.current.grailMode}
@@ -165,17 +164,6 @@ const GrailAreaInternal: FC<Props> = props => {
       </RightSideButtons>
     </div>
   );
-
-  function getGrailModeFromRouteParams(props: Props) {
-    switch (props.match.params.grailMode as GrailMode) {
-      case GrailMode.Eth:
-        return GrailMode.Eth;
-      case GrailMode.Runeword:
-        return GrailMode.Runeword;
-      default:
-        return GrailMode.Holy;
-    }
-  }
 
   function setThemeAndTitle() {
     let theme: IAppTheme = null;
@@ -222,4 +210,20 @@ const LoaderContainer = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-export const GrailArea = withRouter(GrailAreaInternal);
+const GrailAreaWrapper: FC<RouteComponentProps<
+  IGrailAreaRouterParams
+>> = props => {
+  const loginInfo = { ...(props.location.state || {}) } as ILoginInfo;
+  const address = loginInfo.address || props.match.params.address;
+  loginInfo.address = address;
+
+  return (
+    <GrailAreaInternal
+      key={address}
+      loginInfo={loginInfo}
+      grailMode={(props.match.params.grailMode as GrailMode) || GrailMode.Holy}
+    />
+  );
+};
+
+export const GrailArea = withRouter(GrailAreaWrapper);

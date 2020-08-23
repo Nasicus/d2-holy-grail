@@ -36,6 +36,10 @@ export class GrailManager {
     return !this.password;
   }
 
+  public get allApiData(): IHolyGrailApiModel {
+    return this.apiData;
+  }
+
   public get settings(): IGrailSettings {
     return this.apiData.settings;
   }

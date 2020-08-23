@@ -83,12 +83,18 @@ export class Api {
   public static createGrail(
     address: string,
     password: string,
-    version: string
+    versionOrTemplate: string | IHolyGrailApiModel
   ): Observable<IApiResponse<IHolyGrailApiModel>> {
+    const isVersion = typeof versionOrTemplate === "string";
     return this.fetchToObservable(
       fetch(Api.grailApiUrl, {
         method: "post",
-        body: JSON.stringify({ address, password, version }),
+        body: JSON.stringify({
+          address,
+          password,
+          version: isVersion ? versionOrTemplate : undefined,
+          template: !isVersion ? versionOrTemplate : undefined
+        }),
         headers: { "Content-Type": "application/json" }
       })
     );
