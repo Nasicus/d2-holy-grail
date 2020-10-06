@@ -66,3 +66,8 @@ Alternatively you can also start both - the `client` and the `server` - at once,
 ```
 npm run dev
 ```
+
+## Self-host using Docker
+
+If you'd like to self-host the app, you can find a production Docker setup
+here: <https://github.com/imtbl/d2-holy-grail-docker>
