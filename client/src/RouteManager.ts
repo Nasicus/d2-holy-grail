@@ -16,9 +16,12 @@ export interface IPartyAreaRouterParams {
 }
 
 export interface IGrailAreaQueryObject {
-  itemName?: string;
+  itemPath?: string;
   missingOnly?: string;
   q?: string;
+
+  // obsolete, kept for backwards compatibility, so old links still work
+  itemName?: string;
 }
 
 export class RouteManager {

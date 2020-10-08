@@ -87,9 +87,17 @@ const NextData: React.FunctionComponent<{
 }> = props => {
   if (Util.isItem(props.nextData)) {
     return GrailManager.current.settings.useItemCountMode ? (
-      <CountItemRenderer itemName={props.levelKey} item={props.nextData} />
+      <CountItemRenderer
+        ancestorKeys={props.ancestorKeys}
+        itemName={props.levelKey}
+        item={props.nextData}
+      />
     ) : (
-      <CheckboxItemRenderer itemName={props.levelKey} item={props.nextData} />
+      <CheckboxItemRenderer
+        ancestorKeys={props.ancestorKeys}
+        itemName={props.levelKey}
+        item={props.nextData}
+      />
     );
   }
 

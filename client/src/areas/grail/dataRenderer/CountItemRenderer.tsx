@@ -11,9 +11,14 @@ import { FC, useState, useEffect } from "react";
 export interface IItemProps {
   item: Item;
   itemName: string;
+  ancestorKeys: string[];
 }
 
-export const CountItemRenderer: FC<IItemProps> = ({ item, itemName }) => {
+export const CountItemRenderer: FC<IItemProps> = ({
+  item,
+  itemName,
+  ancestorKeys
+}) => {
   const [isHovered, setIsHovered] = useState(false);
   const [count, setCount] = useState(0);
 
@@ -30,7 +35,11 @@ export const CountItemRenderer: FC<IItemProps> = ({ item, itemName }) => {
         <ItemTextContainer>{count}</ItemTextContainer>
         <ArrowIcon onClick={() => onArrowClick(1)}>keyboard_arrow_up</ArrowIcon>
       </span>
-      <ItemNameRenderer itemName={itemName} item={item} />
+      <ItemNameRenderer
+        itemName={itemName}
+        item={item}
+        ancestorKeys={ancestorKeys}
+      />
     </RootContainer>
   );
 

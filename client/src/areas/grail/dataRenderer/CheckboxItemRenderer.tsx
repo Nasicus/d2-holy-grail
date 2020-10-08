@@ -9,6 +9,7 @@ import styled from "styled-components";
 export interface IItemProps {
   item: Item;
   itemName: string;
+  ancestorKeys: string[];
 }
 
 interface IItemState {
@@ -38,6 +39,7 @@ export class CheckboxItemRenderer extends React.Component<
         <ItemNameRenderer
           itemName={this.props.itemName}
           item={this.props.item}
+          ancestorKeys={this.props.ancestorKeys}
         />
       </RootContainer>
     );

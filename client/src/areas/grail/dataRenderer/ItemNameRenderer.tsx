@@ -13,6 +13,7 @@ import { FC } from "react";
 export interface IItemNameProps {
   item: Item;
   itemName: string;
+  ancestorKeys: string[];
 }
 
 type Props = IItemNameProps & RouteComponentProps<IGrailAreaRouterParams>;
@@ -20,10 +21,12 @@ type Props = IItemNameProps & RouteComponentProps<IGrailAreaRouterParams>;
 const ItemNameRendererInternal: FC<Props> = props => {
   const item = props.item;
   const itemName = props.itemName;
+  const itemPath = [...(props.ancestorKeys || []), itemName].join("-");
+  const query = RouteManager.getQuery(props);
 
   return (
     <>
-      {itemName === RouteManager.getQuery(props).itemName && (
+      {(itemPath === query.itemPath || itemName === query.itemName) && (
         <ItemPropsDialog
           onDialogClosed={closeDialog}
           item={item}
@@ -44,13 +47,14 @@ const ItemNameRendererInternal: FC<Props> = props => {
     updateQuery(true);
   }
 
-  function updateQuery(appendItemName: boolean) {
+  function updateQuery(appendItemPath: boolean) {
     const query = RouteManager.getQuery(props);
 
+    delete query.itemPath;
     delete query.itemName;
 
-    if (appendItemName) {
-      query.itemName = itemName;
+    if (appendItemPath) {
+      query.itemPath = itemPath;
     }
 
     RouteManager.updateQuery(props, query);
