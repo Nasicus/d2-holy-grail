@@ -44,7 +44,10 @@ export class ItemInfoRenderer extends React.PureComponent<
         <ItemInfosDetails>
           <div>
             {itemInfos.image && (
-              <img src={itemInfos.image} alt={this.props.itemName} />
+              <img
+                src={`${process.env.PUBLIC_URL}/images/${itemInfos.image}`}
+                alt={this.props.itemName}
+              />
             )}
             <div>{itemInfos.type}</div>
           </div>

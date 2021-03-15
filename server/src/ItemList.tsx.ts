@@ -4,7 +4,7 @@ const uniqueItems = {
   Greyform: {
     name: "Greyform",
     type: "Quilted Armor",
-    image: "http://www.d2tomb.com/images/uniques/greyform.gif",
+    image: "uniques/greyform.gif",
     props: [
       "Defense: 28-31",
       "Durability: 20",
@@ -22,7 +22,7 @@ const uniqueItems = {
   "Blinkbat's Form": {
     name: "Blinkbat's Form",
     type: "Leather Armor",
-    image: "http://www.d2tomb.com/images/uniques/blinkbatsform.gif",
+    image: "uniques/blinkbatsform.gif",
     props: [
       "Defense: 39-42",
       "Durability: 24",
@@ -39,7 +39,7 @@ const uniqueItems = {
   "The Centurion": {
     name: "The Centurion",
     type: "Hard Leather Armor",
-    image: "http://www.d2tomb.com/images/uniques/thecenturion.gif",
+    image: "uniques/thecenturion.gif",
     props: [
       "Defense: 51-54",
       "Durability: 28",
@@ -59,7 +59,7 @@ const uniqueItems = {
   Twitchthroe: {
     name: "Twitchthroe",
     type: "Studded Leather",
-    image: "http://www.d2tomb.com/images/uniques/twitchthroe.gif",
+    image: "uniques/twitchthroe.gif",
     props: [
       "Defense: 57-60",
       "Durability: 32",
@@ -77,7 +77,7 @@ const uniqueItems = {
   Darkglow: {
     name: "Darkglow",
     type: "Ring Mail",
-    image: "http://www.d2tomb.com/images/uniques/darkglow.gif",
+    image: "uniques/darkglow.gif",
     props: [
       "Defense: 83-98",
       "Durability: 26",
@@ -98,7 +98,7 @@ const uniqueItems = {
   Hawkmail: {
     name: "Hawkmail",
     type: "Scale Mail",
-    image: "http://www.d2tomb.com/images/uniques/hawkmail.gif",
+    image: "uniques/hawkmail.gif",
     props: [
       "Defense: 109-122",
       "Durability: 36",
@@ -115,7 +115,7 @@ const uniqueItems = {
   "Venom Ward": {
     name: "Venom Ward",
     type: "Breast Plate",
-    image: "http://www.d2tomb.com/images/uniques/venomsward.gif",
+    image: "uniques/venomsward.gif",
     props: [
       "Defense: 110-138",
       "Durability: 50",
@@ -132,7 +132,7 @@ const uniqueItems = {
   "Sparking Mail": {
     name: "Sparking Mail",
     type: "Chain Mail",
-    image: "http://www.d2tomb.com/images/uniques/sparklingmail.gif",
+    image: "uniques/sparklingmail.gif",
     props: [
       "Defense: 133-140",
       "Durability: 45",
@@ -148,7 +148,7 @@ const uniqueItems = {
   Iceblink: {
     name: "Iceblink",
     type: "Splint Mail",
-    image: "http://www.d2tomb.com/images/uniques/iceblink.gif",
+    image: "uniques/iceblink.gif",
     props: [
       "Defense: 163-172",
       "Durability: 30",
@@ -165,7 +165,7 @@ const uniqueItems = {
   "Heavenly Garb": {
     name: "Heavenly Garb",
     type: "Light Plate",
-    image: "http://www.d2tomb.com/images/uniques/heavenlygarb.gif",
+    image: "uniques/heavenlygarb.gif",
     props: [
       "Defense: 216",
       "Durability: 60",
@@ -183,7 +183,7 @@ const uniqueItems = {
   Boneflesh: {
     name: "Boneflesh",
     type: "Plate Mail",
-    image: "http://www.d2tomb.com/images/uniques/boneflesh.gif",
+    image: "uniques/boneflesh.gif",
     props: [
       "Defense: 234-257",
       "Durability: 60",
@@ -199,7 +199,7 @@ const uniqueItems = {
   Rockfleece: {
     name: "Rockfleece",
     type: "Field Plate",
-    image: "http://www.d2tomb.com/images/uniques/rockfleece.gif",
+    image: "uniques/rockfleece.gif",
     props: [
       "Defense: 212-243",
       "Durability: 48",
@@ -216,7 +216,7 @@ const uniqueItems = {
   Rattlecage: {
     name: "Rattlecage",
     type: "Gothic Plate",
-    image: "http://www.d2tomb.com/images/uniques/rattlecage.gif",
+    image: "uniques/rattlecage.gif",
     props: [
       "Defense: 328-335",
       "Durability: 55",
@@ -232,7 +232,7 @@ const uniqueItems = {
   Goldskin: {
     name: "Goldskin",
     type: "Full Plate Mail",
-    image: "http://www.d2tomb.com/images/uniques/goldskin.gif",
+    image: "uniques/goldskin.gif",
     props: [
       "Defense: 356-405",
       "Durability: 70",
@@ -249,7 +249,7 @@ const uniqueItems = {
   "Silks of the Victor": {
     name: "Silks of the Victor",
     type: "Ancient Armor",
-    image: "http://www.d2tomb.com/images/uniques/victorssilk.gif",
+    image: "uniques/victorssilk.gif",
     props: [
       "Defense: 468-514",
       "Durability: 60",
@@ -265,7 +265,7 @@ const uniqueItems = {
   "The Spirit Shroud": {
     name: "The Spirit Shroud",
     type: "Ghost Armor",
-    image: "http://www.d2tomb.com/images/items/quilted.gif",
+    image: "items/quilted.gif",
     props: [
       "Defense: 295",
       "Durability: 20",
@@ -282,7 +282,7 @@ const uniqueItems = {
   "Skin of the Vipermagi": {
     name: "Skin of the Vipermagi",
     type: "Serpentskin Armor",
-    image: "http://www.d2tomb.com/images/items/leather.gif",
+    image: "items/leather.gif",
     props: [
       "Defense: 279",
       "Durability: 24",
@@ -299,7 +299,7 @@ const uniqueItems = {
   "Skin of the Flayed One": {
     name: "Skin of the Flayed One",
     type: "Demonhide Armor",
-    image: "http://www.d2tomb.com/images/items/hardleather.gif",
+    image: "items/hardleather.gif",
     props: [
       "Defense: 342-397",
       "Durability: 58",
@@ -316,7 +316,7 @@ const uniqueItems = {
   "Iron Pelt": {
     name: "Iron Pelt",
     type: "Trellised Armor",
-    image: "http://www.d2tomb.com/images/items/studdedleather.gif",
+    image: "items/studdedleather.gif",
     props: [
       "Defense: 234-605",
       "Durability: 157",
@@ -333,7 +333,7 @@ const uniqueItems = {
   "Spirit Forge": {
     name: "Spirit Forge",
     type: "Linked Mail",
-    image: "http://www.d2tomb.com/images/items/ringmail.gif",
+    image: "items/ringmail.gif",
     props: [
       "Defense: 380-449",
       "Durability: 26",
@@ -352,7 +352,7 @@ const uniqueItems = {
   "Crow Caw": {
     name: "Crow Caw",
     type: "Tigulated Mail",
-    image: "http://www.d2tomb.com/images/items/scalemail.gif",
+    image: "items/scalemail.gif",
     props: [
       "Defense: 477-534",
       "Durability: 36",
@@ -369,7 +369,7 @@ const uniqueItems = {
   "Duriel's Shell": {
     name: "Duriel's Shell",
     type: "Cuirass",
-    image: "http://www.d2tomb.com/images/items/breastplate.gif",
+    image: "items/breastplate.gif",
     props: [
       "Defense: 528-732",
       "Durability: 150",
@@ -388,7 +388,7 @@ const uniqueItems = {
   Shaftstop: {
     name: "Shaftstop",
     type: "Mesh Armor",
-    image: "http://www.d2tomb.com/images/items/chainmail.gif",
+    image: "items/chainmail.gif",
     props: [
       "Defense: 599-684",
       "Durability: 45",
@@ -404,7 +404,7 @@ const uniqueItems = {
   "Skullder's Ire": {
     name: "Skullder's Ire",
     type: "Russet Armor",
-    image: "http://www.d2tomb.com/images/items/splintmail.gif",
+    image: "items/splintmail.gif",
     props: [
       "Defense: 634-732",
       "Durability: 90",
@@ -421,7 +421,7 @@ const uniqueItems = {
   "Que-Hegan's Wisdom": {
     name: "Que-Hegan's Wisdom",
     type: "Mage Plate",
-    image: "http://www.d2tomb.com/images/items/lightplate.gif",
+    image: "items/lightplate.gif",
     props: [
       "Defense: 628-681",
       "Durability: 60",
@@ -440,7 +440,7 @@ const uniqueItems = {
   "Guardian Angel": {
     name: "Guardian Angel",
     type: "Templar Coat",
-    image: "http://www.d2tomb.com/images/items/platemail.gif",
+    image: "items/platemail.gif",
     props: [
       "Defense: 770-825",
       "Durability: 60",
@@ -459,7 +459,7 @@ const uniqueItems = {
   Toothrow: {
     name: "Toothrow",
     type: "Sharktooth Armor",
-    image: "http://www.d2tomb.com/images/items/fieldplate.gif",
+    image: "items/fieldplate.gif",
     props: [
       "Defense: 713-888",
       "Durability: 63",
@@ -477,7 +477,7 @@ const uniqueItems = {
   "Atma's Wail": {
     name: "Atma's Wail",
     type: "Embossed Plate",
-    image: "http://www.d2tomb.com/images/items/gothicplate.gif",
+    image: "items/gothicplate.gif",
     props: [
       "Defense: 670-988",
       "Durability: 105",
@@ -496,7 +496,7 @@ const uniqueItems = {
   "Black Hades": {
     name: "Black Hades",
     type: "Chaos Armor",
-    image: "http://www.d2tomb.com/images/items/fullplate.gif",
+    image: "items/fullplate.gif",
     props: [
       "Defense: 823-1029",
       "Durability: 70",
@@ -514,7 +514,7 @@ const uniqueItems = {
   Corpsemourn: {
     name: "Corpsemourn",
     type: "Ornate Armor",
-    image: "http://www.d2tomb.com/images/items/ancientarmor.gif",
+    image: "items/ancientarmor.gif",
     props: [
       "Defense: 1127-1262",
       "Durability: 60",
@@ -533,7 +533,7 @@ const uniqueItems = {
   "Ormus' Robes": {
     name: "Ormus' Robes",
     type: "Dusk Shroud",
-    image: "http://www.d2tomb.com/images/items/quilted.gif",
+    image: "items/quilted.gif",
     props: [
       "Defense: 371-487",
       "Durability: 20",
@@ -553,7 +553,7 @@ const uniqueItems = {
   "The Gladiator's Bane": {
     name: "The Gladiator's Bane",
     type: "Wire Fleece",
-    image: "http://www.d2tomb.com/images/items/studdedleather.gif",
+    image: "items/studdedleather.gif",
     props: [
       "Defense: 1255-1496",
       "Req Strength: 111",
@@ -573,7 +573,7 @@ const uniqueItems = {
   "Arkaine's Valor": {
     name: "Arkaine's Valor",
     type: "Balrog Skin",
-    image: "http://www.d2tomb.com/images/items/splintmail.gif",
+    image: "items/splintmail.gif",
     props: [
       "Defense: 1295-1450",
       "Durability: 30",
@@ -590,7 +590,7 @@ const uniqueItems = {
   Leviathan: {
     name: "Leviathan",
     type: "Kraken Shell",
-    image: "http://www.d2tomb.com/images/items/fieldplate.gif",
+    image: "items/fieldplate.gif",
     props: [
       "Defense: 1514-1722",
       "Indestructible",
@@ -607,7 +607,7 @@ const uniqueItems = {
   "Steel Carapace": {
     name: "Steel Carapace",
     type: "Shadow Plate",
-    image: "http://www.d2tomb.com/images/items/fullplate.gif",
+    image: "items/fullplate.gif",
     props: [
       "Defense: 1618-1785",
       "Durability: 70",
@@ -627,7 +627,7 @@ const uniqueItems = {
   "Templar's Might": {
     name: "Templar's Might",
     type: "Sacred Armor",
-    image: "http://www.d2tomb.com/images/items/ancientarmor.gif",
+    image: "items/ancientarmor.gif",
     props: [
       "Defense: 1622-1923",
       "Durability: 60",
@@ -647,7 +647,7 @@ const uniqueItems = {
   "Tyrael's Might": {
     name: "Tyrael's Might",
     type: "Sacred Armor",
-    image: "http://www.d2tomb.com/images/items/ancientarmor.gif",
+    image: "items/ancientarmor.gif",
     props: [
       "Defense: 1322-1502",
       "Indestructible",
@@ -668,7 +668,7 @@ const uniqueItems = {
   "The Gnasher": {
     name: "The Gnasher",
     type: "Hand Axe",
-    image: "http://www.d2tomb.com/images/uniques/thegnasher.gif",
+    image: "uniques/thegnasher.gif",
     props: [
       "Damage: 4-10",
       "Durability: 28",
@@ -683,7 +683,7 @@ const uniqueItems = {
   Deathspade: {
     name: "Deathspade",
     type: "Axe",
-    image: "http://www.d2tomb.com/images/uniques/deathspade.gif",
+    image: "uniques/deathspade.gif",
     props: [
       "Req Strength: 32",
       "Damage: 14-18",
@@ -700,7 +700,7 @@ const uniqueItems = {
   Bladebone: {
     name: "Bladebone",
     type: "Double Axe",
-    image: "http://www.d2tomb.com/images/uniques/bladebone.gif",
+    image: "uniques/bladebone.gif",
     props: [
       "Req Strength: 43",
       "Damage: 6-19",
@@ -718,7 +718,7 @@ const uniqueItems = {
   "Skull Splitter": {
     name: "Skull Splitter",
     type: "Military Pick",
-    image: "http://www.d2tomb.com/images/uniques/skullsplitter.gif",
+    image: "uniques/skullsplitter.gif",
     props: [
       "Req Strength: 49",
       "Req Dexterity: 33",
@@ -737,7 +737,7 @@ const uniqueItems = {
   Rakescar: {
     name: "Rakescar",
     type: "War Axe",
-    image: "http://www.d2tomb.com/images/uniques/rakescar.gif",
+    image: "uniques/rakescar.gif",
     props: [
       "Req Strength: 67",
       "Damage: 17-45",
@@ -754,7 +754,7 @@ const uniqueItems = {
   "Axe of Fechmar": {
     name: "Axe of Fechmar",
     type: "Large Axe",
-    image: "http://www.d2tomb.com/images/uniques/axeoffechmar.gif",
+    image: "uniques/axeoffechmar.gif",
     props: [
       "Req Strength: 35",
       "Damage: 10-24",
@@ -770,7 +770,7 @@ const uniqueItems = {
   Goreshovel: {
     name: "Goreshovel",
     type: "Broad Axe",
-    image: "http://www.d2tomb.com/images/uniques/goreshovel.gif",
+    image: "uniques/goreshovel.gif",
     props: [
       "Req Strength: 48",
       "Damage: 14-36",
@@ -787,7 +787,7 @@ const uniqueItems = {
   "The Chieftain": {
     name: "The Chieftain",
     type: "Battle Axe",
-    image: "http://www.d2tomb.com/images/uniques/thechieftan.gif",
+    image: "uniques/thechieftan.gif",
     props: [
       "Req Strength: 54",
       "Damage: 24-64",
@@ -804,7 +804,7 @@ const uniqueItems = {
   Brainhew: {
     name: "Brainhew",
     type: "Great Axe",
-    image: "http://www.d2tomb.com/images/uniques/brainhew.gif",
+    image: "uniques/brainhew.gif",
     props: [
       "Req Strength: 63",
       "Req Dexterity: 39",
@@ -823,7 +823,7 @@ const uniqueItems = {
   Humongous: {
     name: "Humongous",
     type: "Giant Axe",
-    image: "http://www.d2tomb.com/images/uniques/thehumongous.gif",
+    image: "uniques/thehumongous.gif",
     props: [
       "Req Strength: 84",
       "Damage: 47-124",
@@ -840,7 +840,7 @@ const uniqueItems = {
   Coldkill: {
     name: "Coldkill",
     type: "Hatchet",
-    image: "http://www.d2tomb.com/images/items/handaxe.gif",
+    image: "items/handaxe.gif",
     props: [
       "Req Strength: 25",
       "Req Dexterity: 25",
@@ -860,7 +860,7 @@ const uniqueItems = {
   "Butcher's Pupil": {
     name: "Butcher's Pupil",
     type: "Cleaver",
-    image: "http://www.d2tomb.com/images/items/axe.gif",
+    image: "items/axe.gif",
     props: [
       "Req Strength: 68",
       "Damage: 55-149",
@@ -877,7 +877,7 @@ const uniqueItems = {
   Islestrike: {
     name: "Islestrike",
     type: "Twin Axe",
-    image: "http://www.d2tomb.com/images/items/doubleaxe.gif",
+    image: "items/doubleaxe.gif",
     props: [
       "Req Strength: 85",
       "Damage: 35-110",
@@ -896,7 +896,7 @@ const uniqueItems = {
   "Pompeii's Wrath": {
     name: "Pompeii's Wrath",
     type: "Crowbill",
-    image: "http://www.d2tomb.com/images/items/militarypick.gif",
+    image: "items/militarypick.gif",
     props: [
       "Req Strength: 94",
       "Req Dexterity: 70",
@@ -914,7 +914,7 @@ const uniqueItems = {
   "Guardian Naga": {
     name: "Guardian Naga",
     type: "Naga",
-    image: "http://www.d2tomb.com/images/items/waraxe.gif",
+    image: "items/waraxe.gif",
     props: [
       "Req Strength: 121",
       "Damage: 40-145",
@@ -932,7 +932,7 @@ const uniqueItems = {
   "Warlord's Trust": {
     name: "Warlord's Trust",
     type: "Military Axe",
-    image: "http://www.d2tomb.com/images/items/largeaxe.gif",
+    image: "items/largeaxe.gif",
     props: [
       "Req Strength: 73",
       "Damage: 38-93",
@@ -950,7 +950,7 @@ const uniqueItems = {
   Spellsteel: {
     name: "Spellsteel",
     type: "Beared Axe",
-    image: "http://www.d2tomb.com/images/items/broadaxe.gif",
+    image: "items/broadaxe.gif",
     props: [
       "Req Strength: 37",
       "Damage: 55-129",
@@ -972,7 +972,7 @@ const uniqueItems = {
   Stormrider: {
     name: "Stormrider",
     type: "Tabar",
-    image: "http://www.d2tomb.com/images/items/battleaxe.gif",
+    image: "items/battleaxe.gif",
     props: [
       "Req Strength: 101",
       "Damage: 83-229",
@@ -991,7 +991,7 @@ const uniqueItems = {
   "Boneslayer Blade": {
     name: "Boneslayer Blade",
     type: "Gothic Axe",
-    image: "http://www.d2tomb.com/images/items/greataxe.gif",
+    image: "items/greataxe.gif",
     props: [
       "Req Strength: 115",
       "Req Dexterity: 79",
@@ -1012,7 +1012,7 @@ const uniqueItems = {
   "The Minotaur": {
     name: "The Minotaur",
     type: "Ancient Axe",
-    image: "http://www.d2tomb.com/images/items/giantaxe.gif",
+    image: "items/giantaxe.gif",
     props: [
       "Req Strength: 125",
       "Damage: 123-285",
@@ -1031,7 +1031,7 @@ const uniqueItems = {
   "Razor's Edge": {
     name: "Razor's Edge",
     type: "Tomahawk",
-    image: "http://www.d2tomb.com/images/items/handaxe.gif",
+    image: "items/handaxe.gif",
     props: [
       "Req Strength: 125",
       "Req Dexterity: 67",
@@ -1050,7 +1050,7 @@ const uniqueItems = {
   "Rune Master": {
     name: "Rune Master",
     type: "Ettin Axe",
-    image: "http://www.d2tomb.com/images/items/doubleaxe.gif",
+    image: "items/doubleaxe.gif",
     props: [
       "Req Strength: 145",
       "Req Dexterity: 45",
@@ -1068,7 +1068,7 @@ const uniqueItems = {
   Cranebeak: {
     name: "Cranebeak",
     type: "War Spike",
-    image: "http://www.d2tomb.com/images/items/militarypick.gif",
+    image: "items/militarypick.gif",
     props: [
       "Req Strength: 133",
       "Req Dexterity: 54",
@@ -1088,7 +1088,7 @@ const uniqueItems = {
   "Death Cleaver": {
     name: "Death Cleaver",
     type: "Berserker Axe",
-    image: "http://www.d2tomb.com/images/items/waraxe.gif",
+    image: "items/waraxe.gif",
     props: [
       "Req Strength: 138",
       "Req Dexterity: 59",
@@ -1107,7 +1107,7 @@ const uniqueItems = {
   "Ethereal Edge": {
     name: "Ethereal Edge",
     type: "Silver Edged Axe",
-    image: "http://www.d2tomb.com/images/items/broadaxe.gif",
+    image: "items/broadaxe.gif",
     props: [
       "Req Strength: 156",
       "Req Dexterity: 55",
@@ -1128,7 +1128,7 @@ const uniqueItems = {
   Hellslayer: {
     name: "Hellslayer",
     type: "Decapitator",
-    image: "http://www.d2tomb.com/images/uniques/chieftain.gif",
+    image: "uniques/chieftain.gif",
     props: [
       "Req Strength: 189",
       "Req Dexterity: 33",
@@ -1148,7 +1148,7 @@ const uniqueItems = {
   "Messerschmidt's Reaver": {
     name: "Messerschmidt's Reaver",
     type: "Champion Axe",
-    image: "http://www.d2tomb.com/images/uniques/brainhew.gif",
+    image: "uniques/brainhew.gif",
     props: [
       "Req Strength: 167",
       "Req Dexterity: 59",
@@ -1170,7 +1170,7 @@ const uniqueItems = {
   "Executioner's Justice": {
     name: "Executioner's Justice",
     type: "Glorious Axe",
-    image: "http://www.d2tomb.com/images/items/giantaxe.gif",
+    image: "items/giantaxe.gif",
     props: [
       "Req Strength: 164",
       "Req Dexterity: 55",
@@ -1189,7 +1189,7 @@ const uniqueItems = {
   Lenymo: {
     name: "Lenymo",
     type: "Sash",
-    image: "http://www.d2tomb.com/images/uniques/lenymscord.gif",
+    image: "uniques/lenymscord.gif",
     props: [
       "Capacity: 8",
       "Defense: 2",
@@ -1206,7 +1206,7 @@ const uniqueItems = {
   Snakecord: {
     name: "Snakecord",
     type: "Light Belt",
-    image: "http://www.d2tomb.com/images/uniques/snakecord.gif",
+    image: "uniques/snakecord.gif",
     props: [
       "Capacity: 8",
       "Defense: 14-15",
@@ -1225,7 +1225,7 @@ const uniqueItems = {
   Nightsmoke: {
     name: "Nightsmoke",
     type: "Belt",
-    image: "http://www.d2tomb.com/images/uniques/nightsmoke.gif",
+    image: "uniques/nightsmoke.gif",
     props: [
       "Capacity: 12",
       "Defense: 22-24",
@@ -1244,7 +1244,7 @@ const uniqueItems = {
   Goldwrap: {
     name: "Goldwrap",
     type: "Heavy Belt",
-    image: "http://www.d2tomb.com/images/uniques/goldwrap.gif",
+    image: "uniques/goldwrap.gif",
     props: [
       "Capacity: 12",
       "Defense: 34-36",
@@ -1263,7 +1263,7 @@ const uniqueItems = {
   Bladebuckle: {
     name: "Bladebuckle",
     type: "Plated Belt",
-    image: "http://www.d2tomb.com/images/uniques/bladebuckle.gif",
+    image: "uniques/bladebuckle.gif",
     props: [
       "Capacity: 16",
       "Defense: 51-54",
@@ -1283,7 +1283,7 @@ const uniqueItems = {
   "String of Ears": {
     name: "String of Ears",
     type: "Demonhide Sash",
-    image: "http://www.d2tomb.com/images/items/sash.gif",
+    image: "items/sash.gif",
     props: [
       "Capacity: 16",
       "Defense: 102-113",
@@ -1301,7 +1301,7 @@ const uniqueItems = {
   Razortail: {
     name: "Razortail",
     type: "Sharkskin Belt",
-    image: "http://www.d2tomb.com/images/items/lightbelt.gif",
+    image: "items/lightbelt.gif",
     props: [
       "Capacity: 16",
       "Defense: 96-107",
@@ -1320,7 +1320,7 @@ const uniqueItems = {
   "Gloom's Trap": {
     name: "Gloom's Trap",
     type: "Mesh Belt",
-    image: "http://www.d2tomb.com/images/items/belt.gif",
+    image: "items/belt.gif",
     props: [
       "Capacity: 16",
       "Defense: 90-102",
@@ -1339,7 +1339,7 @@ const uniqueItems = {
   Snowclash: {
     name: "Snowclash",
     type: "Battle Belt",
-    image: "http://www.d2tomb.com/images/items/heavybelt.gif",
+    image: "items/heavybelt.gif",
     props: [
       "Capacity: 16",
       "Defense: 98-116",
@@ -1360,7 +1360,7 @@ const uniqueItems = {
   "Thundergod's Vigor": {
     name: "Thundergod's Vigor",
     type: "War Belt",
-    image: "http://www.d2tomb.com/images/items/girdle.gif",
+    image: "items/girdle.gif",
     props: [
       "Capacity: 16",
       "Defense: 137-159",
@@ -1381,7 +1381,7 @@ const uniqueItems = {
   "Arachnid Mesh": {
     name: "Arachnid Mesh",
     type: "Spiderweb Sash",
-    image: "http://www.d2tomb.com/images/items/sash.gif",
+    image: "items/sash.gif",
     props: [
       "Capacity: 16",
       "Defense: 119-138",
@@ -1400,7 +1400,7 @@ const uniqueItems = {
   "Nosferatu's Coil": {
     name: "Nosferatu's Coil",
     type: "Vampirefang Belt",
-    image: "http://www.d2tomb.com/images/items/lightbelt.gif",
+    image: "items/lightbelt.gif",
     props: [
       "Capacity: 16",
       "Defense: 56-63",
@@ -1419,7 +1419,7 @@ const uniqueItems = {
   "Verdungo's Hearty Cord": {
     name: "Verdungo's Hearty Cord",
     type: "Mithril Coil",
-    image: "http://www.d2tomb.com/images/items/belt.gif",
+    image: "items/belt.gif",
     props: [
       "Capacity: 16",
       "Defense: 125-158",
@@ -1438,7 +1438,7 @@ const uniqueItems = {
   Hotspur: {
     name: "Hotspur",
     type: "Boots",
-    image: "http://www.d2tomb.com/images/uniques/hotspur.gif",
+    image: "uniques/hotspur.gif",
     props: [
       "Assassin Kick Damage: 3-8",
       "Defense: 10",
@@ -1457,7 +1457,7 @@ const uniqueItems = {
   Gorefoot: {
     name: "Gorefoot",
     type: "Heavy Boots",
-    image: "http://www.d2tomb.com/images/uniques/gorefoot.gif",
+    image: "uniques/gorefoot.gif",
     props: [
       "Assassin Kick Damage: 4-10",
       "Defense: 20-21",
@@ -1476,7 +1476,7 @@ const uniqueItems = {
   "Treads of Cthon": {
     name: "Treads of Cthon",
     type: "Chain Boots",
-    image: "http://www.d2tomb.com/images/uniques/treadsofcthon.gif",
+    image: "uniques/treadsofcthon.gif",
     props: [
       "Assassin Kick Damage: 6-12",
       "Defense: 25-26",
@@ -1495,7 +1495,7 @@ const uniqueItems = {
   "Goblin Toe": {
     name: "Goblin Toe",
     type: "Light Plated Boots",
-    image: "http://www.d2tomb.com/images/uniques/goblintoe.gif",
+    image: "uniques/goblintoe.gif",
     props: [
       "Assassin Kick Damage: 8-16",
       "Defense: 33-34",
@@ -1514,7 +1514,7 @@ const uniqueItems = {
   Tearhaunch: {
     name: "Tearhaunch",
     type: "Greaves",
-    image: "http://www.d2tomb.com/images/uniques/tearhaunch.gif",
+    image: "uniques/tearhaunch.gif",
     props: [
       "Assassin Kick Damage: 10-20",
       "Defense: 60-63",
@@ -1534,7 +1534,7 @@ const uniqueItems = {
   Infernostride: {
     name: "Infernostride",
     type: "Demonhide Boots",
-    image: "http://www.d2tomb.com/images/items/leatherboots.gif",
+    image: "items/leatherboots.gif",
     props: [
       "Assassin Kick Damage: 26-46",
       "Defense: 94-105",
@@ -1556,7 +1556,7 @@ const uniqueItems = {
   Waterwalk: {
     name: "Waterwalk",
     type: "Sharkskin Boots",
-    image: "http://www.d2tomb.com/images/items/heavyboots.gif",
+    image: "items/heavyboots.gif",
     props: [
       "Assassin Kick Damage: 28-50",
       "Defense: 112-124",
@@ -1577,7 +1577,7 @@ const uniqueItems = {
   Silkweave: {
     name: "Silkweave",
     type: "Mesh Boots",
-    image: "http://www.d2tomb.com/images/items/chainboots.gif",
+    image: "items/chainboots.gif",
     props: [
       "Assassin Kick Damage: 23-52",
       "Defense: 112-130",
@@ -1596,7 +1596,7 @@ const uniqueItems = {
   "War Traveler": {
     name: "War Traveler",
     type: "Battle Boots",
-    image: "http://www.d2tomb.com/images/items/lightplateboots.gif",
+    image: "items/lightplateboots.gif",
     props: [
       "Assassin Kick Damage: 37-64",
       "Defense: 120-139",
@@ -1616,7 +1616,7 @@ const uniqueItems = {
   "Gore Rider": {
     name: "Gore Rider",
     type: "War Boots",
-    image: "http://www.d2tomb.com/images/items/plateboots.gif",
+    image: "items/plateboots.gif",
     props: [
       "Assassin Kick Damage: 39-80",
       "Defense: 140-162",
@@ -1636,7 +1636,7 @@ const uniqueItems = {
   "Sandstorm Trek": {
     name: "Sandstorm Trek",
     type: "Scarabshell Boots",
-    image: "http://www.d2tomb.com/images/items/heavyboots.gif",
+    image: "items/heavyboots.gif",
     props: [
       "Assassin Kick Damage: 60-110",
       "Defense: 158-178",
@@ -1658,7 +1658,7 @@ const uniqueItems = {
   Marrowwalk: {
     name: "Marrowwalk",
     type: "Boneweave Boots",
-    image: "http://www.d2tomb.com/images/items/chainboots.gif",
+    image: "items/chainboots.gif",
     props: [
       "Assassin Kick Damage: 69-118",
       "Defense: 183-204",
@@ -1681,7 +1681,7 @@ const uniqueItems = {
   "Shadow Dancer": {
     name: "Shadow Dancer",
     type: "Myrmidon Greaves",
-    image: "http://www.d2tomb.com/images/items/plateboots.gif",
+    image: "items/plateboots.gif",
     props: [
       "Assassin Kick Damage: 83-149",
       "Defense: 122-144",
@@ -1700,7 +1700,7 @@ const uniqueItems = {
   Pluckeye: {
     name: "Pluckeye",
     type: "Short Bow",
-    image: "http://www.d2tomb.com/images/uniques/pluckeye.gif",
+    image: "uniques/pluckeye.gif",
     props: [
       "Damage: 2-8",
       "Req Dexterity: 15",
@@ -1717,7 +1717,7 @@ const uniqueItems = {
   Witherstring: {
     name: "Witherstring",
     type: "Hunter Bow",
-    image: "http://www.d2tomb.com/images/uniques/witherstring.gif",
+    image: "uniques/witherstring.gif",
     props: [
       "Damage: 3-12",
       "Req Dexterity: 28",
@@ -1733,7 +1733,7 @@ const uniqueItems = {
   "Raven Claw": {
     name: "Raven Claw",
     type: "Long Bow",
-    image: "http://www.d2tomb.com/images/uniques/ravensclaw.gif",
+    image: "uniques/ravensclaw.gif",
     props: [
       "Damage: 4-17",
       "Req Dexterity: 19",
@@ -1750,7 +1750,7 @@ const uniqueItems = {
   "Rogue's Bow": {
     name: "Rogue's Bow",
     type: "Composite Bow",
-    image: "http://www.d2tomb.com/images/uniques/roguesbow.gif",
+    image: "uniques/roguesbow.gif",
     props: [
       "Damage: 5-12",
       "Req Dexterity: 35",
@@ -1768,7 +1768,7 @@ const uniqueItems = {
   Stormstrike: {
     name: "Stormstrike",
     type: "Short Battle Bow",
-    image: "http://www.d2tomb.com/images/uniques/stormstrike.gif",
+    image: "uniques/stormstrike.gif",
     props: [
       "Damage: 8-20",
       "Req Dexterity: 40",
@@ -1786,7 +1786,7 @@ const uniqueItems = {
   Wizendraw: {
     name: "Wizendraw",
     type: "Long Battle Bow",
-    image: "http://www.d2tomb.com/images/uniques/wizendraw.gif",
+    image: "uniques/wizendraw.gif",
     props: [
       "Damage: 5-32",
       "Req Dexterity: 50",
@@ -1806,7 +1806,7 @@ const uniqueItems = {
   Hellclap: {
     name: "Hellclap",
     type: "Short War Bow",
-    image: "http://www.d2tomb.com/images/uniques/hellclap.gif",
+    image: "uniques/hellclap.gif",
     props: [
       "Damage: 10-26",
       "Req Dexterity: 55",
@@ -1825,7 +1825,7 @@ const uniqueItems = {
   Blastbark: {
     name: "Blastbark",
     type: "Long War Bow",
-    image: "http://www.d2tomb.com/images/uniques/blastbark.gif",
+    image: "uniques/blastbark.gif",
     props: [
       "Damage: 5-52",
       "Req Dexterity: 65",
@@ -1842,7 +1842,7 @@ const uniqueItems = {
   Skystrike: {
     name: "Skystrike",
     type: "Edge Bow",
-    image: "http://www.d2tomb.com/images/items/shortbow.gif",
+    image: "items/shortbow.gif",
     props: [
       "Req Dexterity: 43",
       "Req Strength: 25",
@@ -1861,7 +1861,7 @@ const uniqueItems = {
   Riphook: {
     name: "Riphook",
     type: "Razor Bow",
-    image: "http://www.d2tomb.com/images/items/huntersbow.gif",
+    image: "items/huntersbow.gif",
     props: [
       "Req Dexterity: 62",
       "Req Strength: 25",
@@ -1879,7 +1879,7 @@ const uniqueItems = {
   "Kuko Shakaku": {
     name: "Kuko Shakaku",
     type: "Cedar Bow",
-    image: "http://www.d2tomb.com/images/items/longbow.gif",
+    image: "items/longbow.gif",
     props: [
       "Req Dexterity: 49",
       "Req Strength: 53",
@@ -1897,7 +1897,7 @@ const uniqueItems = {
   Endlesshail: {
     name: "Endlesshail",
     type: "Double Bow",
-    image: "http://www.d2tomb.com/images/items/compositebow.gif",
+    image: "items/compositebow.gif",
     props: [
       "Req Dexterity: 73",
       "Req Strength: 58",
@@ -1915,7 +1915,7 @@ const uniqueItems = {
   "Witchwild String": {
     name: "Witchwild String",
     type: "Short Siege Bow",
-    image: "http://www.d2tomb.com/images/items/shortbattlebow.gif",
+    image: "items/shortbattlebow.gif",
     props: [
       "Req Dexterity: 80",
       "Req Strength: 65",
@@ -1933,7 +1933,7 @@ const uniqueItems = {
   Cliffkiller: {
     name: "Cliffkiller",
     type: "Large Siege Bow",
-    image: "http://www.d2tomb.com/images/items/longbattlebow.gif",
+    image: "items/longbattlebow.gif",
     props: [
       "Req Dexterity: 95",
       "Req Strength: 80",
@@ -1951,7 +1951,7 @@ const uniqueItems = {
   Magewrath: {
     name: "Magewrath",
     type: "Rune Bow",
-    image: "http://www.d2tomb.com/images/items/shortwarbow.gif",
+    image: "items/shortwarbow.gif",
     props: [
       "Req Dexterity: 103",
       "Req Strength: 73",
@@ -1972,7 +1972,7 @@ const uniqueItems = {
   "Goldstrike Arch": {
     name: "Goldstrike Arch",
     type: "Gothic Bow",
-    image: "http://www.d2tomb.com/images/items/longwarbow.gif",
+    image: "items/longwarbow.gif",
     props: [
       "Req Dexterity: 118",
       "Req Strength: 95",
@@ -1991,7 +1991,7 @@ const uniqueItems = {
   Eaglehorn: {
     name: "Eaglehorn",
     type: "Crusader Bow",
-    image: "http://www.d2tomb.com/images/uniques/blastbark.gif",
+    image: "uniques/blastbark.gif",
     props: [
       "Damage: 45-313",
       "Req Dexterity: 121",
@@ -2009,7 +2009,7 @@ const uniqueItems = {
   Widowmaker: {
     name: "Widowmaker",
     type: "Ward Bow",
-    image: "http://www.d2tomb.com/images/items/shortwarbow.gif",
+    image: "items/shortwarbow.gif",
     props: [
       "Req Strength: 146",
       "Req Dexterity: 72",
@@ -2026,7 +2026,7 @@ const uniqueItems = {
   Windforce: {
     name: "Windforce",
     type: "Hydra Bow",
-    image: "http://www.d2tomb.com/images/uniques/blastbark.gif",
+    image: "uniques/blastbark.gif",
     props: [
       "Damage: 35-547",
       "Req Dexterity: 167",
@@ -2046,7 +2046,7 @@ const uniqueItems = {
   Leadcrow: {
     name: "Leadcrow",
     type: "Light Crossbow",
-    image: "http://www.d2tomb.com/images/uniques/leadcrow.gif",
+    image: "uniques/leadcrow.gif",
     props: [
       "Damage: 10-15",
       "Req Dexterity: 27",
@@ -2064,7 +2064,7 @@ const uniqueItems = {
   Ichorsting: {
     name: "Ichorsting",
     type: "Crossbow",
-    image: "http://www.d2tomb.com/images/uniques/ichorsting.gif",
+    image: "uniques/ichorsting.gif",
     props: [
       "Damage: 13-24",
       "Req Dexterity: 33",
@@ -2082,7 +2082,7 @@ const uniqueItems = {
   Hellcast: {
     name: "Hellcast",
     type: "Heavy Crossbow",
-    image: "http://www.d2tomb.com/images/uniques/hellcast.gif",
+    image: "uniques/hellcast.gif",
     props: [
       "Damage: 23-46",
       "Req Dexterity: 40",
@@ -2101,7 +2101,7 @@ const uniqueItems = {
   Doomslinger: {
     name: "Doomslinger",
     type: "Repeating Crossbow",
-    image: "http://www.d2tomb.com/images/uniques/doomslinger.gif",
+    image: "uniques/doomslinger.gif",
     props: [
       "Damage: 9-24",
       "Req Dexterity: 50",
@@ -2118,7 +2118,7 @@ const uniqueItems = {
   "Langer Briser": {
     name: "Langer Briser",
     type: "Arbalest",
-    image: "http://www.d2tomb.com/images/items/lightcrossbow.gif",
+    image: "items/lightcrossbow.gif",
     props: [
       "Req Dexterity:  61",
       "Req Strength: 52",
@@ -2137,7 +2137,7 @@ const uniqueItems = {
   "Pus Spitter": {
     name: "Pus Spitter",
     type: "Siege Crossbow",
-    image: "http://www.d2tomb.com/images/items/crossbow.gif",
+    image: "items/crossbow.gif",
     props: [
       "Req Dexterity: 28",
       "Req Strength: 32",
@@ -2156,7 +2156,7 @@ const uniqueItems = {
   "Buriza-Do Kyanon": {
     name: "Buriza-Do Kyanon",
     type: "Ballista",
-    image: "http://www.d2tomb.com/images/items/heavycrossbow.gif",
+    image: "items/heavycrossbow.gif",
     props: [
       "Req Dexterity: 80",
       "Req Strength: 110",
@@ -2176,7 +2176,7 @@ const uniqueItems = {
   "Demon Machine": {
     name: "Demon Machine",
     type: "Chu-Ko-Nu",
-    image: "http://www.d2tomb.com/images/items/repeatingcrossbow.gif",
+    image: "items/repeatingcrossbow.gif",
     props: [
       "Req Dexterity: 95",
       "Req Strength: 80",
@@ -2195,7 +2195,7 @@ const uniqueItems = {
   Hellrack: {
     name: "Hellrack",
     type: "Colossus Crossbow",
-    image: "http://www.d2tomb.com/images/items/heavycrossbow.gif",
+    image: "items/heavycrossbow.gif",
     props: [
       "Req Dexterity: 77",
       "Req Strength: 163",
@@ -2215,7 +2215,7 @@ const uniqueItems = {
   "Gut Siphon": {
     name: "Gut Siphon",
     type: "Demon Crossbow",
-    image: "http://www.d2tomb.com/images/items/repeatingcrossbow.gif",
+    image: "items/repeatingcrossbow.gif",
     props: [
       "Req Dexterity: 98",
       "Req Strength: 141",
@@ -2232,7 +2232,7 @@ const uniqueItems = {
   Gull: {
     name: "Gull",
     type: "Dagger",
-    image: "http://www.d2tomb.com/images/uniques/gull.gif",
+    image: "uniques/gull.gif",
     props: [
       "Damage: 2-19",
       "Durability: 16",
@@ -2246,7 +2246,7 @@ const uniqueItems = {
   "The Diggler": {
     name: "The Diggler",
     type: "Dirk",
-    image: "http://www.d2tomb.com/images/uniques/thediggler.gif",
+    image: "uniques/thediggler.gif",
     props: [
       "Damage: 4-13",
       "Durability: 20",
@@ -2264,7 +2264,7 @@ const uniqueItems = {
   "The Jade Tan Do": {
     name: "The Jade Tan Do",
     type: "Kris",
-    image: "http://www.d2tomb.com/images/uniques/thejadetando.gif",
+    image: "uniques/thejadetando.gif",
     props: [
       "Damage: 2-11",
       "Durability: 24",
@@ -2281,7 +2281,7 @@ const uniqueItems = {
   "Spectral Shard": {
     name: "Spectral Shard",
     type: "Blade",
-    image: "http://www.d2tomb.com/images/uniques/spectralshard.gif",
+    image: "uniques/spectralshard.gif",
     props: [
       "Damage: 4-15",
       "Durability: 24",
@@ -2298,7 +2298,7 @@ const uniqueItems = {
   Spineripper: {
     name: "Spineripper",
     type: "Poignard",
-    image: "http://www.d2tomb.com/images/items/dagger.gif",
+    image: "items/dagger.gif",
     props: [
       "Req Strength: 25",
       "Damage: 33-88",
@@ -2318,7 +2318,7 @@ const uniqueItems = {
   "Heart Carver": {
     name: "Heart Carver",
     type: "Rondel",
-    image: "http://www.d2tomb.com/images/items/dirk.gif",
+    image: "items/dirk.gif",
     props: [
       "Req Strength: 25",
       "Req Dexterity: 58",
@@ -2338,7 +2338,7 @@ const uniqueItems = {
   "Blackbog's Sharp": {
     name: "Blackbog's Sharp",
     type: "Cinquedeas",
-    image: "http://www.d2tomb.com/images/items/kriss.gif",
+    image: "items/kriss.gif",
     props: [
       "Req Strength: 25",
       "Req Dexterity: 88",
@@ -2359,7 +2359,7 @@ const uniqueItems = {
   Stormspike: {
     name: "Stormspike",
     type: "Stilleto",
-    image: "http://www.d2tomb.com/images/items/blade.gif",
+    image: "items/blade.gif",
     props: [
       "Req Strength: 47",
       "Req Dexterity: 97",
@@ -2377,7 +2377,7 @@ const uniqueItems = {
   Wizardspike: {
     name: "Wizardspike",
     type: "Bone Knife",
-    image: "http://www.d2tomb.com/images/items/dagger.gif",
+    image: "items/dagger.gif",
     props: [
       "Damage: 23-49",
       "Req Strength: 38",
@@ -2395,7 +2395,7 @@ const uniqueItems = {
   Fleshripper: {
     name: "Fleshripper",
     type: "Fanged Knife",
-    image: "http://www.d2tomb.com/images/items/kriss.gif",
+    image: "items/kriss.gif",
     props: [
       "Req Strength: 42",
       "Req Dexterity: 86",
@@ -2415,7 +2415,7 @@ const uniqueItems = {
   Ghostflame: {
     name: "Ghostflame",
     type: "Legend Spike",
-    image: "http://www.d2tomb.com/images/items/blade.gif",
+    image: "items/blade.gif",
     props: [
       "Req Strength: 55",
       "Req Dexterity: 57",
@@ -2434,7 +2434,7 @@ const uniqueItems = {
   "The Hand of Broc": {
     name: "The Hand of Broc",
     type: "Leather Gloves",
-    image: "http://www.d2tomb.com/images/uniques/thehandofbroc.gif",
+    image: "uniques/thehandofbroc.gif",
     props: [
       "Defense: 14",
       "Durability: 12",
@@ -2452,7 +2452,7 @@ const uniqueItems = {
   Bloodfist: {
     name: "Bloodfist",
     type: "Heavy Gloves",
-    image: "http://www.d2tomb.com/images/uniques/bloodfist.gif",
+    image: "uniques/bloodfist.gif",
     props: [
       "Defense: 17-18",
       "Durability: 14",
@@ -2470,7 +2470,7 @@ const uniqueItems = {
   "Chance Guards": {
     name: "Chance Guards",
     type: "Chain Gloves",
-    image: "http://www.d2tomb.com/images/uniques/chanceguards.gif",
+    image: "uniques/chanceguards.gif",
     props: [
       "Defense: 27-28",
       "Durability: 16",
@@ -2488,7 +2488,7 @@ const uniqueItems = {
   Magefist: {
     name: "Magefist",
     type: "Light Gauntlets",
-    image: "http://www.d2tomb.com/images/uniques/magefist.gif",
+    image: "uniques/magefist.gif",
     props: [
       "Defense: 24-25",
       "Durability: 18",
@@ -2506,7 +2506,7 @@ const uniqueItems = {
   Frostburn: {
     name: "Frostburn",
     type: "Gauntlets",
-    image: "http://www.d2tomb.com/images/uniques/frostburn.gif",
+    image: "uniques/frostburn.gif",
     props: [
       "Defense: 47-49",
       "Durability: 24",
@@ -2523,7 +2523,7 @@ const uniqueItems = {
   "Venom Grip": {
     name: "Venom Grip",
     type: "Demonhide Gloves",
-    image: "http://www.d2tomb.com/images/items/leathergloves.gif",
+    image: "items/leathergloves.gif",
     props: [
       "Defense: 97-118",
       "Durability: 12",
@@ -2542,7 +2542,7 @@ const uniqueItems = {
   Gravepalm: {
     name: "Gravepalm",
     type: "Sharkskin Gloves",
-    image: "http://www.d2tomb.com/images/items/heavygloves.gif",
+    image: "items/heavygloves.gif",
     props: [
       "Defense: 96-112",
       "Durability: 14",
@@ -2558,7 +2558,7 @@ const uniqueItems = {
   Ghoulhide: {
     name: "Ghoulhide",
     type: "Heavy Bracers",
-    image: "http://www.d2tomb.com/images/items/chaingloves.gif",
+    image: "items/chaingloves.gif",
     props: [
       "Defense: 112-130",
       "Durability: 16",
@@ -2575,7 +2575,7 @@ const uniqueItems = {
   "Lava Gout": {
     name: "Lava Gout",
     type: "Battle Gauntlets",
-    image: "http://www.d2tomb.com/images/items/lightgauntlets.gif",
+    image: "items/lightgauntlets.gif",
     props: [
       "Defense: 120-144",
       "Durability: 38",
@@ -2593,7 +2593,7 @@ const uniqueItems = {
   Hellmouth: {
     name: "Hellmouth",
     type: "War Gauntlets",
-    image: "http://www.d2tomb.com/images/items/gauntlets.gif",
+    image: "items/gauntlets.gif",
     props: [
       "Defense: 135-162",
       "Durability: 39",
@@ -2610,7 +2610,7 @@ const uniqueItems = {
   "Dracul's Grasp": {
     name: "Dracul's Grasp",
     type: "Vampirebone Gloves",
-    image: "http://www.d2tomb.com/images/items/heavygloves.gif",
+    image: "items/heavygloves.gif",
     props: [
       "Defense: 125-145",
       "Durability: 14",
@@ -2628,7 +2628,7 @@ const uniqueItems = {
   "Soul Drainer": {
     name: "Soul Drainer",
     type: "Vambraces",
-    image: "http://www.d2tomb.com/images/items/chaingloves.gif",
+    image: "items/chaingloves.gif",
     props: [
       "Defense: 129-149",
       "Durability: 16",
@@ -2645,7 +2645,7 @@ const uniqueItems = {
   Steelrend: {
     name: "Steelrend",
     type: "Ogre Gauntlets",
-    image: "http://www.d2tomb.com/images/items/gauntlets.gif",
+    image: "items/gauntlets.gif",
     props: [
       "Defense: 232-281",
       "Durability: 24",
@@ -2661,7 +2661,7 @@ const uniqueItems = {
   "Biggin's Bonnet": {
     name: "Biggin's Bonnet",
     type: "Cap",
-    image: "http://www.d2tomb.com/images/uniques/warbonet.gif",
+    image: "uniques/warbonet.gif",
     props: [
       "Defense: 17-19",
       "Durability: 12",
@@ -2677,7 +2677,7 @@ const uniqueItems = {
   Tarnhelm: {
     name: "Tarnhelm",
     type: "Skull Cap",
-    image: "http://www.d2tomb.com/images/uniques/tarnhelm.gif",
+    image: "uniques/tarnhelm.gif",
     props: [
       "Defense: 8-11",
       "Durability: 18",
@@ -2692,7 +2692,7 @@ const uniqueItems = {
   "Coif of Glory": {
     name: "Coif of Glory",
     type: "Helm",
-    image: "http://www.d2tomb.com/images/uniques/coifofglory.gif",
+    image: "uniques/coifofglory.gif",
     props: [
       "Defense: 25-28",
       "Durability: 24",
@@ -2709,7 +2709,7 @@ const uniqueItems = {
   Duskdeep: {
     name: "Duskdeep",
     type: "Full Helm",
-    image: "http://www.d2tomb.com/images/uniques/duskdeep.gif",
+    image: "uniques/duskdeep.gif",
     props: [
       "Defense: 45-60",
       "Durability: 30",
@@ -2727,7 +2727,7 @@ const uniqueItems = {
   Howltusk: {
     name: "Howltusk",
     type: "Great Helm",
-    image: "http://www.d2tomb.com/images/uniques/howltusk.gif",
+    image: "uniques/howltusk.gif",
     props: [
       "Defense: 64",
       "Durability: 40",
@@ -2745,7 +2745,7 @@ const uniqueItems = {
   "The Face of Horror": {
     name: "The Face of Horror",
     type: "Mask",
-    image: "http://www.d2tomb.com/images/uniques/mask.gif",
+    image: "uniques/mask.gif",
     props: [
       "Defense: 34-52",
       "Durability: 20",
@@ -2762,7 +2762,7 @@ const uniqueItems = {
   "Undead Crown": {
     name: "Undead Crown",
     type: "Crown",
-    image: "http://www.d2tomb.com/images/uniques/undeadcrown.gif",
+    image: "uniques/undeadcrown.gif",
     props: [
       "Defense: 99-113",
       "Durability: 50",
@@ -2782,7 +2782,7 @@ const uniqueItems = {
   Wormskull: {
     name: "Wormskull",
     type: "Bone Helm",
-    image: "http://www.d2tomb.com/images/uniques/wormskull.gif",
+    image: "uniques/wormskull.gif",
     props: [
       "Defense: 33-36",
       "Durability: 40",
@@ -2799,7 +2799,7 @@ const uniqueItems = {
   "Peasant Crown": {
     name: "Peasant Crown",
     type: "War Hat",
-    image: "http://www.d2tomb.com/images/items/cap.gif",
+    image: "items/cap.gif",
     props: [
       "Defense: 108",
       "Durability: 12",
@@ -2816,7 +2816,7 @@ const uniqueItems = {
   Rockstopper: {
     name: "Rockstopper",
     type: "Sallet",
-    image: "http://www.d2tomb.com/images/items/skullcap.gif",
+    image: "items/skullcap.gif",
     props: [
       "Defense: 163-201",
       "Durability: 18",
@@ -2835,7 +2835,7 @@ const uniqueItems = {
   Stealskull: {
     name: "Stealskull",
     type: "Casque",
-    image: "http://www.d2tomb.com/images/items/helm.gif",
+    image: "items/helm.gif",
     props: [
       "Defense: 219-248",
       "Durability: 24",
@@ -2853,7 +2853,7 @@ const uniqueItems = {
   "Darksight Helm": {
     name: "Darksight Helm",
     type: "Basinet",
-    image: "http://www.d2tomb.com/images/items/fullhelm.gif",
+    image: "items/fullhelm.gif",
     props: [
       "Defense: 77-282",
       "Durability: 30",
@@ -2872,7 +2872,7 @@ const uniqueItems = {
   "Valkyrie Wing": {
     name: "Valkyrie Wing",
     type: "Winged Helm",
-    image: "http://www.d2tomb.com/images/items/greathelm.gif",
+    image: "items/greathelm.gif",
     props: [
       "Defense: 247-297",
       "Durability: 40",
@@ -2889,7 +2889,7 @@ const uniqueItems = {
   "Blackhorn's Face": {
     name: "Blackhorn's Face",
     type: "Death Mask",
-    image: "http://www.d2tomb.com/images/items/mask.gif",
+    image: "items/mask.gif",
     props: [
       "Defense: 243-278",
       "Durability: 20",
@@ -2907,7 +2907,7 @@ const uniqueItems = {
   "Crown of Thieves": {
     name: "Crown of Thieves",
     type: "Grand Crown",
-    image: "http://www.d2tomb.com/images/items/crown.gif",
+    image: "items/crown.gif",
     props: [
       "Defense: 296-342",
       "Durability: 50",
@@ -2926,7 +2926,7 @@ const uniqueItems = {
   "Vampire Gaze": {
     name: "Vampire Gaze",
     type: "Grim Helm",
-    image: "http://www.d2tomb.com/images/items/bonehelm.gif",
+    image: "items/bonehelm.gif",
     props: [
       "Defense: 252",
       "Durability: 40",
@@ -2945,7 +2945,7 @@ const uniqueItems = {
   "Harlequin Crest": {
     name: "Harlequin Crest",
     type: "Shako",
-    image: "http://www.d2tomb.com/images/items/cap.gif",
+    image: "items/cap.gif",
     props: [
       "Defense: 98-141",
       "Req Strength: 50",
@@ -2966,7 +2966,7 @@ const uniqueItems = {
   "Steel Shade": {
     name: "Steel Shade",
     type: "Armet",
-    image: "http://www.d2tomb.com/images/items/helm.gif",
+    image: "items/helm.gif",
     props: [
       "Defense: 300-345",
       "Durability: 24",
@@ -2982,7 +2982,7 @@ const uniqueItems = {
   "Veil of Steel": {
     name: "Veil of Steel",
     type: "Spired Helm",
-    image: "http://www.d2tomb.com/images/items/greathelm.gif",
+    image: "items/greathelm.gif",
     props: [
       "Defense: 396",
       "Req Strength: 192",
@@ -2999,7 +2999,7 @@ const uniqueItems = {
   "Nightwing's Veil": {
     name: "Nightwing's Veil",
     type: "Spired Helm",
-    image: "http://www.d2tomb.com/images/items/greathelm.gif",
+    image: "items/greathelm.gif",
     props: [
       "Defense: 304-352",
       "Req Strength: 96",
@@ -3018,7 +3018,7 @@ const uniqueItems = {
   "Andariel's Visage": {
     name: "Andariel's Visage",
     type: "Demonhead Mask",
-    image: "http://www.d2tomb.com/images/items/mask.gif",
+    image: "items/mask.gif",
     props: [
       "Defense: 310-387",
       "Durability: 20",
@@ -3040,7 +3040,7 @@ const uniqueItems = {
   "Crown of Ages": {
     name: "Crown of Ages",
     type: "Corona",
-    image: "http://www.d2tomb.com/images/items/crown.gif",
+    image: "items/crown.gif",
     props: [
       "Defense: 349-399",
       "Indestructible",
@@ -3059,7 +3059,7 @@ const uniqueItems = {
   "Giant Skull": {
     name: "Giant Skull",
     type: "Bone Visage",
-    image: "http://www.d2tomb.com/images/items/bonehelm.gif",
+    image: "items/bonehelm.gif",
     props: [
       "Defense: 350-477",
       "Durability: 40",
@@ -3076,7 +3076,7 @@ const uniqueItems = {
   "Kira's Guardian": {
     name: "Kira's Guardian",
     type: "Tiara",
-    image: "http://www.d2tomb.com/images/items/tiara.gif",
+    image: "items/tiara.gif",
     props: [
       "Defense: 90-170",
       "Durability: 25",
@@ -3091,7 +3091,7 @@ const uniqueItems = {
   "Griffon's Eye": {
     name: "Griffon's Eye",
     type: "Diadem",
-    image: "http://www.d2tomb.com/images/items/diadem.gif",
+    image: "items/diadem.gif",
     props: [
       "Defense: 150-260",
       "Durability: 20",
@@ -3107,7 +3107,7 @@ const uniqueItems = {
   "War Treachery": {
     name: "War Treachery",
     type: "Javelin",
-    image: "http://www.d2tomb.com/images/items/javelin.gif",
+    image: "items/javelin.gif",
     props: [
       "Throw Damage: 16-38",
       "OneHand Damage: 2-13",
@@ -3126,7 +3126,7 @@ const uniqueItems = {
   "Terror Sting": {
     name: "Terror Sting",
     type: "Pilum",
-    image: "http://www.d2tomb.com/images/items/pilum.gif",
+    image: "items/pilum.gif",
     props: [
       "Throw Damage: 16-46",
       "OneHand Damage: 9-20",
@@ -3145,7 +3145,7 @@ const uniqueItems = {
   Truth: {
     name: "Truth",
     type: "Short Spear",
-    image: "http://www.d2tomb.com/images/items/shortspear.gif",
+    image: "items/shortspear.gif",
     props: [
       "Throw Damage: 12-27",
       "OnHand Damage: 2-16",
@@ -3164,7 +3164,7 @@ const uniqueItems = {
   "Demon's Arch": {
     name: "Demon's Arch",
     type: "Balrog Spear",
-    image: "http://www.d2tomb.com/images/items/shortspear.gif",
+    image: "items/shortspear.gif",
     props: [
       "Req Strength: 127",
       "Req Dexterity: 95",
@@ -3184,7 +3184,7 @@ const uniqueItems = {
   "Wraith Flight": {
     name: "Wraith Flight",
     type: "Ghost Glaive",
-    image: "http://www.d2tomb.com/images/items/glaive.gif",
+    image: "items/glaive.gif",
     props: [
       "Req Strength: 79",
       "Req Dexterity: 127",
@@ -3203,7 +3203,7 @@ const uniqueItems = {
   "Gargoyle's Bite": {
     name: "Gargoyle's Bite",
     type: "Winged Harpoon",
-    image: "http://www.d2tomb.com/images/items/throwingspear.gif",
+    image: "items/throwingspear.gif",
     props: [
       "Req Strength: 76",
       "Req Dexterity: 145",
@@ -3222,7 +3222,7 @@ const uniqueItems = {
   "Nokozan Relic": {
     name: "Nokozan Relic",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/amu2.gif",
+    image: "uniques/amu2.gif",
     props: [
       "Req Level: 10",
       "+3 to Light Radius",
@@ -3236,7 +3236,7 @@ const uniqueItems = {
   "The Eye of Etlich": {
     name: "The Eye of Etlich",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/amu2.gif",
+    image: "uniques/amu2.gif",
     props: [
       "Req Level: 15",
       "+1-5 to Light Radius",
@@ -3250,7 +3250,7 @@ const uniqueItems = {
   "The Mahim-Oak Curio": {
     name: "The Mahim-Oak Curio",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/amu3.gif",
+    image: "uniques/amu3.gif",
     props: [
       "Req Level: 25",
       "+10 Defense",
@@ -3264,7 +3264,7 @@ const uniqueItems = {
   "Saracen's Chance": {
     name: "Saracen's Chance",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/amu1.gif",
+    image: "uniques/amu1.gif",
     props: [
       "Req Level: 47",
       "10% chance to cast level 2 Iron Maiden when struck",
@@ -3276,7 +3276,7 @@ const uniqueItems = {
   "The Cat's Eye": {
     name: "The Cat's Eye",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/amu2.gif",
+    image: "uniques/amu2.gif",
     props: [
       "Req Level: 50",
       "+30% Faster Run/Walk",
@@ -3290,7 +3290,7 @@ const uniqueItems = {
   "Crescent Moon": {
     name: "Crescent Moon",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/amu3.gif",
+    image: "uniques/amu3.gif",
     props: [
       "Req Level: 50",
       "10% Damage taken goes to Mana",
@@ -3305,7 +3305,7 @@ const uniqueItems = {
   "Atma's Scarab": {
     name: "Atma's Scarab",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/amu2.gif",
+    image: "uniques/amu2.gif",
     props: [
       "Req Level: 60",
       "5% chance to cast level 2 Amplify Damage on striking",
@@ -3320,7 +3320,7 @@ const uniqueItems = {
   "The Rising Sun": {
     name: "The Rising Sun",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/amu3.gif",
+    image: "uniques/amu3.gif",
     props: [
       "Req Level: 65",
       "2% chance to cast level 13-19 Meteor when struck",
@@ -3335,7 +3335,7 @@ const uniqueItems = {
   "Highlord's Wrath": {
     name: "Highlord's Wrath",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/amu3.gif",
+    image: "uniques/amu3.gif",
     props: [
       "Req Level: 65",
       "+20% Increased Attack Speed",
@@ -3350,7 +3350,7 @@ const uniqueItems = {
   "Mara's Kaleidoscope": {
     name: "Mara's Kaleidoscope",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/amu1.gif",
+    image: "uniques/amu1.gif",
     props: [
       "Req Level: 67",
       "+2 to all Skill Levels",
@@ -3365,7 +3365,7 @@ const uniqueItems = {
   "Seraph's Hymn": {
     name: "Seraph's Hymn",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/amu1.gif",
+    image: "uniques/amu1.gif",
     props: [
       "Req Level: 65",
       "+2 to all Skill",
@@ -3381,7 +3381,7 @@ const uniqueItems = {
   Metalgrid: {
     name: "Metalgrid",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/amu1.gif",
+    image: "uniques/amu1.gif",
     props: [
       "Req Level: 81",
       "+400-450 to Attack Rating",
@@ -3395,7 +3395,7 @@ const uniqueItems = {
   Nagelring: {
     name: "Nagelring",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/ring4.gif",
+    image: "uniques/ring4.gif",
     props: [
       "Req Level: 7",
       "Magic Damage reduced by 3",
@@ -3408,7 +3408,7 @@ const uniqueItems = {
   "Manald Heal": {
     name: "Manald Heal",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/ring4.gif",
+    image: "uniques/ring4.gif",
     props: [
       "Req Level: 15",
       "4-7% Mana stolen per hit",
@@ -3421,7 +3421,7 @@ const uniqueItems = {
   "Stone of Jordan": {
     name: "Stone of Jordan",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/ring4.gif",
+    image: "uniques/ring4.gif",
     props: [
       "Req Level: 29",
       "+1 to all Skill levels",
@@ -3434,7 +3434,7 @@ const uniqueItems = {
   "Dwarf Star": {
     name: "Dwarf Star",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/ring2.gif",
+    image: "uniques/ring2.gif",
     props: [
       "Req Level: 45",
       "Magic Damage reduced by 12-15",
@@ -3449,7 +3449,7 @@ const uniqueItems = {
   "Raven Frost": {
     name: "Raven Frost",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/ring3.gif",
+    image: "uniques/ring3.gif",
     props: [
       "Req Level: 45",
       "+150-250 to Attack Rating",
@@ -3464,7 +3464,7 @@ const uniqueItems = {
   "Bul-Kathos' Wedding Band": {
     name: "Bul-Kathos' Wedding Band",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/ring1.gif",
+    image: "uniques/ring1.gif",
     props: [
       "Req Level: 58",
       "+1 to all Skill Levels",
@@ -3477,7 +3477,7 @@ const uniqueItems = {
   "Carrion Wind": {
     name: "Carrion Wind",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/ring3.gif",
+    image: "uniques/ring3.gif",
     props: [
       "Req Level: 60",
       "10% Chance to Cast Level 10 Poison Nova when struck",
@@ -3493,7 +3493,7 @@ const uniqueItems = {
   "Nature's Peace": {
     name: "Nature's Peace",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/ring3.gif",
+    image: "uniques/ring3.gif",
     props: [
       "Req Level: 69",
       "Slain Monsters Rest in Peace",
@@ -3507,7 +3507,7 @@ const uniqueItems = {
   "Wisp Projector": {
     name: "Wisp Projector",
     type: "",
-    image: "http://www.d2tomb.com/images/uniques/ring3.gif",
+    image: "uniques/ring3.gif",
     props: [
       "Req Level: 76",
       "10% Chance to Cast Level 16 Lightning Bolt on striking",
@@ -3522,7 +3522,7 @@ const uniqueItems = {
   Felloak: {
     name: "Felloak",
     type: "Club",
-    image: "http://www.d2tomb.com/images/uniques/felloak.gif",
+    image: "uniques/felloak.gif",
     props: [
       "Damage: 1-10",
       "Durability: 24",
@@ -3539,7 +3539,7 @@ const uniqueItems = {
   Stoutnail: {
     name: "Stoutnail",
     type: "Spiked Club",
-    image: "http://www.d2tomb.com/images/uniques/stoutnail.gif",
+    image: "uniques/stoutnail.gif",
     props: [
       "Damage: 10-16",
       "Durability: 36",
@@ -3555,7 +3555,7 @@ const uniqueItems = {
   Crushflange: {
     name: "Crushflange",
     type: "Mace",
-    image: "http://www.d2tomb.com/images/uniques/crushflange.gif",
+    image: "uniques/crushflange.gif",
     props: [
       "Damage: 4-16",
       "Durability: 60",
@@ -3574,7 +3574,7 @@ const uniqueItems = {
   Bloodrise: {
     name: "Bloodrise",
     type: "Morning Star",
-    image: "http://www.d2tomb.com/images/uniques/bloodrise.gif",
+    image: "uniques/bloodrise.gif",
     props: [
       "Damage: 15-35",
       "Durability: 72",
@@ -3594,7 +3594,7 @@ const uniqueItems = {
   "The General's Tan Do Li Ga": {
     name: "The General's Tan Do Li Ga",
     type: "Flail",
-    image: "http://www.d2tomb.com/images/uniques/thegeneralstandoliga.gif",
+    image: "uniques/thegeneralstandoliga.gif",
     props: [
       "Damage: 2-58",
       "Durability: 30",
@@ -3614,7 +3614,7 @@ const uniqueItems = {
   Ironstone: {
     name: "Ironstone",
     type: "War Hammer",
-    image: "http://www.d2tomb.com/images/uniques/ironstone.gif",
+    image: "uniques/ironstone.gif",
     props: [
       "Damage: 38-72",
       "Durability: 55",
@@ -3631,7 +3631,7 @@ const uniqueItems = {
   Bonesnap: {
     name: "Bonesnap",
     type: "Maul",
-    image: "http://www.d2tomb.com/images/uniques/bonesnap.gif",
+    image: "uniques/bonesnap.gif",
     props: [
       "Damage: 90-172",
       "Durabilty: 60",
@@ -3648,7 +3648,7 @@ const uniqueItems = {
   Steeldriver: {
     name: "Steeldriver",
     type: "Great Maul",
-    image: "http://www.d2tomb.com/images/uniques/steeldriver.gif",
+    image: "uniques/steeldriver.gif",
     props: [
       "Damage: 95-203",
       "Durability: 60",
@@ -3665,7 +3665,7 @@ const uniqueItems = {
   "Dark Clan Crusher": {
     name: "Dark Clan Crusher",
     type: "Cudgel",
-    image: "http://www.d2tomb.com/images/items/club.gif",
+    image: "items/club.gif",
     props: [
       "Req Strength: 25",
       "Damage: 17-61",
@@ -3684,7 +3684,7 @@ const uniqueItems = {
   Fleshrender: {
     name: "Fleshrender",
     type: "Barbed Club",
-    image: "http://www.d2tomb.com/images/items/spikedclub.gif",
+    image: "items/spikedclub.gif",
     props: [
       "Req Strength: 30",
       "Damage: 64-125",
@@ -3705,7 +3705,7 @@ const uniqueItems = {
   "Sureshrill Frost": {
     name: "Sureshrill Frost",
     type: "Flanged Mace",
-    image: "http://www.d2tomb.com/images/items/mace.gif",
+    image: "items/mace.gif",
     props: [
       "Req Strength: 61",
       "Damage: 42-74",
@@ -3724,7 +3724,7 @@ const uniqueItems = {
   Moonfall: {
     name: "Moonfall",
     type: "Jagged Star",
-    image: "http://www.d2tomb.com/images/items/morningstar.gif",
+    image: "items/morningstar.gif",
     props: [
       "Req Strength: 74",
       "Damage: 54-92",
@@ -3744,7 +3744,7 @@ const uniqueItems = {
   "Baezil's Vortex": {
     name: "Baezil's Vortex",
     type: "Knout",
-    image: "http://www.d2tomb.com/images/items/flail.gif",
+    image: "items/flail.gif",
     props: [
       "Req Strength: 82",
       "Req Dexterity: 73",
@@ -3765,7 +3765,7 @@ const uniqueItems = {
   Earthshaker: {
     name: "Earthshaker",
     type: "Battle Hammer",
-    image: "http://www.d2tomb.com/images/items/warhammer.gif",
+    image: "items/warhammer.gif",
     props: [
       "Req Strength: 100",
       "Damage: 98-162",
@@ -3784,7 +3784,7 @@ const uniqueItems = {
   "Bloodtree Stump": {
     name: "Bloodtree Stump",
     type: "War Club",
-    image: "http://www.d2tomb.com/images/items/maul.gif",
+    image: "items/maul.gif",
     props: [
       "Req Strength: 124",
       "Damage: 148-249",
@@ -3803,7 +3803,7 @@ const uniqueItems = {
   "The Gavel of Pain": {
     name: "The Gavel of Pain",
     type: "Martel de Fer",
-    image: "http://www.d2tomb.com/images/items/greatmaul.gif",
+    image: "items/greatmaul.gif",
     props: [
       "Req Strength: 169",
       "Damage: 152-286",
@@ -3822,7 +3822,7 @@ const uniqueItems = {
   "Nord's Tenderizer": {
     name: "Nord's Tenderizer",
     type: "Truncheon",
-    image: "http://www.d2tomb.com/images/items/club.gif",
+    image: "items/club.gif",
     props: [
       "Req Strength: 88",
       "Req Dexterity: 43",
@@ -3844,7 +3844,7 @@ const uniqueItems = {
   "Demon Limb": {
     name: "Demon Limb",
     type: "Tyrant Club",
-    image: "http://www.d2tomb.com/images/items/spikedclub.gif",
+    image: "items/spikedclub.gif",
     props: [
       "Req Strength: 133",
       "Damage: 89-191",
@@ -3865,7 +3865,7 @@ const uniqueItems = {
   "Baranar's Star": {
     name: "Baranar's Star",
     type: "Devil Star",
-    image: "http://www.d2tomb.com/images/uniques/bloodrise.gif",
+    image: "uniques/bloodrise.gif",
     props: [
       "Damage: 129-159",
       "Durability: 172",
@@ -3886,7 +3886,7 @@ const uniqueItems = {
   "Horizon's Tornado": {
     name: "Horizon's Tornado",
     type: "Scourge",
-    image: "http://www.d2tomb.com/images/items/flail.gif",
+    image: "items/flail.gif",
     props: [
       "Req Strength: 100",
       "Req Dexterity: 62",
@@ -3906,7 +3906,7 @@ const uniqueItems = {
   Stormlash: {
     name: "Stormlash",
     type: "Scourge",
-    image: "http://www.d2tomb.com/images/items/flail.gif",
+    image: "items/flail.gif",
     props: [
       "Req Strength: 125",
       "Req Dexterity: 77",
@@ -3929,7 +3929,7 @@ const uniqueItems = {
   "Schaefer's Hammer": {
     name: "Schaefer's Hammer",
     type: "Legendary Mallet",
-    image: "http://www.d2tomb.com/images/uniques/ironstone.gif",
+    image: "uniques/ironstone.gif",
     props: [
       "Damage: 100-338",
       "Req Strength: 189",
@@ -3951,7 +3951,7 @@ const uniqueItems = {
   "Stone Crusher": {
     name: "Stone Crusher",
     type: "Legendary Mallet",
-    image: "http://www.d2tomb.com/images/uniques/ironstone.gif",
+    image: "uniques/ironstone.gif",
     props: [
       "Req Strength: 189",
       "Damage: 190-256",
@@ -3971,7 +3971,7 @@ const uniqueItems = {
   Windhammer: {
     name: "Windhammer",
     type: "Ogre Maul",
-    image: "http://www.d2tomb.com/images/items/maul.gif",
+    image: "items/maul.gif",
     props: [
       "Req Strength: 225",
       "Damage: 215-349",
@@ -3989,7 +3989,7 @@ const uniqueItems = {
   "The Cranium Basher": {
     name: "The Cranium Basher",
     type: "Thunder Maul",
-    image: "http://www.d2tomb.com/images/uniques/steeldriver.gif",
+    image: "uniques/steeldriver.gif",
     props: [
       "Damage: 119-632",
       "Indestructible",
@@ -4009,7 +4009,7 @@ const uniqueItems = {
   "Earth Shifter": {
     name: "Earth Shifter",
     type: "Thunder Maul",
-    image: "http://www.d2tomb.com/images/uniques/steeldriver.gif",
+    image: "uniques/steeldriver.gif",
     props: [
       "Req Strength: 253",
       "Damage: 115-720",
@@ -4030,7 +4030,7 @@ const uniqueItems = {
   "Dimoak's Hew": {
     name: "Dimoak's Hew",
     type: "Bardiche",
-    image: "http://www.d2tomb.com/images/uniques/dimoakshew.gif",
+    image: "uniques/dimoakshew.gif",
     props: [
       "Damage: 2-54",
       "Durability:  50",
@@ -4047,7 +4047,7 @@ const uniqueItems = {
   Steelgoad: {
     name: "Steelgoad",
     type: "Voulge",
-    image: "http://www.d2tomb.com/images/uniques/steelgoad.gif",
+    image: "uniques/steelgoad.gif",
     props: [
       "Damage: 9-37",
       "Durability: 70-90",
@@ -4065,7 +4065,7 @@ const uniqueItems = {
   "Soul Harvest": {
     name: "Soul Harvest",
     type: "Scythe",
-    image: "http://www.d2tomb.com/images/uniques/soulharvest.gif",
+    image: "uniques/soulharvest.gif",
     props: [
       "Damage: 12-38",
       "Durability: 65",
@@ -4084,7 +4084,7 @@ const uniqueItems = {
   "The Battlebranch": {
     name: "The Battlebranch",
     type: "Poleaxe",
-    image: "http://www.d2tomb.com/images/uniques/battlebranch.gif",
+    image: "uniques/battlebranch.gif",
     props: [
       "Damage: 27-66",
       "Durability: 65",
@@ -4102,7 +4102,7 @@ const uniqueItems = {
   Woestave: {
     name: "Woestave",
     type: "Halberd",
-    image: "http://www.d2tomb.com/images/uniques/woestave.gif",
+    image: "uniques/woestave.gif",
     props: [
       "Damage: 14-62",
       "Durability: 55",
@@ -4123,7 +4123,7 @@ const uniqueItems = {
   "The Grim Reaper": {
     name: "The Grim Reaper",
     type: "War Scythe",
-    image: "http://www.d2tomb.com/images/uniques/thegrimreaper.gif",
+    image: "uniques/thegrimreaper.gif",
     props: [
       "Damage: 33-43",
       "Durability: 55",
@@ -4141,7 +4141,7 @@ const uniqueItems = {
   "The Meat Scraper": {
     name: "The Meat Scraper",
     type: "Lochaber Axe",
-    image: "http://www.d2tomb.com/images/items/bardiche.gif",
+    image: "items/bardiche.gif",
     props: [
       "Req Strength: 80",
       "Req Dexterity: 0",
@@ -4160,7 +4160,7 @@ const uniqueItems = {
   "Blackleach Blade": {
     name: "Blackleach Blade",
     type: "Bill",
-    image: "http://www.d2tomb.com/images/items/voulge.gif",
+    image: "items/voulge.gif",
     props: [
       "Req Strength: 72",
       "Req Dexterity: 0",
@@ -4179,7 +4179,7 @@ const uniqueItems = {
   "Athena's Wrath": {
     name: "Athena's Wrath",
     type: "Battle Scythe",
-    image: "http://www.d2tomb.com/images/items/scythe.gif",
+    image: "items/scythe.gif",
     props: [
       "Req Strength: 82",
       "Req Dexterity: 82",
@@ -4198,7 +4198,7 @@ const uniqueItems = {
   "Pierre Tombale Couant": {
     name: "Pierre Tombale Couant",
     type: "Partizan",
-    image: "http://www.d2tomb.com/images/items/poleaxe.gif",
+    image: "items/poleaxe.gif",
     props: [
       "Req Strength: 113",
       "Req Dexterity: 67",
@@ -4218,7 +4218,7 @@ const uniqueItems = {
   "Husoldal Evo": {
     name: "Husoldal Evo",
     type: "Bec-De-Corbin",
-    image: "http://www.d2tomb.com/images/items/halberd.gif",
+    image: "items/halberd.gif",
     props: [
       "Req Strength: 133",
       "Req Dexterity: 91",
@@ -4237,7 +4237,7 @@ const uniqueItems = {
   "Grim's Burning Dead": {
     name: "Grim's Burning Dead",
     type: "Grim Scythe",
-    image: "http://www.d2tomb.com/images/items/warscythe.gif",
+    image: "items/warscythe.gif",
     props: [
       "Req Strength: 70",
       "Req Dexterity: 70",
@@ -4259,7 +4259,7 @@ const uniqueItems = {
   Bonehew: {
     name: "Bonehew",
     type: "Ogre Axe",
-    image: "http://www.d2tomb.com/images/items/bardiche.gif",
+    image: "items/bardiche.gif",
     props: [
       "Req Strength: 195",
       "Req Dexterity: 75",
@@ -4278,7 +4278,7 @@ const uniqueItems = {
   "The Reaper's Toll": {
     name: "The Reaper's Toll",
     type: "Thresher",
-    image: "http://www.d2tomb.com/images/items/scythe.gif",
+    image: "items/scythe.gif",
     props: [
       "Req Strength: 114",
       "Req Dexterity: 89",
@@ -4298,7 +4298,7 @@ const uniqueItems = {
   "Tomb Reaver": {
     name: "Tomb Reaver",
     type: "Cryptic Axe",
-    image: "http://www.d2tomb.com/images/items/poleaxe.gif",
+    image: "items/poleaxe.gif",
     props: [
       "Req Strength: 165",
       "Req Dexterity: 103",
@@ -4321,7 +4321,7 @@ const uniqueItems = {
   Stormspire: {
     name: "Stormspire",
     type: "Giant Thresher",
-    image: "http://www.d2tomb.com/images/items/warscythe.gif",
+    image: "items/warscythe.gif",
     props: [
       "Req Strength: 188",
       "Req Dexterity: 140",
@@ -4342,7 +4342,7 @@ const uniqueItems = {
   "Knell Striker": {
     name: "Knell Striker",
     type: "Scepter",
-    image: "http://www.d2tomb.com/images/items/scepter.gif",
+    image: "items/scepter.gif",
     props: [
       "Damage: 10-19",
       "Durability: 50",
@@ -4361,7 +4361,7 @@ const uniqueItems = {
   Rusthandle: {
     name: "Rusthandle",
     type: "Grand Scepter",
-    image: "http://www.d2tomb.com/images/items/grandscepter.gif",
+    image: "items/grandscepter.gif",
     props: [
       "Damage: 15-35",
       "Durability: 60",
@@ -4381,7 +4381,7 @@ const uniqueItems = {
   Stormeye: {
     name: "Stormeye",
     type: "War Scepter",
-    image: "http://www.d2tomb.com/images/items/warscepter.gif",
+    image: "items/warscepter.gif",
     props: [
       "Damage: 18-37",
       "Durability: 70",
@@ -4401,7 +4401,7 @@ const uniqueItems = {
   "Zakarum's Hand": {
     name: "Zakarum's Hand",
     type: "Rune Scepter",
-    image: "http://www.d2tomb.com/images/items/scepter.gif",
+    image: "items/scepter.gif",
     props: [
       "Req Strength: 58",
       "Damage: 36-76",
@@ -4423,7 +4423,7 @@ const uniqueItems = {
   "The Fetid Sprinkler": {
     name: "The Fetid Sprinkler",
     type: "Holy Water Sprinkler",
-    image: "http://www.d2tomb.com/images/items/grandscepter.gif",
+    image: "items/grandscepter.gif",
     props: [
       "Req Strength: 76",
       "Damage: 51-129",
@@ -4443,7 +4443,7 @@ const uniqueItems = {
   "Hand of Blessed Light": {
     name: "Hand of Blessed Light",
     type: "Divine Scepter",
-    image: "http://www.d2tomb.com/images/items/warscepter.gif",
+    image: "items/warscepter.gif",
     props: [
       "Req Strength: 103",
       "Damage: 56-143",
@@ -4466,7 +4466,7 @@ const uniqueItems = {
   "Heaven's Light": {
     name: "Heaven's Light",
     type: "Mighty Scepter",
-    image: "http://www.d2tomb.com/images/items/scepter.gif",
+    image: "items/scepter.gif",
     props: [
       "Req Strength: 125",
       "Req Dexterity: 65",
@@ -4488,7 +4488,7 @@ const uniqueItems = {
   "The Redeemer": {
     name: "The Redeemer",
     type: "Mighty Scepter",
-    image: "http://www.d2tomb.com/images/items/scepter.gif",
+    image: "items/scepter.gif",
     props: [
       'img src="images/buttons/data_icon2.gif" height="14" width="14" border="0">',
       "Req Strength: 50",
@@ -4512,7 +4512,7 @@ const uniqueItems = {
   "Astreon's Iron Ward": {
     name: "Astreon's Iron Ward",
     type: "Caduceus",
-    image: "http://www.d2tomb.com/images/items/warscepter.gif",
+    image: "items/warscepter.gif",
     props: [
       "Req Strength: 97",
       "Req Dexterity: 70",
@@ -4535,7 +4535,7 @@ const uniqueItems = {
   "Pelta Lunata": {
     name: "Pelta Lunata",
     type: "Buckler",
-    image: "http://www.d2tomb.com/images/uniques/peltalunata.gif",
+    image: "uniques/peltalunata.gif",
     props: [
       "Defense: 39",
       "Durability: 20-24",
@@ -4554,7 +4554,7 @@ const uniqueItems = {
   "Umbral Disk": {
     name: "Umbral Disk",
     type: "Small Shield",
-    image: "http://www.d2tomb.com/images/uniques/umbraldisk.gif",
+    image: "uniques/umbraldisk.gif",
     props: [
       "Defense: 45-46",
       "Durability: 26-31",
@@ -4575,7 +4575,7 @@ const uniqueItems = {
   Stormguild: {
     name: "Stormguild",
     type: "Large Shield",
-    image: "http://www.d2tomb.com/images/uniques/stormguild.gif",
+    image: "uniques/stormguild.gif",
     props: [
       "Defense: 52-54",
       "Durability: 34-39",
@@ -4595,7 +4595,7 @@ const uniqueItems = {
   Steelclash: {
     name: "Steelclash",
     type: "Kite Shield",
-    image: "http://www.d2tomb.com/images/uniques/steelclash.gif",
+    image: "uniques/steelclash.gif",
     props: [
       "Defense: 50-58",
       "Durability: 45-50",
@@ -4616,7 +4616,7 @@ const uniqueItems = {
   "Swordback Hold": {
     name: "Swordback Hold",
     type: "Spiked Shield",
-    image: "http://www.d2tomb.com/images/uniques/swordbackhold.gif",
+    image: "uniques/swordbackhold.gif",
     props: [
       "Defense: 43-51",
       "Durabilty: 40",
@@ -4634,7 +4634,7 @@ const uniqueItems = {
   "Bverrit Keep": {
     name: "Bverrit Keep",
     type: "Tower Shield",
-    image: "http://www.d2tomb.com/images/uniques/bverritkeep.gif",
+    image: "uniques/bverritkeep.gif",
     props: [
       "Defense: 76-87",
       "Durability: 140-160",
@@ -4653,7 +4653,7 @@ const uniqueItems = {
   "Wall of the Eyeless": {
     name: "Wall of the Eyeless",
     type: "Bone Shield",
-    image: "http://www.d2tomb.com/images/uniques/walloftheeyeless.gif",
+    image: "uniques/walloftheeyeless.gif",
     props: [
       "Defense: 50-53",
       "Durability: 40",
@@ -4672,7 +4672,7 @@ const uniqueItems = {
   "The Ward": {
     name: "The Ward",
     type: "Gothic Shield",
-    image: "http://www.d2tomb.com/images/uniques/theward.gif",
+    image: "uniques/theward.gif",
     props: [
       "Defense: 112",
       "Durability: 40",
@@ -4691,7 +4691,7 @@ const uniqueItems = {
   Visceratuant: {
     name: "Visceratuant",
     type: "Defender",
-    image: "http://www.d2tomb.com/images/items/buckler.gif",
+    image: "items/buckler.gif",
     props: [
       "Defense: 100-125",
       "Durability: 68",
@@ -4709,7 +4709,7 @@ const uniqueItems = {
   "Moser's Blessed Circle": {
     name: "Moser's Blessed Circle",
     type: "Round Shield",
-    image: "http://www.d2tomb.com/images/items/smallshield.gif",
+    image: "items/smallshield.gif",
     props: [
       "Defense: 156-179",
       "Durability: 64",
@@ -4727,7 +4727,7 @@ const uniqueItems = {
   Stormchaser: {
     name: "Stormchaser",
     type: "Scutum",
-    image: "http://www.d2tomb.com/images/items/largeshield.gif",
+    image: "items/largeshield.gif",
     props: [
       "Defense: 161-198",
       "Durability: 62",
@@ -4749,7 +4749,7 @@ const uniqueItems = {
   "Tiamat's Rebuke": {
     name: "Tiamat's Rebuke",
     type: "Dragon Shield",
-    image: "http://www.d2tomb.com/images/items/kiteshield.gif",
+    image: "items/kiteshield.gif",
     props: [
       "Defense: 163-204",
       "Durability: 116",
@@ -4770,7 +4770,7 @@ const uniqueItems = {
   "Lance Guard": {
     name: "Lance Guard",
     type: "Barbed Shield",
-    image: "http://www.d2tomb.com/images/items/spikedshield.gif",
+    image: "items/spikedshield.gif",
     props: [
       "Defense: 134-173",
       "Durability: 55",
@@ -4789,7 +4789,7 @@ const uniqueItems = {
   "Gerke's Sanctuary": {
     name: "Gerke's Sanctuary",
     type: "Pavise",
-    image: "http://www.d2tomb.com/images/items/towershield.gif",
+    image: "items/towershield.gif",
     props: [
       "Defense: 221-268",
       "Durability: 172",
@@ -4808,7 +4808,7 @@ const uniqueItems = {
   "Lidless Wall": {
     name: "Lidless Wall",
     type: "Grim Shield",
-    image: "http://www.d2tomb.com/images/items/boneshield.gif",
+    image: "items/boneshield.gif",
     props: [
       "Defense: 271-347",
       "Durability: 70",
@@ -4828,7 +4828,7 @@ const uniqueItems = {
   "Radament's Sphere": {
     name: "Radament's Sphere",
     type: "Ancient Shield",
-    image: "http://www.d2tomb.com/images/items/gothicshield.gif",
+    image: "items/gothicshield.gif",
     props: [
       "Defense: 244-282",
       "Durability: 100",
@@ -4848,7 +4848,7 @@ const uniqueItems = {
   "Blackoak Shield": {
     name: "Blackoak Shield",
     type: "Luna",
-    image: "http://www.d2tomb.com/images/uniques/umbraldisk.gif",
+    image: "uniques/umbraldisk.gif",
     props: [
       "Defense: 322-372",
       "Durability: 129",
@@ -4868,7 +4868,7 @@ const uniqueItems = {
   Stormshield: {
     name: "Stormshield",
     type: "Monarch",
-    image: "http://www.d2tomb.com/images/uniques/steelclash.gif",
+    image: "uniques/steelclash.gif",
     props: [
       "Defense: 136-519",
       "Req Strength: 156",
@@ -4889,7 +4889,7 @@ const uniqueItems = {
   "Spike Thorn": {
     name: "Spike Thorn",
     type: "Blade Barrier",
-    image: "http://www.d2tomb.com/images/items/spikedshield.gif",
+    image: "items/spikedshield.gif",
     props: [
       "Defense: 360-410",
       "Durability: 333",
@@ -4907,7 +4907,7 @@ const uniqueItems = {
   "Medusa's Gaze": {
     name: "Medusa's Gaze",
     type: "Aegis",
-    image: "http://www.d2tomb.com/images/items/towershield.gif",
+    image: "items/towershield.gif",
     props: [
       "Defense: 405-453",
       "Durability: 92",
@@ -4926,7 +4926,7 @@ const uniqueItems = {
   "Head Hunter's Glory": {
     name: "Head Hunter's Glory",
     type: "Troll Nest",
-    image: "http://www.d2tomb.com/images/items/boneshield.gif",
+    image: "items/boneshield.gif",
     props: [
       "Defense: 478-593",
       "Durability: 74",
@@ -4945,7 +4945,7 @@ const uniqueItems = {
   "Spirit Ward": {
     name: "Spirit Ward",
     type: "Ward",
-    image: "http://www.d2tomb.com/images/items/gothicshield.gif",
+    image: "items/gothicshield.gif",
     props: [
       "Defense: 393-478",
       "Durability: 100",
@@ -4964,7 +4964,7 @@ const uniqueItems = {
   "The Dragon Chang": {
     name: "The Dragon Chang",
     type: "Spear",
-    image: "http://www.d2tomb.com/images/uniques/thedragonchang.gif",
+    image: "uniques/thedragonchang.gif",
     props: [
       "Damage: 13-15",
       "Dexterity: 20",
@@ -4981,7 +4981,7 @@ const uniqueItems = {
   Razortine: {
     name: "Razortine",
     type: "Trident",
-    image: "http://www.d2tomb.com/images/uniques/razortine.gif",
+    image: "uniques/razortine.gif",
     props: [
       "Req Strength: 38",
       "Req Dexterity: 24",
@@ -5000,7 +5000,7 @@ const uniqueItems = {
   Bloodthief: {
     name: "Bloodthief",
     type: "Brandistock",
-    image: "http://www.d2tomb.com/images/uniques/bloodthief.gif",
+    image: "uniques/bloodthief.gif",
     props: [
       "Req Strength: 40",
       "Req Dexterity: 50",
@@ -5018,7 +5018,7 @@ const uniqueItems = {
   "Lance of Yaggai": {
     name: "Lance of Yaggai",
     type: "Spetum",
-    image: "http://www.d2tomb.com/images/uniques/lanceofyaggai.gif",
+    image: "uniques/lanceofyaggai.gif",
     props: [
       "Req Strength: 54",
       "Req Dexterity: 35",
@@ -5035,7 +5035,7 @@ const uniqueItems = {
   "The Tannr Gorerod": {
     name: "The Tannr Gorerod",
     type: "Pike",
-    image: "http://www.d2tomb.com/images/uniques/thetannrgorerod.gif",
+    image: "uniques/thetannrgorerod.gif",
     props: [
       "Req Strength: 60",
       "Req Dexterity: 45",
@@ -5055,7 +5055,7 @@ const uniqueItems = {
   "The Impaler": {
     name: "The Impaler",
     type: "War Spear",
-    image: "http://www.d2tomb.com/images/items/spear.gif",
+    image: "items/spear.gif",
     props: [
       "Req Strength: 25",
       "Req Dexterity: 25",
@@ -5076,7 +5076,7 @@ const uniqueItems = {
   "Kelpie Snare": {
     name: "Kelpie Snare",
     type: "Fuscina",
-    image: "http://www.d2tomb.com/images/items/trident.gif",
+    image: "items/trident.gif",
     props: [
       "Req Strength: 77",
       "Req Dexterity: 25",
@@ -5095,7 +5095,7 @@ const uniqueItems = {
   "Soulfeast Tine": {
     name: "Soulfeast Tine",
     type: "War Fork",
-    image: "http://www.d2tomb.com/images/items/brandistock.gif",
+    image: "items/brandistock.gif",
     props: [
       "Req Strength: 64",
       "Req Dexterity: 76",
@@ -5114,7 +5114,7 @@ const uniqueItems = {
   "Hone Sundan": {
     name: "Hone Sundan",
     type: "Yari",
-    image: "http://www.d2tomb.com/images/items/spetum.gif",
+    image: "items/spetum.gif",
     props: [
       "Req Strength: 101",
       "Damage: 95-217",
@@ -5131,7 +5131,7 @@ const uniqueItems = {
   "Spire of Honor": {
     name: "Spire of Honor",
     type: "Lance",
-    image: "http://www.d2tomb.com/images/items/pike.gif",
+    image: "items/pike.gif",
     props: [
       "Req Strength: 110",
       "Req Dexterity: 88",
@@ -5153,7 +5153,7 @@ const uniqueItems = {
   "Arioc's Needle": {
     name: "Arioc's Needle",
     type: "Hyperion Spear",
-    image: "http://www.d2tomb.com/images/items/spear.gif",
+    image: "items/spear.gif",
     props: [
       "Req Strength: 155",
       "Req Dexterity: 120",
@@ -5172,7 +5172,7 @@ const uniqueItems = {
   Viperfork: {
     name: "Viperfork",
     type: "Mancatcher",
-    image: "http://www.d2tomb.com/images/items/brandistock.gif",
+    image: "items/brandistock.gif",
     props: [
       "Req Strength: 132",
       "Req Dexterity: 134",
@@ -5191,7 +5191,7 @@ const uniqueItems = {
   "Steel Pillar": {
     name: "Steel Pillar",
     type: "War Pike",
-    image: "http://www.d2tomb.com/images/items/pike.gif",
+    image: "items/pike.gif",
     props: [
       "Req Strength: 165",
       "Req Dexterity: 106",
@@ -5209,7 +5209,7 @@ const uniqueItems = {
   "Bane Ash": {
     name: "Bane Ash",
     type: "Short Staff",
-    image: "http://www.d2tomb.com/images/uniques/baneash.gif",
+    image: "uniques/baneash.gif",
     props: [
       "Damage: 1-8",
       "Durability: 20",
@@ -5228,7 +5228,7 @@ const uniqueItems = {
   "Serpent Lord": {
     name: "Serpent Lord",
     type: "Long Staff",
-    image: "http://www.d2tomb.com/images/uniques/serpentlord.gif",
+    image: "uniques/serpentlord.gif",
     props: [
       "Damage: 2-11",
       "Durability: 30",
@@ -5247,7 +5247,7 @@ const uniqueItems = {
   "Spire of Lazarus": {
     name: "Spire of Lazarus",
     type: "Gnarled Staff",
-    image: "http://www.d2tomb.com/images/uniques/spireoflazarus.gif",
+    image: "uniques/spireoflazarus.gif",
     props: [
       "Damage: 4-12",
       "Durability: 35",
@@ -5268,7 +5268,7 @@ const uniqueItems = {
   "The Salamander": {
     name: "The Salamander",
     type: "Battle Staff",
-    image: "http://www.d2tomb.com/images/uniques/thesalamander.gif",
+    image: "uniques/thesalamander.gif",
     props: [
       "Damage: 6-13",
       "Durability: 40",
@@ -5286,7 +5286,7 @@ const uniqueItems = {
   "The Iron Jang Bong": {
     name: "The Iron Jang Bong",
     type: "War Staff",
-    image: "http://www.d2tomb.com/images/uniques/theironiangbong.gif",
+    image: "uniques/theironiangbong.gif",
     props: [
       "Damage: 24-56",
       "Durability: 50",
@@ -5306,7 +5306,7 @@ const uniqueItems = {
   Razorswitch: {
     name: "Razorswitch",
     type: "Jo Staff",
-    image: "http://www.d2tomb.com/images/items/shortstaff.gif",
+    image: "items/shortstaff.gif",
     props: [
       "Damage: 6-21",
       "Durability: 20",
@@ -5326,7 +5326,7 @@ const uniqueItems = {
   Ribcracker: {
     name: "Ribcracker",
     type: "Quarter Staff",
-    image: "http://www.d2tomb.com/images/items/longstaff.gif",
+    image: "items/longstaff.gif",
     props: [
       "Damage: 54-169",
       "Durability: 130",
@@ -5347,7 +5347,7 @@ const uniqueItems = {
   "Chromatic Ire": {
     name: "Chromatic Ire",
     type: "Cedar Staff",
-    image: "http://www.d2tomb.com/images/items/gnarledstaff.gif",
+    image: "items/gnarledstaff.gif",
     props: [
       "Damage: 11-32",
       "Durability: 35",
@@ -5368,7 +5368,7 @@ const uniqueItems = {
   Warpspear: {
     name: "Warpspear",
     type: "Gothic Staff",
-    image: "http://www.d2tomb.com/images/items/battlestaff.gif",
+    image: "items/battlestaff.gif",
     props: [
       "Damage: 14-34",
       "Durability: 40",
@@ -5387,7 +5387,7 @@ const uniqueItems = {
   "Skull Collector": {
     name: "Skull Collector",
     type: "Rune Staff",
-    image: "http://www.d2tomb.com/images/items/warstaff.gif",
+    image: "items/warstaff.gif",
     props: [
       "Damage: 24-58",
       "Durability: 50",
@@ -5404,7 +5404,7 @@ const uniqueItems = {
   "Ondal's Wisdom": {
     name: "Ondal's Wisdom",
     type: "Elder Staff",
-    image: "http://www.d2tomb.com/images/items/gnarledstaff.gif",
+    image: "items/gnarledstaff.gif",
     props: [
       "Req Strength: 44",
       "Req Dexterity: 37",
@@ -5424,7 +5424,7 @@ const uniqueItems = {
   "Mang Song's Lesson": {
     name: "Mang Song's Lesson",
     type: "Archon Staff",
-    image: "http://www.d2tomb.com/images/items/warstaff.gif",
+    image: "items/warstaff.gif",
     props: [
       "Req Strength: 34",
       "Damage: 83-99",
@@ -5443,7 +5443,7 @@ const uniqueItems = {
   "Rixot's Keen": {
     name: "Rixot's Keen",
     type: "Short Sword",
-    image: "http://www.d2tomb.com/images/uniques/rixotskeen.gif",
+    image: "uniques/rixotskeen.gif",
     props: [
       "Damage: 9-14",
       "Durability: 24",
@@ -5461,7 +5461,7 @@ const uniqueItems = {
   "Blood Crescent": {
     name: "Blood Crescent",
     type: "Scimitar",
-    image: "http://www.d2tomb.com/images/uniques/bloodcrescent.gif",
+    image: "uniques/bloodcrescent.gif",
     props: [
       "Req Dexterity: 21",
       "Damage: 3-10",
@@ -5481,7 +5481,7 @@ const uniqueItems = {
   "Skewer of Krintiz": {
     name: "Skewer of Krintiz",
     type: "Sabre",
-    image: "http://www.d2tomb.com/images/uniques/skewerofkrintiz.gif",
+    image: "uniques/skewerofkrintiz.gif",
     props: [
       "Req Strength: 25",
       "Req Dexterity: 25",
@@ -5501,7 +5501,7 @@ const uniqueItems = {
   Gleamscythe: {
     name: "Gleamscythe",
     type: "Falchion",
-    image: "http://www.d2tomb.com/images/uniques/gleamscythe.gif",
+    image: "uniques/gleamscythe.gif",
     props: [
       "Req Strength: 33",
       "Damage: 14-34",
@@ -5520,7 +5520,7 @@ const uniqueItems = {
   "Griswold's Edge": {
     name: "Griswold's Edge",
     type: "Broad Sword",
-    image: "http://www.d2tomb.com/images/uniques/griswoldsedge.gif",
+    image: "uniques/griswoldsedge.gif",
     props: [
       "Req Strength: 48",
       "Damage: 12-30",
@@ -5539,7 +5539,7 @@ const uniqueItems = {
   Hellplague: {
     name: "Hellplague",
     type: "Long Sword",
-    image: "http://www.d2tomb.com/images/uniques/hellplague.gif",
+    image: "uniques/hellplague.gif",
     props: [
       "Req Strength: 55",
       "Req Dexterity: 39",
@@ -5559,7 +5559,7 @@ const uniqueItems = {
   "Culwen's Point": {
     name: "Culwen's Point",
     type: "War Sword",
-    image: "http://www.d2tomb.com/images/uniques/culwenspoint.gif",
+    image: "uniques/culwenspoint.gif",
     props: [
       "Req Strength: 71",
       "Req Dexterity: 45",
@@ -5579,7 +5579,7 @@ const uniqueItems = {
   Shadowfang: {
     name: "Shadowfang",
     type: " 2-Handed Sword",
-    image: "http://www.d2tomb.com/images/uniques/shadowfang.gif",
+    image: "uniques/shadowfang.gif",
     props: [
       "Req Strength: 35",
       "Req Dexterity: 27",
@@ -5599,7 +5599,7 @@ const uniqueItems = {
   Soulflay: {
     name: "Soulflay",
     type: "Claymore",
-    image: "http://www.d2tomb.com/images/uniques/soulflay.gif",
+    image: "uniques/soulflay.gif",
     props: [
       "Req Strength: 47",
       "Damage: 22-60",
@@ -5617,7 +5617,7 @@ const uniqueItems = {
   "Kinemil's Awl": {
     name: "Kinemil's Awl",
     type: "Giant Sword",
-    image: "http://www.d2tomb.com/images/uniques/kinemilsawl.gif",
+    image: "uniques/kinemilsawl.gif",
     props: [
       "Req Strength: 56",
       "Req Dexterity: 34",
@@ -5636,7 +5636,7 @@ const uniqueItems = {
   Blacktongue: {
     name: "Blacktongue",
     type: "Bastard Sword",
-    image: "http://www.d2tomb.com/images/uniques/blacktongue.gif",
+    image: "uniques/blacktongue.gif",
     props: [
       "Req Strength: 62",
       "Damage: 30-44",
@@ -5654,7 +5654,7 @@ const uniqueItems = {
   Ripsaw: {
     name: "Ripsaw",
     type: "Flamberge",
-    image: "http://www.d2tomb.com/images/uniques/ripsaw.gif",
+    image: "uniques/ripsaw.gif",
     props: [
       "Req Strength: 70",
       "Req Dexterity: 49",
@@ -5672,7 +5672,7 @@ const uniqueItems = {
   "The Patriarch": {
     name: "The Patriarch",
     type: "Great Sword",
-    image: "http://www.d2tomb.com/images/uniques/thepatriarch.gif",
+    image: "uniques/thepatriarch.gif",
     props: [
       "Req Strength: 100",
       "Req Dexterity: 60",
@@ -5692,7 +5692,7 @@ const uniqueItems = {
   Bloodletter: {
     name: "Bloodletter",
     type: "Gladius",
-    image: "http://www.d2tomb.com/images/items/shortsword.gif",
+    image: "items/shortsword.gif",
     props: [
       "Req Strength: 25",
       "Damage: 31-97",
@@ -5713,7 +5713,7 @@ const uniqueItems = {
   "Coldsteel Eye": {
     name: "Coldsteel Eye",
     type: "Cutlass",
-    image: "http://www.d2tomb.com/images/items/scimitar.gif",
+    image: "items/scimitar.gif",
     props: [
       "Req Strength: 25",
       "Req Dexterity: 52",
@@ -5733,7 +5733,7 @@ const uniqueItems = {
   Hexfire: {
     name: "Hexfire",
     type: "Shamshir",
-    image: "http://www.d2tomb.com/images/items/saber.gif",
+    image: "items/saber.gif",
     props: [
       "Req Strength: 58",
       "Req Dexterity: 58",
@@ -5754,7 +5754,7 @@ const uniqueItems = {
   "Blade of Ali Baba": {
     name: "Blade of Ali Baba",
     type: "Tulwar",
-    image: "http://www.d2tomb.com/images/items/falchion.gif",
+    image: "items/falchion.gif",
     props: [
       "Req Strength: 70",
       "Req Dexterity: 42",
@@ -5774,7 +5774,7 @@ const uniqueItems = {
   "Ginther's Rift": {
     name: "Ginther's Rift",
     type: "Dimensional Blade",
-    image: "http://www.d2tomb.com/images/items/crystalsword.gif",
+    image: "items/crystalsword.gif",
     props: [
       "Req Strength: 85",
       "Req Dexterity: 60",
@@ -5793,7 +5793,7 @@ const uniqueItems = {
   Headstriker: {
     name: "Headstriker",
     type: "Battle Sword",
-    image: "http://www.d2tomb.com/images/items/broadsword.gif",
+    image: "items/broadsword.gif",
     props: [
       "Req Strength: 92",
       "Req Dexterity: 43",
@@ -5812,7 +5812,7 @@ const uniqueItems = {
   "Plague Bearer": {
     name: "Plague Bearer",
     type: "Rune Sword",
-    image: "http://www.d2tomb.com/images/items/longsword.gif",
+    image: "items/longsword.gif",
     props: [
       "Req Strength: 103",
       "Req Dexterity: 79",
@@ -5832,7 +5832,7 @@ const uniqueItems = {
   "The Atlantean": {
     name: "The Atlantean",
     type: "Ancient Sword",
-    image: "http://www.d2tomb.com/images/items/warsword.gif",
+    image: "items/warsword.gif",
     props: [
       "Req Strength: 127",
       "Req Dexterity: 88",
@@ -5853,7 +5853,7 @@ const uniqueItems = {
   "Crainte Vomir": {
     name: "Crainte Vomir",
     type: "Espandon",
-    image: "http://www.d2tomb.com/images/items/twohandedsword.gif",
+    image: "items/twohandedsword.gif",
     props: [
       "Req Strength: 73",
       "Req Dexterity: 61",
@@ -5873,7 +5873,7 @@ const uniqueItems = {
   "Bing Sz Wang": {
     name: "Bing Sz Wang",
     type: "Dacian Falx",
-    image: "http://www.d2tomb.com/images/items/claymore.gif",
+    image: "items/claymore.gif",
     props: [
       "Req Strength: 64",
       "Req Dexterity: 14",
@@ -5893,7 +5893,7 @@ const uniqueItems = {
   "The Vile Husk": {
     name: "The Vile Husk",
     type: "Tusk Sword",
-    image: "http://www.d2tomb.com/images/items/giantsword.gif",
+    image: "items/giantsword.gif",
     props: [
       "Req Strength: 104",
       "Req Dexterity: 71",
@@ -5913,7 +5913,7 @@ const uniqueItems = {
   Cloudcrack: {
     name: "Cloudcrack",
     type: "Gothic Sword",
-    image: "http://www.d2tomb.com/images/items/bastardsword.gif",
+    image: "items/bastardsword.gif",
     props: [
       "Req Strength: 113",
       "Req Dexterity: 20",
@@ -5936,7 +5936,7 @@ const uniqueItems = {
   "Todesfaelle Flamme": {
     name: "Todesfaelle Flamme",
     type: "Zweihander",
-    image: "http://www.d2tomb.com/images/items/flamberge.gif",
+    image: "items/flamberge.gif",
     props: [
       "Req Strength: 125",
       "Req Dexterity: 94",
@@ -5957,7 +5957,7 @@ const uniqueItems = {
   Swordguard: {
     name: "Swordguard",
     type: "Executioner Sword",
-    image: "http://www.d2tomb.com/images/items/greatsword.gif",
+    image: "items/greatsword.gif",
     props: [
       "Req Strength: 85",
       "Req Dexterity: 55",
@@ -5980,7 +5980,7 @@ const uniqueItems = {
   "Djinn Slayer": {
     name: "Djinn Slayer",
     type: "Ataghan",
-    image: "http://www.d2tomb.com/images/items/scimitar.gif",
+    image: "items/scimitar.gif",
     props: [
       "Req Strength: 138",
       "Req Dexterity: 95",
@@ -6001,7 +6001,7 @@ const uniqueItems = {
   Bloodmoon: {
     name: "Bloodmoon",
     type: "Elegant Blade",
-    image: "http://www.d2tomb.com/images/items/saber.gif",
+    image: "items/saber.gif",
     props: [
       "Req Strength: 109",
       "Req Dexterity: 122",
@@ -6020,7 +6020,7 @@ const uniqueItems = {
   Azurewrath: {
     name: "Azurewrath",
     type: "Phase Blade",
-    image: "http://www.d2tomb.com/images/items/crystalsword.gif",
+    image: "items/crystalsword.gif",
     props: [
       "Req Strength: 25",
       "Req Dexterity: 136",
@@ -6042,7 +6042,7 @@ const uniqueItems = {
   Lightsabre: {
     name: "Lightsabre",
     type: "Phase Blade",
-    image: "http://www.d2tomb.com/images/uniques/azurewrath.gif",
+    image: "uniques/azurewrath.gif",
     props: [
       "Req Strength: 25",
       "Req Dexterity: 136",
@@ -6066,7 +6066,7 @@ const uniqueItems = {
   Frostwind: {
     name: "Frostwind",
     type: "Cryptic Sword",
-    image: "http://www.d2tomb.com/images/items/longsword.gif",
+    image: "items/longsword.gif",
     props: [
       "Req Strength: 99",
       "Req Dexterity: 109",
@@ -6087,7 +6087,7 @@ const uniqueItems = {
   Flamebellow: {
     name: "Flamebellow",
     type: "Balrog Blade",
-    image: "http://www.d2tomb.com/images/items/giantsword.gif",
+    image: "items/giantsword.gif",
     props: [
       "Req Strength: 185",
       "Req Dexterity: 87",
@@ -6109,7 +6109,7 @@ const uniqueItems = {
   Doombringer: {
     name: "Doombringer",
     type: "Champion Sword",
-    image: "http://www.d2tomb.com/images/uniques/blacktongue.gif",
+    image: "uniques/blacktongue.gif",
     props: [
       "Req Strength: 163",
       "Req Dexterity: 103",
@@ -6129,7 +6129,7 @@ const uniqueItems = {
   "The Grandfather": {
     name: "The Grandfather",
     type: "Colossus Blade",
-    image: "http://www.d2tomb.com/images/uniques/thepatriarch.gif",
+    image: "uniques/thepatriarch.gif",
     props: [
       "Req Strength: 189",
       "Req Dexterity: 110",
@@ -6148,7 +6148,7 @@ const uniqueItems = {
   "Accuracy of Heaven": {
     name: "Accuracy of Heaven",
     type: "Throwing Knife",
-    image: "http://www.d2tomb.com/images/items/throwingknife.gif",
+    image: "items/throwingknife.gif",
     props: [
       "Throw Damage: 6-14",
       "OneHand Damage: 1-20",
@@ -6167,7 +6167,7 @@ const uniqueItems = {
   "Smoke Rift": {
     name: "Smoke Rift",
     type: "Balanced Axe",
-    image: "http://www.d2tomb.com/images/items/balancedaxe.gif",
+    image: "items/balancedaxe.gif",
     props: [
       "Throw Damage: 71-88",
       "OneHand Damage: 29-59",
@@ -6186,7 +6186,7 @@ const uniqueItems = {
   "Star Venom": {
     name: "Star Venom",
     type: "Throwing Knife",
-    image: "http://www.d2tomb.com/images/items/throwingknife.gif",
+    image: "items/throwingknife.gif",
     props: [
       "Throw Damage: 18-36",
       "OneHand Damage: 16-30",
@@ -6203,7 +6203,7 @@ const uniqueItems = {
   "Stone Splitter": {
     name: "Stone Splitter",
     type: "Balanced Axe",
-    image: "http://www.d2tomb.com/images/items/balancedaxe.gif",
+    image: "items/balancedaxe.gif",
     props: [
       "Throw Damage: 23-34",
       "OneHand Damage: 11-20",
@@ -6223,7 +6223,7 @@ const uniqueItems = {
   Deathbit: {
     name: "Deathbit",
     type: "Battle Dart",
-    image: "http://www.d2tomb.com/images/items/throwingknife.gif",
+    image: "items/throwingknife.gif",
     props: [
       "Req Strength: 25",
       "Req Dexterity: 52",
@@ -6243,7 +6243,7 @@ const uniqueItems = {
   "The Scalper": {
     name: "The Scalper",
     type: "Francisca",
-    image: "http://www.d2tomb.com/images/items/balancedaxe.gif",
+    image: "items/balancedaxe.gif",
     props: [
       "Req Strength: 25",
       "Req Dexterity: 80",
@@ -6264,7 +6264,7 @@ const uniqueItems = {
   Warshrike: {
     name: "Warshrike",
     type: "Winged Knife",
-    image: "http://www.d2tomb.com/images/items/balancedknife.gif",
+    image: "items/balancedknife.gif",
     props: [
       "Req Strength: 45",
       "Req Dexterity: 142",
@@ -6284,7 +6284,7 @@ const uniqueItems = {
   Gimmershred: {
     name: "Gimmershred",
     type: "Flying Axe",
-    image: "http://www.d2tomb.com/images/items/throwingaxe.gif",
+    image: "items/throwingaxe.gif",
     props: [
       "Req Strength: 88",
       "Req Dexterity: 108",
@@ -6304,7 +6304,7 @@ const uniqueItems = {
   Lacerator: {
     name: "Lacerator",
     type: "Winged Axe",
-    image: "http://www.d2tomb.com/images/items/balancedaxe.gif",
+    image: "items/balancedaxe.gif",
     props: [
       "Req Strength: 96",
       "Req Dexterity: 122",
@@ -6325,7 +6325,7 @@ const uniqueItems = {
   "Torch of Iro": {
     name: "Torch of Iro",
     type: "Wand",
-    image: "http://www.d2tomb.com/images/uniques/torchofiro.gif",
+    image: "uniques/torchofiro.gif",
     props: [
       "Damage: 2-4",
       "Durability: 15",
@@ -6343,7 +6343,7 @@ const uniqueItems = {
   Maelstrom: {
     name: "Maelstrom",
     type: "Yew Wand",
-    image: "http://www.d2tomb.com/images/uniques/maelstrom.gif",
+    image: "uniques/maelstrom.gif",
     props: [
       "Damage: 2-8",
       "Durability: 15",
@@ -6363,7 +6363,7 @@ const uniqueItems = {
   Gravenspine: {
     name: "Gravenspine",
     type: "Bone Wand",
-    image: "http://www.d2tomb.com/images/uniques/gravenspine.gif",
+    image: "uniques/gravenspine.gif",
     props: [
       "Damage: 3-7",
       "Durabiilty: 15",
@@ -6381,7 +6381,7 @@ const uniqueItems = {
   "Ume's Lament": {
     name: "Ume's Lament",
     type: "Grim Wand",
-    image: "http://www.d2tomb.com/images/uniques/umeslament.gif",
+    image: "uniques/umeslament.gif",
     props: [
       "Damage: 5-11",
       "Durability: 15",
@@ -6399,7 +6399,7 @@ const uniqueItems = {
   "Suicide Branch": {
     name: "Suicide Branch",
     type: "Burnt Wand",
-    image: "http://www.d2tomb.com/images/items/wand.gif",
+    image: "items/wand.gif",
     props: [
       "Req Strength: 25",
       "Damage: 8-18",
@@ -6418,7 +6418,7 @@ const uniqueItems = {
   "Carin Shard": {
     name: "Carin Shard",
     type: "Petrified Wand",
-    image: "http://www.d2tomb.com/images/items/yewwand.gif",
+    image: "items/yewwand.gif",
     props: [
       "Req Strength: 25",
       "Damage: 8-24",
@@ -6438,7 +6438,7 @@ const uniqueItems = {
   "Arm of King Leoric": {
     name: "Arm of King Leoric",
     type: "Tomb Wand",
-    image: "http://www.d2tomb.com/images/items/bonewand.gif",
+    image: "items/bonewand.gif",
     props: [
       "Req Strength: 25",
       "Damage: 10-22",
@@ -6461,7 +6461,7 @@ const uniqueItems = {
   "Blackhand Key": {
     name: "Blackhand Key",
     type: "Grave Wand",
-    image: "http://www.d2tomb.com/images/items/grimwand.gif",
+    image: "items/grimwand.gif",
     props: [
       "Req Strength: 25",
       "Damage: 13-29",
@@ -6482,7 +6482,7 @@ const uniqueItems = {
   Boneshade: {
     name: "Boneshade",
     type: "Lich Wand",
-    image: "http://www.d2tomb.com/images/items/bonewand.gif",
+    image: "items/bonewand.gif",
     props: [
       "Req Strength: 25",
       "Damage: 10-31",
@@ -6502,7 +6502,7 @@ const uniqueItems = {
   "Death's Web": {
     name: "Death's Web",
     type: "Unearthed Wand",
-    image: "http://www.d2tomb.com/images/items/grimwand.gif",
+    image: "items/grimwand.gif",
     props: [
       "Req Strength: 25",
       "Damage: 22-28",
@@ -6520,7 +6520,7 @@ const uniqueItems = {
   Stoneraven: {
     name: "Stoneraven",
     type: "Matriarchal Spear",
-    image: "http://www.d2tomb.com/images/items/maidenspear.gif",
+    image: "items/maidenspear.gif",
     props: [
       "Damage: 214-361",
       "Req Strength: 114",
@@ -6538,7 +6538,7 @@ const uniqueItems = {
   "Lycander's Flank": {
     name: "Lycander's Flank",
     type: "Ceremonial Pike",
-    image: "http://www.d2tomb.com/images/items/lycanders_flank.gif",
+    image: "items/lycanders_flank.gif",
     props: [
       "Damage: 130-353",
       "Req Strength: 115",
@@ -6559,7 +6559,7 @@ const uniqueItems = {
   "Lycander's Aim": {
     name: "Lycander's Aim",
     type: "Ceremonial Bow",
-    image: "http://www.d2tomb.com/images/items/lycanders_aim.gif",
+    image: "items/lycanders_aim.gif",
     props: [
       "Damage: 72-173",
       "Req Strength: 73",
@@ -6579,7 +6579,7 @@ const uniqueItems = {
   "Titan's Revenge": {
     name: "Titan's Revenge",
     type: "Ceremonial Javelin",
-    image: "http://www.d2tomb.com/images/items/titans_revenge.gif",
+    image: "items/titans_revenge.gif",
     props: [
       "Damage: 70-155",
       "Throw Damage: 70-212",
@@ -6601,7 +6601,7 @@ const uniqueItems = {
   Thunderstroke: {
     name: "Thunderstroke",
     type: "Matriarchal Javelin",
-    image: "http://www.d2tomb.com/images/items/maidenjavelin.gif",
+    image: "items/maidenjavelin.gif",
     props: [
       "Damage: 75-162",
       "Throw Damage: 87-198",
@@ -6621,7 +6621,7 @@ const uniqueItems = {
   "Blood Raven's Charge": {
     name: "Blood Raven's Charge",
     type: "Matriarchal Bow",
-    image: "http://www.d2tomb.com/images/items/stagbow.gif",
+    image: "items/stagbow.gif",
     props: [
       "Damage: 56-155",
       "Req Strength: 87",
@@ -6638,7 +6638,7 @@ const uniqueItems = {
   "Shadow Killer": {
     name: "Shadow Killer",
     type: "Battle Cestus",
-    image: "http://www.d2tomb.com/images/items/hatchethands.gif",
+    image: "items/hatchethands.gif",
     props: [
       "Damage: 145-201",
       "Indestructible",
@@ -6657,7 +6657,7 @@ const uniqueItems = {
   "Bartuc's Cut-Throat": {
     name: "Bartuc's Cut-Throat",
     type: "Greater Talons",
-    image: "http://www.d2tomb.com/images/items/bartucs_cutthroat.gif",
+    image: "items/bartucs_cutthroat.gif",
     props: [
       "Damage: 77-155",
       "Durability: 69",
@@ -6678,7 +6678,7 @@ const uniqueItems = {
   "Jade Talon": {
     name: "Jade Talon",
     type: "Wrist Sword",
-    image: "http://www.d2tomb.com/images/items/katar.gif",
+    image: "items/katar.gif",
     props: [
       "Damage: 98-153",
       "Durability: 56",
@@ -6697,7 +6697,7 @@ const uniqueItems = {
   "Firelizard's Talons": {
     name: "Firelizard's Talons",
     type: "Feral Claws",
-    image: "http://www.d2tomb.com/images/items/claws.gif",
+    image: "items/claws.gif",
     props: [
       "Damage: 66-196",
       "Durability: 52",
@@ -6717,7 +6717,7 @@ const uniqueItems = {
   "Arreat's Face": {
     name: "Arreat's Face",
     type: "Slayer Guard",
-    image: "http://www.d2tomb.com/images/items/arreats_face.gif",
+    image: "items/arreats_face.gif",
     props: [
       "Defense: 302-363",
       "Durability: 55",
@@ -6737,7 +6737,7 @@ const uniqueItems = {
   Wolfhowl: {
     name: "Wolfhowl",
     type: "Fury Visor",
-    image: "http://www.d2tomb.com/images/items/fangedhelm.gif",
+    image: "items/fangedhelm.gif",
     props: [
       "Defense: 332-377",
       "Durability: 35",
@@ -6758,7 +6758,7 @@ const uniqueItems = {
   "Demonhorn's Edge": {
     name: "Demonhorn's Edge",
     type: "Destroyer Helm",
-    image: "http://www.d2tomb.com/images/items/hornedhelm.gif",
+    image: "items/hornedhelm.gif",
     props: [
       "Defense: 345-408",
       "Durability: 45",
@@ -6777,7 +6777,7 @@ const uniqueItems = {
   "Halaberd's Reign": {
     name: "Halaberd's Reign",
     type: "Conqueror Crown",
-    image: "http://www.d2tomb.com/images/items/assaulthelm.gif",
+    image: "items/assaulthelm.gif",
     props: [
       "Defense: 384-432",
       "Durability: 50",
@@ -6796,7 +6796,7 @@ const uniqueItems = {
   "Jalal's Mane": {
     name: "Jalal's Mane",
     type: "Totemic Mask",
-    image: "http://www.d2tomb.com/images/items/ialals_mane.gif",
+    image: "items/ialals_mane.gif",
     props: [
       "Defense: 247-297",
       "Durability: 20",
@@ -6817,7 +6817,7 @@ const uniqueItems = {
   "Cerebus' Bite": {
     name: "Cerebus' Bite",
     type: "Blood Spirit",
-    image: "http://www.d2tomb.com/images/items/wolfhead.gif",
+    image: "items/wolfhead.gif",
     props: [
       "Defense: 335-350",
       "Durability: 20",
@@ -6835,7 +6835,7 @@ const uniqueItems = {
   "Spirit Keeper": {
     name: "Spirit Keeper",
     type: "Earth Spirit",
-    image: "http://www.d2tomb.com/images/items/antlers.gif",
+    image: "items/antlers.gif",
     props: [
       "Defense: 413-443",
       "Durability: 20",
@@ -6854,7 +6854,7 @@ const uniqueItems = {
   Ravenlore: {
     name: "Ravenlore",
     type: "Sky Spirit",
-    image: "http://www.d2tomb.com/images/items/falconmask.gif",
+    image: "items/falconmask.gif",
     props: [
       "Defense: 343-390",
       "Durability: 20",
@@ -6872,7 +6872,7 @@ const uniqueItems = {
   Homunculus: {
     name: "Homunculus",
     type: "Hierophant Trophy",
-    image: "http://www.d2tomb.com/images/items/homunculus.gif",
+    image: "items/homunculus.gif",
     props: [
       "Defense: 177-213",
       "Durability: 20",
@@ -6894,7 +6894,7 @@ const uniqueItems = {
   Boneflame: {
     name: "Boneflame",
     type: "Succubus Skull",
-    image: "http://www.d2tomb.com/images/items/gargoylehead.gif",
+    image: "items/gargoylehead.gif",
     props: [
       "Defense: 323-367",
       "Durability: 20",
@@ -6912,7 +6912,7 @@ const uniqueItems = {
   "Darkforce Spawn": {
     name: "Darkforce Spawn",
     type: "Bloodlord Skull",
-    image: "http://www.d2tomb.com/images/items/demonhead.gif",
+    image: "items/demonhead.gif",
     props: [
       "Defense: 357-417",
       "Durability: 20",
@@ -6931,7 +6931,7 @@ const uniqueItems = {
   "Horadrim Skull": {
     name: "Horadrim Skull",
     type: "Unraveller Head",
-    image: "http://www.d2tomb.com/images/items/unravellerhead.gif",
+    image: "items/unravellerhead.gif",
     props: [
       "Defense: 6",
       "Chance to Block: 33%",
@@ -6950,7 +6950,7 @@ const uniqueItems = {
   "Herald of Zakarum": {
     name: "Herald of Zakarum",
     type: "Gilden Shield",
-    image: "http://www.d2tomb.com/images/items/herald_of_zakarum.gif",
+    image: "items/herald_of_zakarum.gif",
     props: [
       "Defense: 422-507",
       "Durability: 50",
@@ -6971,7 +6971,7 @@ const uniqueItems = {
   "Alma Negra": {
     name: "Alma Negra",
     type: "Sacred Rondache",
-    image: "http://www.d2tomb.com/images/items/rondache.gif",
+    image: "items/rondache.gif",
     props: [
       "Defense: 461-511",
       "Durability: 68",
@@ -6991,7 +6991,7 @@ const uniqueItems = {
   Dragonscale: {
     name: "Dragonscale",
     type: "Zakarum Shield",
-    image: "http://www.d2tomb.com/images/items/aerinshield.gif",
+    image: "items/aerinshield.gif",
     props: [
       "Defense: 523-582",
       "Durability: 65",
@@ -7011,7 +7011,7 @@ const uniqueItems = {
   "Protector's Gleam": {
     name: "Protector's Gleam",
     type: "Targe",
-    image: "http://www.d2tomb.com/images/items/targe.gif",
+    image: "items/targe.gif",
     props: [
       "Defense: 23",
       "Chance to Block: 35%",
@@ -7029,7 +7029,7 @@ const uniqueItems = {
   "The Oculus": {
     name: "The Oculus",
     type: "Swirling Crystal",
-    image: "http://www.d2tomb.com/images/items/the_oculus.gif",
+    image: "items/the_oculus.gif",
     props: [
       "Damage: 18-42",
       "Durability: 50",
@@ -7048,7 +7048,7 @@ const uniqueItems = {
   "Eschuta's Temper": {
     name: "Eschuta's Temper",
     type: "Eldritch Orb",
-    image: "http://www.d2tomb.com/images/items/sacredglobe.gif",
+    image: "items/sacredglobe.gif",
     props: [
       "Damage: 18-50",
       "Durability: 30",
@@ -7064,7 +7064,7 @@ const uniqueItems = {
   "Death's Fathom": {
     name: "Death's Fathom",
     type: "Dimensional Shard",
-    image: "http://www.d2tomb.com/images/items/dragonstone.gif",
+    image: "items/dragonstone.gif",
     props: [
       "Damage: 30-53",
       "Durability: 50",
@@ -7179,7 +7179,7 @@ const setItems = {
   "Angelic Mantle": {
     name: "Angelic Mantle",
     type: "Ring Mail",
-    image: "http://www.d2tomb.com/images/setitems/angelic_mantle.gif",
+    image: "setitems/angelic_mantle.gif",
     props: [
       "Defense: 68-218",
       "Durability: 26",
@@ -7195,7 +7195,7 @@ const setItems = {
   "Angelic Sickle": {
     name: "Angelic Sickle",
     type: "Sabre",
-    image: "http://www.d2tomb.com/images/setitems/angelic_sickle.gif",
+    image: "setitems/angelic_sickle.gif",
     props: [
       "One Hand Damage: 3-14",
       "Durability: 32",
@@ -7212,7 +7212,7 @@ const setItems = {
   "Angelic Halo": {
     name: "Angelic Halo",
     type: "Ring",
-    image: "http://www.d2tomb.com/images/setitems/ring2.gif",
+    image: "setitems/ring2.gif",
     props: [
       "Required Level: 12",
       "Replenish Life +6",
@@ -7225,7 +7225,7 @@ const setItems = {
   "Angelic Wings": {
     name: "Angelic Wings",
     type: "Amulet",
-    image: "http://www.d2tomb.com/images/setitems/amu2.gif",
+    image: "setitems/amu2.gif",
     props: [
       "Required Level: 12",
       "20% Damage taken goes to Mana",
@@ -7238,7 +7238,7 @@ const setItems = {
   "Arcanna's Head": {
     name: "Arcanna's Head",
     type: "Skull Cap",
-    image: "http://www.d2tomb.com/images/setitems/arcannas_head.gif",
+    image: "setitems/arcannas_head.gif",
     props: [
       "Defense: 8-308",
       "Required Level: 15",
@@ -7254,7 +7254,7 @@ const setItems = {
   "Arcanna's Flesh": {
     name: "Arcanna's Flesh",
     type: "Light Plate",
-    image: "http://www.d2tomb.com/images/setitems/arcannas_flesh.gif",
+    image: "setitems/arcannas_flesh.gif",
     props: [
       "Defense: 90-207",
       "Durability: 60",
@@ -7270,7 +7270,7 @@ const setItems = {
   "Arcanna's Deathwand": {
     name: "Arcanna's Deathwand",
     type: "War Staff",
-    image: "http://www.d2tomb.com/images/setitems/arcannas_deathwand.gif",
+    image: "setitems/arcannas_deathwand.gif",
     props: [
       "Two-Hand Damage: 12-28",
       "Durability: 50",
@@ -7286,7 +7286,7 @@ const setItems = {
   "Arcanna's Sign": {
     name: "Arcanna's Sign",
     type: "Amulet",
-    image: "http://www.d2tomb.com/images/setitems/amu3.gif",
+    image: "setitems/amu3.gif",
     props: [
       "20% regenerate Mana",
       "Required Level: 15",
@@ -7299,7 +7299,7 @@ const setItems = {
   "Arctic Furs": {
     name: "Arctic Furs",
     type: "Quilted Armor",
-    image: "http://www.d2tomb.com/images/setitems/arctic_furs.gif",
+    image: "setitems/arctic_furs.gif",
     props: [
       "Defense: 45-348",
       "Durability: 20",
@@ -7315,7 +7315,7 @@ const setItems = {
   "Arctic Binding": {
     name: "Arctic Binding",
     type: "Light Belt",
-    image: "http://www.d2tomb.com/images/setitems/arctic_binding.gif",
+    image: "setitems/arctic_binding.gif",
     props: [
       "Defense: 33",
       "Durability: 14",
@@ -7330,7 +7330,7 @@ const setItems = {
   "Arctic Mitts": {
     name: "Arctic Mitts",
     type: "Light Gauntlets",
-    image: "http://www.d2tomb.com/images/setitems/arctic_mitts.gif",
+    image: "setitems/arctic_mitts.gif",
     props: [
       "Defense: 9-11",
       "Durability: 18",
@@ -7346,7 +7346,7 @@ const setItems = {
   "Arctic Horn": {
     name: "Arctic Horn",
     type: "Short War Bow",
-    image: "http://www.d2tomb.com/images/setitems/arctic_horn.gif",
+    image: "setitems/arctic_horn.gif",
     props: [
       "Two-Hand Damage: 9-21",
       "Required Dexterity: 55",
@@ -7362,7 +7362,7 @@ const setItems = {
   "Berserker's Headgear": {
     name: "Berserker's Headgear",
     type: "Helm",
-    image: "http://www.d2tomb.com/images/setitems/berserkers_headgear.gif",
+    image: "setitems/berserkers_headgear.gif",
     props: [
       "Defense: 30-33",
       "Durability: 24",
@@ -7377,7 +7377,7 @@ const setItems = {
   "Berserker's Hauberk": {
     name: "Berserker's Hauberk",
     type: "Splint Mail",
-    image: "http://www.d2tomb.com/images/setitems/berserkers_hauberk.gif",
+    image: "setitems/berserkers_hauberk.gif",
     props: [
       "Defense: 90-392",
       "Durability: 30",
@@ -7392,7 +7392,7 @@ const setItems = {
   "Berserker's Hatchet": {
     name: "Berserker's Hatchet",
     type: "Double Axe",
-    image: "http://www.d2tomb.com/images/setitems/berserkers_hatchet.gif",
+    image: "setitems/berserkers_hatchet.gif",
     props: [
       "One-Hand Damage: 5-13",
       "Durability: 24",
@@ -7407,7 +7407,7 @@ const setItems = {
   "Cathan's Visage": {
     name: "Cathan's Visage",
     type: "Mask",
-    image: "http://www.d2tomb.com/images/setitems/cathans_visage.gif",
+    image: "setitems/cathans_visage.gif",
     props: [
       "Defense: 9-225",
       "Durability: 20",
@@ -7422,7 +7422,7 @@ const setItems = {
   "Cathan's Mesh": {
     name: "Cathan's Mesh",
     type: "Chain Mail",
-    image: "http://www.d2tomb.com/images/setitems/cathans_mesh.gif",
+    image: "setitems/cathans_mesh.gif",
     props: [
       "Defense: 87-90",
       "Durability: 45",
@@ -7438,7 +7438,7 @@ const setItems = {
   "Cathan's Rule": {
     name: "Cathan's Rule",
     type: "Battle Staff",
-    image: "http://www.d2tomb.com/images/setitems/cathans_rule.gif",
+    image: "setitems/cathans_rule.gif",
     props: [
       "Two-Hand Damage: 6-13",
       "Durability: 40",
@@ -7454,7 +7454,7 @@ const setItems = {
   "Cathan's Sigil": {
     name: "Cathan's Sigil",
     type: "Amulet",
-    image: "http://www.d2tomb.com/images/setitems/amu1.gif",
+    image: "setitems/amu1.gif",
     props: [
       "Attack takes 5 Lightning Damage",
       "Required Level: 11",
@@ -7467,7 +7467,7 @@ const setItems = {
   "Cathan's Seal": {
     name: "Cathan's Seal",
     type: "Ring",
-    image: "http://www.d2tomb.com/images/setitems/ring4.gif",
+    image: "setitems/ring4.gif",
     props: [
       "6% Life stolen per hit",
       "Required Level: 11",
@@ -7479,7 +7479,7 @@ const setItems = {
   "Civerb's Cudgel": {
     name: "Civerb's Cudgel",
     type: "Grand Scepter",
-    image: "http://www.d2tomb.com/images/setitems/civerbs_cudgel.gif",
+    image: "setitems/civerbs_cudgel.gif",
     props: [
       "One-Hand Damage:8-140",
       "Durability: 60",
@@ -7495,7 +7495,7 @@ const setItems = {
   "Civerb's Icon": {
     name: "Civerb's Icon",
     type: "Amulet",
-    image: "http://www.d2tomb.com/images/setitems/amu1.gif",
+    image: "setitems/amu1.gif",
     props: [
       "Replenish Life +4",
       "Required Level: 9",
@@ -7508,7 +7508,7 @@ const setItems = {
   "Civerb's Ward": {
     name: "Civerb's Ward",
     type: "Large Shield",
-    image: "http://www.d2tomb.com/images/setitems/civerbs_ward.gif",
+    image: "setitems/civerbs_ward.gif",
     props: [
       "Defense: 27-29",
       "52% Chance to block",
@@ -7525,7 +7525,7 @@ const setItems = {
   "Cleglaw's Tooth": {
     name: "Cleglaw's Tooth",
     type: "Long Sword",
-    image: "http://www.d2tomb.com/images/setitems/cleglaws_tooth.gif",
+    image: "setitems/cleglaws_tooth.gif",
     props: [
       "One-Hand Damage: 3-142",
       "Durability: 44",
@@ -7541,7 +7541,7 @@ const setItems = {
   "Cleglaw's Pincers": {
     name: "Cleglaw's Pincers",
     type: "Chain Gloves",
-    image: "http://www.d2tomb.com/images/setitems/cleglaws_pincers.gif",
+    image: "setitems/cleglaws_pincers.gif",
     props: [
       "Defense: 8-9",
       "Durability: 16",
@@ -7556,7 +7556,7 @@ const setItems = {
   "Cleglaw's Claw": {
     name: "Cleglaw's Claw",
     type: "Small Shield",
-    image: "http://www.d2tomb.com/images/setitems/cleglaws_claw.gif",
+    image: "setitems/cleglaws_claw.gif",
     props: [
       "Defense: 25-27",
       "30% Chance to Block",
@@ -7572,7 +7572,7 @@ const setItems = {
   "Death's Touch": {
     name: "Death's Touch",
     type: "War Sword",
-    image: "http://www.d2tomb.com/images/setitems/deaths_touch.gif",
+    image: "setitems/deaths_touch.gif",
     props: [
       "One-Hand Damage: 10-25",
       "Durability: 44",
@@ -7588,7 +7588,7 @@ const setItems = {
   "Death's Hand": {
     name: "Death's Hand",
     type: "Leather Gloves",
-    image: "http://www.d2tomb.com/images/setitems/deaths_hand.gif",
+    image: "setitems/deaths_hand.gif",
     props: [
       "Defense: 2-3",
       "Durability: 12",
@@ -7602,7 +7602,7 @@ const setItems = {
   "Death's Guard": {
     name: "Death's Guard",
     type: "Sash",
-    image: "http://www.d2tomb.com/images/setitems/deaths_guard.gif",
+    image: "setitems/deaths_guard.gif",
     props: [
       "Defense: 22",
       "Durability: 12",
@@ -7616,7 +7616,7 @@ const setItems = {
   "Hsarus' Iron Fist": {
     name: "Hsarus' Iron Fist",
     type: "Buckler",
-    image: "http://www.d2tomb.com/images/setitems/hsarus_ironfist.gif",
+    image: "setitems/hsarus_ironfist.gif",
     props: [
       "Defense: 4-253",
       "25% chance to Block",
@@ -7632,7 +7632,7 @@ const setItems = {
   "Hsarus' Iron Stay": {
     name: "Hsarus' Iron Stay",
     type: "Belt",
-    image: "http://www.d2tomb.com/images/setitems/hsarus_ironstay.gif",
+    image: "setitems/hsarus_ironstay.gif",
     props: [
       "Defense: 5-252",
       "Durability: 16",
@@ -7647,7 +7647,7 @@ const setItems = {
   "Hsarus' Iron Heel": {
     name: "Hsarus' Iron Heel",
     type: "Chain Boots",
-    image: "http://www.d2tomb.com/images/setitems/hsarus_ironheel.gif",
+    image: "setitems/hsarus_ironheel.gif",
     props: [
       "Defense: 8-9",
       "Assassin Kick Damage: 6-12",
@@ -7663,7 +7663,7 @@ const setItems = {
   "Infernal Cranium": {
     name: "Infernal Cranium",
     type: "Cap",
-    image: "http://www.d2tomb.com/images/setitems/infernal_cranium.gif",
+    image: "setitems/infernal_cranium.gif",
     props: [
       "Defense: 3-203",
       "Durability: 12",
@@ -7677,7 +7677,7 @@ const setItems = {
   "Infernal Sign": {
     name: "Infernal Sign",
     type: "Heavy Belt",
-    image: "http://www.d2tomb.com/images/setitems/infernal_buckle.gif",
+    image: "setitems/infernal_buckle.gif",
     props: [
       "Defense: 31",
       "Durability: 18",
@@ -7693,7 +7693,7 @@ const setItems = {
   "Infernal Torch": {
     name: "Infernal Torch",
     type: "Grim Ward",
-    image: "http://www.d2tomb.com/images/setitems/infernal_torch.gif",
+    image: "setitems/infernal_torch.gif",
     props: [
       "One-Hand Damage: 13-14",
       "Durability: 15",
@@ -7708,7 +7708,7 @@ const setItems = {
   "Iratha's Coil": {
     name: "Iratha's Coil",
     type: "Crown",
-    image: "http://www.d2tomb.com/images/setitems/irathas_coil.gif",
+    image: "setitems/irathas_coil.gif",
     props: [
       "Defense: 25-243",
       "Durability: 50",
@@ -7723,7 +7723,7 @@ const setItems = {
   "Iratha's Collar": {
     name: "Iratha's Collar",
     type: "Amulet",
-    image: "http://www.d2tomb.com/images/setitems/amu1.gif",
+    image: "setitems/amu1.gif",
     props: [
       "Required Level: 15",
       "Poison Length reduced by 75%",
@@ -7735,7 +7735,7 @@ const setItems = {
   "Iratha's Cord": {
     name: "Iratha's Cord",
     type: "Heavy Belt",
-    image: "http://www.d2tomb.com/images/setitems/irathas_cord.gif",
+    image: "setitems/irathas_cord.gif",
     props: [
       "Defense: 31",
       "Durability: 18",
@@ -7750,7 +7750,7 @@ const setItems = {
   "Iratha's Cuff": {
     name: "Iratha's Cuff",
     type: "Light Gauntlets",
-    image: "http://www.d2tomb.com/images/setitems/irathas_cuff.gif",
+    image: "setitems/irathas_cuff.gif",
     props: [
       "Defense: 9-11",
       "Durability: 18",
@@ -7765,7 +7765,7 @@ const setItems = {
   "Isenhart's Lightbrand": {
     name: "Isenhart's Lightbrand",
     type: "Broad Sword",
-    image: "http://www.d2tomb.com/images/setitems/isenharts_lightbrand.gif",
+    image: "setitems/isenharts_lightbrand.gif",
     props: [
       "One-Hand Damage: 17-18",
       "Durability: 32",
@@ -7780,7 +7780,7 @@ const setItems = {
   "Isenhart's Horns": {
     name: "Isenhart's Horns",
     type: "Full Helm",
-    image: "http://www.d2tomb.com/images/setitems/isenharts_horns.gif",
+    image: "setitems/isenharts_horns.gif",
     props: [
       "Defense: 23-26",
       "Durability: 30",
@@ -7795,7 +7795,7 @@ const setItems = {
   "Isenhart's Case": {
     name: "Isenhart's Case",
     type: "Breast Plate",
-    image: "http://www.d2tomb.com/images/setitems/isenharts_case.gif",
+    image: "setitems/isenharts_case.gif",
     props: [
       "Defense: 105-306",
       "Durability: 50",
@@ -7810,7 +7810,7 @@ const setItems = {
   "Isenhart's Parry": {
     name: "Isenhart's Parry",
     type: "Gothic Shield",
-    image: "http://www.d2tomb.com/images/setitems/isenharts_parry.gif",
+    image: "setitems/isenharts_parry.gif",
     props: [
       "Defense: 70-75",
       "41% chance to block",
@@ -7826,7 +7826,7 @@ const setItems = {
   "Milabrega's Diadem": {
     name: "Milabrega's Diadem",
     type: "Crown",
-    image: "http://www.d2tomb.com/images/setitems/milabregas_diadem.gif",
+    image: "setitems/milabregas_diadem.gif",
     props: [
       "Defense: 25-45",
       "Durability: 50",
@@ -7841,7 +7841,7 @@ const setItems = {
   "Milabrega's Robe": {
     name: "Milabrega's Robe",
     type: "Ancient Armor",
-    image: "http://www.d2tomb.com/images/setitems/milabregas_robe.gif",
+    image: "setitems/milabregas_robe.gif",
     props: [
       "Defense: 218-468",
       "Durability: 60",
@@ -7856,7 +7856,7 @@ const setItems = {
   "Milabrega's Orb": {
     name: "Milabrega's Orb",
     type: "Kite Shield",
-    image: "http://www.d2tomb.com/images/setitems/milabregas_orb.gif",
+    image: "setitems/milabregas_orb.gif",
     props: [
       "Defense: 44-53",
       "33% chance to block",
@@ -7873,7 +7873,7 @@ const setItems = {
   "Milabrega's Rod": {
     name: "Milabrega's Rod",
     type: "War Scepter",
-    image: "http://www.d2tomb.com/images/setitems/milabregas_rod.gif",
+    image: "setitems/milabregas_rod.gif",
     props: [
       "One-Hand Damage: 15-25",
       "Durability: 70",
@@ -7889,7 +7889,7 @@ const setItems = {
   "Sigon's Visor": {
     name: "Sigon's Visor",
     type: "Great Helm",
-    image: "http://www.d2tomb.com/images/setitems/sigons_visor.gif",
+    image: "setitems/sigons_visor.gif",
     props: [
       "Defense: 55-60",
       "Durability: 40",
@@ -7904,7 +7904,7 @@ const setItems = {
   "Sigon's Shelter": {
     name: "Sigon's Shelter",
     type: "Gothic Plate",
-    image: "http://www.d2tomb.com/images/setitems/sigons_shelter.gif",
+    image: "setitems/sigons_shelter.gif",
     props: [
       "Defense: 128-170",
       "Durability: 55",
@@ -7919,7 +7919,7 @@ const setItems = {
   "Sigon's Sabot": {
     name: "Sigon's Sabot",
     type: "Greaves",
-    image: "http://www.d2tomb.com/images/setitems/sigons_sabot.gif",
+    image: "setitems/sigons_sabot.gif",
     props: [
       "Defense: 12-15",
       "Durability: 24",
@@ -7936,7 +7936,7 @@ const setItems = {
   "Sigon's Guard": {
     name: "Sigon's Guard",
     type: "Tower Shield",
-    image: "http://www.d2tomb.com/images/setitems/sigons_guard.gif",
+    image: "setitems/sigons_guard.gif",
     props: [
       "Defense: 22-25",
       "69% Chance to Block",
@@ -7951,7 +7951,7 @@ const setItems = {
   "Sigon's Wrap": {
     name: "Sigon's Wrap",
     type: "Plated Belt",
-    image: "http://www.d2tomb.com/images/setitems/sigons_wrap.gif",
+    image: "setitems/sigons_wrap.gif",
     props: [
       "Defense: 8-209",
       "Durability: 24",
@@ -7966,7 +7966,7 @@ const setItems = {
   "Sigon's Gage": {
     name: "Sigon's Gage",
     type: "Gauntlets",
-    image: "http://www.d2tomb.com/images/setitems/sigons_gage.gif",
+    image: "setitems/sigons_gage.gif",
     props: [
       "Defense: 12-15",
       "Durability: 24",
@@ -7981,7 +7981,7 @@ const setItems = {
   "Tancred's Skull": {
     name: "Tancred's Skull",
     type: "Bone Helm",
-    image: "http://www.d2tomb.com/images/setitems/tancreds_skull.gif",
+    image: "setitems/tancreds_skull.gif",
     props: [
       "Defense: 33-36",
       "Durability: 40",
@@ -7996,7 +7996,7 @@ const setItems = {
   "Tancred's Spine": {
     name: "Tancred's Spine",
     type: "Full Plate Mail",
-    image: "http://www.d2tomb.com/images/setitems/tancreds_spine.gif",
+    image: "setitems/tancreds_spine.gif",
     props: [
       "Defense: 150-359",
       "Durability: 70",
@@ -8011,7 +8011,7 @@ const setItems = {
   "Tancred's Hobnails": {
     name: "Tancred's Hobnails",
     type: "Boots",
-    image: "http://www.d2tomb.com/images/setitems/tancreds_hobnails.gif",
+    image: "setitems/tancreds_hobnails.gif",
     props: [
       "Defense: 2-3",
       "Durability: 12",
@@ -8027,7 +8027,7 @@ const setItems = {
   "Tancred's Crowbill": {
     name: "Tancred's Crowbill",
     type: "Military Pick",
-    image: "http://www.d2tomb.com/images/setitems/tancreds_crowbill.gif",
+    image: "setitems/tancreds_crowbill.gif",
     props: [
       "One-Hand Damage: 12-19",
       "Durability: 26",
@@ -8044,7 +8044,7 @@ const setItems = {
   "Tancred's Weird": {
     name: "Tancred's Weird",
     type: "Amulet",
-    image: "http://www.d2tomb.com/images/setitems/amu3.gif",
+    image: "setitems/amu3.gif",
     props: [
       "Required Level: 20",
       "Damage Reduced by 2",
@@ -8057,7 +8057,7 @@ const setItems = {
   "Vidala's Barb": {
     name: "Vidala's Barb",
     type: "Long Battle Bow",
-    image: "http://www.d2tomb.com/images/setitems/vidalas_barb.gif",
+    image: "setitems/vidalas_barb.gif",
     props: [
       "Two-Hand Damage: 3-18",
       "Required Dexterity: 50",
@@ -8071,7 +8071,7 @@ const setItems = {
   "Vidala's Ambush": {
     name: "Vidala's Ambush",
     type: "Leather Armor",
-    image: "http://www.d2tomb.com/images/setitems/vidalas_ambush.gif",
+    image: "setitems/vidalas_ambush.gif",
     props: [
       "Defense: 64-314",
       "Durability: 24",
@@ -8087,7 +8087,7 @@ const setItems = {
   "Vidala's Fetlock": {
     name: "Vidala's Fetlock",
     type: "Light Plated Boots",
-    image: "http://www.d2tomb.com/images/setitems/vidalas_fetlock.gif",
+    image: "setitems/vidalas_fetlock.gif",
     props: [
       "Defense: 9-11",
       "Durability: 18",
@@ -8103,7 +8103,7 @@ const setItems = {
   "Vidala's Snare": {
     name: "Vidala's Snare",
     type: "Amulet",
-    image: "http://www.d2tomb.com/images/setitems/amu2.gif",
+    image: "setitems/amu2.gif",
     props: [
       "Required Level: 14",
       "20% Cold Resist",
@@ -8115,7 +8115,7 @@ const setItems = {
   "Aldur's Stony Gaze": {
     name: "Aldur's Stony Gaze",
     type: "Hunter's Guise",
-    image: "http://www.d2tomb.com/images/setitems/aldurs_stoney_gaze.gif",
+    image: "setitems/aldurs_stoney_gaze.gif",
     props: [
       "Defense:  157-171",
       "Required Strength:  56",
@@ -8134,7 +8134,7 @@ const setItems = {
   "Aldur's Advance": {
     name: "Aldur's Advance",
     type: "Battle Boots",
-    image: "http://www.d2tomb.com/images/setitems/aldurs_advance.gif",
+    image: "setitems/aldurs_advance.gif",
     props: [
       "Defense:  39-47",
       "Required Strength:  95",
@@ -8153,7 +8153,7 @@ const setItems = {
   "Aldur's Deception": {
     name: "Aldur's Deception",
     type: "Shadow Plate",
-    image: "http://www.d2tomb.com/images/setitems/aldurs_deception.gif",
+    image: "setitems/aldurs_deception.gif",
     props: [
       "Defense:  746-857",
       "Required Strength:  115",
@@ -8172,7 +8172,7 @@ const setItems = {
   "Aldur's Rhythm": {
     name: "Aldur's Rhythm",
     type: "Jagged Star",
-    image: "http://www.d2tomb.com/images/setitems/aldurs_rhythm.gif",
+    image: "setitems/aldurs_rhythm.gif",
     props: [
       "Damage:  60-93",
       "Durability:  72",
@@ -8192,7 +8192,7 @@ const setItems = {
   "Bul-Kathos' Sacred Charge": {
     name: "Bul-Kathos' Sacred Charge",
     type: "Colossus Blade",
-    image: "http://www.d2tomb.com/images/setitems/bulkathos_sacred_charge.gif",
+    image: "setitems/bulkathos_sacred_charge.gif",
     props: [
       "One-handed Damage: 75-195",
       "Two-handed Damage: 174-345",
@@ -8211,8 +8211,7 @@ const setItems = {
   "Bul-Kathos' Tribal Guardian": {
     name: "Bul-Kathos' Tribal Guardian",
     type: "Mythical Sword",
-    image:
-      "http://www.d2tomb.com/images/setitems/bulkathos_tribal_guardian.gif",
+    image: "setitems/bulkathos_tribal_guardian.gif",
     props: [
       "One-handed Damage: 120-156",
       "Required Strength: 147",
@@ -8230,7 +8229,7 @@ const setItems = {
   "Cow King's Horns": {
     name: "Cow King's Horns",
     type: "War Hat",
-    image: "http://www.d2tomb.com/images/setitems/cowkings_horns.gif",
+    image: "setitems/cowkings_horns.gif",
     props: [
       "Defense: 120-128",
       "Required Strength: 20",
@@ -8246,7 +8245,7 @@ const setItems = {
   "Cow King's Hide": {
     name: "Cow King's Hide",
     type: "Studded Leather",
-    image: "http://www.d2tomb.com/images/setitems/cowkings_hide.gif",
+    image: "setitems/cowkings_hide.gif",
     props: [
       "Defense: 57",
       "Required Strength: 27",
@@ -8262,7 +8261,7 @@ const setItems = {
   "Cow King's Hooves": {
     name: "Cow King's Hooves",
     type: "Heavy Boots",
-    image: "http://www.d2tomb.com/images/setitems/cowkings_hooves.gif",
+    image: "setitems/cowkings_hooves.gif",
     props: [
       "Defense: 30-41",
       "Required Strength: 18",
@@ -8280,7 +8279,7 @@ const setItems = {
   "Telling of Beads": {
     name: "Telling of Beads",
     type: "Amulet",
-    image: "http://www.d2tomb.com/images/setitems/amu2.gif",
+    image: "setitems/amu2.gif",
     props: [
       "Required Level: 30",
       "+1 to all Skill levels",
@@ -8293,7 +8292,7 @@ const setItems = {
   "Laying of Hands": {
     name: "Laying of Hands",
     type: "Bramble Mitts",
-    image: "http://www.d2tomb.com/images/setitems/laying_of_hands.gif",
+    image: "setitems/laying_of_hands.gif",
     props: [
       "Defense: 79-87",
       "Required Strength: 50",
@@ -8310,7 +8309,7 @@ const setItems = {
   "Dark Adherent": {
     name: "Dark Adherent",
     type: "Dusk Shroud",
-    image: "http://www.d2tomb.com/images/setitems/dark_adherent.gif",
+    image: "setitems/dark_adherent.gif",
     props: [
       "Defense 666-882",
       "Required Strength: 77",
@@ -8326,7 +8325,7 @@ const setItems = {
   "Rite of Passage": {
     name: "Rite of Passage",
     type: "Demonhide Boots",
-    image: "http://www.d2tomb.com/images/setitems/rite_of_passage.gif",
+    image: "setitems/rite_of_passage.gif",
     props: [
       "Defense: 53-60",
       "Required Strength: 20",
@@ -8343,7 +8342,7 @@ const setItems = {
   Credendum: {
     name: "Credendum",
     type: "Mithril Coil",
-    image: "http://www.d2tomb.com/images/setitems/credendum.gif",
+    image: "setitems/credendum.gif",
     props: [
       "Defense: 108-115",
       "Required Strength: 106",
@@ -8359,7 +8358,7 @@ const setItems = {
   "Griswold's Heart": {
     name: "Griswold's Heart",
     type: "Ornate Armor",
-    image: "http://www.d2tomb.com/images/setitems/griswolds_heart.gif",
+    image: "setitems/griswolds_heart.gif",
     props: [
       "Defense 917-950",
       "Required Strength:  102",
@@ -8376,7 +8375,7 @@ const setItems = {
   "Griswold's Valor": {
     name: "Griswold's Valor",
     type: "Corona",
-    image: "http://www.d2tomb.com/images/setitems/griswolds_valor.gif",
+    image: "setitems/griswolds_valor.gif",
     props: [
       "Defense:  249-290",
       "Required Strength:  105",
@@ -8394,7 +8393,7 @@ const setItems = {
   "Griswold's Redemption": {
     name: "Griswold's Redemption",
     type: "Caduceus",
-    image: "http://www.d2tomb.com/images/setitems/griswolds_redemption.gif",
+    image: "setitems/griswolds_redemption.gif",
     props: [
       "Damage:  114-129",
       "Required Strength:  78",
@@ -8412,7 +8411,7 @@ const setItems = {
   "Griswold's Honor": {
     name: "Griswold's Honor",
     type: "Vortex Shield",
-    image: "http://www.d2tomb.com/images/setitems/griswolds_honor.gif",
+    image: "setitems/griswolds_honor.gif",
     props: [
       "Defense:  290-333",
       "Required Strength:  148",
@@ -8431,7 +8430,7 @@ const setItems = {
   "Haemosu's Adamant": {
     name: "Haemosu's Adamant",
     type: "Cuirass",
-    image: "http://www.d2tomb.com/images/setitems/haemosus_adament.gif",
+    image: "setitems/haemosus_adament.gif",
     props: [
       "Defense: 688-702",
       "Required Strength: 52",
@@ -8448,7 +8447,7 @@ const setItems = {
   "Dangoon's Teaching": {
     name: "Dangoon's Teaching",
     type: "Reinforced Mace",
-    image: "http://www.d2tomb.com/images/setitems/dangoons_teaching.gif",
+    image: "setitems/dangoons_teaching.gif",
     props: [
       "Damage: 41-197",
       "Required Strength: 145",
@@ -8466,7 +8465,7 @@ const setItems = {
   "Taebaek's Glory": {
     name: "Taebaek's Glory",
     type: "Ward",
-    image: "http://www.d2tomb.com/images/setitems/taebaeks_glory.gif",
+    image: "setitems/taebaeks_glory.gif",
     props: [
       "Defense: 203-220",
       "Required Strength: 185",
@@ -8484,7 +8483,7 @@ const setItems = {
   "Ondal's Almighty": {
     name: "Ondal's Almighty",
     type: "Spired Helm",
-    image: "http://www.d2tomb.com/images/setitems/ondals_almighty.gif",
+    image: "setitems/ondals_almighty.gif",
     props: [
       "Defense: 164-209",
       "Required Strength: 116",
@@ -8502,7 +8501,7 @@ const setItems = {
   "Hwanin's Splendor": {
     name: "Hwanin's Splendor",
     type: "Grand Crown",
-    image: "http://www.d2tomb.com/images/setitems/hwanins_splendor.gif",
+    image: "setitems/hwanins_splendor.gif",
     props: [
       "Defense: 156-226",
       "Required Strength: 103",
@@ -8518,7 +8517,7 @@ const setItems = {
   "Hwanin's Justice": {
     name: "Hwanin's Justice",
     type: "Bill",
-    image: "http://www.d2tomb.com/images/setitems/hwanins_justice.gif",
+    image: "setitems/hwanins_justice.gif",
     props: [
       "Damage: 42-159",
       "Required Strength: 95",
@@ -8535,7 +8534,7 @@ const setItems = {
   "Hwanin's Refuge": {
     name: "Hwanin's Refuge",
     type: "Tigulated Mail",
-    image: "http://www.d2tomb.com/images/setitems/hwanins_refuge.gif",
+    image: "setitems/hwanins_refuge.gif",
     props: [
       "Defense: 375-390",
       "Required Strength: 86",
@@ -8551,7 +8550,7 @@ const setItems = {
   "Hwanin's Blessing": {
     name: "Hwanin's Blessing",
     type: "Belt",
-    image: "http://www.d2tomb.com/images/setitems/hwanins_blessing.gif",
+    image: "setitems/hwanins_blessing.gif",
     props: [
       "Defense: 6-153",
       "Required Strength: 25",
@@ -8567,7 +8566,7 @@ const setItems = {
   "Immortal King's Will": {
     name: "Immortal King's Will",
     type: "Avenger Guard",
-    image: "http://www.d2tomb.com/images/setitems/immortal_kings_will.gif",
+    image: "setitems/immortal_kings_will.gif",
     props: [
       "Defense:  160-175",
       "Required Strength:  65",
@@ -8585,8 +8584,7 @@ const setItems = {
   "Immortal King's Stone Crusher": {
     name: "Immortal King's Stone Crusher",
     type: "Ogre Maul",
-    image:
-      "http://www.d2tomb.com/images/setitems/immortal_kings_stone_crusher.gif",
+    image: "setitems/immortal_kings_stone_crusher.gif",
     props: [
       "Damage:  231-318",
       "Required Strength:  225",
@@ -8604,7 +8602,7 @@ const setItems = {
   "Immortal King's Soul Cage": {
     name: "Immortal King's Soul Cage",
     type: "Sacred Armor",
-    image: "http://www.d2tomb.com/images/setitems/immortal_kings_soul_cage.gif",
+    image: "setitems/immortal_kings_soul_cage.gif",
     props: [
       "Defense:  487-1301",
       "Required Strength:  232",
@@ -8620,7 +8618,7 @@ const setItems = {
   "Immortal King's Detail": {
     name: "Immortal King's Detail",
     type: "War Belt",
-    image: "http://www.d2tomb.com/images/setitems/immortal_kings_detail.gif",
+    image: "setitems/immortal_kings_detail.gif",
     props: [
       "Defense:  89-247",
       "Required Strength:  110",
@@ -8636,7 +8634,7 @@ const setItems = {
   "Immortal King's Forge": {
     name: "Immortal King's Forge",
     type: "War Gauntlets",
-    image: "http://www.d2tomb.com/images/setitems/immortal_kings_forge.gif",
+    image: "setitems/immortal_kings_forge.gif",
     props: [
       "Defense:  108-238",
       "Required Strength:  110",
@@ -8652,7 +8650,7 @@ const setItems = {
   "Immortal King's Pillar": {
     name: "Immortal King's Pillar",
     type: "War Boots",
-    image: "http://www.d2tomb.com/images/setitems/immortal_kings_pillar.gif",
+    image: "setitems/immortal_kings_pillar.gif",
     props: [
       "Defense:  118-288",
       "Required Strength:  125",
@@ -8668,7 +8666,7 @@ const setItems = {
   "M'avina's True Sight": {
     name: "M'avina's True Sight",
     type: "Diadem",
-    image: "http://www.d2tomb.com/images/setitems/mavinas_true_sight.gif",
+    image: "setitems/mavinas_true_sight.gif",
     props: [
       "Defense:  200-210",
       "Required Level:  64",
@@ -8683,7 +8681,7 @@ const setItems = {
   "M'avina's Caster": {
     name: "M'avina's Caster",
     type: "Grand Matron BowAmazon only",
-    image: "http://www.d2tomb.com/images/setitems/mavinas_caster.gif",
+    image: "setitems/mavinas_caster.gif",
     props: [
       "Damage 40-207",
       "Required Strength:  108",
@@ -8699,7 +8697,7 @@ const setItems = {
   "M'avina's Embrace": {
     name: "M'avina's Embrace",
     type: "Kraken Shell",
-    image: "http://www.d2tomb.com/images/setitems/mavinas_embrace.gif",
+    image: "setitems/mavinas_embrace.gif",
     props: [
       "Defense:  771-1269",
       "Required Strength:  122",
@@ -8717,7 +8715,7 @@ const setItems = {
   "M'avina's Icy Clutch": {
     name: "M'avina's Icy Clutch",
     type: "Battle Gauntlets",
-    image: "http://www.d2tomb.com/images/setitems/mavinas_icy_clutch.gif",
+    image: "setitems/mavinas_icy_clutch.gif",
     props: [
       "Defense:  84-97",
       "Required Strength: 88",
@@ -8735,7 +8733,7 @@ const setItems = {
   "M'avina's Tenet": {
     name: "M'avina's Tenet",
     type: "Sharkskin Belt",
-    image: "http://www.d2tomb.com/images/setitems/mavinas_tenet.gif",
+    image: "setitems/mavinas_tenet.gif",
     props: [
       "Defense:  81-86",
       "Required Strength:  20",
@@ -8751,7 +8749,7 @@ const setItems = {
   "Naj's Circlet": {
     name: "Naj's Circlet",
     type: "Circlet",
-    image: "http://www.d2tomb.com/images/setitems/najs_circlet.gif",
+    image: "setitems/najs_circlet.gif",
     props: [
       "Defense: 95-105",
       "Required Level: 28",
@@ -8767,7 +8765,7 @@ const setItems = {
   "Naj's Light Plate": {
     name: "Naj's Light Plate",
     type: "Hellforge Plate",
-    image: "http://www.d2tomb.com/images/setitems/najs_light_plate.gif",
+    image: "setitems/najs_light_plate.gif",
     props: [
       "Defense: 721-830",
       "Required Strength: 79",
@@ -8785,7 +8783,7 @@ const setItems = {
   "Naj's Puzzler": {
     name: "Naj's Puzzler",
     type: "Elder Staff",
-    image: "http://www.d2tomb.com/images/setitems/najs_puzzler.gif",
+    image: "setitems/najs_puzzler.gif",
     props: [
       "Damage: 200-232",
       "Required Strength: 44",
@@ -8807,7 +8805,7 @@ const setItems = {
   "Natalya's Totem": {
     name: "Natalya's Totem",
     type: "Grim Helm",
-    image: "http://www.d2tomb.com/images/setitems/natalyas_totem.gif",
+    image: "setitems/natalyas_totem.gif",
     props: [
       "Defense: 195-300",
       "Required Strength: 58",
@@ -8824,7 +8822,7 @@ const setItems = {
   "Natalya's Mark": {
     name: "Natalya's Mark",
     type: "Scissors SuwayyahAssassin only",
-    image: "http://www.d2tomb.com/images/setitems/natalyas_mark.gif",
+    image: "setitems/natalyas_mark.gif",
     props: [
       "Damage: 120-153",
       "Required Strength: 118",
@@ -8844,7 +8842,7 @@ const setItems = {
   "Natalya's Shadow": {
     name: "Natalya's Shadow",
     type: "Loricated Mail",
-    image: "http://www.d2tomb.com/images/setitems/natalyas_shadow.gif",
+    image: "setitems/natalyas_shadow.gif",
     props: [
       "Defense: 540-721",
       "Required Strength: 149",
@@ -8862,7 +8860,7 @@ const setItems = {
   "Natalya's Soul": {
     name: "Natalya's Soul",
     type: "Mesh Boots",
-    image: "http://www.d2tomb.com/images/setitems/natalyas_soul.gif",
+    image: "setitems/natalyas_soul.gif",
     props: [
       "Defense: 112-169",
       "Required Strength: 65",
@@ -8880,7 +8878,7 @@ const setItems = {
   "Guillaume's Face": {
     name: "Guillaume's Face",
     type: "Winged Helm",
-    image: "http://www.d2tomb.com/images/setitems/guillaumes_face.gif",
+    image: "setitems/guillaumes_face.gif",
     props: [
       "Defense: 187-217",
       "Required Strength: 115",
@@ -8897,7 +8895,7 @@ const setItems = {
   "Whitstan's Guard": {
     name: "Whitstan's Guard",
     type: "Round Shield",
-    image: "http://www.d2tomb.com/images/setitems/whitstans_guard.gif",
+    image: "setitems/whitstans_guard.gif",
     props: [
       "Defense: 154",
       "Required Strength: 53",
@@ -8915,7 +8913,7 @@ const setItems = {
   "Magnus' Skin": {
     name: "Magnus' Skin",
     type: "Sharkskin Glove",
-    image: "http://www.d2tomb.com/images/setitems/magnus_skin.gif",
+    image: "setitems/magnus_skin.gif",
     props: [
       "Defense: 60",
       "Required Strength: 20",
@@ -8932,7 +8930,7 @@ const setItems = {
   "Wilhelm's Pride": {
     name: "Wilhelm's Pride",
     type: "Battle Belt",
-    image: "http://www.d2tomb.com/images/setitems/wilhelms_pride.gif",
+    image: "setitems/wilhelms_pride.gif",
     props: [
       "Defense: 75",
       "Required Strength: 88",
@@ -8948,7 +8946,7 @@ const setItems = {
   "Sander's Paragon": {
     name: "Sander's Paragon",
     type: "Cap",
-    image: "http://www.d2tomb.com/images/setitems/sanders_paragon.gif",
+    image: "setitems/sanders_paragon.gif",
     props: [
       "Defense: 4-104",
       "Required Level: 25",
@@ -8962,7 +8960,7 @@ const setItems = {
   "Sander's Superstition": {
     name: "Sander's Superstition",
     type: "Bone Wand",
-    image: "http://www.d2tomb.com/images/setitems/sanders_superstition.gif",
+    image: "setitems/sanders_superstition.gif",
     props: [
       "Damage: 5-12",
       "Required Level: 25",
@@ -8979,7 +8977,7 @@ const setItems = {
   "Sander's Taboo": {
     name: "Sander's Taboo",
     type: "Heavy Gloves",
-    image: "http://www.d2tomb.com/images/setitems/sanders_taboo.gif",
+    image: "setitems/sanders_taboo.gif",
     props: [
       "Defense: 25-31",
       "Required Level: 28",
@@ -8994,7 +8992,7 @@ const setItems = {
   "Sander's Riprap": {
     name: "Sander's Riprap",
     type: "Heavy Boots",
-    image: "http://www.d2tomb.com/images/setitems/sanders_riprap.gif",
+    image: "setitems/sanders_riprap.gif",
     props: [
       "Defense: 5-6",
       "Assassin Kick Damage: 4-10",
@@ -9011,7 +9009,7 @@ const setItems = {
   "Sazabi's Mental Sheath": {
     name: "Sazabi's Mental Sheath",
     type: "Basinet",
-    image: "http://www.d2tomb.com/images/setitems/sazabis_mental_sheath.gif",
+    image: "setitems/sazabis_mental_sheath.gif",
     props: [
       "Defense: 175-184",
       "Required Strength: 82",
@@ -9027,7 +9025,7 @@ const setItems = {
   "Sazabi's Cobalt Redeemer": {
     name: "Sazabi's Cobalt Redeemer",
     type: "Cryptic Sword",
-    image: "http://www.d2tomb.com/images/setitems/sazabis_cobalt_redeemer.gif",
+    image: "setitems/sazabis_cobalt_redeemer.gif",
     props: [
       "Damage: 12-192",
       "Required Strength: 99",
@@ -9046,7 +9044,7 @@ const setItems = {
   "Sazabi's Ghost Liberator": {
     name: "Sazabi's Ghost Liberator",
     type: "Balrog Skin",
-    image: "http://www.d2tomb.com/images/setitems/sazabis_ghost_liberator.gif",
+    image: "setitems/sazabis_ghost_liberator.gif",
     props: [
       "Defense: 810-917",
       "Required Strength: 165",
@@ -9063,7 +9061,7 @@ const setItems = {
   "Tal Rasha's Lidless Eye": {
     name: "Tal Rasha's Lidless Eye",
     type: "Swirling Crystal",
-    image: "http://www.d2tomb.com/images/setitems/talrashas_lidless_eye.gif",
+    image: "setitems/talrashas_lidless_eye.gif",
     props: [
       "Damage:  18-42",
       "Required Strength:",
@@ -9083,7 +9081,7 @@ const setItems = {
   "Tal Rasha's Horadric Crest": {
     name: "Tal Rasha's Horadric Crest",
     type: "Death Mask",
-    image: "http://www.d2tomb.com/images/setitems/talrashas_horadric_crest.gif",
+    image: "setitems/talrashas_horadric_crest.gif",
     props: [
       "Defense:  99-131",
       "Required Strength:  55",
@@ -9101,7 +9099,7 @@ const setItems = {
   "Tal Rasha's Guardianship": {
     name: "Tal Rasha's Guardianship",
     type: "Lacquered Plate",
-    image: "http://www.d2tomb.com/images/setitems/talrashas_guardianship.gif",
+    image: "setitems/talrashas_guardianship.gif",
     props: [
       "Defense:  833-941",
       "Required Strength:  84",
@@ -9120,8 +9118,7 @@ const setItems = {
   "Tal Rasha's Fine Spun Cloth": {
     name: "Tal Rasha's Fine Spun Cloth",
     type: "Mesh Belt",
-    image:
-      "http://www.d2tomb.com/images/setitems/talrashas_fine_spun_cloth.gif",
+    image: "setitems/talrashas_fine_spun_cloth.gif",
     props: [
       "Defense:  35-100",
       "Required Strength:  47",
@@ -9138,7 +9135,7 @@ const setItems = {
   "Tal Rasha's Adjudication": {
     name: "Tal Rasha's Adjudication",
     type: "Amulet",
-    image: "http://www.d2tomb.com/images/setitems/amu2.gif",
+    image: "setitems/amu2.gif",
     props: [
       "Required Level:  67",
       "+2 to Sorceress Skill Levels",
@@ -9152,7 +9149,7 @@ const setItems = {
   "Trang-Oul's Guise": {
     name: "Trang-Oul's Guise",
     type: "Bone Visage",
-    image: "http://www.d2tomb.com/images/setitems/trangouls_guise.gif",
+    image: "setitems/trangouls_guise.gif",
     props: [
       "Defense:  180-257",
       "Required Strength:  106",
@@ -9169,7 +9166,7 @@ const setItems = {
   "Trang-Oul's Scales": {
     name: "Trang-Oul's Scales",
     type: "Chaos Armor",
-    image: "http://www.d2tomb.com/images/setitems/trangouls_scales.gif",
+    image: "setitems/trangouls_scales.gif",
     props: [
       "Defense:  857",
       "Required Strength:  84",
@@ -9187,7 +9184,7 @@ const setItems = {
   "Trang-Oul's Wing": {
     name: "Trang-Oul's Wing",
     type: "Cantor Trophy",
-    image: "http://www.d2tomb.com/images/setitems/trangouls_wing.gif",
+    image: "setitems/trangouls_wing.gif",
     props: [
       "Defense:  175-189",
       "Required Strength:  50",
@@ -9206,7 +9203,7 @@ const setItems = {
   "Trang-Oul's Girth": {
     name: "Trang-Oul's Girth",
     type: "Troll Belt",
-    image: "http://www.d2tomb.com/images/setitems/trangouls_girth.gif",
+    image: "setitems/trangouls_girth.gif",
     props: [
       "Defense:  134-166",
       "Required Strength:  91",
@@ -9225,7 +9222,7 @@ const setItems = {
   "Trang-Oul's Claws": {
     name: "Trang-Oul's Claws",
     type: "Heavy Bracers",
-    image: "http://www.d2tomb.com/images/setitems/trangouls_claws.gif",
+    image: "setitems/trangouls_claws.gif",
     props: [
       "Defense:  67-74",
       "Required Strength:  58",

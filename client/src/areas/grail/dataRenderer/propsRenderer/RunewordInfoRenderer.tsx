@@ -47,9 +47,9 @@ export class RunewordInfoRenderer extends React.PureComponent<
             {runewordInfos.runes.map((r, i) => (
               <RuneContainer key={r + i}>
                 <img
-                  src={`http://www.d2tomb.com/images/runes/${RunewordInfoRenderer.getRuneImageName(
-                    r
-                  )}.gif`}
+                  src={`${
+                    process.env.PUBLIC_URL
+                  }/images/runes/${r.toLowerCase()}.gif`}
                   alt={r}
                   title={r}
                 />
@@ -76,18 +76,6 @@ export class RunewordInfoRenderer extends React.PureComponent<
         </ItemInfosDetails>
       </ItemInfosContainer>
     );
-  }
-
-  private static getRuneImageName(rune: string) {
-    rune = rune.toLowerCase();
-    switch (rune) {
-      case "jah":
-        return "jo";
-      case "shael":
-        return "shae";
-      default:
-        return rune;
-    }
   }
 
   private static renderRunewordProps(
