@@ -7080,7 +7080,7 @@ const uniqueItems = {
   Annihilus: {
     name: "Annihilus",
     type: "Small Charm",
-    image: "",
+    image: "charms/anni.gif",
     props: [
       "+1 To All Skills",
       "+10-20 To All Attributes",
@@ -7093,7 +7093,7 @@ const uniqueItems = {
   "Gheed's Fortune": {
     name: "Gheed's Fortune",
     type: "Grand Charm",
-    image: "",
+    image: "charms/gheeds.gif",
     props: [
       "80-160% Extra Gold From Monsters",
       "Reduces All Vendor Prices 10-15%",
@@ -7105,7 +7105,7 @@ const uniqueItems = {
   "Hellfire Torch": {
     name: "Hellfire Torch",
     type: "Large Charm",
-    image: "",
+    image: "charms/torch.jpg",
     props: [
       "5% Chance to cast level 10 Firestorm on attack",
       "+3 to (Random Class) Skill Levels",
@@ -7120,8 +7120,7 @@ const uniqueItems = {
   Cold: {
     name: "Rainbow Facet Cold",
     type: "Jewel",
-    image:
-      "https://vignette.wikia.nocookie.net/diablo/images/1/17/Jewelblue.gif/revision/latest",
+    image: "jewels/cold.gif",
     props: [
       "100% Chance to Cast Level 43 Frost Nova When You Level Up or 100% Chance to Cast Level 37 Blizzard When You Die\n",
       "Adds 24-38 Cold Damage - 0.12 Second Duration",
@@ -7134,8 +7133,7 @@ const uniqueItems = {
   Fire: {
     name: "Rainbow Facet Fire",
     type: "Jewel",
-    image:
-      "https://vignette.wikia.nocookie.net/diablo/images/e/ef/Jewelred.gif/revision/latest",
+    image: "jewels/fire.gif",
     props: [
       "100% Chance to Cast Level 29 Blaze When You Level Up or 100% Chance to Cast Level 31 Meteor When You Die",
       "Adds 17-45 Fire Damage",
@@ -7148,8 +7146,7 @@ const uniqueItems = {
   Light: {
     name: "Rainbow Facet Lightning",
     type: "Jewel",
-    image:
-      "https://vignette.wikia.nocookie.net/diablo/images/6/6c/Jewelwhite.gif/revision/latest",
+    image: "jewels/lightning.gif",
     props: [
       "100% Chance to Cast Level 41 Nova When You Level Up or 100% Chance to Cast Level 47 Chain Lightning When You Die",
       "Adds 1-74 Lightning Damage",
@@ -7162,8 +7159,7 @@ const uniqueItems = {
   Poison: {
     name: "Rainbow Facet Poison",
     type: "Jewel",
-    image:
-      "https://vignette.wikia.nocookie.net/diablo/images/2/20/Jewelgreen.gif/revision/latest",
+    image: "jewels/poison.gif",
     props: [
       "100% Chance to Cast Level 23 Venom When You Level Up or 100% Chance to Cast Level 51 Poison Nova When You Die",
       "+37 Poison Damage Over 2 Seconds",
