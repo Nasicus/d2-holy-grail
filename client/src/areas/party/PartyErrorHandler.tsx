@@ -2,7 +2,6 @@ import * as React from "react";
 import { Typography } from "@material-ui/core";
 import { PartyManager } from "./PartyManager";
 import { IPartyError } from "./IPartyError";
-import { IPartyErrorHandlerProps } from "./PartyErrorHandler";
 import styled from "styled-components";
 
 export interface IPartyErrorHandlerProps {

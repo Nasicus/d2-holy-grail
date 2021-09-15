@@ -9,7 +9,6 @@ import { Item } from "../../common/definitions/union/Item";
 import * as Mousetrap from "mousetrap";
 import { AllBusinessGrailsType } from "../../common/definitions/business/AllBusinessGrailsType";
 import { Runeword } from "../../common/definitions/business/Runeword";
-import { IGrailFilterProps } from "./GrailFilters";
 import styled from "styled-components";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { TabType } from "./TabType";

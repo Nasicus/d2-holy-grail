@@ -3,7 +3,6 @@ import { GrailManager } from "../GrailManager";
 import { Icon } from "@material-ui/core";
 import { Item } from "../../../common/definitions/union/Item";
 import { ItemNameRenderer } from "./ItemNameRenderer";
-import { IItemProps } from "./CountItemRenderer";
 import { IconProps } from "@material-ui/core/Icon";
 import styled from "styled-components";
 import { FC, useState, useEffect } from "react";

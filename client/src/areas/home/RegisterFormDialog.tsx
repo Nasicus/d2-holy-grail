@@ -13,7 +13,6 @@ import TextField, {
   TextFieldProps
 } from "@material-ui/core/TextField/TextField";
 import { ButtonWithProgress } from "../../common/components/ButtonWithProgress";
-import { IRegisterFormDialogProps } from "./RegisterFormDialog";
 import styled from "styled-components";
 import { GrailManager } from "../grail/GrailManager";
 import { IHolyGrailApiModel } from "../../common/definitions/api/IHolyGrailApiModel";

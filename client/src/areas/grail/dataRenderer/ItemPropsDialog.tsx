@@ -3,7 +3,6 @@ import { Item } from "../../../common/definitions/union/Item";
 import { GrailManager } from "../GrailManager";
 import { Button, Checkbox, Icon, TextField } from "@material-ui/core";
 import { CloseableDialog } from "../../../common/components/CloseableDialog";
-import { IItemPropsDialogProps } from "./ItemPropsDialog";
 import styled from "styled-components";
 import { TextFieldProps } from "@material-ui/core/TextField";
 import { GrailMode } from "../GrailMode";

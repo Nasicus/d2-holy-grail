@@ -1,6 +1,5 @@
 import * as React from "react";
 import Dropzone from "react-dropzone";
-import { IFileUploaderProps } from "./FileUploader";
 import styled from "styled-components";
 
 export interface IFileUploaderProps {

@@ -8,7 +8,6 @@ import { Util } from "../../../common/utils/Util";
 import { CloseableDialog } from "../../../common/components/CloseableDialog";
 import { ButtonWithProgress } from "../../../common/components/ButtonWithProgress";
 import { FileUploader } from "../../../common/components/FileUploader";
-import { IImportDialogProps } from "./ImportDialog";
 import styled from "styled-components";
 
 export interface IImportDialogProps {
@@ -72,7 +71,8 @@ export class ImportDialog extends React.Component<
             </a>{" "}
             here. You have to download each tab as CSV (
             <span style={{ fontStyle: "italic", fontSize: "0.8em" }}>
-              File => Download as => Comma-separated values (.csv current sheet)
+              File =&gt; Download as =&gt; Comma-separated values (.csv current
+              sheet)
             </span>
             ) and then upload the file here. You can also only import the tabs
             you want.

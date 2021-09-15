@@ -4,7 +4,6 @@ import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
-import { ISettingsDialogProps } from "./CloseableDialog";
 import styled from "styled-components";
 
 export interface ISettingsDialogProps {

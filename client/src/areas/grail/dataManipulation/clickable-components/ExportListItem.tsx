@@ -66,7 +66,7 @@ export class ExportListItem extends React.Component<
     const isIE = !!(document as any).documentMode;
 
     if (isIE) {
-      window.navigator.msSaveOrOpenBlob(file, fileName);
+      (window.navigator as any).msSaveOrOpenBlob(file, fileName);
     } else {
       const a = document.createElement("a");
       a.style.display = "none";
