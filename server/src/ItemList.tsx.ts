@@ -7688,7 +7688,7 @@ const setItems = {
   },
   "Infernal Torch": {
     name: "Infernal Torch",
-    type: "Grim Ward",
+    type: "Grim Wand",
     image: "setitems/infernal_torch.gif",
     props: [
       "One-Hand Damage: 13-14",
