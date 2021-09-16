@@ -8,7 +8,7 @@ import { Redirect } from "react-router";
 import { LocationDescriptorObject } from "history";
 import Typography from "@material-ui/core/Typography/Typography";
 import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
-import Paper, { PaperProps } from "@material-ui/core/Paper/Paper";
+import Paper from "@material-ui/core/Paper/Paper";
 import { Api } from "../../../common/utils/Api";
 import { PartyRegisterFormDialog } from "./PartyRegisterFormDialog";
 import {
@@ -16,7 +16,6 @@ import {
   IButtonWithProgressProps
 } from "../../../common/components/ButtonWithProgress";
 import styled from "styled-components";
-import { ButtonProps } from "@material-ui/core/Button";
 
 export interface ILoginInfo {
   address?: string;
@@ -198,7 +197,7 @@ const LoginButtonWithProgressWrapper: React.ComponentType<
   }
 `;
 
-const StyledPaper: React.ComponentType<PaperProps> = styled(Paper)`
+const StyledPaper = styled(Paper)`
   && {
     width: 300px;
     margin: ${p => p.theme.spacing(1) * 4}px auto auto;
@@ -207,7 +206,7 @@ const StyledPaper: React.ComponentType<PaperProps> = styled(Paper)`
   }
 `;
 
-const CreateButton: React.ComponentType<ButtonProps> = styled(Button)`
+const CreateButton = styled(Button)`
   && {
     margin-top: ${p => p.theme.spacing(1)}px;
   }

@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { purple, green, brown, grey, blue } from "@material-ui/core/colors";
-import { ThemeOptions } from "@material-ui/core/styles/createMuiTheme";
+import { ThemeOptions } from "@material-ui/core";
 
 export const AppThemeContext = createContext<{
   appTheme: IAppTheme;

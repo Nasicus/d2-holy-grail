@@ -62,7 +62,7 @@ class GrailFiltersInternal extends React.Component<Props, IGrailFilterState> {
       .pipe(debounceTime(300))
       .subscribe(() => this.handleFilterChanged());
     this.useCustomSearchShortcut &&
-      Mousetrap.bindGlobal(["command+f", "ctrl+f"], () => {
+      (Mousetrap as any).bindGlobal(["command+f", "ctrl+f"], () => {
         this.searchBoxRef.focus();
         this.searchBoxRef.select();
         return false;

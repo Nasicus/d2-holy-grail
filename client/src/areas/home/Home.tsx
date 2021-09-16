@@ -8,6 +8,7 @@ import { AppThemeContext } from "../../AppThemeContext";
 export const Home: FC = () => {
   const { setAppTheme } = useContext(AppThemeContext);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => setAppTheme(), []);
 
   return (

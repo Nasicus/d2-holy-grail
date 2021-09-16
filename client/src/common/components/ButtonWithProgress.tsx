@@ -2,10 +2,10 @@ import CircularProgress, {
   CircularProgressProps
 } from "@material-ui/core/CircularProgress";
 import green from "@material-ui/core/colors/green";
-import Button, { ButtonProps } from "@material-ui/core/Button";
+import Button from "@material-ui/core/Button";
 import * as React from "react";
-import Icon, { IconProps } from "@material-ui/core/Icon/Icon";
-import Fab, { FabProps } from "@material-ui/core/Fab";
+import Icon from "@material-ui/core/Icon/Icon";
+import Fab from "@material-ui/core/Fab";
 import styled from "styled-components";
 
 export interface IButtonWithProgressProps {
@@ -83,7 +83,7 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
-const FabSuccess: React.ComponentType<FabProps> = styled(Fab)`
+const FabSuccess = styled(Fab)`
   && {
     background-color: ${() => green[500]};
     &:hover {
@@ -92,7 +92,7 @@ const FabSuccess: React.ComponentType<FabProps> = styled(Fab)`
   }
 `;
 
-const ButtonSuccess: React.ComponentType<ButtonProps> = styled(Button)`
+const ButtonSuccess = styled(Button)`
   && {
     background-color: ${() => green[500]};
     &:hover {
@@ -101,16 +101,14 @@ const ButtonSuccess: React.ComponentType<ButtonProps> = styled(Button)`
   }
 `;
 
-const SecondIconNormalButton: React.ComponentType<IconProps> = styled(Icon)`
+const SecondIconNormalButton = styled(Icon)`
   && {
     vertical-align: middle;
     margin-right: ${p => p.theme.spacing(1)}px;
   }
 `;
 
-const FabProgress: React.ComponentType<CircularProgressProps> = styled(
-  CircularProgress
-)`
+const FabProgress = styled(CircularProgress)`
   && {
     color: ${() => green[500]};
     position: absolute;

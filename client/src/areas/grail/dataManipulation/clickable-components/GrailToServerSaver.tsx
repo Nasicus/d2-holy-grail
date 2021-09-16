@@ -42,7 +42,7 @@ export class GrailToServerSaver extends React.Component<
 
   public componentDidMount(): void {
     if (this.props.registerShortCut) {
-      Mousetrap.bindGlobal(["command+s", "ctrl+s"], () => {
+      (Mousetrap as any).bindGlobal(["command+s", "ctrl+s"], () => {
         this.onSaveButtonClick();
         return false;
       });

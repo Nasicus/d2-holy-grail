@@ -1,13 +1,10 @@
 import * as React from "react";
-import Typography, {
-  TypographyProps
-} from "@material-ui/core/Typography/Typography";
 import { Util } from "../../../common/utils/Util";
 import { CheckboxItemRenderer } from "./CheckboxItemRenderer";
-import { ThemeStyle } from "@material-ui/core/styles/createTypography";
 import { GrailManager } from "../GrailManager";
 import { CountItemRenderer } from "./CountItemRenderer";
 import { LevelRenderer } from "./LevelRenderer";
+import { Typography, TypographyProps } from "@material-ui/core";
 import styled, { css } from "styled-components";
 
 export interface ILevels {
@@ -55,7 +52,7 @@ export const DataRenderer: React.FunctionComponent<
 
   return (
     <DataRendererTypography
-      component="div"
+      display="block"
       variant={mapLevelToTypographyVariant(levels.variantLevel)}
       root={props.isRecursive ? undefined : true.toString()}
     >
@@ -128,7 +125,7 @@ const getNextLevels = (
   return modifyLevels(nextLevels, key);
 };
 
-const mapLevelToTypographyVariant = (level: number): ThemeStyle => {
+const mapLevelToTypographyVariant = (level: number) => {
   switch (level) {
     case 0:
       return "h5";
