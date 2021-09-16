@@ -54,7 +54,7 @@ export class GrailController {
 
   public get = async (req: Request, res: Response) => {
     const address = req.params.address;
-    await this.getByAddress(address, res, grail =>
+    await this.getByAddress(address, res, (grail) =>
       GrailController.mapAndReturnGrailData(address, res, grail)
     );
   };
@@ -70,7 +70,7 @@ export class GrailController {
       return;
     }
 
-    await this.update(req, res, address, password, token, dataToSet => {
+    await this.update(req, res, address, password, token, (dataToSet) => {
       dataToSet.settings = settings;
       return dataToSet;
     });
@@ -91,7 +91,7 @@ export class GrailController {
       return;
     }
 
-    await this.update(req, res, address, password, token, dataToSet => {
+    await this.update(req, res, address, password, token, (dataToSet) => {
       dataToSet.version = version;
       dataToSet.data = grailData;
       dataToSet.ethData = ethGrailData;
@@ -111,7 +111,7 @@ export class GrailController {
     }
 
     const grail = await this.grailCollection.findOne({
-      address: GrailController.trimAndToLower(address)
+      address: GrailController.trimAndToLower(address),
     });
     if (!grail) {
       res.status(404).send({ type: "notFound", address });
@@ -130,13 +130,13 @@ export class GrailController {
       .aggregate([
         { $match: { modified: { $gt: aWeekAgo } } },
         { $project: { updateCount: 1, modified: 1 } },
-        { $sort: { modified: -1 } }
+        { $sort: { modified: -1 } },
       ])
       .toArray();
 
     res.json({
       totalGrails,
-      modifiedStats
+      modifiedStats,
     });
   };
 
@@ -155,16 +155,16 @@ export class GrailController {
         {
           address: GrailController.trimAndToLower(address),
           password: password,
-          token: token
+          token: token,
         },
         {
           $set: modifyDataToSaveFunc({
             token: GrailController.getToken(),
-            modified: new Date()
+            modified: new Date(),
           }),
-          $inc: { updateCount: 1 }
+          $inc: { updateCount: 1 },
         },
-        { returnOriginal: false }
+        { returnDocument: "after" }
       );
 
       if (result && result.ok && result.value) {
@@ -173,7 +173,7 @@ export class GrailController {
       }
 
       // we didn't receive a grail, so either the address, password or token is wrong
-      await this.getByAddress(address, res, existingGrail => {
+      await this.getByAddress(address, res, (existingGrail) => {
         if (existingGrail.password !== password) {
           res.status(401).send({ type: "password", address });
         } else {
@@ -181,7 +181,7 @@ export class GrailController {
             type: "token",
             correctToken: existingGrail.token,
             specifiedToken: token,
-            address
+            address,
           });
         }
       });
@@ -197,7 +197,7 @@ export class GrailController {
   ) {
     try {
       const grail = await this.grailCollection.findOne({
-        address: GrailController.trimAndToLower(address)
+        address: GrailController.trimAndToLower(address),
       });
       if (!grail) {
         res.status(404).send({ type: "notFound", address });
@@ -223,7 +223,7 @@ export class GrailController {
       runewordData: grail.runewordData,
       settings: grail.settings,
       token: grail.token,
-      version: grail.version
+      version: grail.version,
     } as IHolyGrail);
   }
 

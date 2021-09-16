@@ -12,7 +12,7 @@ async function createAddressIndex(db: Db) {
     {
       name: "address_idx",
       unique: true,
-      collation: { locale: "en", strength: 2 }
+      collation: { locale: "en", strength: 2 },
     }
   );
 }
@@ -26,15 +26,13 @@ async function createPartyAddressIndex(db: Db) {
     {
       name: "address_idx",
       unique: true,
-      collation: { locale: "en", strength: 2 }
+      collation: { locale: "en", strength: 2 },
     }
   );
 }
 
 export async function initializeDb(): Promise<Db> {
-  const mongoClient = await MongoClient.connect(ConfigManager.db.mongoUrl, {
-    useNewUrlParser: true
-  });
+  const mongoClient = await MongoClient.connect(ConfigManager.db.mongoUrl);
   const db = mongoClient.db();
   await createAddressIndex(db);
   await createPartyAddressIndex(db);

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Db, Collection, MongoError, Cursor, UpdateQuery } from "mongodb";
+import { Db, Collection, MongoError, UpdateFilter } from "mongodb";
 import { ConfigManager } from "../ConfigManager";
 import { MongoErrorCodes } from "../models/MongoErrorCodes";
 import { IParty } from "../models/IParty";
@@ -31,7 +31,7 @@ export class PartyController {
     try {
       const result = await this.partyCollection.insertOne(newParty);
       const party = await this.partyCollection.findOne({
-        _id: result.insertedId
+        _id: result.insertedId,
       });
       const partyData = await this.getPartyData(party);
       PartyController.mapAndReturnPartyData(
@@ -54,7 +54,7 @@ export class PartyController {
 
   public get = async (req: Request, res: Response) => {
     const address = GrailController.trimAndToLower(req.params.address);
-    await this.getByAddress(address, res, async party =>
+    await this.getByAddress(address, res, async (party) =>
       PartyController.mapAndReturnPartyData(
         address,
         res,
@@ -68,26 +68,26 @@ export class PartyController {
     const grails = await this.grailCollection
       .find({
         address: {
-          $in: party.userlist
-        }
+          $in: party.userlist,
+        },
       })
       .project({
         address: true,
-        partyData: true
+        partyData: true,
       })
       .toArray();
 
-    return this.mapGrailsToPartyData(grails);
+    return this.mapGrailsToPartyData(grails as IGrailCollection[]);
   };
 
   private mapGrailsToPartyData = (grails: IGrailCollection[]) => {
     let partyData = {
-      users: []
+      users: [],
     };
-    grails.forEach(grail => {
+    grails.forEach((grail) => {
       partyData.users.push({
         username: grail.address,
-        data: grail.partyData
+        data: grail.partyData,
       });
     });
     return partyData;
@@ -103,7 +103,7 @@ export class PartyController {
     }
 
     const party = await this.partyCollection.findOne({
-      address: PartyController.trimAndToLower(address)
+      address: PartyController.trimAndToLower(address),
     });
     if (!party) {
       res.status(404).send({ type: "notFound", address });
@@ -127,10 +127,10 @@ export class PartyController {
             address,
             password,
             token,
-            dataToSet => dataToSet,
+            (dataToSet) => dataToSet,
             {
               $pull: { pendingUserlist: user },
-              $addToSet: { userlist: user }
+              $addToSet: { userlist: user },
             }
           );
           break;
@@ -140,9 +140,9 @@ export class PartyController {
             address,
             password,
             token,
-            dataToSet => dataToSet,
+            (dataToSet) => dataToSet,
             {
-              $pull: { pendingUserlist: user }
+              $pull: { pendingUserlist: user },
             }
           );
           break;
@@ -152,9 +152,9 @@ export class PartyController {
             address,
             password,
             token,
-            dataToSet => dataToSet,
+            (dataToSet) => dataToSet,
             {
-              $pull: { userlist: user }
+              $pull: { userlist: user },
             }
           );
           break;
@@ -173,7 +173,7 @@ export class PartyController {
     const grailAddress = GrailController.trimAndToLower(req.body.user);
     const partyAddress = GrailController.trimAndToLower(req.body.address);
     const result = await this.grailCollection.findOne({
-      address: GrailController.trimAndToLower(grailAddress)
+      address: GrailController.trimAndToLower(grailAddress),
     });
 
     if (!result) {
@@ -182,7 +182,7 @@ export class PartyController {
     }
 
     const party = await this.partyCollection.findOne({
-      address: GrailController.trimAndToLower(partyAddress)
+      address: GrailController.trimAndToLower(partyAddress),
     });
 
     if (!party) {
@@ -201,9 +201,9 @@ export class PartyController {
       party.address,
       party.password,
       party.token,
-      dataToSet => dataToSet,
+      (dataToSet) => dataToSet,
       {
-        $addToSet: { pendingUserlist: grailAddress }
+        $addToSet: { pendingUserlist: grailAddress },
       }
     );
   };
@@ -214,7 +214,7 @@ export class PartyController {
     token: string,
     res: Response
   ) => {
-    await this.getByAddress(address, res, existingParty => {
+    await this.getByAddress(address, res, (existingParty) => {
       if (existingParty.password !== password) {
         res.status(401).send({ type: "password", address });
       } else if (existingParty.token !== token) {
@@ -222,7 +222,7 @@ export class PartyController {
           type: "token",
           correctToken: existingParty.token,
           specifiedToken: token,
-          address
+          address,
         });
       } else {
         PartyController.sendUnknownError(res, "Database error");
@@ -236,24 +236,24 @@ export class PartyController {
     password: string,
     token: string,
     modifyDataToSaveFunc: (data: Partial<IParty>) => Partial<IParty>,
-    optionalUpdates?: UpdateQuery<IParty>
+    optionalUpdates?: any
   ) => {
     try {
-      const updateQuery: UpdateQuery<IParty> = optionalUpdates
+      const updateQuery: UpdateFilter<IParty> = optionalUpdates
         ? optionalUpdates
         : {};
       updateQuery.$set = modifyDataToSaveFunc({
         token: PartyController.getToken(),
-        modified: new Date()
+        modified: new Date(),
       });
       const result = await this.partyCollection.findOneAndUpdate(
         {
           address: PartyController.trimAndToLower(address),
           password: password,
-          token: token
+          token: token,
         },
         updateQuery,
-        { returnOriginal: false }
+        { returnDocument: "after" }
       );
 
       if (result && result.ok && result.value) {
@@ -280,7 +280,7 @@ export class PartyController {
   ) {
     try {
       const party = await this.partyCollection.findOne({
-        address: PartyController.trimAndToLower(address)
+        address: PartyController.trimAndToLower(address),
       });
 
       if (!party) {
@@ -305,7 +305,7 @@ export class PartyController {
       userlist: party.userlist,
       pendingUserlist: party.pendingUserlist,
       token: party.token,
-      data: data
+      data: data,
     } as IPartyData);
   }
 
