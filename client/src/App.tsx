@@ -10,8 +10,8 @@ import { GrailStatistics } from "./areas/GrailStatistics";
 import { Party } from "./areas/party/Party";
 import { PartyHome } from "./areas/party/home/PartyHome";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { MuiThemeProvider } from "@material-ui/core/styles";
-import { Theme, createMuiTheme } from "@material-ui/core";
+import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
+import { Theme } from "@material-ui/core";
 import { AppThemeContext, IAppTheme, defaultTheme } from "./AppThemeContext";
 import { PaletteOptions } from "@material-ui/core/styles/createPalette";
 import { LocalStorageHandler } from "./common/utils/LocalStorageHandler";
@@ -34,7 +34,7 @@ export const App: FC = () => {
       value={{
         appTheme: builtTheme,
         setAppTheme: handleSetTheme,
-        toggleDarkTheme: handleToggleDarkTheme
+        toggleDarkTheme: handleToggleDarkTheme,
       }}
     >
       <MuiThemeProvider theme={builtTheme.theme}>
@@ -91,13 +91,13 @@ export const App: FC = () => {
   function buildTheme(newTheme: IAppTheme): IBuiltAppTheme {
     return {
       title: newTheme.title,
-      theme: createMuiTheme({
+      theme: createTheme({
         ...newTheme.theme,
         palette: {
           ...newTheme.theme.palette,
-          ...(isDarkThemeEnabled() && ({ type: "dark" } as PaletteOptions))
-        }
-      })
+          ...(isDarkThemeEnabled() && ({ type: "dark" } as PaletteOptions)),
+        },
+      }),
     };
   }
 };
@@ -107,16 +107,16 @@ function isDarkThemeEnabled() {
 }
 
 const RootContainer = styled.div`
-  font-family: ${p => p.theme.typography.fontFamily};
+  font-family: ${(p) => p.theme.typography.fontFamily};
 `;
 
 const HeaderContainer = styled.div`
   max-width: 700px;
   margin: auto;
   text-align: center;
-  padding-top: ${p => p.theme.spacing(1) * 2}px;
+  padding-top: ${(p) => p.theme.spacing(1) * 2}px;
 `;
 
 const ContentContainer = styled.div`
-  padding-top: ${p => p.theme.spacing(1) * 6}px;
+  padding-top: ${(p) => p.theme.spacing(1) * 6}px;
 `;

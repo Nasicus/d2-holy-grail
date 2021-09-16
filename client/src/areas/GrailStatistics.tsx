@@ -1,20 +1,28 @@
 import * as React from "react";
-import { useObservable } from "rxjs-hooks";
-import { Api } from "../common/utils/Api";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { useEffect, useState } from "react";
+import { Api } from "../common/utils/Api";
 
 export const GrailStatistics: React.FunctionComponent<{}> = () => {
-  const response = useObservable(() => Api.getStatistics());
+  const [hasError, setHasError] = useState<boolean>();
+  const [stats, setStats] = useState<any>();
 
-  if (!response) {
-    return <CircularProgress size={100} />;
-  }
+  useEffect(() => {
+    const sub = Api.getStatistics().subscribe({
+      next: (d) => setStats(d?.data ?? null),
+      error: () => setHasError(true),
+    });
+    return () => sub.unsubscribe();
+  }, []);
 
-  if (response.status !== 200) {
+  if (hasError) {
     return <div>Error when trying to get statistics!</div>;
   }
 
-  const stats = response.data;
+  if (stats === undefined) {
+    return <CircularProgress size={100} />;
+  }
+
   const aDayAgo = new Date();
   aDayAgo.setDate(aDayAgo.getDate() - 1);
 
@@ -25,7 +33,7 @@ export const GrailStatistics: React.FunctionComponent<{}> = () => {
       <div>
         Grail Updates today:{" "}
         {
-          stats.modifiedStats.filter(s => new Date(s.modified) >= aDayAgo)
+          stats.modifiedStats.filter((s) => new Date(s.modified) >= aDayAgo)
             .length
         }
       </div>
