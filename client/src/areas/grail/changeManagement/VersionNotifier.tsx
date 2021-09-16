@@ -2,7 +2,6 @@ import * as React from "react";
 import { Button, Icon, IconButton, Snackbar } from "@material-ui/core";
 import { AppVersionManager } from "./AppVersionManager";
 import { ChangelogDialog } from "./ChangelogDialog";
-import { IconButtonProps } from "@material-ui/core/IconButton";
 import styled from "styled-components";
 
 interface IVersionNotifierState {
@@ -89,7 +88,7 @@ export class VersionNotifier extends React.Component<
   }
 }
 
-const CloseButton: React.ComponentType<IconButtonProps> = styled(IconButton)`
+const CloseButton = styled(IconButton)`
   && {
     padding: ${p => p.theme.spacing(1) / 2}px;
   }

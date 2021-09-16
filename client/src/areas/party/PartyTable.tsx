@@ -6,7 +6,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper, { PaperProps } from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography/Typography";
-import { IPartyTableProps } from "./PartyTable";
 import styled from "styled-components";
 import { IPartyData } from "../../common/definitions/union/IPartyData";
 import Icon, { IconProps } from "@material-ui/core/Icon/Icon";

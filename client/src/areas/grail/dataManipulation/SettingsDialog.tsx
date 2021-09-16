@@ -5,7 +5,6 @@ import { GrailManager } from "../GrailManager";
 import { IGrailSettings } from "../../../common/definitions/union/IGrailSettings";
 import { SettingsToServerSaver } from "./clickable-components/SettingsToServerSaver";
 import { CloseableDialog } from "../../../common/components/CloseableDialog";
-import { ISettingsDialogProps } from "./SettingsDialog";
 import styled from "styled-components";
 
 export interface ISettingsDialogProps {

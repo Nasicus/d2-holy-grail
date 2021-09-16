@@ -16,7 +16,6 @@ import {
   IButtonWithProgressProps
 } from "../../common/components/ButtonWithProgress";
 import styled from "styled-components";
-import { ButtonProps } from "@material-ui/core/Button";
 
 export interface ILoginInfo {
   address?: string;
@@ -204,7 +203,7 @@ const StyledPaper: React.ComponentType<PaperProps> = styled(Paper)`
   }
 `;
 
-const CreateButton: React.ComponentType<ButtonProps> = styled(Button)`
+const CreateButton = styled(Button)`
   && {
     margin-top: ${p => p.theme.spacing(1)}px;
   }

@@ -25,6 +25,7 @@ export const UserManagerRenderer: FC<IUserManagerRendererProps> = props => {
       return;
     }
     setUsers(props.users);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.users]);
 
   return (

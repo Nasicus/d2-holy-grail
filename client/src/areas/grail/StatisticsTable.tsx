@@ -11,7 +11,6 @@ import Typography from "@material-ui/core/Typography/Typography";
 import { GrailManager } from "./GrailManager";
 import { GrailMode } from "./GrailMode";
 import { IItem } from "../../common/definitions/union/IItem";
-import { IStatisticsTableProps } from "./StatisticsTable";
 import styled from "styled-components";
 
 export interface IStatisticsTableProps {

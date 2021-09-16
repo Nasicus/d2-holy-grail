@@ -51,6 +51,7 @@ const PartyAreaInternal: FC<Props> = props => {
       (err: IPartyError) => setState({ ...state, error: err })
     );
     setAppTheme(partyTheme);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (state.error) {

@@ -1,6 +1,5 @@
 import { Drawer, List } from "@material-ui/core";
 import * as React from "react";
-import { IMenuProps } from "./Menu";
 import styled from "styled-components";
 
 export interface IMenuProps {

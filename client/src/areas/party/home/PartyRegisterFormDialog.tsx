@@ -13,7 +13,6 @@ import TextField, {
   TextFieldProps
 } from "@material-ui/core/TextField/TextField";
 import { ButtonWithProgress } from "../../../common/components/ButtonWithProgress";
-import { IRegisterFormDialogProps } from "./PartyRegisterFormDialog";
 import styled from "styled-components";
 
 export interface IRegisterFormDialogProps {

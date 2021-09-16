@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Snackbar } from "@material-ui/core";
-import { IErrorNotificationProps } from "./ErrorNotification";
 import styled from "styled-components";
 
 export interface IErrorNotificationProps {

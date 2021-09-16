@@ -6,7 +6,6 @@ import { ChangeDiscarder } from "./dataManipulation/clickable-components/ChangeD
 import { GrailToServerSaver } from "./dataManipulation/clickable-components/GrailToServerSaver";
 import { ExportListItem } from "./dataManipulation/clickable-components/ExportListItem";
 import { IGrailError } from "./IGrailError";
-import { IGrailErrorHandlerProps } from "./GrailErrorHandler";
 import styled from "styled-components";
 
 export interface IGrailErrorHandlerProps {

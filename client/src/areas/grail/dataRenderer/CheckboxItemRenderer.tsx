@@ -3,7 +3,6 @@ import Checkbox from "@material-ui/core/Checkbox/Checkbox";
 import { GrailManager } from "../GrailManager";
 import { Item } from "../../../common/definitions/union/Item";
 import { ItemNameRenderer } from "./ItemNameRenderer";
-import { IItemProps } from "./CheckboxItemRenderer";
 import styled from "styled-components";
 
 export interface IItemProps {

@@ -69,20 +69,22 @@ const GrailAreaInternal: FC<{
       // so you can also use the app offline
       (err: IGrailError) => setState({ ...state, error: err })
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (GrailManager.current && GrailManager.current.grailMode !== grailMode) {
-      setState({
-        ...state,
+      setState(s => ({
+        ...s,
         loading: true,
         data: null,
         filterResult: null
-      });
+      }));
       GrailManager.current.setGrailMode(grailMode);
 
       setThemeAndTitle();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [grailMode]);
 
   if (state.error) {
@@ -210,10 +212,10 @@ const LoaderContainer = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-const GrailAreaWrapper: FC<RouteComponentProps<
-  IGrailAreaRouterParams
->> = props => {
-  const loginInfo = { ...(props.location.state || {}) } as ILoginInfo;
+const GrailAreaWrapper: FC<
+  RouteComponentProps<IGrailAreaRouterParams>
+> = props => {
+  const loginInfo = { ...(props.location.state || ({} as any)) } as ILoginInfo;
   const address = loginInfo.address || props.match.params.address;
   loginInfo.address = address;
 

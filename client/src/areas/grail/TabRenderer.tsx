@@ -8,7 +8,6 @@ import { GrailManager } from "./GrailManager";
 import { GrailMode } from "./GrailMode";
 import { StatisticsTable } from "./StatisticsTable";
 import { FilterRenderMode, IFilterResult } from "./GrailFilters";
-import { ITabRendererProps } from "./TabRenderer";
 import styled from "styled-components";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { TabType } from "./TabType";
