@@ -4217,7 +4217,7 @@ const uniqueItems = {
   },
   "Husoldal Evo": {
     name: "Husoldal Evo",
-    type: "Bec-De-Corbin",
+    type: "Bec-de-Corbin",
     image: "items/halberd.gif",
     props: [
       "Req Strength: 133",
@@ -5325,7 +5325,7 @@ const uniqueItems = {
   },
   Ribcracker: {
     name: "Ribcracker",
-    type: "Quarter Staff",
+    type: "Quarterstaff",
     image: "items/longstaff.gif",
     props: [
       "Damage: 54-169",
