@@ -6949,7 +6949,7 @@ const uniqueItems = {
   },
   "Herald of Zakarum": {
     name: "Herald of Zakarum",
-    type: "Gilden Shield",
+    type: "Gilded Shield",
     image: "items/herald_of_zakarum.gif",
     props: [
       "Defense: 422-507",
