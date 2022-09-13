@@ -32,7 +32,7 @@ class TabRendererInternal extends React.Component<Props, ITabRendererState> {
     super(props);
     this.state = {
       activeTab: TabType.Statistics,
-      hasActiveSearch: this.renderAsSearchResult
+      hasActiveSearch: this.renderAsSearchResult,
     };
   }
 
@@ -40,9 +40,8 @@ class TabRendererInternal extends React.Component<Props, ITabRendererState> {
     props: ITabRendererProps,
     state: ITabRendererState
   ) {
-    const renderAsSearchResult = TabRendererInternal.shouldRenderAsSearchResult(
-      props
-    );
+    const renderAsSearchResult =
+      TabRendererInternal.shouldRenderAsSearchResult(props);
     if (renderAsSearchResult && !state.hasActiveSearch) {
       state.activeTab = TabType.SearchResults;
     } else if (!renderAsSearchResult && state.hasActiveSearch) {
@@ -88,7 +87,9 @@ class TabRendererInternal extends React.Component<Props, ITabRendererState> {
   }
 
   private get renderAsSearchResult(): boolean {
-    return TabRendererInternal.shouldRenderAsSearchResult(this.props);
+    return TabRendererInternal.shouldRenderAsSearchResult(
+      this.props as ITabRendererProps
+    );
   }
 
   private static shouldRenderAsSearchResult(props: ITabRendererProps): boolean {
@@ -127,11 +128,15 @@ class TabRendererInternal extends React.Component<Props, ITabRendererState> {
             label="Unique Other"
             key="tabUniqueOther"
             value={TabType.UniqueOther}
-          />
+          />,
         ];
       case GrailMode.Runeword:
         return [
-          <Tab label="Runewords" key="tabRunewords" value={TabType.Runewords} />
+          <Tab
+            label="Runewords"
+            key="tabRunewords"
+            value={TabType.Runewords}
+          />,
         ];
       default:
         return [
@@ -150,7 +155,7 @@ class TabRendererInternal extends React.Component<Props, ITabRendererState> {
             key="tabUniqueOther"
             value={TabType.UniqueOther}
           />,
-          <Tab label="Sets" key="tabSets" value={TabType.Sets} />
+          <Tab label="Sets" key="tabSets" value={TabType.Sets} />,
         ];
     }
   }
@@ -227,7 +232,7 @@ class TabRendererInternal extends React.Component<Props, ITabRendererState> {
 
 export const TabRenderer = withRouter(TabRendererInternal);
 
-const TabContainer: React.FunctionComponent<{}> = props => {
+const TabContainer: React.FunctionComponent<{}> = (props) => {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
       {props.children}
@@ -236,5 +241,5 @@ const TabContainer: React.FunctionComponent<{}> = props => {
 };
 
 const RootContainer = styled.div`
-  background-color: ${p => p.theme.palette.background.paper};
+  background-color: ${(p) => p.theme.palette.background.paper};
 `;
