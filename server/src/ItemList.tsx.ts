@@ -7908,7 +7908,7 @@ const setItems = {
       "Required Level: 6",
       "+25% Enhanced Defense",
       "+30% Lightning Resist",
-      "Attacker takes damage fo 20 (2 set items)"
+      "Attacker takes damage of 20 (2 set items)"
     ],
     category: "Sigon's Complete Steel"
   },
