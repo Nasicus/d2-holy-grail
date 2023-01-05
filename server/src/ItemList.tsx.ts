@@ -10117,6 +10117,25 @@ const runewords = {
       "Magic Damage Reduced By 7"
     ]
   },
+  Mist: {
+    runes: ["Cham", "Shael", "Gul", "Thul", "Ith"],
+    types: ["Weapons"],
+    detailTypes: ["Missile Weapons"],
+    sockets: 5,
+    props: [
+      "Level 8-12 Concentration Aura When Equipped (varies)",
+      "+3 To All Skills",
+      "20% Increased Attack Speed",
+      "+100% Piercing Attack",
+      "+325-375% Enhanced Damage (varies)",
+      "+9 To Maximum Damage",
+      "20% Bonus to Attack Rating",
+      "Adds 3-14 Cold Damage",
+      "All Resistances +40",
+      "Freeze Target +3",
+      "+24 Vitality"
+    ]
+  },
   Myth: {
     runes: ["Hel", "Amn", "Nef"],
     types: ["Armor"],
