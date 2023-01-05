@@ -10729,6 +10729,23 @@ const runewords = {
       "Level 13 Twister (127 Charges)"
     ]
   },
+  Wisdom: {
+    runes: ["Pul", "Ith", "Eld"],
+    types: ["Headgear"],
+    detailTypes: ["Headgear"],
+    sockets: 3
+    props: [
+      "+33% Piercing Attack",
+      "+15-25% Bonus to Attack Rating (varies)",
+      "4-8% Mana Stolen Per Hit (varies)",
+      "+30% Enhanced Defense",
+      "+10 Energy",
+      "15% Slower Stamina Drain",
+      "Cannot Be Frozen",
+      "+5 Mana After Each Kill",
+      "15% Damage Taken Goes to Mana"
+    ]
+  },
   Wrath: {
     runes: ["Pul", "Lum", "Ber", "Mal"],
     types: ["Weapons"],
