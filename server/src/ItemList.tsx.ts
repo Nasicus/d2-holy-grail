@@ -10206,6 +10206,27 @@ const runewords = {
       "Requirements -20%"
     ]
   },
+  Obsession: {
+    runes: ["Zod", "Ist", "Lem", "Lum", "Io", "Nef"],
+    types: ["Weapons"],
+    detailTypes: ["Staves"],
+    sockets: 6,
+    props: [
+      "Indestructible",
+      "24% Chance to cast level 10 Weaken when struck",
+      "+4 To All Skills",
+      "+65% Faster Cast Rate",
+      "+60% Faster Hit Recovery",
+      "Knockback",
+      "+10 To Vitality",
+      "+10 To Energy",
+      "Increase Maximum Life 15-25% (varies)",
+      "Regenerate Mana 15-30% (varies)",
+      "All Resistances +60-70 (varies)",
+      "75% Extra Gold from Monsters",
+      "30% Better Chance of Getting Magic Items"
+    ]
+  },
   Passion: {
     runes: ["Dol", "Ort", "Eld", "Lem"],
     types: ["Weapons"],
