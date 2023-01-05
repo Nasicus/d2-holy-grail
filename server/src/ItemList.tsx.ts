@@ -10190,6 +10190,24 @@ const runewords = {
       "Level 3 Heart of Wolverine (12 Charges)"
     ]
   },
+  Pattern: {
+    runes: ["Tal", "Ort", "Thul"],
+    types: ["Weapons"],
+    detailTypes: ["Claws"],
+    sockets: 3,
+    props: [
+      "+30% Faster Block Rate",
+      "+40-80% Enhanced Damage (varies)",
+      "10% Bonus to Attack Rating",
+      "Adds 17-62 Fire Damage",
+      "Adds 1-50 Lightning Damage",
+      "Adds 3-14 Cold Damage",
+      "+75 Poison Damage Over 5 Seconds",
+      "+6 to Strength",
+      "+6 to Dexterity",
+      "All Resistances +15"
+    ]
+  },
   Peace: {
     runes: ["Shael", "Thul", "Amn"],
     types: ["Armor"],
