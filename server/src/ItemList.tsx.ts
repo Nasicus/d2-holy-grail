@@ -9697,6 +9697,23 @@ const runewords = {
       "+10 To Strength"
     ]
   },
+  "Flickering Flame": {
+    runes: ["Nef", "Pul", "Vex"],
+    types: ["Headgear"],
+    detailTypes: ["Headgear"],
+    sockets: 3,
+    props: [
+       "Level 4-8 Resist Fire Aura When Equipped",
+       "+3 To Fire Skills",
+       "-10-15% to Enemy Fire Resist",
+       "+30% Enhanced Defense",
+       "+30 Defense vs. Missile",
+       "+50-75 To Mana",
+       "Half Freeze Duration",
+       "+5% To Maximum Fire Resist",
+       "Poison Length Reduced by 50%"
+    ]
+  },
   Fortitude: {
     runes: ["El", "Sol", "Dol", "Lo"],
     types: ["Weapons", "Armor"],
