@@ -10304,6 +10304,24 @@ const runewords = {
       "+10% To Maximum Fire Resist"
     ]
   },
+  Plague: {
+    runes: ["Cham", "Shael", "Um"],
+    types: ["Weapons"],
+    detailTypes: ["Claws", "Swords", "Daggers"],
+    sockets: 3
+    props: [
+      "20% Chance to cast level 12 Lower Resist when struck",
+      "25% Chance to cast level 15 Poison Nova on striking",
+      "Level 13-17 Cleansing Aura When Equipped (varies)",
+      "+1-2 All Skills",
+      "+20% Increased Attack Speed",
+      "+220-320% Enhanced Damage (varies)",
+      "-23% To Enemy Poison Resistance",
+      "0.3% (0-29.7) Deadly Strike (Based on Character Level)",
+      "+25% Chance of Open Wounds",
+      "Freezes Target +3"
+    ]    
+  },
   Pride: {
     runes: ["Cham", "Sur", "Io", "Lo"],
     types: ["Weapons"],
