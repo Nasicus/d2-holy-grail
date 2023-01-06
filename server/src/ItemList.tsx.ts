@@ -9697,6 +9697,23 @@ const runewords = {
       "+10 To Strength"
     ]
   },
+  "Flickering Flame": {
+    runes: ["Nef", "Pul", "Vex"],
+    types: ["Headgear"],
+    detailTypes: ["Headgear"],
+    sockets: 3,
+    props: [
+       "Level 4-8 Resist Fire Aura When Equipped",
+       "+3 To Fire Skills",
+       "-10-15% to Enemy Fire Resist",
+       "+30% Enhanced Defense",
+       "+30 Defense vs. Missile",
+       "+50-75 To Mana",
+       "Half Freeze Duration",
+       "+5% To Maximum Fire Resist",
+       "Poison Length Reduced by 50%"
+    ]
+  },
   Fortitude: {
     runes: ["El", "Sol", "Dol", "Lo"],
     types: ["Weapons", "Armor"],
@@ -10100,6 +10117,25 @@ const runewords = {
       "Magic Damage Reduced By 7"
     ]
   },
+  Mist: {
+    runes: ["Cham", "Shael", "Gul", "Thul", "Ith"],
+    types: ["Weapons"],
+    detailTypes: ["Missile Weapons"],
+    sockets: 5,
+    props: [
+      "Level 8-12 Concentration Aura When Equipped (varies)",
+      "+3 To All Skills",
+      "20% Increased Attack Speed",
+      "+100% Piercing Attack",
+      "+325-375% Enhanced Damage (varies)",
+      "+9 To Maximum Damage",
+      "20% Bonus to Attack Rating",
+      "Adds 3-14 Cold Damage",
+      "All Resistances +40",
+      "Freeze Target +3",
+      "+24 Vitality"
+    ]
+  },
   Myth: {
     runes: ["Hel", "Amn", "Nef"],
     types: ["Armor"],
@@ -10170,6 +10206,27 @@ const runewords = {
       "Requirements -20%"
     ]
   },
+  Obsession: {
+    runes: ["Zod", "Ist", "Lem", "Lum", "Io", "Nef"],
+    types: ["Weapons"],
+    detailTypes: ["Staves"],
+    sockets: 6,
+    props: [
+      "Indestructible",
+      "24% Chance to cast level 10 Weaken when struck",
+      "+4 To All Skills",
+      "+65% Faster Cast Rate",
+      "+60% Faster Hit Recovery",
+      "Knockback",
+      "+10 To Vitality",
+      "+10 To Energy",
+      "Increase Maximum Life 15-25% (varies)",
+      "Regenerate Mana 15-30% (varies)",
+      "All Resistances +60-70 (varies)",
+      "75% Extra Gold from Monsters",
+      "30% Better Chance of Getting Magic Items"
+    ]
+  },
   Passion: {
     runes: ["Dol", "Ort", "Eld", "Lem"],
     types: ["Weapons"],
@@ -10188,6 +10245,24 @@ const runewords = {
       "Hit Causes Monster To Flee 25%",
       "75% Extra Gold From Monsters",
       "Level 3 Heart of Wolverine (12 Charges)"
+    ]
+  },
+  Pattern: {
+    runes: ["Tal", "Ort", "Thul"],
+    types: ["Weapons"],
+    detailTypes: ["Claws"],
+    sockets: 3,
+    props: [
+      "+30% Faster Block Rate",
+      "+40-80% Enhanced Damage (varies)",
+      "10% Bonus to Attack Rating",
+      "Adds 17-62 Fire Damage",
+      "Adds 1-50 Lightning Damage",
+      "Adds 3-14 Cold Damage",
+      "+75 Poison Damage Over 5 Seconds",
+      "+6 to Strength",
+      "+6 to Dexterity",
+      "All Resistances +15"
     ]
   },
   Peace: {
@@ -10228,6 +10303,24 @@ const runewords = {
       "+5% To Maximum Lightning Resist",
       "+10% To Maximum Fire Resist"
     ]
+  },
+  Plague: {
+    runes: ["Cham", "Shael", "Um"],
+    types: ["Weapons"],
+    detailTypes: ["Claws", "Swords", "Daggers"],
+    sockets: 3,
+    props: [
+      "20% Chance to cast level 12 Lower Resist when struck",
+      "25% Chance to cast level 15 Poison Nova on striking",
+      "Level 13-17 Cleansing Aura When Equipped (varies)",
+      "+1-2 All Skills",
+      "+20% Increased Attack Speed",
+      "+220-320% Enhanced Damage (varies)",
+      "-23% To Enemy Poison Resistance",
+      "0.3% (0-29.7) Deadly Strike (Based on Character Level)",
+      "+25% Chance of Open Wounds",
+      "Freezes Target +3"
+    ]    
   },
   Pride: {
     runes: ["Cham", "Sur", "Io", "Lo"],
@@ -10531,6 +10624,29 @@ const runewords = {
       "50% Extra Gold From Monsters"
     ]
   },
+  "Unbending Will": {
+    runes: ["Fal", "Io", "Ith", "Eld", "El",  "Hel"],
+    types: ["Weapons"],
+    detailTypes: ["Swords"],
+    sockets: 6,
+    props: [
+      "18% Chance to cast Level 18 Taunt on striking",
+      "+3 To Combat Skills (Barbarian Only)",
+      "+20-30% Increased Attack Speed (varies)",
+      "+300-350% Enhanced Damage (varies)",
+      "+9 To Maximum Damage",
+      "+50 To Attack Rating",
+      "+75% Damage to Undead",
+      "+50 Attack Rating Against Undead",
+      "8-10% Life Stolen Per Hit (varies)",
+      "Prevent Monster Heal",
+      "+10 To Strength",
+      "+10 To Vitality",
+      "Damage Reduced By 8",
+      "+1 Light Radius",
+      "Requirements -20%"
+    ]
+  },
   Venom: {
     runes: ["Tal", "Dol", "Mal"],
     types: ["Weapons"],
@@ -10611,6 +10727,23 @@ const runewords = {
       "Hit Blinds Target",
       "+1 To Light Radius",
       "Level 13 Twister (127 Charges)"
+    ]
+  },
+  Wisdom: {
+    runes: ["Pul", "Ith", "Eld"],
+    types: ["Headgear"],
+    detailTypes: ["Headgear"],
+    sockets: 3,
+    props: [
+      "+33% Piercing Attack",
+      "+15-25% Bonus to Attack Rating (varies)",
+      "4-8% Mana Stolen Per Hit (varies)",
+      "+30% Enhanced Defense",
+      "+10 Energy",
+      "15% Slower Stamina Drain",
+      "Cannot Be Frozen",
+      "+5 Mana After Each Kill",
+      "15% Damage Taken Goes to Mana"
     ]
   },
   Wrath: {
