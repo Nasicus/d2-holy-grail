@@ -10308,7 +10308,7 @@ const runewords = {
     runes: ["Cham", "Shael", "Um"],
     types: ["Weapons"],
     detailTypes: ["Claws", "Swords", "Daggers"],
-    sockets: 3
+    sockets: 3,
     props: [
       "20% Chance to cast level 12 Lower Resist when struck",
       "25% Chance to cast level 15 Poison Nova on striking",
@@ -10628,7 +10628,7 @@ const runewords = {
     runes: ["Fal", "Io", "Ith", "Eld", "El",  "Hel"],
     types: ["Weapons"],
     detailTypes: ["Swords"],
-    sockets: 6
+    sockets: 6,
     props: [
       "18% Chance to cast Level 18 Taunt on striking",
       "+3 To Combat Skills (Barbarian Only)",
@@ -10733,7 +10733,7 @@ const runewords = {
     runes: ["Pul", "Ith", "Eld"],
     types: ["Headgear"],
     detailTypes: ["Headgear"],
-    sockets: 3
+    sockets: 3,
     props: [
       "+33% Piercing Attack",
       "+15-25% Bonus to Attack Rating (varies)",
